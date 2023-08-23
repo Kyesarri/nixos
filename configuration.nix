@@ -55,13 +55,13 @@
       layout = "au";
       xkbVariant = "";
       desktopManager = {
-        plasma5.enable = true;
+        plasma5.enable = true; # kde plasma5, plasma6 when?
         }; # desktopmanager
 
       displayManager.lightdm = {
         enable = true;
-        background = /etc/nixos/nix-wallpaper-nineish-dark-gray.png;
-        greeters.slick = {
+        background = ./nix-wallpaper-nineish-dark-gray.png; # sets lightdm wallpaper
+        greeters.slick = { # lightdm greeter "slick"
           enable = true;
           theme.name = "Qogir-Dark";
           draw-user-backgrounds = true;

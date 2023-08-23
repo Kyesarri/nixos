@@ -8,6 +8,7 @@
       allowedTCPPortRanges = [ { from = 1714; to = 1764; } ]; # kdeconnect  
       allowedUDPPortRanges = [ { from = 1714; to = 1764; } ]; # kdeconnect  
       allowedUDPPorts = [ 41641 ]; # tailscale
+      allowedTCPPorts = [ 3389 ]; # rdp
     }; # firewall 
   }; # networking 
 
@@ -52,13 +53,14 @@
         nvtop
         git
         tailscale
-        trayscale
+        tailscale-systray
         qogir-theme
         qogir-kde
         qogir-icon-theme
         asusctl 
         supergfxctl 
         gitui
+        neovim
       ]; # packages
     }; # users.kel
   }; # users
