@@ -41,14 +41,6 @@ nvidia settings are shared between both systems however hardware should still be
 
 openrgb is a bit of a funny one on the desktop, as i dont entirely understand the code that runs the script at boot :)
 
-## howto:
-
-dump contents of this git into /etc/nixos then run the following commands:
-
-`cd /etc/nixos`
-
-`sudo nixos-rebuild switch --flake .#<system-name>`
-
 
 "should" result in the correct build for said systems, saying so there are other software packages for the desktop PC that I have not moved over to this
 spaghetti
