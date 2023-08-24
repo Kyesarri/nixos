@@ -18,7 +18,7 @@
       enable = true;
       package = pkgs.gitFull;
       config.credential.helper = "libsecret";
-    } # git - not sure if I need to remove this now
+    }; # git - not sure if I need to remove this now
 
     dconf.enable = true;
     zsh  = {
