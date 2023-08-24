@@ -61,6 +61,7 @@
         supergfxctl 
         gitui
         neovim
+        busybox
       ]; # packages
     }; # users.kel
   }; # users
