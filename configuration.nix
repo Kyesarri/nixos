@@ -1,12 +1,16 @@
 # /etc/nixos/configuration.nix
 { config, pkgs,lib,  ... }:
 {
+
+  system.stateVersion = "23.05";
+
   imports = [
     ./hardware-configuration.nix
     ];
   # dumping ground for random bits
   time.timeZone = "Australia/Melbourne";
   nixpkgs.config.allowUnfree = true;
+
   nix = {
     package = pkgs.nixUnstable; # prefer nixUnstable over stable
     settings = {
@@ -14,9 +18,11 @@
       experimental-features = [ "nix-command" "flakes" ]; # flakes and nixcommand required for config
     }; # settings
   }; # nix
+
   networking = {
     networkmanager.enable = true;
   }; # networking
+
   hardware = {
     pulseaudio.enable = false;
     opengl = {
@@ -25,6 +31,7 @@
       driSupport32Bit = true; # required for steam
     }; # opengl
   }; # hardware
+
   systemd = {
     services = {
       # workaround for a bug with networking when building with flakes
@@ -32,6 +39,7 @@
       systemd-networkd-wait-online.enable = lib.mkForce false;
     };
   };
+
   services = {
     printing.enable = true;
     gnome.gnome-keyring.enable = true;
@@ -55,6 +63,7 @@
       }; # displayManager.lightdm
     }; # xserver
   }; # services    
+
   boot = {
     kernelPackages = pkgs.linuxPackages_xanmod; # use xanmod kernel
     kernelParams =  [  "nowatchdog" ]; # disables watchdog
@@ -70,6 +79,7 @@
       }; # grub
     }; # loader
   }; # boot
+
   i18n = {
     defaultLocale = "en_AU.UTF-8";
     extraLocaleSettings = {
@@ -84,13 +94,13 @@
       LC_TIME = "en_AU.UTF-8";
     }; # extraLocaleSettings
   }; # i18n
+
   environment = {
     systemPackages = with pkgs; [
       lshw
       usbutils
     ]; # systemPackages
   }; # environment
-  # don't touch this value :)
-  system.stateVersion = "23.05";
+
 }
 # /etc/nixos/configuration.nix

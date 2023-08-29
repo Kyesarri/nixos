@@ -1,6 +1,7 @@
 # /etc/nixos/shared.nix
 
 { config, pkgs,lib,  ... }:
+
 {
   networking = {
     firewall = {
@@ -12,7 +13,8 @@
       allowedTCPPorts = [ 3389 ]; # rdp
     }; # firewall 
   }; # networking 
-  programs = {
+
+ programs = {
     git = {
       enable = true;
       package = pkgs.gitFull;
@@ -36,10 +38,13 @@
       }; # ohMyZsh
     }; # zsh
   }; # programs
+
  environment = {
+    sessionVariables = { GTK_THEME = "Qogir-Dark"; };
     shells = with pkgs; [ zsh ];
   }; # environment
-  users = {
+
+ users = {
     defaultUserShell = pkgs.zsh;
     users.kel = {
       isNormalUser = true;
@@ -62,5 +67,6 @@
       ]; # packages
     }; # users.kel
   }; # users
+
 }
 # /etc/nixos/shared.nix    
