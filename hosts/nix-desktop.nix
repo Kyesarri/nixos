@@ -1,6 +1,6 @@
 # /etc/nixos/nix-desktop.nix
-
 { config, pkgs, lib,  ... }:
+
 {
 
   imports = [
@@ -20,8 +20,8 @@
       open = false;
       nvidiaSettings = true;
       package = config.boot.kernelPackages.nvidiaPackages.stable;
-    }; # nvidia 
-  }; # hardware 
+    }; # nvidia
+  }; # hardware
 
   networking = {
     hostName = "nix-desktop"; 
@@ -47,5 +47,4 @@
   }; # environment
 
 }
-
 # /etc/nixos/nix-desktop.nix

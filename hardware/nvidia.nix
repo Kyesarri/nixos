@@ -1,5 +1,6 @@
 # /etc/nixos/hardware/nvidia.nix
 { config, pkgs, lib,  ... }:
+
 {
 
   hardware = {

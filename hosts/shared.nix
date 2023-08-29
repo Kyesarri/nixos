@@ -42,6 +42,10 @@
  environment = {
     sessionVariables = { GTK_THEME = "Qogir-Dark"; };
     shells = with pkgs; [ zsh ];
+    systemPackages = with pkgs; [
+    tailscale
+    i2c-tools
+    ]; # systemPackages
   }; # environment
 
  users = {

@@ -1,6 +1,6 @@
 # /etc/nixos/nix-laptop.nix
-
 { config, pkgs,lib,  ... }:
+
 {
 
   imports = [
