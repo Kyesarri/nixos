@@ -1,8 +1,5 @@
 # nixos
 ![spagh](https://img.shields.io/badge/made_with-spaghetti-blue) ![adhd](https://img.shields.io/badge/and%20adhd-b7f7bf)
-> 
-> <img src="https://raw.githubusercontent.com/NixOS/nixos-artwork/master/logo/nix-snowflake.svg" align="left" alt="Nix logo" width="74">
-> 
 > my public spaghetti nixos
 > 
 > system specific .nix for laptop ga401 / desktop

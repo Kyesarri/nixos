@@ -1,7 +1,8 @@
 # /etc/nixos/hardware/nvidia.nix
 { config, pkgs, lib,  ... }:
 {
-  hardware = {  
+
+  hardware = {
     nvidia = {
       modesetting.enable = true;
       powerManagement.enable = true;
@@ -9,6 +10,7 @@
       nvidiaSettings = true;
       package = config.boot.kernelPackages.nvidiaPackages.latest; 
     }; # nvidia 
-  }; # hardware 
+  }; # hardware
+
 }
 # /etc/nixos/hardware/nvidia.nix

@@ -23,6 +23,7 @@
           nixos-hardware.nixosModules.asus-zephyrus-ga401 # unsure if this is loading in correctly
         ];
       };
+
       "nix-desktop" = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
