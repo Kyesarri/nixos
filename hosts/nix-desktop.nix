@@ -40,5 +40,10 @@
     }; # xserver
   }; # services
 
+  environment = {
+    systemPackages = with pkgs; [
+      i2c-tools
+    ]; # systemPackages
+  }; # environment
 }
 # /etc/nixos/nix-desktop.nix
