@@ -1,5 +1,5 @@
 # /etc/nixos/nix-desktop.nix
-# specific configuration for 13900kf / 3070 / z790i edge wifi
+
 { config, pkgs, lib,  ... }:
 {
 
@@ -45,5 +45,7 @@
       i2c-tools
     ]; # systemPackages
   }; # environment
+
 }
+
 # /etc/nixos/nix-desktop.nix

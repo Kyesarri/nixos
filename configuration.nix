@@ -99,6 +99,8 @@
     systemPackages = with pkgs; [
       lshw
       usbutils
+      curl
+      wget
     ]; # systemPackages
   }; # environment
 
