@@ -32,14 +32,6 @@
     }; # opengl
   }; # hardware
 
-  systemd = {
-    services = {
-      # workaround for a bug with networking when building with flakes
-      NetworkManager-wait-online.enable = lib.mkForce false;
-      systemd-networkd-wait-online.enable = lib.mkForce false;
-    };
-  };
-
   services = {
     printing.enable = true;
     gnome.gnome-keyring.enable = true;

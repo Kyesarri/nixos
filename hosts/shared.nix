@@ -14,12 +14,19 @@
     }; # firewall 
   }; # networking 
 
+  systemd = {
+    services = {
+      NetworkManager-wait-online.enable = lib.mkForce false; # workaround for a bug with networking when building with flakes
+      systemd-networkd-wait-online.enable = lib.mkForce false;
+    }; # services
+  }; # systemd
+
  programs = {
     git = {
       enable = true;
       package = pkgs.gitFull;
       config.credential.helper = "libsecret";
-    }; # git - not sure if I need to remove this now
+    };
     dconf.enable = true;
     zsh  = {
       enable = true;

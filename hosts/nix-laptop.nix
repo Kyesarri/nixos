@@ -25,7 +25,7 @@
     asusd = {
       enable = true;
       enableUserService = true;
-    }; # asusd 
+    }; # asusd
     supergfxd.enable = true;
     xserver = {
       enable = true;
