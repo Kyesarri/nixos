@@ -81,8 +81,8 @@
         nil
         kdevelop
         remmina
-        neofetch
-      ]; # packages
+        afetch
+        ]; # packages
     }; # users.kel
   }; # users
 
