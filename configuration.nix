@@ -1,4 +1,4 @@
-# /etc/nixos/configuration.nix
+# ./configuration.nix
 { config, pkgs,lib,  ... }:
 {
 
@@ -23,8 +23,6 @@
       options = "--delete-older-than 5d";
     }; # gc
   }; # nix
-
-
 
   networking = {
     networkmanager.enable = true;
@@ -65,7 +63,7 @@
 
   boot = {
     kernelPackages = pkgs.linuxPackages_xanmod; # use xanmod kernel
-    kernelParams =  [  "nowatchdog" ]; # disables watchdog, was causing shutdown issues
+    kernelParams =  [  "nowatchdog" ]; # disables watchdog, was causing shutdown / reboot issues
     loader = {
       efi = {
         efiSysMountPoint = "/boot";
@@ -105,4 +103,4 @@
   }; # environment
 
 }
-# /etc/nixos/configuration.nix
+# ./configuration.nix

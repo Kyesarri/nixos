@@ -1,14 +1,9 @@
-# /etc/nixos/nix-desktop.nix
+# ./hosts/nix-desktop.nix
 { config, pkgs, lib,  ... }:
 {
 
   imports = [
-    ./modules/gaming.nix
-    ./modules/smartd.nix
-    ./modules/fonts.nix
-    ./hosts/shared.nix
-    ./hardware/pipewire.nix
-    ./hardware/nvidia.nix
+    ./shared.nix
   ];
 
   hardware = {
@@ -33,4 +28,4 @@
   }; # environment
 
 }
-# /etc/nixos/nix-desktop.nix
+# ./hosts/nix-desktop.nix

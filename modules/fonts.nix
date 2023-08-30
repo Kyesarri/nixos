@@ -1,9 +1,8 @@
-# /etc/nixos/configuration.nix
+# ./modules/configuration.nix
 { config, pkgs,lib,  ... }:
 {
 
-  fonts = { # move to shared x86 / desktop and laptop, from a fresh install of nix without 
-            # flakes this stops the install with errors
+  fonts = {
     packages = with pkgs; [
       material-design-icons
       inter
@@ -15,3 +14,4 @@
   }; # fonts
 
 }
+# ./modules/configuration.nix

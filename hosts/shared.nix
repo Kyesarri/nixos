@@ -1,4 +1,4 @@
-# /etc/nixos/shared.nix
+# ./hosts/shared.nix
 { config, pkgs,lib,  ... }:
 {
 
@@ -79,4 +79,4 @@
   }; # users
 
 }
-# /etc/nixos/shared.nix
+# ./hosts/shared.nix

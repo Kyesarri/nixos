@@ -1,4 +1,4 @@
-# /etc/nixos/flake.nix
+# ./flake.nix
 {
 
   description = "spaghetti nixos by kye";
@@ -31,6 +31,7 @@
       "nix-desktop" = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
+          ./hardware/openrgb.nix
           ./configuration.nix
           ./hosts/nix-desktop.nix
           ./modules/gaming.nix
@@ -42,4 +43,4 @@
     };
   };
 }
-# /home/kel/nixos/flake.nix
+# ./flake.nix

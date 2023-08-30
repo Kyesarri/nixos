@@ -1,7 +1,7 @@
-# /home/kel/nixos/smartd.nix
+# ./nixos/smartd.nix
 { config, pkgs,lib,  ... }:
-
 {
+
   services = {
     # Check S.M.A.R.T status of all disks and notify in case of errors
     smartd = {
@@ -16,4 +16,4 @@
   }; # services
 
 }
-# /home/kel/nixos/smartd.nix
+# ./nixos/smartd.nix

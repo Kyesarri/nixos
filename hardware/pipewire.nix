@@ -1,4 +1,4 @@
-# /etc/nixos/hardware/sound.nix
+# ./hardware/sound.nix
 { config, pkgs, lib,  ... }:
 
 {
@@ -14,4 +14,4 @@
   };
 
 }
-# /etc/nixos/hardware/sound.nix
+# ./hardware/sound.nix

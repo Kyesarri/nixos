@@ -1,5 +1,4 @@
-# /etc/nixos/gaming.nix
-
+# ./modules/gaming.nix
 { config, pkgs,lib,  ... }:
 
 {
@@ -17,4 +16,4 @@
 
 } # end
 
-# /etc/nixos/gaming.nix
+# ./modules/gaming.nix

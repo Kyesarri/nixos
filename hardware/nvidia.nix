@@ -1,4 +1,4 @@
-# /etc/nixos/hardware/nvidia.nix
+# ./hardware/nvidia.nix
 { config, pkgs, lib,  ... }:
 
 {
@@ -14,4 +14,4 @@
   }; # hardware
 
 }
-# /etc/nixos/hardware/nvidia.nix
+# ./hardware/nvidia.nix

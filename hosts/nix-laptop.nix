@@ -1,4 +1,4 @@
-# /etc/nixos/nix-laptop.nix
+# ./hosts/nix-laptop.nix
 { config, pkgs, lib,  ... }:
 {
 
@@ -47,4 +47,4 @@
   }; # environment
 
 }
-# /etc/nixos/nix-laptop.nix
+# ./hosts/nix-laptop.nix
