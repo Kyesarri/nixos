@@ -14,6 +14,12 @@
     }; # firewall
   }; # networking
 
+  services = {
+    tailscale = {
+      useRoutingFeatures = "client";
+    };
+  };
+
   systemd = {
     services = {
       NetworkManager-wait-online.enable = lib.mkForce false; # workaround for a bug with networking when building with flakes
@@ -74,6 +80,7 @@
         xsel
         nil
         kdevelop
+        remmina
       ]; # packages
     }; # users.kel
   }; # users
