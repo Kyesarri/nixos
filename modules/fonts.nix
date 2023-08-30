@@ -1,7 +1,5 @@
 # /etc/nixos/configuration.nix
-
 { config, pkgs,lib,  ... }:
-
 {
 
   fonts = { # move to shared x86 / desktop and laptop, from a fresh install of nix without 
@@ -13,7 +11,7 @@
       rubik
       ibm-plex
       (nerdfonts.override { fonts = [ "Iosevka" "CascadiaCode" "JetBrainsMono" ]; })
-    ];
-  
-  };
+    ]; # packages
+  }; # fonts
+
 }

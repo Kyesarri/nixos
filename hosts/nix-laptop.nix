@@ -1,6 +1,5 @@
 # /etc/nixos/nix-laptop.nix
-{ config, pkgs,lib,  ... }:
-
+{ config, pkgs, lib,  ... }:
 {
 
   imports = [
@@ -12,14 +11,14 @@
   }; # hardware
 
   networking = {
-    hostName = "nix-laptop"; 
+    hostName = "nix-laptop";
   };
 
   systemd = {
     services = {
       supergfxd.path = [ pkgs.pciutils ]; # gpu switching
-    }; # services 
-  }; # systemd 
+    }; # services
+  }; # systemd
 
   services = {
     asusd = {
@@ -43,10 +42,9 @@
   environment = {
     systemPackages = with pkgs; [
       asusctl
-      supergfxctl 
+      supergfxctl
     ]; # systemPackages
   }; # environment
-
 
 }
 # /etc/nixos/nix-laptop.nix

@@ -1,7 +1,7 @@
 # /etc/nixos/flake.nix
 {
 
-  description = "spaghetti nixos by kel";
+  description = "spaghetti nixos by kye";
 
   inputs = {
     nixpkgs= { 

@@ -7,7 +7,7 @@
   imports = [
     ./hardware-configuration.nix
     ];
-  # dumping ground for random bits
+
   time.timeZone = "Australia/Melbourne";
   nixpkgs.config.allowUnfree = true;
 
@@ -17,7 +17,14 @@
       auto-optimise-store = true; # runs gc, need to set interval otherwise defaults to 14d from memory
       experimental-features = [ "nix-command" "flakes" ]; # flakes and nixcommand required for config
     }; # settings
+    gc = {
+      automatic = true;
+      dates = "weekly";
+      options = "--delete-older-than 5d";
+    }; # gc
   }; # nix
+
+
 
   networking = {
     networkmanager.enable = true;
@@ -54,11 +61,11 @@
         }; # greeters.slick
       }; # displayManager.lightdm
     }; # xserver
-  }; # services    
+  }; # services
 
   boot = {
     kernelPackages = pkgs.linuxPackages_xanmod; # use xanmod kernel
-    kernelParams =  [  "nowatchdog" ]; # disables watchdog
+    kernelParams =  [  "nowatchdog" ]; # disables watchdog, was causing shutdown issues
     loader = {
       efi = {
         efiSysMountPoint = "/boot";
@@ -91,6 +98,7 @@
     systemPackages = with pkgs; [
       lshw
       usbutils
+      busybox
       curl
       wget
     ]; # systemPackages

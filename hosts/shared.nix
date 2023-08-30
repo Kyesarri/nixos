@@ -1,23 +1,23 @@
 # /etc/nixos/shared.nix
-
 { config, pkgs,lib,  ... }:
-
 {
+
   networking = {
+    networkmanager.enable = true;
     firewall = {
       enable = true;
-      checkReversePath = "loose";  
-      allowedTCPPortRanges = [ { from = 1714; to = 1764; } ]; # kdeconnect  
-      allowedUDPPortRanges = [ { from = 1714; to = 1764; } ]; # kdeconnect  
+      checkReversePath = "loose";
+      allowedTCPPortRanges = [ { from = 1714; to = 1764; } ]; # kdeconnect
+      allowedUDPPortRanges = [ { from = 1714; to = 1764; } ]; # kdeconnect
       allowedUDPPorts = [ 41641 ]; # tailscale
       allowedTCPPorts = [ 3389 ]; # rdp
-    }; # firewall 
-  }; # networking 
+    }; # firewall
+  }; # networking
 
   systemd = {
     services = {
       NetworkManager-wait-online.enable = lib.mkForce false; # workaround for a bug with networking when building with flakes
-      systemd-networkd-wait-online.enable = lib.mkForce false;
+      systemd-networkd-wait-online.enable = lib.mkForce false; # unsure if this affects desktop but leaving here
     }; # services
   }; # systemd
 
@@ -71,7 +71,6 @@
         qogir-theme
         qogir-kde
         qogir-icon-theme
-        busybox
         xsel
         nil
         kdevelop
@@ -80,4 +79,4 @@
   }; # users
 
 }
-# /etc/nixos/shared.nix    
+# /etc/nixos/shared.nix
