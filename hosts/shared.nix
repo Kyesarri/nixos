@@ -75,13 +75,12 @@
         tailscale
         tailscale-systray
         qogir-theme
-        qogir-kde
         qogir-icon-theme
         xsel
         nil
         kdevelop
         remmina
-        afetch
+        kitty
         ]; # packages
     }; # users.kel
   }; # users
