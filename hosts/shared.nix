@@ -49,6 +49,10 @@
           "colorize"
         ]; # plugins
       }; # ohMyZsh
+      syntaxHighlighting.highlighters = [ "main" "brackets" "pattern" "cursor" "line" ];
+      syntaxHighlighting.patterns = { };
+      syntaxHighlighting.styles = { "globbing" = "none"; };
+      promptInit = "info='n os wm sh n' fet.sh";
     }; # zsh
   }; # programs
 
