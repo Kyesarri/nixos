@@ -52,7 +52,7 @@
     }; # zsh
   }; # programs
 
- environment = {
+  environment = {
     sessionVariables = { GTK_THEME = "Qogir-Dark"; };
     shells = with pkgs; [ zsh ];
     systemPackages = with pkgs; [
@@ -75,12 +75,15 @@
         tailscale
         tailscale-systray
         qogir-theme
+        qogir-kde
         qogir-icon-theme
         xsel
         nil
         kdevelop
         remmina
         kitty
+        kitty-themes
+        fet-sh
         ]; # packages
     }; # users.kel
   }; # users

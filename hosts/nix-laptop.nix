@@ -40,6 +40,9 @@
   }; # users
 
   environment = {
+    shellAliases = {
+      rebuild   = "sudo nixos-rebuild switch --flake /home/kel/nixos#nix-laptop --show-trace";
+    };
     systemPackages = with pkgs; [
       asusctl
       supergfxctl
