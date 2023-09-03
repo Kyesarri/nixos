@@ -28,6 +28,7 @@
   }; # systemd
 
  programs = {
+    partition-manager.enable = true;
     git = {
       enable = true;
       package = pkgs.gitFull;
@@ -62,6 +63,7 @@
     systemPackages = with pkgs; [
     tailscale
     i2c-tools
+    partition-manager
     ]; # systemPackages
   }; # environment
 
@@ -88,6 +90,8 @@
         kitty
         kitty-themes
         fet-sh
+        isoimagewriter
+        libsForQt5.lightly
         ]; # packages
     }; # users.kel
   }; # users
