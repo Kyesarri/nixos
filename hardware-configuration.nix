@@ -2,8 +2,8 @@
 # and may be overwritten by future invocations.  Please make changes
 # to /etc/nixos/configuration.nix instead.
 { config, lib, pkgs, modulesPath, ... }:
-{
 
+{
   imports =
     [ (modulesPath + "/installer/scan/not-detected.nix")
     ];
@@ -14,17 +14,17 @@
   boot.extraModulePackages = [ ];
 
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/5a7b88f6-ae0f-4e4c-941e-e4d9b02b61b3";
+    { device = "/dev/disk/by-uuid/a70cd316-b49e-4ab6-a58d-a1d188c1076d";
       fsType = "ext4";
     };
 
   fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/D4E5-1C5E";
+    { device = "/dev/disk/by-uuid/0E50-D26C";
       fsType = "vfat";
     };
 
   swapDevices =
-    [ { device = "/dev/disk/by-uuid/9bbc62be-0e65-4415-a548-c5a2def98369"; }
+    [ { device = "/dev/disk/by-uuid/d176a747-4db9-45ce-b4db-0fe3e94c09dd"; }
     ];
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
@@ -36,5 +36,4 @@
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
-
 }

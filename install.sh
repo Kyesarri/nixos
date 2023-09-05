@@ -1,0 +1,1 @@
+nix-shell -p git & & cd /home/kel & & git clone https://codeberg.org/kye/nixos & & cp /etc/nixos/hardware-configuration.nix /home/kel/nixos/ & & sudo nixos-rebuild switch --flake /home/kel/nixos#nix-laptop --show-trace

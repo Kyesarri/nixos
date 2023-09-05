@@ -22,8 +22,8 @@
 
   systemd = {
     services = {
-      NetworkManager-wait-online.enable = lib.mkForce false; # workaround for a bug with networking when building with flakes
-      systemd-networkd-wait-online.enable = lib.mkForce false; # unsure if this affects desktop but leaving here
+      NetworkManager-wait-online.enable = false; # workaround for a bug with networking when building with flakes
+      systemd-networkd-wait-online.enable = false; # unsure if this affects desktop but leaving here
     }; # services
   }; # systemd
 
@@ -63,7 +63,7 @@
     systemPackages = with pkgs; [
     tailscale
     i2c-tools
-    partition-manager
+    _2bwm
     ]; # systemPackages
   }; # environment
 
