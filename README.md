@@ -24,3 +24,7 @@ these .nix are specific to my hardware cconfigurations and may not work on your 
 - zsh + ohmyzsh
 - smartd drive monitoring via notifications
 - kitty terminal
+
+## install:
+
+bash -c $(curl https://codeberg.org/kye/nixos/raw/branch/master/install.sh)
