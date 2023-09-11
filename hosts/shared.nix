@@ -2,9 +2,9 @@
 { config, pkgs,lib,  ... }:
 
 let
-  back = "#1F2127";
-  alte = "#26292E";
-  fore = "#FFFFFF";
+  back = "#1F2127"; # background
+  alte = "#26292E"; # alternate
+  fore = "#FFFFFF"; # foreground
 in
 {
   # Install packages to /etc/profiles instead of ~/.nix-profile, useful when
@@ -16,22 +16,27 @@ in
 
     home.packages = with pkgs; [
       polybar
-      alacritty
-
+      kitty
     ];
     home.stateVersion = "23.05";
 
-    programs.alacritty = {
+    programs.kitty = {
       enable = true;
       settings = {
-        font = rec {
-	      family = "Hack-Regular";
-            bold = { style = "Bold"; };
-            italic = { style = "Italic"; };
-            size = 6;
-          };
+        active_tab_foreground = "${fore}";
+        active_tab_background = "${back}";
+        foreground = "${fore}";
+        background = "${back}";
+        # background_opacity = "0.85";
+        # background_blur = "1";
+        tab_bar_style = "powerline";
+        tab_powerline_style = "round";
+        font_family = "JetBrainsMonoNerdFont-Regular";
+        bold_font = "JetBrainsMonoNerdFont-ExtraBold";
+        italic_font = "JetBrainsMonoNerdFont-Italic";
+        bold_italic_font = "JetBrainsMonoNerdFont-BoldItalic";
 
-      };
+        };
     };
 
     services.polybar = {
@@ -39,9 +44,7 @@ in
       script = ''polybar main'';
       config = {
 
-# °º¤ø,¸¸,ø¤º°`°º¤ø,¸,ø¤°º¤ø,¸¸,ø¤º°`°º¤ø,¸ B A R S °º¤ø,¸¸,ø¤º°`°º¤ø,¸,ø¤°º¤ø,¸¸,ø¤º°`°º¤ø,¸
-
-
+## bars
         "bar/main" = {
           width = "100%";
           font-0 = "JetBrainsMonoNerdFont:size=10:weight=bold;";
@@ -59,8 +62,11 @@ in
           tray-detached = false;
         };
 
-# °º¤ø,¸¸,ø¤º°`°º¤ø,¸,ø¤°º¤ø,¸¸,ø¤º°`°º¤ø,¸ M O D U L E S °º¤ø,¸¸,ø¤º°`°º¤ø,¸,ø¤°º¤ø,¸¸,ø¤º°`°º¤ø,¸
+        "bar/lower" = {
 
+        };
+
+## modules
         "module/date" = {
           type = "internal/date";
           internal = 5;
