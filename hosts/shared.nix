@@ -1,10 +1,20 @@
 # ./hosts/shared.nix
+
+# all the home-manager items can be moved to another nix "soon"
 { config, pkgs,lib,  ... }:
 
 let
-  back = "#1F2127"; # background
-  alte = "#26292E"; # alternate
-  fore = "#FFFFFF"; # foreground
+  back = "1F2127";
+  alte = "26292E";
+  fore = "FFFFFF";
+
+  # usage :
+  # example = "#${back}";
+  # # is required, workaround to add transparency
+  # to enable transparency:
+  # example = "#99${back}";
+  # uses hex values 00 to FF case is irrelevant
+
 in
 {
   # Install packages to /etc/profiles instead of ~/.nix-profile, useful when
@@ -14,28 +24,30 @@ in
   home-manager.users.kel = { pkgs, ... }:
   {
 
+    home.stateVersion = "23.05";
+
+
     home.packages = with pkgs; [
       polybar
       kitty
     ];
-    home.stateVersion = "23.05";
 
     programs.kitty = {
       enable = true;
       settings = {
-        active_tab_foreground = "${fore}";
-        active_tab_background = "${back}";
-        foreground = "${fore}";
-        background = "${back}";
-        # background_opacity = "0.85";
-        # background_blur = "1";
+        active_tab_foreground = "#${fore}";
+        active_tab_background = "#${back}";
+        foreground = "#${fore}";
+        background = "#${back}";
+        background_opacity = "0.85";
+        background_blur = "1";
         tab_bar_style = "powerline";
         tab_powerline_style = "round";
-        font_family = "JetBrainsMonoNerdFont-Regular";
-        bold_font = "JetBrainsMonoNerdFont-ExtraBold";
-        italic_font = "JetBrainsMonoNerdFont-Italic";
-        bold_italic_font = "JetBrainsMonoNerdFont-BoldItalic";
-
+        font_family = "JetBrainsMonoNL NF Regular";
+        bold_font = "JetBrainsMonoNL NF ExtraBold";
+        italic_font = "JetBrainsMonoNL NF Italic";
+        bold_italic_font = "JetBrainsMonoNL NF ExtraBold Italic";
+        font_size = "10.0";
         };
     };
 
@@ -47,22 +59,25 @@ in
 ## bars
         "bar/main" = {
           width = "100%";
-          font-0 = "JetBrainsMonoNerdFont:size=10:weight=bold;";
-          height = "3.5%";
+          font-0 = "JetBrainsMonoNerdFont:size=10:weight=regular;";
+          height = "3%";
           radius = 0;
-          modules-center = "date xkeyboard";
+          modules-center = "date";
           modules-right = "backlight battery";
           modules-left = "focus";
           module-margin-left = 1;
           module-margin-right = 1;
-          background = "${back}"; # using the colours defined at the top of this .nix
-          foreground = "${fore}"; # to keep theming simple and consistant
+          background = "#99${back}";
+          foreground = "#${fore}"; # is this the font colour?
           tray-position = "right";
-          pseudo-transparency = false;
+          pseudo-transparency = true;
           tray-detached = false;
         };
 
         "bar/lower" = {
+          width = "100%";
+          font-0 = "JetBrainsMonoNerdFont:size=10:weight=regular;";
+          height = "3%";
 
         };
 
@@ -76,16 +91,16 @@ in
         };
 
         "module/battery" = {
-          label-full = " ";
+          label-full = "  "; # added space after icon as it was leading off-screen
           type = "internal/battery";
-          full-at = 99;
+          full-at = 80; # maximum charge for my system, set to 101 to always show charging animation
           battery = "BAT0";
           adapter = "AC";
           poll-interval = 5;
 
           format-charging = "<animation-charging> <label-charging>";
           format-charging-padding = 1;
-          label-charging = "%percentage%%";
+          label-charging = "%percentage%% ⚡";
           animation-charging-0 = " ";
           animation-charging-1 = " ";
           animation-charging-2 = " ";
@@ -105,9 +120,14 @@ in
 
         "module/backlight" = {
           type = "internal/backlight";
-          card = "amdgpu_bl0";
-          use-actual-brightness = false;
-          enable-scroll = false;
+          card = "amdgpu_bl0"; # use ls -1 /sys/class/backlight/ to list available cards
+          format = "<bar>";
+          use-actual-brightness = false; # actual brightness was jumpy, disabled
+          enable-scroll = false; # can define scroll behaviour
+          bar-width = "10";
+          bar-indicator = " ";
+          bar-fill = "─";
+          bar-empty = "─";
         };
 
         "module/focus" = {
@@ -117,15 +137,14 @@ in
           label-maxlen = 70;
         };
 
-        "module/xkeyboard" = {
+        "module/xkeyboard" = { # move to lower bar once its configured
           type = "internal/xkeyboard";
-          format = "<label-indicator>";
+          format = "<indicator-icon> <label-indicator>"; # not working, need to run through this once again
+          label-layout = "%icon%";
           indicator-icon-default = "";
           indicator-icon-0 = "🔒;-CL;+CL";
-          indicator-icon-1 = "num lock;-NL;+NL";
-
         };
-        "module/pulseaudio" = { # no builtin support for pulseaudio not enabled for now
+        "module/pulseaudio" = {
           type = "internal/pulseaudio";
           format-volume = "<ramp-volume> <label-volume>";
           label-volume = "%percentage%%";
