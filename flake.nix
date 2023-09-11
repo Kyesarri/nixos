@@ -3,21 +3,22 @@
 
   description = "spaghetti nixos by kye";
 
-  inputs = {
-    nixpkgs= { 
-      url = "github:NixOS/nixpkgs/nixos-unstable";
-    };
-
-    nixos-hardware = {
-      url = "github:NixOS/nixos-hardware/master";
-    };
+  inputs =
+  {
+    nixos.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixos-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs/master";
+    home-manager.url = "github:nix-community/home-manager";
   };
 
-  outputs = { self, nixpkgs, nixos-hardware, ... }@inputs: {
+
+  outputs = { self, nixpkgs, nixos-hardware, home-manager, ... }@inputs: {
     nixosConfigurations = {
       "nix-laptop" = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
-        modules = [
+        specialArgs = { inherit inputs; }; # allows access to flake inputs in nixos modules
+        modules =
+        [
           ./configuration.nix
           ./hosts/nix-laptop.nix
           ./modules/gaming.nix
@@ -25,7 +26,16 @@
           ./hardware/pipewire.nix
           ./hardware/nvidia.nix
           nixos-hardware.nixosModules.asus-zephyrus-ga401 # unsure if this is loading in correctly
-        ];
+          home-manager.nixosModules.home-manager
+          ({...}: {
+          home-manager.users.kel =
+          {
+            # your home config here
+
+            programs.home-manager.enable = true;
+          };
+          })
+          ];
       };
 
       "nix-desktop" = nixpkgs.lib.nixosSystem {

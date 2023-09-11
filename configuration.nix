@@ -1,5 +1,5 @@
 # ./configuration.nix
-{ config, pkgs,lib,  ... }:
+{ config, pkgs,lib, ... }:
 {
 
   system.stateVersion = "23.05";
