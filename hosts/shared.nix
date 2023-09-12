@@ -30,6 +30,7 @@ in
     home.packages = with pkgs; [
       polybar
       kitty
+
     ];
 
     programs.kitty = {

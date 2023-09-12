@@ -99,6 +99,7 @@
       busybox
       curl
       wget
+      wmctrl
     ]; # systemPackages
   }; # environment
 
