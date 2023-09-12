@@ -17,9 +17,8 @@ let
 
 in
 {
-  # Install packages to /etc/profiles instead of ~/.nix-profile
-  home-manager.useUserPackages = true;
-  home-manager.useGlobalPkgs = true;
+  home-manager.useUserPackages = true;   # Install packages to /etc/profiles instead of ~/.nix-profile
+  home-manager.useGlobalPkgs = true;   # This saves an extra Nixpkgs evaluation, adds consistency, and removes the dependency on NIX_PATH, which is otherwise used for importing Nixpkgs.
   home-manager.users.kel = { pkgs, ... }:
   {
     home.stateVersion = "23.05";
