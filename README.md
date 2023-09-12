@@ -4,7 +4,7 @@
 > 
 > system specific .nix for laptop ga401 / desktop
 
-![alt text](https://codeberg.org/kye/nixos/src/branch/master/screenshots/kye-nixos.jpg "screenshot")
+![kye/nixos](screenshots/kye-nixos.jpg "screenshot")
 
 ## issues:
 
@@ -17,13 +17,13 @@ desktop has not been worked on, laptop has been the main focus of this git
 ## whats included:
 
 - grub + lightdm with slick greeter
-- declared kde <pending changes> + themes
+- declared kde (pending changes) + themes
 - lightdm
 - xanmod kernel
-- tailscale with tray icon <pending changes>
+- tailscale with tray icon (pending changes)
 - steam
 - zsh + ohmyzsh
-- smartd drive monitoring via notifications <pending changes>
+- smartd drive monitoring via notifications (pending changes)
 - kitty terminal
 - polybar with scripts for taskbar support
 
@@ -31,18 +31,19 @@ desktop has not been worked on, laptop has been the main focus of this git
 
 never made an install script before, current version is not working :)
 
-main gist is:
+main rundown is:
 
-nix-shell -p git
+`nix-shell -p git` # installs git
 
-cd /home/<username>/
+`cd /home/username/` # change to your username
 
-git clone https://codeberg.org/kye/nixos
+`git clone https://codeberg.org/kye/nixos` # clones this git into the correct directory
 
-cp /etc/nixos/hardware-configuration.nix /home/<username>/nixos/
+`cp /etc/nixos/hardware-configuration.nix /home/username/nixos/` # copies your hardware configuration into the correct dir
 
 change username in the configuration files (configuration, shared, flake and probs elsewhere :) )
 
-sudo nixos-rebuild switch --flake /home/<username>/nixos#nix-laptop --show-trace
+`sudo nixos-rebuild switch --flake /home/username/nixos#nix-laptop --show-trace` # rebuilds the system with the new configuration
 
-* once installed you will need to sudo rm -R boot/ then rebuild to use lightdm / grub
+* once installed you will need to `sudo rm -R boot/` then run `rebuild` or `sudo nixos-rebuild switch --flake /home/username/nixos#nix-laptop --show-trace` to use lightdm / grub
+* first install can take some time to build
