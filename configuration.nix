@@ -9,7 +9,11 @@
     ];
 
   time.timeZone = "Australia/Melbourne";
-  nixpkgs.config.allowUnfree = true;
+
+  nixpkgs = {
+    config.allowUnfree = true;
+    #"2bwm".patches = [ ../../patches/2bwm/nerd-patch.diff ];
+    };
 
   nix = {
     package = pkgs.nixUnstable; # prefer nixUnstable over stable

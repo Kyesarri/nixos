@@ -26,16 +26,9 @@
           ./modules/fonts.nix
           ./hardware/pipewire.nix
           ./hardware/nvidia.nix
+          ./home.nix
           nixos-hardware.nixosModules.asus-zephyrus-ga401 # unsure if this is loading in correctly
           home-manager.nixosModules.home-manager
-          ({...}: {
-          home-manager.users.kel =
-          {
-            # your home config here
-
-            programs.home-manager.enable = true;
-          };
-          })
           ];
       };
 

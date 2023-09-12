@@ -1,32 +1,48 @@
-{ stdenv, lib, fetchGit }:
+{
+  stdenvNoCC
+, lib
+, fetchFromGitLab
+, gitUpdater
+}:
 
-stdenv.mkDerivation rec {
+stdenvNoCC.mkDerivation
+{
   pname = "moe-theme";
-  version = ""; # unsure here
+  version = "";
 
-  src = fetchFromGitHub {
+  src = fetchFromGitLab
+  {
     owner = "jomada";
-    repo = pname;
+    repo = "moe-theme";
     rev = "0eae9f1d6a7f01ff410c8845940b69403706c15f";
-    sha256 = "sha256-ppAeEfwoHZg7XEj3zGc+uq4Z6hUgJNM2EjuDsc8pFQo="; # this is incorrect
+    sha256 = "0pfam2n3jpzqyvnk9r6pyga014v6cisslvf7a3gc09pdsssgavc9";
   };
 
-  installPhase = ''
-    runHook preInstall
+#  installPhase =
+#  ''
+#    runHook preInstall
 
-    mkdir -p $out/share/{plasma/desktoptheme,yakuake/kns_skins}
-    cp -R color-schemes konsole $out/share
-    cp -R plasma5/gruvbox $out/share/plasma/desktoptheme
-    cp -R yakuake/breeze-gruvbox-dark $out/share/yakuake/kns_skins
+#    mkdir -p $out/share/plasma/desktoptheme
+#    mkdir -p $out/share/plasma/look-and-feel
+#    mkdir -p $out/share/color-schemes
+#    mkdir -p $out/share/konsole
+#
+#    cp -R MoeDark $out/share/plasma/desktoptheme
+#    cp -R Moe-Global/Moe MoeDark-Global/Moe-Dark $out/share/plasma/look-and-feel
+#    cp -R color-schemes/Moe.colors $out/share/color-schemes
+#    cp -R konsole/Moe.colorscheme $out/share/konsole
+#    runHook postInstall
+#  '';
 
-    runHook postInstall
-  '';
 
-  meta = with lib; {
-    description = "A suite of themes for KDE applications that match the retro gruvbox colorscheme";
-    homepage = "https://github.com/printesoi/kde-gruvbox";
-    license = licenses.mit;
-    maintainers = [ maintainers.ymarkus ];
-    platforms = platforms.all;
+  passthru.updateScript = gitUpdater { };
+
+  meta = with lib;
+  {
+    description = "moe-theme";
+    homepage = "https://gitlab.com/jomada/moe-theme/";
+#    license = GPL-3.0-or-later;
+    platorms = platforms.linux';
+    maintainers = with maintainers; [ kye ];
   };
 }
