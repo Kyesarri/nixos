@@ -33,17 +33,28 @@ never made an install script before, current version is not working :)
 
 main rundown is:
 
-`nix-shell -p git` # installs git
+`nix-shell -p git`
 
-`cd /home/username/` # change to your username
+installs git
 
-`git clone https://codeberg.org/kye/nixos` # clones this git into the correct directory
+`cd /home/username/`
 
-`cp /etc/nixos/hardware-configuration.nix /home/username/nixos/` # copies your hardware configuration into the correct dir
+change to your username
+
+`git clone https://codeberg.org/kye/nixos`
+
+clones this git into the correct directory
+
+`cp /etc/nixos/hardware-configuration.nix /home/username/nixos/`
+
+copies your hardware configuration into the correct dir
 
 change username in the configuration files (configuration, shared, flake and probs elsewhere :) )
 
-`sudo nixos-rebuild switch --flake /home/username/nixos#nix-laptop --show-trace` # rebuilds the system with the new configuration
+`sudo nixos-rebuild switch --flake /home/username/nixos#nix-laptop --show-trace`
 
-* once installed you will need to `sudo rm -R boot/` then run `rebuild` or `sudo nixos-rebuild switch --flake /home/username/nixos#nix-laptop --show-trace` to use lightdm / grub
-* first install can take some time to build
+rebuilds the system with the new configuration
+
+once installed you will need to `sudo rm -R boot/` then run `rebuild` or `sudo nixos-rebuild switch --flake /home/username/nixos#nix-laptop --show-trace` to use lightdm / grub
+
+first install can take some time to build
