@@ -4,24 +4,26 @@
 > 
 > system specific .nix for laptop ga401 / desktop
 
+![alt text](https://codeberg.org/kye/nixos/src/branch/master/screenshots/kye-nixos.jpg "screenshot")
+
 ## issues:
 
-current theme is not included, will be a todo :)
+theme in images is not included yet
 
 these .nix are specific to my hardware configurations and may not work on your own system, feel free to use but YMMV
 
-desktop has not been worked on, laptop has
+desktop has not been worked on, laptop has been the main focus of this git
 
 ## whats included:
 
 - grub + lightdm with slick greeter
-- declared kde <pending> + themes
+- declared kde <pending changes> + themes
 - lightdm
 - xanmod kernel
-- tailscale with tray icon <pending>
+- tailscale with tray icon <pending changes>
 - steam
 - zsh + ohmyzsh
-- smartd drive monitoring via notifications
+- smartd drive monitoring via notifications <pending changes>
 - kitty terminal
 - polybar with scripts for taskbar support
 
