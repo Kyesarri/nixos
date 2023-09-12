@@ -1,3 +1,6 @@
 [submodule "scripts/scripts/polywins"]
 	path = scripts/scripts/polywins
 	url = https://github.com/uniquepointer/polywins
+[submodule "scripts/polywins"]
+	path = scripts/polywins
+	url = https://github.com/uniquepointer/polywins
