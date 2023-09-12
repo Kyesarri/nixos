@@ -6,17 +6,14 @@
 
 ## issues:
 
-not booting correctly from fresh install - need to move much more out of configuration.nix and into their own builds
+these .nix are specific to my hardware configurations and may not work on your own system, feel free to use but YMMV
 
-maybe package all tweaks into their own nix and declare from nix-#system.nix 
-
-idea behind this git is really a dumping ground for my own .nix, in case anything is broken in a future bowl of spaghetti; i can always rebuild from these
-
-these .nix are specific to my hardware cconfigurations and may not work on your own system, feel free to use but YMMV
+desktop has not been worked on, laptop has
 
 ## whats included:
 
-- kde + themes
+- lightdm with slick greeter
+- declared kde (working on) + themes
 - lightdm
 - xanmod kernel
 - tailscale with tray icon
@@ -24,7 +21,24 @@ these .nix are specific to my hardware cconfigurations and may not work on your 
 - zsh + ohmyzsh
 - smartd drive monitoring via notifications
 - kitty terminal
+- polybar with scripts for taskbar support
 
 ## install:
 
-bash -c $(curl https://codeberg.org/kye/nixos/raw/branch/master/install.sh)
+never made an install script before, current version is not working :)
+
+main gist is:
+
+nix-shell -p git
+
+cd /home/<username>/
+
+git clone https://codeberg.org/kye/nixos
+
+cp /etc/nixos/hardware-configuration.nix /home/<username>/nixos/
+
+change username in the configuration files (configuration, shared, flake and probs elsewhere :) )
+
+sudo nixos-rebuild switch --flake /home/<username>/nixos#nix-laptop --show-trace
+
+- once installed you will need to sudo rm -R boot/ then rebuild to use lightdm

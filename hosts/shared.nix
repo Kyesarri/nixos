@@ -40,7 +40,7 @@ in
         active_tab_background = "#${back}";
         foreground = "#${fore}";
         background = "#${back}";
-        background_opacity = "0.85";
+        background_opacity = "0.60"; # matching #99 ~ 60% alpha
         background_blur = "1";
         tab_bar_style = "powerline";
         tab_powerline_style = "round";
@@ -68,7 +68,7 @@ in
           modules-left = "focus";
           module-margin-left = 1;
           module-margin-right = 1;
-          background = "#99${back}";
+          background = "#99${back}"; # approx 60%
           foreground = "#${fore}"; # is this the font colour?
           tray-position = "right";
           pseudo-transparency = true;
@@ -145,6 +145,7 @@ in
           indicator-icon-default = "";
           indicator-icon-0 = "🔒;-CL;+CL";
         };
+
         "module/pulseaudio" = {
           type = "internal/pulseaudio";
           format-volume = "<ramp-volume> <label-volume>";
@@ -156,6 +157,15 @@ in
           ramp-volume-2 = "󰕾";
         };
 
+        # src : https://github.com/uniquepointer/polywins
+        "module/polywins" = {
+          type = "custom/script";
+          eexec = "~/nixos/scripts/polywins/polywins.sh 2>/dev/null"; # unsure how to locate the script right now :(
+          format = "<label>";
+          label = "%output%";
+          label-padding = "1";
+          tail = "true";
+         };
       };
     };
   };

@@ -39,7 +39,7 @@
 
   services = {
     printing.enable = true;
-    gnome.gnome-keyring.enable = true;
+    gnome.gnome-keyring.enable = true; # saving credentials
     tailscale.enable = true;
     fwupd.enable = true;
     xserver = {
