@@ -104,6 +104,7 @@
       curl
       wget
       wmctrl
+      slop
     ]; # systemPackages
   }; # environment
 

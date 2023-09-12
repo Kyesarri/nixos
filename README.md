@@ -25,11 +25,11 @@ desktop has not been worked on, laptop has been the main focus of this git
 - zsh + ohmyzsh
 - smartd drive monitoring via notifications (pending changes)
 - kitty terminal
-- polybar with scripts for taskbar support
+- polybar with polywins
 
 ## install:
 
-never made an install script before, current version is not working :)
+never made an install script before, current version is not working
 
 main rundown is:
 
