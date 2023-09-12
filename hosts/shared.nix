@@ -59,8 +59,6 @@
     };
   };
 
-
-
   environment = {
     sessionVariables = { GTK_THEME = "Qogir-Dark"; }; # sets default gtk theme
     shells = with pkgs; [ zsh ]; # default shell to zsh
