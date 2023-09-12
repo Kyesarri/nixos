@@ -10,8 +10,7 @@
       rubik
       ibm-plex
       (nerdfonts.override { fonts = [ "Iosevka" "CascadiaCode" "JetBrainsMono" ]; })
-    ]; # packages
-  }; # fonts
-
+    ];
+  };
 }
 # ./modules/configuration.nix

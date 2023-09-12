@@ -1,7 +1,8 @@
+# ./home.nix
 let
 
   # define colours to be used through home packages
-  # should I split these packages out and define colours
+  # should i split these packages out and define colours
   # as global variables ( if that is something which is possible?)
 
   back = "1F2127";
@@ -17,9 +18,10 @@ let
 
 in
 {
-  home-manager.useUserPackages = true;   # Install packages to /etc/profiles instead of ~/.nix-profile
-  home-manager.useGlobalPkgs = true;   # This saves an extra Nixpkgs evaluation, adds consistency, and removes the dependency on NIX_PATH, which is otherwise used for importing Nixpkgs.
-  home-manager.users.kel = { pkgs, ... }:
+  home-manager.useUserPackages = true;   # install packages to /etc/profiles instead of ~/.nix-profile
+  home-manager.useGlobalPkgs = true;   # this saves an extra Nixpkgs evaluation, adds consistency, and removes the dependency on NIX_PATH, which is otherwise used for importing Nixpkgs.
+  home-manager.users.kel =
+  { pkgs, ... }:
   {
     home.stateVersion = "23.05";
     home.packages = with pkgs; [
@@ -161,7 +163,8 @@ in
         # src : https://github.com/uniquepointer/polywins
         "module/polywins" = {
           type = "custom/script";
-          eexec = "$HOME/nixos/scripts/polywins/polywins.sh 2>/dev/null"; # unsure how to locate the script right now :(
+          exec = "$HOME/nixos/scripts/polywins/polywins.sh";
+          format-prefix-foreground = "#${fore}";
           format = "<label>";
           label = "%output%";
           label-padding = "1";
@@ -171,3 +174,4 @@ in
     };
   };
 }
+# ./home.nix
