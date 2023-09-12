@@ -12,7 +12,7 @@ desktop has not been worked on, laptop has
 
 ## whats included:
 
-- lightdm with slick greeter
+- grub + lightdm with slick greeter
 - declared kde (working on) + themes
 - lightdm
 - xanmod kernel
@@ -41,4 +41,4 @@ change username in the configuration files (configuration, shared, flake and pro
 
 sudo nixos-rebuild switch --flake /home/<username>/nixos#nix-laptop --show-trace
 
-- once installed you will need to sudo rm -R boot/ then rebuild to use lightdm
+* once installed you will need to sudo rm -R boot/ then rebuild to use lightdm / grub
