@@ -6,6 +6,8 @@
 
 ## issues:
 
+current theme is not included, will be a todo :)
+
 these .nix are specific to my hardware configurations and may not work on your own system, feel free to use but YMMV
 
 desktop has not been worked on, laptop has
@@ -13,10 +15,10 @@ desktop has not been worked on, laptop has
 ## whats included:
 
 - grub + lightdm with slick greeter
-- declared kde (working on) + themes
+- declared kde <pending> + themes
 - lightdm
 - xanmod kernel
-- tailscale with tray icon
+- tailscale with tray icon <pending>
 - steam
 - zsh + ohmyzsh
 - smartd drive monitoring via notifications
