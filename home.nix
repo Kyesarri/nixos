@@ -72,12 +72,13 @@ in
           tray-detached = false;
         };
 
-        "bar/lower" =
-          {
+        "bar/lower" = {
           width = "100%";
           font-0 = "JetBrainsMonoNerdFont:size=10:weight=regular;";
           height = "3%";
           modules-center = "polywins";
+          modules-right = "network";
+          modules-left = "menu-apps";
           line-size = "2";
           background = "#99${back}"; # approx 60%
           foreground = "#${fore}"; # is this the font colour?
@@ -169,7 +170,58 @@ in
           label = "%output%";
           label-padding = "1";
           tail = "true";
-         };
+        };
+
+        "module/network" = {
+          type = "internal/network";
+          interface = "wlp2s0";
+          interval = "15.0";
+          format-connected = "<ramp-signal>";
+          format-disconnected = "<label-disconnected>";
+          label-disconnected = "󰤭" ;
+          format-connected-foreground = "#${fore}";
+          format-disconnected-foreground = "#${alte}";
+          label-disconnected-foreground = "#${back}";
+          format-connected-padding = 3;
+          format-disconnected-padding = 3;
+          label-disconnected-padding = 3;
+
+          format-connected-background = "";
+          format-disconnected-background = "";
+          label-disconnected-background = "";
+
+          ramp-signal-0 = "󰤟 ";
+          ramp-signal-1 = "󰤢 ";
+          ramp-signal-2 = "󰤥 ";
+          ramp-signal-3 = "󰤨 ";
+        };
+
+        "module/menu-apps" = { # icons were rendering horribly, using text for now - fits better with theme this method
+          type = "custom/menu";
+          expand-right = true;
+          menu-0-0 = "power";
+          menu-0-0-exec = "#menu-apps.open.1";
+          menu-0-1 = "reboot";
+          menu-0-1-exec = "#menu-apps.open.2";
+          menu-0-2 = "suspend";
+          menu-0-2-exec = "#menu-apps.open.3";
+
+          menu-1-0 = "power";
+          menu-1-0-exec = "systemctl poweroff";
+
+          menu-2-0 = "reboot";
+          menu-2-0-exec = "systemctl reboot";
+
+          menu-3-0 = "suspend";
+          menu-3-0-exec = "systemctl suspend";
+
+
+          label-open = " 0 ";
+          label-close = " x ";
+
+          label-separator = "   ";
+
+        };
       };
     };
   };

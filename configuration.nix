@@ -46,13 +46,26 @@
     gnome.gnome-keyring.enable = true; # saving credentials
     tailscale.enable = true;
     fwupd.enable = true;
+
     xserver = {
       enable = true;
       layout = "au";
       xkbVariant = "";
-      desktopManager = {
-        plasma5.enable = true; # kde plasma5, plasma6 when?
-        }; # desktopmanager
+#      desktopManager = {
+#        plasma5.enable = true; # kde plasma5, plasma6 when?
+#      }; # desktopmanager
+
+
+      windowManager = {
+        herbstluftwm.enable = true;
+        awesome.enable = false;
+        bspwm.enable = false;
+        exwm.enable = false;
+        openbox.enable = false;
+        i3.enable = false;
+        i3.package = "pkgs.i3-gaps";
+      };
+
       displayManager.lightdm = {
         enable = true;
         background = ./nix-wallpaper-nineish-dark-gray.png; # sets lightdm wallpaper
@@ -62,6 +75,7 @@
           draw-user-backgrounds = true;
         }; # greeters.slick
       }; # displayManager.lightdm
+
     }; # xserver
   }; # services
 
