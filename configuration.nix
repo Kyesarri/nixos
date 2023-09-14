@@ -51,10 +51,9 @@
       enable = true;
       layout = "au";
       xkbVariant = "";
-#      desktopManager = {
-#        plasma5.enable = true; # kde plasma5, plasma6 when?
-#      }; # desktopmanager
-
+      displayManager.defaultSession = "plasma";
+      desktopManager.plasma5.enable = true;
+#      desktopManager.lxqt.enable = true;
 
       windowManager = {
         herbstluftwm.enable = true;
@@ -63,7 +62,6 @@
         exwm.enable = false;
         openbox.enable = false;
         i3.enable = false;
-        i3.package = "pkgs.i3-gaps";
       };
 
       displayManager.lightdm = {
@@ -83,17 +81,15 @@
     kernelPackages = pkgs.linuxPackages_xanmod; # use xanmod kernel
     kernelParams =  [  "nowatchdog" ]; # disables watchdog, was causing shutdown / reboot issues
     loader = {
-      efi = {
-        efiSysMountPoint = "/boot";
-      }; # efi
+      efi.efiSysMountPoint = "/boot";
       grub = {
         enable = true; 
         efiSupport = true;
         efiInstallAsRemovable = true; # Otherwise /boot/EFI/BOOT/BOOTX64.EFI isn't generated
         devices = [ "nodev" ];
-      }; # grub
-    }; # loader
-  }; # boot
+      };
+    };
+  };
 
   i18n = {
     defaultLocale = "en_AU.UTF-8";

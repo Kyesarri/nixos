@@ -63,10 +63,12 @@
     sessionVariables = { GTK_THEME = "Qogir-Dark"; }; # sets default gtk theme
     shells = with pkgs; [ zsh ]; # default shell to zsh
     systemPackages = with pkgs; [
+#      rxvt-unicode #  believe this is used for urxvtd with 2bwm
+#      xinit # used for 2bwm, requires further configuration
       tailscale
       i2c-tools
-      _2bwm # need to work on this further, no docs anywhere, using config from https://git.peppe.rs/config/nixos/tree/home.nix
-      ];
+#      _2bwm # need to work on this further, no docs anywhere, using config from https://git.peppe.rs/config/nixos/tree/home.nix
+      ]; # might have to see how xfce or another desktop can run that as default
 
     plasma5 = {
       excludePackages = with pkgs.libsForQt5; [  ];
@@ -92,7 +94,7 @@
         qogir-icon-theme
         xsel
         nil
-        kdevelop # will this work outside of kde? probably should
+        kdevelop
         remmina # rdp client
         fet-sh
         isoimagewriter

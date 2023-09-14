@@ -18,6 +18,30 @@ stdenvNoCC.mkDerivation
     sha256 = "0pfam2n3jpzqyvnk9r6pyga014v6cisslvf7a3gc09pdsssgavc9";
   };
 
+  buildPhase = ''
+    runHook preBuild
+    cd kde
+    mkdir -p aurorae/themes
+    mv aurorae/Sweet-Dark aurorae/themes/Sweet-Dark
+    mv aurorae/Sweet-Dark-transparent aurorae/themes/Sweet-Dark-transparent
+    rm aurorae/.shade.svg
+    mv colorschemes color-schemes
+    mkdir -p plasma/look-and-feel
+    mv look-and-feel plasma/look-and-feel/com.github.eliverlara.sweet
+    mv sddm sddm-Sweet
+    mkdir -p sddm/themes
+    mv sddm-Sweet sddm/themes/Sweet
+    mv cursors icons
+    runHook postBuild
+  '';
+
+  installPhase = ''
+    runHook preInstall
+    install -d $out/share
+    cp -r Kvantum aurorae color-schemes icons konsole plasma sddm $out/share
+    runHook postInstall
+  '';
+
 #  installPhase =
 #  ''
 #    runHook preInstall
@@ -35,7 +59,7 @@ stdenvNoCC.mkDerivation
 #  '';
 
 
-  passthru.updateScript = gitUpdater { };
+  # passthru.updateScript = gitUpdater { };
 
   meta = with lib;
   {

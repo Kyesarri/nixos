@@ -27,9 +27,17 @@ in
     home.packages = with pkgs; [
       polybar
       kitty
+ #     rofi # might be used with 2bwm at a later time, for now disabled
     ];
 
     programs.home-manager.enable = true;
+
+#    programs.rofi = {
+#      enable = true;
+#      font = "JetBrainsMonoNerdFont"; # font = "JetBrainsMonoNL"; not working
+#      location = "center";
+#      configPath = "$HOME/nixos/dots/rofi/config.rasi"; # would rather declare in here configuration options however this will be the "temp" fix
+#    }; # see above
 
     programs.kitty = {
       enable = true;
@@ -52,17 +60,18 @@ in
 
     services.polybar = {
       enable = true;
-      script = ''polybar main'';
+      script = ''polybar top'';
       config = {
 
 ## bars
-        "bar/main" = {
+
+        "bar/top" = {
           width = "100%";
           font-0 = "JetBrainsMonoNerdFont:size=10:weight=regular;";
           height = "3%";
           radius = 0;
           modules-center = "date";
-          modules-right = "backlight battery";
+          modules-right = "backlight battery network";
           modules-left = "focus";
           module-margin-left = 1;
           module-margin-right = 1;
@@ -72,13 +81,16 @@ in
           tray-detached = false;
         };
 
-        "bar/lower" = {
+        "bar/bot" = {
           width = "100%";
           font-0 = "JetBrainsMonoNerdFont:size=10:weight=regular;";
           height = "3%";
           modules-center = "polywins";
-          modules-right = "network";
+          radius = 0;
+          modules-right = "";
           modules-left = "menu-apps";
+          module-margin-left = 1;
+          module-margin-right = 1;
           line-size = "2";
           background = "#99${back}"; # approx 60%
           foreground = "#${fore}"; # is this the font colour?
@@ -87,6 +99,7 @@ in
           };
 
 ## modules
+
         "module/date" = {
           type = "internal/date";
           internal = 5;
@@ -105,7 +118,7 @@ in
 
           format-charging = "<animation-charging> <label-charging>";
           format-charging-padding = 1;
-          label-charging = "%percentage%% ⚡";
+          label-charging = "%percentage%%";
           animation-charging-0 = " ";
           animation-charging-1 = " ";
           animation-charging-2 = " ";
@@ -161,7 +174,7 @@ in
           ramp-volume-2 = "󰕾";
         };
 
-        # src : https://github.com/uniquepointer/polywins
+        # src : https://github.com/uniquepointer/polywins / https://codeberg.org/kye/polywins --fork
         "module/polywins" = {
           type = "custom/script";
           exec = "$HOME/nixos/scripts/polywins/polywins.sh";
@@ -182,9 +195,9 @@ in
           format-connected-foreground = "#${fore}";
           format-disconnected-foreground = "#${alte}";
           label-disconnected-foreground = "#${back}";
-          format-connected-padding = 3;
-          format-disconnected-padding = 3;
-          label-disconnected-padding = 3;
+          format-connected-padding = 1;
+          format-disconnected-padding = 1;
+          label-disconnected-padding = 1;
 
           format-connected-background = "";
           format-disconnected-background = "";
@@ -196,7 +209,7 @@ in
           ramp-signal-3 = "󰤨 ";
         };
 
-        "module/menu-apps" = { # icons were rendering horribly, using text for now - fits better with theme this method
+        "module/menu-apps" = {
           type = "custom/menu";
           expand-right = true;
           menu-0-0 = "power";
@@ -216,7 +229,7 @@ in
           menu-3-0-exec = "systemctl suspend";
 
 
-          label-open = " 0 ";
+          label-open = " O ";
           label-close = " x ";
 
           label-separator = "   ";

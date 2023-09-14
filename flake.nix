@@ -18,7 +18,7 @@
       "nix-laptop" = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         specialArgs = { inherit inputs; }; # allows access to flake inputs in nixos modules
-        modules =
+        modules = # need to refactor the below
         [
           ./configuration.nix
           ./hosts/nix-laptop.nix
@@ -34,7 +34,7 @@
 
       "nix-desktop" = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
-        modules = [
+        modules = [ # same as above, needs to be refactored
           ./hardware/openrgb.nix
           ./configuration.nix
           ./hosts/nix-desktop.nix
