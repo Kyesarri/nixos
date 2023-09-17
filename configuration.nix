@@ -3,34 +3,25 @@
 {
 
   system.stateVersion = "23.05";
-
-  imports = [
-    ./hardware-configuration.nix
-    ];
-
+  networking.networkmanager.enable = true;
   time.timeZone = "Australia/Melbourne";
+  nixpkgs.config.allowUnfree = true;
 
-  nixpkgs = {
-    config.allowUnfree = true;
-    #"2bwm".patches = [ ../../patches/2bwm/nerd-patch.diff ];
-    };
+  imports = [ ./hardware-configuration.nix ];
 
-  nix = {
-    package = pkgs.nixUnstable; # prefer nixUnstable over stable
-    settings = {
-      auto-optimise-store = true; # runs gc, need to set interval otherwise defaults to 14d from memory
-      experimental-features = [ "nix-command" "flakes" ]; # flakes and nixcommand required for config
-    }; # settings
-    gc = {
-      automatic = true;
-      dates = "weekly";
-      options = "--delete-older-than 5d";
-    }; # gc
-  }; # nix
+  nix.package = pkgs.nixUnstable; # prefer nixUnstable over stable
+  nix.settings =
+  {
+    auto-optimise-store = true; # runs gc, need to set interval otherwise defaults to 14d from memory
+    experimental-features = [ "nix-command" "flakes" ]; # flakes and nixcommand required for config
+  };
+  nix.gc =
+  {
+    automatic = true;
+    dates = "weekly";
+    options = "--delete-older-than 5d";
+  };
 
-  networking = {
-    networkmanager.enable = true;
-  }; # networking
 
   hardware = {
     pulseaudio.enable = false;
@@ -38,8 +29,8 @@
       enable = true;
       driSupport = true;
       driSupport32Bit = true; # required for steam
-    }; # opengl
-  }; # hardware
+    };
+  };
 
   services = {
     printing.enable = true;
@@ -51,17 +42,27 @@
       enable = true;
       layout = "au";
       xkbVariant = "";
-      displayManager.defaultSession = "plasma";
       desktopManager.plasma5.enable = true;
-#      desktopManager.lxqt.enable = true;
+#      displayManager.defaultSession = "plasma";
+      displayManager.session =
+      [
+        {
+          manage = "desktop";
+          name = "plasma5+bspwm+whatever";
+          start = ''exec env KDEWM=${pkgs.bspwm}/bin/bspwm ${pkgs.plasma-workspace}/bin/startplasma-x11'';
+        }
+      ];
 
       windowManager = {
         herbstluftwm.enable = true;
+#        herbstluftwm.configFile = "$HOME/herbstluftwm"; # cant figure this bastard out, tried $HOME/ and ./ paths
+
         awesome.enable = false;
-        bspwm.enable = false;
+        bspwm.enable = true;
         exwm.enable = false;
         openbox.enable = false;
         i3.enable = false;
+        "2bwm".enable = false;
       };
 
       displayManager.lightdm = {
@@ -71,11 +72,11 @@
           enable = true;
           theme.name = "Qogir-Dark";
           draw-user-backgrounds = true;
-        }; # greeters.slick
-      }; # displayManager.lightdm
+        };
+      };
 
-    }; # xserver
-  }; # services
+    };
+  };
 
   boot = {
     kernelPackages = pkgs.linuxPackages_xanmod; # use xanmod kernel
@@ -103,8 +104,8 @@
       LC_PAPER = "en_AU.UTF-8";
       LC_TELEPHONE = "en_AU.UTF-8";
       LC_TIME = "en_AU.UTF-8";
-    }; # extraLocaleSettings
-  }; # i18n
+    };
+  };
 
   environment = {
     systemPackages = with pkgs; [
@@ -115,8 +116,9 @@
       wget
       wmctrl
       slop
-    ]; # systemPackages
-  }; # environment
+      yad # for polybar popups
+    ];
+  };
 
 }
 # ./configuration.nix

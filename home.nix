@@ -7,7 +7,9 @@ let
 
   back = "1F2127";
   alte = "26292E";
-  fore = "FFFFFF";
+  text = "FFFFFF";
+  red1 = "E62644";
+  red2 = "C41833";
 
   # usage :
   # example = "#${back}";
@@ -18,35 +20,30 @@ let
 
 in
 {
-  home-manager.useUserPackages = true;   # install packages to /etc/profiles instead of ~/.nix-profile
+  home-manager.useUserPackages = false;   # install packages to /etc/profiles instead of ~/.nix-profile
   home-manager.useGlobalPkgs = true;   # this saves an extra Nixpkgs evaluation, adds consistency, and removes the dependency on NIX_PATH, which is otherwise used for importing Nixpkgs.
   home-manager.users.kel =
-  { pkgs, ... }:
+  { pkgs, config, ... }:
   {
+    home.username = "kel";
+    programs.home-manager.enable = true;
+
     home.stateVersion = "23.05";
     home.packages = with pkgs; [
       polybar
       kitty
- #     rofi # might be used with 2bwm at a later time, for now disabled
+      eww
+#     rofi # might be used with 2bwm at a later time, for now disabled
     ];
-
-    programs.home-manager.enable = true;
-
-#    programs.rofi = {
-#      enable = true;
-#      font = "JetBrainsMonoNerdFont"; # font = "JetBrainsMonoNL"; not working
-#      location = "center";
-#      configPath = "$HOME/nixos/dots/rofi/config.rasi"; # would rather declare in here configuration options however this will be the "temp" fix
-#    }; # see above
 
     programs.kitty = {
       enable = true;
       settings = {
-        active_tab_foreground = "#${fore}";
+        active_tab_foreground = "#${text}";
         active_tab_background = "#${back}";
-        foreground = "#${fore}";
+        foreground = "#${text}";
         background = "#${back}";
-        background_opacity = "0.60"; # matching #99 ~ 60% alpha might change later
+        background_opacity = "1.0";
         background_blur = "1";
         tab_bar_style = "powerline";
         tab_powerline_style = "round";
@@ -61,54 +58,65 @@ in
     services.polybar = {
       enable = true;
       script = ''polybar top'';
-      config = {
-
-## bars
-
-        "bar/top" = {
+      config =
+        {
+        "bar/top" =
+        {
           width = "100%";
           font-0 = "JetBrainsMonoNerdFont:size=10:weight=regular;";
-          height = "3%";
+          height = "25";
           radius = 0;
           modules-center = "date";
-          modules-right = "backlight battery network";
+          modules-right = "backlight network battery arrow";
           modules-left = "focus";
           module-margin-left = 1;
           module-margin-right = 1;
-          background = "#99${back}"; # approx 60%
-          foreground = "#${fore}"; # is this the font colour?
+          background = "#${back}";
+          foreground = "#${text}";
           pseudo-transparency = true;
           tray-detached = false;
+          line-size = 1;
+          border-top-size = 0;
+          border-bottom-size = 0;
         };
 
-        "bar/bot" = {
+        "bar/bot" =
+        {
           width = "100%";
           font-0 = "JetBrainsMonoNerdFont:size=10:weight=regular;";
-          height = "3%";
+          font-1 = "JetBrainsMonoNerdFont:size=20:weight=regular;";
+          height = "25";
           modules-center = "polywins";
           radius = 0;
           modules-right = "";
           modules-left = "menu-apps";
           module-margin-left = 1;
           module-margin-right = 1;
-          line-size = "2";
-          background = "#99${back}"; # approx 60%
-          foreground = "#${fore}"; # is this the font colour?
+          line-size = "1";
+          background = "#${back}";
+          foreground = "#${text}";
           bottom = "true";
           tray-position = "right";
-          };
+          tray-background = "#${back}";
+          tray-foreground = "#${text}";
+          pseudo-transparency = true;
+          border-top-size = 0;
+          border-bottom-size = 0;
+        };
 
 ## modules
 
-        "module/date" = {
+        "module/date" =
+        {
           type = "internal/date";
           internal = 5;
           date = "%d.%m.%y";
           time = "%H:%M";
-          label = "%time% | %date%";
-        };
+          label = "%time% | %date%"; # do some on-click here for " plasmawindowed org.kde.plasma.calendar" to show the calendar
+        }; # to show all kde plasmoids run " kpackagetool5 --list --type Plasma/Applet -g  # system wide "
 
-        "module/battery" = {
+        "module/battery" =
+        {
           label-full = "  "; # added space after icon as it was leading off-screen
           type = "internal/battery";
           full-at = 80; # maximum charge for my system, set to 101 to always show charging animation
@@ -126,6 +134,12 @@ in
           animation-charging-4 = " ";
           animation-charging-framerate = 500;
 
+          ramp-capacity-0-foreground = "#${red2}";
+          ramp-capacity-1-foreground = "#${red2}";
+          ramp-capacity-2-foreground = "#${red1}";
+          ramp-capacity-3-foreground = "#${red1}";
+          ramp-capacity-4-foreground = "#${red1}";
+
           format-discharging = "<ramp-capacity> <label-discharging>";
           format-discharging-padding = 1;
           label-discharging = "%percentage%%";
@@ -136,26 +150,30 @@ in
           ramp-capacity-4 = " ";
         };
 
-        "module/backlight" = {
+        "module/backlight" =
+        {
           type = "internal/backlight";
           card = "amdgpu_bl0"; # use ls -1 /sys/class/backlight/ to list available cards
           format = "<bar>";
           use-actual-brightness = false; # actual brightness was jumpy, disabled
           enable-scroll = false; # can define scroll behaviour, not working under kde
           bar-width = "10";
-          bar-indicator = " ";
+          bar-indicator = "─";
+          bar-indicator-foreground = "#${red1}";
           bar-fill = "─";
           bar-empty = "─";
         };
 
-        "module/focus" = {
+        "module/focus" =
+        {
           type = "internal/xwindow";
           format = "<label>";
           label = " %title%"; # had to add a space to the start of this label, was landing too close to the left edge of the screen
           label-maxlen = 70;
         };
 
-        "module/xkeyboard" = { # move to lower bar once its configured
+        "module/xkeyboard" = # not sure if this should be kept :)
+        {
           type = "internal/xkeyboard";
           format = "<indicator-icon> <label-indicator>"; # not working, need to run through this once again
           label-layout = "%icon%";
@@ -163,7 +181,8 @@ in
           indicator-icon-0 = "🔒;-CL;+CL";
         };
 
-        "module/pulseaudio" = {
+        "module/pulseaudio" =
+        { # not using pulseaudio but pipewire, unsure how to continue here
           type = "internal/pulseaudio";
           format-volume = "<ramp-volume> <label-volume>";
           label-volume = "%percentage%%";
@@ -175,41 +194,31 @@ in
         };
 
         # src : https://github.com/uniquepointer/polywins / https://codeberg.org/kye/polywins --fork
-        "module/polywins" = {
+        "module/polywins" =
+        {
           type = "custom/script";
           exec = "$HOME/nixos/scripts/polywins/polywins.sh";
-          format-prefix-foreground = "#${fore}";
+          format-prefix-foreground = "#${text}";
           format = "<label>";
           label = "%output%";
           label-padding = "1";
           tail = "true";
         };
 
-        "module/network" = {
+        "module/network" =
+        {
+          format-disconnected-underline = "#${red1}";
+          label-foreground = "#${red1}";
           type = "internal/network";
           interface = "wlp2s0";
-          interval = "15.0";
-          format-connected = "<ramp-signal>";
-          format-disconnected = "<label-disconnected>";
-          label-disconnected = "󰤭" ;
-          format-connected-foreground = "#${fore}";
-          format-disconnected-foreground = "#${alte}";
-          label-disconnected-foreground = "#${back}";
-          format-connected-padding = 1;
-          format-disconnected-padding = 1;
-          label-disconnected-padding = 1;
+          interval = "3.0";
+          label-connected = "%local_ip%";
+          format-disconnected = "disconnected";
 
-          format-connected-background = "";
-          format-disconnected-background = "";
-          label-disconnected-background = "";
-
-          ramp-signal-0 = "󰤟 ";
-          ramp-signal-1 = "󰤢 ";
-          ramp-signal-2 = "󰤥 ";
-          ramp-signal-3 = "󰤨 ";
         };
 
-        "module/menu-apps" = {
+        "module/menu-apps" =
+        {
           type = "custom/menu";
           expand-right = true;
           menu-0-0 = "power";
@@ -229,12 +238,58 @@ in
           menu-3-0-exec = "systemctl suspend";
 
 
-          label-open = " O ";
-          label-close = " x ";
+          label-open = "  ";
+          label-close = "  ";
+          label-close-foreground = "#${red1}";
 
-          label-separator = "   ";
+
+          label-separator = " ";
+        };
+
+        "module/arrow" =
+        {
+          type = "custom/text";
+          content = "";  #use this if it looks small : content = %{T2}%{T-}
+          content-background = "#${back}";
+          content-foreground = "#${red1}";
+          click-right = "$HOME/nixos/scripts/betterTray/tray.py";
+        };
+
+        "module/nothing" =
+        {
+          type = "custom/script";
+          exec = "echo";
+          hidden = true;
+        };
+
+        "bar/tray" =
+        {
+          width = "2%";                              # change this to control the size
+          height = "15pt";
+          border-size = "1px";
+          offset-x = "200";                          # and this to control the postition (adjust it for ur monitor)
+          offset-y = "0";
+          background = "#${back}";                   # and this for colors
+          foreground = "#${alte}";
+          tray-background = "#${back}";
+          border-color ="#${red2}";
+          fixed-center = "true";                     # u probably don't want to change this
+          override-redirect = "true";
+          modules-left = "nothing";
+          padding-right = 1;
+          padding-left = 1;
+          tray-position = "right";
+          tray-detached = "true";
+          tray-offset-x = 0;
+          tray-offset-y = 0;
+          tray-padding = 4;
+          tray-maxsize = 20;
+          tray-scale = "1.0";
+          monitor-strict = "false";
+          bottom = "true";
 
         };
+
       };
     };
   };

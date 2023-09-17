@@ -30,21 +30,28 @@
 
   programs = {
     partition-manager.enable = true;
-    git = {
+    git =
+    {
       enable = true;
       package = pkgs.gitFull;
       config.credential.helper = "libsecret";
     };
-
     dconf.enable = true;
-    zsh  = {
+    zsh  =
+    {
       enable = true;
       enableCompletion = true;
       autosuggestions.enable = true;
-      ohMyZsh = {
+      syntaxHighlighting.highlighters = [ "main" "brackets" "pattern" "cursor" "line" ];
+      syntaxHighlighting.patterns = { };
+      syntaxHighlighting.styles = { "globbing" = "none"; };
+      promptInit = "info='n os wm sh n' fet.sh";
+      ohMyZsh =
+      {
         enable = true;
         theme = "fino-time";
-        plugins = [
+        plugins =
+        [
           "sudo"
           "terraform"
           "systemadmin"
@@ -52,10 +59,6 @@
           "colorize"
         ];
       };
-      syntaxHighlighting.highlighters = [ "main" "brackets" "pattern" "cursor" "line" ];
-      syntaxHighlighting.patterns = { };
-      syntaxHighlighting.styles = { "globbing" = "none"; };
-      promptInit = "info='n os wm sh n' fet.sh";
     };
   };
 
@@ -99,6 +102,8 @@
         fet-sh
         isoimagewriter
         libsForQt5.lightly
+        networkmanagerapplet # adds network tray icon in polybar systray
+        sourcehut.python
         ];
     };
   };

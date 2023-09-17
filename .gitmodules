@@ -4,3 +4,6 @@
 [submodule "scripts/polywins"]
 	path = scripts/polywins
 	url = https://codeberg.org/kye/polywins
+[submodule "scripts/Tiny_polybar"]
+	path = scripts/Tiny_polybar
+	url = https://github.com/phon31x/Tiny_polybar
