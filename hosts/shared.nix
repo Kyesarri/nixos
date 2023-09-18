@@ -91,7 +91,7 @@
         {
           name = "canvas";
           runtimeInputs = with pkgs; [ imagemagick feh xcolor ];
-          text = builtins.readFile ./scripts/canvas/canvas;
+          text = builtins.readFile ../../scripts/canvas/canvas;
         })
       ];
 
