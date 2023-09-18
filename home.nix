@@ -62,6 +62,7 @@ in
         {
         "bar/top" =
         {
+          wm-name = "top";
           width = "100%";
           font-0 = "JetBrainsMonoNerdFont:size=10:weight=regular;";
           height = "25";
@@ -82,6 +83,7 @@ in
 
         "bar/bot" =
         {
+          wm-name = "bot";
           width = "100%";
           font-0 = "JetBrainsMonoNerdFont:size=10:weight=regular;";
           font-1 = "JetBrainsMonoNerdFont:size=20:weight=regular;";
@@ -96,12 +98,44 @@ in
           background = "#${back}";
           foreground = "#${text}";
           bottom = "true";
-          tray-position = "right";
-          tray-background = "#${back}";
-          tray-foreground = "#${text}";
+#          tray-position = "right";
+#          tray-background = "#${back}";
+#          tray-foreground = "#${text}";
           pseudo-transparency = true;
           border-top-size = 0;
           border-bottom-size = 0;
+        };
+
+        "bar/tasktray" =
+        {
+          wm-name = "tasktray";
+          monitor-strict = false;
+          font-0 = "JetBrainsMonoNerdFont:size=10:weight=regular;";
+          width = "20";
+          height = "25";
+          offset-x = "98%"; ######### offset values only dtermine the position of bar in the screen set it accordingly to your need
+          offset-y = "35";
+          override-redirect = "true"; ############### to make offset vales to work override-direct value must be true
+          fixed-center = true;
+          background = "#${back}";
+          foreground = "#${alte}";
+          radius = "10";
+          line-size = "0";
+          #line-color = #f00
+          padding-left = "0";
+          padding-right = "1";
+          module-margin-left = "0";
+          module-margin-right = "0";
+          modules-right = "arrow";
+          tray-position = "right";
+          tray-detached = "false";
+          tray-offset-x = "0";
+          tray-offset-y = "0";
+          tray-padding = "1";
+          tray-maxsize = "20";
+          tray-scale = "1";
+          tray-background = "#${back}";
+          tray-foreground = "#${alte}";
         };
 
 ## modules
@@ -237,60 +271,52 @@ in
           menu-3-0 = "suspend";
           menu-3-0-exec = "systemctl suspend";
 
-
           label-open = "  ";
           label-close = "  ";
           label-close-foreground = "#${red1}";
-
-
           label-separator = " ";
         };
 
         "module/arrow" =
         {
-          type = "custom/text";
-          content = "";  #use this if it looks small : content = %{T2}%{T-}
-          content-background = "#${back}";
-          content-foreground = "#${red1}";
-          click-right = "$HOME/nixos/scripts/betterTray/tray.py";
-        };
-
-        "module/nothing" =
-        {
           type = "custom/script";
-          exec = "echo";
-          hidden = true;
+          exec = "exec $HOME/nixos/scripts/polybar-tray/arrow.sh";
+          click-left = "exec $HOME/nixos/scripts/polybar-tray/open.sh";
+          click-right = "pkill -f tasktray";
         };
 
-        "bar/tray" =
+        "module/subscriber" =
         {
-          width = "2%";                              # change this to control the size
-          height = "15pt";
-          border-size = "1px";
-          offset-x = "200";                          # and this to control the postition (adjust it for ur monitor)
-          offset-y = "0";
-          background = "#${back}";                   # and this for colors
-          foreground = "#${alte}";
-          tray-background = "#${back}";
-          border-color ="#${red2}";
-          fixed-center = "true";                     # u probably don't want to change this
-          override-redirect = "true";
-          modules-left = "nothing";
-          padding-right = 1;
-          padding-left = 1;
-          tray-position = "right";
-          tray-detached = "true";
-          tray-offset-x = 0;
-          tray-offset-y = 0;
-          tray-padding = 4;
-          tray-maxsize = 20;
-          tray-scale = "1.0";
-          monitor-strict = "false";
-          bottom = "true";
+          type = "custom/ipc";
+          # Define the command to be executed when the hook is triggered
+          # Available tokens:
+          # %pid% (id of the parent polybar process)
+          hook-0 = "date";
+          hook-1 = "whoami";
+          hook-2 = "polybar top";
 
+          # Hook to execute on launch. The index is 1-based and using
+          # the example below (2) `whoami` would be executed on launch.
+          # If 0 is specified, no hook is run on launch
+          # Default: 0
+          initial = "2";
+          # Available tags:
+          # <output> (default)
+          format = "<output>";
+          format-foreground = "#f00";
+          format-background = "#fff";
+          # Mouse actions
+          # Available tokens:
+          # %pid% (id of the parent polybar process)
+          click-left ="";
+          click-middle ="";
+          click-right ="";
+          scroll-up ="";
+          scroll-down ="";
+          double-click-left ="";
+          double-click-right = "";
+          };
         };
-
-      };
     };
   };
 }
