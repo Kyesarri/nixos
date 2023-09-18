@@ -21,8 +21,20 @@
     };
   };
 
-  systemd = {
-    services = {
+  systemd =
+  {
+ #   user.services.killxembedsniproxy = # TODO is not working, falling back to kde login script
+ #   {
+ #     description = "...";
+ #     serviceConfig.PassEnvironment = "DISPLAY";
+ #     script = # this kills the xembedsniproxy to allow systray icons in polybar to be displayed
+ #     ''
+ #       killall xembedsniproxy
+ #     '';
+ #     wantedBy = [ "multi-user.target" ]; # starts after login
+ #   };
+    services =
+    {
       NetworkManager-wait-online.enable = false; # workaround for a bug with networking when building with flakes
       systemd-networkd-wait-online.enable = false; # unsure if this affects desktop but leaving here
     };
@@ -62,17 +74,25 @@
     };
   };
 
-  environment = {
+  environment =
+  {
     sessionVariables =
     {
       GTK_THEME = "Qogir-Dark";
     };
     shells = with pkgs; [ zsh ]; # default shell to zsh
-    systemPackages = with pkgs; [
+    systemPackages = with pkgs;
+      [
 #      rxvt-unicode #  believe this is used for urxvtd with 2bwm
 #      xinit # used for 2bwm, requires further configuration
       tailscale
       i2c-tools
+      (pkgs.writeShellApplication
+        {
+          name = "canvas";
+          runtimeInputs = with pkgs; [ imagemagick feh xcolor ];
+          text = builtins.readFile ./scripts/canvas/canvas;
+        })
       ];
 
     plasma5 = {
@@ -107,10 +127,11 @@
         isoimagewriter
         libsForQt5.lightly
         networkmanagerapplet # adds network tray icon in polybar systray
-        sourcehut.python
-        kde-gruvbox
-        vimix-gtk-themes
-        gnome.zenity
+        sourcehut.python # required for polywins
+        imagemagick # canvas
+        feh # canvas
+        xcolor # canvas
+
         ];
     };
   };
