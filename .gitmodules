@@ -13,3 +13,6 @@
 [submodule "scripts/polybar-kdeconnect"]
 	path = scripts/polybar-kdeconnect
 	url = https://github.com/haideralipunjabi/polybar-kdeconnect
+[submodule "scripts/canvas"]
+	path = scripts/canvas
+	url = https://github.com/adi1090x/canvas
