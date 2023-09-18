@@ -45,7 +45,7 @@
       syntaxHighlighting.highlighters = [ "main" "brackets" "pattern" "cursor" "line" ];
       syntaxHighlighting.patterns = { };
       syntaxHighlighting.styles = { "globbing" = "none"; };
-      promptInit = "info='n os wm sh n' fet.sh";
+      promptInit = "info='n host cpu os wm sh n' fet.sh";
       ohMyZsh =
       {
         enable = true;
@@ -63,21 +63,25 @@
   };
 
   environment = {
-    sessionVariables = { GTK_THEME = "Qogir-Dark"; }; # sets default gtk theme
+    sessionVariables =
+    {
+      GTK_THEME = "Qogir-Dark";
+    };
     shells = with pkgs; [ zsh ]; # default shell to zsh
     systemPackages = with pkgs; [
 #      rxvt-unicode #  believe this is used for urxvtd with 2bwm
 #      xinit # used for 2bwm, requires further configuration
       tailscale
       i2c-tools
-#      _2bwm # need to work on this further, no docs anywhere, using config from https://git.peppe.rs/config/nixos/tree/home.nix
-      ]; # might have to see how xfce or another desktop can run that as default
+      ];
 
     plasma5 = {
-      excludePackages = with pkgs.libsForQt5; [  ];
+      excludePackages = with pkgs.libsForQt5;
+      [
+        okular
+      ];
     };
-
-  }; # environment
+  };
 
  users = {
     defaultUserShell = pkgs.zsh;
@@ -104,6 +108,9 @@
         libsForQt5.lightly
         networkmanagerapplet # adds network tray icon in polybar systray
         sourcehut.python
+        kde-gruvbox
+        vimix-gtk-themes
+        gnome.zenity
         ];
     };
   };

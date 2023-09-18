@@ -2,21 +2,18 @@
 let
 
   # define colours to be used through home packages
-  # should i split these packages out and define colours
-  # as global variables ( if that is something which is possible?)
 
-  back = "1F2127";
-  alte = "26292E";
-  text = "FFFFFF";
-  red1 = "E62644";
-  red2 = "C41833";
+  colour = import ./modules/colour.nix;
 
-  # usage :
-  # example = "#${back}";
-  # # is required, workaround to add transparency
+  # usage:
+  # example = "#${colour.red1}";
+  # # is required, workaround to add transparency if required later
   # to enable transparency:
-  # example = "#99${back}";
+  # example = "#99${colour.back}";
   # uses hex values 00 to ff case is irrelevant
+
+  # TODO: change the strings from "red1" and so forth to something less descriptive of the colour but the region its used in. EX: red1 to accent1
+  # TODO: this will make fleshing out new themes easier for my system
 
 in
 {
@@ -33,16 +30,18 @@ in
       polybar
       kitty
       eww
-#     rofi # might be used with 2bwm at a later time, for now disabled
+      rofi # might be used with 2bwm at a later time, for now disabled
     ];
 
-    programs.kitty = {
+    programs.kitty =
+    {
       enable = true;
-      settings = {
-        active_tab_foreground = "#${text}";
-        active_tab_background = "#${back}";
-        foreground = "#${text}";
-        background = "#${back}";
+      settings =
+        {
+        active_tab_foreground = "#${colour.red1}";
+        active_tab_background = "#${colour.back}";
+        foreground = "#${colour.text}";
+        background = "#${colour.back}";
         background_opacity = "1.0";
         background_blur = "1";
         tab_bar_style = "powerline";
@@ -55,7 +54,8 @@ in
         };
     };
 
-    services.polybar = {
+    services.polybar =
+    {
       enable = true;
       script = ''polybar top'';
       config =
@@ -72,8 +72,8 @@ in
           modules-left = "focus";
           module-margin-left = 1;
           module-margin-right = 1;
-          background = "#${back}";
-          foreground = "#${text}";
+          background = "#${colour.back}";
+          foreground = "#${colour.text}";
           pseudo-transparency = true;
           tray-detached = false;
           line-size = 1;
@@ -95,12 +95,9 @@ in
           module-margin-left = 1;
           module-margin-right = 1;
           line-size = "1";
-          background = "#${back}";
-          foreground = "#${text}";
+          background = "#${colour.back}";
+          foreground = "#${colour.text}";
           bottom = "true";
-#          tray-position = "right";
-#          tray-background = "#${back}";
-#          tray-foreground = "#${text}";
           pseudo-transparency = true;
           border-top-size = 0;
           border-bottom-size = 0;
@@ -117,11 +114,11 @@ in
           offset-y = "35";
           override-redirect = "true"; ############### to make offset vales to work override-direct value must be true
           fixed-center = true;
-          background = "#${back}";
-          foreground = "#${alte}";
+          background = "#${colour.back}";
+          foreground = "#${colour.alte}";
           radius = "10";
           line-size = "0";
-          #line-color = #f00
+          #line-colour = #f00
           padding-left = "0";
           padding-right = "1";
           module-margin-left = "0";
@@ -134,8 +131,8 @@ in
           tray-padding = "1";
           tray-maxsize = "20";
           tray-scale = "1";
-          tray-background = "#${back}";
-          tray-foreground = "#${alte}";
+          tray-background = "#${colour.back}";
+          tray-foreground = "#${colour.alte}";
         };
 
 ## modules
@@ -168,11 +165,11 @@ in
           animation-charging-4 = " ";
           animation-charging-framerate = 500;
 
-          ramp-capacity-0-foreground = "#${red2}";
-          ramp-capacity-1-foreground = "#${red2}";
-          ramp-capacity-2-foreground = "#${red1}";
-          ramp-capacity-3-foreground = "#${red1}";
-          ramp-capacity-4-foreground = "#${red1}";
+          ramp-capacity-0-foreground = "#${colour.red1}";
+          ramp-capacity-1-foreground = "#${colour.red1}";
+          ramp-capacity-2-foreground = "#${colour.red1}";
+          ramp-capacity-3-foreground = "#${colour.red1}";
+          ramp-capacity-4-foreground = "#${colour.red1}";
 
           format-discharging = "<ramp-capacity> <label-discharging>";
           format-discharging-padding = 1;
@@ -193,7 +190,7 @@ in
           enable-scroll = false; # can define scroll behaviour, not working under kde
           bar-width = "10";
           bar-indicator = "─";
-          bar-indicator-foreground = "#${red1}";
+          bar-indicator-foreground = "#${colour.red1}";
           bar-fill = "─";
           bar-empty = "─";
         };
@@ -232,7 +229,7 @@ in
         {
           type = "custom/script";
           exec = "$HOME/nixos/scripts/polywins/polywins.sh";
-          format-prefix-foreground = "#${text}";
+          format-prefix-foreground = "#${colour.text}";
           format = "<label>";
           label = "%output%";
           label-padding = "1";
@@ -241,8 +238,8 @@ in
 
         "module/network" =
         {
-          format-disconnected-underline = "#${red1}";
-          label-foreground = "#${red1}";
+          format-disconnected-underline = "#${colour.red1}";
+          label-foreground = "#${colour.red1}";
           type = "internal/network";
           interface = "wlp2s0";
           interval = "3.0";
@@ -271,9 +268,9 @@ in
           menu-3-0 = "suspend";
           menu-3-0-exec = "systemctl suspend";
 
-          label-open = "  ";
-          label-close = "  ";
-          label-close-foreground = "#${red1}";
+          label-open = "  ";
+          label-close = "  ";
+          label-close-foreground = "#${colour.red1}";
           label-separator = " ";
         };
 
@@ -285,7 +282,7 @@ in
           click-right = "pkill -f tasktray";
         };
 
-        "module/subscriber" =
+        "module/subscriber" = # un used yet
         {
           type = "custom/ipc";
           # Define the command to be executed when the hook is triggered
@@ -315,8 +312,9 @@ in
           scroll-down ="";
           double-click-left ="";
           double-click-right = "";
-          };
         };
+
+      };
     };
   };
 }

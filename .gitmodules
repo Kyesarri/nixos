@@ -7,3 +7,9 @@
 [submodule "scripts/Tiny_polybar"]
 	path = scripts/Tiny_polybar
 	url = https://github.com/phon31x/Tiny_polybar
+[submodule "scripts/polybar-kdeconnect-scripts"]
+	path = scripts/polybar-kdeconnect-scripts
+	url = https://github.com/witty91/polybar-kdeconnect-scripts
+[submodule "scripts/polybar-kdeconnect"]
+	path = scripts/polybar-kdeconnect
+	url = https://github.com/haideralipunjabi/polybar-kdeconnect

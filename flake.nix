@@ -24,6 +24,7 @@
           ./hosts/nix-laptop.nix
           ./modules/gaming.nix
           ./modules/fonts.nix
+#          ./modules/colour.nix
           ./hardware/pipewire.nix
           ./hardware/nvidia.nix
           ./home.nix
