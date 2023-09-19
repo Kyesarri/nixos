@@ -28,10 +28,10 @@ in
       enable = true;
       settings =
         {
-        active_tab_foreground = "#${colour.red1}";
-        active_tab_background = "#${colour.back}";
+        active_tab_foreground = "#${colour.accent1}";
+        active_tab_background = "#${colour.background}";
         foreground = "#${colour.text}";
-        background = "#${colour.back}";
+        background = "#${colour.background}";
         background_opacity = "1.0";
         background_blur = "1";
         tab_bar_style = "powerline";
@@ -62,7 +62,7 @@ in
             modules-left = "focus";
             module-margin-left = 1;
             module-margin-right = 1;
-            background = "#${colour.back}";
+            background = "#${colour.background}";
             foreground = "#${colour.text}";
             pseudo-transparency = true;
             tray-detached = false;
@@ -85,7 +85,7 @@ in
             module-margin-left = 1;
             module-margin-right = 1;
             line-size = "1";
-            background = "#${colour.back}";
+            background = "#${colour.background}";
             foreground = "#${colour.text}";
             bottom = "true";
             pseudo-transparency = true;
@@ -104,8 +104,8 @@ in
             offset-y = "35";
             override-redirect = "true"; ############### to make offset vales to work override-direct value must be true
             fixed-center = true;
-            background = "#${colour.back}";
-            foreground = "#${colour.alte}";
+            background = "#${colour.background}";
+            foreground = "#${colour.alternate}";
             radius = "10";
             line-size = "0";
             #line-colour = #f00
@@ -121,8 +121,8 @@ in
             tray-padding = "1";
             tray-maxsize = "20";
             tray-scale = "1";
-            tray-background = "#${colour.back}";
-            tray-foreground = "#${colour.alte}";
+            tray-background = "#${colour.background}";
+            tray-foreground = "#${colour.alternate}";
           };
 
   ## modules
@@ -155,11 +155,11 @@ in
             animation-charging-4 = " ";
             animation-charging-framerate = 500;
 
-            ramp-capacity-0-foreground = "#${colour.red1}";
-            ramp-capacity-1-foreground = "#${colour.red1}";
-            ramp-capacity-2-foreground = "#${colour.red1}";
-            ramp-capacity-3-foreground = "#${colour.red1}";
-            ramp-capacity-4-foreground = "#${colour.red1}";
+            ramp-capacity-0-foreground = "#${colour.accent1}";
+            ramp-capacity-1-foreground = "#${colour.accent1}";
+            ramp-capacity-2-foreground = "#${colour.accent1}";
+            ramp-capacity-3-foreground = "#${colour.accent1}";
+            ramp-capacity-4-foreground = "#${colour.accent1}";
 
             format-discharging = "<ramp-capacity> <label-discharging>";
             format-discharging-padding = 1;
@@ -180,7 +180,7 @@ in
             enable-scroll = false; # can define scroll behaviour, not working under kde
             bar-width = "10";
             bar-indicator = "─";
-            bar-indicator-foreground = "#${colour.red1}";
+            bar-indicator-foreground = "#${colour.accent1}";
             bar-fill = "─";
             bar-empty = "─";
           };
@@ -227,8 +227,8 @@ in
 
           "module/network" = # wifi, wlp2s0 may need to be changed to a variable i can call
           {
-            format-disconnected-underline = "#${colour.red1}";
-            label-foreground = "#${colour.red1}";
+            format-disconnected-underline = "#${colour.accent1}";
+            label-foreground = "#${colour.accent1}";
             type = "internal/network";
             interface = "wlp2s0";
             interval = "3.0";
@@ -259,7 +259,7 @@ in
 
             label-open = "  ";
             label-close = "  ";
-            label-close-foreground = "#${colour.red1}";
+            label-close-foreground = "#${colour.accent1}";
             label-separator = " ";
           };
 

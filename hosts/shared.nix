@@ -3,9 +3,11 @@
 # all the home-manager items can be moved to another nix "soon"
 { config, pkgs,lib,  ... }:
 {
-  networking = {
+  networking =
+  {
     networkmanager.enable = true;
-    firewall = {
+    firewall =
+    {
       enable = true;
       checkReversePath = "loose"; # fixes some connection issues with tailscale, could not find local network without this option
       allowedTCPPortRanges = [ { from = 1714; to = 1764; } ]; # kdeconnect
@@ -15,24 +17,10 @@
     };
   };
 
-  services = {
-    tailscale = {
-      useRoutingFeatures = "client";
-    };
-  };
+  services.tailscale.useRoutingFeatures = "client";
 
   systemd =
   {
- #   user.services.killxembedsniproxy = # TODO is not working, falling back to kde login script
- #   {
- #     description = "...";
- #     serviceConfig.PassEnvironment = "DISPLAY";
- #     script = # this kills the xembedsniproxy to allow systray icons in polybar to be displayed
- #     ''
- #       killall xembedsniproxy
- #     '';
- #     wantedBy = [ "multi-user.target" ]; # starts after login
- #   };
     services =
     {
       NetworkManager-wait-online.enable = false; # workaround for a bug with networking when building with flakes
@@ -42,13 +30,15 @@
 
   programs = {
     partition-manager.enable = true;
+    dconf.enable = true;
+
     git =
     {
       enable = true;
       package = pkgs.gitFull;
       config.credential.helper = "libsecret";
     };
-    dconf.enable = true;
+
     zsh  =
     {
       enable = true;
@@ -76,40 +66,36 @@
 
   environment =
   {
-    sessionVariables =
-    {
-      GTK_THEME = "Qogir-Dark";
-    };
+    sessionVariables.GTK_THEME = "Qogir-Dark";
+    plasma5.excludePackages = with pkgs.libsForQt5; [ okular ];
     shells = with pkgs; [ zsh ]; # default shell to zsh
     systemPackages = with pkgs;
-      [
+    [
 #      rxvt-unicode #  believe this is used for urxvtd with 2bwm
 #      xinit # used for 2bwm, requires further configuration
       tailscale
       i2c-tools
-      (pkgs.writeShellApplication
-        {
-          name = "canvas";
-          runtimeInputs = with pkgs; [ imagemagick feh xcolor ];
-          text = builtins.readFile etc/nixos/scripts/canvas/canvas;
-        })
-      ];
-
-    plasma5 = {
-      excludePackages = with pkgs.libsForQt5;
-      [
-        okular
-      ];
-    };
+      lshw
+      usbutils
+      busybox
+      curl
+      wget
+      wmctrl
+      slop
+      yad # for polybar popups
+    ];
   };
 
- users = {
+  users =
+  {
     defaultUserShell = pkgs.zsh;
-    users.kel = {
+    users.kel =
+    {
       isNormalUser = true;
       description = "kel";
       extraGroups = [ "networkmanager" "wheel" ];
-      packages = with pkgs; [
+      packages = with pkgs;
+      [
         firefox
         kate
         kdeconnect
@@ -123,16 +109,13 @@
         nil
         kdevelop
         remmina # rdp client
-        fet-sh
+        fet-sh # minimalistic fetch script, TODO: look into how this is packaged as a nixos module
         isoimagewriter
-        libsForQt5.lightly
-        networkmanagerapplet # adds network tray icon in polybar systray
-        sourcehut.python # required for polywins
-        imagemagick # canvas
-        feh # canvas
-        xcolor # canvas
-
-        ];
+        libsForQt5.lightly # lightly theme
+        networkmanagerapplet # adds network tray icon in polybar systray, probably not required now with systray working in polybar
+        sourcehut.python # required for polywins, python
+        (import ../theme/Aritim-Dark.nix)
+      ];
     };
   };
 

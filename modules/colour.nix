@@ -8,11 +8,16 @@
   # TODO: this will make fleshing out new themes easier for my system
 
 {
-  back = "1F2127";
-  alte = "26292E";
+  red = "FF0000";
+  green = "008000";
+  blue = "0000ff";
+  yellow = "ffff00";
+  white = "FFFFFF";
+  black = "000000";
+  background = "1F2127";
+  alternate = "26292E";
   text = "FFFFFF";
-  red1 = "E62644";
-  red2 = "C41833";
+  accent1 = "E62644";
+  accent2 = "C41833";
+  accent3 = "#41222C";
 }
-
-

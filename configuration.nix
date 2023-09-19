@@ -10,11 +10,13 @@
   imports = [ ./hardware-configuration.nix ];
 
   nix.package = pkgs.nixUnstable; # prefer nixUnstable over stable
+
   nix.settings =
   {
     auto-optimise-store = true; # runs gc, need to set interval otherwise defaults to 14d from memory
     experimental-features = [ "nix-command" "flakes" ]; # flakes and nixcommand required for config
   };
+
   nix.gc =
   {
     automatic = true;
@@ -48,15 +50,15 @@
       [
         {
           manage = "desktop";
-          name = "plasma5+bspwm+whatever";
-          start = ''exec env KDEWM=${pkgs.bspwm}/bin/bspwm ${pkgs.plasma-workspace}/bin/startplasma-x11'';
+          name = "plasma5+herbstluftwm+whatever";
+          start = ''exec env KDEWM=${pkgs.herbstluftwm}/bin/herbstluftwm ${pkgs.plasma-workspace}/bin/startplasma-x11'';
         }
       ];
 
       windowManager = {
         herbstluftwm.enable = true;
-#        herbstluftwm.configFile = "$HOME/herbstluftwm"; # cant figure this bastard out, tried $HOME/ and ./ paths
-
+#        herbstluftwm.configFile = "$HOME/herbstluftwm"; # cant figure this bastard out, tried $HOME/ and ./ paths lives in etc/ however i use /home/kel/nixos for my dots
+#                                                        # so unsure if I will continue with that path
         awesome.enable = false;
         bspwm.enable = true;
         exwm.enable = false;
@@ -92,6 +94,8 @@
     };
   };
 
+  environment.systemPackages =[ (import ./theme/Aritim-Dark.nix) ];
+
   i18n = {
     defaultLocale = "en_AU.UTF-8";
     extraLocaleSettings = {
@@ -105,19 +109,6 @@
       LC_TELEPHONE = "en_AU.UTF-8";
       LC_TIME = "en_AU.UTF-8";
     };
-  };
-
-  environment = {
-    systemPackages = with pkgs; [
-      lshw
-      usbutils
-      busybox
-      curl
-      wget
-      wmctrl
-      slop
-      yad # for polybar popups
-    ];
   };
 
 }

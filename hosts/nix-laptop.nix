@@ -21,11 +21,11 @@
   }; # systemd
 
   services = {
-    asusd = {
-      enable = true;
-      enableUserService = true;
-    }; # asusd
-    supergfxd.enable = true;
+#    asusd = {
+#      enable = true;
+#      enableUserService = true;
+#    }; # asusd
+#    supergfxd.enable = true;
     xserver = {
       enable = true;
       videoDrivers = [ "nvidia" ];
