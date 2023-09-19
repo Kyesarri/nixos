@@ -1,14 +1,15 @@
 # ./home.nix
 let
 
-  # define colours to be used through home packages
+  # define colours to be used in home packages
 
   colour = import ./modules/colour.nix;
 
 in
 {
-  home-manager.useUserPackages = false;   # install packages to /etc/profiles instead of ~/.nix-profile
-  home-manager.useGlobalPkgs = true;   # this saves an extra Nixpkgs evaluation, adds consistency, and removes the dependency on NIX_PATH, which is otherwise used for importing Nixpkgs.
+  home-manager.useUserPackages = false; # install packages to /etc/profiles instead of ~/.nix-profile
+  home-manager.useGlobalPkgs = true;    # this saves an extra Nixpkgs evaluation, adds consistency,
+                                        # and removes the dependency on NIX_PATH, which is otherwise used for importing Nixpkgs.
   home-manager.users.kel =
   { pkgs, config, ... }:
   {
@@ -16,12 +17,7 @@ in
     programs.home-manager.enable = true;
 
     home.stateVersion = "23.05";
-    home.packages = with pkgs; [
-      polybar
-      kitty
-      eww
-      #rofi # might be used with 2bwm at a later time, for now disabled
-    ];
+    home.packages = with pkgs; [   ];
 
     programs.kitty =
     {
@@ -80,7 +76,7 @@ in
             height = "25";
             modules-center = "polywins";
             radius = 0;
-            modules-right = "";
+            modules-right = "kde-virtual-desktops";
             modules-left = "menu-apps";
             module-margin-left = 1;
             module-margin-right = 1;
@@ -301,6 +297,16 @@ in
             scroll-down ="";
             double-click-left ="";
             double-click-right = "";
+          };
+
+          "module/kde-virtual-desktops" = # src: https://gitlab.com/kaythomas0/kde-virtual-desktops-polybar
+          {
+            type = "custom/script";
+            exec = "exec $HOME/nixos/scripts/polybar-kdevd/kdevd.sh";
+            click-left = "exec $HOME/nixos/scripts/polybar-kdevd/prev.sh";
+            click-right = "exec $HOME/nixos/scripts/polybar-kdevd/next.sh";
+            tail = "true";
+            label = "%output%";
           };
 
       };

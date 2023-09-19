@@ -4,8 +4,12 @@
   # example = "#99${colour.back}";
   # uses hex values 00 to ff case is irrelevant
 
-  # TODO: change vars from "red1" to something less descriptive of the colour but the region its used in. EX: red1 to accent1
-  # TODO: this will make fleshing out new themes easier for my system
+  # been calling these from a home-manager module ex :
+  #
+  #     programs.kitty =
+  #     { ...
+  #      active_tab_foreground = "#${colour.accent1}";
+
 
 {
   red = "FF0000";
