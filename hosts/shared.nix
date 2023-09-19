@@ -19,16 +19,11 @@
 
   services.tailscale.useRoutingFeatures = "client";
 
-  systemd =
-  {
-    services =
-    {
-      NetworkManager-wait-online.enable = false; # workaround for a bug with networking when building with flakes
-      systemd-networkd-wait-online.enable = false; # unsure if this affects desktop but leaving here
-    };
-  };
+  systemd.services.NetworkManager-wait-online.enable = false; # workaround for a bug with networking when building with flakes
+  systemd.services.systemd-networkd-wait-online.enable = false; # unsure if this affects desktop but leaving here
 
-  programs = {
+  programs =
+  {
     partition-manager.enable = true;
     dconf.enable = true;
 
@@ -52,14 +47,7 @@
       {
         enable = true;
         theme = "fino-time";
-        plugins =
-        [
-          "sudo"
-          "terraform"
-          "systemadmin"
-          "vi-mode"
-          "colorize"
-        ];
+        plugins = [ "sudo" "terraform" "systemadmin" "vi-mode" "colorize" ];
       };
     };
   };
@@ -72,8 +60,6 @@
     systemPackages = with pkgs;
     [
 #      rxvt-unicode #  believe this is used for urxvtd with 2bwm
-#      xinit # used for 2bwm, requires further configuration
-      tailscale
       i2c-tools
       lshw
       usbutils
@@ -102,7 +88,7 @@
         nvtop
         tailscale
         tailscale-systray
-        qogir-theme
+        qogir-theme # TODO: remove the qogir theme / icons / other shit as it will be eventually replaced
         qogir-kde
         qogir-icon-theme
         xsel
@@ -114,7 +100,6 @@
         libsForQt5.lightly # lightly theme
         networkmanagerapplet # adds network tray icon in polybar systray, probably not required now with systray working in polybar
         sourcehut.python # required for polywins, python
-        (import ../theme/Aritim-Dark.nix)
       ];
     };
   };

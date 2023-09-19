@@ -24,7 +24,6 @@
     options = "--delete-older-than 5d";
   };
 
-
   hardware = {
     pulseaudio.enable = false;
     opengl = {
@@ -50,17 +49,17 @@
       [
         {
           manage = "desktop";
-          name = "plasma5+herbstluftwm+whatever";
-          start = ''exec env KDEWM=${pkgs.herbstluftwm}/bin/herbstluftwm ${pkgs.plasma-workspace}/bin/startplasma-x11'';
+          name = "plasma5+none";
+          start = ''exec env KDEWM=${pkgs.plasma-workspace}/bin/startplasma-x11''; # writes a startwm.sh i believe
+# leaving this old configuration showing how to use wm / dm configs # start = ''exec env KDEWM=${pkgs."_2bwm"}/bin/2bwm ${pkgs.plasma-workspace}/bin/startplasma-x11'';
+# do note this does not work as plasma11 starts kdewm by itself, need to mask the service " systemctl --user mask plasma-kwin_x11.service " dont think that works either :)
         }
       ];
 
       windowManager = {
-        herbstluftwm.enable = true;
-#        herbstluftwm.configFile = "$HOME/herbstluftwm"; # cant figure this bastard out, tried $HOME/ and ./ paths lives in etc/ however i use /home/kel/nixos for my dots
-#                                                        # so unsure if I will continue with that path
+        herbstluftwm.enable = false;
         awesome.enable = false;
-        bspwm.enable = true;
+        bspwm.enable = false;
         exwm.enable = false;
         openbox.enable = false;
         i3.enable = false;
@@ -69,7 +68,7 @@
 
       displayManager.lightdm = {
         enable = true;
-        background = ./nix-wallpaper-nineish-dark-gray.png; # sets lightdm wallpaper
+        background = ./wallpaper/nix-wallpaper-nineish-dark-gray.png;
         greeters.slick = { # lightdm greeter "slick"
           enable = true;
           theme.name = "Qogir-Dark";
@@ -94,7 +93,7 @@
     };
   };
 
-  environment.systemPackages =[ (import ./theme/Aritim-Dark.nix) ];
+ # environment.systemPackages = [ (import ./theme/aritim-dark.nix) ]; currently not working :)
 
   i18n = {
     defaultLocale = "en_AU.UTF-8";
