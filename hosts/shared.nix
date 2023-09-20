@@ -88,9 +88,8 @@
         nvtop
         tailscale
         tailscale-systray
-        qogir-theme # TODO: remove the qogir theme / icons / other shit as it will be eventually replaced
-        qogir-kde
-        qogir-icon-theme
+        vimix-icon-theme # using black icon theme
+        qogir-theme
         xsel
         nil
         kdevelop
@@ -100,6 +99,8 @@
         libsForQt5.lightly # lightly theme
         networkmanagerapplet # adds network tray icon in polybar systray, probably not required now with systray working in polybar
         sourcehut.python # required for polywins, python
+        libsForQt5.qtstyleplugin-kvantum
+        pick-colour-picker
       ];
     };
   };

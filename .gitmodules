@@ -1,0 +1,3 @@
+[submodule "scripts/polybar-asusctl"]
+	path = scripts/polybar-asusctl
+	url = https://codeberg.org/kye/polybar-asusctl

@@ -1,2 +1,1 @@
-#!/bin/sh
-plasmawindowed org.kde.plasma.calendar
+date -D %s +%H:%M" | "%d.%m.%y  -d "$(($(date +%s)))"

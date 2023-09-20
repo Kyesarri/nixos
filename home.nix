@@ -125,11 +125,9 @@ in
 
           "module/date" =
           {
-            type = "internal/date";
-            internal = 5;
-            date = "%d.%m.%y";
-            time = "%H:%M";
-            label = "%time% | %date%"; # do some on-click here for " plasmawindowed org.kde.plasma.calendar" to show the calendar
+            type = "custom/script";
+            exec = "exec $HOME/nixos/scripts/kde/date.sh";
+            click-left = "exec $HOME/nixos/scripts/kde/calendar.sh";
           }; # to show all kde plasmoids run " kpackagetool5 --list --type Plasma/Applet -g  # system wide "
 
           "module/battery" =
@@ -187,15 +185,6 @@ in
             format = "<label>";
             label = " %title%"; # had to add a space to the start of this label, was landing too close to the left edge of the screen
             label-maxlen = 70;
-          };
-
-          "module/xkeyboard" = # not sure if this should be kept :)
-          {
-            type = "internal/xkeyboard";
-            format = "<indicator-icon> <label-indicator>"; # not working, need to run through this once again
-            label-layout = "%icon%";
-            indicator-icon-default = "";
-            indicator-icon-0 = "🔒;-CL;+CL";
           };
 
           "module/pulseaudio" = # not using pulseaudio but pipewire, unsure how to continue here

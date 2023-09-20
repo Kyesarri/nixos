@@ -1,6 +1,6 @@
 #!/bin/sh
 ### Configuration
-accentColor="#E62644"
+accentColor="#ff6376"
 separator="|"
 useDesktopNames=true
 ###
