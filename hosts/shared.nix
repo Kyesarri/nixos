@@ -63,12 +63,12 @@
       i2c-tools
       lshw
       usbutils
-      busybox
+      busybox # why is this not installed by default lol
       curl
       wget
-      wmctrl
+      wmctrl # manages windows in polybar, can be used elsewhere too
       slop
-      yad # for polybar popups
+      yad # for polybar popups, calendar used currently
     ];
   };
 

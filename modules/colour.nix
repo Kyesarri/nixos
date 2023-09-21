@@ -21,7 +21,7 @@
   background = "1F2127";
   alternate = "26292E";
   text = "FFFFFF";
-  accent1 = "ff6376";
-  accent2 = "C41833";
-  accent3 = "#41222C";
+  accent1 = "ff6376"; # wild watermelon
+  accent2 = "3c78ff"; # azure radiance
+  accent3 = "19c0ca"; # java
 }

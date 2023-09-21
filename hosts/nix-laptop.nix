@@ -16,7 +16,7 @@
 
   environment =
   {
-    systemPackages = with pkgs; [  ];
+    systemPackages = with pkgs; [ pciutils ];
     shellAliases =
     {
       rebuild   = "sudo nixos-rebuild switch --flake /home/kel/nixos#nix-laptop --show-trace";

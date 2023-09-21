@@ -17,7 +17,7 @@ in
     programs.home-manager.enable = true;
 
     home.stateVersion = "23.05";
-    home.packages = with pkgs; [   ];
+    home.packages = with pkgs; [ libsForQt5.kcolorpicker ];
 
     programs.kitty =
     {
@@ -89,37 +89,37 @@ in
             border-bottom-size = 0;
           };
 
-          "bar/tasktray" =
-          {
-            wm-name = "tasktray";
-            monitor-strict = false;
-            font-0 = "JetBrainsMonoNerdFont:size=10:weight=regular;";
-            width = "20";
-            height = "25";
-            offset-x = "98%"; ######### offset values only dtermine the position of bar in the screen set it accordingly to your need
-            offset-y = "35";
-            override-redirect = "true"; ############### to make offset vales to work override-direct value must be true
-            fixed-center = true;
-            background = "#${colour.background}";
-            foreground = "#${colour.alternate}";
-            radius = "10";
-            line-size = "0";
-            #line-colour = #f00
-            padding-left = "0";
-            padding-right = "1";
-            module-margin-left = "0";
-            module-margin-right = "0";
-            modules-right = "arrow";
-            tray-position = "right";
-            tray-detached = "false";
-            tray-offset-x = "0";
-            tray-offset-y = "0";
-            tray-padding = "1";
-            tray-maxsize = "20";
-            tray-scale = "1";
-            tray-background = "#${colour.background}";
-            tray-foreground = "#${colour.alternate}";
-          };
+#          "bar/tasktray" =
+#          {
+#            wm-name = "tasktray";
+#            monitor-strict = false;
+#            font-0 = "JetBrainsMonoNerdFont:size=10:weight=regular;";
+#            width = "20";
+#            height = "25";
+#            offset-x = "98%"; ######### offset values only dtermine the position of bar in the screen set it accordingly to your need
+#            offset-y = "35";
+#            override-redirect = "true"; ############### to make offset vales to work override-direct value must be true
+#            fixed-center = true;
+#            background = "#${colour.background}";
+#            foreground = "#${colour.alternate}";
+#            radius = "10";
+#            line-size = "0";
+#            #line-colour = #f00
+#            padding-left = "0";
+#            padding-right = "1";
+#            module-margin-left = "0";
+#            module-margin-right = "0";
+#            modules-right = "arrow";
+#            tray-position = "right";
+#            tray-detached = "false";
+#            tray-offset-x = "0";
+#            tray-offset-y = "0";
+#            tray-padding = "1";
+#            tray-maxsize = "20";
+#            tray-scale = "1";
+#            tray-background = "#${colour.background}";
+#            tray-foreground = "#${colour.alternate}";
+#          };
 
   ## modules
 
@@ -219,8 +219,7 @@ in
             interval = "3.0";
             label-connected = "%local_ip%";
             format-disconnected = "disconnected";
-
-          };
+          }; # plasmawindowed org.kde.plasma.networkmanagement to call plasma wireless network window
 
           "module/menu-apps" = # shutdown / reboot / poweroff
           {
@@ -248,13 +247,13 @@ in
             label-separator = " ";
           };
 
-          "module/arrow" = # adds arrow for systray drop-down
-          {
-            type = "custom/script";
-            exec = "exec $HOME/nixos/scripts/polybar-tray/arrow.sh";
-            click-left = "exec $HOME/nixos/scripts/polybar-tray/open.sh";
-            click-right = "pkill -f tasktray";
-          };
+#          "module/arrow" = # adds arrow for systray drop-down
+#          {
+#            type = "custom/script";
+#            exec = "exec $HOME/nixos/scripts/polybar-tray/arrow.sh";
+#            click-left = "exec $HOME/nixos/scripts/polybar-tray/open.sh";
+#            click-right = "pkill -f tasktray";
+#          };
 
           "module/subscriber" = # un used yet
           {
