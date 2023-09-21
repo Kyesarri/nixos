@@ -1,10 +1,10 @@
 #!/bin/sh
-## script taken from https://www.lorenzobettini.it/2021/12/playing-with-kde-plasma-themes/
-## tweaked to work with moe-theme
+## script based on https://www.lorenzobettini.it/2021/12/playing-with-kde-plasma-themes/
+## adapted for moe-theme
 mkdir -p ~/git
 cd ~/git
 git clone https://gitlab.com/jomada/moe-theme
-cp -a * ~/.local/share/
+cp -a * ~/.local/share/ ## could cd ~/.local/share/moe-theme to reduce lines, but this might be more sane to do
 
 ## everything is copied into staging dir
 
@@ -12,7 +12,7 @@ mkdir -p ~/.local/share/plasma/desktoptheme/
 mv ~/.local/share/moe-theme/Moe/ ~/.local/share/plasma/desktoptheme/
 mv ~/.local/share/moe-theme/MoeDark/ ~/.local/share/plasma/desktoptheme/
 
-mkdir -p ~/.config/Kvantum
+mkdir -p ~/.config/Kvantum ## install to .config vs .local as Kvantum wont pick-up automatically from ~/.local/share without import?
 mv ~/.local/share/moe-theme/kvantum/* ~/.config/Kvantum/
 mv ~/.local/share/moe-theme/Moe-Dark-kvantum/* ~/.config/Kvantum/
 
@@ -27,5 +27,15 @@ mv ~/.local/share/moe-theme/MoeDark-aurorae* ~/.local/share/aurorae/themes/
 mkdir -p ~/.local/share/plasma/look-and-feel
 mv ~/.local/share/moe-theme/Moe-Global/* ~/.local/share/plasma/look-and-feel/
 mv ~/.local/share/moe-theme/MoeDark-Global/* ~/.local/share/plasma/look-and-feel/
+
+mkdir -p ~/.local/share/konsole
+mv ~/.local/share/moe-theme/konsole/* ~/.local/share/konsole/
+mv ~/.local/share/moe-theme/Moe-Dark-konsole/* ~/.local/share/konsole/
+
+mkdir -p ~kate
+mv ~/.local/share/moe-theme/kate/* ~/.local/share/kate/
+mv ~/.local/share/moe-theme/Moe-Dark-kate/* ~/.local/share/kate/
+
+
 
 ## room here for complete theme to be added, just need to figure out directories
