@@ -2,7 +2,16 @@
 { config, pkgs, lib,  ... }:
 {
 
-  imports = [ ./shared.nix ];
+  imports =
+  [
+    ./shared.nix
+    ../configuration.nix
+    ../modules/gaming.nix
+    ../modules/fonts.nix
+    ../hardware/pipewire.nix
+    ../hardware/nvidia.nix
+    ../home/home.nix
+  ];
 
   hardware.bluetooth.enable = true;
   networking.hostName = "nix-laptop";

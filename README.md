@@ -8,7 +8,7 @@
 
 ## issues:
 
-theme in images is not included yet
+theme using installer script found @ /scripts/kde/moe-theme.sh cant figure out adding to nix packages as of yet
 
 these .nix are specific to my hardware configurations and may not work on your own system, feel free to use but YMMV
 
