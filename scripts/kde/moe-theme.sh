@@ -21,8 +21,8 @@ mv ~/.local/share/moe-theme/color-schemes/* ~/.local/share/color-schemes
 mv ~/.local/share/moe-theme/Moe-Dark-color-schemes/* ~/.local/share/color-schemes
 
 mkdir -p ~/.local/share/aurorae/themes
-mv ~/.local/share/moe-theme/aurorae* ~/.local/share/aurorae/themes/
-mv ~/.local/share/moe-theme/MoeDark-aurorae* ~/.local/share/aurorae/themes/
+mv ~/.local/share/moe-theme/aurorae/Moe ~/.local/share/aurorae/themes/
+mv ~/.local/share/moe-theme/MoeDark-aurorae/MoeDark ~/.local/share/aurorae/themes/
 
 mkdir -p ~/.local/share/plasma/look-and-feel
 mv ~/.local/share/moe-theme/Moe-Global/* ~/.local/share/plasma/look-and-feel/
@@ -32,10 +32,6 @@ mkdir -p ~/.local/share/konsole
 mv ~/.local/share/moe-theme/konsole/* ~/.local/share/konsole/
 mv ~/.local/share/moe-theme/Moe-Dark-konsole/* ~/.local/share/konsole/
 
-mkdir -p ~kate
+mkdir -p ~/.local/kate
 mv ~/.local/share/moe-theme/kate/* ~/.local/share/kate/
 mv ~/.local/share/moe-theme/Moe-Dark-kate/* ~/.local/share/kate/
-
-
-
-## room here for complete theme to be added, just need to figure out directories

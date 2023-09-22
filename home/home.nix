@@ -3,7 +3,7 @@ let
 
   # define colours to be used in home packages
 
-  colour = import ./modules/colour.nix;
+  colour = import ../modules/colour.nix;
 
 in
 {
