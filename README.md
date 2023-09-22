@@ -8,7 +8,7 @@
 
 ## issues:
 
-theme using installer script found @ /scripts/kde/moe-theme.sh cant figure out adding to nix packages as of yet
+theme using installer script found @ /scripts/kde/moe-theme.sh no .nix for theme yet
 
 these .nix are specific to my hardware configurations and may not work on your own system, feel free to use but YMMV
 
@@ -17,15 +17,15 @@ desktop has not been worked on, laptop has been the main focus of this git
 ## whats included:
 
 - grub + lightdm with slick greeter
-- declared kde (pending changes) + themes
 - lightdm
 - xanmod kernel
-- tailscale with tray icon (pending changes)
+- tailscale with tray icon
 - steam
 - zsh + ohmyzsh
-- smartd drive monitoring via notifications (pending changes)
+- smartd drive monitoring via notifications
 - kitty terminal
-- polybar with polywins
+- polybar with multiple tweaks, configured via home-manager
+- spaghetti
 
 ## install:
 
@@ -58,3 +58,7 @@ rebuilds the system with the new configuration
 once installed you will need to `sudo rm -R boot/` then run `rebuild` or `sudo nixos-rebuild switch --flake /home/username/nixos#nix-laptop --show-trace` to use lightdm / grub
 
 first install can take some time to build
+
+## thanks to:
+
+everyone who leaves snippets of code lying around the web
