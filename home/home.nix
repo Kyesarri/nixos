@@ -13,6 +13,7 @@ in
     home.username = "kel";
     programs.home-manager.enable = true;
 
+home.file.".config/qtile".source = ./desktop/configs/qtile;
     home.stateVersion = "23.05";
     home.packages = with pkgs; [ libsForQt5.kcolorpicker ];
 
