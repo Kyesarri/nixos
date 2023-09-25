@@ -24,8 +24,10 @@
     options = "--delete-older-than 5d";
   };
 
-  hardware = {
-    pulseaudio.enable = false;
+  hardware =
+  {
+  nvidia.modesetting.enable = true;
+  pulseaudio.enable = false;
     opengl = {
       enable = true;
       driSupport = true;
@@ -33,51 +35,72 @@
     };
   };
 
-  services = {
+  services =
+  {
     printing.enable = true;
-    gnome.gnome-keyring.enable = true; # saving credentials
+#    gnome.gnome-keyring.enable = true; # saving credentials
     tailscale.enable = true;
     fwupd.enable = true;
+  };
 
-    xserver = {
-      enable = true;
-      layout = "au";
-      xkbVariant = "";
-      desktopManager.plasma5.enable = true;
+# bye KDE
+#    xserver = {
+#      enable = true;
+#      layout = "au";
+#      xkbVariant = "";
+#      desktopManager.plasma5.enable = true;
 #      displayManager.defaultSession = "plasma";
-      displayManager.session =
-      [
-        {
-          manage = "desktop";
-          name = "plasma5+none";
-          start = ''exec env KDEWM=${pkgs.plasma-workspace}/bin/startplasma-x11''; # writes a startwm.sh i believe
+#      displayManager.session =
+#      [
+#        {
+#          manage = "desktop";
+#          name = "plasma5+none";
+#          start = ''exec env KDEWM=${pkgs.plasma-workspace}/bin/startplasma-x11''; # writes a startwm.sh i believe
 # leaving this old configuration showing how to use wm / dm configs # start = ''exec env KDEWM=${pkgs."_2bwm"}/bin/2bwm ${pkgs.plasma-workspace}/bin/startplasma-x11'';
 # do note this does not work as plasma11 starts kdewm by itself, need to mask the service " systemctl --user mask plasma-kwin_x11.service " dont think that works either :)
-        }
-      ];
+#        }
+#      ];
+#
+#      windowManager = {
+#        herbstluftwm.enable = false;
+#        awesome.enable = false;
+#        bspwm.enable = false;
+#        exwm.enable = false;
+#        openbox.enable = false;
+#        i3.enable = false;
+#        "2bwm".enable = false;
+#      };
+#
+#      displayManager.lightdm = {
+#        enable = true;
+#        background = ./wallpaper/nix-wallpaper-nineish-dark-gray.png;
+#        greeters.slick = { # lightdm greeter "slick"
+#          enable = true;
+#          theme.name = "Qogir-Dark";
+#          draw-user-backgrounds = true;
+#        };
+#      };
+#
+#    };
+#  };
 
-      windowManager = {
-        herbstluftwm.enable = false;
-        awesome.enable = false;
-        bspwm.enable = false;
-        exwm.enable = false;
-        openbox.enable = false;
-        i3.enable = false;
-        "2bwm".enable = false;
-      };
-
-      displayManager.lightdm = {
+  services.xserver =
+    {
+      enable = true;
+      displayManager.gdm =
+      {
         enable = true;
-        background = ./wallpaper/nix-wallpaper-nineish-dark-gray.png;
-        greeters.slick = { # lightdm greeter "slick"
-          enable = true;
-          theme.name = "Qogir-Dark";
-          draw-user-backgrounds = true;
-        };
+        wayland = true;
       };
-
     };
-  };
+
+# hyprland
+  programs.hyprland =
+    {
+      enable = true;
+      xwayland.enable = true;
+      enableNvidiaPatches = true;
+    };
 
   boot = {
     kernelPackages = pkgs.linuxPackages_xanmod; # use xanmod kernel
@@ -92,8 +115,6 @@
       };
     };
   };
-
- # environment.systemPackages = [ (import ./theme/aritim-dark.nix) ]; currently not working :)
 
   i18n = {
     defaultLocale = "en_AU.UTF-8";

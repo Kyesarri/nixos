@@ -14,13 +14,8 @@
     ../hardware/nvidia.nix
   ];
 
-  hardware = {
-    bluetooth.enable = true;
-  }; # hardware
-
-  networking = {
-    hostName = "nix-desktop";
-  }; # networking
+  hardware.bluetooth.enable = true;
+  networking.hostName = "nix-desktop";
 
   services = {
     xserver = {
@@ -30,7 +25,7 @@
   }; # services
 
   environment = {
-    systemPackages = with pkgs; [ i2c-tools ];
+    systemPackages = with pkgs; [ i2c-tools pciutils ];
     shellAliases =
     {
       rebuild   = "sudo nixos-rebuild switch --flake /home/kel/nixos#nix-desktop --show-trace";

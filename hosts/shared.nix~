@@ -94,7 +94,7 @@
         geany
         gvfs
         xfce.xfce4-taskmanager
-        gnome-builder
+        bluefish
         
       ];
     };
