@@ -53,17 +53,23 @@
 
   environment =
   {
-    sessionVariables.GTK_THEME = "Qogir-Dark"; # sets default gtk theme to dark
+    sessionVariables = rec
+    {
+      GTK_THEME = "Qogir-Dark"; # sets default gtk theme to dark
+      XDG_CACHE_HOME  = "$HOME/.cache";
+      XDG_CONFIG_HOME = "$HOME/dots/config"; # moves config to home/share rather than home/.config
+      XDG_DATA_HOME   = "$HOME/dots/share";
+      XDG_STATE_HOME  = "$HOME/dots/state";
+    };
     shells = with pkgs; [ zsh ]; # default shell to zsh
     systemPackages = with pkgs;
     [
       i2c-tools
       lshw
       usbutils
-      busybox # why is this not installed by default lol
+      busybox # nice-to-have
       curl
       wget
-      wmctrl # manages windows in polybar, can be used elsewhere too
     ];
   };
 
@@ -77,26 +83,26 @@
       extraGroups = [ "networkmanager" "wheel" ];
       packages = with pkgs;
       [
-        firefox
-        kate
-        kdeconnect
-        nvtop
-        tailscale
-        tailscale-systray
+        firefox # the lad
+        kdeconnect # phone sync
+        nvtop # watching gpu usage
+        tailscale # mah boi
+        tailscale-systray # need to autostart this, requires root to change settings
         qogir-theme # used to set dark theme for gtk applications
         xsel # nixos language lib, not sure if needed for kdev
-        kdevelop # want to replace
         remmina # rdp client
         fet-sh # minimalistic fetch script, TODO: look into how this is packaged as a nixos module
-        swww
-        xfce.thunar
-        wofi
-        geany
-        gvfs
-        xfce.xfce4-taskmanager
-        gnome-builder
-        
-      ];
+        swww # one of many wallpaper apps, pick one
+        hyprpaper # another one
+        gvfs # gnome file system thing, unsure if required now
+        xfce.xfce4-taskmanager # taskmanager, nice
+        gnome-builder # ide / basic boi
+        gnome.nautilus # file manager
+        gnome-text-editor # as on the tin
+        pamixer # cli pulse audio mixer
+        pavucontrol # audio control gui
+        brightnessctl # brightness control, used in waybar config
+     ];
     };
   };
 

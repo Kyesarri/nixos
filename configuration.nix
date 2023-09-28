@@ -11,6 +11,8 @@
 
   nix.package = pkgs.nixUnstable; # prefer nixUnstable over stable
 
+  #config.xdg.configHome
+
   nix.settings =
   {
     auto-optimise-store = true; # runs gc, need to set interval otherwise defaults to 14d from memory
