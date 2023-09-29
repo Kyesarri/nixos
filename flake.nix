@@ -38,6 +38,7 @@
         system = "x86_64-linux";
         modules = [
           ./hosts/nix-desktop.nix
+          home-manager.nixosModules.home-manager
         ];  
       };
     };
