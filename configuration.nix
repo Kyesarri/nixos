@@ -100,16 +100,24 @@
   programs.hyprland =
     {
       enable = true;
-      xwayland.enable = true;
+#      xwayland.enable = true;
       enableNvidiaPatches = true;
     };
 
   boot = {
     kernelPackages = pkgs.linuxPackages_xanmod; # use xanmod kernel
-    kernelParams =  [  "nowatchdog" ]; # disables watchdog, was causing shutdown / reboot issues
-    loader = {
+    kernelParams =
+    [
+      "nowatchdog" # disables watchdog, was causing shutdown / reboot issues
+      "clocksource=tsc" # not working on laptop, wonder if this is a hardware limitation
+      "tsc=nowatchdog" # workaround for check_tsc_sync_source failed, could cause issues
+      "tsc=reliable" # flags tsc clock as reliable, workaround
+    ];
+    loader =
+    {
       efi.efiSysMountPoint = "/boot";
-      grub = {
+      grub =
+      {
         enable = true; 
         efiSupport = true;
         efiInstallAsRemovable = true; # Otherwise /boot/EFI/BOOT/BOOTX64.EFI isn't generated
@@ -118,9 +126,11 @@
     };
   };
 
-  i18n = {
+  i18n =
+  {
     defaultLocale = "en_AU.UTF-8";
-    extraLocaleSettings = {
+    extraLocaleSettings =
+    {
       LC_ADDRESS = "en_AU.UTF-8";
       LC_IDENTIFICATION = "en_AU.UTF-8";
       LC_MEASUREMENT = "en_AU.UTF-8";

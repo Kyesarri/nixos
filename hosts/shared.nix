@@ -17,13 +17,12 @@
     };
   };
 
-  services.tailscale.useRoutingFeatures = "client";
+  services.tailscale.useRoutingFeatures = "client"; # set as client, have a exit node running on vm under proxmox
   systemd.services.NetworkManager-wait-online.enable = false; # workaround for a bug with networking when building with flakes
   systemd.services.systemd-networkd-wait-online.enable = false; # unsure if this affects desktop but leaving here
 
   programs =
   {
-    partition-manager.enable = true;
     dconf.enable = true;
 
     git =
@@ -55,7 +54,8 @@
   {
     sessionVariables = rec
     {
-      GTK_THEME = "Qogir-Dark"; # sets default gtk theme to dark
+      GTK_THEME = "Matcha-dark-azul"; # sets default gtk theme to dark
+      GTK_ICON_THEME = "Matcha-dark-azul";
       XDG_CACHE_HOME  = "$HOME/.cache";
       XDG_CONFIG_HOME = "$HOME/dots/config"; # moves config to home/share rather than home/.config
       XDG_DATA_HOME   = "$HOME/dots/share";
@@ -102,6 +102,7 @@
         pamixer # cli pulse audio mixer
         pavucontrol # audio control gui
         brightnessctl # brightness control, used in waybar config
+        matcha-gtk-theme # gtk theme
      ];
     };
   };
