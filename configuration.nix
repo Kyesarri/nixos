@@ -9,9 +9,7 @@
 
   imports = [ ./hardware-configuration.nix ];
 
-  nix.package = pkgs.nixUnstable; # prefer nixUnstable over stable
-
-  #config.xdg.configHome
+  nix.package = pkgs.nixUnstable; # prefer nixunstable over stable
 
   nix.settings =
   {
@@ -40,7 +38,6 @@
   services =
   {
     printing.enable = true;
-#    gnome.gnome-keyring.enable = true; # saving credentials
     tailscale.enable = true;
     fwupd.enable = true;
   };
@@ -96,11 +93,9 @@
       };
     };
 
-# hyprland
   programs.hyprland =
     {
       enable = true;
-#      xwayland.enable = true;
       enableNvidiaPatches = true;
     };
 

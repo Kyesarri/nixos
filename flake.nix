@@ -8,15 +8,13 @@
     nixos.url = "github:nixos/nixpkgs/nixos-unstable";
     nixos-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs.url = "github:nixos/nixpkgs/master";
-
+    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+    hyprland.url = "github:hyprwm/Hyprland";
     home-manager =
     {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
-    hyprland.url = "github:hyprwm/Hyprland";
   };
 
 
