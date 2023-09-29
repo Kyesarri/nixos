@@ -101,7 +101,7 @@
         pavucontrol # audio control gui
         brightnessctl # brightness control, used in waybar config
         matcha-gtk-theme # gtk theme
-        flameshot # screencapture utility
+        wl-color-picker # wayland colour picker
      ];
     };
   };
