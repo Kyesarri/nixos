@@ -111,7 +111,8 @@
       "nowatchdog" # disables watchdog, was causing shutdown / reboot issues
       "clocksource=tsc" # not working on laptop, wonder if this is a hardware limitation
       "tsc=nowatchdog" # workaround for check_tsc_sync_source failed, could cause issues
-      "tsc=reliable" # flags tsc clock as reliable, workaround
+      "tsc=reliable" # flags tsc clock as reliable, workaround to get tsc working on laptop
+      "vm.vfs_cache_pressure=50"
     ];
     loader =
     {

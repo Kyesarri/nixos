@@ -89,20 +89,19 @@
         tailscale # mah boi
         tailscale-systray # need to autostart this, requires root to change settings
         qogir-theme # used to set dark theme for gtk applications
-        xsel # nixos language lib, not sure if needed for kdev
+        xsel # nixos language lib, not sure if needed for kdev or builder
         remmina # rdp client
         fet-sh # minimalistic fetch script, TODO: look into how this is packaged as a nixos module
-        swww # one of many wallpaper apps, pick one
-        hyprpaper # another one
+        hyprpaper # wallpaper for wayland
         gvfs # gnome file system thing, unsure if required now
         xfce.xfce4-taskmanager # taskmanager, nice
         gnome-builder # ide / basic boi
         gnome.nautilus # file manager
-        gnome-text-editor # as on the tin
         pamixer # cli pulse audio mixer
         pavucontrol # audio control gui
         brightnessctl # brightness control, used in waybar config
         matcha-gtk-theme # gtk theme
+        flameshot # screencapture utility
      ];
     };
   };
