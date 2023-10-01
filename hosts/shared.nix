@@ -71,7 +71,6 @@
       curl
       wget
       libsecret
-      libgnome-keyring
     ];
   };
 
