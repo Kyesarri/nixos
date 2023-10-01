@@ -17,9 +17,9 @@
     };
   };
 
-  services.tailscale.useRoutingFeatures = "client"; # set as client, have a exit node running on vm under proxmox
+  services.tailscale.useRoutingFeatures = "client"; # set as client for tailscale
   systemd.services.NetworkManager-wait-online.enable = false; # workaround for a bug with networking when building with flakes
-  systemd.services.systemd-networkd-wait-online.enable = false; # unsure if this affects desktop but leaving here
+  systemd.services.systemd-networkd-wait-online.enable = false; # unsure if these affect desktop but leaving here
 
   programs =
   {
@@ -54,22 +54,24 @@
   {
     sessionVariables = rec
     {
-      GTK_THEME = "Matcha-dark-azul"; # sets default gtk theme to dark
-      GTK_ICON_THEME = "Matcha-dark-azul";
+      MOZ_ENABLE_WAYLAND = "1";
+      GTK_THEME = "Qogir-Dark"; # sets default gtk theme to dark
+      GTK_ICON_THEME = "Qogir-Dark"; # dont know if this works, does not throw an error but no icons are appplied :)
       XDG_CACHE_HOME  = "$HOME/.cache";
       XDG_CONFIG_HOME = "$HOME/dots/config"; # moves config to home/share rather than home/.config
-      XDG_DATA_HOME   = "$HOME/dots/share";
+      XDG_DATA_HOME   = "$HOME/dots/share"; # will move to /home/nixos soon
       XDG_STATE_HOME  = "$HOME/dots/state";
     };
     shells = with pkgs; [ zsh ]; # default shell to zsh
     systemPackages = with pkgs;
     [
-      i2c-tools
-      lshw
-      usbutils
+      lshw # list hardware
+      usbutils # usb thing
       busybox # nice-to-have
       curl
       wget
+      libsecret
+      libgnome-keyring
     ];
   };
 
@@ -94,14 +96,15 @@
         fet-sh # minimalistic fetch script, TODO: look into how this is packaged as a nixos module
         hyprpaper # wallpaper for wayland
         gvfs # gnome file system thing, unsure if required now
-        xfce.xfce4-taskmanager # taskmanager, nice
         gnome-builder # ide / basic boi
-        gnome.nautilus # file manager
         pamixer # cli pulse audio mixer
         pavucontrol # audio control gui
         brightnessctl # brightness control, used in waybar config
-        matcha-gtk-theme # gtk theme
+        qogir-icon-theme # icons, not sure how to use :)
+        qogir-theme # theme
         wl-color-picker # wayland colour picker
+        cinnamon.nemo-with-extensions # file manager
+        bottom # task manager
      ];
     };
   };

@@ -18,7 +18,20 @@ in
     home.stateVersion = "23.05";
     services.mako.enable = true;
     home.packages = with pkgs; [  ];
-    programs.wofi.enable = true;
+
+    programs.wofi =
+    {
+      enable = true;
+      settings =
+      {
+        width=750;
+        height=400;
+        always_parse_args=true;
+        show_all=false;
+        print_command=true;
+        insensitive=true;
+      };
+    };
     programs.kitty =
     {
       enable = true;

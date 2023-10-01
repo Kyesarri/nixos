@@ -40,6 +40,7 @@
     printing.enable = true;
     tailscale.enable = true;
     fwupd.enable = true;
+    dbus.enable = true;
   };
 
 # bye KDE
@@ -107,7 +108,7 @@
       "clocksource=tsc" # not working on laptop, wonder if this is a hardware limitation
       "tsc=nowatchdog" # workaround for check_tsc_sync_source failed, could cause issues
       "tsc=reliable" # flags tsc clock as reliable, workaround to get tsc working on laptop
-      "vm.vfs_cache_pressure=50"
+      "vm.vfs_cache_pressure=50" # cache tweak, not sure if it does much :D
     ];
     loader =
     {
