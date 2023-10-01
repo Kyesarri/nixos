@@ -41,6 +41,7 @@
     tailscale.enable = true;
     fwupd.enable = true;
     dbus.enable = true;
+    gnome3.gnome-keyring.enable = true;
   };
 
 # bye KDE
