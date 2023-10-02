@@ -8,7 +8,7 @@
   nixpkgs.config.allowUnfree = true;
 
   imports = [ ./hardware-configuration.nix ];
-
+  security.pam.services.sddm.enableGnomeKeyring = true;
   nix.package = pkgs.nixUnstable; # prefer nixunstable over stable
 
   nix.settings =
@@ -41,7 +41,8 @@
     tailscale.enable = true;
     fwupd.enable = true;
     dbus.enable = true;
-    gnome3.gnome-keyring.enable = true;
+    gnome.gnome-keyring.enable = true;
+    #gnome3.gnome-keyring.enable = true;
   };
 
 # bye KDE

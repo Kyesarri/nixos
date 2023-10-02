@@ -29,7 +29,7 @@
     {
       enable = true;
       package = pkgs.gitFull;
-      #config.credential.helper = "seahorse";
+      config.credential.helper = "libsecret";
     };
 
     zsh  =
@@ -70,7 +70,6 @@
       busybox # nice-to-have
       curl
       wget
-      libsecret
     ];
   };
 
@@ -105,6 +104,7 @@
         cinnamon.nemo-with-extensions # file manager
         bottom # task manager
         gnome.seahorse
+        libsecret
      ];
     };
   };

@@ -7,7 +7,6 @@ in
   home-manager.useUserPackages = true;    # install packages to /etc/profiles instead of ~/.nix-profile
   home-manager.useGlobalPkgs = true;      # this saves an extra Nixpkgs evaluation, adds consistency,
 					  # and removes the dependency on NIX_PATH, which is otherwise used for importing Nixpkgs.
-
   home-manager.users.kel =
   { pkgs, config, ... }:
   {
@@ -32,10 +31,10 @@ in
         insensitive=true;
       };
     };
+
     programs.kitty =
     {
       enable = true;
-
       settings =
       {
         active_tab_foreground = "#${colour.accent1}";
@@ -58,8 +57,7 @@ in
     {
       enable = true;
       package = (pkgs.waybar.override (oldAttrs: { pulseSupport = true;} ));
-
-};
+    };
   };
 }
 # ./home/home.nix
