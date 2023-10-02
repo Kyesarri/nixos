@@ -104,7 +104,6 @@
         wl-color-picker # wayland colour picker
         cinnamon.nemo-with-extensions # file manager
         bottom # task manager
-        gnome.seahorse
         libsecret
      ];
     };

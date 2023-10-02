@@ -46,7 +46,11 @@
     printing.enable = true;
     tailscale.enable = true;
     fwupd.enable = true;
-    dbus.enable = true;
+    dbus =
+    {
+      enable = true;
+      packages = [ pkgs.gnome.seahorse ];
+    };
     gnome.gnome-keyring.enable = true;
 
     xserver =
