@@ -29,7 +29,7 @@
     {
       enable = true;
       package = pkgs.gitFull;
-      config.credential.helper = "libsecret";
+      config.credential.helper = "libsecret`";
     };
 
     zsh  =
@@ -61,6 +61,7 @@
       XDG_CONFIG_HOME = "$HOME/dots/config"; # moves config to home/share rather than home/.config
       XDG_DATA_HOME   = "$HOME/dots/share"; # will move to /home/nixos soon
       XDG_STATE_HOME  = "$HOME/dots/state";
+      NIXOS_OZONE_WL = "1"; # fixes electron apps in wayland
     };
     shells = with pkgs; [ zsh ]; # default shell to zsh
     systemPackages = with pkgs;

@@ -17,7 +17,6 @@ in
     home.stateVersion = "23.05";
     services.mako.enable = true;
     home.packages = with pkgs; [  ];
-
     programs.wofi =
     {
       enable = true;
