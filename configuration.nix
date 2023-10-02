@@ -9,6 +9,11 @@
 
   imports = [ ./hardware-configuration.nix ];
   security.pam.services.gdm.enableGnomeKeyring = true;
+    programs.gnupg.agent = {
+    enable = true;
+    enableSSHSupport = true;
+  };
+
   nix.package = pkgs.nixUnstable; # prefer nixunstable over stable
 
   nix.settings =
