@@ -105,6 +105,7 @@
         cinnamon.nemo-with-extensions # file manager
         bottom # task manager
         libsecret
+        gnome.seahorse
      ];
     };
   };
