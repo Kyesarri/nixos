@@ -29,7 +29,7 @@
     {
       enable = true;
       package = pkgs.gitFull;
-      config.credential.helper = "gnome.seahorse";
+      config.credential.helper = "libsecret";
     };
 
     zsh  =
