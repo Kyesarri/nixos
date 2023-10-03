@@ -29,7 +29,6 @@
     {
       enable = true;
       package = pkgs.gitFull;
-      config.credential.helper = "libsecret`";
     };
 
     zsh  =
@@ -106,6 +105,8 @@
         bottom # task manager
         libsecret
         gnome.seahorse
+        networkmanagerapplet
+        blueberry
      ];
     };
   };
