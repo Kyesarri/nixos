@@ -70,6 +70,7 @@
       busybox # nice-to-have
       curl
       wget
+      libsecret
     ];
   };
 
@@ -102,11 +103,10 @@
         qogir-theme # theme
         wl-color-picker # wayland colour picker
         cinnamon.nemo-with-extensions # file manager
-        bottom # task manager
-        libsecret
-        gnome.seahorse
-        networkmanagerapplet
-        blueberry
+        bottom # hot CLI task manager
+        gnome.seahorse # key management
+        networkmanagerapplet # adds gui for network
+        blueberry # bluetooth gui
      ];
     };
   };
