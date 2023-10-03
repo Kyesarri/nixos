@@ -17,6 +17,14 @@ in
     home.stateVersion = "23.05";
     services.mako.enable = true;
     home.packages = with pkgs; [  ];
+    programs.git =
+    {
+      enable = true;
+      extraConfig =
+      {
+        credential.helper = "libsecret";
+      };
+    };
     programs.wofi =
     {
       enable = true;

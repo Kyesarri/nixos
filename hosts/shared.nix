@@ -24,13 +24,6 @@
   programs =
   {
     dconf.enable = true;
-
-    git =
-    {
-      enable = true;
-      package = pkgs.gitFull;
-    };
-
     zsh  =
     {
       enable = true;
@@ -71,6 +64,7 @@
       curl
       wget
       libsecret
+      pkgs.gitAndTools.gitFull
     ];
   };
 
@@ -82,6 +76,7 @@
       isNormalUser = true;
       description = "kel";
       extraGroups = [ "networkmanager" "wheel" ];
+
       packages = with pkgs;
       [
         firefox # the lad
