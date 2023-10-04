@@ -102,6 +102,8 @@
         gnome.seahorse # key management
         networkmanagerapplet # adds gui for network
         blueberry # bluetooth gui
+        shotman # screenshot gui
+        gnome.eog # gnome image viewer, what a name lol
      ];
     };
   };

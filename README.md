@@ -4,42 +4,31 @@
 > 
 > system specific .nix for laptop ga401 / desktop
 
-![kye/nixos](screenshots/kye-nixos.jpg "screenshot")
+![kye/nixos](screenshots/kye-nixos.png "screenshot")
 
 ## issues:
 
-theme using installer script found @ /scripts/kde/moe-theme.sh no .nix for theme yet
+dots are not included currently, waybar will run with default settings until that is resolved
 
-these .nix are specific to my hardware configurations and may not work on your own system, feel free to use but YMMV
-
-desktop has not been worked on, laptop has been the main focus of this git
+desktop configuration is a wip, need to split out some nvidia hyprland config for that machine
 
 ## whats included:
 
-- grub + lightdm with slick greeter
-- lightdm
-- xanmod kernel
+- grub + gdm
+- hyprland
+- xanmod kernel with questionable modules running
 - tailscale with tray icon
 - steam
 - zsh + ohmyzsh
 - smartd drive monitoring via notifications
 - kitty terminal
-- polybar with multiple tweaks, configured via home-manager
 - spaghetti
 
 ## install:
 
-never made an install script before, current version is not working
-
-main rundown is:
-
 `nix-shell -p git`
 
-installs git
-
-`cd /home/username/`
-
-change to your username
+installs git, make sure you are in your home/user dir
 
 `git clone https://codeberg.org/kye/nixos`
 
@@ -55,7 +44,7 @@ change username in the configuration files (configuration, shared, flake and pro
 
 rebuilds the system with the new configuration
 
-once installed you will need to `sudo rm -R boot/` then run `rebuild` or `sudo nixos-rebuild switch --flake /home/username/nixos#nix-laptop --show-trace` to use lightdm / grub
+once installed you will need to `sudo rm -R boot/` then run `rebuild` or `sudo nixos-rebuild switch --flake /home/username/nixos#nix-laptop --show-trace` to get grub up and running
 
 first install can take some time to build
 
