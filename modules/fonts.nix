@@ -1,4 +1,4 @@
-# ./modules/configuration.nix
+# ./modules/fonts.nix
 { config, pkgs,lib,  ... }:
 {
 
@@ -13,4 +13,4 @@
     ];
   };
 }
-# ./modules/configuration.nix
+# ./modules/fonts.nix

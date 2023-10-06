@@ -12,17 +12,17 @@
     ../modules/fonts.nix
     ../hardware/pipewire.nix
     ../hardware/nvidia.nix
+    ./desktop-hw.nix
   ];
 
   hardware.bluetooth.enable = true;
   networking.hostName = "nix-desktop";
 
-  services = {
-    xserver = {
-      enable = true;
-      videoDrivers = [ "nvidia" ];
-    }; # xserver
-  }; # services
+  services.xserver =
+  {
+    enable = true;
+    videoDrivers = [ "nvidia" ];
+  };
 
   environment = {
     systemPackages = with pkgs; [ i2c-tools pciutils ];

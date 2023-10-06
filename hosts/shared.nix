@@ -19,7 +19,7 @@
 
   services.tailscale.useRoutingFeatures = "client"; # set as client for tailscale
   systemd.services.NetworkManager-wait-online.enable = false; # workaround for a bug with networking when building with flakes
-  systemd.services.systemd-networkd-wait-online.enable = false; # unsure if these affect desktop but leaving here
+  systemd.services.systemd-networkd-wait-online.enable = false; # same as above
 
   programs =
   {
@@ -47,8 +47,8 @@
     sessionVariables = rec
     {
       MOZ_ENABLE_WAYLAND = "1";
-      GTK_THEME = "Qogir-Dark"; # sets default gtk theme to dark
-      GTK_ICON_THEME = "Qogir-Dark"; # dont know if this works, does not throw an error but no icons are appplied :)
+      GTK_THEME = "Tokyonight-Dark-B"; # sets default gtk theme to dark
+#      GTK_ICON_THEME = "Qogir-Dark"; # dont know if this works, does not throw an error but no icons are appplied :)
       XDG_CACHE_HOME  = "$HOME/.cache";
       XDG_CONFIG_HOME = "$HOME/dots/config"; # moves config to home/share rather than home/.config
       XDG_DATA_HOME   = "$HOME/dots/share"; # will move to /home/nixos soon
@@ -64,7 +64,7 @@
       curl
       wget
       libsecret
-      pkgs.gitAndTools.gitFull
+      gitAndTools.gitFull
     ];
   };
 
@@ -80,14 +80,14 @@
       packages = with pkgs;
       [
         firefox # the lad
-        kdeconnect # phone sync
+        kdeconnect # phone sync, thing isnt working atm :(
         nvtop # watching gpu usage
         tailscale # mah boi
         tailscale-systray # need to autostart this, requires root to change settings
         qogir-theme # used to set dark theme for gtk applications
         xsel # nixos language lib, not sure if needed for kdev or builder
         remmina # rdp client
-        fet-sh # minimalistic fetch script, TODO: look into how this is packaged as a nixos module
+        fet-sh # minimalistic fetch script
         hyprpaper # wallpaper for wayland
         gvfs # gnome file system thing, unsure if required now
         gnome-builder # ide / basic boi
@@ -103,7 +103,11 @@
         networkmanagerapplet # adds gui for network
         blueberry # bluetooth gui
         shotman # screenshot gui
-        gnome.eog # gnome image viewer, what a name lol
+        gnome.eog # gnome image viewer, what a name lolq
+        mc # sexy cli file manager (slow)
+        hyprpicker # colour picker for wayland
+        copyq # wayland clipboard manager
+        tokyo-night-gtk # gtk theme
      ];
     };
   };

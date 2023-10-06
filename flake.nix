@@ -10,6 +10,7 @@
     nixpkgs.url = "github:nixos/nixpkgs/master";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     hyprland.url = "github:hyprwm/Hyprland";
+    nix-colors.url = "github:misterio77/nix-colors";
     home-manager =
     {
       url = "github:nix-community/home-manager";
@@ -18,7 +19,9 @@
   };
 
 
-  outputs = { self, nixpkgs, nixos-hardware, home-manager, hyprland, ... }@inputs: {
+  outputs = { self, nixpkgs, nixos-hardware, home-manager, hyprland, nix-colors, ... }
+  @inputs:
+  {
     nixosConfigurations =
     {
       "nix-laptop" = nixpkgs.lib.nixosSystem {
@@ -29,7 +32,10 @@
           ./hosts/nix-laptop.nix
           nixos-hardware.nixosModules.asus-zephyrus-ga401
           home-manager.nixosModules.home-manager
-          ];
+          {
+            home-manager.extraSpecialArgs = { inherit inputs; }; # Pass flake input to home-manager
+          }
+        ];
       };
 
       "nix-desktop" = nixpkgs.lib.nixosSystem {

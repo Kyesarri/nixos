@@ -6,8 +6,6 @@
   networking.networkmanager.enable = true;
   time.timeZone = "Australia/Melbourne";
   nixpkgs.config.allowUnfree = true;
-
-  imports = [ ./hardware-configuration.nix ];
   security.pam.services.gdm.enableGnomeKeyring = true;
     programs.gnupg.agent = {
     enable = true;

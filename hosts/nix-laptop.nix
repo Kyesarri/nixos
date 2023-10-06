@@ -11,6 +11,7 @@
     ../hardware/pipewire.nix
     ../hardware/nvidia.nix
     ../home/home.nix
+    ./laptop-hw.nix
   ];
 
   hardware.bluetooth.enable = true;
