@@ -15,6 +15,20 @@ in
       inputs.nix-colors.homeManagerModules.default
     ];
 
+
+    home.file."dots/config/hypr/hyprpaper.conf" =
+    {
+      text = ''
+preload = ~/nixos/wallpaper/1.jpg
+preload = ~//nixos/wallpaper/2.jpg
+preload = ~/nixos/wallpaper/3.jpg
+preload = ~/nixos/wallpaper/4.jpg
+wallpaper = eDP-1, ~/nixos/wallpaper/3.jpg
+
+
+             '';
+    };
+
     # hyprland config declared in nix, home.file writes to current dots directory may change to original .config dir
     # need to find out how I can import nix-colors variables into home.file, can i write additional lines using
     # settings for hyprland? or maybe add an include... idk
