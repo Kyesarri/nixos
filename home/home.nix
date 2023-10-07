@@ -1,5 +1,5 @@
 # ./home/home.nix
-# TODO move hyprland / wofi / kitty / mako / waybar / hyprpaper to their own nix
+# TODO move wofi / kitty / mako / waybar to their own nix
 {
 home-manager.useUserPackages = true;    # install packages to /etc/profiles instead of ~/.nix-profile
 home-manager.useGlobalPkgs = true;      # this saves an extra Nixpkgs evaluation, adds consistency,
@@ -7,22 +7,15 @@ home-manager.useGlobalPkgs = true;      # this saves an extra Nixpkgs evaluation
   home-manager.users.kel =
   { pkgs, config, inputs, outputs, ... }:
   {
-    imports =
-    [
-      inputs.nix-colors.homeManagerModules.default
-    ];
-
-    #colorScheme = inputs.nix-colors.colorSchemes.tokyo-night-dark; # moved to each specific device for per-device theming
-								   # TODO lots to refactor here, dont like the import / colour scheme
-
-
+    imports =[ ];
     xdg.enable = true;
     home.username = "kel";
     home.homeDirectory = "/home/kel";
     programs.home-manager.enable = true;
     home.stateVersion = "23.05";
-    services.mako.enable = true; # TODO notification service, needs more work, just using stock config currently
+    services.mako.enable = true; # TODO notification service, needs more work, just using OOBE currently
     home.packages = with pkgs; [  ];
+
     programs.git =
     {
       enable = true;
@@ -31,6 +24,7 @@ home-manager.useGlobalPkgs = true;      # this saves an extra Nixpkgs evaluation
         credential.helper = "libsecret";
       };
     };
+
     programs.wofi = # TODO wofi needs more options defined and configured, colours and appearance
     {
       enable = true;
@@ -64,11 +58,6 @@ home-manager.useGlobalPkgs = true;      # this saves an extra Nixpkgs evaluation
 	bold_italic_font = "JetBrainsMonoNL NF ExtraBold Italic";
 	font_size = "10.0";
       };
-    };
-    programs.waybar =
-    {
-      enable = true;
-      package = (pkgs.waybar.override (oldAttrs: { pulseSupport = true;} )); # might want to declare waybar as hyprland is
     };
   };
 }
