@@ -14,6 +14,7 @@
     ../home/home.nix
     ../home/hyprpaper.nix
     ../home/hyprland.nix
+    ../home.waybar.nix
   ];
   colorScheme = inputs.nix-colors.colorSchemes.tokyo-night-dark; # uses base16 colours see here: https://github.com/tinted-theming/base16-schemes
   hardware.bluetooth.enable = true;
