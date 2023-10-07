@@ -12,7 +12,7 @@ home-manager.useGlobalPkgs = true;      # this saves an extra Nixpkgs evaluation
       inputs.nix-colors.homeManagerModules.default
     ];
 
-    colorScheme = inputs.nix-colors.colorSchemes.tokyo-night-dark; # uses base16 colours see here: https://github.com/tinted-theming/base16-schemes
+    #colorScheme = inputs.nix-colors.colorSchemes.tokyo-night-dark; # moved to each specific device for per-device theming
 								   # TODO lots to refactor here, dont like the import / colour scheme
 
 

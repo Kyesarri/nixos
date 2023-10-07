@@ -1,9 +1,9 @@
 # ./hosts/nix-laptop.nix
-{ config, pkgs, lib,  ... }:
+{ config, pkgs, lib, inputs, outputs,  ... }:
 {
-
   imports =
   [
+    inputs.nix-colors.homeManagerModules.default
     ./shared.nix
     ./laptop-hw.nix
     ../configuration.nix
@@ -15,7 +15,7 @@
     ../home/hyprpaper.nix
     ../home/hyprland.nix
   ];
-
+  colorScheme = inputs.nix-colors.colorSchemes.tokyo-night-dark; # uses base16 colours see here: https://github.com/tinted-theming/base16-schemes
   hardware.bluetooth.enable = true;
   networking.hostName = "nix-laptop";
   systemd.services.supergfxd.path = [ pkgs.pciutils ]; # gpu switching

@@ -1,6 +1,9 @@
-{ config, inputs, ... }:
+{ config, inputs, outputs, ... }:
+let
+  inherit (inputs.nix-colors) colorSchemes;
+in
 {
-imports = [ inputs.nix-colors.homeManagerModules.default ];
+#imports = [ inputs.nix-colors.homeManagerModules.default ];
 
 home-manager.users.kel.home.file."dots/config/hypr/hyprland.conf" =
 {
