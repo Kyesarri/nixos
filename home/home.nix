@@ -1,12 +1,9 @@
 # ./home/home.nix
-let
-  # define colours to be used in home packages
-  colour = import ../modules/colour.nix;
-in
+# TODO move hyprland / wofi / kitty / mako / waybar / hyprpaper to their own nix
 {
-  home-manager.useUserPackages = true;    # install packages to /etc/profiles instead of ~/.nix-profile
-  home-manager.useGlobalPkgs = true;      # this saves an extra Nixpkgs evaluation, adds consistency,
-					  # and removes the dependency on NIX_PATH, which is otherwise used for importing Nixpkgs.
+home-manager.useUserPackages = true;    # install packages to /etc/profiles instead of ~/.nix-profile
+home-manager.useGlobalPkgs = true;      # this saves an extra Nixpkgs evaluation, adds consistency,
+					# and removes the dependency on NIX_PATH, which is otherwise used for importing Nixpkgs.
   home-manager.users.kel =
   { pkgs, config, inputs, outputs, ... }:
   {
@@ -15,29 +12,27 @@ in
       inputs.nix-colors.homeManagerModules.default
     ];
 
-
+    colorScheme = inputs.nix-colors.colorSchemes.tokyo-night-dark; # uses base16 colours see here: https://github.com/tinted-theming/base16-schemes
+								   # TODO lots to refactor here, dont like the import / colour scheme
+    # hyprpaper config, for wallpapers
     home.file."dots/config/hypr/hyprpaper.conf" =
     {
-      text = ''
+
+      text =
+      ''
 preload = ~/nixos/wallpaper/1.jpg
 preload = ~//nixos/wallpaper/2.jpg
 preload = ~/nixos/wallpaper/3.jpg
 preload = ~/nixos/wallpaper/4.jpg
 wallpaper = eDP-1, ~/nixos/wallpaper/3.jpg
-
-
-             '';
+      '';
     };
 
-    # hyprland config declared in nix, home.file writes to current dots directory may change to original .config dir
-    # need to find out how I can import nix-colors variables into home.file, can i write additional lines using
-    # settings for hyprland? or maybe add an include... idk
-    # shits getting messy, might be better off re-writing in .nix to let variables in :(
+    # hyprland home.file writes to current dots directory may change to original .config dir
     home.file."dots/config/hypr/hyprland.conf" =
     {
-      text = ''
- # add "source = ~/nixos/hypr/hyprland.conf" to stock hypr config, remove everything else
-
+      text =
+      ''
  exec-once = waybar & swww-daemon & rog-control-center & hyprpaper & tailscale-systray & /usr/lib/kdeconnectd
  exec-once = gnome-keyring-daemon --start --components=secrets
  exec-once = dbus-update-activation-environment --all
@@ -82,8 +77,8 @@ general {
     border_size = 5
     resize_on_border = true
     layout = dwindle
-    col.active_border = rgba(172F2Faa) rgba(182C2Daa) rgba(193332aa) 3deg
-    col.inactive_border = rgba(555555aa)
+    col.active_border = rgba(${config.colorscheme.colors.base01}aa) rgba(${config.colorscheme.colors.base02}aa) rgba(${config.colorscheme.colors.base03}aa) 3deg
+    col.inactive_border = rgba(${config.colorscheme.colors.base00}ff)
 }
 
 decoration {
@@ -233,13 +228,12 @@ bindm = $mainMod, mouse:273, resizewindow
 
       '';
     };
-    colorScheme = inputs.nix-colors.colorSchemes.tokyo-night-dark; # uses base16 colours see here: https://github.com/tinted-theming/base16-schemes
     xdg.enable = true;
     home.username = "kel";
     home.homeDirectory = "/home/kel";
     programs.home-manager.enable = true;
     home.stateVersion = "23.05";
-    services.mako.enable = true; # notification service, needs more work, just using stock config currently
+    services.mako.enable = true; # TODO notification service, needs more work, just using stock config currently
     home.packages = with pkgs; [  ];
     programs.git =
     {
@@ -283,7 +277,6 @@ bindm = $mainMod, mouse:273, resizewindow
 	font_size = "10.0";
       };
     };
-    ## TODO add hyperpaper config somewhere in here :) ~/dots/config/hypr/hyperpaper.conf
     programs.waybar =
     {
       enable = true;
