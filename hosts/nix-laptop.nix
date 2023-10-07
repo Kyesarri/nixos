@@ -13,6 +13,7 @@
     ../hardware/nvidia.nix
     ../home/home.nix
     ../home/hyprpaper.nix
+    ../home/hyprland.nix
   ];
 
   hardware.bluetooth.enable = true;
