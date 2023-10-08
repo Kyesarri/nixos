@@ -1,3 +1,4 @@
+## TODO run eyes over all colours and add-in some from color-nix
 {
   config,
   inputs,
@@ -147,7 +148,7 @@ in {
       bind = $mainMod, V, togglefloating,
       bind = $mainMod, R, exec, wofi --show drun
       bind = $mainMod, P, pseudo, # dwindle
-      bind = $mainMod, K, exec, gnome-builder
+      bind = $mainMod, K, exec, codium
       bind = $mainMod, S, exec, steam
       bind = $mainMod, F, exec, firefox
       bind = $mainMod, W, exec, firefox -p work

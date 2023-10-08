@@ -1,3 +1,4 @@
+## TODO run eyes over all colours and add-in some from color-nix
 {
   config,
   inputs,

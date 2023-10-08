@@ -46,7 +46,11 @@
         system = "x86_64-linux";
         modules = [
           ./hosts/nix-desktop.nix
+          {environment.systemPackages = [alejandra.defaultPackage.x86_64-linux];}
           home-manager.nixosModules.home-manager
+          {
+            home-manager.extraSpecialArgs = {inherit inputs;}; # Pass flake input to home-manager
+          }
         ];
       };
     };

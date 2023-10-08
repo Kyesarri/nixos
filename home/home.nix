@@ -1,5 +1,5 @@
 # ./home/home.nix
-# TODO move wofi / kitty / mako / waybar to their own nix
+# TODO move wofi / mako to their own nix
 {
   home-manager.useUserPackages = true; # install packages to /etc/profiles instead of ~/.nix-profile
   home-manager.useGlobalPkgs = true; # this saves an extra Nixpkgs evaluation, adds consistency,

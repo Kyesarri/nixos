@@ -1,7 +1,10 @@
 # ./hardware/sound.nix
-{ config, pkgs, lib,  ... }:
-
 {
+  config,
+  pkgs,
+  lib,
+  ...
+}: {
   security.rtkit.enable = true; # not required but added anyway for some reason
   sound.enable = true;
   services.pipewire = {
@@ -12,6 +15,6 @@
     # If you want to use JACK applications, uncomment this
     #jack.enable = true;
   };
-
 }
 # ./hardware/sound.nix
+
