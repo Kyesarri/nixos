@@ -8,7 +8,7 @@ in
       enable = true;
       settings =
       {
-        active_tab_foreground = "#${config.colorScheme.colors.base05}"; # colours from color-nix
+        active_tab_foreground = "#${config.colorScheme.colors.base05}";
 	active_tab_background = "#${config.colorScheme.colors.base00}";
 	foreground = "#${config.colorScheme.colors.base05}";
 	background = "#${config.colorScheme.colors.base00}";

@@ -1,7 +1,10 @@
 # ./modules/fonts.nix
-{ config, pkgs,lib,  ... }:
 {
-
+  config,
+  pkgs,
+  lib,
+  ...
+}: {
   fonts = {
     packages = with pkgs; [
       material-design-icons
@@ -9,8 +12,9 @@
       material-symbols
       rubik
       ibm-plex
-      (nerdfonts.override { fonts = [ "Iosevka" "CascadiaCode" "JetBrainsMono" ]; })
+      (nerdfonts.override {fonts = ["Iosevka" "CascadiaCode" "JetBrainsMono"];})
     ];
   };
 }
 # ./modules/fonts.nix
+

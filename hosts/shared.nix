@@ -1,19 +1,30 @@
 # ./hosts/shared.nix
-
 # all the home-manager items can be moved to another nix "soon"
-{ config, pkgs,lib,  ... }:
 {
-  networking =
-  {
+  config,
+  pkgs,
+  lib,
+  ...
+}: {
+  networking = {
     networkmanager.enable = true;
-    firewall =
-    {
+    firewall = {
       enable = true;
       checkReversePath = "loose"; # fixes some connection issues with tailscale, could not find local network without this option
-      allowedTCPPortRanges = [ { from = 1714; to = 1764; } ]; # kdeconnect
-      allowedUDPPortRanges = [ { from = 1714; to = 1764; } ]; # kdeconnect
-      allowedUDPPorts = [ 41641 ]; # tailscale
-      allowedTCPPorts = [ 3389 ]; # rdp
+      allowedTCPPortRanges = [
+        {
+          from = 1714;
+          to = 1764;
+        }
+      ]; # kdeconnect
+      allowedUDPPortRanges = [
+        {
+          from = 1714;
+          to = 1764;
+        }
+      ]; # kdeconnect
+      allowedUDPPorts = [41641]; # tailscale
+      allowedTCPPorts = [3389]; # rdp
     };
   };
 
@@ -21,43 +32,38 @@
   systemd.services.NetworkManager-wait-online.enable = false; # workaround for a bug with networking when building with flakes
   systemd.services.systemd-networkd-wait-online.enable = false; # same as above
 
-  programs =
-  {
+  programs = {
     dconf.enable = true;
-    zsh  =
-    {
+    zsh = {
       enable = true;
       enableCompletion = true;
       autosuggestions.enable = true;
-      syntaxHighlighting.highlighters = [ "main" "brackets" "pattern" "cursor" "line" ];
-      syntaxHighlighting.patterns = { };
-      syntaxHighlighting.styles = { "globbing" = "none"; };
+      syntaxHighlighting.highlighters = ["main" "brackets" "pattern" "cursor" "line"];
+      syntaxHighlighting.patterns = {};
+      syntaxHighlighting.styles = {"globbing" = "none";};
       promptInit = "info='n host cpu os wm sh n' fet.sh";
-      ohMyZsh =
-      {
+      ohMyZsh = {
         enable = true;
         theme = "fino-time";
-        plugins = [ "sudo" "terraform" "systemadmin" "vi-mode" "colorize" ];
+        plugins = ["sudo" "terraform" "systemadmin" "vi-mode" "colorize"];
       };
     };
   };
 
-  environment =
-  {
+  environment = {
     sessionVariables = rec
     {
       MOZ_ENABLE_WAYLAND = "1";
       GTK_THEME = "Tokyonight-Dark-B"; # sets default gtk theme to dark
-#      GTK_ICON_THEME = "Qogir-Dark"; # dont know if this works, does not throw an error but no icons are appplied :)
-      XDG_CACHE_HOME  = "$HOME/.cache";
+      #      GTK_ICON_THEME = "Qogir-Dark"; # dont know if this works, does not throw an error but no icons are appplied :)
+      XDG_CACHE_HOME = "$HOME/.cache";
       XDG_CONFIG_HOME = "$HOME/dots/config"; # moves config to home/share rather than home/.config
-      XDG_DATA_HOME   = "$HOME/dots/share"; # will move to /home/nixos soon
-      XDG_STATE_HOME  = "$HOME/dots/state";
+      XDG_DATA_HOME = "$HOME/dots/share"; # will move to /home/nixos soon
+      XDG_STATE_HOME = "$HOME/dots/state";
       NIXOS_OZONE_WL = "1"; # fixes electron apps in wayland
     };
-    shells = with pkgs; [ zsh ]; # default shell to zsh
-    systemPackages = with pkgs;
-    [
+    shells = with pkgs; [zsh]; # default shell to zsh
+    systemPackages = with pkgs; [
       lshw # list hardware
       usbutils # usb thing
       busybox # nice-to-have
@@ -68,17 +74,14 @@
     ];
   };
 
-  users =
-  {
+  users = {
     defaultUserShell = pkgs.zsh;
-    users.kel =
-    {
+    users.kel = {
       isNormalUser = true;
       description = "kel";
-      extraGroups = [ "networkmanager" "wheel" ];
+      extraGroups = ["networkmanager" "wheel"];
 
-      packages = with pkgs;
-      [
+      packages = with pkgs; [
         firefox # the lad
         kdeconnect # phone sync, thing isnt working atm :(
         nvtop # watching gpu usage
@@ -108,9 +111,9 @@
         hyprpicker # colour picker for wayland
         copyq # wayland clipboard manager
         tokyo-night-gtk # gtk theme
-     ];
+      ];
     };
   };
-
 }
 # ./hosts/shared.nix
+

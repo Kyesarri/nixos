@@ -1,16 +1,13 @@
-  # example = "#${colour.red1}";
-  # # is required, workaround to add transparency if required later
-  # to enable transparency:
-  # example = "#99${colour.back}";
-  # uses hex values 00 to ff case is irrelevant
-
-  # been calling these from a home-manager module ex :
-  #
-  #     programs.kitty =
-  #     { ...
-  #      active_tab_foreground = "#${colour.accent1}";
-
-
+# example = "#${colour.red1}";
+# # is required, workaround to add transparency if required later
+# to enable transparency:
+# example = "#99${colour.back}";
+# uses hex values 00 to ff case is irrelevant
+# been calling these from a home-manager module ex :
+#
+#     programs.kitty =
+#     { ...
+#      active_tab_foreground = "#${colour.accent1}";
 {
   red = "FF0000";
   green = "008000";
