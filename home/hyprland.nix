@@ -148,7 +148,7 @@ in {
       bind = $mainMod, V, togglefloating,
       bind = $mainMod, R, exec, wofi --show drun
       bind = $mainMod, P, pseudo, # dwindle
-      bind = $mainMod, K, exec, codium
+      bind = $mainMod, K, exec, codium --disable-gpu
       bind = $mainMod, S, exec, steam
       bind = $mainMod, F, exec, firefox
       bind = $mainMod, W, exec, firefox -p work
