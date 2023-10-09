@@ -21,7 +21,8 @@
     ../home/hyprland.nix
     ../home/waybar.nix
     ../home/kitty.nix
-  ];
+    ../home/mako.nix
+  ]; #${config.colorscheme.colors.base05}";
 
   colorScheme = inputs.nix-colors.colorSchemes.tokyo-night-dark; # uses base16 colours see here: https://github.com/tinted-theming/base16-schemes
 
