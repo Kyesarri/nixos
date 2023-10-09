@@ -11,24 +11,11 @@
     outputs,
     ...
   }: {
-    imports = [inputs.nix-colors.homeManagerModules.default];
     xdg.enable = true;
     home.username = "kel";
     home.homeDirectory = "/home/kel";
     programs.home-manager.enable = true;
     home.stateVersion = "23.05";
-    home.packages = with pkgs; [];
-
-    services.mako = {
-      enable = true; # TODO notification service, needs more work, just using OOBE currently
-      anchor = "bottom-center";
-      defaultTimeout = 5;
-      icons = true;
-      textColor = "#${config.colorscheme.colors.base05}";
-      backgroundColor = "#${config.colorscheme.colors.base01}";
-      borderColor = "#${config.colorscheme.colors.base03}";
-    };
-
     programs.git = {
       enable = true;
       extraConfig = {
@@ -37,7 +24,7 @@
     };
 
     programs.wofi =
-      # TODO wofi needs more options defined and configured, colours and appearance
+      # TODO wofi needs more options defined and configured, colours and appearance not sure if can be bothered atm as its using gtk theme?
       {
         enable = true;
         settings = {
@@ -49,6 +36,7 @@
           insensitive = true;
         };
       };
+
     programs.vscode = {
       enable = true;
       package = pkgs.vscodium;

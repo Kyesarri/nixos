@@ -111,6 +111,7 @@
         hyprpicker # colour picker for wayland
         copyq # wayland clipboard manager
         tokyo-night-gtk # gtk theme
+        tofi # tiny app launcher TODO testing vs wofi
       ];
     };
   };
