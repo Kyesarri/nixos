@@ -18,7 +18,7 @@ in {
       exec-once = waybar & swww-daemon & rog-control-center & hyprpaper & tailscale-systray & /usr/lib/kdeconnectd
        exec-once = gnome-keyring-daemon --start --components=secrets
        exec-once = dbus-update-activation-environment --all
-       exec-once
+       exec-once = sleep 2 && copyq --start-server
 
       monitor=,1920x1080@120,auto,1
 
@@ -59,8 +59,8 @@ in {
           border_size = 5
           resize_on_border = true
           layout = dwindle
-          col.active_border = rgba(${config.colorscheme.colors.base01}aa) rgba(${config.colorscheme.colors.base02}aa) rgba(${config.colorscheme.colors.base03}aa) 3deg
-          col.inactive_border = rgba(${config.colorscheme.colors.base00}ff)
+          col.active_border = rgba(${config.colorscheme.colors.base01}FF) rgba(${config.colorscheme.colors.base02}FF) rgba(${config.colorscheme.colors.base03}FF) 3deg
+          col.inactive_border = rgba(${config.colorscheme.colors.base00}FF)
       }
 
       decoration {
@@ -70,15 +70,15 @@ in {
       	enabled = true
       	size = 5
       	passes = 1
-      	noise = 2.0
-      	brightness = 2
+      	noise = 0
+      	brightness = 0.5
       	new_optimizations = true
           }
 
           drop_shadow = no
           shadow_range = 0
           shadow_render_power = 3
-          col.shadow = rgba(1a1a1aee)
+          col.shadow = rgba(${config.colorscheme.colors.base00}ee)
           active_opacity = 1
           inactive_opacity = .95
           dim_inactive = true
