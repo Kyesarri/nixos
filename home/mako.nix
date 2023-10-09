@@ -8,7 +8,7 @@
   inherit (inputs.nix-colors) colorSchemes;
 in {
   home-manager.users.kel.services.mako = {
-    enable = true; # TODO notification service, needs more work, just using OOBE currently
+    enable = true; # TODO more needs to be done here, looks pretty scratchy atm
     anchor = "bottom-center";
     defaultTimeout = 5;
     icons = true;

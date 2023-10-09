@@ -230,12 +230,8 @@ in {
 
       #workspaces {
         background-color: transparent;
-        /* border: 1px solid #10171b; */
-        /* border-radius: 20px; */
         margin-top: 0;
         margin-bottom: 0;
-        /* margin-left: 1px; */
-        /*margin-right: 5px; */
       }
 
       #workspaces button {
@@ -249,7 +245,6 @@ in {
       #workspaces button:hover {
         box-shadow: inherit;
         text-shadow: inherit;
-      /*  background: transparent; */
         background-color: #${config.colorScheme.colors.base04};
         border: 0px solid @lightgray;
         color: @white;
@@ -344,7 +339,6 @@ in {
         margin-bottom: 5px;
         margin-left: 2px;
         margin-right: 2px;
-        /* border: 1px solid @darkgray; */
         border-radius: 20px;
         transition: all 0.3s ease;
       }

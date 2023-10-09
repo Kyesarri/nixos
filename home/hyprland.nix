@@ -1,4 +1,3 @@
-## TODO run eyes over all colours and add-in some from color-nix
 {
   config,
   inputs,
@@ -16,9 +15,9 @@ in {
       $w4 = hyprctl hyprpaper wallpaper "eDP-1,~/nixos/wallpaper/4.jpg"
 
       exec-once = waybar & swww-daemon & rog-control-center & hyprpaper & tailscale-systray & /usr/lib/kdeconnectd
-       exec-once = gnome-keyring-daemon --start --components=secrets
-       exec-once = dbus-update-activation-environment --all
-       exec-once = sleep 2 && copyq --start-server
+      exec-once = gnome-keyring-daemon --start --components=secrets
+      exec-once = dbus-update-activation-environment --all
+      exec-once = sleep 2 && copyq --start-server
 
       monitor=,1920x1080@120,auto,1
 
@@ -136,6 +135,8 @@ in {
       windowrule = float, title:Volume Control
       windowrule = float, title:Network Connections
       windowrule = float, title:CopyQ
+
+      windowrulev2 = opacity 0.8 0.8,class:^(kitty)$
 
       # See https://wiki.hyprland.org/Configuring/Keywords/ for more
       $mainMod = SUPER
