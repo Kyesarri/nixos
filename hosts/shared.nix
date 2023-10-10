@@ -101,6 +101,8 @@
         qogir-theme # theme
         wl-color-picker # wayland colour picker
         cinnamon.nemo-with-extensions # file manager
+        cinnamon.xviewer # image viewer
+        cinnamon.xreader # reader
         bottom # hot CLI task manager
         gnome.seahorse # key management
         networkmanagerapplet # adds gui for network
