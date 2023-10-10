@@ -101,19 +101,20 @@
         qogir-theme # theme
         wl-color-picker # wayland colour picker
         cinnamon.nemo-with-extensions # file manager
-        cinnamon.xviewer # image viewer
-        cinnamon.xreader # reader
+        qview # image viewer
         bottom # hot CLI task manager
         gnome.seahorse # key management
         networkmanagerapplet # adds gui for network
         blueberry # bluetooth gui
         shotman # screenshot gui
-        gnome.eog # gnome image viewer, what a name lolq
-        mc # sexy cli file manager (slow)
+        mc # sexy cli file manager (slow startup)
         hyprpicker # colour picker for wayland
         copyq # wayland clipboard manager
         tokyo-night-gtk # gtk theme
         tofi # tiny app launcher TODO testing vs wofi
+        swaylock-effects # lockscreen of sorts
+        iwd
+        (callPackage ../scripts/derv/wcp/default.nix)
       ];
     };
   };

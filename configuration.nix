@@ -9,7 +9,8 @@
   networking.networkmanager.enable = true;
   time.timeZone = "Australia/Melbourne";
   nixpkgs.config.allowUnfree = true;
-  security.pam.services.gdm.enableGnomeKeyring = true;
+  security.pam.services.gdm.enableGnomeKeyring = true; # keyring support for GDM
+  security.pam.services.swaylock = {}; # enables pam for swaylock, otherwise cannot unlock system
   programs.gnupg.agent = {
     enable = true;
     enableSSHSupport = true;
