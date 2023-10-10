@@ -26,6 +26,7 @@ stdenv.mkDerivation rec {
     url = "https://github.com/milgra/wcp/archive/refs/tags/0.77b.tar.gz";
     sha256 = "ufQvHlLD6p7Ix+NaKP0SsUMr5Hfq3yn+OvozQtX8je8=";
   };
+
   buildInputs = [
     meson
     ninja
@@ -39,13 +40,6 @@ stdenv.mkDerivation rec {
     freetype
     libxkbcommon
   ];
-
-  #buildPhase = ''
-  #  mkdir -p $out/bin
-  #  meson build --buildtype=release
-  #  ninja -C build
-  #  sudo ninja -C build install
-  #'';
 
   meta = with lib; {
     description = "Script-driven control panel/system menu for wayland based window managers.";

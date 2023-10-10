@@ -6,7 +6,6 @@
   lib,
   ...
 }: {
-  imports = ["${pkgs.callPackage ./scripts/derv/wcp {}}/nixos"];
   networking = {
     networkmanager.enable = true;
     firewall = {
