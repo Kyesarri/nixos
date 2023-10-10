@@ -111,6 +111,7 @@
         tofi # tiny app launcher TODO testing vs wofi
         swaylock-effects # lockscreen of sorts
         iwd
+        (callPackage ../packages/wcp {})
       ];
     };
   };
