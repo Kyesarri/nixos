@@ -1,3 +1,3 @@
-{pkgs ? import <nixpkgs> {}}: {
-  wcp = import ./wcp {inherit pkgs;};
+_final: prev: {
+  wcp = prev.callPackage ./wcp/default.nix {};
 }

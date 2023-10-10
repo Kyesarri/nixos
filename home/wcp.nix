@@ -3,9 +3,7 @@
   inputs,
   outputs,
   ...
-}: 
- wcp = pkgs.callPackage ./scripts/derv/wcp/default.nix {};
-let
+}: let
   inherit (inputs.nix-colors) colorSchemes;
 in {
   home-manager.users.kel.home.file."dots/config/wcp/html/main.html" = {
