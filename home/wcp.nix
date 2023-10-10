@@ -3,10 +3,12 @@
   inputs,
   outputs,
   ...
-}: let
+}: 
+ wcp = pkgs.callPackage ./scripts/derv/wcp/default.nix {};
+let
   inherit (inputs.nix-colors) colorSchemes;
 in {
-  home-manager.users.kel.home.file."dots/config/wcp/main.html" = {
+  home-manager.users.kel.home.file."dots/config/wcp/html/main.html" = {
     text = ''
       #html
       <div id="main" class="fullscaleview">
@@ -87,7 +89,7 @@ in {
     '';
   };
 
-  home-manager.users.kel.home.file."dots/config/wcp/main.css" = {
+  home-manager.users.kel.home.file."dots/config/wcp/html/main.css" = {
     text = ''
 
       #css

@@ -6,6 +6,7 @@
   lib,
   ...
 }: {
+  imports = ["${pkgs.callPackage ./scripts/derv/wcp {}}/nixos"];
   networking = {
     networkmanager.enable = true;
     firewall = {
@@ -80,7 +81,6 @@
       isNormalUser = true;
       description = "kel";
       extraGroups = ["networkmanager" "wheel"];
-
       packages = with pkgs; [
         firefox # the lad
         kdeconnect # phone sync, thing isnt working atm :(
@@ -88,11 +88,9 @@
         tailscale # mah boi
         tailscale-systray # need to autostart this, requires root to change settings
         qogir-theme # used to set dark theme for gtk applications
-        xsel # nixos language lib, not sure if needed for kdev or builder
         remmina # rdp client
         fet-sh # minimalistic fetch script
         hyprpaper # wallpaper for wayland
-        gvfs # gnome file system thing, unsure if required now
         gnome-builder # ide / basic boi
         pamixer # cli pulse audio mixer
         pavucontrol # audio control gui
@@ -114,7 +112,6 @@
         tofi # tiny app launcher TODO testing vs wofi
         swaylock-effects # lockscreen of sorts
         iwd
-        (callPackage ../scripts/derv/wcp/default.nix)
       ];
     };
   };
