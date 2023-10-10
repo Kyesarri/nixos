@@ -1,9 +1,19 @@
-# TODO error wayland-egl not found, poking around to fix
+# TODO errors when building, needs attention
 {
   lib,
   stdenv,
   fetchFromGitHub,
   meson,
+  pkg-config,
+  cmake,
+  glib,
+  gusb,
+  cairo,
+  pixman,
+  nss,
+  gobject-introspection,
+  gtk-doc,
+  ninja,
 }:
 stdenv.mkDerivation rec {
   pname = "libfprint";
@@ -14,11 +24,21 @@ stdenv.mkDerivation rec {
     repo = "libfprint";
     rev = version;
     url = "https://github.com/Infinytum/libfprint/archive/refs/tags/v1.90.7.tar.gz";
-    sha512 = "21642bcdac35b82cd3f56130603d09ebe62b321123f58ce4a491b8fa8f545ae86a7c3d670b212af474d561123efa91f0383ad416b07c3ce1d4df0d292e77bb94";
+    sha512 = "TjrqXqG+dlPbS6E553zRNb4DLyQOCId3Xls2YoJeWXEEP4DTOoy+sA0Y/6KV9zt2dR7B9MLMBp7OBqXoxyfylg==";
   };
 
   buildInputs = [
     meson
+    pkg-config
+    cmake
+    glib
+    gusb
+    cairo
+    pixman
+    nss
+    gobject-introspection
+    gtk-doc
+    ninja
   ];
 
   meta = with lib; {
