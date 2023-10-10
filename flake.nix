@@ -38,7 +38,7 @@
           home-manager.nixosModules.home-manager
           {
             home-manager.extraSpecialArgs = {inherit inputs;}; # Pass flake input to home-manager
-            nixpkgs.overlays = [import ./packages];
+            # nixpkgs.overlays = [import ./packages/overlay.nix];
           }
         ];
       };
