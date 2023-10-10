@@ -1,4 +1,3 @@
-# TODO error wayland-egl not found, poking around to fix
 {
   lib,
   stdenv,
