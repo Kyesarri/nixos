@@ -1,5 +1,5 @@
 # TODO error wayland-egl not found, poking around to fix
-{
+{pkgs ? import <nixpkgs> {}}: {
   lib,
   stdenv,
   fetchFromGitHub,
