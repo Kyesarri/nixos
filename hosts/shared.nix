@@ -112,8 +112,8 @@
         swaylock-effects # lockscreen of sorts
         # iwd # TODO check these two out later
         # iwgtk
-        (callPackage ../packages/wcp {}) # IT WORKS!
-        eww-wayland
+        (callPackage ../packages/wcp {}) # IT WORKS! Currently has bugs with RGBA colours, see package notes
+        eww-wayland # do want to see if this is easier to config than WCP, loads faster?
       ];
     };
   };

@@ -19,7 +19,7 @@ in {
       $w3 = hyprctl hyprpaper wallpaper "eDP-1,~/nixos/wallpaper/3.jpg"
       $w4 = hyprctl hyprpaper wallpaper "eDP-1,~/nixos/wallpaper/4.jpg"
 
-      exec-once = waybar & swww-daemon & rog-control-center & hyprpaper & tailscale-systray
+      exec-once = waybar & rog-control-center & hyprpaper & tailscale-systray
       exec-once = gnome-keyring-daemon --start --components=secrets
       exec-once = dbus-update-activation-environment --all
       exec-once = sleep 2 && copyq --start-server & kdeconnect-indicator

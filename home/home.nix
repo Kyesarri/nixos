@@ -23,20 +23,6 @@
       };
     };
 
-    programs.wofi =
-      # TODO wofi needs more options defined and configured, colours and appearance not sure if can be bothered atm as its using gtk theme?
-      {
-        enable = true;
-        settings = {
-          width = 750;
-          height = 400;
-          always_parse_args = true;
-          show_all = false;
-          print_command = true;
-          insensitive = true;
-        };
-      };
-
     programs.vscode = {
       enable = true;
       package = pkgs.vscodium;

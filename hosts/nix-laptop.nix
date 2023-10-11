@@ -15,7 +15,8 @@
     ../modules/gaming.nix
     ../modules/fonts.nix
     ../hardware/pipewire.nix
-    ../hardware/nvidia.nix
+    # ../hardware/nvidia.nix # dont think this is required since im using nix hardware with drivers already enabled
+    #
     # this is only for dots, might need refactor
     ../home/home.nix
     ../home/hyprpaper.nix
@@ -25,6 +26,7 @@
     ../home/mako.nix
     ../home/wcp.nix
     # this is only for dots, might need refactor
+    #
   ];
 
   colorScheme = inputs.nix-colors.colorSchemes.tokyo-night-dark; # uses base16 colours see here: https://github.com/tinted-theming/base16-schemes
