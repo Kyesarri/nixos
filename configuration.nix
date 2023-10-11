@@ -59,6 +59,7 @@
   };
 
   programs.hyprland = {
+    # want to move this to its own dir and have GUI handled per-device
     enable = true;
     enableNvidiaPatches = true;
   };

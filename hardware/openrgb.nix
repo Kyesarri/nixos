@@ -26,7 +26,7 @@
   systemd.services.rgb-on = {
     serviceConfig.Type = "oneshot";
     script = ''
-      ${pkgs.openrgb}/bin/openrgb -d RAM -m static -c ff0000
+      ${pkgs.openrgb}/bin/openrgb -d RAM -m static -c ffffff
     '';
   };
 

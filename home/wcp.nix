@@ -1,3 +1,5 @@
+# TODO current codebase uses BBGGRRAA colours, waiting on a fix so this can work with my current configuration
+# see https://github.com/milgra/wcp/issues/6
 {
   config,
   inputs,
@@ -8,7 +10,6 @@
 in {
   home-manager.users.kel.home.file."dots/config/wcp/html/main.html" = {
     text = ''
-      #html
       <div id="main" class="fullscaleview">
         <div id="mainflex" class="fullscaleview colflex margin5">
 
@@ -89,11 +90,9 @@ in {
 
   home-manager.users.kel.home.file."dots/config/wcp/html/main.css" = {
     text = ''
-
-      #css
       #main {
           border-radius: 10px;
-          background-color: #000000DD;
+          background-color: #${config.colorScheme.colors.base01}FF;
       }
 
       .fullscaleview {
@@ -131,7 +130,7 @@ in {
           width: 100%;
           height: 30px;
           border-radius: 5px;
-          background-color: #121212FF;
+          background-color: #${config.colorScheme.colors.base02}FF;
       }
 
       .label {
@@ -140,7 +139,7 @@ in {
           background-color: #00000000;
           margin-left: 5px;
           line-height: 25px;
-          color: #DEDEDEFF;
+          color: #${config.colorScheme.colors.base02}FF;
           font-size: 16px;
           font-family: "Terminus (TTF):style=Bold";
       }
@@ -163,14 +162,14 @@ in {
       .slider {
           width: 100%;
           height: 30px;
-          background-color: #111111FF;
+          background-color: #${config.colorScheme.colors.base04}DD;
           border-radius: 5px;
       }
 
       .sliderbar {
           width: 1%;
           height: 30px;
-          background-color: #889988FF;
+          background-color: #${config.colorScheme.colors.base06}DD;
           border-radius: 5px;
       }
 

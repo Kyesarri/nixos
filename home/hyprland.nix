@@ -7,17 +7,23 @@
   inherit (inputs.nix-colors) colorSchemes;
 in {
   home-manager.users.kel.home.file."dots/config/hypr/hyprland.conf" = {
+    # wondering if I can use     extraConfig = lib.fileContents ./hyprland.conf; and still have the colors
+    # passed through to my hyprland config, otherwise have nix build a color chart and import via
+    # symlinked hyprland.conf
+    #
+    # this writes below contents to the above dots/config/hypr/hyprland.conf file
+    # change to .config if you have not modified your xdg config dir
     text = ''
-
       $w1 = hyprctl hyprpaper wallpaper "eDP-1,~/nixos/wallpaper/1.jpg"
       $w2 = hyprctl hyprpaper wallpaper "eDP-1,~/nixos/wallpaper/2.jpg"
       $w3 = hyprctl hyprpaper wallpaper "eDP-1,~/nixos/wallpaper/3.jpg"
       $w4 = hyprctl hyprpaper wallpaper "eDP-1,~/nixos/wallpaper/4.jpg"
 
-      exec-once = waybar & swww-daemon & rog-control-center & hyprpaper & tailscale-systray & /usr/lib/kdeconnectd
+      exec-once = waybar & swww-daemon & rog-control-center & hyprpaper & tailscale-systray
       exec-once = gnome-keyring-daemon --start --components=secrets
       exec-once = dbus-update-activation-environment --all
-      exec-once = sleep 2 && copyq --start-server
+      exec-once = sleep 2 && copyq --start-server & kdeconnect-indicator
+      exec-once = rm -f /tmp/wcp && mkfifo /tmp/wcp && tail -f /tmp/wcp | wcp -r ~/dots/config/wcp # fifo for wcp
 
       monitor=,1920x1080@120,auto,1
 
@@ -156,7 +162,8 @@ in {
       bind = control, escape, exec, kitty -e btm
       bind = $mainMod, J, togglesplit, # dwindle
       bind = ,Print, exec, shotman --capture output
-
+      bind = $mainMod, X, exec, echo 2 > /tmp/wcp
+      # sends commands to wcp fifo, 2 is toggle, wonder how large that file can get during one session :D
 
       # sound
       binde = , xf86audioraisevolume, exec, pamixer -i 3 @DEFAULT_SINK@

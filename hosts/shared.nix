@@ -110,8 +110,10 @@
         tokyo-night-gtk # gtk theme
         tofi # tiny app launcher TODO testing vs wofi
         swaylock-effects # lockscreen of sorts
-        iwd
+        # iwd # TODO check these two out later
+        # iwgtk
         (callPackage ../packages/wcp {}) # IT WORKS!
+        eww-wayland
       ];
     };
   };
