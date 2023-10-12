@@ -25,6 +25,7 @@
     ../home/kitty.nix
     ../home/mako.nix
     ../home/wcp.nix
+    ../home/wofi.nix
     # this is only for dots, might need refactor
     #
   ];

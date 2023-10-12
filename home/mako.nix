@@ -9,7 +9,7 @@
 in {
   home-manager.users.kel.services.mako = {
     enable = true; # TODO more needs to be done here, looks pretty scratchy atm
-    anchor = "bottom-center";
+    anchor = "bottom-center"; # config not working?
     defaultTimeout = 5;
     icons = true;
     textColor = "#${config.colorscheme.colors.base05}";
