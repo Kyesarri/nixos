@@ -8,6 +8,7 @@
 
 ## issues:
 - has more spaghetti than usual, needs a good cleanup
+- pls add https://github.com/Aylur/ags/blob/main/flake.nix
 
 ## whats included:
 - nix-colors themed hyprland / waybar / terminal
