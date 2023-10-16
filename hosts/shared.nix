@@ -4,6 +4,8 @@
   config,
   pkgs,
   lib,
+  outputs,
+  inputs,
   ...
 }: {
   networking = {
@@ -71,6 +73,7 @@
       wget
       libsecret
       gitAndTools.gitFull
+      #(builtins.getFlake "github:Aylur/ags/364fde91311ca6396c8a82796eb54bbca7e708ae") # this command is slick, how does work :D
     ];
   };
 
@@ -114,6 +117,7 @@
         # iwgtk
         (callPackage ../packages/wcp {}) # IT WORKS! Currently has bugs with RGBA colours, see package notes
         eww-wayland # do want to see if this is easier to config than WCP, loads faster?
+        swaynotificationcenter # testing
       ];
     };
   };
