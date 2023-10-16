@@ -18,6 +18,7 @@
     # ../hardware/nvidia.nix # dont think this is required since im using nix hardware with drivers already enabled
     #
     # this is only for dots, might need refactor
+    # may move to home.nix importing everything or will that cause issues with imports?
     ../home/home.nix
     ../home/hyprpaper.nix
     ../home/hyprland.nix
