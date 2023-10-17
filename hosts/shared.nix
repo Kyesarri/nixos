@@ -87,7 +87,7 @@
         kdeconnect # phone sync, thing isnt working atm :(
         nvtop # watching gpu usage
         tailscale # mah boi
-        tailscale-systray # need to autostart this, requires root to change settings
+        tailscale-systray
         qogir-theme # used to set dark theme for gtk applications
         remmina # rdp client
         fet-sh # minimalistic fetch script
