@@ -27,7 +27,7 @@
     ../home/mako.nix
     ../home/wcp.nix
     ../home/wofi.nix
-    #../home/ags
+    ../home/ags
     # this is only for dots, might need refactor
     # shits getting messy, defs needs a refactor
     #
@@ -56,6 +56,8 @@
 
   hardware.bluetooth.enable = true;
   networking.hostName = "nix-laptop";
+  networking.wireless.iwd.enable = true;
+  networking.networkmanager.wifi.backend = "iwd"; # much better than network manage applet
   systemd.services.supergfxd.path = [pkgs.pciutils]; # gpu switching
 
   services.xserver = {

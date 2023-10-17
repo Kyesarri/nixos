@@ -7,13 +7,14 @@
   npm,
   meson,
   gjs,
- gtk3,
- gtk-layer-shell,
- gnome-bluetooth,
- upower networkmanager,
- gobject-introspection,
-        libdbusmenu-gtk3,
-};
+  gtk3,
+  gtk-layer-shell,
+  gnome-bluetooth,
+  upower,
+  networkmanager,
+  gobject-introspection,
+  libdbusmenu-gtk3,
+}:
 stdenv.mkDerivation rec {
   pname = "wcp";
   version = "0.77b";

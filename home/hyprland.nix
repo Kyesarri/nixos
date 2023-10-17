@@ -142,7 +142,7 @@ in {
       windowrule = float, ^(kitty)$
       windowrule = float, title:Bluetooth
       windowrule = float, title:Volume Control
-      windowrule = float, title:Network Connections
+      windowrule = float, title:iwgtk
       windowrule = float, title:CopyQ
 
       windowrulev2 = opacity 0.8 0.8,class:^(kitty)$

@@ -70,15 +70,18 @@ in {
         "hyprland/workspaces": {
           "format": " {icon} ",
           "format-icons": {
-            "1": "1",
-            "2": "2",
-            "3": "3",
-            "4": "4",
-            "5": "5",
-            "6": "6",
-            "7": "7",
-            "8": "8",
-            "9": "9",
+            "1": "󰄰",
+            "2": "󰄰",
+            "3": "󰄰",
+            "4": "󰄰",
+            "5": "󰄰",
+            "6": "󰄰",
+            "7": "󰄰",
+            "8": "󰄰",
+            "9": "󰄰",
+            "urgent": "",
+            "focused": "",
+            "default": "",
             "default": "1"
           },
           "on-click": "activate"
@@ -145,7 +148,7 @@ in {
           // "format-disconnected": "󰤮",
           "format-disconnected": " 󰤭 ",
           // "format-alt": "{icon} {essid} | 󱑽 {signalStrength}% {signaldBm} dBm {frequency} MHz",
-          "on-click": "nm-connection-editor",
+          "on-click": "iwgtk",
           "tooltip": true,
           "tooltip-format": "󰢮 {ifname}\n󰩟 {ipaddr}/{cidr}\n{icon} {essid}\n󱑽 {signalStrength}% {signaldBm} dBm {frequency} MHz\n󰞒 {bandwidthDownBytes}\n󰞕 {bandwidthUpBytes}"
         },
@@ -208,7 +211,7 @@ in {
 
       * {
           font-size: 14px;
-          font-family: "JetBrainsMonoNL NF";
+          font-family: "Hasklug Nerd Font";
           border-radius: 10;
       }
 

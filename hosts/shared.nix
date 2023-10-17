@@ -9,7 +9,7 @@
   ...
 }: {
   networking = {
-    networkmanager.enable = true;
+    #networkmanager.enable = true;
     firewall = {
       enable = true;
       checkReversePath = "loose"; # fixes some connection issues with tailscale, could not find local network without this option
@@ -73,7 +73,6 @@
       wget
       libsecret
       gitAndTools.gitFull
-      #(builtins.getFlake "github:Aylur/ags/364fde91311ca6396c8a82796eb54bbca7e708ae") # this command is slick, how does work :D
     ];
   };
 
@@ -104,7 +103,6 @@
         qview # image viewer
         bottom # hot CLI task manager
         gnome.seahorse # key management
-        networkmanagerapplet # adds gui for network
         blueberry # bluetooth gui
         shotman # screenshot gui
         mc # sexy cli file manager (slow startup)
@@ -113,11 +111,13 @@
         tokyo-night-gtk # gtk theme
         tofi # tiny app launcher TODO testing vs wofi
         swaylock-effects # lockscreen of sorts
-        # iwd # TODO check these two out later
-        # iwgtk
-        (callPackage ../packages/wcp {}) # IT WORKS! Currently has bugs with RGBA colours, see package notes
+        iwd # wireless network daemon
+        iwgtk # replaces network-manager-applet
         eww-wayland # do want to see if this is easier to config than WCP, loads faster?
         swaynotificationcenter # testing
+
+        (callPackage ../packages/wcp {}) # IT WORKS! Currently has bugs with RGBA colours, see package notes
+        (callPackage ../packages/libfprint {}) # builds, need to write to the fprint reader now :)
       ];
     };
   };

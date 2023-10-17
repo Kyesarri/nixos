@@ -12,6 +12,7 @@
       material-symbols
       rubik
       ibm-plex
+      nerdfonts
       (nerdfonts.override {fonts = ["Iosevka" "CascadiaCode" "JetBrainsMono"];})
     ];
   };

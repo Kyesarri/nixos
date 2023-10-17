@@ -3,21 +3,26 @@
   lib,
   stdenv,
   fetchFromGitHub,
-  meson,
   pkg-config,
-  cmake,
-  glib,
+  meson,
+  python3,
+  ninja,
   gusb,
-  cairo,
   pixman,
+  glib,
   nss,
   gobject-introspection,
+  coreutils,
+  cairo,
+  libgudev,
   gtk-doc,
-  ninja,
+  docbook-xsl-nons,
+  docbook_xml_dtd_43,
 }:
 stdenv.mkDerivation rec {
   pname = "libfprint";
   version = "1.90.7";
+  outputs = ["out" "devdoc"];
 
   src = fetchFromGitHub {
     owner = "Infinytum";
@@ -27,19 +32,54 @@ stdenv.mkDerivation rec {
     sha512 = "TjrqXqG+dlPbS6E553zRNb4DLyQOCId3Xls2YoJeWXEEP4DTOoy+sA0Y/6KV9zt2dR7B9MLMBp7OBqXoxyfylg==";
   };
 
-  buildInputs = [
-    meson
+  postPatch = ''
+    patchShebangs \
+      tests/test-runner.sh \
+      tests/unittest_inspector.py \
+      tests/virtual-image.py \
+      tests/umockdev-test.py \
+      tests/test-generated-hwdb.sh
+  '';
+  nativeBuildInputs = [
     pkg-config
-    cmake
-    glib
-    gusb
-    cairo
-    pixman
-    nss
-    gobject-introspection
-    gtk-doc
+    meson
     ninja
+    gtk-doc
+    docbook-xsl-nons
+    docbook_xml_dtd_43
+    gobject-introspection
   ];
+
+  buildInputs = [
+    gusb
+    pixman
+    glib
+    nss
+    cairo
+    libgudev
+  ];
+
+  mesonFlags = [
+    "-Dudev_rules_dir=${placeholder "out"}/lib/udev/rules.d"
+    # Include virtual drivers for fprintd tests
+    "-Ddrivers=all"
+    # "-Dudev_hwdb_dir=${placeholder "out"}/lib/udev/hwdb.d" # disabling this lets the package install, required in source package from nixpkgs
+  ];
+
+  doCheck = false;
+  nativeInstallCheckInputs = [
+    (python3.withPackages (p: with p; [pygobject3]))
+  ];
+
+  doInstallCheck = true;
+
+  installCheckPhase = ''
+    runHook preInstallCheck
+
+    ninjaCheckPhase
+
+    runHook postInstallCheck
+  '';
 
   meta = with lib; {
     description = "This is an experimental libfprint driver implementation for Goodix drivers.";

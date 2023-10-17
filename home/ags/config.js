@@ -17,7 +17,7 @@ const Workspaces = () => Widget.Box({
     className: 'workspaces',
     connections: [[Hyprland.active.workspace, self => {
         // generate an array [1..10] then make buttons from the index
-        const arr = Array.from({ length: 10 }, (_, i) => i + 1);
+        const arr = Array.from({ length: 4 }, (_, i) => i + 1);
         self.children = arr.map(i => Widget.Button({
             onClicked: () => execAsync(`hyprctl dispatch workspace ${i}`),
             child: Widget.Label(`${i}`),
@@ -65,22 +65,22 @@ const Notification = () => Widget.Box({
     ],
 });
 
-const Media = () => Widget.Button({
-    className: 'media',
-    onPrimaryClick: () => Mpris.getPlayer('')?.playPause(),
-    onScrollUp: () => Mpris.getPlayer('')?.next(),
-    onScrollDown: () => Mpris.getPlayer('')?.previous(),
-    child: Widget.Label({
-        connections: [[Mpris, self => {
-            const mpris = Mpris.getPlayer('');
-            // mpris player can be undefined
-            if (mpris)
-                self.label = `${mpris.trackArtists.join(', ')} - ${mpris.trackTitle}`;
-            else
-                self.label = 'Nothing is playing';
-        }]],
-    }),
-});
+//const Media = () => Widget.Button({
+//   className: 'media',
+//   onPrimaryClick: () => Mpris.getPlayer('')?.playPause(),
+//    onScrollUp: () => Mpris.getPlayer('')?.next(),
+//    onScrollDown: () => Mpris.getPlayer('')?.previous(),
+//    child: Widget.Label({
+//        connections: [[Mpris, self => {
+//            const mpris = Mpris.getPlayer('');
+//            // mpris player can be undefined
+//            if (mpris)
+//                self.label = `${mpris.trackArtists.join(', ')} - ${mpris.trackTitle}`;
+//            else
+//                self.label = 'Nothing is playing';
+//        }]],
+//    }),
+//});
 
 const Volume = () => Widget.Box({
     className: 'volume',
@@ -155,15 +155,15 @@ const SysTray = () => Widget.Box({
 // layout of the bar
 const Left = () => Widget.Box({
     children: [
+        Clock(),
         Workspaces(),
-        ClientTitle(),
     ],
 });
 
 const Center = () => Widget.Box({
     children: [
-        Media(),
         Notification(),
+        ClientTitle(),
     ],
 });
 
@@ -172,7 +172,6 @@ const Right = () => Widget.Box({
     children: [
         Volume(),
         BatteryLabel(),
-        Clock(),
         SysTray(),
     ],
 });
