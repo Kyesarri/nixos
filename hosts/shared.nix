@@ -115,7 +115,7 @@
         iwgtk # replaces network-manager-applet
         eww-wayland # do want to see if this is easier to config than WCP, loads faster?
         swaynotificationcenter # testing
-
+        python3
         (callPackage ../packages/wcp {}) # IT WORKS! Currently has bugs with RGBA colours, see package notes
         (callPackage ../packages/libfprint {}) # builds, need to write to the fprint reader now :)
       ];

@@ -1,4 +1,4 @@
-# TODO the fuck is happening here?
+# TODO wait for a future release to fix argb values, need to write my own hyprland config for this, same as ags - write to pipe commands
 {
   lib,
   stdenv,
