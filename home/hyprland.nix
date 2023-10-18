@@ -170,8 +170,10 @@ in {
       bind = $mainMod, J, togglesplit, # dwindle
       bind = ,Print, exec, shotman --capture output
 
-      bind = $mainMod, X, exec, echo 2 > /tmp/wcp
+      # bind = $mainMod, X, exec, echo 2 > /tmp/wcp
       # sends commands to wcp fifo, 2 is toggle, wonder how large that file can get during one session :D
+
+      bind = $mainMod, X, exec, swaync-client -t # opens sway notification center
 
       # sound
       binde = , xf86audioraisevolume, exec, pamixer -i 3 @DEFAULT_SINK@
