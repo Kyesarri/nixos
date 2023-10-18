@@ -1,4 +1,5 @@
 # TODO wait for a future release to fix argb values, need to write my own hyprland config for this, same as ags - write to pipe commands
+# commands are screwy, need to investigate further here as I don't believe this is compatible with hypr
 {
   lib,
   stdenv,

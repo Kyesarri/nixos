@@ -15,16 +15,20 @@ in {
     # change to .config if you have not modified your xdg config dir
     text = ''
       $w1 = hyprctl hyprpaper wallpaper "eDP-1,~/nixos/wallpaper/1.jpg"
+      #$sov1 = echo 1 > /tmp/sovpipe
+      #$sov1r = echo 0 > /tmp/sovpipe
+
       $w2 = hyprctl hyprpaper wallpaper "eDP-1,~/nixos/wallpaper/2.jpg"
       $w3 = hyprctl hyprpaper wallpaper "eDP-1,~/nixos/wallpaper/3.jpg"
       $w4 = hyprctl hyprpaper wallpaper "eDP-1,~/nixos/wallpaper/4.jpg"
 
-      exec-once = waybar & rog-control-center & hyprpaper & tailscale-systray
+      exec-once = rog-control-center & hyprpaper & tailscale-systray & waybar # & ags
       exec-once = gnome-keyring-daemon --start --components=secrets
       exec-once = dbus-update-activation-environment --all
-      exec-once = sleep 2 && copyq --start-server & kdeconnect-indicator
+      exec-once = sleep 2 && copyq --start-server
       exec-once = rm -f /tmp/wcp && mkfifo /tmp/wcp && tail -f /tmp/wcp | wcp -r ~/dots/config/wcp # fifo for wcp
-
+      # exec-once = rm -f /tmp/sovpipe && mkfifo /tmp/sovpipe && tail -f /tmp/sovpipe | sov -t 500 # fifo for sov
+      # sov does not work under hypr yet
       monitor=,1920x1080@120,auto,1
 
       env = XCURSOR_SIZE,36
@@ -165,6 +169,7 @@ in {
       bind = control, escape, exec, kitty -e btm
       bind = $mainMod, J, togglesplit, # dwindle
       bind = ,Print, exec, shotman --capture output
+
       bind = $mainMod, X, exec, echo 2 > /tmp/wcp
       # sends commands to wcp fifo, 2 is toggle, wonder how large that file can get during one session :D
 
@@ -190,17 +195,28 @@ in {
       21# Switch workspaces with mainMod + [0-9]
       bind = $mainMod, 1, workspace, 1
       bind = $mainMod, 1, exec, $w1
+      # bind = $mainMod, 1, exec, $sov1
+      # bindr = $mainMod, 1, exec, $sov1r
+
       bind = $mainMod, 2, workspace, 2
       bind = $mainMod, 2, exec, $w2
+
       bind = $mainMod, 3, workspace, 3
       bind = $mainMod, 3, exec, $w3
+
       bind = $mainMod, 4, workspace, 4
       bind = $mainMod, 4, exec, $w4
+
       bind = $mainMod, 5, workspace, 5
+
       bind = $mainMod, 6, workspace, 6
+
       bind = $mainMod, 7, workspace, 7
+
       bind = $mainMod, 8, workspace, 8
+
       bind = $mainMod, 9, workspace, 9
+
       bind = $mainMod, 0, workspace, 10
 
       # Move active window to a workspace with mainMod + SHIFT + [0-9]

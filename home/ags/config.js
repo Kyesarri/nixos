@@ -38,11 +38,12 @@ const Clock = () => Widget.Label({
     connections: [
         // this is bad practice, since exec() will block the main event loop
         // in the case of a simple date its not really a problem
-        [1000, self => self.label = exec('date "+%H:%M:%S %b %e."')],
+        [1000, self => self.label = exec('date "+%H:%M %e %b"')],
 
         // this is what you should do
-        [1000, self => execAsync(['date', '+%H:%M:%S %b %e.'])
+        [1000, self => execAsync(['date', '+%H:%M %e %b'])
             .then(date => self.label = date).catch(console.error)],
+            // removed seconds as it was blinking the box every update
     ],
 });
 
@@ -123,6 +124,7 @@ const Volume = () => Widget.Box({
 
 const BatteryLabel = () => Widget.Box({
     className: 'battery',
+    style: 'min-width: 180px',
     children: [
         Widget.Icon({
             connections: [[Battery, self => {

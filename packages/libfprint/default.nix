@@ -1,4 +1,4 @@
-# TODO errors when building, needs attention
+# builds, TODO need to figure out scripts from https://github.com/knauth/goodix-521d-explanation under NIX - issue being usb
 {
   lib,
   stdenv,

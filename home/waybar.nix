@@ -14,7 +14,6 @@ in {
   };
   home-manager.users.kel.home.file."dots/config/waybar/config.jsonc" = {
     text = ''
-      // vim: ft=jsonc
       {
         "layer": "top",
         // "output": [],
@@ -67,50 +66,45 @@ in {
 
           "tray"
         ],
+
         "hyprland/workspaces": {
           "format": " {icon} ",
           "format-icons": {
-            "1": "󰄰",
-            "2": "󰄰",
-            "3": "󰄰",
-            "4": "󰄰",
-            "5": "󰄰",
-            "6": "󰄰",
-            "7": "󰄰",
-            "8": "󰄰",
-            "9": "󰄰",
-            "urgent": "",
-            "focused": "",
-            "default": "",
-            "default": "1"
+            "default": "󰄰",
+            "active": ""
           },
           "on-click": "activate"
         },
+
         "hyprland/submap": {
           "format": "{}",
           "tooltip": false
         },
+
         "hyprland/window": {
           "format": " {} ",
           "separate-outputs": false
         },
 
         "tray": {
-          "icon-size": 18,
+          "icon-size": 15,
           "spacing": 10
         },
+
         "cpu": {
           "format": " {usage}%",
           "on-click": "",
           "tooltip": false
         },
+
         "memory": {
           "format": "󰍛 {used:0.1f}GB ({percentage}%) / {total:0.1f}GB",
           "on-click": "",
           "tooltip": false
         },
+
         "backlight": {
-          "format": " {icon} {percent}% ",
+          "format": " {icon} {percent} ",
           "format-icons": [
             "󰃟"
           ],
@@ -119,8 +113,9 @@ in {
           "on-click": "brightnessctl set 0",
           "tooltip": false
         },
+
       	"pulseaudio#audio": {
-      		"format": " {icon} {volume:2}% ",
+      		"format": " {icon} {volume:2} ",
       		"format-bluetooth": " {icon} {volume}%  ",
       		"format-muted": " {icon} Muted ",
       		"format-icons": {
@@ -131,12 +126,13 @@ in {
       			]
       		},
       		"scroll-step": 5,
-      		"on-click": "pamixer -t",
-      		"on-click-right": "pavucontrol"
+      		"on-click": "pavucontrol",
+      		"on-click-right": "pamixer -t"
       	},
+
         "network#wlp2s0": {
           "interval": 1,
-          "interface": "wlp2s0",
+          "interface": "wlan0",
           "format-icons": [
             "󰤯",
             "󰤟",
@@ -145,31 +141,32 @@ in {
             "󰤨"
           ],
           "format-wifi": " {icon}  ", // added multiple spaces to the right, was not aligning center correctly, still is not :(
-          // "format-disconnected": "󰤮",
-          "format-disconnected": " 󰤭 ",
-          // "format-alt": "{icon} {essid} | 󱑽 {signalStrength}% {signaldBm} dBm {frequency} MHz",
+          "format-disconnected": "󰤮",
           "on-click": "iwgtk",
           "tooltip": true,
           "tooltip-format": "󰢮 {ifname}\n󰩟 {ipaddr}/{cidr}\n{icon} {essid}\n󱑽 {signalStrength}% {signaldBm} dBm {frequency} MHz\n󰞒 {bandwidthDownBytes}\n󰞕 {bandwidthUpBytes}"
         },
+
         "bluetooth": {
           "format-disabled": "   ",
           "format-off": "   ",
           "format-on": " 󰂯 ",
           "format-connected": " 󰂯 ",
           "format-connected-battery": " 󰂯 ",
-          "tooltip-format-connected": " {device_alias} 󰂄{device_battery_percentage}% ",
+          "tooltip-format-connected": " {device_alias} 󰂄{device_battery_percentage} ",
           "on-click": "blueberry",
           "tooltip": true
         },
+
         "battery": {
           "states": {
             "warning": 20,
             "critical": 10
           },
-          "format": " {icon} {capacity}% ",
-          "format-charging": " 󰂄 {capacity}% ",
-          "format-plugged": " 󱘖 {capacity}% ",
+
+          "format": " {icon} {capacity} ",
+          "format-charging": " 󰂄 {capacity} ",
+          "format-plugged": " 󱘖 {capacity} ",
           "format-icons": [
             "󰁺",
             "󰁻",
@@ -191,24 +188,6 @@ in {
   };
   home-manager.users.kel.home.file."dots/config/waybar/style.css" = {
     text = ''
-      @define-color white      #F2F2F2;
-      @define-color black      #000203;
-      @define-color text       #BECBCB;
-      @define-color lightgray  #686868;
-      @define-color darkgray   #353535;
-      @define-color red        #F38BA8;
-
-      @define-color black-transparent-1 rgba(0, 0, 0, 0.1);
-      @define-color black-transparent-2 rgba(0, 0, 0, 0.2);
-      @define-color black-transparent-3 rgba(0, 0, 0, 0.3);
-      @define-color black-transparent-4 rgba(0, 0, 0, 0.4);
-      @define-color black-transparent-5 rgba(0, 0, 0, 0.5);
-      @define-color black-transparent-6 rgba(0, 0, 0, 0.6);
-      @define-color black-transparent-7 rgba(0, 0, 0, 0.7);
-      @define-color black-transparent-8 rgba(0, 0, 0, 0.8);
-      @define-color black-transparent-9 rgba(0, 0, 0, 0.9);
-      @define-color black-solid         rgba(0, 0, 0, 1.0);
-
       * {
           font-size: 14px;
           font-family: "Hasklug Nerd Font";
@@ -219,7 +198,7 @@ in {
         background-color: transparent;
         color: #${config.colorScheme.colors.base05};
         /* border-radius: 20px; */
-        /* border: 1px solid @black; */
+        /* border: 1px solid #${config.colorScheme.colors.base00}; */
       }
 
       tooltip {
@@ -249,8 +228,7 @@ in {
         box-shadow: inherit;
         text-shadow: inherit;
         background-color: #${config.colorScheme.colors.base04};
-        border: 0px solid @lightgray;
-        color: @white;
+        color: #${config.colorScheme.colors.base09};
         min-width: 30px;
         transition: all 0.3s ease;
       }
@@ -258,8 +236,7 @@ in {
       #workspaces button.focused,
       #workspaces button.active {
         background-color: #${config.colorScheme.colors.base02};
-        border: 0px solid @lightgray;
-        color: @white;
+        color: #${config.colorScheme.colors.base09};
         min-width: 30px;
         transition: all 0.3s ease;
         animation: colored-gradient 10s ease infinite;
@@ -267,13 +244,13 @@ in {
 
       /* #workspaces button.focused:hover,
       #workspaces button.active:hover {
-        background-color: @white;
+        background-color: #${config.colorScheme.colors.base09};
         transition: all 1s ease;
       } */
 
       #workspaces button.urgent {
-        background-color: @red;
-        color: @black;
+        background-color: #${config.colorScheme.colors.base0F};
+        color: #${config.colorScheme.colors.base00};
         transition: all 0.3s ease;
       }
 
@@ -296,7 +273,7 @@ in {
 
       #taskbar button:hover {
         background: transparent;
-        border: 1px solid @darkgray;
+        border: 1px solid #${config.colorScheme.colors.base02};
         border-radius: 8px;
         transition: all 0.3s ease;
         animation: colored-gradient 10s ease infinite;
@@ -307,7 +284,7 @@ in {
       /* #taskbar button.minimized {} */
 
       #taskbar button.active {
-        border: 1px solid @darkgray;
+        border: 1px solid #${config.colorScheme.colors.base02};
         border-radius: 8px;
         transition: all 0.3s ease;
         animation: colored-gradient 10s ease infinite;
@@ -405,7 +382,7 @@ in {
       }
       #tray > .needs-attention {
         -gtk-icon-effect: highlight;
-        background-color: @red;
+        background-color: #${config.colorScheme.colors.base0F};
       }
 
     '';

@@ -12,8 +12,9 @@
     #networkmanager.enable = true;
     firewall = {
       enable = true;
-      checkReversePath = "loose"; # fixes some connection issues with tailscale, could not find local network without this option
+      checkReversePath = "loose"; # fixes some connection issues with tailscale, could not connect to tailnet or internet outside of home -
       allowedTCPPortRanges = [
+        # without this option enabled
         {
           from = 1714;
           to = 1764;
@@ -31,8 +32,14 @@
   };
 
   services.tailscale.useRoutingFeatures = "client"; # set as client for tailscale
-  systemd.services.NetworkManager-wait-online.enable = false; # workaround for a bug with networking when building with flakes
-  systemd.services.systemd-networkd-wait-online.enable = false; # same as above
+  #systemd.services.NetworkManager-wait-online.enable = false; # workaround for a bug with networkmanager building with flakes, not needed with iwd
+  systemd.services.systemd-networkd-wait-online.enable = false; # same as above, might? be needed with iwd
+  services.upower = {
+    # using upower for battery monitoring, waybar needs some configuration for this too :)
+    enable = true;
+    percentageCritical = 10;
+    percentageLow = 15;
+  };
 
   programs = {
     dconf.enable = true;
@@ -115,9 +122,12 @@
         iwgtk # replaces network-manager-applet
         eww-wayland # do want to see if this is easier to config than WCP, loads faster?
         swaynotificationcenter # testing
+        slack
         python3
+        mate.engrampa # archive manager from mate
         (callPackage ../packages/wcp {}) # IT WORKS! Currently has bugs with RGBA colours, see package notes
         (callPackage ../packages/libfprint {}) # builds, need to write to the fprint reader now :)
+        # (callPackage ../packages/sov {}) # sway overview, needs some hyprland config to see if works on hyprland
       ];
     };
   };

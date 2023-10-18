@@ -10,6 +10,7 @@
 in {
   home-manager.users.kel.home.file."./dots/config/ags/config.js".source = ./config.js; # hard to use a .js in nix so symlink works for me
   home-manager.users.kel.home.file."dots/config/ags/style.css" = {
+    # css is much easier, defined here
     text = ''
           label {
           font-family: "Hasklug Nerd Font";
@@ -35,7 +36,7 @@ in {
 
       .clock {
           margin: 0 6px;
-          font-size: 1.1em;
+          font-size: 1em;
       }
 
       progress, highlight {
