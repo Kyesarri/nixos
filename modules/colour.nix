@@ -1,3 +1,4 @@
+# TODO un-used, legacy for polybar
 # example = "#${colour.red1}";
 # # is required, workaround to add transparency if required later
 # to enable transparency:

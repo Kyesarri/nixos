@@ -9,23 +9,22 @@
   ...
 }: {
   networking = {
-    #networkmanager.enable = true;
     firewall = {
       enable = true;
       checkReversePath = "loose"; # fixes some connection issues with tailscale, could not connect to tailnet or internet outside of home -
+      # without this option enabled
       allowedTCPPortRanges = [
-        # without this option enabled
         {
           from = 1714;
           to = 1764;
         }
-      ]; # kdeconnect
+      ];
       allowedUDPPortRanges = [
         {
           from = 1714;
           to = 1764;
         }
-      ]; # kdeconnect
+      ];
       allowedUDPPorts = [41641]; # tailscale
       allowedTCPPorts = [3389]; # rdp
     };
@@ -35,8 +34,7 @@
   #systemd.services.NetworkManager-wait-online.enable = false; # workaround for a bug with networkmanager building with flakes, not needed with iwd
   systemd.services.systemd-networkd-wait-online.enable = false; # same as above, might? be needed with iwd
   services.upower = {
-    # using upower for battery monitoring, waybar needs some configuration for this too :)
-    enable = true;
+    enable = true; # using upower for battery monitoring, waybar needs some configuration for this too :)
     percentageCritical = 10;
     percentageLow = 15;
   };

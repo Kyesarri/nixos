@@ -6,7 +6,6 @@
   ...
 }: {
   system.stateVersion = "23.05";
-  #networking.networkmanager.enable = true;
   time.timeZone = "Australia/Melbourne";
   nixpkgs.config.allowUnfree = true;
   security.pam.services.gdm.enableGnomeKeyring = true; # keyring support for GDM

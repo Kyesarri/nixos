@@ -12,7 +12,7 @@ in {
         "positionX": "center",
         "positionY": "top",
         "layer": "overlay",
-        "control-center-layer": "overlay",
+        "control-center-layer": "overlayre",
         "layer-shell": true,
         "cssPriority": "application",
         "control-center-margin-top": 0,

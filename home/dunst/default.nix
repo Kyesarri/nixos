@@ -1,10 +1,9 @@
 {pkgs, ...}: {
-  users.users.kel.packages = with pkgs; [
-    dunst
-  ];
+  # users.users.kel.packages = with pkgs; [
+  # dunst
+  # ];
+  home-manager.users.kel.services.dunst.enable = true;
   imports = [
-    #./config.nix
-    #./style.nix
-    #./configSchema.nix
+    ./config.nix
   ];
 }
