@@ -1,3 +1,4 @@
+# TODO dont believe this is required? Config should handle all of these values, is this generated from the config?
 {
   config,
   inputs,
@@ -6,7 +7,7 @@
 }: let
   inherit (inputs.nix-colors) colorSchemes;
 in {
-  home-manager.users.kel.home.file."dots/config/swaync/style.css" = {
+  home-manager.users.kel.home.file."dots/config/swaync/configSchema.json" = {
     text = ''
 
       {

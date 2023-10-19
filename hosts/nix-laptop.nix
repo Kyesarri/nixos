@@ -28,6 +28,9 @@
     ../home/wcp.nix
     ../home/wofi.nix
     ../home/ags
+    ../home/dunst
+    # ../home/swaync
+
     # this is only for dots, might need refactor
     # shits getting messy, defs needs a refactor
     #

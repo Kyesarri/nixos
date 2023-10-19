@@ -121,7 +121,6 @@
         iwd # wireless network daemon
         iwgtk # replaces network-manager-applet
         eww-wayland # do want to see if this is easier to config than WCP, loads faster?
-        swaynotificationcenter # testing
         slack
         python3
         mate.engrampa # archive manager from mate

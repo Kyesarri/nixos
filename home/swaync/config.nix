@@ -7,18 +7,12 @@
   inherit (inputs.nix-colors) colorSchemes;
 in {
   home-manager.users.kel.home.file."dots/config/swaync/config.json" = {
-    # wondering if I can use     extraConfig = lib.fileContents ./hyprland.conf; and still have the colors
-    # passed through to my hyprland config, otherwise have nix build a color chart and import via
-    # symlinked hyprland.conf
-    #
-    # this writes below contents to the above dots/config/hypr/hyprland.conf file
-    # change to .config if you have not modified your xdg config dir
     text = ''
         "$schema": @JSONPATH@,
-        "positionX": "right",
+        "positionX": "center",
         "positionY": "top",
         "layer": "overlay",
-        "control-center-layer": "top",
+        "control-center-layer": "overlay",
         "layer-shell": true,
         "cssPriority": "application",
         "control-center-margin-top": 0,
