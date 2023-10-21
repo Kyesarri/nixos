@@ -6,7 +6,7 @@
 }: let
   inherit (inputs.nix-colors) colorSchemes;
 in {
-  home-manager.users.kel.home.file."dots/config/dunst/dunstrc" = {
+  home-manager.users.kel.home.file."/.config/dunst/dunstrc" = {
     text = ''
       [global]
       font="Hasklug Nerd Font Regular 9"

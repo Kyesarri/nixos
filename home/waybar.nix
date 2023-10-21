@@ -12,7 +12,7 @@ in {
     enable = true;
     package = pkgs.waybar.override (oldAttrs: {pulseSupport = true;});
   };
-  home-manager.users.kel.home.file."dots/config/waybar/config.jsonc" = {
+  home-manager.users.kel.home.file.".config/waybar/config.jsonc" = {
     text = ''
       {
         "layer": "top",
@@ -186,7 +186,7 @@ in {
 
     '';
   };
-  home-manager.users.kel.home.file."dots/config/waybar/style.css" = {
+  home-manager.users.kel.home.file.".config/waybar/style.css" = {
     text = ''
       * {
           font-size: 14px;

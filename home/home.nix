@@ -7,6 +7,7 @@
 }: {
   home-manager.useUserPackages = true; # install packages to /etc/profiles instead of ~/.nix-profile
   home-manager.useGlobalPkgs = true; # this saves an extra Nixpkgs evaluation, adds consistency,
+
   # and removes the dependency on NIX_PATH, which is otherwise used for importing Nixpkgs.
   home-manager.users.kel = {
     pkgs,
@@ -23,8 +24,15 @@
     xdg.enable = true;
     home.username = "kel";
     home.homeDirectory = "/home/kel";
-    programs.home-manager.enable = true;
     home.stateVersion = "23.05";
+
+    services.kdeconnect = {
+      enable = true;
+      indicator = true;
+    };
+
+    programs.home-manager.enable = true;
+
     programs.git = {
       enable = true;
       extraConfig = {

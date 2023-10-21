@@ -18,21 +18,19 @@
           from = 1714;
           to = 1764;
         }
-      ];
+      ]; # kdeconnect
       allowedUDPPortRanges = [
         {
           from = 1714;
           to = 1764;
         }
-      ];
+      ]; # kdeconnect
       allowedUDPPorts = [41641]; # tailscale
       allowedTCPPorts = [3389]; # rdp
     };
   };
 
   services.tailscale.useRoutingFeatures = "client"; # set as client for tailscale
-  #systemd.services.NetworkManager-wait-online.enable = false; # workaround for a bug with networkmanager building with flakes, not needed with iwd
-  systemd.services.systemd-networkd-wait-online.enable = false; # same as above, might? be needed with iwd
   services.upower = {
     enable = true; # using upower for battery monitoring, waybar needs some configuration for this too :)
     percentageCritical = 10;
@@ -60,11 +58,13 @@
   environment = {
     sessionVariables = rec
     {
+      QT_QPA_PLATFORM = "wayland";
+      QT_QPA_PLATFORMTHEME = "qt5ct";
       MOZ_ENABLE_WAYLAND = "1";
       GTK_THEME = "Tokyonight-Dark-B"; # sets default gtk theme to dark
       #      GTK_ICON_THEME = "Qogir-Dark"; # dont know if this works, does not throw an error but no icons are appplied :)
       XDG_CACHE_HOME = "$HOME/.cache";
-      XDG_CONFIG_HOME = "$HOME/dots/config"; # moves config to home/share rather than home/.config
+      XDG_CONFIG_HOME = "$HOME/.config"; # moves config to home/share rather than home/.config
       XDG_DATA_HOME = "$HOME/dots/share"; # will move to /home/nixos soon
       XDG_STATE_HOME = "$HOME/dots/state";
       NIXOS_OZONE_WL = "1"; # fixes electron apps in wayland
@@ -78,6 +78,7 @@
       wget
       libsecret
       gitAndTools.gitFull
+      lxqt.lxqt-policykit
     ];
   };
 
@@ -89,7 +90,6 @@
       extraGroups = ["networkmanager" "wheel"];
       packages = with pkgs; [
         firefox # the lad
-        kdeconnect # phone sync, thing isnt working atm :(
         nvtop # watching gpu usage
         tailscale # mah boi
         tailscale-systray
@@ -110,7 +110,6 @@
         gnome.seahorse # key management
         blueberry # bluetooth gui
         shotman # screenshot gui
-        mc # sexy cli file manager (slow startup)
         hyprpicker # colour picker for wayland
         copyq # wayland clipboard manager
         tokyo-night-gtk # gtk theme
@@ -121,6 +120,8 @@
         eww-wayland # do want to see if this is easier to config than WCP, loads faster?
         slack
         python3
+        libnotify
+        wlogout
         mate.engrampa # archive manager from mate
         (callPackage ../packages/wcp {}) # IT WORKS! Currently has bugs with RGBA colours, see package notes
         (callPackage ../packages/libfprint {}) # builds, need to write to the fprint reader now :)

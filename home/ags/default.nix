@@ -8,8 +8,8 @@
 }: let
   inherit (inputs.nix-colors) colorSchemes;
 in {
-  home-manager.users.kel.home.file."./dots/config/ags/config.js".source = ./config.js; # hard to use a .js in nix so symlink works for me
-  home-manager.users.kel.home.file."dots/config/ags/style.css" = {
+  home-manager.users.kel.home.file."./.config/ags/config.js".source = ./config.js; # hard to use a .js in nix so symlink works for me
+  home-manager.users.kel.home.file.".config/ags/style.css" = {
     # css is much easier, defined here
     text = ''
           label {

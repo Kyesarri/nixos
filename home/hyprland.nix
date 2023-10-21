@@ -6,7 +6,7 @@
 }: let
   inherit (inputs.nix-colors) colorSchemes;
 in {
-  home-manager.users.kel.home.file."dots/config/hypr/hyprland.conf" = {
+  home-manager.users.kel.home.file.".config/hypr/hyprland.conf" = {
     # wondering if I can use     extraConfig = lib.fileContents ./hyprland.conf; and still have the colors
     # passed through to my hyprland config, otherwise have nix build a color chart and import via
     # symlinked hyprland.conf
@@ -14,25 +14,41 @@ in {
     # this writes below contents to the above dots/config/hypr/hyprland.conf file
     # change to .config if you have not modified your xdg config dir
     text = ''
-       $w1 = hyprctl hyprpaper wallpaper "eDP-1,~/nixos/wallpaper/1.jpg"
-       #$sov1 = echo 1 > /tmp/sovpipe
-       #$sov1r = echo 0 > /tmp/sovpipe
+       # $sov1 = echo 1 > /tmp/sovpipe
+       # $sov1r = echo 0 > /tmp/sovpipe
 
-       $w2 = hyprctl hyprpaper wallpaper "eDP-1,~/nixos/wallpaper/2.jpg"
-       $w3 = hyprctl hyprpaper wallpaper "eDP-1,~/nixos/wallpaper/3.jpg"
-       $w4 = hyprctl hyprpaper wallpaper "eDP-1,~/nixos/wallpaper/4.jpg"
+       ############################################# spaghetti starts here #############################################
+
+       ############################################# hyprpaper #############################################
+
+       $w1 = hyprctl hyprpaper wallpaper "eDP-1,~/nixos/wallpaper/5.jpg"
+       $w2 = hyprctl hyprpaper wallpaper "eDP-1,~/nixos/wallpaper/6.jpg"
+       $w3 = hyprctl hyprpaper wallpaper "eDP-1,~/nixos/wallpaper/7.jpg"
+       $w4 = hyprctl hyprpaper wallpaper "eDP-1,~/nixos/wallpaper/8.jpg"
+       $w5 = hyprctl hyprpaper wallpaper "eDP-1,~/nixos/wallpaper/1.jpg"
+       $w6 = hyprctl hyprpaper wallpaper "eDP-1,~/nixos/wallpaper/2.jpg"
+       $w7 = hyprctl hyprpaper wallpaper "eDP-1,~/nixos/wallpaper/3.jpg"
+       $w8 = hyprctl hyprpaper wallpaper "eDP-1,~/nixos/wallpaper/4.jpg"
+
+       ############################################# exec-once #############################################
 
        exec-once = rog-control-center & hyprpaper & tailscale-systray & waybar # & ags
-       exec-once = gnome-keyring-daemon --start --components=secrets
-       exec-once = dbus-update-activation-environment --all
+       exec-once = sleep 4 && gnome-keyring-daemon --start --components=secrets
+       exec-once = sleep 6 && dbus-update-activation-environment --all
        exec-once = sleep 2 && copyq --start-server
-       exec-once = rm -f /tmp/wcp && mkfifo /tmp/wcp && tail -f /tmp/wcp | wcp -r ~/dots/config/wcp # fifo for wcp
+       exec-once = lxqt-policykit-agent
+
+       # exec-once = rm -f /tmp/wcp && mkfifo /tmp/wcp && tail -f /tmp/wcp | wcp -r ~/dots/config/wcp # fifo for wcp
        # exec-once = rm -f /tmp/sovpipe && mkfifo /tmp/sovpipe && tail -f /tmp/sovpipe | sov -t 500 # fifo for sov
        # sov does not work under hypr yet
+
+       ############################################# misc #############################################
+
        monitor=,1920x1080@120,auto,1
 
        env = XCURSOR_SIZE,36
        env = WLR_NO_HARDWARE_CURSORS,1
+
 
        misc {
          disable_hyprland_logo = true
@@ -144,15 +160,21 @@ in {
        }
 
 
+       ############################################ window rules floating ############################################
+
        windowrule = float, ^(kitty)$
        windowrule = float, title:Bluetooth
        windowrule = float, title:Volume Control
        windowrule = float, title:iwgtk
        windowrule = float, title:CopyQ
+       windowrule = float, title:Authentication Required
+
+       ############################################ window transparency rules ############################################
 
        windowrulev2 = opacity 0.8 0.8,class:^(kitty)$
 
-       # See https://wiki.hyprland.org/Configuring/Keywords/ for more
+       ############################################ binds ############################################
+
        $mainMod = SUPER
 
        # Example binds, see https://wiki.hyprland.org/Configuring/Binds/ for more
@@ -212,16 +234,16 @@ in {
        bind = $mainMod, 4, exec, $w4
 
        bind = $mainMod, 5, workspace, 5
+       bind = $mainMod, 5, exec, $w5
 
        bind = $mainMod, 6, workspace, 6
+       bind = $mainMod, 6, exec, $w6
 
        bind = $mainMod, 7, workspace, 7
+       bind = $mainMod, 7, exec, $w7
 
        bind = $mainMod, 8, workspace, 8
-
-       bind = $mainMod, 9, workspace, 9
-
-       bind = $mainMod, 0, workspace, 10
+       bind = $mainMod, 8, exec, $w8Z
 
        # Move active window to a workspace with mainMod + SHIFT + [0-9]
        bind = $mainMod SHIFT, 1, movetoworkspace, 1
@@ -232,8 +254,7 @@ in {
        bind = $mainMod SHIFT, 6, movetoworkspace, 6
        bind = $mainMod SHIFT, 7, movetoworkspace, 7
        bind = $mainMod SHIFT, 8, movetoworkspace, 8
-       bind = $mainMod SHIFT, 9, movetoworkspace, 9
-       bind = $mainMod SHIFT, 0, movetoworkspace, 10
+
 
        # Scroll through existing workspaces with mainMod + scroll
        bind = $mainMod, mouse_down, workspace, e+1

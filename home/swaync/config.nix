@@ -6,7 +6,7 @@
 }: let
   inherit (inputs.nix-colors) colorSchemes;
 in {
-  home-manager.users.kel.home.file."dots/config/swaync/config.json" = {
+  home-manager.users.kel.home.file.".config/swaync/config.json" = {
     text = ''
         "$schema": @JSONPATH@,
         "positionX": "center",
