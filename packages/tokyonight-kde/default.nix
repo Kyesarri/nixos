@@ -2,6 +2,7 @@
   stdenv,
   lib,
   fetchFromGitHub,
+  ...
 }:
 stdenv.mkDerivation rec {
   pname = "tokyonight-kde";
@@ -11,6 +12,7 @@ stdenv.mkDerivation rec {
     owner = "nonetrix";
     repo = pname;
     rev = "1e6d8a4e515be9f80959e0a7500bf1aede256dd7";
+    sha256 = "sha256-Uacbt86KsExXN6exsynCUrzY5AYkBk5SUDUWYPYEkL8=";
   };
 
   installPhase = ''
@@ -30,4 +32,3 @@ stdenv.mkDerivation rec {
     platforms = platforms.all;
   };
 }
-https://github.com/nonetrix/tokyonight-kde
