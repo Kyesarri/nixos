@@ -59,7 +59,7 @@
     sessionVariables = rec
     {
       QT_QPA_PLATFORM = "wayland";
-      QT_QPA_PLATFORMTHEME = "qt5ct";
+      QT_QPA_PLATFORMTHEME = "gtk2";
       MOZ_ENABLE_WAYLAND = "1";
       GTK_THEME = "Tokyonight-Dark-B"; # sets default gtk theme to dark
       #      GTK_ICON_THEME = "Qogir-Dark"; # dont know if this works, does not throw an error but no icons are appplied :)
@@ -123,6 +123,7 @@
         libnotify
         wlogout
         mate.engrampa # archive manager from mate
+        (callPackage ../packages/tokyonight-kde {})
         (callPackage ../packages/wcp {}) # IT WORKS! Currently has bugs with RGBA colours, see package notes
         (callPackage ../packages/libfprint {}) # builds, need to write to the fprint reader now :)
         # (callPackage ../packages/sov {}) # sway overview, needs some hyprland config to see if works on hyprland

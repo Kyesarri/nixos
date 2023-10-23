@@ -1,7 +1,7 @@
 #!/usr/bin/env bash                                                                                                       
                                                                                                                          
 # Arbitrary but unique message id                                                                                        
-msgId="69420"                                                                                                           
+msgId="42069"                                                                                                           
                                                                                                                          
 # Change the volume using alsa(might differ if you use pulseaudio)                                                       
 #amixer -c 0 set Master "$@" > /dev/null                                                                                 
