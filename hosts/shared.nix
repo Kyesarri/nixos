@@ -122,6 +122,7 @@
         python3
         libnotify
         wlogout
+        go-upower-notify
         mate.engrampa # archive manager from mate
         (callPackage ../packages/tokyonight-kde {})
         (callPackage ../packages/wcp {}) # IT WORKS! Currently has bugs with RGBA colours, see package notes

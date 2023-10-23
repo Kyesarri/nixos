@@ -16,7 +16,8 @@ in {
       highlight="#${config.colorscheme.colors.base0E}"
       progress_bar_corner_radius = 10
       height=300
-      icon_theme=qogir-dark
+      icon_theme=Qogir-dark
+      enable_recursive_icon_lookup = true
       offset="30x50"
       origin="top-center"
       transparency=10
@@ -25,6 +26,9 @@ in {
       frame_width=5
       timeout=4
 
+      [signed_on]
+      appname = changeVolume
+      history_ignore=yes
 
       [urgency_normal]
       background="#${config.colorscheme.colors.base00}"

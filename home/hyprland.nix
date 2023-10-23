@@ -10,9 +10,6 @@ in {
     # wondering if I can use     extraConfig = lib.fileContents ./hyprland.conf; and still have the colors
     # passed through to my hyprland config, otherwise have nix build a color chart and import via
     # symlinked hyprland.conf
-    #
-    # this writes below contents to the above dots/config/hypr/hyprland.conf file
-    # change to .config if you have not modified your xdg config dir
     text = ''
 
              ############################################# spaghetti starts here #############################################
@@ -35,6 +32,7 @@ in {
              exec-once = sleep 6 && dbus-update-activation-environment --all
              exec-once = sleep 2 && copyq --start-server
              exec-once = lxqt-policykit-agent
+             exec-once = upower-notify
 
              # exec-once = rm -f /tmp/wcp && mkfifo /tmp/wcp && tail -f /tmp/wcp | wcp -r ~/dots/config/wcp # fifo for wcp
              # exec-once = rm -f /tmp/sovpipe && mkfifo /tmp/sovpipe && tail -f /tmp/sovpipe | sov -t 500 # fifo for sov
@@ -226,8 +224,8 @@ in {
              # brightness
 
              ## screen
-             binde = , XF86MonBrightnessDown, exec, brightnessctl set 3%-
-             binde = , XF86MonBrightnessUp, exec, brightnessctl set 3%+
+             binde = , XF86MonBrightnessDown, exec, ~/nixos/scripts/dunst/brightnessctl.sh down
+             binde = , XF86MonBrightnessUp, exec, ~/nixos/scripts/dunst/brightnessctl.sh up
 
              ## keyboard
 

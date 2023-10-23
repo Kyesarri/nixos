@@ -31,6 +31,7 @@
   hardware = {
     nvidia.modesetting.enable = true;
     pulseaudio.enable = false;
+
     opengl = {
       enable = true;
       driSupport = true;
