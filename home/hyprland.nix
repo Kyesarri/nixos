@@ -32,7 +32,7 @@ in {
              exec-once = sleep 6 && dbus-update-activation-environment --all
              exec-once = sleep 2 && copyq --start-server
              exec-once = lxqt-policykit-agent
-             exec-once = upower-notify
+             exec-once = sleep 8 && upower-notify
 
              # exec-once = rm -f /tmp/wcp && mkfifo /tmp/wcp && tail -f /tmp/wcp | wcp -r ~/dots/config/wcp # fifo for wcp
              # exec-once = rm -f /tmp/sovpipe && mkfifo /tmp/sovpipe && tail -f /tmp/sovpipe | sov -t 500 # fifo for sov
@@ -209,11 +209,12 @@ in {
              bind = control, escape, exec, kitty -e btm
              bind = $mainMod, J, togglesplit, # dwindle
              bind = ,Print, exec, shotman --capture output
+             bind = $mainMod, X, exec, dunstctl history-pop
+
 
              # bind = $mainMod, X, exec, echo 2 > /tmp/wcp
-             # sends commands to wcp fifo, 2 is toggle, wonder how large that file can get during one session :D
+             # sends commands to wcp fifo, 1 show 2 toggle 3 close
 
-             bind = $mainMod, X, exec, dunstctl history-pop
              # dunst history
 
              # sound

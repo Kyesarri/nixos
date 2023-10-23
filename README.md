@@ -8,16 +8,13 @@
 
 ## issues:
 - has more spaghetti than usual, needs a good cleanup
-- pls add https://github.com/Aylur/ags/blob/main/flake.nix
+- is a wip, many things changing 
+- wont ever be "complete"
 
 ## whats included:
-- nix-colors themed hyprland / waybar / terminal
-- grub + gdm
+- nix-colors themed hyprland / waybar / kitty - may change to wpg
+- grub + gdm - might change at a later time
 - hyprland + hyprpaper
-- waybar
 - xanmod kernel with questionable modules running
-- tailscale with tray
-- steam
 - zsh + ohmyzsh
-- kitty
 - spaghetti

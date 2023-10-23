@@ -22,7 +22,7 @@ in {
 
       #outer-box {
         margin: 5px;
-        border: 5;
+        border: 5px;
         border-radius: 10px;
       }
 
@@ -37,7 +37,7 @@ in {
 
       #inner-box {
         background-color: #${config.colorScheme.colors.base00};
-        border: 5;
+        border: 5px;
         border-radius: 10px;
       }
 
@@ -56,13 +56,13 @@ in {
         margin: 5px;
         background-color: #${config.colorScheme.colors.base01};
         border-radius: 10px;
-        border: 5;
+        border: 5px;
       }
       #entry:selected {
         background-color: #${config.colorScheme.colors.base02};
         border: 5px solid #${config.colorScheme.colors.base03};
         border-radius: 10px;
-        border: 5;
+        border: 5px;
       }
 
       #img {
