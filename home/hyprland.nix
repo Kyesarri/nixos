@@ -158,6 +158,8 @@ in {
                no_gaps_when_only = false
                pseudotile = true # master switch for pseudotiling. Enabling is bound to mainMod + P in the keybinds section below
                preserve_split = true # you probably want this
+               smart_resizing = true
+               force_split = 2
              }
 
              master {
@@ -194,7 +196,6 @@ in {
 
              $mainMod = SUPER
 
-             # Example binds, see https://wiki.hyprland.org/Configuring/Binds/ for more
              bind = $mainMod, Q, exec, kitty
              bind = $mainMod, C, killactive,
              bind = $mainMod, M, exit,
@@ -215,8 +216,6 @@ in {
              # bind = $mainMod, X, exec, echo 2 > /tmp/wcp
              # sends commands to wcp fifo, 1 show 2 toggle 3 close
 
-             # dunst history
-
              # sound
              binde = , xf86audioraisevolume, exec, ~/nixos/scripts/dunst/pipewire.sh up
              binde = , xf86audiolowervolume, exec, ~/nixos/scripts/dunst/pipewire.sh down
@@ -225,11 +224,12 @@ in {
              # brightness
 
              ## screen
-             binde = , XF86MonBrightnessDown, exec, ~/nixos/scripts/dunst/brightnessctl.sh down
              binde = , XF86MonBrightnessUp, exec, ~/nixos/scripts/dunst/brightnessctl.sh up
+             binde = , XF86MonBrightnessDown, exec, ~/nixos/scripts/dunst/brightnessctl.sh down
 
              ## keyboard
-
+             binde = , XF86KbdBrightnessUp, exec, ~/nixos/scripts/dunst/asusctl.sh up
+             binde = , XF86KbdBrightnessDown, exec, ~/nixos/scripts/dunst/asusctl.sh down
 
 
              # Move focus with mainMod + arrow keys

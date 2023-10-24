@@ -24,7 +24,7 @@ in {
       width=300
       corner_radius=10
       frame_width=5
-      timeout=4
+      timeout=3
 
       [signed_on]
       appname = changeVolume
@@ -34,7 +34,7 @@ in {
       background="#${config.colorscheme.colors.base00}"
       foreground="#${config.colorscheme.colors.base05}"
       highlight="#${config.colorscheme.colors.base0E}"
-      timeout=4
+      timeout=3
 
     '';
   };
