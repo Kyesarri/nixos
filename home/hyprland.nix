@@ -74,7 +74,7 @@ in {
              # $sov1 = echo 1 > /tmp/sovpipe
              # $sov1r = echo 0 > /tmp/sovpipe
 
-            ### set nix-colors here, reduces bulk and increases readability ###
+            ### define nix-colors here, reduces bulk and increases readability ###
 
             $c0 = rgba(${config.colorscheme.colors.base00}FF)
             $c1 = rgba(${config.colorscheme.colors.base01}FF)
@@ -99,7 +99,7 @@ in {
                  border_size = 5
                  resize_on_border = true
                  layout = dwindle
-                 col.active_border = $c0 $c0 $c3 $c0 $c0 $cf 60deg # max 10 :)
+                 col.active_border = $c0 $c4 $c3 $c2 $c1 $c0 90deg # max 10 :)
                  col.inactive_border = $c0
              }
 
