@@ -45,6 +45,7 @@
 
       "nix-desktop" = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
+                specialArgs = {inherit inputs;};
         modules = [
           ./hosts/nix-desktop.nix
           {environment.systemPackages = [alejandra.defaultPackage.x86_64-linux];}
