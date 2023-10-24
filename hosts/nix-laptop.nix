@@ -5,6 +5,7 @@
   lib,
   inputs,
   outputs,
+  nix-colors,
   ...
 }: {
   imports = [
