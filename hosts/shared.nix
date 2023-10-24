@@ -109,14 +109,13 @@
         bottom # hot CLI task manager
         gnome.seahorse # key management
         blueberry # bluetooth gui
-        shotman # screenshot gui
+        shotman # image capture
         hyprpicker # colour picker for wayland
         copyq # wayland clipboard manager
         tokyo-night-gtk # gtk theme
         swaylock-effects # lockscreen of sorts
         iwd # wireless network daemon
         iwgtk # replaces network-manager-applet
-        # eww-wayland # do want to see if this is easier to config than WCP, loads faster?
         slack
         wpgtk
         pywal
@@ -124,7 +123,8 @@
         libnotify
         wlogout
         go-upower-notify
-        mate.engrampa # archive manager from mate
+        gimp-with-plugins
+        mate.engrampa # archive manager
         (callPackage ../packages/tokyonight-kde {})
         # (callPackage ../packages/wcp {}) # IT WORKS! Currently has bugs with RGBA colours, see package notes
         (callPackage ../packages/libfprint {}) # builds, need to write to the fprint reader now :)

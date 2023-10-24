@@ -27,7 +27,7 @@
     ../home/hyprland.nix
     ../home/waybar.nix
     ../home/kitty.nix
-    ../home/wofi.nix
+    ../home/wofi
     ../home/dunst
   ];
 
@@ -35,7 +35,7 @@
 
   hardware.bluetooth.enable = true;
   networking.hostName = "nix-desktop";
-    networking.wireless.iwd.enable = true;
+  networking.wireless.iwd.enable = true;
 
   services.xserver = {
     enable = true;

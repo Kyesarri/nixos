@@ -26,7 +26,7 @@
     ../home/waybar.nix
     ../home/kitty.nix
     ../home/wcp.nix
-    ../home/wofi.nix
+    ../home/wofi
     ../home/ags
     ../home/dunst
   ];
