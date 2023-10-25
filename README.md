@@ -5,6 +5,8 @@
 > system specific .nix for laptop ga401 / desktop
 
 ![kye/nixos](screenshots/kye-nixos.jpg "screenshot")
+![kye/nixos](screenshots/kye-nixos-2.jpg "screenshot-2")
+
 
 ## issues:
 - has more spaghetti than usual, needs a good cleanup
