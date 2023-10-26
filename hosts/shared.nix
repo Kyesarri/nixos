@@ -62,10 +62,9 @@
       QT_QPA_PLATFORMTHEME = "gtk2";
       MOZ_ENABLE_WAYLAND = "1";
       GTK_THEME = "Tokyonight-Dark-B"; # sets default gtk theme to dark
-      #      GTK_ICON_THEME = "Qogir-Dark"; # dont know if this works, does not throw an error but no icons are appplied :)
       XDG_CACHE_HOME = "$HOME/.cache";
-      XDG_CONFIG_HOME = "$HOME/.config"; # moves config to home/share rather than home/.config
-      XDG_DATA_HOME = "$HOME/.local/share"; # will move to /home/nixos soon
+      XDG_CONFIG_HOME = "$HOME/.config";
+      XDG_DATA_HOME = "$HOME/.local/share";
       XDG_STATE_HOME = "$HOME/.local/state";
       NIXOS_OZONE_WL = "1"; # fixes electron apps in wayland
     };
