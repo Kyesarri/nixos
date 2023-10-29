@@ -127,6 +127,7 @@
         mate.mate-calc
         lite-xl
         mate.engrampa # archive manager
+        fontconfig
         (callPackage ../packages/tokyonight-kde {})
         # (callPackage ../packages/wcp {}) # IT WORKS! Currently has bugs with RGBA colours, see package notes
         (callPackage ../packages/libfprint {}) # builds, need to write to the fprint reader now :)
