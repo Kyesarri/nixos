@@ -59,7 +59,7 @@
     sessionVariables = rec
     {
       QT_QPA_PLATFORM = "wayland";
-      QT_QPA_PLATFORMTHEME = "gtk2";
+      QT_QPA_PLATFORMTHEME = "qt5ct";
       MOZ_ENABLE_WAYLAND = "1";
       GTK_THEME = "Tokyonight-Dark-B"; # sets default gtk theme to dark
       XDG_CACHE_HOME = "$HOME/.cache";
@@ -68,6 +68,7 @@
       XDG_STATE_HOME = "$HOME/.local/state";
       NIXOS_OZONE_WL = "1"; # fixes electron apps in wayland
     };
+
     shells = with pkgs; [zsh]; # default shell to zsh
     systemPackages = with pkgs; [
       lshw # list hardware
@@ -88,7 +89,7 @@
       description = "kel";
       extraGroups = ["networkmanager" "wheel"];
       packages = with pkgs; [
-        firefox # the lad
+        firefox
         nvtop # watching gpu usage
         tailscale # mah boi
         tailscale-systray
@@ -124,6 +125,7 @@
         poweralertd
         gimp-with-plugins
         mate.mate-calc
+        lite-xl
         mate.engrampa # archive manager
         (callPackage ../packages/tokyonight-kde {})
         # (callPackage ../packages/wcp {}) # IT WORKS! Currently has bugs with RGBA colours, see package notes

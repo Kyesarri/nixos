@@ -11,7 +11,6 @@
     nix-colors.url = "github:misterio77/nix-colors";
     alejandra.url = "github:kamadorueda/alejandra/3.0.0";
     ags.url = "github:Aylur/ags/bf3f13d540a88f707eb57c19dbb0470fae56e20e"; #v 1.4
-    #alejandra.inputs.nixpkgs.follows = "nixpkgs";
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -33,8 +32,8 @@
         system = "x86_64-linux";
         specialArgs = {inherit inputs;};
         modules = [
-          {environment.systemPackages = [alejandra.defaultPackage.x86_64-linux];}
           ./hosts/nix-laptop.nix
+          {environment.systemPackages = [alejandra.defaultPackage.x86_64-linux];}
           nixos-hardware.nixosModules.asus-zephyrus-ga401
           home-manager.nixosModules.home-manager
           {
@@ -45,7 +44,7 @@
 
       "nix-desktop" = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
-                specialArgs = {inherit inputs;};
+        specialArgs = {inherit inputs;};
         modules = [
           ./hosts/nix-desktop.nix
           {environment.systemPackages = [alejandra.defaultPackage.x86_64-linux];}
