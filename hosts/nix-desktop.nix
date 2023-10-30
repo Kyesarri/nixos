@@ -23,8 +23,6 @@
     ../hardware/nvidia.nix
 
     ../home/home.nix
-    ../home/hyprpaper.nix
-    ../home/hyprland.nix
     ../home/waybar.nix
     ../home/kitty.nix
     ../home/wofi

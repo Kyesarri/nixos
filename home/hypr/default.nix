@@ -4,8 +4,10 @@
   ...
 }:
 {
-  users.users.kel.packages = with pkgs; [ lite-xl ];
-  home-manager.users.kel.home.file."./.config/lite-xl/plugins/nix.lua".source = ./nix.lua; # symlink from this dir to defined dir
+  programs.hyprland = {
+    enable = true;
+    enableNvidiaPatches = true;
+  };
   imports = [
     ./hyprland.nix
     ./hyprpaper.nix

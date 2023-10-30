@@ -23,6 +23,11 @@ in {
       italic_font = "Hasklug Nerd Font Italic";
       bold_italic_font = "Hasklug Nerd Font ExtraBold Italic";
       font_size = "10.0";
+      cursor_shape = "beam";
+      cursor_beam_thickness = "1.0";
+      cursor_blink_interval = "1";
+      url_color = "${config.colorScheme.colors.base0F}";
+      strip_trailing_spaces = "always";
     };
   };
 }

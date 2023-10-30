@@ -117,17 +117,13 @@
         iwd # wireless network daemon
         iwgtk # replaces network-manager-applet
         slack
-        wpgtk
-        pywal
         python3
         libnotify
         wlogout
         poweralertd
         gimp-with-plugins
         mate.mate-calc
-        lite-xl
-        mate.engrampa # archive manager
-        fontconfig
+        mate.engrampa # archive 
         (callPackage ../packages/tokyonight-kde {})
         # (callPackage ../packages/wcp {}) # IT WORKS! Currently has bugs with RGBA colours, see package notes
         (callPackage ../packages/libfprint {}) # builds, need to write to the fprint reader now :)
