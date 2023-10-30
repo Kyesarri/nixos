@@ -14,9 +14,9 @@
 - wont ever be "complete"
 
 ## whats included:
-- nix-colors themed hyprland / waybar / kitty - may change to wpg
+- nix-colors themed hyprland / waybar / kitty / lite-xl
 - grub + gdm - might change at a later time
 - hyprland + hyprpaper
-- xanmod kernel with questionable modules running
+- xanmod kernel with questionable modules running on laptop
 - zsh + ohmyzsh
 - spaghetti

@@ -1,5 +1,4 @@
 # ./home/home.nix
-# TODO move wofi / mako to their own nix
 {
   inputs,
   pkgs,
