@@ -8,7 +8,7 @@
   ...
 }: {
 
-  users.users.kel.packages = with pkgs; [ (callPackage ../packages/wcp {}) ]
+  users.users.kel.packages = with pkgs; [ (callPackage ../../packages/wcp {}) ];
 
   imports = [
     ./html.nix

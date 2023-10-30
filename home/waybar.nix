@@ -1,4 +1,4 @@
-## TODO run eyes over all colours and add-in some from color-nix
+# will refactor into own direcctory soon, might replace with ags when I can focus
 {
   config,
   inputs,

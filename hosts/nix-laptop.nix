@@ -8,6 +8,8 @@
   nix-colors,
   ...
 }: {
+# should majority of these be imported by shared, then any system specific added into the desktop / laptop configs?
+# will do on next refactor
   imports = [
     inputs.nix-colors.homeManagerModules.default
     ./shared.nix
@@ -24,7 +26,7 @@
     ../home/home.nix
     ../home/waybar.nix
     ../home/kitty.nix
-    ../home/wcp.nix
+    ../home/wcp
     ../home/wofi
     ../home/ags
     ../home/dunst

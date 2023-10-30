@@ -26,10 +26,6 @@ in {
       frame_width=5
       timeout=3
 
-      [signed_on]
-      appname = changeVolume
-      history_ignore=yes
-
       [urgency_normal]
       background="#${config.colorscheme.colors.base00}"
       foreground="#${config.colorscheme.colors.base05}"

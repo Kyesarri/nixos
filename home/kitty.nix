@@ -1,3 +1,4 @@
+# will refactor soon, need focus
 {
   config,
   inputs,
@@ -14,6 +15,10 @@ in {
       active_tab_background = "#${config.colorScheme.colors.base00}";
       foreground = "#${config.colorScheme.colors.base05}";
       background = "#${config.colorScheme.colors.base00}";
+      url_color = "#${config.colorScheme.colors.base0F}";
+      
+      repaint_delay = "12";
+      sync_to_monitor = "yes";
       background_opacity = "1.0";
       background_blur = "1";
       tab_bar_style = "powerline";
@@ -24,9 +29,8 @@ in {
       bold_italic_font = "Hasklug Nerd Font ExtraBold Italic";
       font_size = "10.0";
       cursor_shape = "beam";
-      cursor_beam_thickness = "1.0";
-      cursor_blink_interval = "1";
-      url_color = "${config.colorScheme.colors.base0F}";
+      cursor_beam_thickness = "2.0";
+      cursor_blink_interval = "0.5";
       strip_trailing_spaces = "always";
     };
   };
