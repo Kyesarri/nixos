@@ -7,9 +7,6 @@
   inherit (inputs.nix-colors) colorSchemes;
 in {
   home-manager.users.kel.home.file.".config/hypr/hyprland.conf" = {
-    # wondering if I can use     extraConfig = lib.fileContents ./hyprland.conf; and still have the colors
-    # passed through to my hyprland config, otherwise have nix build a color chart and import via
-    # symlinked hyprland.conf
     text = ''
 
        ############################################# spaghetti starts here #############################################
@@ -188,6 +185,7 @@ in {
        windowrule = float, ^(org.twosheds.iwgtk)$
        windowrule = float, title:CopyQ
        windowrule = float, title:Authentication Required
+       windowrule = tile, ^(lite-xl)$
 
        ############################################ v2 rules ############################################
 
@@ -205,7 +203,7 @@ in {
        bind = $mainMod, V, togglefloating,
        bind = $mainMod, R, exec, wofi --show drun
        bind = $mainMod, P, pseudo, # dwindle
-       bind = $mainMod, K, exec, codium --disable-gpu
+       bind = $mainMod, K, exec, lite-xl
        bind = $mainMod, S, exec, steam
        bind = $mainMod, F, exec, firefox
        bind = $mainMod, W, exec, firefox -p work
@@ -285,7 +283,6 @@ in {
        # Move/resize windows with mainMod + LMB/RMB and dragging
        bindm = $mainMod, mouse:272, movewindow
        bindm = $mainMod, mouse:273, resizewindow
-
     '';
   };
 }

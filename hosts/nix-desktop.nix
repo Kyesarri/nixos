@@ -29,6 +29,8 @@
     ../home/kitty.nix
     ../home/wofi
     ../home/dunst
+    ../home/lite-xl
+    ../home/hypr
   ];
 
   colorScheme = inputs.nix-colors.colorSchemes.tokyo-night-dark; # uses base16 colours see here: https://github.com/tinted-theming/base16-schemes

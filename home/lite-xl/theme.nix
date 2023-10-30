@@ -30,10 +30,10 @@ style.syntax["normal"] = { common.color "#${config.colorscheme.colors.base0D}" }
 style.syntax["symbol"] = { common.color "#${config.colorscheme.colors.base08}" }
 style.syntax["comment"] = { common.color "#${config.colorscheme.colors.base03}" }
 style.syntax["keyword"] = { common.color "#${config.colorscheme.colors.base0E}" }  -- local function end, if case
-style.syntax["keyword2"] = { common.color "#${config.colorscheme.colors.base0B}" } -- self, int float
+style.syntax["keyword2"] = { common.color "#${config.colorscheme.colors.base06}" } -- was 0b
 style.syntax["number"] = { common.color "#${config.colorscheme.colors.base0F}" }
 style.syntax["literal"] = { common.color "#${config.colorscheme.colors.base0C}" }
-style.syntax["string"] = { common.color "#${config.colorscheme.colors.base0D}" } -- was 0b
+style.syntax["string"] = { common.color "#${config.colorscheme.colors.base0B}" } -- was 0b
 style.syntax["operator"] = { common.color "#${config.colorscheme.colors.base0D}"}  -- = + - / < >
 style.syntax["function"] = { common.color "#${config.colorscheme.colors.base08}" }
 

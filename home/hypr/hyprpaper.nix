@@ -10,8 +10,3 @@
     '';
   };
 }
-#preload = ~/nixos/wallpaper/5.jpg
-#preload = ~/nixos/wallpaper/6.jpg
-#preload = ~/nixos/wallpaper/7.jpg
-#preload = ~/nixos/wallpaper/8.jpg
-
