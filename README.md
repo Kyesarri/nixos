@@ -6,6 +6,7 @@
 
 ![kye/nixos](screenshots/kye-nixos.jpg "screenshot")
 ![kye/nixos](screenshots/kye-nixos-2.jpg "screenshot-2")
+![kye/nixos](screenshots/kye-nixos-3.jpg "screenshot-3")
 
 
 ## issues:
