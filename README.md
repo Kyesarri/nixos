@@ -8,7 +8,6 @@
 ![kye/nixos](screenshots/kye-nixos-2.jpg "screenshot-2")
 ![kye/nixos](screenshots/kye-nixos-3.jpg "screenshot-3")
 
-
 ## issues:
 - has more spaghetti than usual, needs a good cleanup
 - is a wip, many things changing 
