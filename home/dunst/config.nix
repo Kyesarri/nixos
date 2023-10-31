@@ -32,6 +32,14 @@ in {
       highlight="#${config.colorscheme.colors.base0E}"
       timeout=3
 
+      [urgency_critical]
+      background="#${config.colorscheme.colors.base00}"
+      foreground="#${config.colorscheme.colors.base0F}"
+      frame_color="#${config.colorscheme.colors.base0F}"
+      highlight="#${config.colorscheme.colors.base0E}" 
+      timeout=5
+
+
     '';
   };
 }

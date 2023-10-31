@@ -96,7 +96,6 @@
         qogir-theme # used to set dark theme for gtk applications
         remmina # rdp client
         fet-sh # minimalistic fetch script
-        hyprpaper # wallpaper for wayland
         gnome-builder # ide / basic boi
         pamixer # cli pulse audio mixer
         pavucontrol # audio control gui
@@ -111,7 +110,8 @@
         blueberry # bluetooth gui
         shotman # image capture
         hyprpicker # colour picker for wayland
-        copyq # wayland clipboard manager
+        imagemagick # bitmap edito cli
+        wl-clipboard # wayland clipboard, replacing copyq currently
         tokyo-night-gtk # gtk theme
         swaylock-effects # lockscreen of sorts
         iwd # wireless network daemon
