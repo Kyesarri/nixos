@@ -10,6 +10,7 @@ in {
   home-manager.users.kel.programs.kitty = {
     enable = true;
     settings = {
+    
       active_tab_foreground = "#${config.colorScheme.colors.base05}";
       active_tab_background = "#${config.colorScheme.colors.base00}";
       
