@@ -25,7 +25,7 @@
     # ../home/swaync
     ../home/home.nix
     ../home/waybar.nix
-    ../home/kitty.nix
+    ../home/kitty
     ../home/wcp
     ../home/wofi
     ../home/ags
