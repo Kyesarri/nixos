@@ -1,5 +1,4 @@
 # ./hosts/shared.nix
-# all the home-manager items can be moved to another nix "soon"
 {
   config,
   pkgs,
@@ -116,13 +115,13 @@
         swaylock-effects # lockscreen of sorts
         iwd # wireless network daemon
         iwgtk # replaces network-manager-applet
-        slack
-        python3
-        libnotify
-        wlogout
-        poweralertd
-        gimp-with-plugins
-        mate.mate-calc
+        slack # needed for work :)
+        libnotify # notifications 
+        wlogout # wayland logout screen, need to spend more time with this
+        poweralertd # laptop power notifications
+        gimp-with-plugins # gimp, handy to have
+        wf-recorder # screen recorder
+        mate.mate-calc # calc
         mate.engrampa # archive 
         (callPackage ../packages/tokyonight-kde {})
         # (callPackage ../packages/wcp {}) # IT WORKS! Currently has bugs with RGBA colours, see package notes
