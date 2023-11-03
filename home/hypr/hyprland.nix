@@ -28,8 +28,10 @@ in {
        exec-once = sleep 4 && gnome-keyring-daemon --start --components=secrets
        exec-once = sleep 6 && dbus-update-activation-environment --all
        exec-once = sleep 2 && copyq --start-server
-       exec-once = lxqt-policykit-agent
+       exec-once = lxqt-policykit-agent & udiskie &
        exec-once = sleep 8 && poweralertd
+       
+       # exec-once = ulauncher 
 
        # exec-once = rm -f /tmp/wcp && mkfifo /tmp/wcp && tail -f /tmp/wcp | wcp -r ~/dots/config/wcp # fifo for wcp
        # exec-once = rm -f /tmp/sovpipe && mkfifo /tmp/sovpipe && tail -f /tmp/sovpipe | sov -t 500 # fifo for sov

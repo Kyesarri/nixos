@@ -15,22 +15,22 @@
     outputs,
     ...
   }: {
-    imports = [inputs.ags.homeManagerModules.default]; # imports from root flake.nix then builds the package which is nice :)
+  
+    imports = [
+      inputs.ags.homeManagerModules.default # imports from root flake.nix then builds the package which is nice :)
+      ../variables.nix
+    ]; 
+    
     programs.ags = {
       enable = true; # still need to enable the package
       configDir = ./ags; # sets to /home/kel/.config/ags
     };
+    
+    programs.home-manager.enable = true;
     xdg.enable = true;
-    home.username = "kel";
+    home.username = config.vars.username;
     home.homeDirectory = "/home/kel";
     home.stateVersion = "23.05";
-
-    services.kdeconnect = {
-      enable = true;
-      indicator = true;
-    };
-
-    programs.home-manager.enable = true;
 
     programs.git = {
       enable = true;
