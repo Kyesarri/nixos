@@ -4,9 +4,8 @@
   outputs,
   pkgs,
   ...
-}: let
-  inherit (inputs.nix-colors) colorSchemes;
-in {
+}: 
+{
   home-manager.users.kel.programs.kitty = {
     enable = true;
     settings = {

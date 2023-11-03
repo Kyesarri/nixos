@@ -1,11 +1,16 @@
 { lib, ... }: 
 with lib; 
 { 
-  options.mymodule = { 
-    var1 = mkOption { 
+  options.variables = {  # options.<this> needs to be named correctly in other files; looks to work for home.nix now
+    username = mkOption { # username here will be called with config.options.username;
       type = types.str; 
-      default = "something"; 
-      description = "...."; 
+      default = "kel"; 
+      description = "username"; 
+    }; 
+    homedir = mkOption {
+      type = types.str; 
+      default = "/home/kel"; 
+      description = "homedir"; 
     }; 
   }; 
 }

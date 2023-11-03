@@ -7,7 +7,12 @@
   outputs,
   nix-colors,
   ...
-}: {
+}: 
+let
+  inherit (inputs.nix-colors) colorSchemes;
+  imports = [../variables.nix];
+in 
+{
 # should majority of these be imported by shared, then any system specific added into the desktop / laptop configs?
 # will do on next refactor
   imports = [
@@ -16,13 +21,12 @@
     ./laptop-hw.nix
 
     ../configuration.nix
-
+    ../variables.nix
     ../modules/gaming.nix
     ../modules/fonts.nix
 
     ../hardware/pipewire.nix
 
-    # ../home/swaync
     ../home/home.nix
     ../home/waybar
     ../home/kitty

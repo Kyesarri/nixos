@@ -3,9 +3,11 @@
   inputs,
   outputs,
   ...
-}: let
-  inherit (inputs.nix-colors) colorSchemes;
-in {
+}: 
+# let
+#   inherit (inputs.nix-colors) colorSchemes;
+# in 
+{
   home-manager.users.kel.home.file.".config/hypr/hyprland.conf" = {
     text = ''
 

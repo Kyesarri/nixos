@@ -5,9 +5,8 @@
   outputs,
   pkgs,
   ...
-}: let
-  inherit (inputs.nix-colors) colorSchemes;
-in {
+}:
+{
   home-manager.users.kel.home.file.".config/wofi/style.css" = {
     text = ''
       window {

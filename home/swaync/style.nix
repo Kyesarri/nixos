@@ -3,9 +3,8 @@
   inputs,
   outputs,
   ...
-}: let
-  inherit (inputs.nix-colors) colorSchemes;
-in {
+}: 
+{
   home-manager.users.kel.home.file.".config/swaync/style.css" = {
     text = ''
       @define-color cc-bg rgba(0, 0, 0, 0.7);

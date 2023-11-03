@@ -3,9 +3,8 @@
   inputs,
   outputs,
   ...
-}: let
-  inherit (inputs.nix-colors) colorSchemes;
-in {  
+}: 
+{  
   home-manager.users.kel.home.file.".config/wcp/html/main.css" = {
     text = ''
       #main {
