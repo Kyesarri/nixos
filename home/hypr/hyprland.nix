@@ -33,11 +33,11 @@
        exec-once = lxqt-policykit-agent & udiskie &
        exec-once = sleep 8 && poweralertd
        
-       # exec-once = ulauncher 
+       # exec-once = ulauncher & # waiting on new version to drop, might build from source
 
        # exec-once = rm -f /tmp/wcp && mkfifo /tmp/wcp && tail -f /tmp/wcp | wcp -r ~/dots/config/wcp # fifo for wcp
        # exec-once = rm -f /tmp/sovpipe && mkfifo /tmp/sovpipe && tail -f /tmp/sovpipe | sov -t 500 # fifo for sov
-       # sov does not work under hypr yet
+       # sov does not work "well" under hypr yet
 
        ############################################# misc #############################################
 
@@ -193,8 +193,9 @@
 
        ############################################ v2 rules ############################################
 
-       windowrulev2 = opacity 0.8 0.8, class:^(kitty)$
-       windowrulev2 = float, size 1000 500, title:btm
+       windowrulev2 = opacity 0.8 0.8, size 1000 500, class:^(kitty)$
+       # windowrulev2 = float, size 1000 500, title:btm
+
 
        ############################################ binds ############################################
 
@@ -206,15 +207,16 @@
        bind = $mainMod, E, exec, nemo
        bind = $mainMod, V, togglefloating,
        bind = $mainMod, R, exec, wofi --show drun
-       bind = $mainMod, P, pseudo, # dwindle
+       bind = $mainMod, P, pseudo, dwindle
        bind = $mainMod, K, exec, lite-xl
-       bind = $mainMod, S, exec, steam
        bind = $mainMod, F, exec, firefox
        bind = $mainMod, W, exec, firefox -p work
        bind = control, escape, exec, kitty -e btm
        bind = $mainMod, J, togglesplit, # dwindle
        bind = ,Print, exec, shotman --capture output
        bind = $mainMod, X, exec, dunstctl history-pop
+
+       bind = $mainMod, S, exec, bash ~/nixos/scripts/dunst/hyprpicker.sh
 
 
        # bind = $mainMod, X, exec, echo 2 > /tmp/wcp
