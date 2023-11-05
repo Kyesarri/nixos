@@ -10,8 +10,9 @@
 }: 
 let
   inherit (inputs.nix-colors) colorSchemes;
-  imports = [../variables.nix];
+  inherit (inputs.nix-colors.lib-contrib { inherit pkgs; }) gtkThemeFromScheme;
 in 
+
 {
 # should majority of these be imported by shared, then any system specific added into the desktop / laptop configs?
 # will do on next refactor
@@ -21,7 +22,6 @@ in
     ./laptop-hw.nix
 
     ../configuration.nix
-    ../variables.nix
     ../modules/gaming.nix
     ../modules/fonts.nix
 
@@ -38,8 +38,8 @@ in
     ../home/hypr
   ];
 
-  colorScheme = inputs.nix-colors.colorSchemes.tokyo-night-dark; # uses base16 colours see here: https://github.com/tinted-theming/base16-schemes
-
+  colorscheme = lib.mkDefault colorSchemes.tokyo-night-dark;
+  
   hardware.bluetooth.enable = true;
   networking.hostName = "nix-laptop";
   networking.wireless.iwd.enable = true;

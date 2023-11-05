@@ -21,6 +21,7 @@
   
     imports = [
       inputs.ags.homeManagerModules.default # imports from root flake.nix then builds the package which is nice :)
+      ./gtk
     ]; 
     programs.ags = {
       enable = true; # still need to enable the package
