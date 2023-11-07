@@ -60,7 +60,7 @@
       QT_QPA_PLATFORM = "wayland";
       QT_QPA_PLATFORMTHEME = "qt5ct";
       MOZ_ENABLE_WAYLAND = "1";
-      GTK_THEME = "Tokyonight-Dark-B"; # sets default gtk theme to dark
+      GTK_THEME = "${config.colorscheme.slug}"; # sets default gtk theme to dark
       XDG_CACHE_HOME = "$HOME/.cache";
       XDG_CONFIG_HOME = "$HOME/.config";
       XDG_DATA_HOME = "$HOME/.local/share";

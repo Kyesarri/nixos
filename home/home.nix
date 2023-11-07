@@ -1,24 +1,8 @@
 # ./home/home.nix
-# this will be refactored, with minimal configuration left, may rename to default.nix for commonly used 
-{
-  inputs,
-  pkgs,
-  ...
-}:
-{
-
-  home-manager.useUserPackages = true; # install packages to /etc/profiles instead of ~/.nix-profile
-  home-manager.useGlobalPkgs = true; # this saves an extra Nixpkgs evaluation, adds consistency,
+# this will be refactored, with minimal configuration left, may rename to default.nix and create another "extras" for other packages
+{ inputs, pkgs, ... }: {
   # and removes the dependency on NIX_PATH, which is otherwise used for importing Nixpkgs.
-  home-manager.users.kel = {
-    pkgs,
-    config,
-    inputs,
-    outputs,
-    ...
-  }: 
-  {
-  
+  home-manager.users.kel = { pkgs, config, inputs, outputs, ... }: {
     imports = [
       inputs.ags.homeManagerModules.default # imports from root flake.nix then builds the package which is nice :)
       ./gtk

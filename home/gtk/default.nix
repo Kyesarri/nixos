@@ -1,20 +1,21 @@
-
- home-manager.users.kel = {
-    pkgs,
-    config,
-    inputs,
-    outputs,
-    ...
-  }:
+{
+  config,
+  pkgs,
+  lib,
+  inputs,
+  outputs,
+  nix-colors,
+  home-manager,
+  ...
+}: 
+let
     inherit (inputs.nix-colors.lib-contrib { inherit pkgs; }) gtkThemeFromScheme; 
-  {
+in
+{
      gtk = {
-       enable = true;
-       theme.package = gtkThemeFromScheme {
-         scheme = config.colorScheme;
-       };
        theme = {
          name = "${config.colorscheme.slug}";
          package = gtkThemeFromScheme { scheme = config.colorscheme; };
        };
      };
+ }

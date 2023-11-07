@@ -37,7 +37,11 @@
           nixos-hardware.nixosModules.asus-zephyrus-ga401
           home-manager.nixosModules.home-manager
           {
-            home-manager.extraSpecialArgs = {inherit inputs;}; # Pass flake input to home-manager
+          home-manager = {
+            useGlobalPkgs = true;
+            useUserPackages = true;
+          extraSpecialArgs = { inherit inputs; };# Pass flake input to home-manager
+          };
           }
         ];
       };
