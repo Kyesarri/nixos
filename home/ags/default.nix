@@ -2,7 +2,7 @@
 
   home-manager.users.kel.programs.ags = {
     enable = true; # still need to enable the package
-    configDir = ./ags; # sets to /home/kel/.config/ags
+    configDir = ../ags; # sets to /home/kel/.config/ags
   };
   
   home-manager.users.kel.home.file."./.config/ags/config.js".source = ./config.js; # hard to use a .js in nix so symlink works for me

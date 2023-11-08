@@ -16,7 +16,7 @@ in
 # should majority of these be imported by shared, then any system specific added into the desktop / laptop configs?
 # will do on next refactor
   imports = [
-    inputs.nix-colors.homeManagerModules.default
+    inputs.nix-colors.homeManagerModules.colorScheme
     ./shared.nix
     ./laptop-hw.nix
 
@@ -26,17 +26,13 @@ in
 
     ../hardware/pipewire.nix
 
+    # import defaults 
     ../home
-    ../home/waybar
-    ../home/kitty
-    ../home/wcp
-    ../home/wofi
-    ../home/ags
-    ../home/dunst
-    ../home/lite-xl
-    ../home/hypr
-    ../home/gtk
+
   ];
+
+      colorscheme = inputs.nix-colors.colorSchemes.tokyo-night-dark;
+
   
   hardware.bluetooth.enable = true;
   networking.hostName = "nix-laptop";
