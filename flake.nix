@@ -40,7 +40,8 @@
           home-manager = {
             useGlobalPkgs = true;
             useUserPackages = true;
-          extraSpecialArgs = { inherit inputs; };# Pass flake input to home-manager
+            extraSpecialArgs = { inherit inputs; };# Pass flake input to home-manager
+            users.kel.imports = [  ];
           };
           }
         ];

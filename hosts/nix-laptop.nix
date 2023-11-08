@@ -27,7 +27,7 @@ in
 
     ../hardware/pipewire.nix
 
-    ../home/home.nix
+    ../home
     ../home/waybar
     ../home/kitty
     ../home/wcp
@@ -36,9 +36,8 @@ in
     ../home/dunst
     ../home/lite-xl
     ../home/hypr
+    ../home/gtk
   ];
-
-  colorscheme = lib.mkDefault colorSchemes.tokyo-night-dark;
   
   hardware.bluetooth.enable = true;
   networking.hostName = "nix-laptop";

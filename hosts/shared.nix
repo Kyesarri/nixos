@@ -1,16 +1,11 @@
 # ./hosts/shared.nix
-{
-  config,
-  pkgs,
-  lib,
-  outputs,
-  inputs,
-  ...
-}: {
+{ config, pkgs, lib, outputs, inputs, ... }: {
+
   networking = {
     firewall = {
       enable = true;
-      checkReversePath = "loose"; # fixes some connection issues with tailscale, could not connect to tailnet or internet outside of home -
+      checkReversePath = "loose"; 
+      # fixes some connection issues with tailscale, could not connect to tailnet or internet outside of home -
       # without this option enabled
       allowedTCPPortRanges = [
         {

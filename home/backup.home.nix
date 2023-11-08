@@ -1,16 +1,20 @@
 # ./home/home.nix
 # this will be refactored, with minimal configuration left, may rename to default.nix and create another "extras" for other packages
-{ inputs, pkgs, ... }: {
-  # and removes the dependency on NIX_PATH, which is otherwise used for importing Nixpkgs.
-  home-manager.users.kel = { pkgs, config, inputs, outputs, ... }: {
+{ home-manager = {
+
+users.kel = { pkgs, lib, config, inputs, outputs, ... }: {
+
     imports = [
       inputs.ags.homeManagerModules.default # imports from root flake.nix then builds the package which is nice :)
-      ./gtk
+      inputs.nix-colors.homeManagerModules
     ]; 
+
+    #home.sessionVariables.GTK_THEME = "Generated";
     programs.ags = {
       enable = true; # still need to enable the package
       configDir = ./ags; # sets to /home/kel/.config/ags
     };
+    
     programs.home-manager.enable = true;
     xdg.enable = true;
     home.username = "kel";
@@ -40,6 +44,7 @@
       ];
     };
   };
+};
 }
 # ./home/home.nix
 
