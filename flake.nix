@@ -33,16 +33,15 @@
         specialArgs = {inherit inputs;};
         modules = [
           ./hosts/nix-laptop.nix
-          {environment.systemPackages = [alejandra.defaultPackage.x86_64-linux];}
+          { environment.systemPackages = [ alejandra.defaultPackage.x86_64-linux ]; }
           nixos-hardware.nixosModules.asus-zephyrus-ga401
-          home-manager.nixosModules.home-manager
-          {
-          home-manager = {
-            useGlobalPkgs = true;
-            useUserPackages = true;
-            extraSpecialArgs = { inherit inputs; };# Pass flake input to home-manager
-            users.kel.imports = [  ];
-          };
+          home-manager.nixosModules.home-manager {
+            home-manager = {
+              useGlobalPkgs = true;
+              useUserPackages = true;
+              extraSpecialArgs = { inherit inputs; };# Pass flake input to home-manager
+              users.kel.imports = [  ];
+            };
           }
         ];
       };

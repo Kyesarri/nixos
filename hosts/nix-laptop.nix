@@ -5,7 +5,6 @@
   lib,
   inputs,
   outputs,
-  nix-colors,
   ...
 }: 
 let
