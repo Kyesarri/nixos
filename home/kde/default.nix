@@ -1,3 +1,3 @@
 { 
-  include = [ ./kdeconnect.nix ] 
+  include = [ ./kdeconnect.nix ];
 }

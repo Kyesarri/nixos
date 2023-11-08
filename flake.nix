@@ -23,18 +23,19 @@
     nixos-hardware,
     home-manager,
     hyprland,
-    nix-colors,
     alejandra,
+    nix-colors,
     ...
   } @ inputs: {
     nixosConfigurations = {
       "nix-laptop" = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
-        specialArgs = {inherit inputs;};
+        specialArgs = {inherit inputs; };
         modules = [
           ./hosts/nix-laptop.nix
           { environment.systemPackages = [ alejandra.defaultPackage.x86_64-linux ]; }
           nixos-hardware.nixosModules.asus-zephyrus-ga401
+          nix-colors.homeManagerModules.default
           home-manager.nixosModules.home-manager {
             home-manager = {
               useGlobalPkgs = true;

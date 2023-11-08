@@ -1,11 +1,16 @@
 # ./home/home.nix
 # this will be refactored, with minimal configuration left, may rename to default.nix and create another "extras" for other packages
-{ home-manager.users.kel = { pkgs, lib, config, inputs, outputs, ... }: {
+
+{ home-manager.users.kel = { pkgs, lib, config, inputs, ... }:
+let 
+  inherit (inputs.nix-colors) colorSchemes;
+  inherit (inputs.nix-colors.lib-contrib { inherit pkgs; }) gtkThemeFromScheme;
+in
+ {
 
     imports = [
       inputs.ags.homeManagerModules.default # imports from root flake.nix then builds the package which is nice :)
-      inputs.nix-colors.homeManagerModules.colorScheme
-
+      inputs.nix-colors.homeManagerModules.default
       # import default applications between desktop and laptop
       # may need to change shared.nix in hosts?
       ./ags

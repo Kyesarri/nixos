@@ -8,15 +8,13 @@
   ...
 }: 
 let
-  inherit (inputs.nix-colors) colorSchemes;
-  inherit (inputs.nix-colors.lib-contrib { inherit pkgs; }) gtkThemeFromScheme;
+
 in 
 
 {
 # should majority of these be imported by shared, then any system specific added into the desktop / laptop configs?
 # will do on next refactor
   imports = [
-    inputs.nix-colors.homeManagerModules.colorScheme
     ./shared.nix
     ./laptop-hw.nix
 
