@@ -8,6 +8,6 @@ else
 brightnessctl set 3%-
 fi
 
-brightness="$(brightnessctl -m | awk -F ',' '{ print $4 }')"
+brightness="$(brightnessctl -m | awk -F ',' '{ print ($4 }')"
 
 dunstify -a "changeBrightness" -i solaar-indicator -r "$msgId" -h int:value:"$brightness" "Brightness: ${brightness}"

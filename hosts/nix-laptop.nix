@@ -5,31 +5,42 @@
   lib,
   inputs,
   outputs,
+  nix-colors,
   ...
-}: 
-let
-
-in 
-
-{
+}: {
 # should majority of these be imported by shared, then any system specific added into the desktop / laptop configs?
 # will do on next refactor
+
   imports = [
+    nix-colors.homeManagerModules.default
+
     ./shared.nix
     ./laptop-hw.nix
 
     ../configuration.nix
     ../modules/gaming.nix
     ../modules/fonts.nix
+    ../home
 
     ../hardware/pipewire.nix
 
-    # import defaults 
-    ../home
-
+      ../home/ags
+      ../home/codium
+      ../home/dunst
+      ../home/firefox
+      ../home/git
+      # ../home/gtk # out until i can figure out the function there
+      ../home/hypr
+      ../home/kde
+      ../home/kitty
+      ../home/lite-xl
+      ../home/swaync
+      ../home/waybar
+      ../home/wcp
+      ../home/wofi
   ];
+colorscheme = inputs.nix-colors.colorSchemes.tokyo-night-dark;
 
-      colorscheme = inputs.nix-colors.colorSchemes.tokyo-night-dark;
 
   
   hardware.bluetooth.enable = true;

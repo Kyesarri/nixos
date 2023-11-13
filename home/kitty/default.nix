@@ -3,6 +3,7 @@
   inputs,
   outputs,
   pkgs,
+  nix-colors,
   ...
 }: 
 {

@@ -28,20 +28,20 @@
     ...
   } @ inputs: {
     nixosConfigurations = {
+    
       "nix-laptop" = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
-        specialArgs = {inherit inputs; };
+        specialArgs =  { inherit nix-colors inputs; };
         modules = [
           ./hosts/nix-laptop.nix
           { environment.systemPackages = [ alejandra.defaultPackage.x86_64-linux ]; }
           nixos-hardware.nixosModules.asus-zephyrus-ga401
-          nix-colors.homeManagerModules.default
           home-manager.nixosModules.home-manager {
             home-manager = {
               useGlobalPkgs = true;
               useUserPackages = true;
-              extraSpecialArgs = { inherit inputs; };# Pass flake input to home-manager
-              users.kel.imports = [  ];
+              extraSpecialArgs = { inherit nix-colors inputs; };# Pass flake input to home-manager
+              users.kel.imports = [];
             };
           }
         ];
