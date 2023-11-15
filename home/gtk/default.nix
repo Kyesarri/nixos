@@ -1,22 +1,14 @@
-{ config, pkgs, lib, inputs, outputs, nix-colors, home-manager, ... }: 
+{ config, pkgs, inputs, nix-colors, ... }:
+
 let
-    inherit (inputs.nix-colors) gtkThemeFromScheme;
-    #inherit (nix-colors.homeManagerModules.colorScheme { inherit pkgs; }) gtkThemeFromScheme; 
-    #inherit (inputs.nix-colors.lib { inherit pkgs; }) gtkThemeFromScheme;
-in
-{
-   home-manager.users.kel = {
-   
-   gtk = {
-     enable = true;
-     theme = {
-       name = "${config.colorscheme.slug}";
-       package = gtkThemeFromScheme { scheme = config.colorscheme; };
-     };
-   };
- };
+  inherit (inputs.nix-colors.lib-contrib { inherit pkgs; }) gtkThemeFromScheme;
+in rec {
+  gtk = {
+    enable = true;
+    theme = {
+      name = "${config.colorScheme.slug}";
+      package = gtkThemeFromScheme { scheme = config.colorScheme; };
+    };
+  };
 }
 
-   # gtk.theme.package = gtkThemeFromScheme {
-  #   scheme = config.colorScheme;
-  # };

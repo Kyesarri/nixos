@@ -10,7 +10,7 @@
     hyprland.url = "github:hyprwm/Hyprland";
     nix-colors.url = "github:misterio77/nix-colors";
     alejandra.url = "github:kamadorueda/alejandra/3.0.0";
-    ags.url = "github:Aylur/ags/bf3f13d540a88f707eb57c19dbb0470fae56e20e"; #v 1.4
+    ags.url = "github:Aylur/ags/54fd9cf50c428bc8760ef20f05f6daffcb821896"; #v 1.5.1 Beta
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";

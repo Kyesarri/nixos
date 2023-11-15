@@ -2,13 +2,12 @@
 
   home-manager.users.kel.programs.ags = {
     enable = true; # still need to enable the package
-    configDir = ../ags; # sets to /home/kel/.config/ags
+    configDir = ../ags; # sets to /home/kel/.config/ags not 100% sure here :D
   };
   
-  home-manager.users.kel.home.file."./.config/ags/config.js".source = ./config.js; # hard to use a .js in nix so symlink works for me
+  home-manager.users.kel.home.file."./.config/ags/config.js".source = ./config.js;
 
   home-manager.users.kel.home.file.".config/ags/style.css" = {
-    # css is much easier, defined here
     text = ''
           label {
           font-family: "Hasklug Nerd Font";

@@ -25,6 +25,7 @@
   };
 
   services.tailscale.useRoutingFeatures = "client"; # set as client for tailscale
+  services.fprintd.enable = true;
   services.upower = {
     enable = true; # using upower for battery monitoring, waybar needs some configuration for this too :)
     percentageCritical = 10;
@@ -55,7 +56,7 @@
       QT_QPA_PLATFORM = "wayland";
       QT_QPA_PLATFORMTHEME = "qt5ct";
       MOZ_ENABLE_WAYLAND = "1";
-      GTK_THEME = "${config.colorscheme.slug}"; # sets default gtk theme to dark
+      GTK_THEME = "${config.colorscheme.slug}"; # sets default gtk theme the package built by nix-colors
       XDG_CACHE_HOME = "$HOME/.cache";
       XDG_CONFIG_HOME = "$HOME/.config";
       XDG_DATA_HOME = "$HOME/.local/share";
@@ -121,6 +122,8 @@
         udiskie # usb mounting
         ulauncher # might be replacement for wofi
         hyprpaper # wallpaper wayland
+        quickemu
+        quickgui
         (callPackage ../packages/tokyonight-kde {}) # ehhh need another theme to configure using nix-colors
         # (callPackage ../packages/wcp {}) # IT WORKS! Currently has bugs with RGBA colours, see package notes
         (callPackage ../packages/libfprint {}) # builds, need to write to the fprint reader now :)

@@ -32,7 +32,7 @@ stdenv.mkDerivation rec {
     owner = "milgra";
     repo = "wcp";
     rev = version;
-    url = "https://github.com/milgra/sov/archive/refs/tags/0.92b.tar.gz";
+    url = "https://github.com/milgra/sov/releases/download/0.93/sov-0.93.tar.xz";
     sha256 = "1L5D0pzcXbkz3VS7VB6ID8BJEbGeNxjo3xCr71CGcIo=";
   };
 

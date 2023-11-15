@@ -193,7 +193,8 @@
 
        ############################################ v2 rules ############################################
 
-       windowrulev2 = opacity 0.8 0.8, size 1000 500, class:^(kitty)$
+       windowrulev2 = opacity 0.8 0.8, class:^(kitty)$
+       windowrulev2 = size 700 300, class:^(kitty)$
        # windowrulev2 = float, size 1000 500, title:btm
 
 

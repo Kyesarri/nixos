@@ -29,7 +29,7 @@
       ../home/dunst
       ../home/firefox
       ../home/git
-      # ../home/gtk # out until i can figure out the function there
+      #../home/gtk # out until i can figure out the function there
       ../home/hypr
       ../home/kde
       ../home/kitty
