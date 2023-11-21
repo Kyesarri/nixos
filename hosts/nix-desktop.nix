@@ -1,4 +1,9 @@
 # ./hosts/nix-desktop.nix
+
+let
+scheme = "tokyo-night-dark";
+in
+
 {
   config,
   pkgs,
@@ -31,8 +36,8 @@
     ../home/hypr
   ];
 
-  colorScheme = inputs.nix-colors.colorSchemes.tokyo-night-dark; # uses base16 colours see here: https://github.com/tinted-theming/base16-schemes
-
+  colorscheme = inputs.nix-colors.colorSchemes.${scheme};
+  home-manager.users.kel.colorscheme = inputs.nix-colors.colorSchemes.${scheme};
   hardware.bluetooth.enable = true;
   networking.hostName = "nix-desktop";
   networking.wireless.iwd.enable = true;

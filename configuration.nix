@@ -1,4 +1,5 @@
 # ./configuration.nix
+# should this be moved into ./hosts/shared.nix
 {
   config,
   pkgs,

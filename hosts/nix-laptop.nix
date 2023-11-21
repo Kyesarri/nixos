@@ -1,4 +1,9 @@
 # ./hosts/nix-laptop.nix
+
+let
+scheme = "tokyo-night-dark";
+in
+
 {
   config,
   pkgs,
@@ -20,29 +25,27 @@
     ../configuration.nix
     ../modules/gaming.nix
     ../modules/fonts.nix
-    ../home
-
+    
     ../hardware/pipewire.nix
-
-      ../home/ags
-      ../home/codium
-      ../home/dunst
-      ../home/firefox
-      ../home/git
-      #../home/gtk # out until i can figure out the function there
-      ../home/hypr
-      ../home/kde
-      ../home/kitty
-      ../home/lite-xl
-      ../home/swaync
-      ../home/waybar
-      ../home/wcp
-      ../home/wofi
+    
+    ../home
+    ../home/ags
+    ../home/codium
+    ../home/dunst
+    ../home/firefox
+    ../home/git
+    ../home/hypr
+    ../home/kde
+    ../home/kitty
+    ../home/lite-xl
+    ../home/swaync
+    ../home/waybar
+    ../home/wcp
+    ../home/wofi
   ];
-colorscheme = inputs.nix-colors.colorSchemes.tokyo-night-dark;
+  colorscheme = inputs.nix-colors.colorSchemes.${scheme};
+  home-manager.users.kel.colorscheme = inputs.nix-colors.colorSchemes.${scheme};
 
-
-  
   hardware.bluetooth.enable = true;
   networking.hostName = "nix-laptop";
   networking.wireless.iwd.enable = true;
