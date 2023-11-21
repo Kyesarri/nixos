@@ -141,14 +141,16 @@
          bezier = smoothOut, 0.36, 0, 0.66, -0.56
          bezier = smoothIn, 0.25, 1, 0.5, 1
          bezier = liner, 1, 1, 1, 1
-
+         bezier = cubic, 0.785, 0.135, 0.15, 0.86
+         bezier = snappy, 0.51, 0.93, 0, 1
+         
          animation = windows, 1, 5, overshot, slide
          animation = windowsOut, 1, 5, smoothOut, slide
          animation = windowsMove, 1, 5, default
          animation = fade, 1, 5, smoothIn
          animation = fadeDim, 1, 5, smoothIn
 
-         animation = workspaces, 1, 5, default, slide
+         animation = workspaces, 1, 5, snappy, slide
 
          animation = border, 1, 5, liner
          animation = borderangle, 1, 360, liner, loop

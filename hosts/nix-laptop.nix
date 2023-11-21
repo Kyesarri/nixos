@@ -22,7 +22,6 @@ in
     ./shared.nix
     ./laptop-hw.nix
 
-    ../configuration.nix
     ../modules/gaming.nix
     ../modules/fonts.nix
     
