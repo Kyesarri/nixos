@@ -15,7 +15,7 @@
     
     home.username = "kel";
     home.homeDirectory = "/home/kel";
-    home.stateVersion = "23.05";
+    home.stateVersion = "24.05";
   };
 }
 # ./home/home.nix

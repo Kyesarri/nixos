@@ -1,6 +1,6 @@
 # ./hosts/shared.nix
 { config, pkgs, lib, outputs, inputs, ... }: {
- system.stateVersion = "23.05";
+ system.stateVersion = "24.05";
   time.timeZone = "Australia/Melbourne";
   nixpkgs.config.allowUnfree = true;
   security.pam.services.gdm.enableGnomeKeyring = true; # keyring support for GDM
@@ -97,6 +97,7 @@
       LC_TIME = "en_AU.UTF-8";
     };
   };
+  
   networking = {
     firewall = {
       enable = true;
