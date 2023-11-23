@@ -136,7 +136,25 @@
     percentageLow = 15;
   };
 
+  fonts = {
+    packages = with pkgs; [
+      material-design-icons
+      inter
+      material-symbols
+      rubik
+      ibm-plex
+      nerdfonts
+      (nerdfonts.override {fonts = ["Iosevka" "CascadiaCode" "JetBrainsMono"];})
+    ];
+  };
+
   programs = {
+    steam = {
+      enable = true;
+      remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remoteplay
+      dedicatedServer.openFirewall = true; # Open ports in the firewall for steam server
+    };
+
     dconf.enable = true;
     zsh = {
       enable = true;
@@ -226,8 +244,6 @@
         udiskie # usb mounting
         ulauncher # might be replacement for wofi
         hyprpaper # wallpaper wayland
-        quickemu
-        quickgui
         nwg-launchers
         bitwarden
         # (callPackage ../packages/wcp {}) # IT WORKS! Currently has bugs with RGBA colours, see package notes

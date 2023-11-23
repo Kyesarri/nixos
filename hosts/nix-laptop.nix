@@ -13,13 +13,11 @@ in
   }: {
     imports = [
       # should majority of these be imported by shared, then any system specific added into the desktop / laptop configs?
+      # unsure as, may need to change the nix.colors definitions to another file :)
+      # not like this file is huge, overall pretty minimal
       nix-colors.homeManagerModules.default
-
       ./shared.nix
       ./laptop-hw.nix
-
-      ../modules/gaming.nix
-      ../modules/fonts.nix
 
       ../hardware/pipewire.nix
 
