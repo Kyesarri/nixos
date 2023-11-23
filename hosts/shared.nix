@@ -1,4 +1,5 @@
 # ./hosts/shared.nix
+## big portion of my programs are installed here, see the end of file
 {
   config,
   pkgs,
@@ -164,7 +165,7 @@
       XDG_CONFIG_HOME = "$HOME/.config";
       XDG_DATA_HOME = "$HOME/.local/share";
       XDG_STATE_HOME = "$HOME/.local/state";
-      NIXOS_OZONE_WL = "1"; # fixes electron apps in wayland
+      NIXOS_OZONE_WL = "1"; # fixes electron apps in wayland, wasn't working for me :)
     };
 
     shells = with pkgs; [zsh]; # default shell to zsh
@@ -228,6 +229,7 @@
         quickemu
         quickgui
         nwg-launchers
+        bitwarden
         # (callPackage ../packages/wcp {}) # IT WORKS! Currently has bugs with RGBA colours, see package notes
         (callPackage ../packages/libfprint {}) # builds, need to write to the fprint reader now :)
         # (callPackage ../packages/sov {}) # sway overview, needs some hyprland config to see if works on hyprland

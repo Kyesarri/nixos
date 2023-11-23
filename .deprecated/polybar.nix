@@ -1,6 +1,7 @@
  # ./home/polybar.nix
 
 ## currently un-used, don't work nice with wayland / hyprland
+### code in it's current state is non-working
 let
   # define colours to be used in home packages
   colour = import ../modules/colour.nix;
