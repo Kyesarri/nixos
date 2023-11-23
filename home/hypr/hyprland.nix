@@ -3,11 +3,7 @@
   inputs,
   outputs,
   ...
-}: 
-# let
-#   inherit (inputs.nix-colors) colorSchemes;
-# in 
-{
+}: {
   home-manager.users.kel.home.file.".config/hypr/hyprland.conf" = {
     text = ''
 
@@ -32,7 +28,7 @@
        exec-once = sleep 2 && copyq --start-server
        exec-once = lxqt-policykit-agent & udiskie &
        exec-once = sleep 8 && poweralertd
-       
+
        # exec-once = ulauncher & # waiting on new version to drop, might build from source
 
        # exec-once = rm -f /tmp/wcp && mkfifo /tmp/wcp && tail -f /tmp/wcp | wcp -r ~/dots/config/wcp # fifo for wcp
@@ -143,7 +139,7 @@
          bezier = liner, 1, 1, 1, 1
          bezier = cubic, 0.785, 0.135, 0.15, 0.86
          bezier = snappy, 0.51, 0.93, 0, 1
-         
+
          animation = windows, 1, 5, overshot, slide
          animation = windowsOut, 1, 5, smoothOut, slide
          animation = windowsMove, 1, 5, default
@@ -191,6 +187,8 @@
        windowrule = float, ^(org.twosheds.iwgtk)$
        windowrule = float, title:CopyQ
        windowrule = float, title:Authentication Required
+       windowrule = float, title:VSCodium
+
        windowrule = tile, ^(lite-xl)$
 
        ############################################ v2 rules ############################################

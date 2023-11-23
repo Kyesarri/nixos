@@ -4,8 +4,7 @@
   inputs,
   outputs,
   ...
-}: 
-{
+}: {
   home-manager.users.kel.home.file.".config/swaync/configSchema.json" = {
     text = ''
 

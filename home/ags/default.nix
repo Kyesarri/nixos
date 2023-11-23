@@ -1,10 +1,16 @@
-{ config, inputs, outputs, lib, pkgs, ... }: {
-
+{
+  config,
+  inputs,
+  outputs,
+  lib,
+  pkgs,
+  ...
+}: {
   home-manager.users.kel.programs.ags = {
     enable = true; # still need to enable the package
     configDir = ../ags; # sets to /home/kel/.config/ags not 100% sure here :D
   };
-  
+
   home-manager.users.kel.home.file."./.config/ags/config.js".source = ./config.js;
 
   home-manager.users.kel.home.file.".config/ags/style.css" = {

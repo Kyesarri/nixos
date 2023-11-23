@@ -3,8 +3,7 @@
   inputs,
   outputs,
   ...
-}:
-{
+}: {
   home-manager.users.kel.home.file."/.config/dunst/dunstrc" = {
     text = ''
       [global]
@@ -35,7 +34,7 @@
       background="#${config.colorscheme.colors.base00}"
       foreground="#${config.colorscheme.colors.base0F}"
       frame_color="#${config.colorscheme.colors.base0F}"
-      highlight="#${config.colorscheme.colors.base0E}" 
+      highlight="#${config.colorscheme.colors.base0E}"
       timeout=5
 
 

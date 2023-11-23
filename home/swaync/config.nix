@@ -3,8 +3,7 @@
   inputs,
   outputs,
   ...
-}: 
-{
+}: {
   home-manager.users.kel.home.file.".config/swaync/config.json" = {
     text = ''
         "$schema": @JSONPATH@,

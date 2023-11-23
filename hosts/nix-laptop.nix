@@ -1,66 +1,63 @@
 # ./hosts/nix-laptop.nix
-
 let
-scheme = "tokyo-night-dark";
+  scheme = "tokyo-night-dark";
 in
+  {
+    config,
+    pkgs,
+    lib,
+    inputs,
+    outputs,
+    nix-colors,
+    ...
+  }: {
+    imports = [
+      # should majority of these be imported by shared, then any system specific added into the desktop / laptop configs?
+      nix-colors.homeManagerModules.default
 
-{
-  config,
-  pkgs,
-  lib,
-  inputs,
-  outputs,
-  nix-colors,
-  ...
-}: {
-# should majority of these be imported by shared, then any system specific added into the desktop / laptop configs?
-# will do on next refactor
+      ./shared.nix
+      ./laptop-hw.nix
 
-  imports = [
-    nix-colors.homeManagerModules.default
+      ../modules/gaming.nix
+      ../modules/fonts.nix
 
-    ./shared.nix
-    ./laptop-hw.nix
+      ../hardware/pipewire.nix
 
-    ../modules/gaming.nix
-    ../modules/fonts.nix
-    
-    ../hardware/pipewire.nix
-    
-    ../home
-    ../home/ags
-    ../home/codium
-    ../home/dunst
-    ../home/firefox
-    ../home/git
-    ../home/hypr
-    ../home/kde
-    ../home/kitty
-    ../home/lite-xl
-    ../home/swaync
-    ../home/waybar
-    ../home/wcp
-    ../home/wofi
-  ];
-  colorscheme = inputs.nix-colors.colorSchemes.${scheme};
-  home-manager.users.kel.colorscheme = inputs.nix-colors.colorSchemes.${scheme};
+      ../home
+      ../home/ags
+      ../home/codium
+      ../home/dunst
+      ../home/firefox
+      ../home/git
+      ../home/hypr
+      ../home/kde
+      ../home/kitty
+      ../home/lite-xl
+      ../home/swaync
+      ../home/waybar
+      ../home/wcp
+      ../home/wofi
+    ];
+    # define colours scheme for standard and home manager packages, theme set at top of file
+    colorscheme = inputs.nix-colors.colorSchemes.${scheme};
+    home-manager.users.kel.colorscheme = inputs.nix-colors.colorSchemes.${scheme};
 
-  hardware.bluetooth.enable = true;
-  networking.hostName = "nix-laptop";
-  networking.wireless.iwd.enable = true;
-  systemd.services.supergfxd.path = [pkgs.pciutils]; # gpu switching
+    hardware.bluetooth.enable = true;
+    networking.hostName = "nix-laptop";
+    networking.wireless.iwd.enable = true;
+    systemd.services.supergfxd.path = [pkgs.pciutils]; # gpu switching
 
-  services.xserver = {
-    enable = true;
-    videoDrivers = ["nvidia"];
-  };
-
-  environment = {
-    systemPackages = with pkgs; [ pciutils ];
-    shellAliases = {
-      rebuild = "sudo nixos-rebuild switch --flake /home/kel/nixos#nix-laptop --show-trace";
+    services.xserver = {
+      enable = true;
+      videoDrivers = ["nvidia"];
     };
-  };
-}
+
+    environment = {
+      systemPackages = with pkgs; [pciutils];
+      shellAliases = {
+        rebuild = "sudo nixos-rebuild switch --flake /home/kel/nixos#nix-laptop --show-trace";
+      };
+    };
+  }
 # ./hosts/nix-laptop.nix
 

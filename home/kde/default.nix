@@ -1,3 +1,3 @@
-{ 
-  imports = [ ./kdeconnect.nix ];
+{
+  imports = [./kdeconnect.nix];
 }

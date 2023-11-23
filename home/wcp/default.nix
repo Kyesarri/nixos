@@ -1,14 +1,12 @@
 # TODO current codebase uses BBGGRRAA colours, waiting on a fix so this can work with my current configuration
 # see https://github.com/milgra/wcp/issues/6
-
 {
   pkgs,
   config,
   lib,
   ...
 }: {
-
-  users.users.kel.packages = with pkgs; [ (callPackage ../../packages/wcp {}) ];
+  users.users.kel.packages = with pkgs; [(callPackage ../../packages/wcp {})];
 
   imports = [
     ./html.nix

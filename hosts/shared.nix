@@ -1,6 +1,13 @@
 # ./hosts/shared.nix
-{ config, pkgs, lib, outputs, inputs, ... }: {
- system.stateVersion = "24.05";
+{
+  config,
+  pkgs,
+  lib,
+  outputs,
+  inputs,
+  ...
+}: {
+  system.stateVersion = "24.05";
   time.timeZone = "Australia/Melbourne";
   nixpkgs.config.allowUnfree = true;
   security.pam.services.gdm.enableGnomeKeyring = true; # keyring support for GDM
@@ -53,10 +60,9 @@
     };
   };
 
-
   # added virtualisation here, for ios-kvm / windows vm
   virtualisation.libvirtd.enable = true;
-  users.extraUsers.kel.extraGroups = [ "libvirtd" ];
+  users.extraUsers.kel.extraGroups = ["libvirtd"];
 
   boot = {
     extraModprobeConfig = ''
@@ -97,11 +103,11 @@
       LC_TIME = "en_AU.UTF-8";
     };
   };
-  
+
   networking = {
     firewall = {
       enable = true;
-      checkReversePath = "loose"; 
+      checkReversePath = "loose";
       # fixes some connection issues with tailscale, could not connect to tailnet or internet outside of home -
       # without this option enabled
       allowedTCPPortRanges = [
@@ -209,13 +215,13 @@
         iwd # wireless network daemon
         iwgtk # replaces network-manager-applet
         slack # needed for work :)
-        libnotify # notifications 
+        libnotify # notifications
         wlogout # wayland logout screen, need to spend more time with this
         poweralertd # laptop power notifications
         gimp-with-plugins # gimp, handy to have
         wf-recorder # screen recorder
         mate.mate-calc # calc
-        mate.engrampa # archive 
+        mate.engrampa # archive
         udiskie # usb mounting
         ulauncher # might be replacement for wofi
         hyprpaper # wallpaper wayland

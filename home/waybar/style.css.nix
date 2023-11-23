@@ -1,10 +1,9 @@
-  {
+{
   config,
   inputs,
   outputs,
   ...
-}:
-{  
+}: {
   home-manager.users.kel.home.file.".config/waybar/style.css" = {
     text = ''
       * {

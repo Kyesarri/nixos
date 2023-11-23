@@ -3,8 +3,7 @@
   inputs,
   outputs,
   ...
-}:
-{
+}: {
   home-manager.users.kel.home.file.".config/wcp/html/main.html" = {
     text = ''
       <div id="main" class="fullscaleview">

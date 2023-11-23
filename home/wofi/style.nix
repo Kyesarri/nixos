@@ -5,8 +5,7 @@
   outputs,
   pkgs,
   ...
-}:
-{
+}: {
   home-manager.users.kel.home.file.".config/wofi/style.css" = {
     text = ''
       window {

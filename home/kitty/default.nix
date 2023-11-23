@@ -5,19 +5,17 @@
   pkgs,
   nix-colors,
   ...
-}: 
-{
+}: {
   home-manager.users.kel.programs.kitty = {
     enable = true;
     settings = {
-    
       active_tab_foreground = "#${config.colorScheme.colors.base05}";
       active_tab_background = "#${config.colorScheme.colors.base00}";
-      
+
       foreground = "#${config.colorScheme.colors.base05}";
       background = "#${config.colorScheme.colors.base00}";
       url_color = "#${config.colorScheme.colors.base0E}";
-      
+
       repaint_delay = "12";
       sync_to_monitor = "yes";
       background_opacity = "1.0";

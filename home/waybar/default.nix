@@ -3,8 +3,7 @@
   config,
   pkgs,
   ...
-}:
-{
+}: {
   imports = [
     ./config.jsonc.nix
     ./style.css.nix
@@ -13,5 +12,4 @@
     enable = true;
     package = pkgs.waybar.override (oldAttrs: {pulseSupport = true;});
   };
-
 }
