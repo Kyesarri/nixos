@@ -1,5 +1,5 @@
 # ./hosts/shared.nix
-## big portion of my programs are installed here, see the end of file
+## big portion of my programs / packages are installed here, see the end of file
 {
   config,
   pkgs,
@@ -62,15 +62,15 @@
   };
 
   # added virtualisation here, for ios-kvm / windows vm
-  virtualisation.libvirtd.enable = true;
-  users.extraUsers.kel.extraGroups = ["libvirtd"];
+  #  virtualisation.libvirtd.enable = true;
+  #  users.extraUsers.kel.extraGroups = ["libvirtd"];
 
   boot = {
-    extraModprobeConfig = ''
-      options kvm_intel nested=1
-      options kvm_intel emulate_invalid_guest_state=0
-      options kvm ignore_msrs=1
-    '';
+    #   extraModprobeConfig = '' # used for vms, not required currently
+    #     options kvm_intel nested=1
+    #     options kvm_intel emulate_invalid_guest_state=0
+    #     options kvm ignore_msrs=1
+    #   '';
     kernelPackages = pkgs.linuxPackages_xanmod; # use xanmod kernel
     kernelParams = [
       "nowatchdog" # disables watchdog, was causing shutdown / reboot issues
@@ -240,14 +240,16 @@
         gimp-with-plugins # gimp, handy to have
         wf-recorder # screen recorder
         mate.mate-calc # calc
-        mate.engrampa # archive
+        p7zip
         udiskie # usb mounting
         ulauncher # might be replacement for wofi
         hyprpaper # wallpaper wayland
-        nwg-launchers
-        bitwarden
+        nwg-launchers # lockscreen / application launcher utilities
+        bitwarden # password manager
+        armcord # discord client / chat
+        pcsx2 # ps2 emulator
         # (callPackage ../packages/wcp {}) # IT WORKS! Currently has bugs with RGBA colours, see package notes
-        (callPackage ../packages/libfprint {}) # builds, need to write to the fprint reader now :)
+        # (callPackage ../packages/libfprint {}) # builds, need to write to the fprint reader now :)
         # (callPackage ../packages/sov {}) # sway overview, needs some hyprland config to see if works on hyprland
       ];
     };

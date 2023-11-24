@@ -8,6 +8,10 @@
     nixpkgs.url = "github:nixos/nixpkgs/master";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     hyprland.url = "github:hyprwm/Hyprland";
+    hyprland-plugins = {
+      url = "github:hyprwm/hyprland-plugins";
+      inputs.hyprland.follows = "hyprland";
+    };
     nix-colors.url = "github:misterio77/nix-colors";
     alejandra.url = "github:kamadorueda/alejandra/3.0.0";
     ags.url = "github:Aylur/ags/54fd9cf50c428bc8760ef20f05f6daffcb821896"; #v 1.5.1 Beta
@@ -16,7 +20,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
-  
+
   outputs = {
     self,
     nixpkgs,
@@ -28,19 +32,19 @@
     ...
   } @ inputs: {
     nixosConfigurations = {
-    
       "nix-laptop" = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
-        specialArgs =  { inherit nix-colors inputs; };
+        specialArgs = {inherit nix-colors inputs;};
         modules = [
           ./hosts/nix-laptop.nix
-          { environment.systemPackages = [ alejandra.defaultPackage.x86_64-linux ]; }
+          {environment.systemPackages = [alejandra.defaultPackage.x86_64-linux];}
           nixos-hardware.nixosModules.asus-zephyrus-ga401
-          home-manager.nixosModules.home-manager {
+          home-manager.nixosModules.home-manager
+          {
             home-manager = {
               useGlobalPkgs = true;
               useUserPackages = true;
-              extraSpecialArgs = { inherit nix-colors inputs; };# Pass flake input to home-manager
+              extraSpecialArgs = {inherit nix-colors inputs;}; # Pass flake input to home-manager
               users.kel.imports = [];
             };
           }
