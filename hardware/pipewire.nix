@@ -5,7 +5,7 @@
   lib,
   ...
 }: {
-  security.rtkit.enable = true; # not required but added anyway for some reason
+  security.rtkit.enable = true; # not required but added anyway
   sound.enable = true;
   services.pipewire = {
     enable = true;

@@ -11,6 +11,9 @@
     configDir = ../ags; # sets to /home/kel/.config/ags not 100% sure here :D
   };
 
+  # works with shell scripts, will need to either write my own and symlink or write / declare in a .nix :)
+  # can clone from git and place in the same dir, use home.file."foo.bar".source = ./foo.bar;
+
   home-manager.users.kel.home.file."./.config/ags/config.js".source = ./config.js;
 
   home-manager.users.kel.home.file.".config/ags/style.css" = {

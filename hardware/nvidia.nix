@@ -12,8 +12,8 @@
       open = false;
       nvidiaSettings = true;
       package = config.boot.kernelPackages.nvidiaPackages.latest;
-    }; # nvidia
-  }; # hardware
+    };
+  };
 }
 # ./hardware/nvidia.nix
 
