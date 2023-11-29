@@ -50,6 +50,23 @@
           }
         ];
       };
+      "nix-notebook" = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        specialArgs = {inherit nix-colors inputs;};
+        modules = [
+          ./hosts/nix-notebook.nix
+          {environment.systemPackages = [alejandra.defaultPackage.x86_64-linux];} # codium plugins
+          home-manager.nixosModules.home-manager
+          {
+            home-manager = {
+              useGlobalPkgs = true;
+              useUserPackages = true;
+              extraSpecialArgs = {inherit nix-colors inputs;}; # Pass flake input to home-manager
+              users.kel.imports = [];
+            };
+          }
+        ];
+      };
 
       "nix-desktop" = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";

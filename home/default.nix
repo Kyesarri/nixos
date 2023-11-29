@@ -15,7 +15,6 @@
       inputs.nix-colors.homeManagerModules.default
       ./gtk
     ];
-    # colorscheme = inputs.nix-colors.colorSchemes.tokyo-night-dark;
     programs.home-manager.enable = true;
     xdg.enable = true;
 

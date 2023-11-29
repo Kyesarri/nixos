@@ -1,6 +1,6 @@
 {config, ...}:
 #let
-#display = if
+#display = if something about system name / detected cpu?
 #in
 {
   home-manager.users.kel.home.file.".config/hypr/hyprpaper.conf" = {
