@@ -31,7 +31,9 @@
     nix-colors,
     ...
   } @ inputs: {
+  
     nixosConfigurations = {
+    
       "nix-laptop" = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         specialArgs = {inherit nix-colors inputs;};
@@ -68,21 +70,29 @@
           }
         ];
       };
-
+      
       "nix-desktop" = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
-        specialArgs = {inherit inputs;};
+        specialArgs = {inherit nix-colors inputs;};
         modules = [
           ./hosts/nix-desktop.nix
-          {environment.systemPackages = [alejandra.defaultPackage.x86_64-linux];}
+          {environment.systemPackages = [alejandra.defaultPackage.x86_64-linux];} # codium plugins
           home-manager.nixosModules.home-manager
           {
-            home-manager.extraSpecialArgs = {inherit inputs;}; # Pass flake input to home-manager
+            home-manager = {
+              useGlobalPkgs = true;
+              useUserPackages = true;
+              extraSpecialArgs = {inherit nix-colors inputs;}; # Pass flake input to home-manager
+              users.kel.imports = [];
+            };
           }
         ];
       };
-    };
-  };
+
+
+## close file
+};
+};
 }
 # ./flake.nix
 

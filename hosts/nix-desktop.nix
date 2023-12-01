@@ -16,9 +16,6 @@ in
       ./shared.nix
       ./desktop-hw.nix
 
-      ../modules/gaming.nix
-      ../modules/fonts.nix
-
       ../hardware/pipewire.nix
       ../hardware/openrgb.nix
       ../hardware/nvidia.nix
