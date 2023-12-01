@@ -50,6 +50,7 @@
           }
         ];
       };
+
       "nix-notebook" = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         specialArgs = {inherit nix-colors inputs;};

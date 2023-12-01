@@ -12,12 +12,9 @@ in
     ...
   }: {
     imports = [
-      # should majority of these be imported by shared, then any system specific added into the desktop / laptop configs?
-      # unsure as, may need to change the nix.colors definitions to another file :)
-      # not like this file is huge, overall pretty minimal
       nix-colors.homeManagerModules.default
       ./shared.nix
-      ./laptop-hw.nix
+      ./notebook-hw.nix
 
       ../hardware/pipewire.nix
 
@@ -34,7 +31,6 @@ in
       ../home/wcp
       ../home/wofi
     ];
-    # define colours scheme for standard and home manager packages, theme set at top of file
     colorscheme = inputs.nix-colors.colorSchemes.${scheme};
     home-manager.users.kel.colorscheme = inputs.nix-colors.colorSchemes.${scheme};
 
@@ -44,7 +40,6 @@ in
 
     services.xserver = {
       enable = true;
-      videoDrivers = ["nvidia"];
     };
 
     environment = {

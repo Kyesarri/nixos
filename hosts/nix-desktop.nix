@@ -12,7 +12,7 @@ in
     ...
   }: {
     imports = [
-      inputs.nix-colors.homeManagerModules.default
+      nix-colors.homeManagerModules.default
       ./shared.nix
       ./desktop-hw.nix
 
@@ -36,6 +36,8 @@ in
 
     colorscheme = inputs.nix-colors.colorSchemes.${scheme};
     home-manager.users.kel.colorscheme = inputs.nix-colors.colorSchemes.${scheme};
+    users.users.kel.packages = with pkgs; [nvtop];
+
     hardware.bluetooth.enable = true;
     networking.hostName = "nix-desktop";
     networking.wireless.iwd.enable = true;

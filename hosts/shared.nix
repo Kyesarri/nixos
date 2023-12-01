@@ -32,7 +32,7 @@
   };
 
   hardware = {
-    nvidia.modesetting.enable = true;
+    nvidia.modesetting.enable = true; # should not be in here now, per device
     pulseaudio.enable = false;
 
     opengl = {
@@ -78,7 +78,7 @@
       "tsc=nowatchdog" # workaround for check_tsc_sync_source failed, could cause issues
       "tsc=reliable" # flags tsc clock as reliable, workaround to get tsc working on laptop
       "vm.vfs_cache_pressure=50" # cache tweak, not sure if it does much :D
-    ];
+    ]; # majority of these are needed for desktop, laptop and notebook. tsc and cache probably laptop only
     loader = {
       efi.efiSysMountPoint = "/boot";
       grub = {
@@ -131,8 +131,8 @@
   services.tailscale.useRoutingFeatures = "client"; # set as client for tailscale
   services.fprintd.enable = true;
   services.upower = {
-    enable = true; # using upower for battery monitoring, waybar needs some configuration for this too :)
-    percentageCritical = 10;
+    enable = true; # using upower for battery monitoring, waybar needs some configuration for this too
+    percentageCritical = 10; # this should be device specific or a part of ./home
     percentageLow = 15;
   };
 
@@ -150,12 +150,14 @@
 
   programs = {
     steam = {
+      # steam should be part of a wider gaming .nix along with its firewall config
       enable = true;
       remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remoteplay
       dedicatedServer.openFirewall = true; # Open ports in the firewall for steam server
     };
 
     dconf.enable = true;
+
     zsh = {
       enable = true;
       enableCompletion = true;
@@ -207,18 +209,15 @@
       extraGroups = ["networkmanager" "wheel"];
       packages = with pkgs; [
         firefox
-        nvtop # watching gpu usage
         tailscale # mah boi
         tailscale-systray
-        qogir-theme # used to set dark theme for gtk applications
         remmina # rdp client
         fet-sh # minimalistic fetch script
         gnome-builder # ide / basic boi
         pamixer # cli pulse audio mixer
         pavucontrol # audio control gui
         brightnessctl # brightness control, used in waybar config
-        qogir-icon-theme # icons, not sure how to use :)
-        qogir-theme # theme
+        qogir-icon-theme # icons, not sure how to use :) TODO is this needed?
         wl-color-picker # wayland colour picker
         cinnamon.nemo-with-extensions # file manager
         qview # image viewer
@@ -226,10 +225,9 @@
         gnome.seahorse # key management
         blueberry # bluetooth gui
         shotman # image capture
-        hyprpicker # colour picker for wayland
+        hyprpicker # colour picker for wayland TODO waybar button or hypr keybind
         imagemagick # bitmap editor cli
         wl-clipboard # wayland clipboard, replacing copyq currently
-        tokyo-night-gtk # gtk theme
         swaylock-effects # lockscreen of sorts
         iwd # wireless network daemon
         iwgtk # replaces network-manager-applet
@@ -243,7 +241,6 @@
         p7zip
         udiskie # usb mounting
         ulauncher # might be replacement for wofi
-        hyprpaper # wallpaper wayland
         nwg-launchers # lockscreen / application launcher utilities
         bitwarden # password manager
         armcord # discord client / chat
