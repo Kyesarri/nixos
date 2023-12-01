@@ -16,8 +16,6 @@ in
       ./shared.nix
       ./desktop-hw.nix
 
-      ../configuration.nix
-
       ../modules/gaming.nix
       ../modules/fonts.nix
 
@@ -25,13 +23,20 @@ in
       ../hardware/openrgb.nix
       ../hardware/nvidia.nix
 
-      ../home/home.nix
-      ../home/waybar.nix
-      ../home/kitty.nix
-      ../home/wofi
+      ../home
+      ../home/ags
+      ../home/codium
       ../home/dunst
-      ../home/lite-xl
+      ../home/firefox
+      ../home/git
       ../home/hypr
+      ../home/kde
+      ../home/kitty
+      ../home/lite-xl
+      ../home/swaync
+      ../home/waybar
+      ../home/wcp
+      ../home/wofi
     ];
 
     colorscheme = inputs.nix-colors.colorSchemes.${scheme};
