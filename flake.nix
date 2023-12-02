@@ -16,7 +16,7 @@
     alejandra.url = "github:kamadorueda/alejandra/3.0.0";
     ags.url = "github:Aylur/ags/54fd9cf50c428bc8760ef20f05f6daffcb821896"; #v 1.5.1 Beta
     home-manager = {
-      url = "github:nix-community/home-manager";
+      url = "github:nix-community/home-manager/master"; # added master branch to follow unstable nixos
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
@@ -31,9 +31,7 @@
     nix-colors,
     ...
   } @ inputs: {
-  
     nixosConfigurations = {
-    
       "nix-laptop" = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         specialArgs = {inherit nix-colors inputs;};
@@ -70,7 +68,7 @@
           }
         ];
       };
-      
+
       "nix-desktop" = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         specialArgs = {inherit nix-colors inputs;};
@@ -88,11 +86,8 @@
           }
         ];
       };
-
-
-## close file
-};
-};
+    };
+  };
 }
 # ./flake.nix
 

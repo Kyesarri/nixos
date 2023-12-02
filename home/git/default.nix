@@ -7,6 +7,8 @@
     enable = true;
     extraConfig = {
       credential.helper = "libsecret";
+      user.name = "kye";
+      user.email = "kyesarri@gmail.com";
     };
   };
 }

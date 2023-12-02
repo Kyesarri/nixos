@@ -23,12 +23,10 @@ in
       ../home/firefox
       ../home/git
       ../home/hypr
-      ../home/kde
       ../home/kitty
       ../home/lite-xl
       ../home/swaync
       ../home/waybar
-      ../home/wcp
       ../home/wofi
     ];
     colorscheme = inputs.nix-colors.colorSchemes.${scheme};

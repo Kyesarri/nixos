@@ -1,5 +1,5 @@
 # ./hosts/shared.nix
-## big portion of my programs / packages are installed here, see the end of file
+## big portion of my programs / packages are installed here, see end of file
 {
   config,
   pkgs,
@@ -8,7 +8,7 @@
   inputs,
   ...
 }: {
-  system.stateVersion = "24.05";
+  system.stateVersion = "23.11";
   time.timeZone = "Australia/Melbourne";
   nixpkgs.config.allowUnfree = true;
   security.pam.services.gdm.enableGnomeKeyring = true; # keyring support for GDM
@@ -32,7 +32,7 @@
   };
 
   hardware = {
-    nvidia.modesetting.enable = true; # should not be in here now, per device
+    nvidia.modesetting.enable = true; # TODO should not be in here now, per device
     pulseaudio.enable = false;
 
     opengl = {
@@ -44,6 +44,7 @@
 
   services = {
     printing.enable = true;
+    ratbagd.enable = true;
     tailscale.enable = true;
     fwupd.enable = true;
     dbus = {
@@ -116,23 +117,24 @@
           from = 1714;
           to = 1764;
         }
-      ]; # kdeconnect
+      ];
+      # kdeconnect
       allowedUDPPortRanges = [
         {
           from = 1714;
           to = 1764;
         }
-      ]; # kdeconnect
+      ];
       allowedUDPPorts = [41641]; # tailscale
       allowedTCPPorts = [3389]; # rdp
     };
   };
 
   services.tailscale.useRoutingFeatures = "client"; # set as client for tailscale
-  services.fprintd.enable = true;
+  services.fprintd.enable = true; #TODO per device
   services.upower = {
     enable = true; # using upower for battery monitoring, waybar needs some configuration for this too
-    percentageCritical = 10; # this should be device specific or a part of ./home
+    percentageCritical = 10; # TODO per device or own nix under ./home
     percentageLow = 15;
   };
 
@@ -150,7 +152,7 @@
 
   programs = {
     steam = {
-      # steam should be part of a wider gaming .nix along with its firewall config
+      # TODO steam should be part of a wider gaming .nix along with its firewall config
       enable = true;
       remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remoteplay
       dedicatedServer.openFirewall = true; # Open ports in the firewall for steam server
@@ -238,7 +240,7 @@
         gimp-with-plugins # gimp, handy to have
         wf-recorder # screen recorder
         mate.mate-calc # calc
-        p7zip
+        p7zip # TODO needs a gui
         udiskie # usb mounting
         ulauncher # might be replacement for wofi
         nwg-launchers # lockscreen / application launcher utilities
