@@ -132,11 +132,6 @@
 
   services.tailscale.useRoutingFeatures = "client"; # set as client for tailscale
   services.fprintd.enable = true; #TODO per device
-  services.upower = {
-    enable = true; # using upower for battery monitoring, waybar needs some configuration for this too
-    percentageCritical = 10; # TODO per device or own nix under ./home
-    percentageLow = 15;
-  };
 
   fonts = {
     packages = with pkgs; [

@@ -49,12 +49,22 @@ in
       videoDrivers = ["nvidia"];
     };
 
+    services.fprintd.enable = true; # TODO merge all services
+
+    services.upower = {
+      enable = true; # using upower for battery monitoring, waybar needs some configuration for this too
+      percentageCritical = 10; 
+      percentageLow = 15;
+    };
+
     environment = {
       systemPackages = with pkgs; [pciutils];
       shellAliases = {
         rebuild = "sudo nixos-rebuild switch --flake /home/kel/nixos#nix-laptop --show-trace";
       };
     };
+    
+
   }
 # ./hosts/nix-laptop.nix
 

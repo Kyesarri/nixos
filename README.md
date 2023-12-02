@@ -2,7 +2,7 @@
 ![spagh](https://img.shields.io/badge/made_with-spaghetti-blue) ![adhd](https://img.shields.io/badge/and%20adhd-b7f7bf)
 > my public spaghetti nixos
 > 
-> system specific .nix for laptop ga401 / desktop
+> system specific .nix for laptop ga401 / desktop / CL10W-C
 
 ![kye/nixos](screenshots/kye-nixos.jpg "screenshot")
 ![kye/nixos](screenshots/kye-nixos-2.jpg "screenshot-2")
