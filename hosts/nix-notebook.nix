@@ -13,7 +13,7 @@ in
   }: {
     imports = [
       nix-colors.homeManagerModules.default
-      ./shared.nix
+      ./minimal.nix
       ./notebook-hw.nix
 
       ../hardware/pipewire.nix
@@ -25,7 +25,6 @@ in
       ../home/hypr
       ../home/kitty
       ../home/lite-xl
-      ../home/swaync
       ../home/waybar
       ../home/wofi
     ];
@@ -45,6 +44,12 @@ in
       shellAliases = {
         rebuild = "sudo nixos-rebuild switch --flake /home/kel/nixos#nix-notebook --show-trace";
       };
+    };
+
+    services.upower = {
+      enable = true; # using upower for battery monitoring, waybar needs some configuration for this too
+      percentageCritical = 10; # TODO per device or own nix under ./home
+      percentageLow = 15;
     };
   }
 # ./hosts/nix-notebook.nix

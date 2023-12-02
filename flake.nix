@@ -14,7 +14,7 @@
     };
     nix-colors.url = "github:misterio77/nix-colors";
     alejandra.url = "github:kamadorueda/alejandra/3.0.0";
-    ags.url = "github:Aylur/ags/54fd9cf50c428bc8760ef20f05f6daffcb821896"; #v 1.5.1 Beta
+    ags.url = "github:Aylur/ags/8f86ae9381c7b05a761e8f8d713af45489495d9d"; #v 1.5.4 Beta
     home-manager = {
       url = "github:nix-community/home-manager/master"; # added master branch to follow unstable nixos
       inputs.nixpkgs.follows = "nixpkgs";
