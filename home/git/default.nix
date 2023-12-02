@@ -8,7 +8,7 @@
     extraConfig = {
       credential.helper = "libsecret";
       user.name = "kye";
-      user.email = "kyesarri@gmail.com";
+      user.email = "kyesarri@gmail.com"; # hello internet :D
     };
   };
 }
