@@ -28,6 +28,7 @@ in
       ../home/waybar
       ../home/wofi
     ];
+
     colorscheme = inputs.nix-colors.colorSchemes.${scheme};
     home-manager.users.kel.colorscheme = inputs.nix-colors.colorSchemes.${scheme};
 

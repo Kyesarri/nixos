@@ -89,9 +89,7 @@
   networking = {
     firewall = {
       enable = true;
-      checkReversePath = "loose";
-      # fixes some connection issues with tailscale, could not connect to tailnet or internet outside of home -
-      # without this option enabled
+      checkReversePath = "loose"; # fixes some connection issues with tailscale
       allowedTCPPortRanges = [
         {
           from = 1714;
@@ -144,7 +142,7 @@
 
   programs = {
     steam = {
-      # TODO steam should be part of a wider gaming .nix along with its firewall config
+      # TODO steam should be part of a wider gaming .nix
       enable = true;
       remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remoteplay
       dedicatedServer.openFirewall = true; # Open ports in the firewall for steam server
@@ -179,7 +177,7 @@
       XDG_CONFIG_HOME = "$HOME/.config";
       XDG_DATA_HOME = "$HOME/.local/share";
       XDG_STATE_HOME = "$HOME/.local/state";
-      NIXOS_OZONE_WL = "1"; # fixes electron apps in wayland, wasn't working for me :)
+      NIXOS_OZONE_WL = "1"; # fixes electron apps in wayland
     };
 
     shells = with pkgs; [zsh]; # default shell to zsh
