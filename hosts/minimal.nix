@@ -147,7 +147,7 @@
       curl
       wget
       libsecret
-      git
+      gitAndTools.gitFull
       lxqt.lxqt-policykit
     ];
   };
