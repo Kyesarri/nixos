@@ -9,8 +9,10 @@
 }: {
   system.stateVersion = "23.11";
   time.timeZone = "Australia/Melbourne";
+
   nixpkgs.config.allowUnfree = true;
   security.pam.services.gdm.enableGnomeKeyring = true; # keyring support for GDM
+
   programs.gnupg.agent = {
     enable = true;
     enableSSHSupport = true;
@@ -31,7 +33,6 @@
 
   hardware = {
     pulseaudio.enable = false;
-
     opengl = {
       enable = true;
       driSupport = true;
@@ -39,6 +40,8 @@
   };
 
   services = {
+    tailscale.useRoutingFeatures = "client"; # set as client for tailscale
+
     printing.enable = false;
     tailscale.enable = true;
     dbus = {
@@ -92,8 +95,6 @@
       allowedUDPPorts = [41641]; # tailscale
     };
   };
-
-  services.tailscale.useRoutingFeatures = "client"; # set as client for tailscale
 
   fonts = {
     packages = with pkgs; [

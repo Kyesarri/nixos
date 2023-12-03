@@ -22,7 +22,7 @@
 
        ############################################# exec-once #############################################
 
-       exec-once = rog-control-center & hyprpaper & tailscale-systray & waybar # & ags
+       exec-once = hyprpaper & tailscale-systray & waybar
        exec-once = sleep 4 && gnome-keyring-daemon --start --components=secrets
        exec-once = sleep 6 && dbus-update-activation-environment --all
        exec-once = sleep 2 && copyq --start-server

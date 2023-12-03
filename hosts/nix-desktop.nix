@@ -13,7 +13,7 @@ in
   }: {
     imports = [
       nix-colors.homeManagerModules.default
-      ./shared.nix
+      ./standard.nix
       ./desktop-hw.nix
 
       ../hardware/pipewire.nix

@@ -42,26 +42,6 @@
     };
   };
 
-  services = {
-    printing.enable = true;
-    ratbagd.enable = true;
-    tailscale.enable = true;
-    fwupd.enable = true;
-    dbus = {
-      enable = true;
-      packages = [pkgs.gnome.seahorse];
-    };
-    gnome.gnome-keyring.enable = true;
-
-    xserver = {
-      enable = true;
-      displayManager.gdm = {
-        enable = true;
-        wayland = true;
-      };
-    };
-  };
-
   # added virtualisation here, for ios-kvm / windows vm
   #  virtualisation.libvirtd.enable = true;
   #  users.extraUsers.kel.extraGroups = ["libvirtd"];
@@ -129,9 +109,26 @@
       allowedTCPPorts = [3389]; # rdp
     };
   };
+  services = {
+    tailscale.useRoutingFeatures = "client"; # set as client for tailscale
+    printing.enable = true;
+    ratbagd.enable = true; # TODO desktop only
+    tailscale.enable = true;
+    fwupd.enable = true; # firmware updater
+    dbus = {
+      enable = true;
+      packages = [pkgs.gnome.seahorse];
+    };
+    gnome.gnome-keyring.enable = true;
 
-  services.tailscale.useRoutingFeatures = "client"; # set as client for tailscale
-  services.fprintd.enable = true; #TODO per device
+    xserver = {
+      enable = true;
+      displayManager.gdm = {
+        enable = true;
+        wayland = true;
+      };
+    };
+  };
 
   fonts = {
     packages = with pkgs; [
@@ -224,7 +221,7 @@
         shotman # image capture
         hyprpicker # colour picker for wayland TODO waybar button or hypr keybind
         imagemagick # bitmap editor cli
-        wl-clipboard # wayland clipboard, replacing copyq currently
+        copyq # clipboard
         swaylock-effects # lockscreen of sorts
         iwd # wireless network daemon
         iwgtk # replaces network-manager-applet
