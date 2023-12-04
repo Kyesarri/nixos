@@ -117,7 +117,6 @@
       syntaxHighlighting.highlighters = ["main" "brackets" "pattern" "cursor" "line"];
       syntaxHighlighting.patterns = {};
       syntaxHighlighting.styles = {"globbing" = "none";};
-      promptInit = "info='n host cpu os wm sh n' fet.sh";
       ohMyZsh = {
         enable = true;
         theme = "fino-time";
@@ -163,7 +162,6 @@
         firefox
         tailscale # mah boi
         tailscale-systray
-        fet-sh # minimalistic fetch script
         pamixer # cli pulse audio mixer
         pavucontrol # audio control gui
         brightnessctl # brightness control, used in waybar config

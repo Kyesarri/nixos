@@ -1,6 +1,6 @@
 # ./hosts/nix-notebook.nix
 let
-  scheme = "tokyo-night-dark";
+  scheme = "selenized-dark";
 in
   {
     config,
@@ -18,6 +18,7 @@ in
 
       ../hardware/pipewire.nix
 
+      ../home/ulauncher
       ../home
       ../home/dunst
       ../home/firefox
