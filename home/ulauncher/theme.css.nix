@@ -1,10 +1,5 @@
-{
-  config,
-  inputs,
-  outputs,
-  ...
-}: {
-  home-manager.users.kel.home.file."config/ulauncher/user-themes/TokyoNight/theme.css" = {
+{...}: {
+  home-manager.users.kel.home.file.".config/ulauncher/user-themes/TokyoNight/theme.css" = {
     text = ''
       @define-color bg_color rgba(36, 40, 59, 0.9);
       @define-color window_bg @bg_color;
@@ -36,8 +31,8 @@
 
       .app {
           background-color: @window_bg;
-          border: 2px solid @window_border_color;
-          border-radius: 30px;
+          border: 5px solid @window_border_color;
+          border-radius: 10px;
           margin: 0 -20px;
       }
 

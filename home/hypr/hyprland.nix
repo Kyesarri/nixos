@@ -29,17 +29,14 @@
        exec-once = lxqt-policykit-agent & udiskie &
        exec-once = sleep 8 && poweralertd
 
-       # exec-once = ulauncher & # waiting on new version to drop, might build from source
+       exec-once = sleep 1 && ulauncher --hide-window
 
-       # exec-once = rm -f /tmp/wcp && mkfifo /tmp/wcp && tail -f /tmp/wcp | wcp -r ~/dots/config/wcp # fifo for wcp
-       # exec-once = rm -f /tmp/sovpipe && mkfifo /tmp/sovpipe && tail -f /tmp/sovpipe | sov -t 500 # fifo for sov
-       # sov does not work "well" under hypr yet
 
        ############################################# misc #############################################
 
        monitor=,1920x1080@120,auto,1
 
-       env = XCURSOR_SIZE,24
+       env = XCURSOR_SIZE,20
        env = WLR_NO_HARDWARE_CURSORS,1
 
 
@@ -101,11 +98,10 @@
        }
 
        decoration {
+
          rounding = 10
-         #multisample_edges = true
 
          drop_shadow = 1
-
          shadow_range = 30
          shadow_render_power = 3
          col.shadow = $ca
@@ -187,7 +183,9 @@
        windowrule = float, ^(org.twosheds.iwgtk)$
        windowrule = float, title:CopyQ
        windowrule = float, title:Authentication Required
-       windowrule = float, title:VSCodium
+       windowrule = float, title:Wireless network credentials
+
+       windowrule = tile, title:VSCodium
 
        windowrule = tile, ^(lite-xl)$
 
@@ -195,7 +193,11 @@
 
        windowrulev2 = opacity 0.8 0.8, class:^(kitty)$
        windowrulev2 = size 700 300, class:^(kitty)$
-       # windowrulev2 = float, size 1000 500, title:btm
+
+       # is there a method to one-line the below?
+       windowrulev2 = noborder, class:^(ulauncher)$
+       windowrulev2 = noshadow, class:^(ulauncher)$
+       windowrulev2 = noblur, class:^(ulauncher)$
 
 
        ############################################ binds ############################################
@@ -207,9 +209,9 @@
        bind = $mainMod, M, exit,
        bind = $mainMod, E, exec, nemo
        bind = $mainMod, V, togglefloating,
-       bind = $mainMod, R, exec, wofi --show drun
+       bind = $mainMod, R, exec, ulauncher-toggle
        bind = $mainMod, P, pseudo, dwindle
-       bind = $mainMod, K, exec, lite-xl
+       bind = $mainMod, K, exec, codium
        bind = $mainMod, F, exec, firefox
        bind = $mainMod, W, exec, firefox -p work
        bind = control, escape, exec, kitty -e btm
