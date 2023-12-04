@@ -1,5 +1,4 @@
 # ./hosts/shared.nix
-## big portion of my programs / packages are installed here, see end of file
 {
   config,
   pkgs,
@@ -10,13 +9,11 @@
 }: {
   system.stateVersion = "23.11";
   time.timeZone = "Australia/Melbourne";
+
   nixpkgs.config.allowUnfree = true;
+
   security.pam.services.gdm.enableGnomeKeyring = true; # keyring support for GDM
   security.pam.services.swaylock = {}; # enables pam for swaylock, otherwise cannot unlock system
-  programs.gnupg.agent = {
-    enable = true;
-    enableSSHSupport = true;
-  };
 
   nix.package = pkgs.nixUnstable; # prefer nixunstable over stable
 
@@ -42,16 +39,7 @@
     };
   };
 
-  # added virtualisation here, for ios-kvm / windows vm
-  #  virtualisation.libvirtd.enable = true;
-  #  users.extraUsers.kel.extraGroups = ["libvirtd"];
-
   boot = {
-    #   extraModprobeConfig = '' # used for vms, not required currently
-    #     options kvm_intel nested=1
-    #     options kvm_intel emulate_invalid_guest_state=0
-    #     options kvm ignore_msrs=1
-    #   '';
     kernelPackages = pkgs.linuxPackages_xanmod; # use xanmod kernel
     kernelParams = [
       "nowatchdog" # disables watchdog, was causing shutdown / reboot issues
@@ -59,7 +47,7 @@
       "tsc=nowatchdog" # workaround for check_tsc_sync_source failed, could cause issues
       "tsc=reliable" # flags tsc clock as reliable, workaround to get tsc working on laptop
       "vm.vfs_cache_pressure=50" # cache tweak, not sure if it does much :D
-    ]; # majority of these are needed for desktop, laptop and notebook. tsc and cache probably laptop only
+    ]; # TODO tsc and cache probably laptop only :)
     loader = {
       efi.efiSysMountPoint = "/boot";
       grub = {
@@ -107,18 +95,19 @@
       allowedTCPPorts = [3389]; # rdp
     };
   };
+
   services = {
     tailscale.useRoutingFeatures = "client"; # set as client for tailscale
     printing.enable = true;
-    ratbagd.enable = true; # TODO desktop only
     tailscale.enable = true;
-    fwupd.enable = true; # firmware updater
+    fwupd.enable = true; # firmware updater, what was i using this for again? :D
     dbus = {
       enable = true;
       packages = [pkgs.gnome.seahorse];
     };
     gnome.gnome-keyring.enable = true;
 
+    # should this be pushed to a n o t h e r nix under ./home/ for GDM / SDDM
     xserver = {
       enable = true;
       displayManager.gdm = {
@@ -141,6 +130,10 @@
   };
 
   programs = {
+    gnupg.agent = {
+      enable = true;
+      enableSSHSupport = true;
+    };
     steam = {
       # TODO steam should be part of a wider gaming .nix
       enable = true;
@@ -205,7 +198,6 @@
         tailscale-systray
         remmina # rdp client
         fet-sh # minimalistic fetch script
-        gnome-builder # ide / basic boi
         pamixer # cli pulse audio mixer
         pavucontrol # audio control gui
         brightnessctl # brightness control, used in waybar config

@@ -44,9 +44,13 @@ in
     networking.hostName = "nix-desktop";
     networking.wireless.iwd.enable = true;
 
-    services.xserver = {
-      enable = true;
-      videoDrivers = ["nvidia"];
+    services = {
+      ratbagd.enable = true; # mouse settings thing?
+
+      xserver = {
+        enable = true;
+        videoDrivers = ["nvidia"];
+      };
     };
 
     environment = {

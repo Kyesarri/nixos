@@ -64,10 +64,6 @@
            }
        }
 
-
-       # $sov1 = echo 1 > /tmp/sovpipe
-       # $sov1r = echo 0 > /tmp/sovpipe
-
       ### define nix-colors here, reduces bulk and increases readability ###
 
       $c0 = rgba(${config.colorscheme.colors.base00}FF)
@@ -168,13 +164,6 @@
            workspace_swipe = off
        }
 
-       # Example per-device config
-       # See https://wiki.hyprland.org/Configuring/Keywords/#executing for more
-       #device:epic-mouse-v1 {
-       #    sensitivity = -0.5
-       #}
-
-
        ############################################ window rules ############################################
 
        windowrule = float, title:zsh
@@ -194,7 +183,7 @@
        windowrulev2 = opacity 0.8 0.8, class:^(kitty)$
        windowrulev2 = size 700 300, class:^(kitty)$
 
-       # is there a method to one-line the below?
+       # is there a method to one-line the below and above?
        windowrulev2 = noborder, class:^(ulauncher)$
        windowrulev2 = noshadow, class:^(ulauncher)$
        windowrulev2 = noblur, class:^(ulauncher)$
@@ -247,11 +236,10 @@
        bind = $mainMod, up, movefocus, u
        bind = $mainMod, down, movefocus, d
 
-       # Switch workspaces with mainMod + [0-9] # was a 21 infront of this, might have been causing issues?
+       # Switch workspaces with mainMod + [0-9]
+       ## added switching wallpapers on workspace switch
        bind = $mainMod, 1, workspace, 1
        bind = $mainMod, 1, exec, $w1
-       # bind = $mainMod, 1, exec, $sov1
-       # bindr = $mainMod, 1, exec, $sov1r
 
        bind = $mainMod, 2, workspace, 2
        bind = $mainMod, 2, exec, $w2
@@ -275,6 +263,7 @@
        bind = $mainMod, 8, exec, $w8
 
        # Move active window to a workspace with mainMod + SHIFT + [0-9]
+       ## should add a hyprpaper workspace wallpaper switch here too :)
        bind = $mainMod SHIFT, 1, movetoworkspace, 1
        bind = $mainMod SHIFT, 2, movetoworkspace, 2
        bind = $mainMod SHIFT, 3, movetoworkspace, 3
@@ -283,7 +272,6 @@
        bind = $mainMod SHIFT, 6, movetoworkspace, 6
        bind = $mainMod SHIFT, 7, movetoworkspace, 7
        bind = $mainMod SHIFT, 8, movetoworkspace, 8
-
 
        # Scroll through existing workspaces with mainMod + scroll
        bind = $mainMod, mouse_down, workspace, e+1
