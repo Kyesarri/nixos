@@ -39,7 +39,19 @@
     };
   };
 
+  #  added virtualisation here, for ios-kvm / windows vm
+  virtualisation.libvirtd.enable = true;
+  virtualisation.virtualbox.host.enable = true;
+  virtualisation.virtualbox.guest.enable = true;
+  virtualisation.virtualbox.host.enableExtensionPack = true;
+  users.extraUsers.kel.extraGroups = ["libvirtd" " vboxusers"];
+
   boot = {
+    extraModprobeConfig = ''
+      options kvm_intel nested=1
+      options kvm_intel emulate_invalid_guest_state=0
+      options kvm ignore_msrs=1
+    '';
     kernelPackages = pkgs.linuxPackages_xanmod; # use xanmod kernel
     kernelParams = [
       "nowatchdog" # disables watchdog, was causing shutdown / reboot issues
@@ -191,7 +203,7 @@
     users.kel = {
       isNormalUser = true;
       description = "kel";
-      extraGroups = ["networkmanager" "wheel"];
+      extraGroups = ["networkmanager" "wheel" "vboxusers"];
       packages = with pkgs; [
         firefox
         tailscale # mah boi
@@ -229,6 +241,7 @@
         bitwarden # password manager
         armcord # discord client / chat
         pcsx2 # ps2 emulator
+        gnome.gnome-boxes # qemu frontend
         # (callPackage ../packages/wcp {}) # IT WORKS! Currently has bugs with RGBA colours, see package notes
         # (callPackage ../packages/libfprint {}) # builds, need to write to the fprint reader now :)
         # (callPackage ../packages/sov {}) # sway overview, needs some hyprland config to see if works on hyprland

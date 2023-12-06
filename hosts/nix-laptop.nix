@@ -38,7 +38,7 @@ in
     colorscheme = inputs.nix-colors.colorSchemes.${scheme};
     home-manager.users.kel.colorscheme = inputs.nix-colors.colorSchemes.${scheme};
     # needed to define for packages in and outside of home-manager
-    users.users.kel.packages = with pkgs; [nvtop];
+    users.users.kel.packages = with pkgs; [nvtop qemu];
 
     hardware.bluetooth.enable = true;
     networking.hostName = "nix-laptop";
