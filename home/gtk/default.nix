@@ -7,7 +7,7 @@
 }: let
   inherit (inputs.nix-colors.lib-contrib {inherit pkgs;}) gtkThemeFromScheme;
 in rec {
-  gtk = {
+  home-manager.users.kel.gtk = {
     enable = true;
     theme = {
       name = "${config.colorScheme.slug}";

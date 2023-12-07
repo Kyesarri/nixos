@@ -28,6 +28,7 @@ in
       ../home/lite-xl
       ../home/waybar
       ../home/wofi
+      ../home/gtk
     ];
 
     colorscheme = inputs.nix-colors.colorSchemes.${scheme};

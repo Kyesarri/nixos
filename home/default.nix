@@ -13,7 +13,7 @@
     imports = [
       inputs.ags.homeManagerModules.default # imports from root flake.nix then builds the package which is nice :)
       inputs.nix-colors.homeManagerModules.default
-      ./gtk
+      # move this to standard.nix / minimal.nix ./gtk
     ];
     programs.home-manager.enable = true;
     xdg.enable = true;

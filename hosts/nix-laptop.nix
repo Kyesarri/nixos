@@ -33,6 +33,7 @@ in
       ../home/waybar
       ../home/wcp
       ../home/wofi
+      ../home/gtk
     ];
     # define colours scheme for standard and home manager packages, theme set at top of file
     colorscheme = inputs.nix-colors.colorSchemes.${scheme};

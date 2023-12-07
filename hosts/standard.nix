@@ -9,6 +9,7 @@
 }: {
   system.stateVersion = "23.11";
   time.timeZone = "Australia/Melbourne";
+  services.gvfs.enable = true; # gnome trash support, move to nautilus ./home
 
   nixpkgs.config.allowUnfree = true;
 
