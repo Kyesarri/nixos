@@ -46,8 +46,7 @@ in
     networking.wireless.iwd.enable = true;
 
     services = {
-      ratbagd.enable = true; # mouse settings thing?
-
+      ratbagd.enable = true;
       xserver = {
         enable = true;
         videoDrivers = ["nvidia"];

@@ -11,7 +11,7 @@
       frame_color="#${config.colorscheme.colors.base03}"
       background="#${config.colorscheme.colors.base00}"
       foreground="#${config.colorscheme.colors.base05}"
-      highlight="#${config.colorscheme.colors.base0E}"
+      highlight="#${config.colorscheme.colors.base0A}"
       progress_bar_corner_radius = 10
       height=300
       icon_theme=Qogir-dark
@@ -27,14 +27,14 @@
       [urgency_normal]
       background="#${config.colorscheme.colors.base00}"
       foreground="#${config.colorscheme.colors.base05}"
-      highlight="#${config.colorscheme.colors.base0E}"
+      highlight="#${config.colorscheme.colors.base0A}"
       timeout=3
 
       [urgency_critical]
       background="#${config.colorscheme.colors.base00}"
       foreground="#${config.colorscheme.colors.base0F}"
       frame_color="#${config.colorscheme.colors.base0F}"
-      highlight="#${config.colorscheme.colors.base0E}"
+      highlight="#${config.colorscheme.colors.base0A}"
       timeout=5
 
 

@@ -48,7 +48,7 @@
       options kvm_intel emulate_invalid_guest_state=0
       options kvm ignore_msrs=1
     '';
-    kernelPackages = pkgs.linuxPackages_xanmod; # use xanmod kernel
+    kernelPackages = pkgs.linuxPackages_xanmod_latest; # use xanmod kernel
     kernelParams = [
       "nowatchdog" # disables watchdog, was causing shutdown / reboot issues
       "clocksource=tsc" # now working with tsc nowatchdog & tsc reliable
