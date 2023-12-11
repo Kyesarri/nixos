@@ -52,6 +52,7 @@ in
     };
 
     services.fprintd.enable = true; # TODO merge all services
+    services.ratbagd.enable = true; # mouse settings thing?
 
     services.upower = {
       enable = true; # using upower for battery monitoring, waybar needs some configuration for this too
