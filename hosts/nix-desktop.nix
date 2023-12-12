@@ -34,6 +34,7 @@ in
       ../home/waybar
       ../home/wcp
       ../home/wofi
+      ../home/ulauncher
       ../home/gtk
     ];
 
