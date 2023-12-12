@@ -40,16 +40,15 @@
   };
 
   services = {
-    tailscale.useRoutingFeatures = "client"; # set as client for tailscale
-
+    gvfs.enable = true; # gnome trash support
+    gnome.gnome-keyring.enable = true;
     printing.enable = false;
     tailscale.enable = true;
+    tailscale.useRoutingFeatures = "client"; # set as client for tailscale
     dbus = {
       enable = true;
       packages = [pkgs.gnome.seahorse];
     };
-    gnome.gnome-keyring.enable = true;
-
     xserver = {
       enable = true;
       displayManager.gdm = {
@@ -108,24 +107,12 @@
     ];
   };
 
-  programs = {
-    dconf.enable = true;
-    zsh = {
-      enable = true;
-      enableCompletion = true;
-      autosuggestions.enable = true;
-      syntaxHighlighting.highlighters = ["main" "brackets" "pattern" "cursor" "line"];
-      syntaxHighlighting.patterns = {};
-      syntaxHighlighting.styles = {"globbing" = "none";};
-      ohMyZsh = {
-        enable = true;
-        theme = "fino-time";
-        plugins = ["sudo" "terraform" "systemadmin" "vi-mode" "colorize"];
-      };
-    };
-  };
+  programs.dconf.enable = true;
+  programs.fish.enable = true;
 
   environment = {
+  shells = with pkgs; [fish]; # default shell
+
     sessionVariables = rec
     {
       QT_QPA_PLATFORM = "wayland";
@@ -139,7 +126,6 @@
       NIXOS_OZONE_WL = "1"; # fixes electron apps in wayland, wasn't working for me :)
     };
 
-    shells = with pkgs; [zsh]; # default shell to zsh
     systemPackages = with pkgs; [
       lshw # list hardware
       usbutils # usb thing
@@ -153,7 +139,6 @@
   };
 
   users = {
-    defaultUserShell = pkgs.zsh;
     users.kel = {
       isNormalUser = true;
       description = "kel";
@@ -173,7 +158,7 @@
         blueberry # bluetooth gui
         shotman # image capture
         hyprpicker # colour picker for wayland TODO waybar button or hypr keybind
-        wl-clipboard # wayland clipboard, replacing copyq currently
+        copyq # wayland clipboard
         iwd # wireless network daemon
         iwgtk # replaces network-manager-applet
         libnotify # notifications
@@ -183,6 +168,7 @@
         udiskie # usb mounting
         bitwarden # password manager
         armcord # discord client / chat
+        foot # minimal terminal emulator
       ];
     };
   };

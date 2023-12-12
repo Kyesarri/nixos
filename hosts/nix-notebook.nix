@@ -1,6 +1,6 @@
 # ./hosts/nix-notebook.nix
 let
-  scheme = "gigavolt";
+  scheme = "material-darker";
 in
   {
     config,
@@ -18,17 +18,16 @@ in
 
       ../hardware/pipewire.nix
 
-      ../home/ulauncher
       ../home
       ../home/dunst
       ../home/firefox
       ../home/git
       ../home/hypr
-      ../home/kitty
       ../home/lite-xl
       ../home/waybar
-      ../home/wofi
       ../home/gtk
+      ../home/ulauncher
+
     ];
 
     colorscheme = inputs.nix-colors.colorSchemes.${scheme};
