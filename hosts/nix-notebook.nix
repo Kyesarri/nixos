@@ -1,6 +1,6 @@
 # ./hosts/nix-notebook.nix
 let
-  scheme = "selenized-dark";
+  scheme = "gigavolt";
 in
   {
     config,
