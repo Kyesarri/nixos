@@ -9,7 +9,7 @@
 }: {
   system.stateVersion = "23.11";
   time.timeZone = "Australia/Melbourne";
-  services.gvfs.enable = true; # gnome trash support, move to nautilus ./home
+  services.gvfs.enable = true; # gnome trash support
 
   nixpkgs.config.allowUnfree = true;
 
@@ -40,7 +40,7 @@
     };
   };
 
-  virtualisation.spiceUSBRedirection.enable = true; # usb passthrough to vm
+  virtualisation.spiceUSBRedirection.enable = true; # usb passthrough to vm TODO want a vm ./home nix
 
   boot = {
     extraModprobeConfig = ''
@@ -55,7 +55,7 @@
       "tsc=nowatchdog" # workaround for check_tsc_sync_source failed, could cause issues
       "tsc=reliable" # flags tsc clock as reliable, workaround to get tsc working on laptop
       "vm.vfs_cache_pressure=50" # cache tweak, not sure if it does much :D
-    ]; # TODO tsc and cache probably laptop only :)
+    ]; # TODO tsc and cache laptop only?
     loader = {
       efi.efiSysMountPoint = "/boot";
       grub = {
@@ -63,6 +63,7 @@
         efiSupport = true;
         efiInstallAsRemovable = true; # Otherwise /boot/EFI/BOOT/BOOTX64.EFI isn't generated
         devices = ["nodev"];
+        theme = pkgs.sleek-grub-theme;
       };
     };
   };
@@ -88,14 +89,13 @@
       checkReversePath = "loose"; # fixes some connection issues with tailscale
       allowedTCPPortRanges = [
         {
-          from = 1714;
+          from = 1714; # kdeconnect TODO get working
           to = 1764;
         }
       ];
-      # kdeconnect
       allowedUDPPortRanges = [
         {
-          from = 1714;
+          from = 1714; # kdeconnect
           to = 1764;
         }
       ];
@@ -106,7 +106,7 @@
 
   services = {
     tailscale.useRoutingFeatures = "client"; # set as client for tailscale
-    printing.enable = true;
+    printing.enable = true; # need more than this to print afik?
     tailscale.enable = true;
     fwupd.enable = true; # firmware updater, what was i using this for again? :D
     dbus = {
@@ -115,7 +115,7 @@
     };
     gnome.gnome-keyring.enable = true;
 
-    # should this be pushed to a n o t h e r nix under ./home/ for GDM / SDDM
+    # TODO should this be pushed to a n o t h e r nix under ./home/ for GDM / SDDM
     xserver = {
       enable = true;
       displayManager.gdm = {
@@ -142,6 +142,7 @@
       enable = true;
       enableSSHSupport = true;
     };
+
     steam = {
       # TODO steam should be part of a wider gaming .nix
       enable = true;
@@ -172,7 +173,7 @@
     {
       QT_QPA_PLATFORM = "wayland";
       QT_QPA_PLATFORMTHEME = "qt5ct";
-      MOZ_ENABLE_WAYLAND = "1";
+      MOZ_ENABLE_WAYLAND = "1"; # enable firefox wayland / force
       GTK_THEME = "${config.colorscheme.slug}"; # sets default gtk theme the package built by nix-colors
       XDG_CACHE_HOME = "$HOME/.cache";
       XDG_CONFIG_HOME = "$HOME/.config";
@@ -240,6 +241,7 @@
         virt-manager # qemu frontend
         piper # frontend for libratbag added in services
         syncthing # sync things :)
+        sleek-grub-theme # testing grub themes
         # (callPackage ../packages/wcp {}) # IT WORKS! Currently has bugs with RGBA colours, see package notes
         # (callPackage ../packages/libfprint {}) # builds, need to write to the fprint reader now :)
         # (callPackage ../packages/sov {}) # sway overview, needs some hyprland config to see if works on hyprland
