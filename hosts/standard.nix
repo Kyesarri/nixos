@@ -196,7 +196,7 @@
   };
 
   users = {
-    defaultUserShell = pkgs.zsh;
+    defaultUserShell = pkgs.zsh; # both needed? TODO might remove this one as shell is set for system / environment already
     users.kel = {
       isNormalUser = true;
       description = "kel";
@@ -210,7 +210,6 @@
         pamixer # cli pulse audio mixer
         pavucontrol # audio control gui
         brightnessctl # brightness control, used in waybar config
-        qogir-icon-theme # icons, not sure how to use :) TODO is this needed?
         wl-color-picker # wayland colour picker
         cinnamon.nemo-with-extensions # file manager
         qview # image viewer
@@ -237,9 +236,8 @@
         nwg-launchers # lockscreen / application launcher utilities
         bitwarden # password manager
         armcord # discord client / chat
-        pcsx2 # ps2 emulator
-        virt-manager # qemu frontend
-        piper # frontend for libratbag added in services
+        pcsx2 # ps2 emulator TODO gaming
+        piper # frontend for libratbag added in services TODO gaming
         syncthing # sync things :)
         sleek-grub-theme # testing grub themes
         # (callPackage ../packages/wcp {}) # IT WORKS! Currently has bugs with RGBA colours, see package notes

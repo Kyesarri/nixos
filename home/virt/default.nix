@@ -3,15 +3,14 @@
   config,
   pkgs,
   lib,
-  outputs,
-  inputs,
   ...
 }: {
   users.users.kel.packages = with pkgs; [
-    virt-manager
-    qemu # this needed with virtmanager? TODO
+    virt-manager # TODO might need some nix added to configure using qemu as default for OOBE
+    qemu # this needed with virtmanager? TODO i believe so
+    libvirt
   ];
-  virtualisation.spiceUSBRedirection.enable = true;
+  virtualisation.spiceUSBRedirection.enable = true; # usb passthrough to vm
   boot = {
     extraModprobeConfig = ''
       options kvm_intel nested=1
