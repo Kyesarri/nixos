@@ -35,6 +35,7 @@ in
       ../home/wcp
       ../home/wofi
       ../home/ulauncher
+      ../home/virt
       ../home/gtk
     ];
 

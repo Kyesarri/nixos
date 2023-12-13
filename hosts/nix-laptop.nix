@@ -30,6 +30,7 @@ in
       ../home/lite-xl
       ../home/swaync
       ../home/ulauncher
+      ../home/virt
       ../home/waybar
       ../home/wcp
       ../home/wofi
@@ -39,7 +40,7 @@ in
     colorscheme = inputs.nix-colors.colorSchemes.${scheme};
     home-manager.users.kel.colorscheme = inputs.nix-colors.colorSchemes.${scheme};
 
-    users.users.kel.packages = with pkgs; [nvtop qemu];
+    users.users.kel.packages = with pkgs; [nvtop];
 
     hardware.bluetooth.enable = true;
     networking.hostName = "nix-laptop";
