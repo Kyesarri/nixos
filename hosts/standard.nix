@@ -12,6 +12,11 @@
 
   nixpkgs.config.allowUnfree = true;
 
+  security.pam.services = {
+    gdm.enableGnomeKeyring = true; # keyring support for GDM
+    swaylock = {}; # enables pam for swaylock, otherwise cannot unlock system
+  };
+
   nix = {
     package = pkgs.nixUnstable; # prefer nixunstable over stable
     gc = {
@@ -36,7 +41,7 @@
   };
 
   boot = {
-    kernelPackages = pkgs.linuxPackages_xanmod_latest; # use xanmod kernel
+    kernelPackages = pkgs.linuxPackages_xanmod_latest; # use latest xanmod kernel
     kernelParams = [
       "nowatchdog" # disables watchdog, was causing shutdown / reboot issues
       "clocksource=tsc" # now working with tsc nowatchdog & tsc reliable
@@ -52,7 +57,7 @@
         efiSupport = true;
         efiInstallAsRemovable = true; # Otherwise /boot/EFI/BOOT/BOOTX64.EFI isn't generated
         devices = ["nodev"];
-        theme = pkgs.sleek-grub-theme;
+        theme = pkgs.sleek-grub-theme; # how to get dark theme?
       };
     };
   };
@@ -162,11 +167,6 @@
     };
   };
 
-  security.pam.services = {
-    gdm.enableGnomeKeyring = true; # keyring support for GDM
-    swaylock = {}; # enables pam for swaylock, otherwise cannot unlock system
-  };
-
   environment = {
     sessionVariables = rec
     {
@@ -196,6 +196,7 @@
 
   users = {
     users.kel = {
+      shell = pkgs.zsh;
       isNormalUser = true;
       description = "kel";
       extraGroups = ["networkmanager" "wheel" "vboxusers"];
