@@ -9,30 +9,25 @@
 }: {
   system.stateVersion = "23.11";
   time.timeZone = "Australia/Melbourne";
-  services.gvfs.enable = true; # gnome trash support
 
   nixpkgs.config.allowUnfree = true;
 
-  security.pam.services.gdm.enableGnomeKeyring = true; # keyring support for GDM
-  security.pam.services.swaylock = {}; # enables pam for swaylock, otherwise cannot unlock system
-
-  nix.package = pkgs.nixUnstable; # prefer nixunstable over stable
-
-  nix.settings = {
-    auto-optimise-store = true; # runs gc, need to set interval otherwise defaults to 14d from memory
-    experimental-features = ["nix-command" "flakes"]; # flakes and nixcommand required for config
-  };
-
-  nix.gc = {
-    automatic = true;
-    dates = "weekly";
-    options = "--delete-older-than 5d";
+  nix = {
+    package = pkgs.nixUnstable; # prefer nixunstable over stable
+    gc = {
+      automatic = true;
+      dates = "weekly";
+      options = "--delete-older-than 5d";
+    };
+    settings = {
+      auto-optimise-store = true; # runs gc, need to set interval otherwise defaults to 14d from memory
+      experimental-features = ["nix-command" "flakes"]; # flakes and nixcommand required for config
+    };
   };
 
   hardware = {
     nvidia.modesetting.enable = true; # TODO should not be in here now, per device
     pulseaudio.enable = false;
-
     opengl = {
       enable = true;
       driSupport = true;
@@ -99,6 +94,7 @@
   };
 
   services = {
+    gvfs.enable = true; # gnome trash support
     tailscale.useRoutingFeatures = "client"; # set as client for tailscale
     syncthing = {
       enable = true;
@@ -166,6 +162,11 @@
     };
   };
 
+  security.pam.services = {
+    gdm.enableGnomeKeyring = true; # keyring support for GDM
+    swaylock = {}; # enables pam for swaylock, otherwise cannot unlock system
+  };
+
   environment = {
     sessionVariables = rec
     {
@@ -194,7 +195,6 @@
   };
 
   users = {
-    defaultUserShell = pkgs.zsh; # both needed? TODO might remove this one as shell is set for system / environment already
     users.kel = {
       isNormalUser = true;
       description = "kel";

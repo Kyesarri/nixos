@@ -13,22 +13,17 @@
   nixpkgs.config.allowUnfree = true;
   security.pam.services.gdm.enableGnomeKeyring = true; # keyring support for GDM
 
-  programs.gnupg.agent = {
-    enable = true;
-    enableSSHSupport = true;
-  };
-
-  nix.package = pkgs.nixUnstable; # prefer nixunstable over stable
-
-  nix.settings = {
-    auto-optimise-store = true; # runs gc, need to set interval otherwise defaults to 14d from memory
-    experimental-features = ["nix-command" "flakes"]; # flakes and nixcommand required for config
-  };
-
-  nix.gc = {
-    automatic = true;
-    dates = "weekly";
-    options = "--delete-older-than 5d";
+  nix = {
+    package = pkgs.nixUnstable; # prefer nixunstable over stable
+    gc = {
+      automatic = true;
+      dates = "weekly";
+      options = "--delete-older-than 5d";
+    };
+    settings = {
+      auto-optimise-store = true; # runs gc, need to set interval otherwise defaults to 14d from memory
+      experimental-features = ["nix-command" "flakes"]; # flakes and nixcommand required for config
+    };
   };
 
   hardware = {
@@ -96,6 +91,7 @@
   };
 
   fonts = {
+    # remove from minimal? leave one font used by waybar?
     packages = with pkgs; [
       material-design-icons
       inter
@@ -107,11 +103,17 @@
     ];
   };
 
-  programs.dconf.enable = true;
-  programs.fish.enable = true;
+  programs = {
+    dconf.enable = true;
+    fish.enable = true;
+    gnupg.agent = {
+      enable = true;
+      enableSSHSupport = true;
+    };
+  };
 
   environment = {
-  shells = with pkgs; [fish]; # default shell
+    shells = with pkgs; [fish]; # default shell
 
     sessionVariables = rec
     {
