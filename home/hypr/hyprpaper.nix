@@ -14,5 +14,6 @@
     '';
     # wallpaper = eDP-1, ~/nixos/wallpaper/5.jpg
     # this value needs to have a configuration for both laptop and desktop
+    ## laptop also needs HDMI added for ultrawide res
   };
 }

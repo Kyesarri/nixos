@@ -4,11 +4,20 @@
   outputs,
   ...
 }: {
+  ## might port to pure .nix config and see if I can add from imported modules
+  ## use wayland.windowManager.hyprland.settings and nixify it :(
+  ## ex: {  decoration = {    shadow_offset = "0 5";    "col.shadow" = "rgba(00000099)";
+  ## };
+  ##  "$mod" = "SUPER";  bindm = [    # mouse movements    "$mod, mouse:272, movewindow"
+  ## "$mod, mouse:273, resizewindow"    "$mod ALT, mouse:272, resizewindow"
+  ## ];}
+  ## remember to escape $ with a / if needed
   home-manager.users.kel.home.file.".config/hypr/hyprland.conf" = {
     text = ''
       ############################################# spaghetti starts here #############################################
-      ## added per-device config here ## ## would prefer if this could be a per-program / package for now works :{ ##
-      source=~/.config/hypr/per-device.conf
+      ## added per-device config here ## ## may remove since below works as a wildcard ##
+      source = ~/.config/hypr/per-device.conf
+      source = ~/.config/hypr/per-app/*.conf
 
       ############################################# hyprpaper #############################################
 

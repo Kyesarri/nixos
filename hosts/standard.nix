@@ -103,7 +103,7 @@
     tailscale.useRoutingFeatures = "client"; # set as client for tailscale
     syncthing = {
       enable = true;
-      user = "kele";
+      user = "kel";
     };
     printing.enable = true; # need more than this to print afik?
     tailscale.enable = true;
@@ -203,7 +203,7 @@
       packages = with pkgs; [
         firefox
         tailscale # mah boi
-        tailscale-systray
+        tailscale-systray # TODO tailscale ./home
         remmina # rdp client
         fet-sh # minimalistic fetch script
         pamixer # cli pulse audio mixer
@@ -212,7 +212,7 @@
         wl-color-picker # wayland colour picker
         cinnamon.nemo-with-extensions # file manager
         qview # image viewer
-        bottom # hot CLI task manager
+        bottom # hot CLI task manager / resource monitor
         gnome.seahorse # key management
         blueberry # bluetooth gui
         shotman # image capture
@@ -222,7 +222,7 @@
         swaylock-effects # lockscreen of sorts
         iwd # wireless network daemon
         iwgtk # replaces network-manager-applet
-        slack # needed for work :)
+        slack # work
         libnotify # notifications
         wlogout # wayland logout screen, need to spend more time with this
         poweralertd # laptop power notifications
@@ -231,14 +231,16 @@
         mate.mate-calc # calc
         p7zip # TODO needs a gui
         udiskie # usb mounting
-        ulauncher # might be replacement for wofi
-        nwg-launchers # lockscreen / application launcher utilities
+        ulauncher # might be replacement for wofi TODO move to hypr
+        nwg-launchers # lockscreen / application launcher utilities TODO move to hypr
         bitwarden # password manager
         armcord # discord client / chat
-        pcsx2 # ps2 emulator TODO gaming
+        pcsx2 # ps2 emulator TODO gaming / emu
         piper # frontend for libratbag added in services TODO gaming
         protonup-qt # protonge TODO gaming
         sleek-grub-theme # testing grub themes
+        syncthing # sync... thing think this is needed in addition to the service?
+        syncthingtray # syncthing tray icon
         # (callPackage ../packages/wcp {}) # IT WORKS! Currently has bugs with RGBA colours, see package notes
         # (callPackage ../packages/libfprint {}) # builds, need to write to the fprint reader now :)
         # (callPackage ../packages/sov {}) # sway overview, needs some hyprland config to see if works on hyprland
