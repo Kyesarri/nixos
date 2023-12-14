@@ -237,6 +237,7 @@
         armcord # discord client / chat
         pcsx2 # ps2 emulator TODO gaming
         piper # frontend for libratbag added in services TODO gaming
+        protonup-qt # protonge TODO gaming
         sleek-grub-theme # testing grub themes
         # (callPackage ../packages/wcp {}) # IT WORKS! Currently has bugs with RGBA colours, see package notes
         # (callPackage ../packages/libfprint {}) # builds, need to write to the fprint reader now :)

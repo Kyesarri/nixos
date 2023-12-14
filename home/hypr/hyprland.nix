@@ -7,7 +7,7 @@
   home-manager.users.kel.home.file.".config/hypr/hyprland.conf" = {
     text = ''
       ############################################# spaghetti starts here #############################################
-      ## added per-device config here ##
+      ## added per-device config here ## ## would prefer if this could be a per-program / package for now works :{ ##
       source=~/.config/hypr/per-device.conf
 
       ############################################# hyprpaper #############################################
@@ -142,7 +142,7 @@
 
       }
 
-             ############################################ Layouts ###################################################
+      ############################################ Layouts ###################################################
 
       dwindle {
       no_gaps_when_only = false
