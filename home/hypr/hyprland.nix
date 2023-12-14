@@ -4,19 +4,16 @@
   outputs,
   ...
 }: {
-  ## might port to pure .nix config and see if I can add from imported modules
-  ## use wayland.windowManager.hyprland.settings and nixify it :(
-  ## ex: {  decoration = {    shadow_offset = "0 5";    "col.shadow" = "rgba(00000099)";
-  ## };
-  ##  "$mod" = "SUPER";  bindm = [    # mouse movements    "$mod, mouse:272, movewindow"
-  ## "$mod, mouse:273, resizewindow"    "$mod ALT, mouse:272, resizewindow"
-  ## ];}
-  ## remember to escape $ with a / if needed
   home-manager.users.kel.home.file.".config/hypr/hyprland.conf" = {
     text = ''
       ############################################# spaghetti starts here #############################################
-      ## added per-device config here ## ## may remove since below works as a wildcard ##
+      ## move to top of file, could move sources to eof to keep binds together ##
+      $mainMod = SUPER
+
+      ## per-device config ##
       source = ~/.config/hypr/per-device.conf
+
+      ## wildcard per-app enabled in each ./home/app/*.nix ##
       source = ~/.config/hypr/per-app/*.conf
 
       ############################################# hyprpaper #############################################
@@ -32,18 +29,17 @@
 
       ############################################# exec-once #############################################
 
-      exec-once = hyprpaper & tailscale-systray & waybar
+      ## TODO move to each ./home/*
+      exec-once = hyprpaper
+
       exec-once = sleep 4 && gnome-keyring-daemon --start --components=secrets
       exec-once = sleep 6 && dbus-update-activation-environment --all
       exec-once = sleep 2 && copyq --start-server
-      exec-once = lxqt-policykit-agent & udiskie &
+      exec-once = lxqt-policykit-agent & udiskie
       exec-once = sleep 8 && poweralertd
 
-      exec-once = sleep 1 && ulauncher --hide-window
 
       ############################################# misc #############################################
-
-      monitor=,1920x1080@120,auto,1
 
       env = XCURSOR_SIZE,20
       env = WLR_NO_HARDWARE_CURSORS,1
@@ -65,6 +61,7 @@
       repeat_delay = 300
       repeat_rate = 50
       sensitivity = 0
+
       touchpad {
       natural_scroll = yes
       disable_while_typing = true
@@ -139,7 +136,7 @@
 
       animation = windows, 1, 5, overshot, slide
       animation = windowsOut, 1, 5, smoothOut, slide
-      animation = windowsMove, 1, 5, default
+      animation = windowsMove, 1, 5, snappy
       animation = fade, 1, 5, smoothIn
       animation = fadeDim, 1, 5, smoothIn
 
@@ -173,8 +170,9 @@
       windowrule = float, title:zsh
       windowrule = float, ^(blueberry.py)$
       windowrule = float, ^(pavucontrol)$
-      windowrule = float, ^(org.twosheds.iwgtk)$
       windowrule = float, title:CopyQ
+      ## networking below
+      windowrule = float, ^(org.twosheds.iwgtk)$
       windowrule = float, title:Authentication Required
       windowrule = float, title:Wireless network credentials
 
@@ -187,22 +185,14 @@
       windowrulev2 = opacity 0.8 0.8, class:^(kitty)$
       windowrulev2 = size 700 300, class:^(kitty)$
 
-      # is there a method to one-line the below and above?
-      windowrulev2 = noborder, class:^(ulauncher)$
-      windowrulev2 = noshadow, class:^(ulauncher)$
-      windowrulev2 = noblur, class:^(ulauncher)$
-
-
       ############################################ binds ############################################
 
-      $mainMod = SUPER
 
       bind = $mainMod, Q, exec, kitty
       bind = $mainMod, C, killactive,
       bind = $mainMod, M, exit,
       bind = $mainMod, E, exec, nemo
       bind = $mainMod, V, togglefloating,
-      bind = $mainMod, R, exec, ulauncher-toggle
       bind = $mainMod, P, pseudo, dwindle
       bind = $mainMod, K, exec, codium
       bind = $mainMod, F, exec, firefox
@@ -213,6 +203,7 @@
       bind = $mainMod, X, exec, dunstctl history-pop
 
       bind = $mainMod, S, exec, bash ~/nixos/scripts/dunst/hyprpicker.sh
+      ## not working, check script TODO
 
       # bind = $mainMod, X, exec, echo 2 > /tmp/wcp
       # sends commands to wcp fifo, 1 show 2 toggle 3 close

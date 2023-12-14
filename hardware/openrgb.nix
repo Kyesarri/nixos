@@ -5,6 +5,12 @@
   lib,
   ...
 }: {
+  home-manager.users.kel.home.file.".config/hypr/per-app/openrgb.conf" = {
+    text = ''
+      exec-once = sleep 2 && openrgb --startminimized
+    '';
+  };
+
   services.udev.packages = [pkgs.openrgb];
   boot.kernelModules = ["i2c-dev" "i2c-i801"];
   hardware.i2c.enable = true;

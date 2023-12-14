@@ -80,33 +80,17 @@
   networking = {
     firewall = {
       enable = true;
-      checkReversePath = "loose"; # fixes some connection issues with tailscale
-      allowedTCPPortRanges = [
-        {
-          from = 1714; # kdeconnect TODO get working
-          to = 1764;
-        }
-      ];
-      allowedUDPPortRanges = [
-        {
-          from = 1714; # kdeconnect
-          to = 1764;
-        }
-      ];
-      allowedUDPPorts = [41641]; # tailscale
       allowedTCPPorts = [3389]; # rdp
     };
   };
 
   services = {
     gvfs.enable = true; # gnome trash support
-    tailscale.useRoutingFeatures = "client"; # set as client for tailscale
     syncthing = {
       enable = true;
       user = "kel";
     };
     printing.enable = true; # need more than this to print afik?
-    tailscale.enable = true;
     fwupd.enable = true; # firmware updater, what was i using this for again? :D
     dbus = {
       enable = true;
@@ -202,8 +186,7 @@
       extraGroups = ["networkmanager" "wheel" "vboxusers"];
       packages = with pkgs; [
         firefox
-        tailscale # mah boi
-        tailscale-systray # TODO tailscale ./home
+
         remmina # rdp client
         fet-sh # minimalistic fetch script
         pamixer # cli pulse audio mixer
@@ -239,8 +222,7 @@
         piper # frontend for libratbag added in services TODO gaming
         protonup-qt # protonge TODO gaming
         sleek-grub-theme # testing grub themes
-        syncthing # sync... thing think this is needed in addition to the service?
-        syncthingtray # syncthing tray icon
+
         # (callPackage ../packages/wcp {}) # IT WORKS! Currently has bugs with RGBA colours, see package notes
         # (callPackage ../packages/libfprint {}) # builds, need to write to the fprint reader now :)
         # (callPackage ../packages/sov {}) # sway overview, needs some hyprland config to see if works on hyprland

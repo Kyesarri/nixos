@@ -13,7 +13,7 @@ in
   }: {
     imports = [
       nix-colors.homeManagerModules.default
-      ./per-device.nix # adds device specific bindings per device, not how i wanted it but is a workaround :(
+      ./per-device.nix # adds device specific setting for hypr (monitor / machine specific binds)
 
       ../standard.nix
       ./hardware.nix
@@ -37,6 +37,8 @@ in
       ../../home/wcp
       ../../home/wofi
       ../../home/gtk
+      ../../home/syncthing
+      ../../home/tailscale
     ];
 
     colorscheme = inputs.nix-colors.colorSchemes.${scheme};
