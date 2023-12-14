@@ -13,21 +13,20 @@ in
   }: {
     imports = [
       nix-colors.homeManagerModules.default
-      ./minimal.nix
-      ./notebook-hw.nix
+      ../minimal.nix
+      ./hardware.nix
 
-      ../hardware/pipewire.nix
+      .../hardware/pipewire.nix
 
-      ../home
-      ../home/dunst
-      ../home/firefox
-      ../home/git
-      ../home/hypr
-      ../home/lite-xl
-      ../home/waybar
-      ../home/gtk
-      ../home/ulauncher
-
+      .../home
+      .../home/dunst
+      .../home/firefox
+      .../home/git
+      .../home/hypr
+      .../home/lite-xl
+      .../home/waybar
+      .../home/gtk
+      .../home/ulauncher
     ];
 
     colorscheme = inputs.nix-colors.colorSchemes.${scheme};

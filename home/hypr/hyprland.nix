@@ -7,6 +7,8 @@
   home-manager.users.kel.home.file.".config/hypr/hyprland.conf" = {
     text = ''
       ############################################# spaghetti starts here #############################################
+      ## added per-device config here ##
+      source=~/.config/hypr/per-device.conf
 
       ############################################# hyprpaper #############################################
 

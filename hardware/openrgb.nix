@@ -5,6 +5,11 @@
   lib,
   ...
 }: {
+  services.udev.packages = [pkgs.openrgb];
+  boot.kernelModules = ["i2c-dev" "i2c-i801"];
+  hardware.i2c.enable = true;
+  users.users.kel.packages = with pkgs; [openrgb-with-all-plugins];
+
   systemd.timers.morning = {
     wantedBy = ["timers.target"];
     partOf = ["rgb-on.service"];

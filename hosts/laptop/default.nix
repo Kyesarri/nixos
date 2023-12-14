@@ -13,28 +13,28 @@ in
   }: {
     imports = [
       nix-colors.homeManagerModules.default
-      ./standard.nix
-      ./laptop-hw.nix
+      ../standard.nix
+      ./hardware.nix
 
-      ../hardware/pipewire.nix
+      .../hardware/pipewire.nix
 
-      ../home
-      ../home/ags
-      ../home/codium
-      ../home/dunst
-      ../home/firefox
-      ../home/git
-      ../home/hypr
-      ../home/kde
-      ../home/kitty
-      ../home/lite-xl
-      ../home/swaync
-      ../home/ulauncher
-      ../home/virt
-      ../home/waybar
-      ../home/wcp
-      ../home/wofi
-      ../home/gtk
+      .../home
+      .../home/ags
+      .../home/codium
+      .../home/dunst
+      .../home/firefox
+      .../home/git
+      .../home/hypr
+      .../home/kde
+      .../home/kitty
+      .../home/lite-xl
+      .../home/swaync
+      .../home/ulauncher
+      .../home/virt
+      .../home/waybar
+      .../home/wcp
+      .../home/wofi
+      .../home/gtk
     ];
 
     colorscheme = inputs.nix-colors.colorSchemes.${scheme};

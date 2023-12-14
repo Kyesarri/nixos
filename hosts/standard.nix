@@ -40,14 +40,7 @@
     };
   };
 
-  virtualisation.spiceUSBRedirection.enable = true; # usb passthrough to vm TODO want a vm ./home nix
-
   boot = {
-    extraModprobeConfig = ''
-      options kvm_intel nested=1
-      options kvm_intel emulate_invalid_guest_state=0
-      options kvm ignore_msrs=1
-    '';
     kernelPackages = pkgs.linuxPackages_xanmod_latest; # use xanmod kernel
     kernelParams = [
       "nowatchdog" # disables watchdog, was causing shutdown / reboot issues
@@ -56,6 +49,7 @@
       "tsc=reliable" # flags tsc clock as reliable, workaround to get tsc working on laptop
       "vm.vfs_cache_pressure=50" # cache tweak, not sure if it does much :D
     ]; # TODO tsc and cache laptop only?
+
     loader = {
       efi.efiSysMountPoint = "/boot";
       grub = {
@@ -106,6 +100,10 @@
 
   services = {
     tailscale.useRoutingFeatures = "client"; # set as client for tailscale
+    syncthing = {
+      enable = true;
+      user = "kele";
+    };
     printing.enable = true; # need more than this to print afik?
     tailscale.enable = true;
     fwupd.enable = true; # firmware updater, what was i using this for again? :D
@@ -238,7 +236,6 @@
         armcord # discord client / chat
         pcsx2 # ps2 emulator TODO gaming
         piper # frontend for libratbag added in services TODO gaming
-        syncthing # sync things :)
         sleek-grub-theme # testing grub themes
         # (callPackage ../packages/wcp {}) # IT WORKS! Currently has bugs with RGBA colours, see package notes
         # (callPackage ../packages/libfprint {}) # builds, need to write to the fprint reader now :)

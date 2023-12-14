@@ -36,7 +36,7 @@
         system = "x86_64-linux";
         specialArgs = {inherit nix-colors inputs;};
         modules = [
-          ./hosts/nix-laptop.nix
+          ./hosts/laptop
           {environment.systemPackages = [alejandra.defaultPackage.x86_64-linux];}
           nixos-hardware.nixosModules.asus-zephyrus-ga401
           home-manager.nixosModules.home-manager
@@ -55,7 +55,7 @@
         system = "x86_64-linux";
         specialArgs = {inherit nix-colors inputs;};
         modules = [
-          ./hosts/nix-notebook.nix
+          ./hosts/notebook
           {environment.systemPackages = [alejandra.defaultPackage.x86_64-linux];} # codium plugins
           home-manager.nixosModules.home-manager
           {
@@ -73,7 +73,7 @@
         system = "x86_64-linux";
         specialArgs = {inherit nix-colors inputs;};
         modules = [
-          ./hosts/nix-desktop.nix
+          ./hosts/desktop
           {environment.systemPackages = [alejandra.defaultPackage.x86_64-linux];} # codium plugins
           home-manager.nixosModules.home-manager
           {

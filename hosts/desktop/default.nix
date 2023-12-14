@@ -13,30 +13,30 @@ in
   }: {
     imports = [
       nix-colors.homeManagerModules.default
-      ./standard.nix
-      ./desktop-hw.nix
+      ../standard.nix
+      ./hardware.nix
 
-      ../hardware/pipewire.nix
-      ../hardware/openrgb.nix
-      ../hardware/nvidia.nix
+      .../hardware/pipewire.nix
+      .../hardware/openrgb.nix
+      .../hardware/nvidia.nix
 
-      ../home
-      ../home/ags
-      ../home/codium
-      ../home/dunst
-      ../home/firefox
-      ../home/git
-      ../home/hypr
-      ../home/kde
-      ../home/kitty
-      ../home/lite-xl
-      ../home/swaync
-      ../home/waybar
-      ../home/wcp
-      ../home/wofi
-      ../home/ulauncher
-      ../home/virt
-      ../home/gtk
+      .../home
+      .../home/ags
+      .../home/codium
+      .../home/dunst
+      .../home/firefox
+      .../home/git
+      .../home/hypr
+      .../home/kde
+      .../home/kitty
+      .../home/lite-xl
+      .../home/swaync
+      .../home/waybar
+      .../home/wcp
+      .../home/wofi
+      .../home/ulauncher
+      .../home/virt
+      .../home/gtk
     ];
 
     colorscheme = inputs.nix-colors.colorSchemes.${scheme};
