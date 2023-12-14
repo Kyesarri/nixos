@@ -10,6 +10,9 @@
       ## move to top of file, could move sources to eof to keep binds together ##
       $mainMod = SUPER
 
+      ## TODO add colours here, move all nix-colors to that file then import
+      #source = ~/.config/hypr/colours.conf
+
       ## per-device config ##
       source = ~/.config/hypr/per-device.conf
 
@@ -18,6 +21,7 @@
 
       ############################################# hyprpaper #############################################
 
+      ## move to hyprpaper
       $w1 = hyprctl hyprpaper wallpaper "eDP-1,~/nixos/wallpaper/5.jpg"
       $w2 = hyprctl hyprpaper wallpaper "eDP-1,~/nixos/wallpaper/6.jpg"
       $w3 = hyprctl hyprpaper wallpaper "eDP-1,~/nixos/wallpaper/7.jpg"
@@ -163,29 +167,34 @@
       }
 
       ############################################ window rules ############################################
+      #./hardware/buetooth
       windowrule = float, ^(blueberry.py)$
       windowrule = float, ^(pavucontrol)$
+
+      #copyq
       windowrule = float, title:CopyQ
-      ## networking below
+
+      ## networking
       windowrule = float, ^(org.twosheds.iwgtk)$
       windowrule = float, title:Authentication Required
       windowrule = float, title:Wireless network credentials
 
       ############################################ binds ############################################
 
+      # think I can leave these here
+      bind = ,Print, exec, shotman --capture output
+      bind = $mainMod, S, exec, bash ~/nixos/scripts/dunst/hyprpicker.sh
+      ## not working, check script TODO
       bind = $mainMod, C, killactive,
       bind = $mainMod, M, exit,
       bind = $mainMod, E, exec, nemo
       bind = $mainMod, V, togglefloating,
       bind = $mainMod, P, pseudo, dwindle
+      bind = $mainMod, J, togglesplit, # dwindle
+
+      # move to firefox
       bind = $mainMod, F, exec, firefox
       bind = $mainMod, W, exec, firefox -p work
-      bind = $mainMod, J, togglesplit, # dwindle
-      bind = ,Print, exec, shotman --capture output
-      bind = $mainMod, X, exec, dunstctl history-pop
-
-      bind = $mainMod, S, exec, bash ~/nixos/scripts/dunst/hyprpicker.sh
-      ## not working, check script TODO
 
       # sound
       binde = , xf86audioraisevolume, exec, ~/nixos/scripts/dunst/pipewire.sh up
