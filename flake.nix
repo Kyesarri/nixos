@@ -73,7 +73,7 @@
         system = "x86_64-linux";
         specialArgs = {inherit nix-colors inputs;};
         modules = [
-          ./hosts/desktop
+          ./hosts/desktop/default.nix
           {environment.systemPackages = [alejandra.defaultPackage.x86_64-linux];} # codium plugins
           home-manager.nixosModules.home-manager
           {
