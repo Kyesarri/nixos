@@ -29,7 +29,6 @@ in
       ../../home/hypr
       ../../home/kde
       ../../home/kitty
-      ../../home/lite-xl
       ../../home/swaync
       ../../home/ulauncher
       ../../home/virt
@@ -46,19 +45,20 @@ in
 
     users.users.kel.packages = with pkgs; [nvtop];
 
-    hardware.bluetooth.enable = true;
+    hardware.bluetooth.enable = true; # TODO bluetooth ./hardware
     networking.hostName = "nix-laptop";
     networking.wireless.iwd.enable = true;
     systemd.services.supergfxd.path = [pkgs.pciutils]; # gpu switching
 
     services = {
       fprintd.enable = true;
-      ratbagd.enable = true;
+      ratbagd.enable = true; # TODO gaming
       xserver = {
         enable = true;
         videoDrivers = ["nvidia"];
       };
       upower = {
+        # TODO ./hardware battery
         enable = true;
         percentageCritical = 10;
         percentageLow = 15;

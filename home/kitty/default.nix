@@ -33,4 +33,14 @@
       strip_trailing_spaces = "always";
     };
   };
+
+  home-manager.users.kel.home.file.".config/hypr/per-app/kitty.conf" = {
+    text = ''
+      windowrulev2 = opacity 0.8 0.8, class:^(kitty)$
+      windowrulev2 = size 700 300, class:^(kitty)$
+      bind = $mainMod, Q, exec, kitty
+      bind = control, escape, exec, kitty -e btm
+      windowrule = float, title:zsh
+    '';
+  };
 }

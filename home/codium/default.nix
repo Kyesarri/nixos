@@ -12,4 +12,11 @@
       bbenoist.nix
     ];
   };
+
+  home-manager.users.kel.home.file.".config/hypr/per-app/codium.conf" = {
+    text = ''
+      windowrule = tile, title:VSCodium
+      bind = $mainMod, K, exec, codium
+    '';
+  };
 }

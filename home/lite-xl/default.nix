@@ -9,7 +9,14 @@
     ./theme.nix
     ./init.lua.nix
   ];
+
+  home-manager.users.kel.home.file.".config/hypr/per-app/lite-xl.conf" = {
+    text = ''
+      bind = $mainMod, K, exec, lite-xl
+      windowrule = tile, ^(lite-xl)$
+    '';
+  };
 }
 # need to rename some of the subfiles here, need to define naming scheme.
-# dont mind filename.extension.nix but will see
+# dont mind filename.extension.nix
 

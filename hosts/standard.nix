@@ -14,7 +14,7 @@
 
   security.pam.services = {
     gdm.enableGnomeKeyring = true; # keyring support for GDM
-    swaylock = {}; # enables pam for swaylock, otherwise cannot unlock system
+    swaylock = {}; # enables pam for swaylock, otherwise cannot unlock system TODO swaylock ./home
   };
 
   nix = {
@@ -187,7 +187,7 @@
       packages = with pkgs; [
         firefox
 
-        remmina # rdp client
+        remmina # rdp client TODO RDP ./home
         fet-sh # minimalistic fetch script
         pamixer # cli pulse audio mixer
         pavucontrol # audio control gui
@@ -214,14 +214,13 @@
         mate.mate-calc # calc
         p7zip # TODO needs a gui
         udiskie # usb mounting
-        ulauncher # might be replacement for wofi TODO move to hypr
         nwg-launchers # lockscreen / application launcher utilities TODO move to hypr
         bitwarden # password manager
         armcord # discord client / chat
         pcsx2 # ps2 emulator TODO gaming / emu
         piper # frontend for libratbag added in services TODO gaming
         protonup-qt # protonge TODO gaming
-        sleek-grub-theme # testing grub themes
+        sleek-grub-theme # testing grub themes TODO grub
 
         # (callPackage ../packages/wcp {}) # IT WORKS! Currently has bugs with RGBA colours, see package notes
         # (callPackage ../packages/libfprint {}) # builds, need to write to the fprint reader now :)

@@ -4,7 +4,7 @@
   home-manager.users.kel.home.file.".config/hypr/per-app/kdeconnect.conf" = {
     text = ''
       exec-once = sleep 3 kdeconnect-indicator
-    '';
+    ''; # why wont this shit work for me :(
   };
 
   networking = {

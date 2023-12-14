@@ -30,13 +30,15 @@
       ############################################# exec-once #############################################
 
       ## TODO move to each ./home/*
+      exec-once = sleep 2 && copyq --start-server
       exec-once = hyprpaper
+
+      ## TODO move to ./hardware
+      exec-once = sleep 8 && poweralertd
 
       exec-once = sleep 4 && gnome-keyring-daemon --start --components=secrets
       exec-once = sleep 6 && dbus-update-activation-environment --all
-      exec-once = sleep 2 && copyq --start-server
       exec-once = lxqt-policykit-agent & udiskie
-      exec-once = sleep 8 && poweralertd
 
 
       ############################################# misc #############################################
@@ -61,12 +63,6 @@
       repeat_delay = 300
       repeat_rate = 50
       sensitivity = 0
-
-      touchpad {
-      natural_scroll = yes
-      disable_while_typing = true
-      }
-      }
 
       ### define nix-colors here, reduces bulk and increases readability ###
 
@@ -167,7 +163,6 @@
       }
 
       ############################################ window rules ############################################
-      windowrule = float, title:zsh
       windowrule = float, ^(blueberry.py)$
       windowrule = float, ^(pavucontrol)$
       windowrule = float, title:CopyQ
@@ -176,37 +171,21 @@
       windowrule = float, title:Authentication Required
       windowrule = float, title:Wireless network credentials
 
-      windowrule = tile, title:VSCodium
-
-      windowrule = tile, ^(lite-xl)$
-
-      ############################################ v2 rules ############################################
-
-      windowrulev2 = opacity 0.8 0.8, class:^(kitty)$
-      windowrulev2 = size 700 300, class:^(kitty)$
-
       ############################################ binds ############################################
 
-
-      bind = $mainMod, Q, exec, kitty
       bind = $mainMod, C, killactive,
       bind = $mainMod, M, exit,
       bind = $mainMod, E, exec, nemo
       bind = $mainMod, V, togglefloating,
       bind = $mainMod, P, pseudo, dwindle
-      bind = $mainMod, K, exec, codium
       bind = $mainMod, F, exec, firefox
       bind = $mainMod, W, exec, firefox -p work
-      bind = control, escape, exec, kitty -e btm
       bind = $mainMod, J, togglesplit, # dwindle
       bind = ,Print, exec, shotman --capture output
       bind = $mainMod, X, exec, dunstctl history-pop
 
       bind = $mainMod, S, exec, bash ~/nixos/scripts/dunst/hyprpicker.sh
       ## not working, check script TODO
-
-      # bind = $mainMod, X, exec, echo 2 > /tmp/wcp
-      # sends commands to wcp fifo, 1 show 2 toggle 3 close
 
       # sound
       binde = , xf86audioraisevolume, exec, ~/nixos/scripts/dunst/pipewire.sh up

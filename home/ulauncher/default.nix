@@ -1,5 +1,4 @@
 {pkgs, ...}: {
-  users.users.kel.packages = with pkgs; [ulauncher];
   # these are for theme, TODO will be adding support for nix-colors soon :)
   #
   # TODO method for adding exec once = to hyprland config and binding to launch ulauncher, will be a nice-to-have for
@@ -9,6 +8,7 @@
   # functionality will be ideal for monitor resolutions on each device too
   #
   # see below for working config using wildcard in hypr.conf
+  users.users.kel.packages = with pkgs; [ulauncher];
 
   home-manager.users.kel.home.file.".config/hypr/per-app/ulauncher.conf" = {
     text = ''
