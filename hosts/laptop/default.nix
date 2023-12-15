@@ -18,13 +18,13 @@ in
       ../standard.nix
       ./hardware.nix
 
+      ../../hardware/audio
       ../../hardware/battery
       ../../hardware/bluetooth
+      ../../hardware/nvidia
       ../../hardware/wireless
-      ../../hardware/audio
 
       ../../home
-      ../../home/ags
       ../../home/codium
       ../../home/dunst
       ../../home/firefox
@@ -32,12 +32,9 @@ in
       ../../home/hypr
       ../../home/kde
       ../../home/kitty
-      ../../home/swaync
       ../../home/ulauncher
       ../../home/virt
       ../../home/waybar
-      ../../home/wcp
-      ../../home/wofi
       ../../home/gtk
       ../../home/syncthing
       ../../home/tailscale
@@ -46,19 +43,13 @@ in
     colorscheme = inputs.nix-colors.colorSchemes.${scheme};
     home-manager.users.kel.colorscheme = inputs.nix-colors.colorSchemes.${scheme};
 
-    users.users.kel.packages = with pkgs; [nvtop]; # ./hardware/nvidia
-
     networking.hostName = "nix-laptop";
 
     systemd.services.supergfxd.path = [pkgs.pciutils]; # gpu switching
 
     services = {
-      fprintd.enable = true;
-      ratbagd.enable = true; # TODO gaming
-      xserver = {
-        enable = true;
-        videoDrivers = ["nvidia"];
-      };
+      fprintd.enable = true; # fprint reader, needs work for this model
+      xserver.enable = true;
     };
 
     environment = {

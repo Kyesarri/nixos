@@ -9,6 +9,10 @@
       bind = $mainMod, W, exec, firefox -p work
     '';
   };
+
+  environment.MOZ_ENABLE_WAYLAND = "1"; # enable firefox wayland / force
+
+  users.users.kel.packages = with pkgs; [firefox];
   programs.firefox = {
     enable = true;
     package = pkgs.wrapFirefox pkgs.firefox-unwrapped {

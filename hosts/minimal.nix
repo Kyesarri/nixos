@@ -115,7 +115,6 @@
     {
       QT_QPA_PLATFORM = "wayland";
       QT_QPA_PLATFORMTHEME = "qt5ct";
-      MOZ_ENABLE_WAYLAND = "1";
       GTK_THEME = "${config.colorscheme.slug}"; # sets default gtk theme the package built by nix-colors
       XDG_CACHE_HOME = "$HOME/.cache";
       XDG_CONFIG_HOME = "$HOME/.config";
@@ -136,31 +135,26 @@
     ];
   };
 
-  users = {
-    users.kel = {
-      isNormalUser = true;
-      description = "kel";
-      extraGroups = ["networkmanager" "wheel"];
-      packages = with pkgs; [
-        firefox
-        brightnessctl # brightness control, used in waybar config
-        wl-color-picker # wayland colour picker
-        cinnamon.nemo-with-extensions # file manager
-        qview # image viewer
-        bottom # hot CLI task manager
-        gnome.seahorse # key management
-        shotman # image capture
-        hyprpicker # colour picker for wayland TODO waybar button or hypr keybind
-        copyq # wayland clipboard
-        libnotify # notifications
-        poweralertd # laptop power notifications
-        mate.mate-calc # calc
-        p7zip # TODO needs a gui
-        udiskie # usb mounting
-        bitwarden # password manager
-        armcord # discord client / chat
-      ];
-    };
+  users.users.kel = {
+    isNormalUser = true;
+    description = "kel";
+    extraGroups = ["networkmanager" "wheel"];
+    packages = with pkgs; [
+      brightnessctl # brightness control, used in waybar config for laptops only
+      wl-color-picker # wayland colour picker
+      cinnamon.nemo-with-extensions # file manager
+      qview # image viewer
+      bottom # hot CLI task manager
+      gnome.seahorse # key management
+      shotman # image capture
+      hyprpicker # colour picker for wayland TODO fix script
+      libnotify # notifications
+      mate.mate-calc # calc
+      p7zip # TODO needs a gui
+      udiskie # usb mounting
+      bitwarden # password manager
+      armcord # discord client / chat
+    ];
   };
 }
 # ./hosts/minimal.nix

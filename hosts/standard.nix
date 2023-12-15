@@ -86,19 +86,16 @@
 
   services = {
     gvfs.enable = true; # gnome trash support
-    syncthing = {
-      enable = true;
-      user = "kel";
-    };
     printing.enable = true; # need more than this to print afik?
     fwupd.enable = true; # firmware updater, what was i using this for again? :D
     dbus = {
       enable = true;
       packages = [pkgs.gnome.seahorse];
     };
+
     gnome.gnome-keyring.enable = true;
 
-    # TODO should this be pushed to a n o t h e r nix under ./home/ for GDM / SDDM
+    # TODO should this be pushed to a n o t h e r nix under ./home/ for GDM / SDDM or ./boot/
     xserver = {
       enable = true;
       displayManager.gdm = {
@@ -126,13 +123,6 @@
       enableSSHSupport = true;
     };
 
-    steam = {
-      # TODO steam should be part of a wider gaming .nix
-      enable = true;
-      remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remoteplay
-      dedicatedServer.openFirewall = true; # Open ports in the firewall for steam server
-    };
-
     dconf.enable = true;
 
     zsh = {
@@ -156,7 +146,6 @@
     {
       QT_QPA_PLATFORM = "wayland";
       QT_QPA_PLATFORMTHEME = "qt5ct";
-      MOZ_ENABLE_WAYLAND = "1"; # enable firefox wayland / force
       GTK_THEME = "${config.colorscheme.slug}"; # sets default gtk theme the package built by nix-colors
       XDG_CACHE_HOME = "$HOME/.cache";
       XDG_CONFIG_HOME = "$HOME/.config";
@@ -178,48 +167,40 @@
     ];
   };
 
-  users = {
-    users.kel = {
-      shell = pkgs.zsh;
-      isNormalUser = true;
-      description = "kel";
-      extraGroups = ["networkmanager" "wheel" "vboxusers"];
-      packages = with pkgs; [
-        firefox
-        remmina # rdp client TODO RDP ./home
-        fet-sh # minimalistic fetch script
-        brightnessctl # brightness control, used in waybar config
-        wl-color-picker # wayland colour picker
-        cinnamon.nemo-with-extensions # file manager
-        qview # image viewer
-        bottom # hot CLI task manager / resource monitor
-        gnome.seahorse # key management
-        shotman # image capture
-        hyprpicker # colour picker for wayland TODO waybar button or hypr keybind
-        imagemagick # bitmap editor cli
-        copyq # clipboard
-        swaylock-effects # lockscreen of sorts
-        slack # work
-        libnotify # notifications
-        wlogout # wayland logout screen, need to spend more time with this
-        gimp-with-plugins # gimp, handy to have
-        wf-recorder # screen recorder
-        mate.mate-calc # calc
-        p7zip # TODO needs a gui
-        udiskie # usb mounting
-        nwg-launchers # lockscreen / application launcher utilities TODO move to hypr
-        bitwarden # password manager
-        armcord # discord client / chat
-        pcsx2 # ps2 emulator TODO gaming / emu
-        piper # frontend for libratbag added in services TODO gaming
-        protonup-qt # protonge TODO gaming
-        sleek-grub-theme # testing grub themes TODO grub
-
-        # (callPackage ../packages/wcp {}) # IT WORKS! Currently has bugs with RGBA colours, see package notes
-        # (callPackage ../packages/libfprint {}) # builds, need to write to the fprint reader now :)
-        # (callPackage ../packages/sov {}) # sway overview, needs some hyprland config to see if works on hyprland
-      ];
-    };
+  users.users.kel = {
+    shell = pkgs.zsh;
+    isNormalUser = true;
+    description = "kel";
+    extraGroups = ["networkmanager" "wheel" "vboxusers"];
+    packages = with pkgs; [
+      remmina # rdp client
+      fet-sh # minimalistic fetch script
+      brightnessctl # brightness control, used in waybar config
+      wl-color-picker # wayland colour picker
+      cinnamon.nemo-with-extensions # file manager
+      qview # image viewer
+      bottom # hot CLI task manager / resource monitor
+      gnome.seahorse # key management
+      shotman # image capture
+      hyprpicker # colour picker for wayland TODO fix script
+      imagemagick # bitmap editor cli
+      swaylock-effects # lockscreen of sorts
+      slack # work
+      libnotify # notifications
+      wlogout # wayland logout screen, need to spend more time with this
+      gimp-with-plugins # gimp, handy to have
+      wf-recorder # screen recorder
+      mate.mate-calc # calc
+      p7zip # TODO needs a gui
+      udiskie # usb mounting
+      nwg-launchers # lockscreen / application launcher utilities TODO move to hypr
+      bitwarden # password manager
+      armcord # discord client / chat
+      sleek-grub-theme # testing grub themes TODO grub
+      # (callPackage ../packages/wcp {}) # IT WORKS! Currently has bugs with RGBA colours, see package notes
+      # (callPackage ../packages/libfprint {}) # builds, need to write to the fprint reader now :)
+      # (callPackage ../packages/sov {}) # sway overview, needs some hyprland config to see if works on hyprland
+    ];
   };
 }
 # ./hosts/shared.nix

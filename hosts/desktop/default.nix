@@ -25,35 +25,29 @@ in
       ../../hardware/wireless
 
       ../../home
-      ../../home/ags
       ../../home/codium
       ../../home/dunst
       ../../home/firefox
-      ../../home/gaming
       ../../home/git
-      ../../home/gtk
       ../../home/hypr
       ../../home/kde
       ../../home/kitty
-      ../../home/syncthing
-      ../../home/tailscale
       ../../home/ulauncher
       ../../home/virt
       ../../home/waybar
+      ../../home/gtk
+      ../../home/syncthing
+      ../../home/tailscale
     ];
 
     colorscheme = inputs.nix-colors.colorSchemes.${scheme};
     home-manager.users.kel.colorscheme = inputs.nix-colors.colorSchemes.${scheme};
 
-    users.users.kel.packages = with pkgs; [nvtop]; # ./hardware/nvidia
-
     networking.hostName = "nix-desktop";
 
     services = {
-      ratbagd.enable = true; # ./home/gaming and or ./hardware/gaming
       xserver = {
         enable = true;
-        videoDrivers = ["nvidia"];
       };
     };
 

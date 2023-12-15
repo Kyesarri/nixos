@@ -13,4 +13,10 @@
       package = config.boot.kernelPackages.nvidiaPackages.latest;
     };
   };
+
+  users.users.kel.packages = with pkgs; [nvtop];
+
+  services.xserver = {
+    videoDrivers = ["nvidia"];
+  };
 }

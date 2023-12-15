@@ -19,4 +19,6 @@
   };
 
   users.users.kel.packages = with pkgs; [syncthing syncthingtray];
+
+  #TODO add some initial config for syncthingtray (window type not popup)
 }

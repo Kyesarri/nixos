@@ -3,7 +3,7 @@
   inputs,
   outputs,
   pkgs,
-  nix-colors,
+  nix-colors, # TODO theming
   ...
 }: {
   users.users.kel.packages = with pkgs; [foot];
