@@ -10,7 +10,12 @@
     '';
   };
 
-  environment.MOZ_ENABLE_WAYLAND = "1"; # enable firefox wayland / force
+  # enable firefox wayland / force
+
+  environment.sessionVariables = rec
+  {
+    MOZ_ENABLE_WAYLAND = "1";
+  };
 
   users.users.kel.packages = with pkgs; [firefox];
   programs.firefox = {

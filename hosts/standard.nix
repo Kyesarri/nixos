@@ -151,7 +151,7 @@
       XDG_CONFIG_HOME = "$HOME/.config";
       XDG_DATA_HOME = "$HOME/.local/share";
       XDG_STATE_HOME = "$HOME/.local/state";
-      NIXOS_OZONE_WL = "1"; # fixes electron apps in wayland
+      NIXOS_OZONE_WL = "1"; # fixes electron apps in wayland... i hope :D
     };
 
     shells = with pkgs; [zsh]; # default shell to zsh
@@ -171,7 +171,7 @@
     shell = pkgs.zsh;
     isNormalUser = true;
     description = "kel";
-    extraGroups = ["networkmanager" "wheel" "vboxusers"];
+    extraGroups = ["networkmanager" "wheel"];
     packages = with pkgs; [
       remmina # rdp client
       fet-sh # minimalistic fetch script

@@ -8,15 +8,38 @@
 
   programs.steam = {
     enable = true;
-    remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remoteplay
-    dedicatedServer.openFirewall = true; # Open ports in the firewall for steam server
+    remotePlay.openFirewall = true;
+    dedicatedServer.openFirewall = false;
   };
 
-  services.ratbagd.enable = true;
+  services.ratbagd.enable = true; # mouse configuration tool
 
   users.users.kel.packages = with pkgs; [
     pcsx2 # ps2 emulator
     piper # frontend for libratbag added in services
     protonup-qt # proton-ge # TODO get working with steam
+    gamescope # wl roots gaming compositor, needs steam config
   ];
+
+  nixpkgs.config.packageOverrides = pkgs: {
+    steam = pkgs.steam.override {
+      extraPkgs = pkgs:
+        with pkgs; [
+          xorg.libXcursor
+          xorg.libXi
+          xorg.libXinerama
+          xorg.libXScrnSaver
+          libpng
+          libpulseaudio
+          libvorbis
+          stdenv.cc.cc.lib
+          libkrb5
+          keyutils
+        ];
+    };
+  };
 }
+# By default, Steam looks for custom Proton versions such as GE-Proton in ~/.steam/root/compatibilitytools.d.
+# Additionally the environment variable STEAM_EXTRA_COMPAT_TOOLS_PATHS can be set to change or add to the paths
+# which steam searches for custom Proton versions.
+

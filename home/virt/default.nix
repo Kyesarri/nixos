@@ -5,6 +5,7 @@
   lib,
   ...
 }: {
+  users.users.kel.extraGroups = ["vboxusers"];
   users.users.kel.packages = with pkgs; [
     virt-manager # TODO might need some nix added to configure using qemu as default for OOBE
     qemu # this needed with virtmanager? TODO i believe so
