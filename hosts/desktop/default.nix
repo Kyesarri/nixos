@@ -18,11 +18,11 @@ in
       ../standard.nix
       ./hardware.nix
 
-      ../../hardware/rgb
-      ../../hardware/nvidia
-      ../../hardware/bluetooth
-      ../../hardware/wireless
       ../../hardware/audio
+      ../../hardware/bluetooth
+      ../../hardware/nvidia
+      ../../hardware/rgb
+      ../../hardware/wireless
 
       ../../home
       ../../home/ags
