@@ -3,8 +3,13 @@
   pkgs,
   ...
 }: {
+  home-manager.users.kel.home.file.".config/hypr/per-app/firefox.conf" = {
+    text = ''
+      bind = $mainMod, F, exec, firefox
+      bind = $mainMod, W, exec, firefox -p work
+    '';
+  };
   programs.firefox = {
-    # love this feature, not being nagged by firefox on a fresh install or having to manually configure a++
     enable = true;
     package = pkgs.wrapFirefox pkgs.firefox-unwrapped {
       extraPolicies = {

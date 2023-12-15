@@ -1,4 +1,4 @@
-# ./hardware/sound.nix
+# TODO ./hardware/audio merge
 {
   config,
   pkgs,
@@ -14,5 +14,3 @@
     pulse.enable = true;
   };
 }
-# ./hardware/sound.nix
-

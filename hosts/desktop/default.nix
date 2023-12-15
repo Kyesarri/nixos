@@ -21,6 +21,9 @@ in
       ../../hardware/pipewire.nix
       ../../hardware/openrgb.nix
       ../../hardware/nvidia.nix
+      ../../hardware/bluetooth
+      ../../hardware/wireless
+      ../../hardware/audio
 
       ../../home
       ../../home/ags
@@ -45,14 +48,13 @@ in
 
     colorscheme = inputs.nix-colors.colorSchemes.${scheme};
     home-manager.users.kel.colorscheme = inputs.nix-colors.colorSchemes.${scheme};
-    users.users.kel.packages = with pkgs; [nvtop];
 
-    hardware.bluetooth.enable = true;
+    users.users.kel.packages = with pkgs; [nvtop]; # ./hardware/nvidia
+
     networking.hostName = "nix-desktop";
-    networking.wireless.iwd.enable = true;
 
     services = {
-      ratbagd.enable = true;
+      ratbagd.enable = true; # ./home/gaming and or ./hardware/gaming
       xserver = {
         enable = true;
         videoDrivers = ["nvidia"];
@@ -60,7 +62,7 @@ in
     };
 
     environment = {
-      systemPackages = with pkgs; [i2c-tools pciutils];
+      systemPackages = with pkgs; [i2c-tools pciutils]; # ./hardware/openrgb/ i2c-tools only
       shellAliases = {
         rebuild = "sudo nixos-rebuild switch --flake /home/kel/nixos#nix-desktop --show-trace";
       };

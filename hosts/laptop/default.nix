@@ -19,6 +19,10 @@ in
       ./hardware.nix
 
       ../../hardware/pipewire.nix
+      ../../hardware/battery
+      ../../hardware/bluetooth
+      ../../hardware/wireless
+      ../../hardware/audio
 
       ../../home
       ../../home/ags
@@ -43,11 +47,10 @@ in
     colorscheme = inputs.nix-colors.colorSchemes.${scheme};
     home-manager.users.kel.colorscheme = inputs.nix-colors.colorSchemes.${scheme};
 
-    users.users.kel.packages = with pkgs; [nvtop];
+    users.users.kel.packages = with pkgs; [nvtop]; # ./hardware/nvidia
 
-    hardware.bluetooth.enable = true; # TODO bluetooth ./hardware
     networking.hostName = "nix-laptop";
-    networking.wireless.iwd.enable = true;
+
     systemd.services.supergfxd.path = [pkgs.pciutils]; # gpu switching
 
     services = {
@@ -56,12 +59,6 @@ in
       xserver = {
         enable = true;
         videoDrivers = ["nvidia"];
-      };
-      upower = {
-        # TODO ./hardware battery
-        enable = true;
-        percentageCritical = 10;
-        percentageLow = 15;
       };
     };
 

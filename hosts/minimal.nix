@@ -31,7 +31,7 @@
   };
 
   hardware = {
-    pulseaudio.enable = false;
+    pulseaudio.enable = false; # ./hardware/audio
     opengl = {
       enable = true;
       driSupport = true;
@@ -84,11 +84,7 @@
     };
   };
 
-  networking = {
-    firewall = {
-      enable = true;
-    };
-  };
+  networking.firewall.enable = true;
 
   fonts = {
     # remove from minimal? leave one font used by waybar?
@@ -147,22 +143,15 @@
       extraGroups = ["networkmanager" "wheel"];
       packages = with pkgs; [
         firefox
-        tailscale # mah boi
-        tailscale-systray
-        pamixer # cli pulse audio mixer
-        pavucontrol # audio control gui
         brightnessctl # brightness control, used in waybar config
         wl-color-picker # wayland colour picker
         cinnamon.nemo-with-extensions # file manager
         qview # image viewer
         bottom # hot CLI task manager
         gnome.seahorse # key management
-        blueberry # bluetooth gui
         shotman # image capture
         hyprpicker # colour picker for wayland TODO waybar button or hypr keybind
         copyq # wayland clipboard
-        iwd # wireless network daemon
-        iwgtk # replaces network-manager-applet
         libnotify # notifications
         poweralertd # laptop power notifications
         mate.mate-calc # calc

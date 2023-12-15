@@ -1,4 +1,4 @@
-# ./hardware/openrgb.nix
+# TODO ./hardware/rgb
 {
   config,
   pkgs,
@@ -48,5 +48,3 @@
     '';
   };
 }
-# ./hardware/openrgb.nix
-

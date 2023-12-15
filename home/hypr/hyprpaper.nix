@@ -1,8 +1,4 @@
-{config, ...}:
-#let
-#display = if something about system name / detected cpu?
-#in
-{
+{config, ...}: {
   home-manager.users.kel.home.file.".config/hypr/hyprpaper.conf" = {
     text = ''
       preload = ~/nixos/wallpaper/5.jpg

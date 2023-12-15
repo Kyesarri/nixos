@@ -19,6 +19,10 @@ in
       ./hardware.nix
 
       ../../hardware/pipewire.nix
+      ../../hardware/battery
+      ../../hardware/bluetooth
+      ../../hardware/wireless
+      ../../hardware/audio
 
       ../../home
       ../../home/foot
@@ -35,9 +39,7 @@ in
     colorscheme = inputs.nix-colors.colorSchemes.${scheme};
     home-manager.users.kel.colorscheme = inputs.nix-colors.colorSchemes.${scheme};
 
-    hardware.bluetooth.enable = true;
     networking.hostName = "nix-notebook";
-    networking.wireless.iwd.enable = true;
 
     services.xserver = {
       enable = true;
@@ -48,12 +50,6 @@ in
       shellAliases = {
         rebuild = "sudo nixos-rebuild switch --flake /home/kel/nixos#nix-notebook --show-trace";
       };
-    };
-
-    services.upower = {
-      enable = true; # using upower for battery monitoring, waybar needs some configuration for this too
-      percentageCritical = 10; # TODO per device or own nix under ./home
-      percentageLow = 15;
     };
   }
 # ./hosts/nix-notebook.nix

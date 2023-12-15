@@ -186,29 +186,22 @@
       extraGroups = ["networkmanager" "wheel" "vboxusers"];
       packages = with pkgs; [
         firefox
-
         remmina # rdp client TODO RDP ./home
         fet-sh # minimalistic fetch script
-        pamixer # cli pulse audio mixer
-        pavucontrol # audio control gui
         brightnessctl # brightness control, used in waybar config
         wl-color-picker # wayland colour picker
         cinnamon.nemo-with-extensions # file manager
         qview # image viewer
         bottom # hot CLI task manager / resource monitor
         gnome.seahorse # key management
-        blueberry # bluetooth gui
         shotman # image capture
         hyprpicker # colour picker for wayland TODO waybar button or hypr keybind
         imagemagick # bitmap editor cli
         copyq # clipboard
         swaylock-effects # lockscreen of sorts
-        iwd # wireless network daemon
-        iwgtk # replaces network-manager-applet
         slack # work
         libnotify # notifications
         wlogout # wayland logout screen, need to spend more time with this
-        poweralertd # laptop power notifications
         gimp-with-plugins # gimp, handy to have
         wf-recorder # screen recorder
         mate.mate-calc # calc

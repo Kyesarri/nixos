@@ -1,4 +1,4 @@
-# ./hardware/nvidia.nix
+# TODO ./hardware/nvidia/
 {
   config,
   pkgs,
@@ -15,5 +15,3 @@
     };
   };
 }
-# ./hardware/nvidia.nix
-

@@ -7,7 +7,6 @@
   home-manager.users.kel.home.file.".config/hypr/hyprland.conf" = {
     text = ''
       ############################################# spaghetti starts here #############################################
-      ## move to top of file, could move sources to eof to keep binds together ##
       $mainMod = SUPER
 
       ## TODO add colours here, move all nix-colors to that file then import
@@ -25,14 +24,28 @@
       $w7 = hyprctl hyprpaper wallpaper "eDP-1,~/nixos/wallpaper/7.jpg"
       $w8 = hyprctl hyprpaper wallpaper "eDP-1,~/nixos/wallpaper/8.jpg"
 
+      $c0 = rgba(${config.colorscheme.colors.base00}FF)
+      $c1 = rgba(${config.colorscheme.colors.base01}FF)
+      $c2 = rgba(${config.colorscheme.colors.base02}FF)
+      $c3 = rgba(${config.colorscheme.colors.base03}FF)
+      $c4 = rgba(${config.colorscheme.colors.base04}FF)
+      $c5 = rgba(${config.colorscheme.colors.base05}FF)
+      $c6 = rgba(${config.colorscheme.colors.base06}FF)
+      $c7 = rgba(${config.colorscheme.colors.base07}FF)
+      $c8 = rgba(${config.colorscheme.colors.base08}FF)
+      $c9 = rgba(${config.colorscheme.colors.base09}FF)
+      $ca = rgba(${config.colorscheme.colors.base0A}FF)
+      $cb = rgba(${config.colorscheme.colors.base0B}FF)
+      $cc = rgba(${config.colorscheme.colors.base0C}FF)
+      $cd = rgba(${config.colorscheme.colors.base0D}FF)
+      $ce = rgba(${config.colorscheme.colors.base0E}FF)
+      $cf = rgba(${config.colorscheme.colors.base0F}FF)
+
       ############################################# exec-once #############################################
 
       ## TODO move to each ./home/*
       exec-once = sleep 2 && copyq --start-server
       exec-once = hyprpaper
-
-      ## TODO move to ./hardware
-      exec-once = sleep 8 && poweralertd
 
       exec-once = sleep 4 && gnome-keyring-daemon --start --components=secrets
       exec-once = sleep 6 && dbus-update-activation-environment --all
@@ -40,8 +53,10 @@
 
 
       ############################################# misc #############################################
+
       ## per-device config ##
       source = ~/.config/hypr/per-device.conf
+
       env = XCURSOR_SIZE,20
       env = WLR_NO_HARDWARE_CURSORS,1
 
@@ -62,31 +77,11 @@
       repeat_delay = 300
       repeat_rate = 50
       sensitivity = 0
-
       touchpad {
       natural_scroll = yes
       disable_while_typing = true
       }
       }
-
-      ### define nix-colors here, reduces bulk and increases readability ###
-
-      $c0 = rgba(${config.colorscheme.colors.base00}FF)
-      $c1 = rgba(${config.colorscheme.colors.base01}FF)
-      $c2 = rgba(${config.colorscheme.colors.base02}FF)
-      $c3 = rgba(${config.colorscheme.colors.base03}FF)
-      $c4 = rgba(${config.colorscheme.colors.base04}FF)
-      $c5 = rgba(${config.colorscheme.colors.base05}FF)
-      $c6 = rgba(${config.colorscheme.colors.base06}FF)
-      $c7 = rgba(${config.colorscheme.colors.base07}FF)
-      $c8 = rgba(${config.colorscheme.colors.base08}FF)
-      $c9 = rgba(${config.colorscheme.colors.base09}FF)
-      $ca = rgba(${config.colorscheme.colors.base0A}FF)
-      $cb = rgba(${config.colorscheme.colors.base0B}FF)
-      $cc = rgba(${config.colorscheme.colors.base0C}FF)
-      $cd = rgba(${config.colorscheme.colors.base0D}FF)
-      $ce = rgba(${config.colorscheme.colors.base0E}FF)
-      $cf = rgba(${config.colorscheme.colors.base0F}FF)
 
       general {
       gaps_in = 5
@@ -126,8 +121,6 @@
       animations {
       enabled = true
 
-      ############################################ curves ############################################
-
       bezier = overshot, 0.34, 1.56, 0.64, 1
       bezier = smoothOut, 0.36, 0, 0.66, -0.56
       bezier = smoothIn, 0.25, 1, 0.5, 1
@@ -145,8 +138,6 @@
 
       animation = border, 1, 5, liner
       animation = borderangle, 1, 360, liner, loop
-
-
       }
 
       ############################################ Layouts ###################################################
@@ -163,35 +154,21 @@
       new_is_master = true
       }
 
-      ############################################ window rules ############################################
-      #./hardware/buetooth
-      windowrule = float, ^(blueberry.py)$
-      windowrule = float, ^(pavucontrol)$
-
-      #copyq
+      # ./home/copyq
       windowrule = float, title:CopyQ
-
-      ## networking
-      windowrule = float, ^(org.twosheds.iwgtk)$
-      windowrule = float, title:Authentication Required
-      windowrule = float, title:Wireless network credentials
 
       ############################################ binds ############################################
 
-      # think I can leave these here
       bind = ,Print, exec, shotman --capture output
       bind = $mainMod, S, exec, bash ~/nixos/scripts/dunst/hyprpicker.sh
       ## not working, check script TODO
+
       bind = $mainMod, C, killactive,
       bind = $mainMod, M, exit,
       bind = $mainMod, E, exec, nemo
       bind = $mainMod, V, togglefloating,
       bind = $mainMod, P, pseudo, dwindle
       bind = $mainMod, J, togglesplit, # dwindle
-
-      # move to firefox
-      bind = $mainMod, F, exec, firefox
-      bind = $mainMod, W, exec, firefox -p work
 
       # sound
       binde = , xf86audioraisevolume, exec, ~/nixos/scripts/dunst/pipewire.sh up
@@ -201,6 +178,7 @@
       ## screen
       binde = , XF86MonBrightnessUp, exec, ~/nixos/scripts/dunst/brightnessctl.sh up
       binde = , XF86MonBrightnessDown, exec, ~/nixos/scripts/dunst/brightnessctl.sh down
+
       ## keyboard
       binde = , XF86KbdBrightnessUp, exec, ~/nixos/scripts/dunst/asusctl.sh up
       binde = , XF86KbdBrightnessDown, exec, ~/nixos/scripts/dunst/asusctl.sh down
