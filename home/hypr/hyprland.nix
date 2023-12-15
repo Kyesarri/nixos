@@ -13,12 +13,6 @@
       ## TODO add colours here, move all nix-colors to that file then import
       #source = ~/.config/hypr/colours.conf
 
-      ## per-device config ##
-      source = ~/.config/hypr/per-device.conf
-
-      ## wildcard per-app enabled in each ./home/app/*.nix ##
-      source = ~/.config/hypr/per-app/*.conf
-
       ############################################# hyprpaper #############################################
 
       ## move to hyprpaper
@@ -46,7 +40,8 @@
 
 
       ############################################# misc #############################################
-
+      ## per-device config ##
+      source = ~/.config/hypr/per-device.conf
       env = XCURSOR_SIZE,20
       env = WLR_NO_HARDWARE_CURSORS,1
 
@@ -67,6 +62,12 @@
       repeat_delay = 300
       repeat_rate = 50
       sensitivity = 0
+
+      touchpad {
+      natural_scroll = yes
+      disable_while_typing = true
+      }
+      }
 
       ### define nix-colors here, reduces bulk and increases readability ###
 
@@ -162,10 +163,6 @@
       new_is_master = true
       }
 
-      gestures {
-      workspace_swipe = off
-      }
-
       ############################################ window rules ############################################
       #./hardware/buetooth
       windowrule = float, ^(blueberry.py)$
@@ -258,6 +255,9 @@
       # Move/resize windows with mainMod + LMB/RMB and dragging
       bindm = $mainMod, mouse:272, movewindow
       bindm = $mainMod, mouse:273, resizewindow
+
+      ## wildcard per-app enabled in each ./home/app/*.nix ##
+      source = ~/.config/hypr/per-app/*.conf
     '';
   };
 }

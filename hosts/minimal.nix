@@ -42,8 +42,6 @@
     gvfs.enable = true; # gnome trash support
     gnome.gnome-keyring.enable = true;
     printing.enable = false;
-    tailscale.enable = true;
-    tailscale.useRoutingFeatures = "client"; # set as client for tailscale
     dbus = {
       enable = true;
       packages = [pkgs.gnome.seahorse];
@@ -89,8 +87,6 @@
   networking = {
     firewall = {
       enable = true;
-      checkReversePath = "loose";
-      allowedUDPPorts = [41641]; # tailscale
     };
   };
 
@@ -174,7 +170,6 @@
         udiskie # usb mounting
         bitwarden # password manager
         armcord # discord client / chat
-        foot # minimal terminal emulator
       ];
     };
   };

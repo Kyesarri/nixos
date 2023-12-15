@@ -21,6 +21,7 @@ in
       ../../hardware/pipewire.nix
 
       ../../home
+      ../../home/foot
       ../../home/dunst
       ../../home/firefox
       ../../home/git

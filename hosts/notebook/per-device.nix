@@ -3,11 +3,6 @@
     text = ''
       monitor=,1366x768@60,auto,1
       #TODO wonder if that is 60hz :D
-      touchpad {
-      natural_scroll = yes
-      disable_while_typing = true
-      }
-      }
     '';
   };
 }
