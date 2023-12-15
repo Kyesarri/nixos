@@ -18,7 +18,6 @@ in
       ../minimal.nix
       ./hardware.nix
 
-      ../../hardware/pipewire.nix
       ../../hardware/battery
       ../../hardware/bluetooth
       ../../hardware/wireless

@@ -18,9 +18,8 @@ in
       ../standard.nix
       ./hardware.nix
 
-      ../../hardware/pipewire.nix
-      ../../hardware/openrgb.nix
-      ../../hardware/nvidia.nix
+      ../../hardware/rgb
+      ../../hardware/nvidia
       ../../hardware/bluetooth
       ../../hardware/wireless
       ../../hardware/audio
@@ -30,20 +29,17 @@ in
       ../../home/codium
       ../../home/dunst
       ../../home/firefox
+      ../../home/gaming
       ../../home/git
+      ../../home/gtk
       ../../home/hypr
       ../../home/kde
       ../../home/kitty
-      ../../home/lite-xl
-      ../../home/swaync
-      ../../home/waybar
-      ../../home/wcp
-      ../../home/wofi
-      ../../home/ulauncher
-      ../../home/virt
-      ../../home/gtk
       ../../home/syncthing
       ../../home/tailscale
+      ../../home/ulauncher
+      ../../home/virt
+      ../../home/waybar
     ];
 
     colorscheme = inputs.nix-colors.colorSchemes.${scheme};
@@ -62,7 +58,7 @@ in
     };
 
     environment = {
-      systemPackages = with pkgs; [i2c-tools pciutils]; # ./hardware/openrgb/ i2c-tools only
+      systemPackages = with pkgs; [pciutils];
       shellAliases = {
         rebuild = "sudo nixos-rebuild switch --flake /home/kel/nixos#nix-desktop --show-trace";
       };

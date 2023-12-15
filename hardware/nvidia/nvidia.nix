@@ -1,8 +1,7 @@
-# TODO ./hardware/nvidia/
 {
   config,
   pkgs,
-  lib,
+  # lib,
   ...
 }: {
   hardware = {

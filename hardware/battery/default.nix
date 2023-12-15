@@ -14,4 +14,5 @@
     percentageLow = 15;
   };
   users.users.kel.packages = with pkgs; [poweralertd];
+  ## TODO define charge levels somewhere here / in each device
 }

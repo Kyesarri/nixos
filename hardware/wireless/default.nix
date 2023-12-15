@@ -12,8 +12,5 @@
       windowrule = float, title:Wireless network credentials
     '';
   };
-  users.users.kel.packages = with pkgs; [
-    iwd
-    iwgtk
-  ];
+  users.users.kel.packages = with pkgs; [iwd iwgtk];
 }
