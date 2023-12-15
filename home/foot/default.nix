@@ -14,8 +14,7 @@
       windowrulev2 = size 700 300, class:^(foot)$
       bind = $mainMod, Q, exec, foot
       bind = control, escape, exec, foot -e btm
-      windowrule = float, title:fish
-      windowrule = float, title:foot
+      windowrulev2 = float, class:^(foot)$
     '';
   };
 }
