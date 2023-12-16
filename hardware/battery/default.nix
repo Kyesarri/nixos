@@ -6,6 +6,7 @@
   home-manager.users.kel.home.file.".config/hypr/per-app/battery.conf" = {
     text = ''
       exec-once = sleep 8 && poweralertd
+      exec-once = systemctl start asusd
     '';
   };
   services.upower = {

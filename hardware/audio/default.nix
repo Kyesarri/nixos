@@ -9,7 +9,7 @@
     '';
   };
   users.users.kel.packages = with pkgs; [pamixer pavucontrol];
-  security.rtkit.enable = true; # not required but added anyway
+  security.rtkit.enable = true;
   sound.enable = true;
   hardware.pulseaudio.enable = false;
   services.pipewire = {
