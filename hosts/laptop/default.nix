@@ -38,6 +38,7 @@ in
       ../../home/gtk
       ../../home/syncthing
       ../../home/tailscale
+      ../../home/wallpaper
     ];
 
     colorscheme = inputs.nix-colors.colorSchemes.${scheme};
