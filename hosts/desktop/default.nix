@@ -1,4 +1,3 @@
-# ./hosts/nix-desktop.nix
 let
   scheme = "tokyo-night-dark";
 in
@@ -15,10 +14,10 @@ in
       nix-colors.homeManagerModules.default
       ./per-device.nix # adds device specific setting for hypr (monitor / machine specific binds)
 
-      ../standard.nix
-      ./hardware.nix
+      ./hardware.nix # machine hardware config
+      ../standard.nix # standard or minimal configs
 
-      ../../hardware/audio
+      ../../hardware/audio # change to pipewire, move to home or change to av, prefer the latter
       ../../hardware/bluetooth
       ../../hardware/nvidia
       ../../hardware/rgb
@@ -58,5 +57,3 @@ in
       };
     };
   }
-# ./hosts/nix-desktop.nix
-

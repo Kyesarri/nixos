@@ -1,4 +1,3 @@
-# ./flake.nix
 {
   description = "spaghetti nixos by kye";
 
@@ -14,7 +13,7 @@
       inputs.hyprland.follows = "hyprland";
     };
 
-    stylix.url = "github:danth/stylix";
+    # stylix.url = "github:danth/stylix";
     nix-colors.url = "github:misterio77/nix-colors"; # may replace with stylix (╯°□°)╯︵ ┻━┻
 
     alejandra.url = "github:kamadorueda/alejandra/3.0.0";
@@ -34,7 +33,7 @@
     hyprland,
     alejandra,
     nix-colors, # (╯°□°)╯︵ ┻━┻
-    stylix,
+    # stylix,
     ...
   } @ inputs: {
     nixosConfigurations = {
@@ -42,7 +41,7 @@
         system = "x86_64-linux";
         specialArgs = {inherit nix-colors inputs;};
         modules = [
-          stylix.nixosModules.stylix
+          # stylix.nixosModules.stylix
           ./hosts/laptop
           {environment.systemPackages = [alejandra.defaultPackage.x86_64-linux];} # codium plugins
           nixos-hardware.nixosModules.asus-zephyrus-ga401
@@ -64,7 +63,7 @@
         system = "x86_64-linux";
         specialArgs = {inherit nix-colors inputs;};
         modules = [
-          stylix.nixosModules.stylix
+          # stylix.nixosModules.stylix
           ./hosts/notebook
           {environment.systemPackages = [alejandra.defaultPackage.x86_64-linux];}
           home-manager.nixosModules.home-manager
@@ -83,7 +82,7 @@
         system = "x86_64-linux";
         specialArgs = {inherit nix-colors inputs;};
         modules = [
-          stylix.nixosModules.stylix
+          # stylix.nixosModules.stylix
           ./hosts/desktop
           {environment.systemPackages = [alejandra.defaultPackage.x86_64-linux];}
           home-manager.nixosModules.home-manager
@@ -100,5 +99,3 @@
     };
   };
 }
-# ./flake.nix
-
