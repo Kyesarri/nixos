@@ -48,8 +48,8 @@
           nixos-hardware.nixosModules.asus-zephyrus-ga401
           home-manager.nixosModules.home-manager
           {
-            stylix.image = ./greyscale_fins.jpg;
-            stylix.polarity = "dark";
+            # stylix.image = ./greyscale_fins.jpg; # TODO see how much of a hassle porting my config to stylix
+            # stylix.polarity = "dark"; # TODO probably need to turn all automatic theming off, or by-app only
             home-manager = {
               useGlobalPkgs = true;
               useUserPackages = true;
