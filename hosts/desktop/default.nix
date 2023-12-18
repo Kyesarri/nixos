@@ -12,7 +12,7 @@ in
   }: {
     imports = [
       nix-colors.homeManagerModules.default
-      ./per-device.nix # adds device specific setting for hypr (monitor / machine specific binds)
+      ./per-device.nix
 
       ./hardware.nix # machine hardware config
       ../standard.nix # standard or minimal configs
@@ -25,6 +25,7 @@ in
 
       ../../home
       ../../home/codium
+      ../../home/copyq
       ../../home/dunst
       ../../home/firefox
       ../../home/git
@@ -52,8 +53,6 @@ in
 
     environment = {
       systemPackages = with pkgs; [pciutils];
-      shellAliases = {
-        rebuild = "sudo nixos-rebuild switch --flake /home/kel/nixos#nix-desktop --show-trace";
-      };
+      shellAliases.rebuild = "sudo nixos-rebuild switch --flake /home/kel/nixos#nix-desktop --show-trace";
     };
   }

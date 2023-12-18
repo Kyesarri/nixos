@@ -1,4 +1,3 @@
-# ./hosts/nix-laptop.nix
 let
   scheme = "tokyo-night-dark";
 in
@@ -13,7 +12,7 @@ in
   }: {
     imports = [
       nix-colors.homeManagerModules.default
-      ./per-device.nix # adds device specific setting for hypr (monitor / machine specific binds)
+      ./per-device.nix
 
       ../standard.nix
       ./hardware.nix
@@ -26,6 +25,7 @@ in
 
       ../../home
       ../../home/codium
+      ../../home/copyq
       ../../home/dunst
       ../../home/firefox
       ../../home/git
@@ -55,10 +55,6 @@ in
 
     environment = {
       systemPackages = with pkgs; [pciutils];
-      shellAliases = {
-        rebuild = "sudo nixos-rebuild switch --flake /home/kel/nixos#nix-laptop --show-trace";
-      };
+      shellAliases.rebuild = "sudo nixos-rebuild switch --flake /home/kel/nixos#nix-laptop --show-trace";
     };
   }
-# ./hosts/nix-laptop.nix
-

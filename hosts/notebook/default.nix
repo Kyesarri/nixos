@@ -1,4 +1,3 @@
-# ./hosts/nix-notebook.nix
 let
   scheme = "material-darker";
 in
@@ -13,7 +12,7 @@ in
   }: {
     imports = [
       nix-colors.homeManagerModules.default
-      ./per-device.nix # adds device specific setting for hypr (monitor / machine specific binds)
+      ./per-device.nix
 
       ../minimal.nix
       ./hardware.nix
@@ -26,6 +25,7 @@ in
       ../../home
       ../../home/foot
       ../../home/dunst
+      ../../home/copyq
       ../../home/firefox
       ../../home/git
       ../../home/hypr
@@ -40,16 +40,10 @@ in
 
     networking.hostName = "nix-notebook";
 
-    services.xserver = {
-      enable = true;
-    };
+    services.xserver.enable = true;
 
     environment = {
       systemPackages = with pkgs; [pciutils];
-      shellAliases = {
-        rebuild = "sudo nixos-rebuild switch --flake /home/kel/nixos#nix-notebook --show-trace";
-      };
+      shellAliases.rebuild = "sudo nixos-rebuild switch --flake /home/kel/nixos#nix-notebook --show-trace";
     };
   }
-# ./hosts/nix-notebook.nix
-
