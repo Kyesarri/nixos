@@ -19,6 +19,7 @@
   };
 
   nix = {
+    sshServe.enable = true;
     package = pkgs.nixUnstable; # prefer nixunstable over stable
     gc = {
       automatic = true;
@@ -196,7 +197,7 @@
       udiskie # usb mounting
       nwg-launchers # lockscreen / application launcher utilities TODO move to hypr
       bitwarden # password manager
-      armcord # discord client / chat
+      armcord # discord client / chat ## fucking electron takes too long to build on laptop, looking into remote builder
       sleek-grub-theme # testing grub themes TODO grub
       # (callPackage ../packages/wcp {}) # IT WORKS! Currently has bugs with RGBA colours, see package notes
       # (callPackage ../packages/libfprint {}) # builds, need to write to the fprint reader now :)

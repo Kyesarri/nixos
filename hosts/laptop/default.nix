@@ -57,5 +57,6 @@ in
     environment = {
       systemPackages = with pkgs; [pciutils];
       shellAliases.rebuild = "sudo nixos-rebuild switch --flake /home/${user}/nixos#nix-laptop --show-trace";
+      shellAliases.remrebuild = "sudo nixos-rebuild switch --flake /home/${user}/nixos#nix-laptop --show-trace --builders 'ssh://nix-desktop x86_64-linux'";
     };
   }

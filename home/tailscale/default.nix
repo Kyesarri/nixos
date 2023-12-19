@@ -12,7 +12,7 @@
 
   services = {
     tailscale.enable = true;
-    tailscale.useRoutingFeatures = "client"; # set as client for tailscale
+    tailscale.useRoutingFeatures = "client";
   };
 
   networking = {

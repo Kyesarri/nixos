@@ -5,7 +5,7 @@
   user,
   ...
 }: {
-  home-manager.users.kel.home.file.".config/waybar/config.jsonc" = {
+  home-manager.users.${user}.home.file.".config/waybar/config.jsonc" = {
     text = ''
       {
         "layer": "top",

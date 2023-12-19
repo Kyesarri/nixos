@@ -42,20 +42,16 @@
       $ce = rgba(${config.colorscheme.colors.base0E}FF)
       $cf = rgba(${config.colorscheme.colors.base0F}FF)
 
-      ############################################# exec-once #############################################
+      ## exec-once ##
 
-      ## TODO move to each ./home/*
-      exec-once = sleep 2 && copyq --start-server
+      ## TODO move to ./home/*
       exec-once = hyprpaper
 
       exec-once = sleep 4 && gnome-keyring-daemon --start --components=secrets
       exec-once = sleep 6 && dbus-update-activation-environment --all
       exec-once = lxqt-policykit-agent & udiskie
 
-
-      ############################################# misc #############################################
-
-      ## per-device config ##
+      ## per-device config, from ./hosts/hostname/per-device.nix ##
       source = ~/.config/hypr/per-device.conf
 
       env = XCURSOR_SIZE,20
@@ -154,9 +150,6 @@
       master {
       new_is_master = true
       }
-
-      # ./home/copyq
-      windowrule = float, title:CopyQ
 
       ############################################ binds ############################################
 

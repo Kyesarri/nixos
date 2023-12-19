@@ -1,7 +1,30 @@
-{user, ...}: {
+{
+  user,
+  inputs,
+  config,
+  ...
+}: {
+  ## do i need to convert these to RGBA or can we run with hex RGBA
+  #    #${config.colorscheme.colors.base00}FF
+  #    #${config.colorscheme.colors.base01}FF
+  #    #${config.colorscheme.colors.base02}FF
+  #    #${config.colorscheme.colors.base03}FF
+  #    #${config.colorscheme.colors.base04}FF
+  #    #${config.colorscheme.colors.base05}FF
+  #    #${config.colorscheme.colors.base06}FF
+  #    #${config.colorscheme.colors.base07}FF
+  #    #${config.colorscheme.colors.base08}FF
+  #    #${config.colorscheme.colors.base09}FF
+  #    #${config.colorscheme.colors.base0A}FF
+  #    #${config.colorscheme.colors.base0B}FF
+  #    #${config.colorscheme.colors.base0C}FF
+  #    #${config.colorscheme.colors.base0D}FF
+  #    #${config.colorscheme.colors.base0E}FF
+  #    #${config.colorscheme.colors.base0F}FF
+
   home-manager.users.${user}.home.file.".config/ulauncher/user-themes/TokyoNight/theme.css" = {
     text = ''
-      @define-color bg_color rgba(36, 40, 59, 0.9);
+      @define-color bg_color (#${config.colorscheme.colors.base00}FF);
       @define-color window_bg @bg_color;
       @define-color window_border_color rgba(42, 195, 222, 1);
       @define-color prefs_backgroud rgba(36, 40, 59, 1);
