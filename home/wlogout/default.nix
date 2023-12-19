@@ -6,6 +6,7 @@
   imports = [
     #./config.jsonc.nix
     #./style.css.nix
+    ## currently wip, basic config enabled ##
   ];
 
   home-manager.users.${user} = {
@@ -14,7 +15,7 @@
     };
     home.file.".config/hypr/per-app/wlogout.conf" = {
       text = ''
-        # wlogout test here
+        bind = $mainMod, L, exec, wlogout
       '';
     };
   };
