@@ -1,4 +1,4 @@
-# nixos
+# 🍝 nixos
 - my public nixos configuration, system specific .nix for ga401 / desktop / cl10w-c
 
 ## about:
@@ -24,3 +24,10 @@
 ![kye/nixos](screenshots/kye-nixos.jpg "screenshot")
 ![kye/nixos](screenshots/kye-nixos-2.jpg "screenshot-2")
 ![kye/nixos](screenshots/kye-nixos-3.jpg "screenshot-3")
+
+## changelog
+- 19.dec.23
+- added changelog
+- added global username to flake.nix
+- added wlogout to ./home pending configuration
+- updated flake.nix - electron takes forever to build ( electron-unwrapped-27.1.3 )
