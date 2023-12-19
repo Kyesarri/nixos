@@ -25,7 +25,7 @@
 ![kye/nixos](screenshots/kye-nixos-2.jpg "screenshot-2")
 ![kye/nixos](screenshots/kye-nixos-3.jpg "screenshot-3")
 
-## changelog
+### changelog
 - 19.dec.23
 - added changelog
 - added global username to flake.nix
