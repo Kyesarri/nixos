@@ -14,7 +14,7 @@
   nixpkgs.config.allowUnfree = true;
 
   security.pam.services = {
-    gdm.enableGnomeKeyring = true; # keyring support for GDM
+    gdm.enableGnomeKeyring = true; # keyring support for gdm login
     swaylock = {}; # enables pam for swaylock, otherwise cannot unlock system TODO swaylock ./home
   };
 
@@ -95,7 +95,7 @@
       packages = [pkgs.gnome.seahorse];
     };
 
-    gnome.gnome-keyring.enable = true;
+    gnome.gnome-keyring.enable = lib.mkForce false;
 
     # TODO should this be pushed to a n o t h e r nix under ./home/ for GDM / SDDM or ./boot/
     xserver = {
