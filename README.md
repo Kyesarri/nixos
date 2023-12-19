@@ -1,5 +1,5 @@
 # nixos
-> my public nixos configuration, system specific .nix for ga401 / desktop / cl10w-c
+- my public nixos configuration, system specific .nix for ga401 / desktop / cl10w-c
 
 ## about:
 - programs are modular, ./home/appname/ will come with hypr keybindings and exec at boot where applicable. add remove in ./hosts/hostname/
