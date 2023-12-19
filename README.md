@@ -7,19 +7,20 @@
 - username configurable in ./flake.nix for entire system
 - programs under ./home/ come with nix-colors themes, change theme in ./hosts/hostname/default.nix for entire system
 
-![kye/nixos](screenshots/kye-nixos.jpg "screenshot")
-![kye/nixos](screenshots/kye-nixos-2.jpg "screenshot-2")
-![kye/nixos](screenshots/kye-nixos-3.jpg "screenshot-3")
-
-## issues:
-- is a wip, many things changing 
-- wont ever be "complete"
-- i update my flake weekly, compiling kernel / other packages can become frequent
-
-## whats included:
+## included:
 - grub + gdm
 - hyprland + hyprpaper
 - xanmod kernel with questionable modules running on laptop
 - zsh + ohmyzsh / foot + fish
 - spaghetti
 - a bunch of specific packages for my configuration / usecase
+
+## issues:
+- wip, many things changing weekly
+- wont ever be "complete"
+- flake updated weekly, compiling kernel / other packages can become frequent
+
+## screenshots:
+![kye/nixos](screenshots/kye-nixos.jpg "screenshot")
+![kye/nixos](screenshots/kye-nixos-2.jpg "screenshot-2")
+![kye/nixos](screenshots/kye-nixos-3.jpg "screenshot-3")
