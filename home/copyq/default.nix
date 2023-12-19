@@ -4,14 +4,19 @@
   ...
 }: {
   users.users.${user}.packages = with pkgs; [copyq];
+
   home-manager.users.${user} = {
+    # hypr copyq settings
     home.file.".config/hypr/per-app/copyq.conf" = {
       text = ''
         exec-once = sleep 2 && copyq --start-server
         windowrule = float, title:CopyQ
       '';
     };
+
     home.file.".config/copyq/copyq.conf" = {
+      # copyq settings TODO nix-colors
+      # TODO move to copyq.conf.nix
       text = ''
         [General]
         plugin_priority=itemimage, itemencrypted, itemfakevim, itemnotes, itempinned, itemsync, itemtags, itemtext
