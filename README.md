@@ -2,11 +2,10 @@
 > my public nixos configuration, system specific .nix for ga401 / desktop / cl10w-c
 
 ## about:
-- programs are modular, ./home/<appname>/ will come with hypr keybindings and exec at boot where applicable. add remove in ./hosts/<hostname>/
+- programs are modular, ./home/appname/ will come with hypr keybindings and exec at boot where applicable. add remove in ./hosts/hostname/
 - some binding conflicts will apply if you are using multiple launchers (wofi / ulauncher for example)
 - username configurable in ./flake.nix for entire system
 - programs under ./home/ come with nix-colors themes, change theme in ./hosts/hostname/default.nix for entire system
-- 
 
 ![kye/nixos](screenshots/kye-nixos.jpg "screenshot")
 ![kye/nixos](screenshots/kye-nixos-2.jpg "screenshot-2")
