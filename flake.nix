@@ -6,9 +6,11 @@
     nixos-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs.url = "github:nixos/nixpkgs/master";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+
     hyprland.url = "github:hyprwm/Hyprland";
 
     hyprland-plugins = {
+      # not actually using these currently
       url = "github:hyprwm/hyprland-plugins";
       inputs.hyprland.follows = "hyprland";
     };
@@ -35,12 +37,14 @@
     nix-colors, # (╯°□°)╯︵ ┻━┻
     # stylix,
     ...
-  } @ inputs: let
-    user = "kel"; # global username
+  } @ inputs:
+  # global username
+  let
+    user = "kel";
   in {
     nixosConfigurations = {
       "nix-laptop" = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
+        system = "x86_64-linux"; # 4800hs / 1650 / 16gb
         specialArgs = {inherit nix-colors user inputs;};
         modules = [
           # stylix.nixosModules.stylix
@@ -51,6 +55,12 @@
           {
             # stylix.image = ./greyscale_fins.jpg; # TODO see how much of a hassle porting my config to stylix
             # stylix.polarity = "dark"; # TODO probably need to turn all automatic theming off, or by-app only
+            # as stylix attempts to add themes to existing files, and wont work on symlinks
+            #
+            #
+            # can break this down further as configuration here is almost identical between machines,
+            # let in before nixosConfigurations = { system / specialArgs / all the other shit
+            # really each system only requires the system-name to be set here
             home-manager = {
               useGlobalPkgs = true;
               useUserPackages = true;
@@ -60,10 +70,9 @@
           }
         ];
       };
-
       "nix-notebook" = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        specialArgs = {inherit nix-colors inputs;};
+        system = "x86_64-linux"; # celeron N3050 / 4gb?
+        specialArgs = {inherit nix-colors user inputs;};
         modules = [
           # stylix.nixosModules.stylix
           ./hosts/notebook
@@ -74,15 +83,16 @@
               useGlobalPkgs = true;
               useUserPackages = true;
               extraSpecialArgs = {inherit nix-colors inputs;};
-              users.kel.imports = [];
+              users.${user}.imports = [];
             };
           }
         ];
       };
-
       "nix-desktop" = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        specialArgs = {inherit nix-colors inputs;};
+        system = "x86_64-linux"; # 13900kf / 3070 / 32gb
+        specialArgs = {
+          inherit nix-colors user inputs;
+        };
         modules = [
           # stylix.nixosModules.stylix
           ./hosts/desktop
@@ -93,7 +103,7 @@
               useGlobalPkgs = true;
               useUserPackages = true;
               extraSpecialArgs = {inherit nix-colors inputs;};
-              users.kel.imports = [];
+              users.${user}.imports = [];
             };
           }
         ];
