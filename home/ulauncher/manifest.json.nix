@@ -1,5 +1,9 @@
-{config, ...}: {
-  home-manager.users.kel.home.file.".config/ulauncher/user-themes/TokyoNight/manifest.json" = {
+{
+  config,
+  user,
+  ...
+}: {
+  home-manager.users.${user}.home.file.".config/ulauncher/user-themes/TokyoNight/manifest.json" = {
     text = ''
       {
         "manifest_version": "1",

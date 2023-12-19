@@ -1,5 +1,9 @@
-{config, ...}: {
-  home-manager.users.kel.home.file.".config/hypr/hyprpaper.conf" = {
+{
+  config,
+  user,
+  ...
+}: {
+  home-manager.users.${user}.home.file.".config/hypr/hyprpaper.conf" = {
     text = ''
       preload = ~/nixos/wallpaper/5.jpg
       preload = ~/nixos/wallpaper/6.jpg

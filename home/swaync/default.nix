@@ -2,9 +2,10 @@
   pkgs,
   config,
   lib,
+  user,
   ...
 }: {
-  users.users.kel.packages = with pkgs; [
+  users.users.${user}.packages = with pkgs; [
     swaynotificationcenter
   ];
   imports = [

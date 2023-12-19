@@ -35,11 +35,13 @@
     nix-colors, # (╯°□°)╯︵ ┻━┻
     # stylix,
     ...
-  } @ inputs: {
+  } @ inputs: let
+    user = "kel"; # global username
+  in {
     nixosConfigurations = {
       "nix-laptop" = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
-        specialArgs = {inherit nix-colors inputs;};
+        specialArgs = {inherit nix-colors user inputs;};
         modules = [
           # stylix.nixosModules.stylix
           ./hosts/laptop
@@ -53,7 +55,7 @@
               useGlobalPkgs = true;
               useUserPackages = true;
               extraSpecialArgs = {inherit nix-colors inputs;}; # pass flake input to home-manager
-              users.kel.imports = [];
+              users.${user}.imports = [];
             };
           }
         ];

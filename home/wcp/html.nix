@@ -2,9 +2,10 @@
   config,
   inputs,
   outputs,
+  user,
   ...
 }: {
-  home-manager.users.kel.home.file.".config/wcp/html/main.html" = {
+  home-manager.users.${user}.home.file.".config/wcp/html/main.html" = {
     text = ''
       <div id="main" class="fullscaleview">
         <div id="mainflex" class="fullscaleview colflex margin5">

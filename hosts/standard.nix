@@ -5,6 +5,7 @@
   lib,
   outputs,
   inputs,
+  user,
   ...
 }: {
   system.stateVersion = "23.11";
@@ -167,10 +168,10 @@
     ];
   };
 
-  users.users.kel = {
+  users.users.${user} = {
     shell = pkgs.zsh;
     isNormalUser = true;
-    description = "kel";
+    description = "${user}";
     extraGroups = ["networkmanager" "wheel"];
     packages = with pkgs; [
       remmina # rdp client

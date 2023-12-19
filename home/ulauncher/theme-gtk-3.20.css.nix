@@ -1,5 +1,5 @@
-{...}: {
-  home-manager.users.kel.home.file.".config/ulauncher/user-themes/TokyoNight/theme-gtk-3.20.css" = {
+{user, ...}: {
+  home-manager.users.${user}.home.file.".config/ulauncher/user-themes/TokyoNight/theme-gtk-3.20.css" = {
     text = ''
 
       @import url("theme.css");

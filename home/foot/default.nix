@@ -4,11 +4,12 @@
   outputs,
   pkgs,
   nix-colors, # TODO theming
+  user,
   ...
 }: {
-  users.users.kel.packages = with pkgs; [foot];
+  users.users.${user}.packages = with pkgs; [foot];
 
-  home-manager.users.kel.home.file.".config/hypr/per-app/foot.conf" = {
+  home-manager.users.${user}.home.file.".config/hypr/per-app/foot.conf" = {
     text = ''
       windowrulev2 = opacity 0.8 0.8, class:^(foot)$
       windowrulev2 = size 700 300, class:^(foot)$

@@ -2,6 +2,7 @@
   config,
   pkgs,
   # lib,
+  user,
   ...
 }: {
   hardware = {
@@ -14,7 +15,7 @@
     };
   };
 
-  users.users.kel.packages = with pkgs; [nvtop];
+  users.users.${user}.packages = with pkgs; [nvtop];
 
   services.xserver = {
     videoDrivers = ["nvidia"];

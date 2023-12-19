@@ -1,5 +1,5 @@
-{
-  home-manager.users.kel = {
+{user, ...}: {
+  home-manager.users.${user} = {
     pkgs,
     lib,
     config,
@@ -14,8 +14,8 @@
     ];
     programs.home-manager.enable = true;
     xdg.enable = true;
-    home.username = "kel";
-    home.homeDirectory = "/home/kel";
+    home.username = "${user}";
+    home.homeDirectory = "/home/${user}";
     home.stateVersion = "23.11";
   };
 }

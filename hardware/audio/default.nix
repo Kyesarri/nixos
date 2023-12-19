@@ -1,14 +1,15 @@
 {
   config,
   pkgs,
+  user,
   ...
 }: {
-  home-manager.users.kel.home.file.".config/hypr/per-app/audio.conf" = {
+  home-manager.users.${user}.home.file.".config/hypr/per-app/audio.conf" = {
     text = ''
       windowrule = float, ^(pavucontrol)$
     '';
   };
-  users.users.kel.packages = with pkgs; [pamixer pavucontrol];
+  users.users.${user}.packages = with pkgs; [pamixer pavucontrol];
   security.rtkit.enable = true;
   sound.enable = true;
   hardware.pulseaudio.enable = false;

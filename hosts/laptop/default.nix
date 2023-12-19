@@ -8,6 +8,7 @@ in
     inputs,
     outputs,
     nix-colors,
+    user,
     ...
   }: {
     imports = [
@@ -42,7 +43,7 @@ in
     ];
 
     colorscheme = inputs.nix-colors.colorSchemes.${scheme};
-    home-manager.users.kel.colorscheme = inputs.nix-colors.colorSchemes.${scheme};
+    home-manager.users.${user}.colorscheme = inputs.nix-colors.colorSchemes.${scheme};
 
     networking.hostName = "nix-laptop";
 
@@ -55,6 +56,6 @@ in
 
     environment = {
       systemPackages = with pkgs; [pciutils];
-      shellAliases.rebuild = "sudo nixos-rebuild switch --flake /home/kel/nixos#nix-laptop --show-trace";
+      shellAliases.rebuild = "sudo nixos-rebuild switch --flake /home/${user}/nixos#nix-laptop --show-trace";
     };
   }

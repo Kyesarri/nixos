@@ -2,9 +2,10 @@
   config,
   inputs,
   outputs,
+  user,
   ...
 }: {
-  home-manager.users.kel.home.file.".config/waybar/style.css" = {
+  home-manager.users.${user}.home.file.".config/waybar/style.css" = {
     text = ''
       * {
           font-size: 14px;

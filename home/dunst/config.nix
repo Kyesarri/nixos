@@ -2,9 +2,10 @@
   config,
   inputs,
   outputs,
+  user,
   ...
 }: {
-  home-manager.users.kel.home.file."/.config/dunst/dunstrc" = {
+  home-manager.users.${user}.home.file."/.config/dunst/dunstrc" = {
     text = ''
       [global]
       font="Hasklug Nerd Font Regular 9"

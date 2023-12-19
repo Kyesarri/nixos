@@ -2,9 +2,10 @@
   config,
   inputs,
   outputs,
+  user,
   ...
 }: {
-  home-manager.users.kel.home.file.".config/hypr/hyprland.conf" = {
+  home-manager.users.${user}.home.file.".config/hypr/hyprland.conf" = {
     text = ''
       ############################################# spaghetti starts here #############################################
       $mainMod = SUPER

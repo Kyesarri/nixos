@@ -1,7 +1,5 @@
-{
-  # imports = [./kdeconnect.nix];
-
-  home-manager.users.kel.home.file.".config/hypr/per-app/gaming.conf" = {
+{user, ...}: {
+  home-manager.users.${user}.home.file.".config/hypr/per-app/gaming.conf" = {
     text = ''
     '';
   };
@@ -14,7 +12,7 @@
 
   services.ratbagd.enable = true; # mouse configuration tool
 
-  users.users.kel.packages = with pkgs; [
+  users.users.${user}.packages = with pkgs; [
     pcsx2 # ps2 emulator
     piper # frontend for libratbag added in services
     protonup-qt # proton-ge # TODO get working with steam

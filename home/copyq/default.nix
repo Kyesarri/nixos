@@ -1,6 +1,10 @@
-{pkgs, ...}: {
-  users.users.kel.packages = with pkgs; [copyq];
-  home-manager.users.kel.home.file.".config/copyq/copyq.conf" = {
+{
+  pkgs,
+  user,
+  ...
+}: {
+  users.users.${user}.packages = with pkgs; [copyq];
+  home-manager.users.${user}.home.file.".config/copyq/copyq.conf" = {
     text = ''
       [General]
       plugin_priority=itemimage, itemencrypted, itemfakevim, itemnotes, itempinned, itemsync, itemtags, itemtext

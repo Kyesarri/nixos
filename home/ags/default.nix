@@ -4,19 +4,20 @@
   outputs,
   lib,
   pkgs,
+  user,
   ...
 }: {
-  home-manager.users.kel.programs.ags = {
+  home-manager.users.${user}.programs.ags = {
     enable = true; # still need to enable the package
-    configDir = ../ags; # sets to /home/kel/.config/ags not 100% sure here :D
+    configDir = ../ags; # sets to /home/${user}/.config/ags not 100% sure here :D
   };
 
   # works with shell scripts, will need to either write my own and symlink or write / declare in a .nix :)
   # can clone from git and place in the same dir, use home.file."foo.bar".source = ./foo.bar;
 
-  home-manager.users.kel.home.file."./.config/ags/config.js".source = ./config.js;
+  home-manager.users.${user}.home.file."./.config/ags/config.js".source = ./config.js;
 
-  home-manager.users.kel.home.file.".config/ags/style.css" = {
+  home-manager.users.${user}.home.file.".config/ags/style.css" = {
     text = ''
           label {
           font-family: "Hasklug Nerd Font";

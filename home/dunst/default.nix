@@ -1,11 +1,17 @@
-{pkgs, ...}: {
-  home-manager.users.kel.services.dunst.enable = true;
-
+{
+  pkgs,
+  user,
+  ...
+}: {
   imports = [./config.nix];
 
-  home-manager.users.kel.home.file.".config/hypr/per-app/dunst.conf" = {
-    text = ''
-      bind = $mainMod, X, exec, dunstctl history-pop
-    '';
+  home-manager.users.${user} = {
+    services.dunst.enable = true;
+
+    home.file.".config/hypr/per-app/dunst.conf" = {
+      text = ''
+        bind = $mainMod, X, exec, dunstctl history-pop
+      '';
+    };
   };
 }

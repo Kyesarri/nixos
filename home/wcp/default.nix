@@ -4,9 +4,10 @@
   pkgs,
   config,
   lib,
+  user,
   ...
 }: {
-  users.users.kel.packages = with pkgs; [(callPackage ../../packages/wcp {})];
+  users.users.${user}.packages = with pkgs; [(callPackage ../../packages/wcp {})];
 
   imports = [
     ./html.nix

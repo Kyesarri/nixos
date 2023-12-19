@@ -1,7 +1,7 @@
-{
+{user, ...}: {
   imports = [./kdeconnect.nix];
 
-  home-manager.users.kel.home.file.".config/hypr/per-app/kdeconnect.conf" = {
+  home-manager.users.${user}.home.file.".config/hypr/per-app/kdeconnect.conf" = {
     text = ''
       exec-once = sleep 3 kdeconnect-indicator
     ''; # why wont this shit work for me :(

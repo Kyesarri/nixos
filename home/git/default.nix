@@ -1,9 +1,10 @@
 {
   config,
   pkgs,
+  user,
   ...
 }: {
-  home-manager.users.kel.programs.git = {
+  home-manager.users.${user}.programs.git = {
     enable = true;
     extraConfig = {
       credential.helper = "libsecret";

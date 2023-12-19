@@ -3,17 +3,18 @@
   inputs,
   outputs,
   pkgs,
+  user,
   ...
 }: {
   imports = [./style.nix];
 
-  home-manager.users.kel.home.file.".config/hypr/per-app/wofi.conf" = {
+  home-manager.users.${user}.home.file.".config/hypr/per-app/wofi.conf" = {
     text = ''
       bind = $mainMod, R, exec, wofi --show run
     '';
   };
 
-  home-manager.users.kel.programs.wofi = {
+  home-manager.users.${user}.programs.wofi = {
     enable = true;
     settings = {
       width = 500;

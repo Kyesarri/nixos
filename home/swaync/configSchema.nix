@@ -3,9 +3,10 @@
   config,
   inputs,
   outputs,
+  user,
   ...
 }: {
-  home-manager.users.kel.home.file.".config/swaync/configSchema.json" = {
+  home-manager.users.${user}.home.file.".config/swaync/configSchema.json" = {
     text = ''
 
       {

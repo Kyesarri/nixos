@@ -2,9 +2,10 @@
   config,
   inputs,
   outputs,
+  user,
   ...
 }: {
-  home-manager.users.kel.home.file.".config/lite-xl/init.lua" = {
+  home-manager.users.${user}.home.file.".config/lite-xl/init.lua" = {
     text = ''
       -- put user settings here
       -- this module will be loaded after everything else when the application starts

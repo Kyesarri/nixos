@@ -5,6 +5,7 @@
   lib,
   outputs,
   inputs,
+  user,
   ...
 }: {
   system.stateVersion = "23.11";
@@ -135,9 +136,9 @@
     ];
   };
 
-  users.users.kel = {
+  users.users.${user} = {
     isNormalUser = true;
-    description = "kel";
+    description = "${user}";
     extraGroups = ["networkmanager" "wheel"];
     packages = with pkgs; [
       brightnessctl # brightness control, used in waybar config for laptops only

@@ -2,6 +2,7 @@
   config,
   inputs,
   outputs,
+  user,
   ...
 }: {
   home-manager.users.kel.home.file.".config/waybar/config.jsonc" = {

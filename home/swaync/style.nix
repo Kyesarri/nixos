@@ -2,9 +2,10 @@
   config,
   inputs,
   outputs,
+  user,
   ...
 }: {
-  home-manager.users.kel.home.file.".config/swaync/style.css" = {
+  home-manager.users.${user}.home.file.".config/swaync/style.css" = {
     text = ''
       @define-color cc-bg rgba(0, 0, 0, 0.7);
 

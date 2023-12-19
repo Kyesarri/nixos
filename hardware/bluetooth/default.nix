@@ -1,14 +1,15 @@
 {
   config,
   pkgs,
+  user,
   ...
 }: {
   hardware.bluetooth.enable = true;
 
-  home-manager.users.kel.home.file.".config/hypr/per-app/bluetooth.conf" = {
+  home-manager.users.${user}.home.file.".config/hypr/per-app/bluetooth.conf" = {
     text = ''
       windowrule = float, ^(blueberry.py)$
     '';
   };
-  users.users.kel.packages = with pkgs; [blueberry];
+  users.users.${user}.packages = with pkgs; [blueberry];
 }

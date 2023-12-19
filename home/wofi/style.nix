@@ -4,9 +4,10 @@
   inputs,
   outputs,
   pkgs,
+  user,
   ...
 }: {
-  home-manager.users.kel.home.file.".config/wofi/style.css" = {
+  home-manager.users.${user}.home.file.".config/wofi/style.css" = {
     text = ''
       window {
         margin: 5px;

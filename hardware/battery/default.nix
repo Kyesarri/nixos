@@ -1,9 +1,10 @@
 {
   config,
   pkgs,
+  user,
   ...
 }: {
-  home-manager.users.kel.home.file.".config/hypr/per-app/battery.conf" = {
+  home-manager.users.${user}.home.file.".config/hypr/per-app/battery.conf" = {
     text = ''
       exec-once = sleep 8 && poweralertd
       exec-once = systemctl start asusd
@@ -14,6 +15,6 @@
     percentageCritical = 10;
     percentageLow = 15;
   };
-  users.users.kel.packages = with pkgs; [poweralertd];
+  users.users.${user}.packages = with pkgs; [poweralertd];
   ## TODO define charge levels somewhere here / in each device
 }

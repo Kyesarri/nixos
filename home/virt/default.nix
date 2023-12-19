@@ -1,16 +1,18 @@
-# ./home/virt/default.nix
 {
   config,
   pkgs,
   lib,
+  user,
   ...
 }: {
-  users.users.kel.extraGroups = ["vboxusers"];
-  users.users.kel.packages = with pkgs; [
-    virt-manager # TODO might need some nix added to configure using qemu as default for OOBE
-    qemu # this needed with virtmanager? TODO i believe so
-    libvirt
-  ];
+  users.users.${user} = {
+    extraGroups = ["vboxusers"];
+    packages = with pkgs; [
+      virt-manager # TODO might need some nix added to configure using qemu as default for OOBE
+      qemu # this needed with virtmanager? TODO i believe so
+      libvirt
+    ];
+  };
   virtualisation.spiceUSBRedirection.enable = true; # usb passthrough to vm
   boot = {
     extraModprobeConfig = ''
@@ -20,5 +22,3 @@
     '';
   };
 }
-# ./home/virt/default.nix
-

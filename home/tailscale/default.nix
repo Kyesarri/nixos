@@ -1,9 +1,10 @@
 {
   config,
   pkgs,
+  user,
   ...
 }: {
-  home-manager.users.kel.home.file.".config/hypr/per-app/tailscale.conf" = {
+  home-manager.users.${user}.home.file.".config/hypr/per-app/tailscale.conf" = {
     text = ''
       exec-once = sleep 2 && tailscale-systray
     '';
@@ -21,7 +22,7 @@
     };
   };
 
-  users.users.kel.packages = with pkgs; [
+  users.users.${user}.packages = with pkgs; [
     tailscale
     tailscale-systray
   ];

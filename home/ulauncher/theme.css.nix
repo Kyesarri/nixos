@@ -1,5 +1,5 @@
-{...}: {
-  home-manager.users.kel.home.file.".config/ulauncher/user-themes/TokyoNight/theme.css" = {
+{user, ...}: {
+  home-manager.users.${user}.home.file.".config/ulauncher/user-themes/TokyoNight/theme.css" = {
     text = ''
       @define-color bg_color rgba(36, 40, 59, 0.9);
       @define-color window_bg @bg_color;

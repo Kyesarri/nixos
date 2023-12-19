@@ -1,8 +1,12 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  user,
+  ...
+}: {
   # TODO nix-colors
-  users.users.kel.packages = with pkgs; [ulauncher];
+  users.users.${user}.packages = with pkgs; [ulauncher];
 
-  home-manager.users.kel.home.file.".config/hypr/per-app/ulauncher.conf" = {
+  home-manager.users.${user}.home.file.".config/hypr/per-app/ulauncher.conf" = {
     text = ''
       exec-once = sleep 1 && ulauncher --hide-window
       windowrulev2 = noborder, class:^(ulauncher)$

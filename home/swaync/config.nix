@@ -2,9 +2,10 @@
   config,
   inputs,
   outputs,
+  user,
   ...
 }: {
-  home-manager.users.kel.home.file.".config/swaync/config.json" = {
+  home-manager.users.${user}.home.file.".config/swaync/config.json" = {
     text = ''
         "$schema": @JSONPATH@,
         "positionX": "center",

@@ -2,9 +2,10 @@
   config,
   inputs,
   outputs,
+  user,
   ...
 }: {
-  home-manager.users.kel.home.file.".config/lite-xl/colors/nix.lua" = {
+  home-manager.users.${user}.home.file.".config/lite-xl/colors/nix.lua" = {
     text = ''
       local style = require "core.style"
       local common = require "core.common"

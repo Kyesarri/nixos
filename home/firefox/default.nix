@@ -1,9 +1,10 @@
 {
   config,
   pkgs,
+  user,
   ...
 }: {
-  home-manager.users.kel.home.file.".config/hypr/per-app/firefox.conf" = {
+  home-manager.users.${user}.home.file.".config/hypr/per-app/firefox.conf" = {
     text = ''
       bind = $mainMod, F, exec, firefox
       bind = $mainMod, W, exec, firefox -p work
@@ -12,7 +13,7 @@
 
   environment.sessionVariables = rec {MOZ_ENABLE_WAYLAND = "1";};
 
-  users.users.kel.packages = with pkgs; [firefox];
+  users.users.${user}.packages = with pkgs; [firefox];
   programs.firefox = {
     enable = true;
     package = pkgs.wrapFirefox pkgs.firefox-unwrapped {
