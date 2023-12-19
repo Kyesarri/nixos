@@ -34,6 +34,7 @@ in
       ../../home/waybar
       ../../home/gtk
       ../../home/ulauncher
+      ../../home/wlogout
     ];
 
     colorscheme = inputs.nix-colors.colorSchemes.${scheme};

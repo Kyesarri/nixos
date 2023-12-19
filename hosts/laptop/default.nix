@@ -40,6 +40,7 @@ in
       ../../home/syncthing
       ../../home/tailscale
       ../../home/wallpaper
+      ../../home/wlogout
     ];
 
     colorscheme = inputs.nix-colors.colorSchemes.${scheme};

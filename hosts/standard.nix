@@ -189,7 +189,6 @@
       swaylock-effects # lockscreen of sorts
       slack # work
       libnotify # notifications
-      wlogout # wayland logout screen, need to spend more time with this
       gimp-with-plugins # gimp, handy to have
       wf-recorder # screen recorder
       mate.mate-calc # calc

@@ -39,6 +39,7 @@ in
       ../../home/gtk
       ../../home/syncthing
       ../../home/tailscale
+      ../../home/wlogout
     ];
 
     colorscheme = inputs.nix-colors.colorSchemes.${scheme};
