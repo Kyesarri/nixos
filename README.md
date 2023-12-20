@@ -17,7 +17,7 @@
 - you may need to 'cd /' and 'sudo rm -R boot' then run another rebuild --flake command from above to get gdm / grub running
 - reboot the system and see what broke
 - wallpapers may not work out the gate, more configuration to come
-
+  
 ## issues:
 - wip, many things changing weekly
 - wont ever be "complete"
