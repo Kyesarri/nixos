@@ -1,51 +1,60 @@
+# please see README.md
+# original theme by SirHades696 with nix-colors added by kye / kel / dai
 {
   user,
   inputs,
   config,
   ...
 }: {
-  ## do i need to convert these to RGBA or can we run with hex RGBA
-  #    #${config.colorscheme.colors.base00}FF
-  #    #${config.colorscheme.colors.base01}FF
-  #    #${config.colorscheme.colors.base02}FF
-  #    #${config.colorscheme.colors.base03}FF
-  #    #${config.colorscheme.colors.base04}FF
-  #    #${config.colorscheme.colors.base05}FF
-  #    #${config.colorscheme.colors.base06}FF
-  #    #${config.colorscheme.colors.base07}FF
-  #    #${config.colorscheme.colors.base08}FF
-  #    #${config.colorscheme.colors.base09}FF
-  #    #${config.colorscheme.colors.base0A}FF
-  #    #${config.colorscheme.colors.base0B}FF
-  #    #${config.colorscheme.colors.base0C}FF
-  #    #${config.colorscheme.colors.base0D}FF
-  #    #${config.colorscheme.colors.base0E}FF
-  #    #${config.colorscheme.colors.base0F}FF
+  # taken from:
+  # https://github.com/chriskempson/base16/blob/main/styling.md
+  #
+  #  base00 - Default Background
+  #  base01 - Lighter Background (Used for status bars, line number and folding marks)
+  #  base02 - Selection Background
+  #  base03 - Comments, Invisibles, Line Highlighting
+  #  base04 - Dark Foreground (Used for status bars)
+  #  base05 - Default Foreground, Caret, Delimiters, Operators
+  #  base06 - Light Foreground (Not often used)
+  #  base07 - Light Background (Not often used)
+  #  base08 - Variables, XML Tags, Markup Link Text, Markup Lists, Diff Deleted
+  #  base09 - Integers, Boolean, Constants, XML Attributes, Markup Link Url
+  #  base0A - Classes, Markup Bold, Search Text Background
+  #  base0B - Strings, Inherited Class, Markup Code, Diff Inserted
+  #  base0C - Support, Regular Expressions, Escape Characters, Markup Quotes
+  #  base0D - Functions, Methods, Attribute IDs, Headings
+  #  base0E - Keywords, Storage, Selector, Markup Italic, Diff Changed
+  #  base0F - Deprecated, Opening/Closing Embedded Language Tags, e.g. <?php ?>
+  #
+  ## notes:
+  ### base0a is normally orange (other themes) however blue in toyyo-night-dark
+  ### need to work on themes overall to get a more generalised theme applied
+  ### that would look better across multiple base-16 themes
 
   home-manager.users.${user}.home.file.".config/ulauncher/user-themes/TokyoNight/theme.css" = {
     text = ''
-      @define-color bg_color (#${config.colorscheme.colors.base00}FF);
+      @define-color bg_color #${config.colorscheme.colors.base00};
       @define-color window_bg @bg_color;
-      @define-color window_border_color rgba(42, 195, 222, 1);
-      @define-color prefs_backgroud rgba(36, 40, 59, 1);
+      @define-color window_border_color #${config.colorscheme.colors.base0A};
+      @define-color prefs_backgroud #${config.colorscheme.colors.base0E};
 
       /**
        * Input
        */
-      @define-color selected_bg_color rgba(65, 72, 104, 1);
-      @define-color selected_fg_color rgba(187, 154, 247, 1);
-      @define-color input_color rgba(158, 206, 106, 1);
+      @define-color selected_bg_color #${config.colorscheme.colors.base02};
+      @define-color selected_fg_color #${config.colorscheme.colors.base06};
+      @define-color input_color #${config.colorscheme.colors.base0E};
       @define-color caret_color darker(@input_color);
 
       /**
        * Result items
        */
-      @define-color item_name rgba(86, 95, 137, 1);
+      @define-color item_name #${config.colorscheme.colors.base08};
       @define-color item_text @selected_fg_color;
 
-      @define-color item_box_selected rgba(65, 72, 104, 0.8);
-      @define-color item_text_selected rgba(255, 158, 100, 1);
-      @define-color item_name_selected rgba(115, 218, 202, 1);
+      @define-color item_box_selected #${config.colorscheme.colors.base03};
+      @define-color item_text_selected #${config.colorscheme.colors.base0B};
+      @define-color item_name_selected #${config.colorscheme.colors.base0D};
 
       @define-color item_shortcut_color rgba(224, 175, 104, 1);
       @define-color item_shortcut_shadow darker(@bg_color);

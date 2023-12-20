@@ -1,4 +1,3 @@
-# ./hosts/shared.nix
 {
   config,
   pkgs,
@@ -95,7 +94,7 @@
       packages = [pkgs.gnome.seahorse];
     };
 
-    gnome.gnome-keyring.enable = lib.mkForce false;
+    gnome.gnome-keyring.enable = true;
 
     # TODO should this be pushed to a n o t h e r nix under ./home/ for GDM / SDDM or ./boot/
     xserver = {
@@ -124,6 +123,14 @@
       enable = true;
       enableSSHSupport = true;
     };
+
+    # TODO remote build testing below
+    #  ssh.extraConfig = ''
+    #    Host remote_host
+    #      ProxyCommand ssh -i /root/.ssh/my_key -W remote_host:1221 kel@jump_host
+    #      IdentityFile /root/.ssh/my_key
+    #      User ubuntu
+    #  '';
 
     dconf.enable = true;
 
@@ -165,7 +172,7 @@
       wget
       libsecret
       gitAndTools.gitFull
-      lxqt.lxqt-policykit
+      lxqt.lxqt-policykit # graphical su prompt, hacky workaround atm
     ];
   };
 
@@ -186,7 +193,7 @@
       shotman # image capture
       hyprpicker # colour picker for wayland TODO fix script
       imagemagick # bitmap editor cli
-      swaylock-effects # lockscreen of sorts
+      swaylock-effects # lockscreen, TODO needs script for switch to toggle this on lid-close, TODO own ./home/*
       slack # work
       libnotify # notifications
       gimp-with-plugins # gimp, handy to have
@@ -194,9 +201,9 @@
       mate.mate-calc # calc
       p7zip # TODO needs a gui
       udiskie # usb mounting
-      nwg-launchers # lockscreen / application launcher utilities TODO move to hypr
+      nwg-launchers # lockscreen / application launcher utilities TODO move to own ./home/*
       bitwarden # password manager
-      armcord # discord client / chat ## fucking electron takes too long to build on laptop, looking into remote builder
+      armcord # discord wrapper / chat
       sleek-grub-theme # testing grub themes TODO grub
       # (callPackage ../packages/wcp {}) # IT WORKS! Currently has bugs with RGBA colours, see package notes
       # (callPackage ../packages/libfprint {}) # builds, need to write to the fprint reader now :)
@@ -204,5 +211,3 @@
     ];
   };
 }
-# ./hosts/shared.nix
-
