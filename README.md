@@ -32,6 +32,7 @@
 - 20.dec.23
 - nix-colors theme for ulauncher
 - TODO theme refactor for all nix-colors themed applications
+- TODO seahorse broken, sorry secrets
 - 19.dec.23
 - added changelog
 - added global username to flake.nix
