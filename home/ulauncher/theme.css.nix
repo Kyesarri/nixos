@@ -27,7 +27,7 @@
   #  base0F - Deprecated, Opening/Closing Embedded Language Tags, e.g. <?php ?>
   #
   ## notes:
-  ### base0a is normally orange (other themes) however blue in toyyo-night-dark
+  ### base0a is normally orange (other themes) its blue and the main highlight i use in toyyo-night-dark theme
   ### need to work on themes overall to get a more generalised theme applied
   ### that would look better across multiple base-16 themes
 
@@ -56,9 +56,9 @@
       @define-color item_text_selected #${config.colorscheme.colors.base0B};
       @define-color item_name_selected #${config.colorscheme.colors.base0D};
 
-      @define-color item_shortcut_color rgba(224, 175, 104, 1);
+      @define-color item_shortcut_color #${config.colorscheme.colors.base0B};
       @define-color item_shortcut_shadow darker(@bg_color);
-      @define-color item_shortcut_color_sel rgba(247, 118, 142, 1);
+      @define-color item_shortcut_color_sel #${config.colorscheme.colors.base0F};
       @define-color item_shortcut_shadow_sel darker(@item_box_selected);
 
       .app {

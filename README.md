@@ -3,8 +3,8 @@
 
 ## about:
 - i'm not a programmer by any stretch, this is my own personal configuration that may not work out of the box for your use-case
-- programs are modular, ./home/appname/ will come with hypr keybindings and exec at boot where applicable. add remove in ./hosts/hostname/
-- some binding conflicts will apply if you are using multiple launchers (wofi / ulauncher for example)
+- programs are modular, ./home/appname/ will come with hypr keybindings and exec at boot where applicable. add remove in ./hosts/hostname/default.nix
+- some binding conflicts will apply if you are using multiple launchers (wofi / ulauncher for example) 
 - username configurable in ./flake.nix for entire system
 - programs under ./home/ come with nix-colors themes, change theme in ./hosts/hostname/default.nix for entire system
 
@@ -22,6 +22,7 @@
 - wip, many things changing weekly
 - wont ever be "complete"
 - flake updated weekly, compiling kernel / other packages can become frequent
+- TODO seahorse broken, sorry secrets
 
 ## screenshots:
 ![kye/nixos](screenshots/kye-nixos.jpg "screenshot")
@@ -29,11 +30,10 @@
 ![kye/nixos](screenshots/kye-nixos-3.jpg "screenshot-3")
 
 ### changelog
-- 20.dec.23
+> 20.dec.23
 - nix-colors theme for ulauncher
 - TODO theme refactor for all nix-colors themed applications
-- TODO seahorse broken, sorry secrets
-- 19.dec.23
+> 19.dec.23
 - added changelog
 - added global username to flake.nix
 - added wlogout to ./home pending configuration
