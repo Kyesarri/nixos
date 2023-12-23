@@ -9,13 +9,14 @@
 
     hyprland.url = "github:hyprwm/Hyprland";
 
-    hyprland-plugins = {
-      # not actually using these currently
-      url = "github:hyprwm/hyprland-plugins";
-      inputs.hyprland.follows = "hyprland";
-    };
+    # hyprland-plugins = {
+    #   # not actually using these currently
+    #   url = "github:hyprwm/hyprland-plugins";
+    #   inputs.hyprland.follows = "hyprland";
+    # };
 
     # stylix.url = "github:danth/stylix";
+
     nix-colors.url = "github:misterio77/nix-colors"; # may replace with stylix (╯°□°)╯︵ ┻━┻
 
     alejandra.url = "github:kamadorueda/alejandra/3.0.0";
@@ -37,25 +38,24 @@
     nix-colors, # (╯°□°)╯︵ ┻━┻
     # stylix,
     ...
-  } @ inputs:
-  # global username
-  let
-    user = "kel";
+  } @ inputs: let
+    user = "kel"; # global username
+    plymouth_theme = "deus_ex";
   in {
     nixosConfigurations = {
       "nix-laptop" = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux"; # 4800hs / 1650 / 16gb
-        specialArgs = {inherit nix-colors user inputs;};
+        system = "x86_64-linux"; # 4800hs / 1650 / 16gb TODO download more ram
+        specialArgs = {inherit nix-colors user plymouth_theme inputs;};
         modules = [
           # stylix.nixosModules.stylix
           ./hosts/laptop
           {environment.systemPackages = [alejandra.defaultPackage.x86_64-linux];} # codium plugins
-          nixos-hardware.nixosModules.asus-zephyrus-ga401
+          nixos-hardware.nixosModules.asus-zephyrus-ga401 # TODO remove this and add all configuration to my own system
           home-manager.nixosModules.home-manager
           {
             # stylix.image = ./greyscale_fins.jpg; # TODO see how much of a hassle porting my config to stylix
             # stylix.polarity = "dark"; # TODO probably need to turn all automatic theming off, or by-app only
-            # as stylix attempts to add themes to existing files, and wont work on symlinks
+            # as stylix attempts to add themes to existing files, and wont work on symlinks "i believe" lol
             #
             #
             # can break this down further as configuration here is almost identical between machines,

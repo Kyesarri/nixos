@@ -5,6 +5,7 @@
   outputs,
   inputs,
   user,
+  plymouth_theme,
   ...
 }: {
   system.stateVersion = "23.11";
@@ -49,16 +50,18 @@
       "tsc=nowatchdog" # workaround for check_tsc_sync_source failed, could cause issues
       "tsc=reliable" # flags tsc clock as reliable, workaround to get tsc working on laptop
       "vm.vfs_cache_pressure=50" # cache tweak, not sure if it does much :D
-      "quiet" # removes boot messages, testing for plymouth themes
+      "quiet" # removes boot messages, testing for plymouth themes, TODO move to plymouth ./service/ ?
     ]; # TODO tsc and cache laptop only?
 
     plymouth = {
       enable = true;
-      theme = "deus_ex";
+      theme = "${plymouth_theme}";
       themePackages = [
-        (pkgs.adi1090x-plymouth-themes.override {
-          selected_themes = ["deus_ex"];
-        })
+        (
+          pkgs.adi1090x-plymouth-themes.override {
+            selected_themes = ["${plymouth_theme}"];
+          }
+        )
       ];
     };
 

@@ -9,6 +9,7 @@ in
     outputs,
     nix-colors,
     user,
+    plymouth_theme,
     ...
   }: {
     imports = [
