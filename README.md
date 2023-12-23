@@ -14,7 +14,7 @@
 - delete my ~/nixos/hosts/hostname/hardware.nix and rename your hardware-configuration.nix to hardware.nix
 - edit the root ~/nixos/flake.nix and edit the user = "kel"; line to your own username, this will change all home-manager and nixos config files
 - run 'sudo nixos-rebuild switch --flake /home/username/nixos#hostname --show-trace' while changing username and hostname to what you have configured
-- you may need to 'cd /' and 'sudo rm -R boot' then run another rebuild --flake command from above to get gdm / grub running
+- you may need to 'cd /' and 'sudo rm -R boot' then run another rebuild --flake command from above to get gdm / grub running, if moving from sddm this will be required as sddm will persist and boot you into a previous nixos generation. you *may* be able to work-around this by deleting older generations.
 - reboot the system and see what broke
 - wallpapers may not work out the gate, more configuration to come
   

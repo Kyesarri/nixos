@@ -49,7 +49,21 @@
       "tsc=nowatchdog" # workaround for check_tsc_sync_source failed, could cause issues
       "tsc=reliable" # flags tsc clock as reliable, workaround to get tsc working on laptop
       "vm.vfs_cache_pressure=50" # cache tweak, not sure if it does much :D
+      "quiet" # removes boot messages, testing for plymouth themes
     ]; # TODO tsc and cache laptop only?
+
+    plymouth = {
+      enable = true;
+      theme = "deus_ex";
+      themePackages = [
+        (pkgs.adi1090x-plymouth-themes.override {
+          selected_themes = ["deus_ex"];
+        })
+      ];
+    };
+
+    # TODO can i with a single value defined in ./flake.nix select the plymouth theme and prevent all other themes from being
+    # installed on my system? should save 500mb if i can do so.
 
     loader = {
       efi.efiSysMountPoint = "/boot";
@@ -205,6 +219,7 @@
       bitwarden # password manager
       armcord # discord wrapper / chat
       sleek-grub-theme # testing grub themes TODO grub
+      adi1090x-plymouth-themes # plymouth themes TODO get working :)
       # (callPackage ../packages/wcp {}) # IT WORKS! Currently has bugs with RGBA colours, see package notes
       # (callPackage ../packages/libfprint {}) # builds, need to write to the fprint reader now :)
       # (callPackage ../packages/sov {}) # sway overview, needs some hyprland config to see if works on hyprland
