@@ -48,8 +48,9 @@
       exec-once = hyprpaper
 
 
-      exec-once = sleep 4 &&gnome-keyring-daemon --start --components=pkcs11,secrets,ssh)
-      exec-once = sleep 4 && gnome-keyring-daemon --start --components=secrets
+      exec-once = sleep 4 && gnome-keyring-daemon --start --components = pkcs11, secrets, ssh
+      # move above to seahorse under ./home or ./services
+      # exec-once = sleep 4 && gnome-keyring-daemon --start --components=secrets
       exec-once = sleep 6 && dbus-update-activation-environment --all
       exec-once = lxqt-policykit-agent & udiskie
 
