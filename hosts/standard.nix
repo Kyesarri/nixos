@@ -205,9 +205,9 @@
       wl-color-picker # wayland colour picker
       cinnamon.nemo-with-extensions # file manager
       qview # image viewer
-      bottom # hot CLI task manager / resource monitor
+      bottom # task manager / resource monitor
       gnome.seahorse # key management
-      shotman # image capture
+      gscreenshot # image capture
       hyprpicker # colour picker for wayland TODO fix script
       imagemagick # bitmap editor cli
       swaylock-effects # lockscreen, TODO needs script for switch to toggle this on lid-close, TODO own ./home/*
@@ -222,7 +222,8 @@
       bitwarden # password manager
       armcord # discord wrapper / chat
       sleek-grub-theme # testing grub themes TODO grub
-      adi1090x-plymouth-themes # plymouth themes TODO get working :)
+      adi1090x-plymouth-themes # plymouth themes
+      spot # gtk / gnome spotify client
       # (callPackage ../packages/wcp {}) # IT WORKS! Currently has bugs with RGBA colours, see package notes
       # (callPackage ../packages/libfprint {}) # builds, need to write to the fprint reader now :)
       # (callPackage ../packages/sov {}) # sway overview, needs some hyprland config to see if works on hyprland

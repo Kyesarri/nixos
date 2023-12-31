@@ -13,7 +13,7 @@ in
   }: {
     imports = [
       nix-colors.homeManagerModules.default
-      ./per-device.nix
+      ./per-device.nix # per device hypr configuration
 
       ./hardware.nix # machine hardware config
       ../standard.nix # standard or minimal configs

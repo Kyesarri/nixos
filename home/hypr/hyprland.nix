@@ -50,7 +50,6 @@
 
       exec-once = sleep 4 && gnome-keyring-daemon --start --components = pkcs11, secrets, ssh
       # move above to seahorse under ./home or ./services
-      # exec-once = sleep 4 && gnome-keyring-daemon --start --components=secrets
       exec-once = sleep 6 && dbus-update-activation-environment --all
       exec-once = lxqt-policykit-agent & udiskie
 
@@ -156,7 +155,13 @@
 
       ############################################ binds ############################################
 
-      bind = ,Print, exec, shotman --capture output
+      # move to gscreenshot under home, TODO
+      ## take fullscreen screenshot and send to /user/screenshots/
+      bind = ,Print, exec, gscreenshot -f '/home/${user}/screenshots/screenshot_$hx$w_%Y-%m-%d.png' -n
+      ## open screenshot selection tool with overlay, once region selected send to /user/screenshots/
+      bind = shift ,Print, exec, gscreenshot -f '/home/${user}/screenshots/screenshot_$hx$w_%Y-%m-%d.png' -n -s
+
+
       bind = $mainMod, S, exec, bash ~/nixos/scripts/dunst/hyprpicker.sh
       ## not working, check script TODO
 
@@ -231,7 +236,7 @@
       bindm = $mainMod, mouse:272, movewindow
       bindm = $mainMod, mouse:273, resizewindow
 
-      ## wildcard per-app enabled in each ./home/app/*.nix ##
+      ## wildcard per-app enabled in each ./home/app*/*.nix ##
       source = ~/.config/hypr/per-app/*.conf
     '';
   };

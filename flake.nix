@@ -60,7 +60,7 @@
             #
             # can break this down further as configuration here is almost identical between machines,
             # let in before nixosConfigurations = { system / specialArgs / all the other shit
-            # really each system only requires the system-name to be set here
+            # really each system only requires the system-name and hosts/machine.nix to be set here
             home-manager = {
               useGlobalPkgs = true;
               useUserPackages = true;
@@ -90,9 +90,7 @@
       };
       "nix-desktop" = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux"; # 13900kf / 3070 / 32gb
-        specialArgs = {
-          inherit nix-colors user inputs;
-        };
+        specialArgs = {inherit nix-colors user plymouth_theme inputs;};
         modules = [
           # stylix.nixosModules.stylix
           ./hosts/desktop
