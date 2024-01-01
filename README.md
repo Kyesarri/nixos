@@ -2,7 +2,7 @@
 my public nixos configuration, system specific .nix for ga401 / desktop / cl10w-c
 
 ## 
- [<img src="screenshots/1.jpg" width="40%" />](screenshots/1.jpg) [<img src="screenshots/4.jpg" width="40%" />](screenshots/4.jpg) 
+ [<img src="screenshots/1.jpg" width="50%" />](screenshots/1.jpg) [<img src="screenshots/4.jpg" width="50%" />](screenshots/4.jpg) 
 
 ## features:
 i've built this as a complete desktop enviornment with packages / configuration that i use on a daily basis
