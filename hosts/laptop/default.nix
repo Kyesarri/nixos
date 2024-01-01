@@ -31,6 +31,7 @@ in
       ../../home/dunst
       ../../home/firefox
       ../../home/git
+      ../../home/gaming
       ../../home/hypr
       ../../home/kde
       ../../home/kitty

@@ -14,15 +14,15 @@
   nixpkgs.config.allowUnfree = true;
 
   security.pam.services = {
-    gdm.enableGnomeKeyring = true; # keyring support for gdm login
+    gdm.enableGnomeKeyring = true; # unlock keyring with gdm / gdm support for keyring
     swaylock = {}; # enables pam for swaylock, otherwise cannot unlock system TODO swaylock ./home
   };
 
   nix = {
-    sshServe.enable = true;
+    sshServe.enable = true; # enable ssh server
     package = pkgs.nixUnstable; # prefer nixunstable over stable
     gc = {
-      automatic = true;
+      automatic = true; # auto nix garbage collection
       dates = "weekly";
       options = "--delete-older-than 5d";
     };
@@ -50,7 +50,7 @@
       "tsc=nowatchdog" # workaround for check_tsc_sync_source failed, could cause issues
       "tsc=reliable" # flags tsc clock as reliable, workaround to get tsc working on laptop
       "vm.vfs_cache_pressure=50" # cache tweak, not sure if it does much :D
-      "quiet" # removes boot messages, testing for plymouth themes, TODO move to plymouth ./service/ ?
+      "quiet" # removes boot messages, testing for plymouth themes, TODO move to plymouth /service/ ?
     ]; # TODO tsc and cache laptop only?
 
     plymouth = {
@@ -104,7 +104,7 @@
 
   services = {
     gvfs.enable = true; # gnome trash support
-    printing.enable = true; # need more than this to print afik?
+    printing.enable = true; # need more than this to print afik? http://localhost:631/ for config
     fwupd.enable = true; # firmware updater, what was i using this for again? :D
     dbus = {
       enable = true;
@@ -113,7 +113,7 @@
 
     gnome.gnome-keyring.enable = true;
 
-    # TODO should this be pushed to a n o t h e r nix under ./home/ for GDM / SDDM or ./boot/
+    # TODO should this be pushed to a n o t h e r nix under /home/ for GDM / SDDM or /boot/
     xserver = {
       enable = true;
       displayManager.gdm = {
@@ -140,14 +140,6 @@
       enable = true;
       enableSSHSupport = true;
     };
-
-    # TODO remote build testing below
-    #  ssh.extraConfig = ''
-    #    Host remote_host
-    #      ProxyCommand ssh -i /root/.ssh/my_key -W remote_host:1221 kel@jump_host
-    #      IdentityFile /root/.ssh/my_key
-    #      User ubuntu
-    #  '';
 
     dconf.enable = true;
 
@@ -177,7 +169,7 @@
       XDG_CONFIG_HOME = "$HOME/.config";
       XDG_DATA_HOME = "$HOME/.local/share";
       XDG_STATE_HOME = "$HOME/.local/state";
-      NIXOS_OZONE_WL = "1"; # fixes electron apps in wayland... i hope :D
+      NIXOS_OZONE_WL = "1"; # fixes electron apps in wayland... why do i use electron?
     };
 
     shells = with pkgs; [zsh]; # default shell to zsh
@@ -189,7 +181,7 @@
       wget
       libsecret
       gitAndTools.gitFull
-      lxqt.lxqt-policykit # graphical su prompt, hacky workaround atm
+      lxqt.lxqt-policykit # gui su prompt, would prefer something gtk / themable by nix-colors
     ];
   };
 
@@ -201,7 +193,7 @@
     packages = with pkgs; [
       remmina # rdp client
       fet-sh # minimalistic fetch script
-      brightnessctl # brightness control, used in waybar config
+      brightnessctl # brightness control, used in waybar TODO laptop / notebook specific
       wl-color-picker # wayland colour picker
       cinnamon.nemo-with-extensions # file manager
       qview # image viewer
@@ -210,7 +202,7 @@
       gscreenshot # image capture
       hyprpicker # colour picker for wayland TODO fix script
       imagemagick # bitmap editor cli
-      swaylock-effects # lockscreen, TODO needs script for switch to toggle this on lid-close, TODO own ./home/*
+      swaylock-effects # lockscreen, TODO needs script for switch to toggle this on lid-close, TODO own /home/*
       slack # work
       libnotify # notifications
       gimp-with-plugins # gimp, handy to have
@@ -218,7 +210,7 @@
       mate.mate-calc # calc
       p7zip # TODO needs a gui
       udiskie # usb mounting
-      nwg-launchers # lockscreen / application launcher utilities TODO move to own ./home/*
+      nwg-launchers # lockscreen / application launcher utilities TODO move to own /home/*
       bitwarden # password manager
       armcord # discord wrapper / chat
       sleek-grub-theme # testing grub themes TODO grub

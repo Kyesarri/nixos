@@ -1,4 +1,8 @@
-{user, ...}: {
+{
+  user,
+  pkgs,
+  ...
+}: {
   home-manager.users.${user}.home.file.".config/hypr/per-app/gaming.conf" = {
     text = ''
     '';
@@ -14,9 +18,9 @@
 
   users.users.${user}.packages = with pkgs; [
     pcsx2 # ps2 emulator
-    piper # frontend for libratbag added in services
+    piper # frontend for libratbag, which is enabled in services
     protonup-qt # proton-ge # TODO get working with steam
-    gamescope # wl roots gaming compositor, needs steam config
+    gamescope # wl roots gaming compositor, needs steam config not working currently
   ];
 
   nixpkgs.config.packageOverrides = pkgs: {

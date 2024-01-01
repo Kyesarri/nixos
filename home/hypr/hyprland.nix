@@ -10,16 +10,18 @@
       ############################################# spaghetti starts here #############################################
       $mainMod = SUPER
 
-      ## TODO add colours here, move all nix-colors to that file then import
-      #source = ~/.config/hypr/colours.conf
+      # TODO add colours here, move all nix-colors to that file then import
+      ## source = ~/.config/hypr/colours.conf
 
       ############################################# hyprpaper #############################################
 
-      ## move to hyprpaper
-      $w1 = hyprctl hyprpaper wallpaper "eDP-1,~/nixos/wallpaper/5.jpg"
-      $w2 = hyprctl hyprpaper wallpaper "eDP-1,~/nixos/wallpaper/6.jpg"
-      $w3 = hyprctl hyprpaper wallpaper "eDP-1,~/nixos/wallpaper/7.jpg"
-      $w4 = hyprctl hyprpaper wallpaper "eDP-1,~/nixos/wallpaper/8.jpg"
+      # move to wallpaper per device and import
+      ## source = ~/.config/hypr/wallpaper.conf
+      ## might want a function that pulls a wallpaper out at random rather than having specific per desktop
+      $w1 = hyprctl hyprpaper wallpaper "eDP-1,~/nixos/wallpaper/1.jpg"
+      $w2 = hyprctl hyprpaper wallpaper "eDP-1,~/nixos/wallpaper/2.jpg"
+      $w3 = hyprctl hyprpaper wallpaper "eDP-1,~/nixos/wallpaper/3.jpg"
+      $w4 = hyprctl hyprpaper wallpaper "eDP-1,~/nixos/wallpaper/4.jpg"
       $w5 = hyprctl hyprpaper wallpaper "eDP-1,~/nixos/wallpaper/5.jpg"
       $w6 = hyprctl hyprpaper wallpaper "eDP-1,~/nixos/wallpaper/6.jpg"
       $w7 = hyprctl hyprpaper wallpaper "eDP-1,~/nixos/wallpaper/7.jpg"
@@ -44,12 +46,12 @@
 
       ## exec-once ##
 
-      ## TODO move to ./home/*
+      ## TODO move to /home/*
       exec-once = hyprpaper
 
 
       exec-once = sleep 4 && gnome-keyring-daemon --start --components = pkcs11, secrets, ssh
-      # move above to seahorse under ./home or ./services
+      # move above to seahorse below /home or /services
       exec-once = sleep 6 && dbus-update-activation-environment --all
       exec-once = lxqt-policykit-agent & udiskie
 
@@ -60,97 +62,92 @@
       env = WLR_NO_HARDWARE_CURSORS,1
 
       misc {
-      disable_hyprland_logo = true
-      disable_splash_rendering = true
-      mouse_move_enables_dpms = true
-      key_press_enables_dpms = true
+          disable_hyprland_logo = true
+          disable_splash_rendering = true
+          mouse_move_enables_dpms = true
+          key_press_enables_dpms = true
       }
 
       input {
-      kb_layout = us
-      kb_variant =
-      kb_model =
-      kb_options =
-      kb_rules =
-      follow_mouse = 1
-      repeat_delay = 300
-      repeat_rate = 50
-      sensitivity = 0
-      touchpad {
-      natural_scroll = yes
-      disable_while_typing = true
-      }
+          kb_layout = us
+          kb_variant =
+          kb_model =
+          kb_options =
+          kb_rules =
+          follow_mouse = 1
+          repeat_delay = 300
+          repeat_rate = 50
+          sensitivity = 0
+          # fixed touchpad, needed indentation to work correctly :)
+          touchpad {
+              natural_scroll = yes
+              disable_while_typing = true
+          }
       }
 
       general {
-      gaps_in = 5
-      gaps_out = 10
-      border_size = 5
-      resize_on_border = true
-      layout = dwindle
-      col.active_border = $c0 $ca $c3 $c2 $c1 $c0 90deg
-      col.inactive_border = $c0
+          gaps_in = 5
+          gaps_out = 10
+          border_size = 5
+          resize_on_border = true
+          layout = dwindle
+          col.active_border = $c0 $ca $c3 $c2 $c1 $c0 90deg
+          col.inactive_border = $c0
       }
 
       decoration {
-      rounding = 10
-      drop_shadow = 1
-      shadow_range = 30
-      shadow_render_power = 3
-      col.shadow = $ca
-      col.shadow_inactive= $c0
-
-      active_opacity = 1
-      inactive_opacity = .90
-      dim_inactive = true
-      dim_strength = 0.4
-
-      blur {
-      enabled = true
-      size = 5
-      passes = 1
-      noise = 0
-      brightness = 0.5
-      new_optimizations = true
-      }
+          rounding = 10
+          drop_shadow = 1
+          shadow_range = 30
+          shadow_render_power = 3
+          col.shadow = $ca
+          col.shadow_inactive= $c0
+          active_opacity = 1
+          inactive_opacity = .90
+          dim_inactive = true
+          dim_strength = 0.4
+          blur {
+              enabled = true
+              size = 5
+              passes = 1
+              noise = 0
+              brightness = 0.5
+              new_optimizations = true
+          }
       }
 
       ############################################ animations ############################################
 
       animations {
-      enabled = true
-
-      bezier = overshot, 0.34, 1.56, 0.64, 1
-      bezier = smoothOut, 0.36, 0, 0.66, -0.56
-      bezier = smoothIn, 0.25, 1, 0.5, 1
-      bezier = liner, 1, 1, 1, 1
-      bezier = cubic, 0.785, 0.135, 0.15, 0.86
-      bezier = snappy, 0.51, 0.93, 0, 1
-
-      animation = windows, 1, 5, overshot, slide
-      animation = windowsOut, 1, 5, smoothOut, slide
-      animation = windowsMove, 1, 5, snappy
-      animation = fade, 1, 5, smoothIn
-      animation = fadeDim, 1, 5, smoothIn
-
-      animation = workspaces, 1, 5, snappy, slide
-
-      animation = border, 1, 5, liner
-      animation = borderangle, 1, 360, liner, loop
+          enabled = true
+          bezier = overshot, 0.34, 1.56, 0.64, 1
+          bezier = smoothOut, 0.36, 0, 0.66, -0.56
+          bezier = smoothIn, 0.25, 1, 0.5, 1
+          bezier = liner, 1, 1, 1, 1
+          bezier = cubic, 0.785, 0.135, 0.15, 0.86
+          bezier = snappy, 0.51, 0.93, 0, 1
+          animation = windows, 1, 5, overshot, slide
+          animation = windowsOut, 1, 5, smoothOut, slide
+          animation = windowsMove, 1, 5, snappy
+          animation = fade, 1, 5, smoothIn
+          animation = fadeDim, 1, 5, smoothIn
+          animation = workspaces, 1, 5, snappy, slide
+          animation = border, 1, 5, liner
+          animation = borderangle, 1, 360, liner, loop
       }
 
       ############################################ Layouts ###################################################
 
       dwindle {
-      no_gaps_when_only = false
-      pseudotile = true # master switch for pseudotiling. Enabling is bound to mainMod + P in the keybinds section below
-      preserve_split = true # you probably want this
-      smart_resizing = true
-      force_split = 2
+          no_gaps_when_only = false
+          pseudotile = true # master switch for pseudotiling. Enabling is bound to mainMod + P in the keybinds section below
+          preserve_split = true # you probably want this
+          smart_resizing = true
+          force_split = 2
       }
 
       master {
-      new_is_master = true
+          new_is_master = false
       }
 
       ############################################ binds ############################################

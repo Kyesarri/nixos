@@ -2,13 +2,13 @@
 my public nixos configuration, system specific .nix for ga401 / desktop / cl10w-c
 
 ## 
-![kye/nixos](screenshots/kye-nixos.jpg "screenshot")
-
+| <img src="screenshots/1.jpg" width="200" /> | <img src="screenshots/4.jpg" width="200" /> |
 
 ## features:
 i've built this as a complete desktop enviornment with packages / configuration that i use on a daily basis
 
 keybinds for some of the more common packages:
+- (meta + e) = nemo fm
 - (meta + r) = ulauncher / wofi
 - (ctrl + esc) = btm
 - (meta + q) = kitty / foot
@@ -16,6 +16,10 @@ keybinds for some of the more common packages:
 - (meta + w) = firefox work profile
 - (meta + k) = codium / lite-xl
 - (meta + x) = dunst notification history
+- (shift + printscreen) = gscreenshot snipping tool, outputs to ~/screenshots/
+- (printscreen) = gscreenshot, outputs to ~/screenshots/
+
+hyprland will have default binds, meta c closes windows, meta 1 - 0 to switch desktops
 
 theming for most packages will work oob, gtk theme is built and applied as a part of the configuration (thanks [Misterio77](https://github.com/Misterio77/nix-colors) and the nix-colors contributors)
 
@@ -57,8 +61,8 @@ wallpapers may not work out the gate, will require some configuration in per-dev
 ## screenshots:
 
 hyprland pseudotyping showing off dimmed windows and selected window 
-![kye/nixos](screenshots/kye-nixos-2.jpg "screenshot-2")
+![kye/nixos](screenshots/2.jpg "screenshot-2")
 
 
 lite-xl 
-![kye/nixos](screenshots/kye-nixos-3.jpg "screenshot-3")
+![kye/nixos](screenshots/3.jpg "screenshot-3")
