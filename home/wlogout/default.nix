@@ -16,6 +16,7 @@
     home.file.".config/hypr/per-app/wlogout.conf" = {
       text = ''
         bind = $mainMod, L, exec, wlogout
+        windowrulev2 = noanim, class:^(wlogout)$
       '';
     };
   };

@@ -8,18 +8,18 @@ my public nixos configuration, system specific .nix for ga401 / desktop / cl10w-
 i've built this as a complete desktop enviornment with packages / configuration that i use on a daily basis
 
 keybinds for some of the more common packages:
-- (meta + e) = nemo fm
-- (meta + r) = ulauncher / wofi
+- (super + e) = nemo fm
+- (super + r) = ulauncher / wofi
 - (ctrl + esc) = btm
-- (meta + q) = kitty / foot
-- (meta + f) = firefox
-- (meta + w) = firefox work profile
-- (meta + k) = codium / lite-xl
-- (meta + x) = dunst notification history
+- (super + q) = kitty / foot
+- (super + f) = firefox
+- (super + w) = firefox work profile
+- (super + k) = codium / lite-xl
+- (super + x) = dunst notification history
 - (shift + printscreen) = gscreenshot snipping tool, outputs to ~/screenshots/
 - (printscreen) = gscreenshot, outputs to ~/screenshots/
 
-hyprland will have default binds, meta c closes windows, meta 1 - 0 to switch desktops
+hyprland will have default binds, super c closes windows, super 1 - 0 to switch desktops
 
 theming for most packages will work oob, gtk theme is built and applied as a part of the configuration (thanks [Misterio77](https://github.com/Misterio77/nix-colors) and the nix-colors contributors)
 
