@@ -17,7 +17,8 @@
 
       # move to wallpaper per device and import
       ## source = ~/.config/hypr/wallpaper.conf
-      ## might want a function that pulls a wallpaper out at random rather than having specific per desktop
+
+      ## might want a function that pulls a wallpaper at random rather than having specific per desktop
       $w1 = hyprctl hyprpaper wallpaper "eDP-1,~/nixos/wallpaper/1.jpg"
       $w2 = hyprctl hyprpaper wallpaper "eDP-1,~/nixos/wallpaper/2.jpg"
       $w3 = hyprctl hyprpaper wallpaper "eDP-1,~/nixos/wallpaper/3.jpg"
@@ -46,12 +47,12 @@
 
       ## exec-once ##
 
-      ## TODO move to /home/*
+      ## TODO move to /home/
       exec-once = hyprpaper
 
 
       exec-once = sleep 4 && gnome-keyring-daemon --start --components = pkcs11, secrets, ssh
-      # move above to seahorse below /home or /services
+      # move above to seahorse below /home or /services/ unsure about below as its not really machine or software specific yet :)
       exec-once = sleep 6 && dbus-update-activation-environment --all
       exec-once = lxqt-policykit-agent & udiskie
 
@@ -92,7 +93,7 @@
           resize_on_border = true
           layout = dwindle
           col.active_border = $c0 $ca $c3 $c2 $c1 $c0 90deg
-          col.inactive_border = $c0
+          col.inactive_border = $c0 $c1 90deg
       }
 
       decoration {

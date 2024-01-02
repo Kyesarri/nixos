@@ -47,22 +47,25 @@ in
 
     hardware.nvidia = {
       # PCI-Express Runtime D3 Power Management is enabled by default on this laptop
-      # But it can fix screen tearing & suspend/resume screen corruption in sync mode
       modesetting.enable = lib.mkDefault true;
       # Enable DRM kernel mode setting
-      powerManagement.enable = lib.mkDefault true;
       prime = {
         amdgpuBusId = "PCI:4:0:0";
         nvidiaBusId = "PCI:1:0:0";
       };
     };
 
+    boot.kernelParams = ["nvidia.NVreg_PreserveVideoMemoryAllocations=1"]; # trying to fix suspend problem on nvidia
+
     colorscheme = inputs.nix-colors.colorSchemes.${scheme};
     home-manager.users.${user}.colorscheme = inputs.nix-colors.colorSchemes.${scheme};
 
     networking.hostName = "nix-laptop";
 
-    systemd.services.supergfxd.path = [pkgs.pciutils]; # gpu switching
+    systemd = {
+      services.supergfxd.path = [pkgs.pciutils]; # gpu switching
+      #sleep.extraConfig = "HibernateMode=hybrid-sleep"; # workaround for nvidia sleep issues
+    };
 
     services = {
       fprintd.enable = true; # fprint reader, needs work for this model
@@ -79,6 +82,5 @@ in
     environment = {
       systemPackages = with pkgs; [pciutils];
       shellAliases.rebuild = "sudo nixos-rebuild switch --flake /home/${user}/nixos#nix-laptop --show-trace";
-      shellAliases.remrebuild = "sudo nixos-rebuild switch --flake /home/${user}/nixos#nix-laptop --show-trace --builders 'ssh://nix-desktop x86_64-linux'";
     };
   }

@@ -103,9 +103,10 @@
   };
 
   services = {
+    fstrim.enable = true; # ssd trim in background, not enabled by default :0
     gvfs.enable = true; # gnome trash support
     printing.enable = true; # need more than this to print afik? http://localhost:631/ for config
-    fwupd.enable = true; # firmware updater, what was i using this for again? :D
+    fwupd.enable = true; # firmware updater, used for updating fingerprint reader?
     dbus = {
       enable = true;
       packages = [pkgs.gnome.seahorse];
@@ -181,7 +182,8 @@
       wget
       libsecret
       gitAndTools.gitFull
-      lxqt.lxqt-policykit # gui su prompt, would prefer something gtk / themable by nix-colors
+      polkit_gnome
+      # lxqt.lxqt-policykit # gui su prompt, would prefer something gtk / themable by nix-colors
     ];
   };
 
@@ -202,7 +204,7 @@
       gscreenshot # image capture
       hyprpicker # colour picker for wayland TODO fix script
       imagemagick # bitmap editor cli
-      swaylock-effects # lockscreen, TODO needs script for switch to toggle this on lid-close, TODO own /home/*
+      swaylock-effects # lockscreen, TODO needs script for switch to toggle this on lid-close, TODO own /home/* ... why?
       slack # work
       libnotify # notifications
       gimp-with-plugins # gimp, handy to have

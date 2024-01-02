@@ -45,7 +45,15 @@ in
     colorscheme = inputs.nix-colors.colorSchemes.${scheme};
     home-manager.users.${user}.colorscheme = inputs.nix-colors.colorSchemes.${scheme};
 
-    networking.hostName = "nix-desktop";
+    networking = {
+      hostName = "nix-desktop";
+      interfaces.enp3s0.ipv4.addresses = [
+        {
+          address = "192.168.87.200";
+          prefixLength = 24;
+        }
+      ];
+    };
 
     services = {
       xserver = {

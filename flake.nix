@@ -40,7 +40,7 @@
     ...
   } @ inputs: let
     user = "kel"; # global username
-    plymouth_theme = "deus_ex";
+    plymouth_theme = "deus_ex"; # device specific?
   in {
     nixosConfigurations = {
       "nix-laptop" = nixpkgs.lib.nixosSystem {
