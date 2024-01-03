@@ -209,7 +209,7 @@
       libnotify # notifications
       gimp-with-plugins # gimp, handy to have
       wf-recorder # screen recorder
-      mate.mate-calc # calc
+      # mate.mate-calc # calc # removed, using ulauncher for basicboi math
       p7zip # TODO needs a gui
       udiskie # usb mounting
       nwg-launchers # lockscreen / application launcher utilities TODO move to own /home/*

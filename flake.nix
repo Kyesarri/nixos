@@ -4,20 +4,15 @@
   inputs = {
     nixos.url = "github:nixos/nixpkgs/nixos-unstable";
     nixos-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
-    nixpkgs.url = "github:nixos/nixpkgs/master";
+    # nixpkgs.url = "github:nixos/nixpkgs/master"; # testing flakehub
+    nixpkgs.url = "https://flakehub.com/f/NixOS/nixpkgs/0.1.0.tar.gz";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
     hyprland.url = "github:hyprwm/Hyprland";
 
-    # hyprland-plugins = {
-    #   # not actually using these currently
-    #   url = "github:hyprwm/hyprland-plugins";
-    #   inputs.hyprland.follows = "hyprland";
-    # };
-
     # stylix.url = "github:danth/stylix";
 
-    nix-colors.url = "github:misterio77/nix-colors"; # may replace with stylix (╯°□°)╯︵ ┻━┻
+    nix-colors.url = "github:misterio77/nix-colors"; # may replace with stylix
 
     alejandra.url = "github:kamadorueda/alejandra/3.0.0";
     ags.url = "github:Aylur/ags/8f86ae9381c7b05a761e8f8d713af45489495d9d"; #v 1.5.4 Beta
@@ -35,7 +30,7 @@
     home-manager,
     hyprland,
     alejandra,
-    nix-colors, # (╯°□°)╯︵ ┻━┻
+    nix-colors,
     # stylix,
     ...
   } @ inputs: let
