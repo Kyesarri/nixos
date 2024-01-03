@@ -195,8 +195,7 @@
     packages = with pkgs; [
       remmina # rdp client
       fet-sh # minimalistic fetch script
-      brightnessctl # brightness control, used in waybar TODO laptop / notebook specific
-      wl-color-picker # wayland colour picker
+      brightnessctl # brightness control, used in waybar TODO laptop / notebook specific not needed as no worky on desktop :)
       cinnamon.nemo-with-extensions # file manager
       qview # image viewer
       bottom # task manager / resource monitor
