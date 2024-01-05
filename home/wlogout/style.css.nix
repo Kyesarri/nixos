@@ -14,7 +14,7 @@
           font-family: Hasklug Nerd Font Regular;
           font-size: 14pt;
           color: #${config.colorscheme.colors.base06}; /* text */
-          background-color: #${config.colorscheme.colors.base00};
+          background-color: #${config.colorscheme.colors.base00}AA;
       }
 
       button {
@@ -31,11 +31,14 @@
 
       button:focus, button:active, button:hover {
       	  background-color: #${config.colorscheme.colors.base02};
-        	outline-style: none;
+          outline-style: none;
+
       }
 
       #lock {
-          background-image: url(./lock-solid.svg);      }
+          background-image: url("/home/users/${user}/.config/wlogout/power.png");
+          background-size: 100px 100px;
+      }
 
       #logout {
           background-image: image(url("${pkgs.wlogout}/share/wlogout/icons/logout.png"), url("/usr/local/share/wlogout/icons/logout.png"));
