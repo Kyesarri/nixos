@@ -1,65 +1,64 @@
-{...}: {
+{
+  user,
+  config,
+  pkgs,
+  ...
+}: {
   home-manager.users.${user}.home.file.".config/wlogout/style.css" = {
     text = ''
+      * {
+      	background-image: none;
+      }
+
       window {
-          font-family: monospace;
+          font-family: Hasklug Nerd Font Regular;
           font-size: 14pt;
           color: #${config.colorscheme.colors.base06}; /* text */
-          background-color: #${config.colorscheme.colors.base05};
+          background-color: #${config.colorscheme.colors.base00};
       }
 
       button {
-          background-repeat: no-repeat;
-          background-position: center;
-          background-size: 25%;
-          border: none;
-          background-color: #${config.colorscheme.colors.base01};
+          color: #${config.colorscheme.colors.base05}; /* text */
+      	  background-color: #${config.colorscheme.colors.base01};
+      	  border-style: none;
+      	  border-width: 10px;
           margin: 10px;
-          transition: box-shadow 0.5s ease-in-out, background-color 0.5s ease-in-out;
+      	  background-repeat: no-repeat;
+      	  background-position: center;
+      	  background-size: 25%; /* icon size */
+          transition: box-shadow 0.2s ease-in-out, background-color 0.2s ease-in-out;
       }
 
-      button:hover {
-          background-color: #${config.colorscheme.colors.base03};
-      }
-
-      button:focus {
-          background-color: #cba6f7;
-          color: #1e1e2e;
+      button:focus, button:active, button:hover {
+      	  background-color: #${config.colorscheme.colors.base02};
+        	outline-style: none;
       }
 
       #lock {
-          background-image: image(url("./lock.png"));
-      }
-      #lock:focus {
-          background-image: image(url("./lock-hover.png"));
-      }
+          background-image: url(./lock-solid.svg);      }
 
       #logout {
-          background-image: image(url("./logout.png"));
-      }
-      #logout:focus {
-          background-image: image(url("./logout-hover.png"));
+          background-image: image(url("${pkgs.wlogout}/share/wlogout/icons/logout.png"), url("/usr/local/share/wlogout/icons/logout.png"));
       }
 
       #suspend {
-          background-image: image(url("./sleep.png"));
+          background-image: image(url("${pkgs.wlogout}/share/wlogout/icons/suspend.png"), url("/usr/local/share/wlogout/icons/suspend.png"));
       }
-      #suspend:focus {
-          background-image: image(url("./sleep-hover.png"));
+
+      #hibernate {
+          background-image: image(url("${pkgs.wlogout}/share/wlogout/icons/hibernate.png"), url("/usr/local/share/wlogout/icons/hibernate.png"));
       }
 
       #shutdown {
-          background-image: image(url("./power.png"));
-      }
-      #shutdown:focus {
-          background-image: image(url("./power-hover.png"));
+          background-image: image(url("${pkgs.wlogout}/share/wlogout/icons/shutdown.png"), url("/usr/local/share/wlogout/icons/shutdown.png"));
       }
 
       #reboot {
-          background-image: image(url("./restart.png"));
+          background-image: image(url("${pkgs.wlogout}/share/wlogout/icons/reboot.png"), url("/usr/local/share/wlogout/icons/reboot.png"));
       }
-      #reboot:focus {
-          background-image: image(url("./restart-hover.png"));
+
+      #gem {
+          background-image: none;
       }
 
     '';

@@ -1,4 +1,4 @@
-{user}: {
+{user, ...}: {
   home-manager.users.${user}.home.file.".config/wlogout/layout" = {
     text = ''
       {
@@ -31,6 +31,11 @@
           "text" : "Suspend",
           "keybind" : "u"
       }
+      {
+          "label" : "gem",
+          "action" : "dunstify -a wlogout Gem_Activated",
+          "text" : "Gem",
+          "keybind" : "q"
       }
     '';
   };
