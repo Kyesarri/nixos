@@ -5,8 +5,8 @@
 }: {
   imports = [
     #./config.jsonc.nix
-    #./style.css.nix
-    ## currently wip, basic config enabled ##
+    ./style.css.nix
+    ./layout.nix
   ];
 
   home-manager.users.${user} = {

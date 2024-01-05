@@ -4,11 +4,22 @@
   fetchFromSourcehut,
   meson,
   ninja,
+  wayland,
+  pkg-config,
+  cmake,
 }:
+#> CMake Warning:
+#>   Ignoring extra path from command line:
+#>
+#>    ".."
+#>
+#>
+#> CMake Error: The source directory "/build/source" does not appear to contain CMakeLists.txt.
 stdenv.mkDerivation rec {
   pname = "shaderbg";
   version = "unstable";
 
+  dontFixCmake = true;
   src = fetchFromSourcehut {
     owner = "~mstoeckl";
     repo = "shaderbg";
@@ -16,9 +27,14 @@ stdenv.mkDerivation rec {
     hash = "sha256-/HtbS+vn69oEDVP4HDBvnmpkGRLz62j8lCZx+plrUeI=";
   };
 
+  installPhase = ''make install DESTDIR=$out'';
+
   nativeBuildInputs = [
+    cmake
+    pkg-config
     meson
     ninja
+    wayland
   ];
 
   meta = with lib; {

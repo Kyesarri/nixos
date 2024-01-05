@@ -193,6 +193,7 @@
     description = "${user}";
     extraGroups = ["networkmanager" "wheel"];
     packages = with pkgs; [
+      nix-init # git flake helper
       remmina # rdp client
       fet-sh # minimalistic fetch script
       brightnessctl # brightness control, used in waybar TODO laptop / notebook specific not needed as no worky on desktop :)

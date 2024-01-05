@@ -31,7 +31,7 @@ python3.pkgs.buildPythonApplication rec {
     xcffib
   ];
 
-  pythonImportsCheck = ["Shadow Engine"];
+  pythonImportsCheck = ["shadow_engine"];
 
   meta = with lib; {
     description = "A live and interactive wallpaper \"engine\" for Linux and Windows. It supports mixing various formats like glsl-shaders, images, videos and GIFs to create an amazing wallpaper. Additionally you can expand it's functionality with scripts";
