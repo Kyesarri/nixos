@@ -5,6 +5,8 @@
 }: {
   home-manager.users.${user}.home.file.".config/hypr/per-app/gaming.conf" = {
     text = ''
+      windowrule = fullscreen, title:Steam Big Picture Mode
+      windowrule = float, title:Steam
     '';
   };
 

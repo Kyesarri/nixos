@@ -3,6 +3,7 @@
   inputs,
   outputs,
   user,
+  pkgs,
   ...
 }: {
   home-manager.users.${user} = {
@@ -35,8 +36,8 @@
         ------------------------------- Fonts ----------------------------------------
 
         -- customize fonts:
-        style.font = renderer.font.load(DATADIR .. "/fonts/FiraSans-Regular.ttf", 9 * SCALE)
-        style.code_font = renderer.font.load(DATADIR .. "/fonts/JetBrainsMono-Regular.ttf", 9 * SCALE)
+        style.font = renderer.font.load(DATADIR .. "${pkgs.hack-font}/share/fonts/truetype/Hack-Regular.ttf", 9 * SCALE)
+        style.code_font = renderer.font.load(DATADIR .. "${pkgs.hack-font}/share/fonts/truetype/Hack-Regular.ttf", 9 * SCALE)
         --
         -- DATADIR is the location of the installed Lite XL Lua code, default color
         -- schemes and fonts.

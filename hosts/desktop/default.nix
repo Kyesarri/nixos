@@ -25,6 +25,7 @@ in
       ../../hardware/wireless
 
       ../../home
+      ../../home/bottom
       ../../home/codium
       ../../home/copyq
       ../../home/dunst

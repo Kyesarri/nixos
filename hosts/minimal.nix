@@ -146,7 +146,6 @@
       wl-color-picker # wayland colour picker
       cinnamon.nemo-with-extensions # file manager
       qview # image viewer
-      bottom # hot CLI task manager
       gnome.seahorse # key management
       shotman # image capture
       hyprpicker # colour picker for wayland TODO fix script

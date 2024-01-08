@@ -24,6 +24,7 @@ in
       ../../hardware/audio
 
       ../../home
+      ../../home/bottom
       ../../home/foot
       ../../home/dunst
       ../../home/copyq
