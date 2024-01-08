@@ -209,7 +209,7 @@
       libnotify # notifications
       gimp-with-plugins # gimp, handy to have
       wf-recorder # screen recorder
-      # mate.mate-calc # calc # removed, using ulauncher for basicboi math
+      mate.mate-calc # calc
       p7zip # TODO needs a gui
       udiskie # usb mounting
       nwg-launchers # lockscreen / application launcher utilities TODO move to own /home/*
@@ -218,6 +218,7 @@
       sleek-grub-theme # testing grub themes TODO grub
       adi1090x-plymouth-themes # plymouth themes
       spot # gtk / gnome spotify client
+      gtklock # lockscreen, might be an alternative for swaylock pending update
       # (callPackage ../packages/wcp {}) # IT WORKS! Currently has bugs with RGBA colours, see package notes
       # (callPackage ../packages/libfprint {}) # builds, need to write to the fprint reader now :)
       # (callPackage ../packages/sov {}) # sway overview, needs some hyprland config to see if works on hyprland

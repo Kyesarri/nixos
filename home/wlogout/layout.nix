@@ -3,38 +3,38 @@
     text = ''
       {
           "label" : "lock",
-          "action" : "swaylock --screenshots --effect-blur 3x5 --fade-in 1 --effect-vignette 0.1:0.8",
-          "text" : "Lock",
+          "action" : "swaylock --fade-in 1 --effect-vignette 0.1:0.8",
+          "text" : "󰌾",
           "keybind" : "l"
       }
       {
           "label" : "reboot",
           "action" : "systemctl reboot",
-          "text" : "Reboot",
+          "text" : "󰜉",
           "keybind" : "r"
       }
       {
           "label" : "shutdown",
           "action" : "systemctl poweroff",
-          "text" : "Shutdown",
+          "text" : "󰐥",
           "keybind" : "s"
       }
       {
           "label" : "logout",
           "action" : "hyprctl dispatch exit 0",
-          "text" : "Logout",
+          "text" : "󰍃",
           "keybind" : "e"
       }
       {
           "label" : "suspend",
           "action" : "systemctl suspend",
-          "text" : "Suspend",
+          "text" : "󱖒",
           "keybind" : "u"
       }
       {
           "label" : "gem",
           "action" : "dunstify -a wlogout Gem_Activated",
-          "text" : "Gem",
+          "text" : "󰮋",
           "keybind" : "q"
       }
     '';
