@@ -11,7 +11,7 @@
       }
 
       window {
-          font-family: JetBrainsMono Nerd Font Mono;
+          font-family: Hack Nerd Font Mono;
           font-size: 200pt;
           color: #${config.colorscheme.colors.base06}; /* text */
           background-color: #${config.colorscheme.colors.base00};
@@ -22,10 +22,8 @@
       	  background-color: #${config.colorscheme.colors.base01};
       	  border-style: none;
       	  border-width: 10px;
-          margin: 10px;
-      	  background-repeat: no-repeat;
-      	  background-position: center;
-      	  background-size: 25%; /* icon size */
+          margin: 20px;
+          border-radius: 10px;
           transition: box-shadow 0.2s ease-in-out, background-color 0.2s ease-in-out;
       }
 

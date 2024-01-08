@@ -141,8 +141,8 @@
         },
 
         "bluetooth": {
-          "format-disabled": "   ",
-          "format-off": "   ",
+          "format-disabled": " 󰂲 ",
+          "format-off": " 󰂲 ",
           "format-on": " 󰂯 ",
           "format-connected": " 󰂯 ",
           "format-connected-battery": " 󰂯 ",

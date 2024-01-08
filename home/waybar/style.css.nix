@@ -9,7 +9,7 @@
     text = ''
       * {
           font-size: 14px;
-          font-family: "Hasklug Nerd Font";
+          font-family: "Hack Nerd Font";
           border-radius: 10;
       }
 

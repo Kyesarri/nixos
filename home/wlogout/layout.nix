@@ -4,7 +4,7 @@
       {
           "label" : "lock",
           "action" : "swaylock --fade-in 1 --effect-vignette 0.1:0.8",
-          "text" : "󰌾",
+          "text" : "",
           "keybind" : "l"
       }
       {

@@ -3,7 +3,7 @@
   user,
   ...
 }: {
-  # TODO nix-colors
+  # TODO nix-colors done?
   users.users.${user}.packages = with pkgs; [ulauncher];
 
   home-manager.users.${user}.home.file.".config/hypr/per-app/ulauncher.conf" = {

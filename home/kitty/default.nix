@@ -24,10 +24,10 @@
         background_blur = "1";
         tab_bar_style = "powerline";
         tab_powerline_style = "round";
-        font_family = "Hasklug Nerd Font Regular";
-        bold_font = "Hasklug Nerd Font ExtraBold";
-        italic_font = "Hasklug Nerd Font Italic";
-        bold_italic_font = "Hasklug Nerd Font ExtraBold Italic";
+        font_family = "Hack Nerd Font Mono";
+        bold_font = "auto";
+        italic_font = "auto";
+        bold_italic_font = "auto";
         font_size = "10.0";
         cursor_shape = "beam";
         cursor_beam_thickness = "2.0";
@@ -38,7 +38,7 @@
     home.file.".config/hypr/per-app/kitty.conf" = {
       text = ''
         windowrulev2 = opacity 0.8 0.8, class:^(kitty)$
-        windowrulev2 = size 704 396, class:^(kitty)$
+        windowrulev2 = size 700 300, class:^(kitty)$
         windowrulev2 = center, class:^(kitty)$
         # TODO make above a single line :)
         bind = $mainMod, Q, exec, kitty

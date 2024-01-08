@@ -7,7 +7,9 @@
     programs.vscode = {
       enable = true;
       userSettings = {
-        "window.titleBarStyle" = "custom"; # this fixed most crashes in codium, will need to wipe config file or add manually :)
+        "window.titleBarStyle" = "custom";
+        "terminal.integrated.fontFamily" = "Hack Nerd Font Mono";
+        "editor.fontFamily" = "Hack Nerd Font Mono";
       };
       package = pkgs.vscodium;
       extensions = with pkgs.vscode-extensions; [
