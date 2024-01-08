@@ -67,7 +67,7 @@
       };
       "nix-notebook" = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux"; # celeron N3050 / 4gb?
-        specialArgs = {inherit nix-colors user inputs;};
+        specialArgs = {inherit nix-colors user plymouth_theme inputs;};
         modules = [
           # stylix.nixosModules.stylix
           ./hosts/notebook
@@ -77,7 +77,7 @@
             home-manager = {
               useGlobalPkgs = true;
               useUserPackages = true;
-              extraSpecialArgs = {inherit nix-colors inputs;};
+              extraSpecialArgs = {inherit nix-colors inputs user;};
               users.${user}.imports = [];
             };
           }
@@ -95,7 +95,7 @@
             home-manager = {
               useGlobalPkgs = true;
               useUserPackages = true;
-              extraSpecialArgs = {inherit nix-colors inputs;};
+              extraSpecialArgs = {inherit nix-colors inputs user;};
               users.${user}.imports = [];
             };
           }
