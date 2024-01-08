@@ -96,6 +96,7 @@
       rubik
       ibm-plex
       nerdfonts
+      hack-font
       (nerdfonts.override {fonts = ["Iosevka" "CascadiaCode" "JetBrainsMono"];})
     ];
   };

@@ -4,13 +4,14 @@
   user,
   ...
 }: {
+  imports = [
+    ./theme.nix
+    ./init.lua.nix
+  ];
   users.users.${user}.packages = with pkgs; [lite-xl];
+
   home-manager.users.${user} = {
     home.file."./.config/lite-xl/plugins/nix.lua".source = ./nix.lua; # symlink from this dir to defined dir
-    imports = [
-      ./theme.nix
-      ./init.lua.nix
-    ];
 
     home.file.".config/hypr/per-app/lite-xl.conf" = {
       text = ''
