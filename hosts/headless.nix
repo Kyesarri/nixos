@@ -8,7 +8,7 @@
   plymouth_theme,
   ...
 }: {
-  # TODO start stripping out parts for the headless laptop, want to build as my ASUS laptop
+  # TODO start stripping out parts for the headless laptop, is currently built as my ASUS laptop
   # for now to get it off the ground
   # wont be completely "headless" leaving hypr and some basicboi programs installed
   # is the plan of attack, see how this progresses
@@ -37,12 +37,10 @@
   };
 
   hardware = {
-    nvidia.modesetting.enable = true; # TODO should not be in here now, per device
     pulseaudio.enable = false;
     opengl = {
       enable = true;
       driSupport = true;
-      driSupport32Bit = true; # required for steam
     };
   };
 
@@ -50,12 +48,7 @@
     kernelPackages = pkgs.linuxPackages_xanmod_latest; # use latest xanmod kernel
     kernelParams = [
       "nowatchdog" # disables watchdog, was causing shutdown / reboot issues
-      "clocksource=tsc" # now working with tsc nowatchdog & tsc reliable
-      "tsc=nowatchdog" # workaround for check_tsc_sync_source failed, could cause issues
-      "tsc=reliable" # flags tsc clock as reliable, workaround to get tsc working on laptop
-      "vm.vfs_cache_pressure=50" # cache tweak, not sure if it does much :D
-      "quiet" # removes boot messages, testing for plymouth themes, TODO move to plymouth /service/ ?
-    ]; # TODO tsc and cache laptop only?
+    ];
 
     plymouth = {
       enable = true;
@@ -110,7 +103,6 @@
     fstrim.enable = true; # ssd trim in background, not enabled by default :0
     gvfs.enable = true; # gnome trash support
     printing.enable = true; # need more than this to print afik? http://localhost:631/ for config
-    fwupd.enable = true; # firmware updater, used for updating fingerprint reader?
     dbus = {
       enable = true;
       packages = [pkgs.gnome.seahorse];
@@ -132,18 +124,13 @@
     fontconfig.defaultFonts.monospace = ["Hack Nerd Font Mono"];
     fontDir.enable = true;
     packages = with pkgs; [
-      material-design-icons
-      inter
-      material-symbols
-      rubik
-      ibm-plex
-      nerdfonts
       hack-font
-      (nerdfonts.override {fonts = ["Iosevka" "CascadiaCode" "JetBrainsMono"];})
+      # (nerdfonts.override {fonts = ["Iosevka" "CascadiaCode" "JetBrainsMono"];})
     ];
   };
 
   programs = {
+    # key storage?
     gnupg.agent = {
       enable = true;
       enableSSHSupport = true;
@@ -152,6 +139,7 @@
     dconf.enable = true;
 
     zsh = {
+      # quite like zsh compared to bash, leaving here for now
       enable = true;
       enableCompletion = true;
       autosuggestions.enable = true;
@@ -201,30 +189,20 @@
     extraGroups = ["networkmanager" "wheel"];
     packages = with pkgs; [
       nix-init # git flake helper
-      remmina # rdp client
       fet-sh # minimalistic fetch script
       brightnessctl # brightness control, used in waybar TODO laptop / notebook specific not needed as no worky on desktop :)
       cinnamon.nemo-with-extensions # file manager
       qview # image viewer
       gnome.seahorse # key management
       gscreenshot # image capture
-      hyprpicker # colour picker for wayland TODO fix script
-      imagemagick # bitmap editor cli
       swaylock-effects # lockscreen, TODO needs script for switch to toggle this on lid-close, TODO own /home/* ... why?
-      slack # work
       libnotify # notifications
-      gimp-with-plugins # gimp, handy to have
-      wf-recorder # screen recorder
-      mate.mate-calc # calc
       p7zip # TODO needs a gui
       udiskie # usb mounting
       nwg-launchers # lockscreen / application launcher utilities TODO move to own /home/*
       bitwarden # password manager
-      armcord # discord wrapper / chat
       sleek-grub-theme # testing grub themes TODO grub
       adi1090x-plymouth-themes # plymouth themes
-      spot # gtk / gnome spotify client
-      gtklock # lockscreen, might be an alternative for swaylock pending update
       # (callPackage ../packages/wcp {}) # IT WORKS! Currently has bugs with RGBA colours, see package notes
       # (callPackage ../packages/libfprint {}) # builds, need to write to the fprint reader now :)
       # (callPackage ../packages/sov {}) # sway overview, needs some hyprland config to see if works on hyprland

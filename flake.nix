@@ -102,7 +102,7 @@
         ];
       };
       "nix-serv" = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux"; # 15s-fq2050TU / i5-1135G7 / iris x / 8gb
+        system = "x86_64-linux"; # 15s-fq2050TU / i5-1135G7 / iris x / 8gb FIXME
         specialArgs = {inherit nix-colors user plymouth_theme inputs;};
         modules = [
           ./hosts/serv
