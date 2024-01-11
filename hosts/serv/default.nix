@@ -49,7 +49,7 @@ in
 
     services = {
       xserver.enable = true;
-      power-profiles-daemon.enable = "true";
+      power-profiles-daemon.enable = true;
     };
 
     environment = {
