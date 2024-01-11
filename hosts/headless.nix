@@ -11,6 +11,7 @@
   # TODO start stripping out parts for the headless laptop, want to build as my ASUS laptop
   # for now to get it off the ground
   # wont be completely "headless" leaving hypr and some basicboi programs installed
+  # is the plan of attack, see how this progresses
   system.stateVersion = "23.11";
   time.timeZone = "Australia/Melbourne";
 
