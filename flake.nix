@@ -101,9 +101,9 @@
       };
       "nix-serv" = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux"; # 15s-fq2050TU / i5-1135G7 / iris x / 8gb
-        specialArgs = {inherit nix-colors user inputs;};
+        specialArgs = {inherit nix-colors user plymouth_theme inputs;};
         modules = [
-          ./hosts/nix-serv
+          ./hosts/serv
           {environment.systemPackages = [alejandra.defaultPackage.x86_64-linux];}
           home-manager.nixosModules.home-manager
           {

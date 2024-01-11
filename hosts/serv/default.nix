@@ -61,7 +61,10 @@ in
     colorscheme = inputs.nix-colors.colorSchemes.${scheme};
     home-manager.users.${user}.colorscheme = inputs.nix-colors.colorSchemes.${scheme};
 
-    networking.hostName = "nix-laptop";
+    networking = {
+      hostName = "nix-serv";
+      firewall.allowedTCPPorts = [22];
+    };
 
     systemd = {
       services.supergfxd.path = [pkgs.pciutils]; # gpu switching
@@ -82,6 +85,6 @@ in
 
     environment = {
       systemPackages = with pkgs; [pciutils];
-      shellAliases.rebuild = "sudo nixos-rebuild switch --flake /home/${user}/nixos#nix-laptop --show-trace";
+      shellAliases.rebuild = "sudo nixos-rebuild switch --flake /home/${user}/nixos#nix-serv --show-trace";
     };
   }
