@@ -69,7 +69,6 @@
         system = "x86_64-linux"; # celeron N3050 / 4gb?
         specialArgs = {inherit nix-colors user plymouth_theme inputs;};
         modules = [
-          # stylix.nixosModules.stylix
           ./hosts/notebook
           {environment.systemPackages = [alejandra.defaultPackage.x86_64-linux];}
           home-manager.nixosModules.home-manager
@@ -87,7 +86,6 @@
         system = "x86_64-linux"; # 13900kf / 3070 / 32gb
         specialArgs = {inherit nix-colors user plymouth_theme inputs;};
         modules = [
-          # stylix.nixosModules.stylix
           ./hosts/desktop
           {environment.systemPackages = [alejandra.defaultPackage.x86_64-linux];}
           home-manager.nixosModules.home-manager
@@ -96,6 +94,23 @@
               useGlobalPkgs = true;
               useUserPackages = true;
               extraSpecialArgs = {inherit nix-colors inputs user;};
+              users.${user}.imports = [];
+            };
+          }
+        ];
+      };
+      "nix-serv" = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux"; # 15s-fq2050TU / i5-1135G7 / iris x / 8gb
+        specialArgs = {inherit nix-colors user inputs;};
+        modules = [
+          ./hosts/nix-serv
+          {environment.systemPackages = [alejandra.defaultPackage.x86_64-linux];}
+          home-manager.nixosModules.home-manager
+          {
+            home-manager = {
+              useGlobalPkgs = true;
+              useUserPackages = true;
+              extraSpecialArgs = {inherit inputs user;};
               users.${user}.imports = [];
             };
           }
