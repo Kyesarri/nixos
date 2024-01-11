@@ -50,7 +50,7 @@ in
       hostName = "nix-desktop";
       interfaces.enp3s0.ipv4.addresses = [
         {
-          address = "192.168.87.200";
+          address = "192.168.87.220";
           prefixLength = 24;
         }
       ];

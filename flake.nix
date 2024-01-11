@@ -45,7 +45,7 @@
           # stylix.nixosModules.stylix
           ./hosts/laptop
           {environment.systemPackages = [alejandra.defaultPackage.x86_64-linux];} # codium plugins
-          nixos-hardware.nixosModules.asus-zephyrus-ga401 # TODO remove this and add all configuration to my own system
+          nixos-hardware.nixosModules.asus-zephyrus-ga401 # keep this?
           home-manager.nixosModules.home-manager
           {
             # stylix.image = ./greyscale_fins.jpg; # TODO see how much of a hassle porting my config to stylix
@@ -56,6 +56,8 @@
             # can break this down further as configuration here is almost identical between machines,
             # let in before nixosConfigurations = { system / specialArgs / all the other shit
             # really each system only requires the system-name and hosts/machine.nix to be set here
+            # not exactly true as some machines will be using plymouth themes and other parts
+            # however that also can be added later i believe
             home-manager = {
               useGlobalPkgs = true;
               useUserPackages = true;
