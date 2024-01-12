@@ -1,6 +1,8 @@
 {
   config,
   pkgs,
+  lib,
+  ...
 }: {
   ## currently testing the nextcloud container demo from
   ## https://nixos.wiki/wiki/NixOS_Containers
