@@ -51,7 +51,7 @@ in
       ../../home/virt
       ../../home/waybar
       ../../home/gtk
-      ../../home/syncthing
+      # ../../home/syncthing # testing without currently
       ../../home/tailscale
       ../../home/wlogout
     ];
