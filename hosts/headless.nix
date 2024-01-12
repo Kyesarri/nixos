@@ -125,7 +125,7 @@
     fontDir.enable = true;
     packages = with pkgs; [
       hack-font
-      # (nerdfonts.override {fonts = ["Iosevka" "CascadiaCode" "JetBrainsMono"];})
+      (nerdfonts.override {fonts = ["Iosevka" "CascadiaCode" "JetBrainsMono"];})
     ];
   };
 

@@ -49,7 +49,7 @@ in
 
     services = {
       xserver.enable = true;
-      power-profiles-daemon.enable = true;
+      power-profiles-daemon.enable = true; # power profile management, might be nice to script for low power / perf schedules
     };
 
     environment = {

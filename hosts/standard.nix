@@ -208,6 +208,8 @@
       imagemagick # bitmap editor cli
       swaylock-effects # lockscreen, TODO needs script for switch to toggle this on lid-close, TODO own /home/* ... why?
       slack # work
+      tmux
+      tmuxifier
       libnotify # notifications
       gimp-with-plugins # gimp, handy to have
       wf-recorder # screen recorder
