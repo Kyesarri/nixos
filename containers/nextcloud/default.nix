@@ -14,8 +14,8 @@
   containers.nextcloud = {
     autoStart = true;
     privateNetwork = true;
-    hostAddress = "192.168.87.9"; # is this the host os?
-    localAddress = "192.168.87.8"; # or is this?
+    # hostAddress = "192.168.87.9"; # is this the host os?
+    localAddress = "192.168.87.9"; # or is this?
     hostAddress6 = "fc00::1";
     localAddress6 = "fc00::2";
 
