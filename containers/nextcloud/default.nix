@@ -15,9 +15,9 @@
     autoStart = true;
     privateNetwork = true;
     # hostAddress = "192.168.87.9"; # is this the host os?
-    localAddress = "192.168.87.9"; # or is this?
-    hostAddress6 = "fc00::1";
-    localAddress6 = "fc00::2";
+    localAddress = "192.168.87.9/24"; # or is this?
+    #hostAddress6 = "fc00::1";
+    #localAddress6 = "fc00::2";
 
     config = {
       config,
