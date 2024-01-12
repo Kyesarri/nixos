@@ -13,11 +13,12 @@
 
   containers.nextcloud = {
     autoStart = true;
-    privateNetwork = true;
-    hostAddress = "192.168.87.9"; # host os
-    localAddress = "192.168.87.9"; # container
-    #hostAddress6 = "fc00::1";
-    #localAddress6 = "fc00::2";
+    privateNetwork = false;
+        macvlans = [ "wlan0" ];
+    # hostAddress = "192.168.87.9"; # host os
+    # localAddress = "192.168.87.8"; # container
+    # hostAddress6 = "fc00::1";
+    # localAddress6 = "fc00::2";
 
     config = {
       config,
@@ -34,6 +35,11 @@
       system.stateVersion = "23.11";
 
       networking = {
+        defaultGateway = "192.168.87.251";
+        #nameservers = [ ];
+        #interfaces.wlan0.ipv4.addresses = [
+        #  { address = "192.168.87.8"; prefixLength = 24; }
+        #];
         firewall = {
           enable = true;
           allowedTCPPorts = [80];
