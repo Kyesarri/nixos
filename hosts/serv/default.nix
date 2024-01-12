@@ -60,8 +60,16 @@ in
     home-manager.users.${user}.colorscheme = inputs.nix-colors.colorSchemes.${scheme};
 
     networking = {
-      hostName = "nix-serv";
       firewall.allowedTCPPorts = [22]; # ssh, possibly open already but leaving in
+      # firewall.allowedTCPPorts = [80]; # for next-cloud, might test with commented first
+
+      hostName = "nix-serv";
+      interfaces.wlan0.ipv4.addresses = [
+        {
+          address = "192.168.87.9";
+          prefixLength = 24;
+        }
+      ];
     };
 
     services = {
