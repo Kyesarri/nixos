@@ -46,7 +46,7 @@ in
       ../../home/git
       ../../home/hypr
       ../../home/kitty
-      ../../home/lite-xl
+      ../../home/codium
       ../../home/ulauncher
       ../../home/virt
       ../../home/waybar
