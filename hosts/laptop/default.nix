@@ -65,7 +65,7 @@ in
 
     systemd = {
       services.supergfxd.path = [pkgs.pciutils]; # gpu switching
-      #sleep.extraConfig = "HibernateMode=hybrid-sleep"; # workaround for nvidia sleep issues
+      # sleep.extraConfig = "HibernateMode=hybrid-sleep"; # testing workaround for nvidia sleep issues
     };
 
     services = {

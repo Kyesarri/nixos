@@ -36,6 +36,17 @@
   networking.useDHCP = lib.mkDefault true;
   # networking.interfaces.wlp2s0.useDHCP = lib.mkDefault true;
 
-  nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
+  # nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
+
+  #nixpkgs.localSystem = {
+  #  gcc.arch = "znver2";
+  #  gcc.tune = "znver2";
+  #};
+
+  nix.settings.system-features = [
+    "kvm"
+    "big-parallel"
+    "gccarch-znver2"
+  ];
   hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 }

@@ -7,7 +7,7 @@
   user,
   ...
 }: {
-  users.users.${user}.packages = with pkgs; [foot];
+  users.users.${user}.packages = [pkgs.foot];
 
   home-manager.users.${user}.home.file.".config/hypr/per-app/foot.conf" = {
     text = ''

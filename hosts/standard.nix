@@ -106,7 +106,6 @@
     fstrim.enable = true; # ssd trim in background, not enabled by default :0
     gvfs.enable = true; # gnome trash support
     printing.enable = true; # need more than this to print afik? http://localhost:631/ for config
-    fwupd.enable = true; # firmware updater, used for updating fingerprint reader?
     dbus = {
       enable = true;
       packages = [pkgs.gnome.seahorse];

@@ -48,16 +48,6 @@
           nixos-hardware.nixosModules.asus-zephyrus-ga401 # keep this?
           home-manager.nixosModules.home-manager
           {
-            # stylix.image = ./greyscale_fins.jpg; # TODO see how much of a hassle porting my config to stylix
-            # stylix.polarity = "dark"; # TODO probably need to turn all automatic theming off, or by-app only
-            # as stylix attempts to add themes to existing files, and wont work on symlinks "i believe" lol
-            #
-            #
-            # can break this down further as configuration here is almost identical between machines,
-            # let in before nixosConfigurations = { system / specialArgs / all the other shit
-            # really each system only requires the system-name and hosts/machine.nix to be set here
-            # not exactly true as some machines will be using plymouth themes and other parts
-            # however that also can be added later i believe
             home-manager = {
               useGlobalPkgs = true;
               useUserPackages = true;

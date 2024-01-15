@@ -51,7 +51,7 @@ in
       ../../home/virt
       ../../home/waybar
       ../../home/gtk
-      
+
       # ../../home/syncthing # testing without currently
       # ../../home/tailscale
       # ../../home/wlogout
@@ -61,37 +61,39 @@ in
     home-manager.users.${user}.colorscheme = inputs.nix-colors.colorSchemes.${scheme};
 
     networking = {
-    wireless.networks = {
-      "Stolen Telstra Modem" = { hidden = false; }; };
+      wireless.networks = {
+        "Stolen Telstra Modem" = {hidden = false;};
+      };
       firewall.allowedTCPPorts = [22]; # ssh, possibly open already but leaving in
       hostName = "nix-serv";
       defaultGateway = "192.168.87.251";
       #interfaces.wlan0.ipv4.addresses = [
-    #{ address = "192.168.87.9"; prefixLength = 24; }
-  #];
+      #{ address = "192.168.87.9"; prefixLength = 24; }
+      #];
     };
 
     services = {
       tlp = {
-      enable = true;
-      settings = {
-        CPU_SCALING_GOVERNOR_ON_AC = "performance";
-        CPU_SCALING_GOVERNOR_ON_BAT = "powersave";
+        enable = true;
+        settings = {
+          CPU_SCALING_GOVERNOR_ON_AC = "performance";
+          CPU_SCALING_GOVERNOR_ON_BAT = "powersave";
 
-        CPU_ENERGY_PERF_POLICY_ON_BAT = "power";
-        CPU_ENERGY_PERF_POLICY_ON_AC = "performance";
+          CPU_ENERGY_PERF_POLICY_ON_BAT = "power";
+          CPU_ENERGY_PERF_POLICY_ON_AC = "performance";
 
-        CPU_MIN_PERF_ON_AC = 0;
-        CPU_MAX_PERF_ON_AC = 100;
-        CPU_MIN_PERF_ON_BAT = 0;
-        CPU_MAX_PERF_ON_BAT = 20;
+          CPU_MIN_PERF_ON_AC = 0;
+          CPU_MAX_PERF_ON_AC = 100;
+          CPU_MIN_PERF_ON_BAT = 0;
+          CPU_MAX_PERF_ON_BAT = 20;
 
-       #Optional helps save long term battery health
-       START_CHARGE_THRESH_BAT0 = 40; # 40 and bellow it starts to charge
-       STOP_CHARGE_THRESH_BAT0 = 65; # 80 and above it stops charging
-
+          # optional helps save long term battery health
+          ## using battery as ups for this machine :)
+          START_CHARGE_THRESH_BAT0 = 40; # 40 and bellow it starts to charge
+          STOP_CHARGE_THRESH_BAT0 = 65; # 65 and above it stops charging
+          # unsure if these are actually applying on this system yet
+        };
       };
-};
       xserver.enable = true;
     };
 

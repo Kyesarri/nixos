@@ -9,7 +9,7 @@
     enable = true;
   };
 
-  users.users.${user}.packages = with pkgs; [hyprpaper];
+  users.users.${user}.packages = [pkgs.hyprpaper];
 
   imports = [
     ./hyprland.nix
