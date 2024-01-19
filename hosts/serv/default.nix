@@ -91,7 +91,7 @@ in
           ## using battery as ups for this machine :)
           START_CHARGE_THRESH_BAT0 = 40; # 40 and bellow it starts to charge
           STOP_CHARGE_THRESH_BAT0 = 65; # 65 and above it stops charging
-          # unsure if these are actually applying on this system yet
+          # unsure if these are actually applying on this system yet, do not believe so
         };
       };
       xserver.enable = true;

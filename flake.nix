@@ -45,7 +45,7 @@
           # stylix.nixosModules.stylix
           ./hosts/laptop
           {environment.systemPackages = [alejandra.defaultPackage.x86_64-linux];} # codium plugins
-          nixos-hardware.nixosModules.asus-zephyrus-ga401 # keep this?
+          # testing without # nixos-hardware.nixosModules.asus-zephyrus-ga401 # keep this?
           home-manager.nixosModules.home-manager
           {
             home-manager = {

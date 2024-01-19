@@ -2,6 +2,7 @@
   lib,
   python3,
   fetchFromGitHub,
+  python3Packages,
 }:
 python3.pkgs.buildPythonApplication rec {
   pname = "image-colorizer";
@@ -15,12 +16,16 @@ python3.pkgs.buildPythonApplication rec {
     hash = "sha256-ucwo5DOMUON9HgQzXmh39RLQH4sWtSfYH7+UWfGIJCo=";
   };
 
+  propagatedBuildInputs = with python3Packages; [
+    pillow
+  ];
+
   nativeBuildInputs = [
     python3.pkgs.setuptools
     python3.pkgs.wheel
   ];
 
-  pythonImportsCheck = ["image_colorizer"];
+  pythonImportsCheck = ["ImageColorizer"];
 
   meta = with lib; {
     description = "Make any wallpaper fit any terminal colorscheme";

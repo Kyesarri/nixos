@@ -215,7 +215,9 @@
       mate.mate-calc # calc
       p7zip # TODO needs a gui
       udiskie # usb mounting
-      nwg-launchers # lockscreen / application launcher utilities TODO move to own /home/*
+      # nwg-launchers # lockscreen / application launcher utilities TODO move to own /home/* TODO not needed?
+      # nwg-displays
+      # wlr-randr
       bitwarden # password manager
       armcord # discord wrapper / chat
       sleek-grub-theme # testing grub themes TODO grub

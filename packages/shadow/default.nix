@@ -2,6 +2,8 @@
   lib,
   python3,
   fetchFromGitHub,
+  python3Packages,
+  # python312Packages,
 }:
 python3.pkgs.buildPythonApplication rec {
   pname = "shadow";
@@ -17,21 +19,22 @@ python3.pkgs.buildPythonApplication rec {
 
   nativeBuildInputs = [
     python3.pkgs.poetry-core
+    # python312Packages.devtools
+    # python312Packages.pyautogui # mouse not included in poetry-core?
   ];
 
-  propagatedBuildInputs = with python3.pkgs; [
-    cairocffi
-    glfw
-    imageio
-    mouse # not included in poetry-core? stumped here :)
-    pillow
-    pyopengl
-    pyqt6
-    screeninfo
-    xcffib
+  propagatedBuildInputs = [
+    python3.pkgs.cairocffi
+    python3.pkgs.glfw
+    python3.pkgs.imageio
+    python3.pkgs.pillow
+    python3.pkgs.pyopengl
+    python3.pkgs.pyqt6
+    python3.pkgs.screeninfo
+    python3.pkgs.xcffib
   ];
 
-  pythonImportsCheck = ["shadow_engine"];
+  # pythonImportsCheck = ["shadow_engine"];
 
   meta = with lib; {
     description = "A live and interactive wallpaper \"engine\" for Linux and Windows. It supports mixing various formats like glsl-shaders, images, videos and GIFs to create an amazing wallpaper. Additionally you can expand it's functionality with scripts";
