@@ -26,7 +26,7 @@ in
       ../../hardware/wireless
 
       ../../home
-      ../../asusctl
+      ../../home/asusctl
       ../../home/bottom
       ../../home/codium
       ../../home/copyq
@@ -49,7 +49,7 @@ in
 
     hardware.nvidia = {
       # PCI-Express Runtime D3 Power Management is enabled by default on this laptop
-      # modesetting.enable = lib.mkDefault true; # fucking modesetting
+      modesetting.enable = lib.mkDefault true; # fucking modesetting
       # Enable DRM kernel mode setting
       prime = {
         amdgpuBusId = "PCI:4:0:0";
@@ -58,7 +58,10 @@ in
       };
     };
 
-    boot.kernelParams = ["nvidia.NVreg_PreserveVideoMemoryAllocations=1"]; # trying to fix suspend problem on nvidia
+    boot.kernelParams = [
+      "nvidia.NVreg_PreserveVideoMemoryAllocations=1"
+      "nvidia-drm.modeset=1"
+    ]; # trying to fix suspend problem on nvidia
 
     colorscheme = inputs.nix-colors.colorSchemes.${scheme};
     home-manager.users.${user}.colorscheme = inputs.nix-colors.colorSchemes.${scheme};
