@@ -19,7 +19,7 @@
       ## source = ~/.config/hypr/wallpaper.conf
 
       ## might want a function that pulls a wallpaper at random rather than having specific per desktop
-      $w1 = hyprctl hyprpaper wallpaper "eDP-1,~/nixos/wallpaper/1.jpg"
+      $w1 = hyprctl hyprpaper wallpaper "eDP-1,~/wallpaper/1.jpg"
       $w2 = hyprctl hyprpaper wallpaper "eDP-1,~/nixos/wallpaper/2.jpg"
       $w3 = hyprctl hyprpaper wallpaper "eDP-1,~/nixos/wallpaper/3.jpg"
       $w4 = hyprctl hyprpaper wallpaper "eDP-1,~/nixos/wallpaper/4.jpg"

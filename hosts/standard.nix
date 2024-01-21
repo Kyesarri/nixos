@@ -125,7 +125,7 @@
 
   fonts = {
     fontconfig.defaultFonts.monospace = ["Hack Nerd Font Mono"];
-    fontDir.enable = true;
+    fontDir.enable = true; # lots of fonts here, remove but most often used?
     packages = with pkgs; [
       material-design-icons
       inter
@@ -165,12 +165,10 @@
   environment = {
     sessionVariables = rec
     {
-      GBM_BACKEND = "nvidia-drm";
-      __GLX_VENDOR_LIBRARY_NAME = "nvidia";
-      WLR_RENDERER = "vulkan";
-      XDG_CURRENT_DESKTOP = "Hyprland";
-      XDG_SESSION_DESKTOP = "Hyprland";
-      XDG_SESSION_TYPE = "wayland";
+      # one of these was causing multiple wayland applications to crash (mostly firefox)
+      # GBM_BACKEND = "nvidia-drm";
+      # __GLX_VENDOR_LIBRARY_NAME = "nvidia";
+      # WLR_RENDERER = "vulkan";
       CLUTTER_BACKEND = "wayland";
       QT_QPA_PLATFORM = "wayland";
       QT_QPA_PLATFORMTHEME = "qt5ct";
@@ -179,6 +177,9 @@
       XDG_CONFIG_HOME = "$HOME/.config";
       XDG_DATA_HOME = "$HOME/.local/share";
       XDG_STATE_HOME = "$HOME/.local/state";
+      XDG_CURRENT_DESKTOP = "Hyprland";
+      XDG_SESSION_DESKTOP = "Hyprland";
+      XDG_SESSION_TYPE = "wayland";
       NIXOS_OZONE_WL = "1"; # fixes electron apps in wayland... why do i use electron?
     };
 
@@ -231,6 +232,7 @@
       adi1090x-plymouth-themes # plymouth themes
       spot # gtk / gnome spotify client
       gtklock # lockscreen, might be an alternative for swaylock pending update
+      (callPackage ../packages/image-colorizer {})
       # (callPackage ../packages/wcp {}) # IT WORKS! Currently has bugs with RGBA colours, see package notes
       # (callPackage ../packages/libfprint {}) # builds, need to write to the fprint reader now :)
       # (callPackage ../packages/sov {}) # sway overview, needs some hyprland config to see if works on hyprland

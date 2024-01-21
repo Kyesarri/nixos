@@ -1,5 +1,5 @@
 # please see README.md
-# original theme by SirHades696 with nix-colors added by kye / kel / dai
+# original theme by SirHades696 with nix-colors added by dai
 {
   user,
   inputs,
