@@ -61,12 +61,22 @@ in
     home-manager.users.${user}.colorscheme = inputs.nix-colors.colorSchemes.${scheme};
 
     networking = {
-      wireless.networks = {
-        "Stolen Telstra Modem" = {hidden = false;};
+      wireless = {
+        iwd.settings = {
+          IPv4 = {
+            Address = "192.168.87.7";
+            Gateway = "192.168.87.251";
+            DNS = "192.168.87.1";
+          };
+        };
+        networks = {
+          "Stolen Telstra Modem" = {hidden = false;};
+        };
       };
       firewall.allowedTCPPorts = [22]; # ssh, possibly open already but leaving in
       hostName = "nix-serv";
       defaultGateway = {address = "192.168.87.251";};
+
       #interfaces.wlan0.ipv4.addresses = [
       #{ address = "192.168.87.9"; prefixLength = 24; }
       #];
