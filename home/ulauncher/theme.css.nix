@@ -35,7 +35,7 @@
     text = ''
       @define-color bg_color #${config.colorscheme.colors.base00};
       @define-color window_bg @bg_color;
-      @define-color window_border_color #${config.colorscheme.colors.base0A};
+      @define-color window_border_color #${config.colorscheme.colors.base00};
       @define-color prefs_backgroud #${config.colorscheme.colors.base0E};
 
       /**
@@ -63,9 +63,9 @@
 
       .app {
           background-color: @window_bg;
-          border: 5px solid @window_border_color;
-          border-radius: 10px;
-          margin: 0 -20px;
+          border: 0px solid @window_border_color;
+          border-radius: 0px;
+          margin: -20px -20px;
       }
 
       .input {

@@ -66,7 +66,7 @@ in
       };
       firewall.allowedTCPPorts = [22]; # ssh, possibly open already but leaving in
       hostName = "nix-serv";
-      defaultGateway = "192.168.87.251";
+      defaultGateway = {address = "192.168.87.251";};
       #interfaces.wlan0.ipv4.addresses = [
       #{ address = "192.168.87.9"; prefixLength = 24; }
       #];
