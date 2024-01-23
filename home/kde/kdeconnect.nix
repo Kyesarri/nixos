@@ -1,6 +1,3 @@
 {user, ...}: {
-  home-manager.users.kel.services.kdeconnect = {
-    enable = true;
-    indicator = true;
-  };
+  programs.kdeconnect.enable = true; # why didnt i use programs.kdeconnect before ffs
 }

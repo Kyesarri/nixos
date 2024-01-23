@@ -26,6 +26,7 @@ in
       ../../hardware/wireless
 
       ../../home
+      ../../home/ags
       ../../home/asusctl
       ../../home/bottom
       ../../home/codium
