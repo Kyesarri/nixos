@@ -1,4 +1,3 @@
-# ./hosts/minimal.nix
 {
   config,
   pkgs,
@@ -8,6 +7,7 @@
   user,
   ...
 }: {
+  # low memory / resource usage config, runs around 500mb ram used idle at desktop
   system.stateVersion = "23.11";
   time.timeZone = "Australia/Melbourne";
 
@@ -158,5 +158,3 @@
     ];
   };
 }
-# ./hosts/minimal.nix
-

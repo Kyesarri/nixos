@@ -8,6 +8,7 @@
   plymouth_theme,
   ...
 }: {
+  # standard config for "modern" systems, desktop / laptop config atm
   system.stateVersion = "23.11";
   time.timeZone = "Australia/Melbourne";
 

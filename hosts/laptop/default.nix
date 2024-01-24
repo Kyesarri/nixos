@@ -67,7 +67,19 @@ in
     colorscheme = inputs.nix-colors.colorSchemes.${scheme};
     home-manager.users.${user}.colorscheme = inputs.nix-colors.colorSchemes.${scheme};
 
-    networking.hostName = "nix-laptop";
+    networking = {
+      hostName = "nix-laptop";
+      wireless = {
+        iwd.settings = {
+          General = {
+            EnableNetworkConfiguration = true;
+          };
+          Network = {
+            EnableIPv6 = false;
+          };
+        };
+      };
+    };
 
     services = {
       fprintd.enable = true; # fprint reader, needs work for this model

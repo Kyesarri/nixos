@@ -77,6 +77,8 @@ in
       hostName = "nix-serv";
       defaultGateway = {address = "192.168.87.251";};
 
+      # wont have wlan0 for long, 22/01/24 hurry up aliexpress
+
       interfaces.wlan0.ipv4.addresses = [
         {
           address = "192.168.87.9";
