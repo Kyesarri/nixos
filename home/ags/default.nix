@@ -9,10 +9,7 @@
   home-manager.users.${user} = {
     programs.ags.enable = true; # still need to enable the package
 
-    # works with shell scripts, will need to either write my own and symlink or write / declare in a .nix :)
-    # can clone from git and place in the same dir, use home.file."foo.bar".source = ./foo.bar;
-
-    # home.file."./.config/ags/config.js".source = ./config.js;
+    home.file.".config/ags/".source = ./config;
 
     # taken from:
     # https://github.com/chriskempson/base16/blob/main/styling.md
