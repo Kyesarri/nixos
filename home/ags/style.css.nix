@@ -7,6 +7,11 @@
   ...
 }: {
   # this boi is massive :)
+
+  ### base0a is normally orange (other themes) its blue and the main highlight i use in toyyo-night-dark theme
+  ### need to work on themes overall to get a more generalised theme applied
+  ### that would look better across multiple base-16 themes
+
   home-manager.users.${user} = {
     home.file.".config/ags/style.css" = {
       text = ''
@@ -60,7 +65,7 @@
           background-color: #${config.colorscheme.colors.base00};
           margin: 0;
           padding: 8px 12px;
-          border-bottom: 0px solid #${config.colorscheme.colors.base03}; }
+          border-bottom: 0px solid #${config.colorscheme.colors.base00}; }
 
         .workspaces,
         .clock,
@@ -71,7 +76,7 @@
           transition: background-color 0.2s ease-in-out;
           border-radius: 100px;
           color: #e9e1dc;
-          background-color: rgba(233, 225, 220, 0.08);
+          background-color: #${config.colorscheme.colors.base02}; /* main bar widget bkground */
           transition: background 0.2s ease-in-out, color 0.2s ease-in-out; }
           .workspaces:hover,
           .clock:hover,
@@ -79,21 +84,22 @@
           .weather:hover,
           .activeapp:hover,
           .notifications-indicator:hover {
-            background-color: rgba(233, 225, 220, 0.18); }
+            background-color: #${config.colorscheme.colors.base0F}; } /* on-hover clock and such */
 
-        .keyboardlayout,
+        .keyboardlayout, /* removed from config */
+
         .battery {
           transition: background-color 0.2s ease-in-out;
           border-radius: 100px;
           color: #${config.colorscheme.colors.base06};
-          background-color: #${config.colorscheme.colors.base02}; }
+          background-color: #${config.colorscheme.colors.base01}; }
           .keyboardlayout:hover,
           .battery:hover {
-            background-color: #ffddb9; }
+            background-color: #${config.colorscheme.colors.base04}; }
 
         .active {
-          background: #f4bc7b;
-          color: #472a00; }
+          background: #${config.colorscheme.colors.base02};
+          color: #${config.colorscheme.colors.base05}; }
 
         /* Specific Styles */
         .activeapp,
@@ -109,7 +115,7 @@
           padding: 0 14px; }
 
         .launcher {
-          background: #f4bc7b;
+          background: #${config.colorscheme.colors.base00};
           padding: 0;
           margin: 0;
           min-width: 42px;
@@ -132,17 +138,17 @@
             border-radius: 100px;
             margin: 10px 10px;
             transition: min-width 0.3s ease, background-color 0.3s ease-out;
-            background-color: #${config.colorscheme.colors.base04}; }
+            background-color: #${config.colorscheme.colors.base04}; } /* not selected workspace */
             .workspaces .workspace-indicator:last-child {
               margin-right: 0px; }
             .workspaces .workspace-indicator:first-child {
               margin-left: 0px; }
             .workspaces .workspace-indicator:hover {
-              background-color: #${config.colorscheme.colors.base06}; }
+              background-color: #${config.colorscheme.colors.base07}; }
             .workspaces .workspace-indicator.active, .workspaces .workspace-indicator:active {
               min-width: 42px;
               border-radius: 100px;
-              background-color: #${config.colorscheme.colors.base07}; }
+              background-color: #${config.colorscheme.colors.base05}; } /* selected workspace */
 
         .activeapp > image {
           margin-right: 8px; }
@@ -572,7 +578,7 @@
               font-size: 12px; }
 
         .calendar {
-          background: rgba(22, 19, 16, 0.8);
+          background: #${config.colorscheme.colors.base04};
           border-radius: 20px;
           padding: 20px; }
           .calendar * {

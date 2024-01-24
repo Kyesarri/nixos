@@ -64,7 +64,7 @@
       # Remove space in tables
       #hide_table_gap = false
       # Show the battery widgets
-      #battery = false
+      battery = true
       # Disable mouse clicks
       #disable_click = false
       # Built-in themes.  Valid values are "default", "default-light", "gruvbox", "gruvbox-light", "nord", "nord-light"
@@ -86,9 +86,9 @@
       # Hides advanced options to stop a process on Unix-like systems.
       #disable_advanced_kill = false
       # Shows GPU(s) memory
-      #enable_gpu_memory = false
+      enable_gpu_memory = true
       # Shows cache and buffer memory
-      #enable_cache_memory = false
+      enable_cache_memory = true
       # How much data is stored at once in terms of time.
       #retention = "10m"
 
@@ -103,41 +103,41 @@
       # TODO nix-colors here
       [colors]
       # Represents the colour of table headers (processes, CPU, disks, temperature).
-      #table_header_color="LightBlue"
+      table_header_color="#${config.colorscheme.colors.base05}"
       # Represents the colour of the label each widget has.
-      #widget_title_color="Gray"
+      widget_title_color="#${config.colorscheme.colors.base05}"
       # Represents the average CPU color.
-      #avg_cpu_color="Red"
+      avg_cpu_color="#${config.colorscheme.colors.base0F}"
       # Represents the colour the core will use in the CPU legend and graph.
-      #cpu_core_colors=["LightMagenta", "LightYellow", "LightCyan", "LightGreen", "LightBlue", "LightRed", "Cyan", "Green", "Blue", "Red"]
+      cpu_core_colors=["#${config.colorscheme.colors.base0A}", "#${config.colorscheme.colors.base0B}", "#${config.colorscheme.colors.base0C}", "#${config.colorscheme.colors.base0D}", "#${config.colorscheme.colors.base0E}", "#${config.colorscheme.colors.base0F}"]
       # Represents the colour RAM will use in the memory legend and graph.
-      #ram_color="LightMagenta"
+      ram_color="#${config.colorscheme.colors.base0E}"
       # Represents the colour SWAP will use in the memory legend and graph.
-      #swap_color="LightYellow"
+      swap_color="#${config.colorscheme.colors.base0B}"
       # Represents the colour ARC will use in the memory legend and graph.
       #arc_color="LightCyan"
       # Represents the colour the GPU will use in the memory legend and graph.
       #gpu_core_colors=["LightGreen", "LightBlue", "LightRed", "Cyan", "Green", "Blue", "Red"]
       # Represents the colour rx will use in the network legend and graph.
-      #rx_color="LightCyan"
+      rx_color="#${config.colorscheme.colors.base0D}"
       # Represents the colour tx will use in the network legend and graph.
-      #tx_color="LightGreen"
+      tx_color="#${config.colorscheme.colors.base0B}"
       # Represents the colour of the border of unselected widgets.
-      #border_color="Gray"
+      border_color="#${config.colorscheme.colors.base04}"
       # Represents the colour of the border of selected widgets.
-      #highlighted_border_color="LightBlue"
+      highlighted_border_color="#${config.colorscheme.colors.base0D}"
       # Represents the colour of most text.
-      #text_color="Gray"
+      text_color="#${config.colorscheme.colors.base06}"
       # Represents the colour of text that is selected.
-      #selected_text_color="Black"
+      selected_text_color="#${config.colorscheme.colors.base00}"
       # Represents the background colour of text that is selected.
-      #selected_bg_color="LightBlue"
+      selected_bg_color="#${config.colorscheme.colors.base0D}"
       # Represents the colour of the lines and text of the graph.
-      #graph_color="Gray"
+      graph_color="#${config.colorscheme.colors.base06}"
       # Represents the colours of the battery based on charge
-      #high_battery_color="green"
-      #medium_battery_color="yellow"
-      #low_battery_color="red"
+      high_battery_color="#${config.colorscheme.colors.base0B}"
+      medium_battery_color="#${config.colorscheme.colors.base0E}"
+      low_battery_color="#${config.colorscheme.colors.base0F}"
 
       # Layout - layouts follow a pattern like this:
       # [[row]] represents a row in the application.
