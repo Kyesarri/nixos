@@ -197,6 +197,10 @@
     ];
   };
 
+  nixpkgs.config.permittedInsecurePackages = [
+    "python-2.7.18.7"
+  ];
+
   users.users.${user} = {
     shell = pkgs.zsh;
     isNormalUser = true;
@@ -233,6 +237,7 @@
       spot # gtk / gnome spotify client
       # gtklock # lockscreen, might be an alternative for swaylock pending update
       (callPackage ../packages/image-colorizer {})
+
       # (callPackage ../packages/wcp {}) # IT WORKS! Currently has bugs with RGBA colours, see package notes
       # (callPackage ../packages/libfprint {}) # builds, need to write to the fprint reader now :)
       # (callPackage ../packages/sov {}) # sway overview, needs some hyprland config to see if works on hyprland

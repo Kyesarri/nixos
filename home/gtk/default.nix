@@ -2,7 +2,6 @@
   config,
   pkgs,
   inputs,
-  nix-colors,
   user,
   ...
 }: let

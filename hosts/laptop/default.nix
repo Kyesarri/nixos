@@ -25,8 +25,6 @@ in
       ../../hardware/nvidia
       ../../hardware/wireless
 
-      ../../packages/tegaki/tegaki-pygtk
-
       ../../home
       ../../home/ags
       ../../home/asusctl
