@@ -19,7 +19,7 @@
   services.ratbagd.enable = true; # mouse configuration tool
 
   users.users.${user}.packages = with pkgs; [
-    # pcsx2 # ps2 emulator # TODO 22/01/23 has issues building, hash mismatch
+    # pcsx2 # ps2 emulator # TODO 22/01/24 has issues building, hash mismatch
     piper # frontend for libratbag, which is enabled in services
     protonup-qt # proton-ge # TODO get working with steam
     gamescope # wl roots gaming compositor, needs steam config not working currently

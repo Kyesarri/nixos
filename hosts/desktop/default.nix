@@ -25,12 +25,14 @@ in
       ../../hardware/wireless
 
       ../../home
+      ../../home/ags
       ../../home/bottom
       ../../home/codium
       ../../home/copyq
       ../../home/dunst
       ../../home/firefox
       ../../home/git
+      ../../home/gaming
       ../../home/hypr
       ../../home/kde
       ../../home/kitty
@@ -47,13 +49,32 @@ in
     home-manager.users.${user}.colorscheme = inputs.nix-colors.colorSchemes.${scheme};
 
     networking = {
+      defaultGateway = {
+        address = "192.168.87.251";
+        interface = "enp3s0";
+      };
       hostName = "nix-desktop";
-      interfaces.enp3s0.ipv4.addresses = [
-        {
-          address = "192.168.87.220";
-          prefixLength = 24;
-        }
-      ];
+
+      wireless.iwd.settings = {
+        General = {EnableNetworkConfiguration = true;};
+        Network = {EnableIPv6 = false;};
+      };
+
+      interfaces.enp3s0.ipv4 = {
+        addresses = [
+          {
+            address = "192.168.87.220";
+            prefixLength = 24;
+          }
+        ];
+        #routes = [
+        #  {
+        #    address = "192.168.87.0";
+        #    prefixLength = 24;
+        #    via = "192.168.87.251";
+        #  }
+        #];
+      };
     };
 
     services = {
