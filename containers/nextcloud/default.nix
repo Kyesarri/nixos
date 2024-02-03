@@ -13,7 +13,7 @@
 
   containers.nextcloud = {
     autoStart = true;
-    privateNetwork = false;
+    privateNetwork = true;
     # macvlans = ["wlan0"];
     hostAddress = "192.168.87.9"; # host os
     localAddress = "192.168.87.8"; # container
