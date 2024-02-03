@@ -2,7 +2,6 @@
   lib,
   python3,
   fetchFromGitHub,
-  # openssl,
 }:
 python3.pkgs.buildPythonApplication rec {
   pname = "wallgen";
@@ -20,7 +19,6 @@ python3.pkgs.buildPythonApplication rec {
     python3.pkgs.setuptools
     python3.pkgs.wheel
     python3.pkgs.cython
-    # openssl
   ];
 
   propagatedBuildInputs = with python3.pkgs; [
@@ -33,8 +31,6 @@ python3.pkgs.buildPythonApplication rec {
     scikit-image
     scipy
   ];
-
-  # pythonImportsCheck = ["wallgen"];
 
   meta = with lib; {
     description = "Generate HQ poly wallpapers";
