@@ -23,22 +23,12 @@ in
       ../headless.nix # base packages, not really "headless" yet
 
       ../../containers # testing nixos containers, all container packages imported by /containers/default.nix currently
-
-      ################## could use per-device to import wanted containers or even import containers in here
-      ################## leaving /containers/default.nix as just the networking config / basic container confg?
-      ################## could look something like the following:
-      # ../../containers
-      # ../../containers/nextcloud
-      # ../../containers/haos
-      ################## config this way would be similar formatting to how i have the rest of my configs
-      ################## might be the best way forward
-      ################## added line to make symmetrical :)
+      ../../containers/nextcloud
 
       ../../hardware/audio # probs worthwile for warning sounds or something
       ../../hardware/battery # this server comes with its own built-in "ups"
 
-      ../../home # home-manaager config
-
+      ../../home # home-manaager config for all machines currently
       ../../home/bottom
       ../../home/dunst
       ../../home/firefox
@@ -52,7 +42,7 @@ in
       ../../home/gtk
 
       # ../../home/syncthing # testing without currently
-      # ../../home/tailscale
+      ../../home/tailscale
       # ../../home/wlogout
     ];
 
@@ -61,7 +51,7 @@ in
 
     networking = {
       hostName = "nix-serv";
-      #defaultGateway = "192.168.87.251";
+      #defaultGateway = "192.168.87.251"; # moved to container bridge conf see ./containers/default.nix
       #nameservers = ["192.168.87.1"];
       #interfaces.enp1s0.ipv4.addresses = [
       #  {

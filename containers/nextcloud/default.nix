@@ -16,8 +16,6 @@
     privateNetwork = true;
     hostBridge = "br0"; # Specify the bridge name
     localAddress = "192.168.87.8/24";
-    # hostAddress = "192.168.87.9"; # host os
-    # localAddress = "192.168.87.8"; # container
 
     config = {
       config,
@@ -35,7 +33,6 @@
 
       networking = {
         defaultGateway = "192.168.87.251";
-
         firewall = {
           enable = true;
           allowedTCPPorts = [80];
