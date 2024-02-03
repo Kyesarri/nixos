@@ -17,7 +17,6 @@
     }: {
       services.zoneminder = {
         enable = true;
-        hostName = "zoneminder";
       };
 
       system.stateVersion = "23.11";
