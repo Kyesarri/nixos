@@ -14,11 +14,10 @@
   containers.nextcloud = {
     autoStart = true;
     privateNetwork = true;
-    # macvlans = ["wlan0"];
-    hostAddress = "192.168.87.9"; # host os
-    localAddress = "192.168.87.8"; # container
-    # hostAddress6 = "fc00::1";
-    # localAddress6 = "fc00::2";
+    hostBridge = "br0"; # Specify the bridge name
+    localAddress = "192.168.87.8/24";
+    # hostAddress = "192.168.87.9"; # host os
+    # localAddress = "192.168.87.8"; # container
 
     config = {
       config,
@@ -28,7 +27,7 @@
       services.nextcloud = {
         enable = true;
         package = pkgs.nextcloud28;
-        hostName = "localhost";
+        hostName = "nextcloud";
         config.adminpassFile = "${pkgs.writeText "adminpass" "test123"}"; # DON'T DO THIS IN PRODUCTION - the password file will be world-readable in the Nix Store!
       };
 
@@ -36,10 +35,7 @@
 
       networking = {
         defaultGateway = "192.168.87.251";
-        #nameservers = [ ];
-        #interfaces.wlan0.ipv4.addresses = [
-        #  { address = "192.168.87.8"; prefixLength = 24; }
-        #];
+
         firewall = {
           enable = true;
           allowedTCPPorts = [80];
