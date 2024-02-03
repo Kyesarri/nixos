@@ -22,8 +22,8 @@ in
 
       ../headless.nix # base packages, not really "headless" yet
 
-      ../../containers # testing nixos containers, all container packages imported by /containers/default.nix currently
-      ../../containers/nextcloud
+      ../../containers # handles networking / bridge for host / containers
+      ../../containers/zoneminder
 
       ../../hardware/audio # probs worthwile for warning sounds or something
       ../../hardware/battery # this server comes with its own built-in "ups"

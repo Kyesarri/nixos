@@ -9,6 +9,7 @@
     privateNetwork = true;
     hostBridge = "br0";
     localAddress = "192.168.87.7/24";
+
     config = {
       config,
       pkgs,
