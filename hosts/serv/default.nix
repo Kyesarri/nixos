@@ -36,10 +36,9 @@ in
 
       ../../hardware/audio # probs worthwile for warning sounds or something
       ../../hardware/battery # this server comes with its own built-in "ups"
-      ../../hardware/wireless # wont be required for long, moving to m.2 ethernet
 
       ../../home # home-manaager config
-      ################## below packages come with prebaked configs, hypr bindings and probably candy
+
       ../../home/bottom
       ../../home/dunst
       ../../home/firefox
@@ -61,30 +60,16 @@ in
     home-manager.users.${user}.colorscheme = inputs.nix-colors.colorSchemes.${scheme};
 
     networking = {
-      wireless = {
-        iwd.settings = {
-          IPv4 = {
-            Address = "192.168.87.9";
-            Gateway = "192.168.87.251";
-            DNS = "192.168.87.1";
-          };
-        };
-        networks = {
-          "Stolen Telstra Modem" = {hidden = false;};
-        };
-      };
-      firewall.allowedTCPPorts = [22]; # ssh, possibly open already but leaving in
       hostName = "nix-serv";
-      defaultGateway = {address = "192.168.87.251";};
-
-      # wont have wlan0 for long, 22/01/24 hurry up aliexpress
-
-      interfaces.wlan0.ipv4.addresses = [
+      defaultGateway = "192.168.87.251";
+      nameservers = ["192.168.87.1"];
+      interfaces.enp1s0.ipv4.addresses = [
         {
           address = "192.168.87.9";
           prefixLength = 24;
         }
       ];
+      firewall.allowedTCPPorts = [22]; # ssh, possibly open already but leaving in
     };
 
     services = {
