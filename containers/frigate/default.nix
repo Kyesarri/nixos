@@ -4,7 +4,7 @@
   lib,
   ...
 }: {
-  containers.zoneminder = {
+  containers.frigate = {
     autoStart = true;
     privateNetwork = true;
     hostBridge = "br0";
@@ -15,8 +15,10 @@
       pkgs,
       ...
     }: {
-      services.zoneminder = {
+      services.frigate = {
         enable = true;
+        settings.mqtt.enabled = false;
+        hostname = "frigate.nix-serv";
       };
 
       system.stateVersion = "23.11";
