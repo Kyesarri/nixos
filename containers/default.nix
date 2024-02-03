@@ -19,7 +19,7 @@
     # Set bridge-ip static
     interfaces."br0".ipv4.addresses = [
       {
-        address = "192.168.87.5";
+        address = "192.168.87.9";
         prefixLength = 24;
       }
     ];
