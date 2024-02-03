@@ -17,9 +17,22 @@
 
   nixpkgs.config.allowUnfree = true;
 
-  security.pam.services = {
-    gdm.enableGnomeKeyring = true; # unlock keyring with gdm / gdm support for keyring
-    swaylock = {}; # enables pam for swaylock, otherwise cannot unlock system TODO swaylock ./home
+  security = {
+    polkit.extraConfig = ''
+      polkit.addRule(function(action, subject) {
+          if (action.id == "org.freedesktop.login1.suspend" ||
+              action.id == "org.freedesktop.login1.suspend-multiple-sessions" ||
+              action.id == "org.freedesktop.login1.hibernate" ||
+              action.id == "org.freedesktop.login1.hibernate-multiple-sessions")
+          {
+              return polkit.Result.NO;
+          }
+      });
+    '';
+    pam.services = {
+      gdm.enableGnomeKeyring = true; # unlock keyring with gdm / gdm support for keyring
+      swaylock = {}; # enables pam for swaylock, otherwise cannot unlock system TODO swaylock ./home
+    };
   };
 
   nix = {
@@ -102,7 +115,7 @@
   services = {
     fstrim.enable = true; # ssd trim in background, not enabled by default :0
     gvfs.enable = true; # gnome trash support
-    printing.enable = true; # need more than this to print afik? http://localhost:631/ for config
+    printing.enable = false;
     dbus = {
       enable = true;
       packages = [pkgs.gnome.seahorse];
@@ -139,7 +152,6 @@
     dconf.enable = true;
 
     zsh = {
-      # quite like zsh compared to bash, leaving here for now
       enable = true;
       enableCompletion = true;
       autosuggestions.enable = true;
@@ -178,7 +190,6 @@
       libsecret
       gitAndTools.gitFull
       polkit_gnome
-      # lxqt.lxqt-policykit # gui su prompt, would prefer something gtk / themable by nix-colors
     ];
   };
 
@@ -188,9 +199,6 @@
     description = "${user}";
     extraGroups = ["networkmanager" "wheel"];
     packages = with pkgs; [
-      ifrextractor-rs
-      uefitool
-      nix-init # git flake helper
       fet-sh # minimalistic fetch script
       brightnessctl # brightness control, used in waybar TODO laptop / notebook specific not needed as no worky on desktop :)
       cinnamon.nemo-with-extensions # file manager
@@ -201,13 +209,9 @@
       libnotify # notifications
       p7zip # TODO needs a gui
       udiskie # usb mounting
-      nwg-launchers # lockscreen / application launcher utilities TODO move to own /home/*
       bitwarden # password manager
       sleek-grub-theme # testing grub themes TODO grub
       adi1090x-plymouth-themes # plymouth themes
-      # (callPackage ../packages/wcp {}) # IT WORKS! Currently has bugs with RGBA colours, see package notes
-      # (callPackage ../packages/libfprint {}) # builds, need to write to the fprint reader now :)
-      # (callPackage ../packages/sov {}) # sway overview, needs some hyprland config to see if works on hyprland
     ];
   };
 }
