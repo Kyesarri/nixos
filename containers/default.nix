@@ -3,7 +3,7 @@
   networking = {
     bridges.br0.interfaces = ["enp1s0"]; # serv interface
     useDHCP = false;
-    interfaces."br0".useDHCP = true;
+    interfaces."br0".useDHCP = false;
     interfaces."br0".ipv4.addresses = [
       {
         address = "192.168.87.9";

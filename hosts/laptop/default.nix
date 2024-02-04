@@ -23,7 +23,7 @@ in
       ../../hardware/battery
       ../../hardware/bluetooth
       ../../hardware/nvidia
-      ../../hardware/wireless
+      ../../hardware/wireless # wifi
 
       ../../home
       ../../home/ags
@@ -67,19 +67,7 @@ in
     colorscheme = inputs.nix-colors.colorSchemes.${scheme};
     home-manager.users.${user}.colorscheme = inputs.nix-colors.colorSchemes.${scheme};
 
-    networking = {
-      hostName = "nix-laptop";
-      wireless = {
-        iwd.settings = {
-          General = {
-            EnableNetworkConfiguration = true;
-          };
-          Network = {
-            EnableIPv6 = false;
-          };
-        };
-      };
-    };
+    networking.hostName = "nix-laptop";
 
     services = {
       tlp = {

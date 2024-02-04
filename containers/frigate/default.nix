@@ -17,8 +17,30 @@
     }: {
       services.frigate = {
         enable = true;
-        settings.mqtt.enabled = false;
         hostname = "frigate.nix-serv";
+
+        settings = {
+          mqtt.enabled = false;
+          ffmpeg.hwaccel_args = "preset-vaapi";
+
+          record = {
+            enabled = true;
+            retain = {
+              days = 7;
+              mode = "all";
+            };
+
+            cameras."test1" = {
+              ffmpeg.inputs = [
+                {
+                  path = "rtsp://127.0.0.1:8554/test1";
+                  input_args = "preset-rtsp-restream";
+                  roles = ["record"];
+                }
+              ];
+            };
+          };
+        };
       };
 
       system.stateVersion = "23.11";
