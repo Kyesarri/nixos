@@ -23,7 +23,7 @@ in
       ../headless.nix # base packages, not really "headless" yet
 
       ../../containers # handles networking / bridge for host / containers
-      ../../containers/frigate
+      # ../../containers/frigate
 
       ../../hardware/audio # probs worthwile for warning sounds or something
       ../../hardware/battery # this server comes with its own built-in "ups"
