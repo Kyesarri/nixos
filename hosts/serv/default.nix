@@ -42,17 +42,32 @@ in
       ../../home/gtk
 
       # ../../home/syncthing # testing without currently
-      ../../home/tailscale
+      # ../../home/tailscale # TODO disabled until i can figure out mkif hostname == {nix-serv}; with an else
       # ../../home/wlogout
     ];
 
     colorscheme = inputs.nix-colors.colorSchemes.${scheme};
     home-manager.users.${user}.colorscheme = inputs.nix-colors.colorSchemes.${scheme};
 
+    ###### TODO ######
+    services = {
+      tailscale.enable = true;
+      tailscale.useRoutingFeatures = "server"; # main requirement for the # TODO
+      tailscale.openFirewall = true;
+    };
+    ###### TODO ######
+
     networking = {
       hostName = "nix-serv";
-      # moved most conf to ./containers/default.nix due to bridge conf
+      # moved most conf to /containers/default.nix due to bridge conf
       firewall.allowedTCPPorts = [22]; # ssh, possibly open already but leaving in
+
+      ###### TODO ######
+      firewall = {
+        checkReversePath = "loose"; # fixes some connection issues with tailscale
+        allowedUDPPorts = [41641]; # tailscale TODO not needed with openFirewall?
+      }; # tailscale config here is temp, will remove once above # TODO has been completed
+      ###### TODO ######
     };
 
     services = {

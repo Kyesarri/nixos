@@ -23,7 +23,7 @@
   };
 
   users.users.${user}.packages = with pkgs; [
-    tailscale
+    tailscale # TODO is this req?
     tailscale-systray
   ];
 }

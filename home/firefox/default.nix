@@ -11,9 +11,9 @@
     '';
   };
 
-  environment.sessionVariables = rec {MOZ_ENABLE_WAYLAND = "1";};
+  environment.sessionVariables = rec {MOZ_ENABLE_WAYLAND = "1";}; # is this required anymore?
 
-  users.users.${user}.packages = with pkgs; [firefox];
+  users.users.${user}.packages = with pkgs; [firefox]; # is this required?
   programs.firefox = {
     enable = true;
     package = pkgs.wrapFirefox pkgs.firefox-unwrapped {
