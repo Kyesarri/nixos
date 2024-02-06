@@ -6,6 +6,7 @@ import Battery from 'resource:///com/github/Aylur/ags/service/battery.js';
 import SystemTray from 'resource:///com/github/Aylur/ags/service/systemtray.js';
 import App from 'resource:///com/github/Aylur/ags/app.js';
 import Widget from 'resource:///com/github/Aylur/ags/widget.js';
+import Workspaces from './widgets/Workspaces.js';
 import { exec, execAsync } from 'resource:///com/github/Aylur/ags/utils.js';
 
 // widgets can be only assigned as a child in one container
