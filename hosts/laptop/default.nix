@@ -31,7 +31,7 @@ in
       ../../home/bottom
       ../../home/codium
       ../../home/copyq
-      ../../home/dunst
+      ../../home/dunst # ags has own notification daemon
       ../../home/firefox
       ../../home/git
       ../../home/gaming
@@ -40,7 +40,7 @@ in
       ../../home/kitty
       ../../home/ulauncher
       ../../home/virt
-      ../../home/waybar
+      ../../home/waybar # fuckit, lets run ags
       ../../home/gtk
       ../../home/syncthing
       ../../home/tailscale
@@ -86,7 +86,7 @@ in
         };
       };
       fprintd.enable = true; # fprint reader, needs work for this model
-      xserver.enable = true; # hate this is called xserver still :D
+      xserver.enable = true;
       udev.extraHwdb = ''
         evdev:name:*:dmi:bvn*:bvr*:bd*:svnASUS*:pn*:*
         KEYBOARD_KEY_ff31007c=f20    # fixes mic mute button
