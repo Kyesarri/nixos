@@ -6,8 +6,8 @@ import * as Utils from 'resource:///com/github/Aylur/ags/utils.js';
  *    indicator?: import('types/widgets/box').BoxProps['child']
  *    direction?: 'left' | 'right' | 'down' | 'up'
  *    duration?: number
- *    setupRevealer?: (rev: ReturnType<typeof Widget.Revealer>) => void
- *    setupEventBox?: (rev: ReturnType<typeof Widget.EventBox>) => void
+ *    eventboxConnections?: import('types/widgets/box').BoxProps['connections']
+ *    connections?: import('types/widgets/revealer').RevealerProps['connections']
  * }} HoverRevealProps
  */
 
@@ -19,8 +19,9 @@ export default ({
     child,
     direction = 'left',
     duration = 300,
-    setupEventBox,
-    setupRevealer,
+    connections = [],
+    eventboxConnections = [],
+    binds = [],
     ...rest
 }) => {
     let open = false;
@@ -30,14 +31,15 @@ export default ({
 
     const revealer = Widget.Revealer({
         transition: `slide_${direction}`,
-        setup: setupRevealer,
+        connections,
+        binds,
         transition_duration: duration,
         child,
     });
 
     const eventbox = Widget.EventBox({
         ...rest,
-        setup: setupEventBox,
+        connections: eventboxConnections,
         on_hover: () => {
             if (open)
                 return;
@@ -66,4 +68,3 @@ export default ({
         children: [eventbox],
     });
 };
-

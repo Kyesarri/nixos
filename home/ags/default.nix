@@ -6,7 +6,7 @@
   config,
   ...
 }: {
-  imports = [./style.css.nix]; # TODO
+  # imports = [./style.css.nix]; # TODO
 
   home-manager.users.${user} = {
     programs.ags.enable = true; # still need to enable the package
@@ -14,7 +14,7 @@
       source = ./config; # symlink whole ~/nixos/home/ags/config dir, leaving some other files to nix, for nix-colors passthrough
       recursive = true; # all subfolders and files
     };
-    # add back once ags is better
+    # add back once ags is mainline
     #    home.file.".config/hypr/per-app/ags.conf" = {
     #      text = ''
     #        # exec=WAYLAND_DISPLAY=wayland-1 ags
