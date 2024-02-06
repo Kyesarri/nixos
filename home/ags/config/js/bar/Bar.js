@@ -1,5 +1,5 @@
 import Hyprland from 'resource:///com/github/Aylur/ags/service/hyprland.js';
-import Notifications from 'resource:///com/github/Aylur/ags/service/notifications.js';
+import Notifications from 'resource:///com/github/Aylur/ags/service/notifications.js'; // dont remove
 import Mpris from 'resource:///com/github/Aylur/ags/service/mpris.js';
 import Audio from 'resource:///com/github/Aylur/ags/service/audio.js';
 import Battery from 'resource:///com/github/Aylur/ags/service/battery.js';
@@ -11,18 +11,6 @@ import { exec, execAsync } from 'resource:///com/github/Aylur/ags/utils.js';
 // widgets can be only assigned as a child in one container
 // so to make a reuseable widget, make it a function
 // then you can simply instantiate one by calling it
-
-const Workspaces = () => Widget.Box({
-    class_name: 'workspaces',
-    children: Hyprland.bind('workspaces').transform(ws => {
-        return ws.map(({ id }) => Widget.Button({
-            on_clicked: () => Hyprland.sendMessage(`dispatch workspace ${id}`),
-            child: Widget.Label(`${id}`),
-            class_name: Hyprland.active.workspace.bind('id')
-                .transform(i => `${i === id ? 'focused' : ''}`),
-        }));
-    }),
-});
 
 const ClientTitle = () => Widget.Label({
     class_name: 'client-title',
@@ -39,21 +27,6 @@ const Clock = () => Widget.Label({
         // this is what you should do
         .poll(1000, self => execAsync(['date', '+%H:%M:%S %b %e.'])
             .then(date => self.label = date)),
-});
-
-// we don't need dunst or any other notification daemon
-// because the Notifications module is a notification daemon itself
-const Notification = () => Widget.Box({
-    class_name: 'notification',
-    visible: Notifications.bind('popups').transform(p => p.length > 0),
-    children: [
-        Widget.Icon({
-            icon: 'preferences-system-notifications-symbolic',
-        }),
-        Widget.Label({
-            label: Notifications.bind('popups').transform(p => p[0]?.summary || ''),
-        }),
-    ],
 });
 
 const Media = () => Widget.Button({
@@ -145,7 +118,6 @@ const Center = () => Widget.Box({
     spacing: 8,
     children: [
         Media(),
-        Notification(),
     ],
 });
 

@@ -42,8 +42,6 @@ export function getAudioTypeIcon(icon) {
 
 export async function globalServices() {
     globalThis.ags = await import('./imports.js');
-    globalThis.brightness = (await import('./services/Brightness.js')).default;
-    globalThis.indicator = (await import('./services/onScreenIndicator.js')).default;
     globalThis.audio = globalThis.ags.Audio;
     globalThis.mpris = globalThis.ags.Mpris;
 }
