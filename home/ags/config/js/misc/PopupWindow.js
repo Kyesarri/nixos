@@ -1,119 +1,76 @@
-import { App, Widget } from '../imports.js';
+import AgsWindow from 'resource:///com/github/Aylur/ags/widgets/window.js';
+import App from 'resource:///com/github/Aylur/ags/app.js';
+import Widget from 'resource:///com/github/Aylur/ags/widget.js';
+import options from '../options.js';
+import GObject from 'gi://GObject';
 
-const Padding = windowName => Widget.EventBox({
-    class_name: 'padding',
-    hexpand: true,
-    vexpand: true,
-    connections: [['button-press-event', () => App.toggleWindow(windowName)]],
-});
-
-const PopupRevealer = (windowName, transition, child) => Widget.Box({
-    css: 'padding: 1px;',
-    child: Widget.Revealer({
-        transition,
-        child,
-        connections: [[App, (revealer, name, visible) => {
-            if (name === windowName)
-                revealer.reveal_child = visible;
-        }]],
-    }),
-});
-
-const layouts = {
-    'center': (windowName, child, expand) => Widget.CenterBox({
-        class_name: 'scrim',
-        css: expand ? 'min-width: 5000px; min-height: 3000px;' : '',
-        children: [
-            Padding(windowName),
-            Widget.CenterBox({
-                vertical: true,
-                children: [
-                    Padding(windowName),
-                    child,
-                    Padding(windowName),
-                ],
-            }),
-            Padding(windowName),
-        ],
-    }),
-    'none': (windowName, child) => Widget.CenterBox({
-        children: [
-            Padding(windowName),
-            Widget.Box({
-                vertical: true,
-                children: [
-                    PopupRevealer(windowName, 'none', child),
-                    Padding(windowName),
-                ],
-            }),
-            Padding(windowName),
-        ],
-    }),
-    'top': (windowName, child) => Widget.CenterBox({
-        children: [
-            Padding(windowName),
-            Widget.Box({
-                vertical: true,
-                children: [
-                    PopupRevealer(windowName, 'slide_down', child),
-                    Padding(windowName),
-                ],
-            }),
-            Padding(windowName),
-        ],
-    }),
-    'top right': (windowName, child) => Widget.Box({
-        children: [
-            Padding(windowName),
-            Widget.Box({
-                hexpand: false,
-                vertical: true,
-                children: [
-                    PopupRevealer(windowName, 'slide_down', child),
-                    Padding(windowName),
-                ],
-            }),
-        ],
-    }),
-    'top left': (windowName, child) => Widget.Box({
-        children: [
-            Padding(windowName),
-            Widget.Box({
-                hexpand: false,
-                vertical: true,
-                children: [
-                    PopupRevealer(windowName, 'slide_down', child),
-                    Padding(windowName),
-                ],
-            }),
-        ],
-    }),
-    'bottom right': (windowName, child) => Widget.Box({
-        children: [
-            Padding(windowName),
-            Widget.Box({
-                hexpand: false,
-                vertical: true,
-                children: [
-                    Padding(windowName),
-                    PopupRevealer(windowName, 'slide_up', child),
-                ],
-            }),
-        ],
-    }),
-};
-
-export default ({
-    layout = 'center',
-    expand = true,
-    name,
-    content,
-    ...rest
-}) => Widget.Window({
-    name,
-    child: layouts[layout](name, content, expand),
+const keyGrabber = Widget.Window({
+    name: 'key-grabber',
     popup: true,
+    anchor: ['top', 'left', 'right', 'bottom'],
+    css: 'background-color: transparent;',
     visible: false,
-    focusable: true,
-    ...rest,
+    exclusivity: 'ignore',
+    keymode: 'on-demand',
+    layer: 'top',
+    attribute: { list: [] },
+    setup: self => self.on('notify::visible', ({ visible }) => {
+        if (!visible)
+            self.attribute?.list.forEach(name => App.closeWindow(name));
+    }),
+    child: Widget.EventBox({ vexpand: true }).on('button-press-event', () => {
+        App.closeWindow('key-grabber');
+        keyGrabber.attribute?.list.forEach(name => App.closeWindow(name));
+    }),
 });
+
+// add before any PopupWindow is instantiated
+App.addWindow(keyGrabber);
+
+export class PopupWindow extends AgsWindow {
+    static { GObject.registerClass(this); }
+
+    constructor({ name, child, transition = 'none', visible = false, ...rest }) {
+        super({
+            ...rest,
+            name,
+            popup: true,
+            keymode: 'exclusive',
+            layer: 'overlay',
+            class_names: ['popup-window', name],
+        });
+
+        child.toggleClassName('window-content');
+        this.revealer = Widget.Revealer({
+            transition,
+            child,
+            transition_duration: options.transition.value,
+            setup: self => self.hook(App, (_, wname, visible) => {
+                if (wname === name)
+                    this.revealer.reveal_child = visible;
+            }),
+        });
+
+        this.child = Widget.Box({
+            css: 'padding: 1px;',
+            child: this.revealer,
+        });
+
+        this.show_all();
+        this.visible = visible;
+
+        keyGrabber.bind('visible', this, 'visible');
+        keyGrabber.attribute?.list.push(name);
+    }
+
+    set transition(dir) { this.revealer.transition = dir; }
+    get transition() { return this.revealer.transition; }
+}
+
+/** @param {import('types/widgets/window').WindowProps & {
+ *      name: string
+ *      child: import('types/widgets/box').default
+ *      transition?: import('types/widgets/revealer').RevealerProps['transition']
+ *  }} config
+ */
+export default config => new PopupWindow(config);

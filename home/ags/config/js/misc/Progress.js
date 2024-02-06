@@ -1,5 +1,10 @@
-import { Widget, Utils } from '../imports.js';
+import Widget from 'resource:///com/github/Aylur/ags/widget.js';
+import * as Utils from 'resource:///com/github/Aylur/ags/utils.js';
 
+/** @param {import('types/widgets/box').BoxProps & {
+ *      width: number
+ *      height: number
+ * }} o */
 export default ({
     height = 18,
     width = 180,
@@ -16,6 +21,8 @@ export default ({
         children: [child],
     });
 
+    let fill_size = 0;
+
     return Widget.Box({
         ...props,
         class_name: 'progress',
@@ -24,7 +31,7 @@ export default ({
             min-height: ${height}px;
         `,
         children: [fill],
-        setup: progress => progress.setValue = value => {
+        attribute: value => {
             if (value < 0)
                 return;
 
@@ -33,20 +40,20 @@ export default ({
             const min = vertical ? width : height;
             const preferred = (axisv - min) * value + min;
 
-            if (!fill._size) {
-                fill._size = preferred;
+            if (!fill_size) {
+                fill_size = preferred;
                 fill.setCss(`min-${axis}: ${preferred}px;`);
                 return;
             }
 
             const frames = 10;
-            const goal = preferred - fill._size;
+            const goal = preferred - fill_size;
             const step = goal / frames;
 
             for (let i = 0; i < frames; ++i) {
                 Utils.timeout(5 * i, () => {
-                    fill._size += step;
-                    fill.setCss(`min-${axis}: ${fill._size}px`);
+                    fill_size += step;
+                    fill.setCss(`min-${axis}: ${fill_size}px`);
                 });
             }
         },

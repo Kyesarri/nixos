@@ -1,53 +1,53 @@
-import { Utils, Widget } from '../imports.js';
+import Widget from 'resource:///com/github/Aylur/ags/widget.js';
+import * as Utils from 'resource:///com/github/Aylur/ags/utils.js';
 import FontIcon from '../misc/FontIcon.js';
 import Progress from '../misc/Progress.js';
 import Indicator from '../services/onScreenIndicator.js';
 
-export const OnScreenIndicator = ({ height = 48, width = 400 } = {}) => Widget.Box({
+export const OnScreenIndicator = ({ height = 300, width = 48 } = {}) => Widget.Box({
     class_name: 'indicator',
-    css: 'margin-bottom: 24px;',
+    css: 'padding: 1px;',
     child: Widget.Revealer({
-        transition: 'slide_up',
-        connections: [[Indicator, (revealer, value) => {
-            revealer.revealChild = value > -1;
-        }]],
+        transition: 'slide_left',
+        setup: self => self.hook(Indicator, (_, value) => {
+            self.reveal_child = value > -1;
+        }),
         child: Progress({
             width,
             height,
-            vertical: false,
-            connections: [[Indicator, (progress, value) => progress.setValue(value)]],
+            vertical: true,
+            setup: self => self.hook(Indicator, (_, value) => self.attribute(value)),
             child: Widget.Stack({
-                vpack: 'center',
-                hpack: 'end',
-                hexpand: true,
-                vexpand: true,
-                items: [
-                    ['true', Widget.Icon({
-                        vpack: 'center',
-                        vexpand: false,
-                        size: 24,
-                        connections: [[Indicator, (icon, _v, name) => icon.icon = name || '']],
-                    })],
-                    ['false', FontIcon({
-                        vpack: 'center',
-                        vexpand: true,
-                        css: 'font-size: 24px;',
-                        connections: [[Indicator, (icon, _v, name) => icon.icon = name || '']],
-                    })],
-                ],
-                connections: [[Indicator, (stack, _v, name) => {
-                    stack.shown = `${!!Utils.lookUpIcon(name)}`;
-                }]],
+                vpack: 'start',
+                hpack: 'center',
+                hexpand: false,
+                children: {
+                    true: Widget.Icon({
+                        hpack: 'center',
+                        size: width,
+                        setup: w => w.hook(Indicator, (_, _v, name) => w.icon = name || ''),
+                    }),
+                    false: FontIcon({
+                        hpack: 'center',
+                        hexpand: true,
+                        css: `font-size: ${width}px;`,
+                        setup: w => w.hook(Indicator, (_, _v, name) => w.label = name || ''),
+                    }),
+                },
+                setup: self => self.hook(Indicator, (_, _v, name) => {
+                    self.shown = `${!!Utils.lookUpIcon(name)}`;
+                }),
             }),
         }),
     }),
 });
 
+/** @param {number} monitor */
 export default monitor => Widget.Window({
     name: `indicator${monitor}`,
     monitor,
     class_name: 'indicator',
     layer: 'overlay',
-    anchor: ['bottom'],
+    anchor: ['right'],
     child: OnScreenIndicator(),
 });

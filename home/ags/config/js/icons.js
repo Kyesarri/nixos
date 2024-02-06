@@ -1,11 +1,14 @@
 export default {
-    settings: 'emblem-system-symbolic',
-    tick: 'object-select-symbolic',
     lock: 'system-lock-screen-symbolic',
+    fallback: {
+        executable: 'application-x-executable-symbolic',
+    },
     audio: {
         mic: {
             muted: 'microphone-disabled-symbolic',
-            unmuted: 'microphone-sensitivity-high-symbolic',
+            low: 'microphone-sensitivity-low-symbolic',
+            medium: 'microphone-sensitivity-medium-symbolic',
+            high: 'microphone-sensitivity-high-symbolic',
         },
         volume: {
             muted: 'audio-volume-muted-symbolic',
@@ -19,7 +22,7 @@ export default {
             speaker: 'audio-speakers-symbolic',
             card: 'audio-card-symbolic',
         },
-        mixer: 'media-playlist-shuffle-symbolic',
+        mixer: '',
     },
     asusctl: {
         profile: {
@@ -69,21 +72,28 @@ export default {
     mpris: {
         fallback: 'audio-x-generic-symbolic',
         shuffle: {
-            enabled: 'media-playlist-shuffle-symbolic',
-            disabled: 'media-playlist-shuffle-symbolic',
+            enabled: '󰒟',
+            disabled: '󰒟',
         },
         loop: {
-            none: 'media-playlist-repeat-symbolic',
-            track: 'media-playlist-repeat-symbolic',
-            playlist: 'media-playlist-repeat-symbolic',
+            none: '󰓦',
+            track: '󰓦',
+            playlist: '󰑐',
         },
-        playing: 'media-playback-pause-symbolic',
-        paused: 'media-playback-start-symbolic',
-        stopped: 'media-playback-start-symbolic',
-        prev: 'media-skip-backward-symbolic',
-        next: 'media-skip-forward-symbolic',
+        playing: '󰏦',
+        paused: '󰐍',
+        stopped: '󰐍',
+        prev: '󰒮',
+        next: '󰒭',
     },
     ui: {
+        colorpicker: 'color-select-symbolic',
+        close: 'window-close-symbolic',
+        info: 'info-symbolic',
+        menu: 'open-menu-symbolic',
+        link: 'external-link-symbolic',
+        settings: 'emblem-system-symbolic',
+        tick: 'object-select-symbolic',
         arrow: {
             right: 'pan-end-symbolic',
             left: 'pan-start-symbolic',
@@ -95,5 +105,18 @@ export default {
         cpu: 'org.gnome.SystemMonitor-symbolic',
         ram: 'drive-harddisk-solidstate-symbolic',
         temp: 'temperature-symbolic',
+    },
+    dialog: {
+        Search: '',
+        Applauncher: '󰵆',
+        Bar: '',
+        Border: '󰃇',
+        Color: '󰏘',
+        Desktop: '',
+        Font: '',
+        General: '󰒓',
+        Miscellaneous: '󰠱',
+        Theme: '󰃟',
+        Notifications: '󰂚 ',
     },
 };
