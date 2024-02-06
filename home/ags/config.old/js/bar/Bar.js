@@ -1,13 +1,11 @@
 import Clock from './widgets/Clock.js';
 import Workspaces from './widgets/Workspaces.js';
-/* import Keyboardlayout from './widgets/KeyboardLayout.js'; */
 import Separator from '../misc/Separator.js';
 import { Widget } from '../imports.js';
 
 import * as battery from '../misc/battery.js';
 
 import { ActiveApp } from './widgets/ActiveApp.js';
-import { Weather } from './widgets/Weather.js';
 import SystemIndicators from './widgets/SystemIndicators.js';
 
 const Battery = () => Widget.Box({
@@ -27,7 +25,6 @@ const Left = () => Widget.Box({
     vexpand: true,
     children: [
         Clock(),
-        /*Launcher(),*/
         Separator(),
         Workspaces(),
         Separator(),
@@ -44,10 +41,8 @@ const Right = () => Widget.Box({
     orientation: 'horizontal',
     hpack: 'end',
     children: [
-        /*Keyboardlayout(),*/
         Separator(),
         SystemIndicators(),
-        Weather(),
         Battery(),
     ],
 });

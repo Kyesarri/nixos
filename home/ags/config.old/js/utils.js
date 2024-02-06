@@ -1,5 +1,3 @@
-import App from 'resource:///com/github/Aylur/ags/app.js';
-import Battery from 'resource:///com/github/Aylur/ags/service/battery.js';
 import Gdk from 'gi://Gdk';
 import icons from './icons.js';
 import { Utils } from './imports.js';

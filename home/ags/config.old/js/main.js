@@ -19,7 +19,7 @@ const windows = () => [
 export default {
     windows: windows().flat(2),
     maxStreamVolume: 1.5,
-    cacheNotificationActions: true,
+    /*cacheNotificationActions: true,*/
     closeWindowDelay: {
         'quicksettings': 300,
         'dashboard': 300,
