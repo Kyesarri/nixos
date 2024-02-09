@@ -6,11 +6,9 @@
     nixos-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs.url = "github:nixos/nixpkgs/master";
     # nixpkgs.url = "https://flakehub.com/f/NixOS/nixpkgs/0.1.0.tar.gz"; # testing flakehub
-    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+    # nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
     hyprland.url = "github:hyprwm/Hyprland";
-
-    # stylix.url = "github:danth/stylix";
 
     nix-colors.url = "github:misterio77/nix-colors"; # may replace with stylix
 
@@ -31,7 +29,6 @@
     hyprland,
     alejandra,
     nix-colors,
-    # stylix,
     ...
   } @ inputs: let
     user = "kel"; # global username
@@ -42,10 +39,8 @@
         system = "x86_64-linux"; # 4800hs / 1650 / 16gb TODO download more ram
         specialArgs = {inherit nix-colors user plymouth_theme inputs;};
         modules = [
-          # stylix.nixosModules.stylix
           ./hosts/laptop
           {environment.systemPackages = [alejandra.defaultPackage.x86_64-linux];} # codium plugins
-          # testing without # nixos-hardware.nixosModules.asus-zephyrus-ga401 # keep this?
           home-manager.nixosModules.home-manager
           {
             home-manager = {

@@ -170,6 +170,8 @@
       # GBM_BACKEND = "nvidia-drm";
       # __GLX_VENDOR_LIBRARY_NAME = "nvidia";
       # WLR_RENDERER = "vulkan";
+      GBM_BACKEND = "nvidia-drm"; # required to run the correct GBM backend for nvidia GPUs on wayland
+      __GLX_VENDOR_LIBRARY_NAME = "nvidia";
       CLUTTER_BACKEND = "wayland";
       QT_QPA_PLATFORM = "wayland";
       QT_QPA_PLATFORMTHEME = "qt5ct";
@@ -185,6 +187,7 @@
     };
 
     shells = with pkgs; [zsh]; # default shell to zsh
+
     systemPackages = with pkgs; [
       lshw # list hardware
       usbutils # usb thing
@@ -196,10 +199,6 @@
       polkit_gnome
     ];
   };
-
-  nixpkgs.config.permittedInsecurePackages = [
-    "python-2.7.18.7"
-  ];
 
   users.users.${user} = {
     shell = pkgs.zsh;

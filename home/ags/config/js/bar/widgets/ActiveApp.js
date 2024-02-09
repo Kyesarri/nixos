@@ -7,7 +7,7 @@ export const ActiveApp = () => Widget.Box({
             xalign: 0,
             label: Hyprland.active.client.bind('title'),
             visible: Hyprland.active.client.bind('address')
-            .transform(addr => !!addr),
+            //.transform(addr => !!addr),
         }),
     ],
 });

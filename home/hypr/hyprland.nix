@@ -28,28 +28,27 @@
       $w7 = hyprctl hyprpaper wallpaper "eDP-1,~/nixos/wallpaper/7.jpg"
       $w8 = hyprctl hyprpaper wallpaper "eDP-1,~/nixos/wallpaper/8.jpg"
 
-      $c0 = rgba(${config.colorscheme.colors.base00}FF)
-      $c1 = rgba(${config.colorscheme.colors.base01}FF)
-      $c2 = rgba(${config.colorscheme.colors.base02}FF)
-      $c3 = rgba(${config.colorscheme.colors.base03}FF)
-      $c4 = rgba(${config.colorscheme.colors.base04}FF)
-      $c5 = rgba(${config.colorscheme.colors.base05}FF)
-      $c6 = rgba(${config.colorscheme.colors.base06}FF)
-      $c7 = rgba(${config.colorscheme.colors.base07}FF)
-      $c8 = rgba(${config.colorscheme.colors.base08}FF)
-      $c9 = rgba(${config.colorscheme.colors.base09}FF)
-      $ca = rgba(${config.colorscheme.colors.base0A}FF)
-      $cb = rgba(${config.colorscheme.colors.base0B}FF)
-      $cc = rgba(${config.colorscheme.colors.base0C}FF)
-      $cd = rgba(${config.colorscheme.colors.base0D}FF)
-      $ce = rgba(${config.colorscheme.colors.base0E}FF)
-      $cf = rgba(${config.colorscheme.colors.base0F}FF)
+      $c0 = rgba(${config.colorscheme.palette.base00}FF)
+      $c1 = rgba(${config.colorscheme.palette.base01}FF)
+      $c2 = rgba(${config.colorscheme.palette.base02}FF)
+      $c3 = rgba(${config.colorscheme.palette.base03}FF)
+      $c4 = rgba(${config.colorscheme.palette.base04}FF)
+      $c5 = rgba(${config.colorscheme.palette.base05}FF)
+      $c6 = rgba(${config.colorscheme.palette.base06}FF)
+      $c7 = rgba(${config.colorscheme.palette.base07}FF)
+      $c8 = rgba(${config.colorscheme.palette.base08}FF)
+      $c9 = rgba(${config.colorscheme.palette.base09}FF)
+      $ca = rgba(${config.colorscheme.palette.base0A}FF)
+      $cb = rgba(${config.colorscheme.palette.base0B}FF)
+      $cc = rgba(${config.colorscheme.palette.base0C}FF)
+      $cd = rgba(${config.colorscheme.palette.base0D}FF)
+      $ce = rgba(${config.colorscheme.palette.base0E}FF)
+      $cf = rgba(${config.colorscheme.palette.base0F}FF)
 
       ## exec-once ##
 
       ## TODO move to /home/
       exec-once = hyprpaper
-
 
       exec-once = sleep 4 && gnome-keyring-daemon --start --components = pkcs11, secrets, ssh
       # move above to seahorse below /home or /services/ unsure about below as its not really machine or software specific yet :)
@@ -143,7 +142,7 @@
           no_gaps_when_only = false
           pseudotile = true # master switch for pseudotiling. Enabling is bound to mainMod + P in the keybinds section below
           preserve_split = true # you probably want this
-          smart_resizing = true
+          smart_resizing = false
           force_split = 2
       }
 
@@ -160,8 +159,8 @@
       bind = shift ,Print, exec, gscreenshot -f '/home/${user}/screenshots/snip_$hx$w_%Y-%m-%d%M-%S.png' -n -s
 
 
-      bind = $mainMod, S, exec, bash ~/nixos/scripts/dunst/hyprpicker.sh
-      ## not working, check script TODO
+      bind = $mainMod, S, exec, ~/nixos/scripts/dunst/hyprpicker.sh
+      ## not working, check script TODO changed above from bash to nothing
 
       bind = $mainMod, C, killactive,
       bind = $mainMod, M, exit,

@@ -43,9 +43,9 @@
         #
 
         [indicator.colors.station]
-        connected=#${config.colorscheme.colors.base0B}
-        connecting=#${config.colorscheme.colors.base0E}
-        disconnected=#${config.colorscheme.colors.base04}
+        connected=#${config.colorscheme.palette.base0B}
+        connecting=#${config.colorscheme.palette.base0E}
+        disconnected=#${config.colorscheme.palette.base04}
 
         #
         # Indicator icon colors: AP mode
@@ -76,11 +76,11 @@
         #
 
         [network.colors]
-        connected=#${config.colorscheme.colors.base0B}
-        connecting=#${config.colorscheme.colors.base0E}
-        known=#${config.colorscheme.colors.base0B}66
-        unknown=#${config.colorscheme.colors.base02}
-        hidden=#${config.colorscheme.colors.base03}
+        connected=#${config.colorscheme.palette.base0B}
+        connecting=#${config.colorscheme.palette.base0E}
+        known=#${config.colorscheme.palette.base0B}66
+        unknown=#${config.colorscheme.palette.base02}
+        hidden=#${config.colorscheme.palette.base03}
 
         #
         # Known network list - last connection date/time - format string

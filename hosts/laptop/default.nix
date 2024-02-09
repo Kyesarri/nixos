@@ -1,5 +1,5 @@
 let
-  scheme = "tokyo-night-dark";
+  scheme = "gruvbox-dark-hard";
 in
   {
     config,
@@ -31,7 +31,7 @@ in
       ../../home/bottom
       ../../home/codium
       ../../home/copyq
-      ../../home/dunst # ags has own notification daemon
+      ../../home/dunst # ags has own notification daemon, will require fixing brightness scripts
       ../../home/firefox
       ../../home/git
       ../../home/gaming
@@ -40,7 +40,7 @@ in
       ../../home/kitty
       ../../home/ulauncher
       ../../home/virt
-      ../../home/waybar # fuckit, lets run ags
+      # ../../home/waybar # fuckit, lets run ags
       ../../home/gtk
       ../../home/syncthing
       ../../home/tailscale
@@ -50,7 +50,6 @@ in
 
     hardware.nvidia = {
       # PCI-Express Runtime D3 Power Management is enabled by default on this laptop
-      modesetting.enable = lib.mkDefault true; # fucking modesetting
       # Enable DRM kernel mode setting
       prime = {
         amdgpuBusId = "PCI:4:0:0";
@@ -59,11 +58,12 @@ in
       };
     };
 
-    boot.kernelParams = [
-      "nvidia.NVreg_PreserveVideoMemoryAllocations=1"
-      "nvidia-drm.modeset=1"
-    ]; # trying to fix suspend problem on nvidia
+    #boot.kernelParams = [
+    #  "nvidia.NVreg_PreserveVideoMemoryAllocations=1"
+    #  "nvidia-drm.modeset=1"
+    #]; # trying to fix suspend problem on nvidia
 
+    # nix-colors
     colorscheme = inputs.nix-colors.colorSchemes.${scheme};
     home-manager.users.${user}.colorscheme = inputs.nix-colors.colorSchemes.${scheme};
 
@@ -85,6 +85,7 @@ in
           CPU_MAX_PERF_ON_BAT = 20;
         };
       };
+
       fprintd.enable = true; # fprint reader, needs work for this model
       xserver.enable = true;
       udev.extraHwdb = ''

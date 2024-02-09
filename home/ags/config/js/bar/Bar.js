@@ -1,189 +1,66 @@
-import Hyprland from 'resource:///com/github/Aylur/ags/service/hyprland.js';
-import Notifications from 'resource:///com/github/Aylur/ags/service/notifications.js'; // dont remove
-import Mpris from 'resource:///com/github/Aylur/ags/service/mpris.js';
-import Audio from 'resource:///com/github/Aylur/ags/service/audio.js';
-import Battery from 'resource:///com/github/Aylur/ags/service/battery.js';
-import SystemTray from 'resource:///com/github/Aylur/ags/service/systemtray.js';
-import App from 'resource:///com/github/Aylur/ags/app.js';
-import Widget from 'resource:///com/github/Aylur/ags/widget.js';
-import { exec, execAsync } from 'resource:///com/github/Aylur/ags/utils.js';
-import { Hyprland, Widget, Utils } from './imports.js';
-import { range } from './utils.js';
-import HoverableButton from '../misc/HoverableButton.js';
-// widgets can be only assigned as a child in one container
-// so to make a reuseable widget, make it a function
-// then you can simply instantiate one by calling it
+import Clock from './widgets/Clock.js';
+import Date from './widgets/Date.js';
 
-const ClientTitle = () => Widget.Label({
-    class_name: 'client-title',
-    label: Hyprland.active.client.bind('title'),
-});
+import Workspaces from './widgets/Workspaces.js';
+import Separator from '../misc/Separator.js';
+import { App, Widget } from '../imports.js';
 
-const ws = 10;
-const dispatch = arg => () => Utils.execAsync(`hyprctl dispatch workspace ${arg}`);
+import * as battery from '../misc/battery.js';
 
-const Workspaces = () => Widget.Box({
-    children: range(ws || 20).map(i => HoverableButton({
-        setup: btn => btn.id = i,
-        on_clicked: dispatch(i),
-        class_name: 'workspace-indicator',
-        vpack: 'center',
-        connections: [[Hyprland, btn => {
-            btn.toggleClassName('active', Hyprland.active.workspace.id === i);
-            btn.toggleClassName('occupied', Hyprland.getWorkspace(i)?.windows > 0);
-        }]],
-    })),
-    connections: ws ? [] : [[Hyprland.active.workspace, box => box.children.map(btn => {
-        btn.visible = Hyprland.workspaces.some(ws => ws.id === btn.id);
-    })]],
-});
+import { ActiveApp } from './widgets/ActiveApp.js';
+import SystemIndicators from './widgets/SystemIndicators.js';
 
-const Clock = () => Widget.Label({
-    class_name: 'clock',
-    setup: self => self
-        // this is bad practice, since exec() will block the main event loop
-        // in the case of a simple date its not really a problem
-        .poll(1000, self => self.label = exec('date "+%H:%M:%S %b %e."'))
-
-        // this is what you should do
-        .poll(1000, self => execAsync(['date', '+%H:%M:%S %b %e.'])
-            .then(date => self.label = date)),
-});
-
-const Media = () => Widget.Button({
-    class_name: 'media',
-    on_primary_click: () => Mpris.getPlayer('')?.playPause(),
-    on_scroll_up: () => Mpris.getPlayer('')?.next(),
-    on_scroll_down: () => Mpris.getPlayer('')?.previous(),
-    child: Widget.Label('-').hook(Mpris, self => {
-        if (Mpris.players[0]) {
-            const { track_artists, track_title } = Mpris.players[0];
-            self.label = `${track_artists.join(', ')} - ${track_title}`;
-        } else {
-            self.label = 'Nothing is playing';
-        }
-    }, 'player-changed'),
-});
-
-const Volume = () => Widget.Box({
-    class_name: 'volume',
-    css: 'min-width: 180px',
-    children: [
-        Widget.Icon().hook(Audio, self => {
-            if (!Audio.speaker)
-                return;
-
-            const category = {
-                101: 'overamplified',
-                67: 'high',
-                34: 'medium',
-                1: 'low',
-                0: 'muted',
-            };
-
-            const icon = Audio.speaker.is_muted ? 0 : [101, 67, 34, 1, 0].find(
-                threshold => threshold <= Audio.speaker.volume * 100);
-
-            self.icon = `audio-volume-${category[icon]}-symbolic`;
-        }, 'speaker-changed'),
-        Widget.Slider({
-            hexpand: true,
-            draw_value: false,
-            on_change: ({ value }) => Audio.speaker.volume = value,
-            setup: self => self.hook(Audio, () => {
-                self.value = Audio.speaker?.volume || 0;
-            }, 'speaker-changed'),
-        }),
-    ],
-});
-
-const BatteryLabel = () => Widget.Box({
+const Battery = () => Widget.Box({
     class_name: 'battery',
-    visible: Battery.bind('available'),
+    hpack: 'end',
     children: [
-        Widget.Icon({
-            icon: Battery.bind('percent').transform(p => {
-                return `battery-level-${Math.floor(p / 10) * 10}-symbolic`;
-            }),
-        }),
-        Widget.ProgressBar({
-            vpack: 'center',
-            fraction: Battery.bind('percent').transform(p => {
-                return p > 0 ? p / 100 : 0;
-            }),
-        }),
+        battery.Indicator(),
+        battery.LevelLabel(),
     ],
 });
 
-const SysTray = () => Widget.Box({
-    children: SystemTray.bind('items').transform(items => {
-        return items.map(item => Widget.Button({
-            child: Widget.Icon({ binds: [['icon', item, 'icon']] }),
-            on_primary_click: (_, event) => item.activate(event),
-            on_secondary_click: (_, event) => item.openMenu(event),
-            binds: [['tooltip-markup', item, 'tooltip-markup']],
-        }));
-    }),
-});
-
-// layout of the bar
 const Left = () => Widget.Box({
-    spacing: 8,
+    class_name: 'bar__left',
+    orientation: 'horizontal',
+    hpack: 'start',
+    hexpand: true,
     children: [
+        Clock(),
+        Separator(),
+        Date(),
+        Separator(),
         Workspaces(),
-        ClientTitle(),
+        Separator(),
     ],
 });
 
 const Center = () => Widget.Box({
-    spacing: 8,
-    children: [
-        Media(),
-    ],
+    class_name: 'bar__center',
+    child: ActiveApp(),
 });
 
 const Right = () => Widget.Box({
+    class_name: 'bar__right',
+    orientation: 'horizontal',
     hpack: 'end',
-    spacing: 8,
     children: [
-        Volume(),
-        BatteryLabel(),
-        Clock(),
-        SysTray(),
+        Separator(),
+        SystemIndicators(),
+        Separator(),
+        Battery(),
     ],
 });
 
-const Bar = (monitor = 0) => Widget.Window({
-    name: `bar-${monitor}`, // name has to be unique
-    class_name: 'bar',
-    monitor,
+export default monitor => Widget.Window({
+    name: `bar${monitor}`,
     anchor: ['top', 'left', 'right'],
     exclusivity: 'exclusive',
+    monitor,
+    hexpand: true,
     child: Widget.CenterBox({
-        start_widget: Left(),
-        center_widget: Center(),
-        end_widget: Right(),
+        class_name: 'bar',
+        startWidget: Left(),
+        centerWidget: Center(),
+        endWidget: Right(),
     }),
 });
-
-import { monitorFile } from 'resource:///com/github/Aylur/ags/utils.js';
-
-monitorFile(
-    `${App.configDir}/style.css`,
-    function() {
-        App.resetCss();
-        App.applyCss(`${App.configDir}/style.css`);
-    },
-);
-
-// exporting the config so ags can manage the windows
-export default {
-    style: App.configDir + '/style.css',
-    windows: [
-        Bar(),
-
-        // you can call it, for each monitor
-        // Bar(0),
-        // Bar(1)
-    ],
-};

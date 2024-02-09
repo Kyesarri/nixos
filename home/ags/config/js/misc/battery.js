@@ -28,10 +28,10 @@ export const Indicator = ({
 } = {}) => Stack({
     ...props,
     class_name: 'battery__indicator',
-    items: [
-        ['true', charging],
-        ['false', discharging],
-    ],
+    children: {
+        true: (charging),
+        false: (discharging),
+    },
     connections: [[Battery, stack => {
         const { charging, charged } = Battery;
         stack.shown = `${charging || charged}`;

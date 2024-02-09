@@ -14,12 +14,11 @@
 
   services = {
     syncthing = {
+      systemService = true;
       enable = true;
       user = "${user}";
     };
   };
 
   users.users.${user}.packages = with pkgs; [syncthing syncthingtray];
-
-  #TODO add some initial config for syncthingtray (window type not popup)
 }

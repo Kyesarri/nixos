@@ -4,7 +4,7 @@ import { App } from '../../imports.js';
 import HoverableButton from '../../misc/HoverableButton.js';
 
 export default ({
-    format = '%a %d %b, %H:%M',
+    format = '%H:%M',
     interval = 1000,
     ...props
 } = {}) => HoverableButton({
@@ -12,7 +12,6 @@ export default ({
     on_clicked: () => App.toggleWindow('calendar'),
     class_name: 'clock',
     ...props,
-    connections: [[interval, label =>
-        label.label = GLib.DateTime.new_now_local().format(format),
+    connections: [[interval, label => label.label = GLib.DateTime.new_now_local().format(format),
     ]],
 });

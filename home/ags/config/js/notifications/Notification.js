@@ -130,7 +130,8 @@ export default notification => {
             hovered.value = false;
             notification.dismiss();
         },
-        properties: [['hovered', hovered]],
+        /*properties: [['hovered', hovered]],*/
+        attribute: [['hovered', hovered]],
         onHover: hover,
         onHoverLost: hoverLost,
         child: Widget.Box({

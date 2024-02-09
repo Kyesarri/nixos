@@ -15,18 +15,18 @@
 
       window#waybar {
         background-color: transparent;
-        color: #${config.colorScheme.colors.base05};
+        color: #${config.colorScheme.palette.base05};
         /* border-radius: 20px; */
-        /* border: 1px solid #${config.colorScheme.colors.base00}; */
+        /* border: 1px solid #${config.colorScheme.palette.base00}; */
       }
 
       tooltip {
-        background: #${config.colorScheme.colors.base00};
-        border: 1px solid #${config.colorScheme.colors.base05};
+        background: #${config.colorScheme.palette.base00};
+        border: 1px solid #${config.colorScheme.palette.base05};
         border-radius: 10px;
       }
       tooltip label {
-        color: #${config.colorScheme.colors.base05};
+        color: #${config.colorScheme.palette.base05};
       }
 
       #workspaces {
@@ -36,8 +36,8 @@
       }
 
       #workspaces button {
-        background-color: #${config.colorScheme.colors.base00};
-        color: #${config.colorScheme.colors.base05};
+        background-color: #${config.colorScheme.palette.base00};
+        color: #${config.colorScheme.palette.base05};
         border-radius: 10px;
         transition: all 0.3s ease;
         margin-right: 10;
@@ -46,16 +46,16 @@
       #workspaces button:hover {
         box-shadow: inherit;
         text-shadow: inherit;
-        background-color: #${config.colorScheme.colors.base04};
-        color: #${config.colorScheme.colors.base09};
+        background-color: #${config.colorScheme.palette.base04};
+        color: #${config.colorScheme.palette.base09};
         min-width: 30px;
         transition: all 0.3s ease;
       }
 
       #workspaces button.focused,
       #workspaces button.active {
-        background-color: #${config.colorScheme.colors.base02};
-        color: #${config.colorScheme.colors.base09};
+        background-color: #${config.colorScheme.palette.base02};
+        color: #${config.colorScheme.palette.base09};
         min-width: 30px;
         transition: all 0.3s ease;
         animation: colored-gradient 10s ease infinite;
@@ -63,13 +63,13 @@
 
       /* #workspaces button.focused:hover,
       #workspaces button.active:hover {
-        background-color: #${config.colorScheme.colors.base09};
+        background-color: #${config.colorScheme.palette.base09};
         transition: all 1s ease;
       } */
 
       #workspaces button.urgent {
-        background-color: #${config.colorScheme.colors.base0F};
-        color: #${config.colorScheme.colors.base00};
+        background-color: #${config.colorScheme.palette.base0F};
+        color: #${config.colorScheme.palette.base00};
         transition: all 0.3s ease;
       }
 
@@ -84,7 +84,7 @@
       }
 
       #taskbar button {
-        color: #${config.colorScheme.colors.base05};
+        color: #${config.colorScheme.palette.base05};
         padding: 1px 8px;
         margin-left: 1px;
         margin-right: 1px;
@@ -92,7 +92,7 @@
 
       #taskbar button:hover {
         background: transparent;
-        border: 1px solid #${config.colorScheme.colors.base02};
+        border: 1px solid #${config.colorScheme.palette.base02};
         border-radius: 8px;
         transition: all 0.3s ease;
         animation: colored-gradient 10s ease infinite;
@@ -103,7 +103,7 @@
       /* #taskbar button.minimized {} */
 
       #taskbar button.active {
-        border: 1px solid #${config.colorScheme.colors.base02};
+        border: 1px solid #${config.colorScheme.palette.base02};
         border-radius: 8px;
         transition: all 0.3s ease;
         animation: colored-gradient 10s ease infinite;
@@ -121,18 +121,18 @@
       #cpu,
       #memory,
       #backlight,
-      #window  { background-color: #${config.colorScheme.colors.base00}; }
-      #pulseaudio.audio { background-color: #${config.colorScheme.colors.base00}; }
+      #window  { background-color: #${config.colorScheme.palette.base00}; }
+      #pulseaudio.audio { background-color: #${config.colorScheme.palette.base00}; }
       #pulseaudio.microphone,
-      #network { background-color: #${config.colorScheme.colors.base00}; }
-      #bluetooth  { background-color: #${config.colorScheme.colors.base00}; }
-      #battery  { background-color: #${config.colorScheme.colors.base00}; }
-      #clock { background-color: #${config.colorScheme.colors.base00}; }
+      #network { background-color: #${config.colorScheme.palette.base00}; }
+      #bluetooth  { background-color: #${config.colorScheme.palette.base00}; }
+      #battery  { background-color: #${config.colorScheme.palette.base00}; }
+      #clock { background-color: #${config.colorScheme.palette.base00}; }
       #custom-powermenu,
 
       #custom-notification {
         background-color: transparent;
-        color: #${config.colorScheme.colors.base05};
+        color: #${config.colorScheme.palette.base05};
         padding: 1px 8px;
         margin-top: 5px;
         margin-bottom: 5px;
@@ -143,7 +143,7 @@
       }
 
       #submap {
-        background-color: #${config.colorScheme.colors.base00};
+        background-color: #${config.colorScheme.palette.base00};
         border: 0;
       }
 
@@ -193,7 +193,7 @@
       /* -------------------------------------------------------------------------------- */
 
       #tray {
-        background-color: #${config.colorScheme.colors.base00};
+        background-color: #${config.colorScheme.palette.base00};
         padding: 1px 8px;
       }
       #tray > .passive {
@@ -201,7 +201,7 @@
       }
       #tray > .needs-attention {
         -gtk-icon-effect: highlight;
-        background-color: #${config.colorScheme.colors.base0F};
+        background-color: #${config.colorScheme.palette.base0F};
       }
 
     '';

@@ -103,41 +103,41 @@
       # TODO nix-colors here
       [colors]
       # Represents the colour of table headers (processes, CPU, disks, temperature).
-      table_header_color="#${config.colorscheme.colors.base05}"
+      table_header_color="#${config.colorscheme.palette.base05}"
       # Represents the colour of the label each widget has.
-      widget_title_color="#${config.colorscheme.colors.base05}"
+      widget_title_color="#${config.colorscheme.palette.base05}"
       # Represents the average CPU color.
-      avg_cpu_color="#${config.colorscheme.colors.base0F}"
+      avg_cpu_color="#${config.colorscheme.palette.base0F}"
       # Represents the colour the core will use in the CPU legend and graph.
-      cpu_core_colors=["#${config.colorscheme.colors.base0A}", "#${config.colorscheme.colors.base0B}", "#${config.colorscheme.colors.base0C}", "#${config.colorscheme.colors.base0D}", "#${config.colorscheme.colors.base0E}", "#${config.colorscheme.colors.base0F}"]
+      cpu_core_colors=["#${config.colorscheme.palette.base0A}", "#${config.colorscheme.palette.base0B}", "#${config.colorscheme.palette.base0C}", "#${config.colorscheme.palette.base0D}", "#${config.colorscheme.palette.base0E}", "#${config.colorscheme.palette.base0F}"]
       # Represents the colour RAM will use in the memory legend and graph.
-      ram_color="#${config.colorscheme.colors.base0E}"
+      ram_color="#${config.colorscheme.palette.base0E}"
       # Represents the colour SWAP will use in the memory legend and graph.
-      swap_color="#${config.colorscheme.colors.base0B}"
+      swap_color="#${config.colorscheme.palette.base0B}"
       # Represents the colour ARC will use in the memory legend and graph.
       #arc_color="LightCyan"
       # Represents the colour the GPU will use in the memory legend and graph.
       #gpu_core_colors=["LightGreen", "LightBlue", "LightRed", "Cyan", "Green", "Blue", "Red"]
       # Represents the colour rx will use in the network legend and graph.
-      rx_color="#${config.colorscheme.colors.base0D}"
+      rx_color="#${config.colorscheme.palette.base0D}"
       # Represents the colour tx will use in the network legend and graph.
-      tx_color="#${config.colorscheme.colors.base0B}"
+      tx_color="#${config.colorscheme.palette.base0B}"
       # Represents the colour of the border of unselected widgets.
-      border_color="#${config.colorscheme.colors.base04}"
+      border_color="#${config.colorscheme.palette.base04}"
       # Represents the colour of the border of selected widgets.
-      highlighted_border_color="#${config.colorscheme.colors.base0D}"
+      highlighted_border_color="#${config.colorscheme.palette.base0D}"
       # Represents the colour of most text.
-      text_color="#${config.colorscheme.colors.base06}"
+      text_color="#${config.colorscheme.palette.base06}"
       # Represents the colour of text that is selected.
-      selected_text_color="#${config.colorscheme.colors.base00}"
+      selected_text_color="#${config.colorscheme.palette.base00}"
       # Represents the background colour of text that is selected.
-      selected_bg_color="#${config.colorscheme.colors.base0D}"
+      selected_bg_color="#${config.colorscheme.palette.base0D}"
       # Represents the colour of the lines and text of the graph.
-      graph_color="#${config.colorscheme.colors.base06}"
+      graph_color="#${config.colorscheme.palette.base06}"
       # Represents the colours of the battery based on charge
-      high_battery_color="#${config.colorscheme.colors.base0B}"
-      medium_battery_color="#${config.colorscheme.colors.base0E}"
-      low_battery_color="#${config.colorscheme.colors.base0F}"
+      high_battery_color="#${config.colorscheme.palette.base0B}"
+      medium_battery_color="#${config.colorscheme.palette.base0E}"
+      low_battery_color="#${config.colorscheme.palette.base0F}"
 
       # Layout - layouts follow a pattern like this:
       # [[row]] represents a row in the application.

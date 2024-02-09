@@ -114,6 +114,7 @@ export default ({
     child: layouts[layout](name, content, expand),
     popup: true,
     visible: false,
-    focusable: true,
+    /*keymode: 'focusable', 09.02.24 */
+    /*keymode: true,*/
     ...rest,
 });

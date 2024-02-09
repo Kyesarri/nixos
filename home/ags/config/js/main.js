@@ -1,6 +1,7 @@
 import { USER } from 'resource:///com/github/Aylur/ags/utils.js';
 import Bar from './bar/Bar.js';
 import Notifications from './notifications/Notifications.js';
+import ControlCenter from './controlCenter/ControlCenter.js';
 
 import * as setup from './utils.js';
 import { forMonitors } from './utils.js';
@@ -11,6 +12,7 @@ setup.globalServices();
 const windows = () => [
     forMonitors(Bar),
     forMonitors(Notifications),
+    ControlCenter(),
     Calendar(),
 ];
 

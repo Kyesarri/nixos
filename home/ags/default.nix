@@ -6,19 +6,22 @@
   config,
   ...
 }: {
-  imports = [./style.css.nix]; # TODO lots to work on here
+  # imports = [./style.css.nix]; # TODO editing directly atm, will fix once running better
+
+  users.users.${user}.packages = [pkgs.python3];
 
   home-manager.users.${user} = {
     programs.ags.enable = true; # still need to enable the package
+    # TODO editing directly from .config to avoid so-many rebuilds :D
     home.file.".config/ags/" = {
       source = ./config; # symlink whole ~/nixos/home/ags/config dir, leaving some other files to nix, for nix-colors passthrough
       recursive = true; # all subfolders and files
     };
-    # add back once ags is mainline
-    #    home.file.".config/hypr/per-app/ags.conf" = {
-    #      text = ''
-    #        exec-once = ags
-    #      '';
-    #    };
+    # add back once ags is mainline # TODO sync current changes to cbg / ghub
+    home.file.".config/hypr/per-app/ags.conf" = {
+      text = ''
+        exec-once = ~/nixos/scripts/ags.sh
+      '';
+    };
   };
 }

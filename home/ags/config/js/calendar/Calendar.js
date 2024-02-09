@@ -1,7 +1,7 @@
 import PopupWindow from '../misc/PopupWindow.js';
 import { Widget } from '../imports.js';
 
-export default ({ anchor = ['top', 'left'], layout = 'top' } = {}) => PopupWindow({
+export default ({ anchor = ['top'], layout = 'top' } = {}) => PopupWindow({
     name: 'calendar',
     layout,
     anchor,
