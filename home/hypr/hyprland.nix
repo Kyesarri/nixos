@@ -126,6 +126,7 @@
           bezier = liner, 1, 1, 1, 1
           bezier = cubic, 0.785, 0.135, 0.15, 0.86
           bezier = snappy, 0.51, 0.93, 0, 1
+
           animation = windows, 1, 5, overshot, slide
           animation = windowsOut, 1, 5, smoothOut, slide
           animation = windowsMove, 1, 5, snappy

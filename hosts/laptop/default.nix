@@ -1,5 +1,5 @@
 let
-  scheme = "gruvbox-dark-hard";
+  scheme = "heetch";
 in
   {
     config,
