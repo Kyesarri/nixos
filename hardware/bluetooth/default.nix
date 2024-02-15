@@ -4,6 +4,8 @@
   user,
   ...
 }: {
+  services.blueman.enable = true;
+
   hardware.bluetooth = {
     enable = true;
     settings = {
@@ -16,12 +18,19 @@
       Policy = {
         AutoEnable = "true";
       };
+      disabledPlugins = [
+      ];
     };
   };
+
   home-manager.users.${user}.home.file.".config/hypr/per-app/bluetooth.conf" = {
     text = ''
-      windowrule = float, ^(blueberry.py)$
+      # exec-once = blueman-applet
+      # windowrule = float, ^(blueberry.py)$
     '';
   };
-  users.users.${user}.packages = with pkgs; [blueberry];
+
+  users.users.${user} = {
+    packages = with pkgs; [gnome.gnome-bluetooth];
+  };
 }

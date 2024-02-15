@@ -235,7 +235,7 @@
       adi1090x-plymouth-themes # plymouth themes
       spot # gtk / gnome spotify client
       # gtklock # lockscreen, might be an alternative for swaylock pending update
-      (callPackage ../packages/image-colorizer {})
+      # (callPackage ../packages/image-colorizer {})
 
       # (callPackage ../packages/wcp {}) # IT WORKS! Currently has bugs with RGBA colours, see package notes
       # (callPackage ../packages/libfprint {}) # builds, need to write to the fprint reader now :)

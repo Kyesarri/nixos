@@ -19,14 +19,14 @@
       ## source = ~/.config/hypr/wallpaper.conf
 
       ## might want a function that pulls a wallpaper at random rather than having specific per desktop
-      $w1 = hyprctl hyprpaper wallpaper "eDP-1,~/wallpaper/1.jpg"
-      $w2 = hyprctl hyprpaper wallpaper "eDP-1,~/nixos/wallpaper/2.jpg"
-      $w3 = hyprctl hyprpaper wallpaper "eDP-1,~/nixos/wallpaper/3.jpg"
-      $w4 = hyprctl hyprpaper wallpaper "eDP-1,~/nixos/wallpaper/4.jpg"
-      $w5 = hyprctl hyprpaper wallpaper "eDP-1,~/nixos/wallpaper/5.jpg"
-      $w6 = hyprctl hyprpaper wallpaper "eDP-1,~/nixos/wallpaper/6.jpg"
-      $w7 = hyprctl hyprpaper wallpaper "eDP-1,~/nixos/wallpaper/7.jpg"
-      $w8 = hyprctl hyprpaper wallpaper "eDP-1,~/nixos/wallpaper/8.jpg"
+      #$w1 = hyprctl hyprpaper wallpaper "eDP-1,~/wallpaper/1.jpg"
+      #$w2 = hyprctl hyprpaper wallpaper "eDP-1,~/nixos/wallpaper/2.jpg"
+      #$w3 = hyprctl hyprpaper wallpaper "eDP-1,~/nixos/wallpaper/3.jpg"
+      #$w4 = hyprctl hyprpaper wallpaper "eDP-1,~/nixos/wallpaper/4.jpg"
+      #$w5 = hyprctl hyprpaper wallpaper "eDP-1,~/nixos/wallpaper/5.jpg"
+      #$w6 = hyprctl hyprpaper wallpaper "eDP-1,~/nixos/wallpaper/6.jpg"
+      #$w7 = hyprctl hyprpaper wallpaper "eDP-1,~/nixos/wallpaper/7.jpg"
+      #$w8 = hyprctl hyprpaper wallpaper "eDP-1,~/nixos/wallpaper/8.jpg"
 
       $c0 = rgba(${config.colorscheme.palette.base00}FF)
       $c1 = rgba(${config.colorscheme.palette.base01}FF)
@@ -192,28 +192,15 @@
       # Switch workspaces with mainMod + [0-9]
       ## added switching wallpapers on workspace switch
       bind = $mainMod, 1, workspace, 1
-      bind = $mainMod, 1, exec, $w1
-
       bind = $mainMod, 2, workspace, 2
-      bind = $mainMod, 2, exec, $w2
-
       bind = $mainMod, 3, workspace, 3
-      bind = $mainMod, 3, exec, $w3
-
       bind = $mainMod, 4, workspace, 4
-      bind = $mainMod, 4, exec, $w4
-
       bind = $mainMod, 5, workspace, 5
-      bind = $mainMod, 5, exec, $w5
-
       bind = $mainMod, 6, workspace, 6
-      bind = $mainMod, 6, exec, $w6
-
       bind = $mainMod, 7, workspace, 7
-      bind = $mainMod, 7, exec, $w7
-
       bind = $mainMod, 8, workspace, 8
-      bind = $mainMod, 8, exec, $w8
+      bind = $mainMod, 9, workspace, 9
+      bind = $mainMod, 0, workspace, 10
 
       # Move active window to a workspace with mainMod + SHIFT + [0-9]
       ## should add a hyprpaper workspace wallpaper switch here too :)

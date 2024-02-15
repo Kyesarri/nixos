@@ -7,7 +7,9 @@
   home-manager.users.${user}.home.file.".config/hypr/per-app/firefox.conf" = {
     text = ''
       bind = $mainMod, F, exec, firefox
-      bind = $mainMod, W, exec, firefox -p work
+      bind = $mainMod, W, exec, firefox -p work --name work
+      windowrulev2 = bordercolor $ce, initialClass:^(work)$
+      windowrulev2 = noshadow, nodim, initialClass:^(work)$
     '';
   };
 

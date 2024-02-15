@@ -8,8 +8,6 @@
 }: {
   imports = [./colours.css.nix];
 
-  users.users.${user}.packages = [pkgs.python3];
-
   home-manager.users.${user} = {
     programs.ags.enable = true; # still need to enable the package
     # TODO editing directly from .config to avoid so-many rebuilds :D

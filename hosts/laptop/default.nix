@@ -1,5 +1,5 @@
 let
-  scheme = "heetch";
+  scheme = "tokyo-night-storm";
 in
   {
     config,
