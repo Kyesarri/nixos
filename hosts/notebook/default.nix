@@ -20,7 +20,7 @@ in
 
       ../../hardware/battery
       ../../hardware/bluetooth
-      ../../hardware/wireless
+      ../../hardware/wireless/iwd
       ../../hardware/audio
 
       ../../home

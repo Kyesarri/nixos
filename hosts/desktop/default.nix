@@ -22,7 +22,7 @@ in
       ../../hardware/bluetooth
       ../../hardware/nvidia
       ../../hardware/rgb
-      ../../hardware/wireless
+      ../../hardware/wireless/wpa
 
       ../../home
       ../../home/ags
