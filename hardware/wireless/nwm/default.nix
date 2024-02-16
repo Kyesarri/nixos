@@ -12,9 +12,7 @@
   users.users.${user}.packages = with pkgs; [networkmanagerapplet];
   home-manager.users.${user} = {
     home.file.".config/hypr/per-app/wireless.conf" = {
-      text = ''
-        exec-once = nm-applet
-      '';
+      text = ''exec-once = nm-applet'';
     };
   };
 }
