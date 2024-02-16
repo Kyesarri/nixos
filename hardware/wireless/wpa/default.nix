@@ -7,7 +7,6 @@
   ...
 }: {
   networking = {
-    wireless.enable = true;
-    # wpa  };
+    wireless.enable = true; # wpa
   };
 }
