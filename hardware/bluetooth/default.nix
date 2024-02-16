@@ -18,8 +18,6 @@
       Policy = {
         AutoEnable = "true";
       };
-      disabledPlugins = [
-      ];
     };
   };
 

@@ -23,7 +23,7 @@ in
       ../../hardware/battery
       ../../hardware/bluetooth
       ../../hardware/nvidia
-      ../../hardware/wireless/wpa # networkmanager change to iwd if you dislike iwd
+      ../../hardware/wireless/nwm # networkmanager change to iwd if you dislike iwd
 
       ../../home
       ../../home/ags

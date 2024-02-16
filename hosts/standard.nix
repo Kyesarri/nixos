@@ -171,7 +171,6 @@
       # __GLX_VENDOR_LIBRARY_NAME = "nvidia";
       # WLR_RENDERER = "vulkan";
       GBM_BACKEND = "nvidia-drm"; # required to run the correct GBM backend for nvidia GPUs on wayland
-      __GLX_VENDOR_LIBRARY_NAME = "nvidia";
       CLUTTER_BACKEND = "wayland";
       QT_QPA_PLATFORM = "wayland";
       QT_QPA_PLATFORMTHEME = "qt5ct";
