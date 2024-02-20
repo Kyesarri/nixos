@@ -40,4 +40,4 @@ wallpapers may not work out the gate, will require some configuration in per-dev
 current configuration uses grub, you may need to ```cd /``` and ```sudo rm -R boot``` then run another ```sudo nixos-rebuild switch --flake /home/username/nixos#hostname``` command from above to get gdm / grub running
 
 ### home-manager -
-it will complain about files in the way in your ```.config```, delete the current files and run another rebuild
+it will complain about files in the way in your ```.config```, delete the files home-manager listed and run another rebuild
