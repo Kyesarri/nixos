@@ -21,7 +21,7 @@
       pkgs,
       ...
     }: {
-      services.nextcloud = {
+      services.authelia = {
         enable = true;
         package = pkgs.nextcloud28;
         hostName = "nextcloud";

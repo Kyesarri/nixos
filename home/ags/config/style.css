@@ -1,5 +1,6 @@
-.scrim {
-  background-color: rgba(0, 0, 0, 1); } /* nfi */
+@import url("colours.css");
+
+.scrim { background-color: rgba(0, 0, 0, 0); }
 
 * {
   all: unset;
@@ -9,342 +10,185 @@
   padding: 0;
   margin: 0; }
 
-.separator {
-  min-width: 8px;
-  min-height: 8px; }
+@keyframes gradient {
+  0% { background-position: 0% 25%; }
+  10% { background-position: 10% 50%; }
+  20% { background-position: 20% 75%; }
+  30% { background-position: 30% 100%; }
+  40% { background-position: 40% 50%; }
+  50% { background-position: 80% 20%; }
+  60% { background-position: 100% 10%; }
+  70% { background-position: 75% 0%; }
+  80% { background-position: 40% 75%; }
+  90% { background-position: 20% 50%; }
+  100% { background-position: 10% 30%; } }
 
-.text__bold {
-  font-weight: 600; }
+.separator {
+  min-width: 10px;
+  min-height: 10px; }
+
+.text__bold {font-weight: 600}
 
 tooltip > * > * {
-  background-color: #34302c;
-  color: #e9e1dc;
-  padding: 20px;
-  border-radius: 20px; }
+  background-color: @c0;
+  color: @c5;
+  padding: 10px;
+  border-radius: 8px; }
 
 window.popup > * {
   border: none;
   box-shadow: none; }
 
 window.popup menu {
-  margin-top: 12px;
-  border-radius: 18px;
-  background-color: #221f1c;
-  padding: 12px; }
+  margin: 10px;
+  border-radius: 8px;
+  background-color: @c0; }
   window.popup menu menuitem {
     padding: 8px 10px;
-    color: #e9e1dc;
+    color: @c5;
     border-radius: 8px;
-    transition: background-color 0.1s ease; }
+    transition: background-color 0.3s ease; }
     window.popup menu menuitem:hover {
-      background: #383431; }
+      background-color: @c4;
+      color: @c0; }
     window.popup menu menuitem:first-child {
       margin-top: 0; }
     window.popup menu menuitem:last-child {
       margin-bottom: 0; }
 
-/* Common Styles */
-
 .bar {
-  background-color: rgba(0, 0, 0, 0); /* set to transparent*/
-  margin: 0;
-  padding: 8px 12px;
-  border-bottom: 6px solid rgba(0, 0, 0, 0);
-  border-top: 6px solid rgba(0, 0, 0, 0); } 
-  /* gives padding around bar */
+  background-color: rgba(0, 0, 0, 0);
+  padding: 10px 10px;
+} 
 
+/* standard hover */
+trough:hover, 
+.sys_button:hover { 
+  background: @c4; 
+}
+
+/* standard box / backdrop / widget settings */
 .workspaces,
+.menu,
+.battery,
+.volume,
 .bar__controlcenter_container,
 .date,
-.clock,
-.activeapp,
-.notifications-indicator {
-  transition: background-color 0.2s ease-in-out;
-  border-radius: 100px;
-  color: #e9e1dc;
-  background-color: rgba(233, 225, 220, 0.08);
-  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out; }
-  .workspaces:hover,
-  .bar__controlcenter_container:hover,
-  .activeapp:hover,
-  .notifications-indicator:hover {
-    background-color: rgba(233, 225, 220, 0.18); }
-
-.battery {
-  transition: background-color 0.2s ease-in-out;
-  border-radius: 100px;
-  color: #ffddb9; /* foreground / text*/
-  background-color: #643e07; }
-
-.active {
-  background: #f4bc7b;
-  color: #472a00; } /* not sure what this controls atm */
-
-/* Specific Styles */
-.battery,
-.workspaces,
-.battery {
-  padding: 0 14px;
-  border-radius: 6px 22px 22px 6px; }
-  .battery image {
-    margin-right: 4px; }
-
+.sys_box,
 .clock {
-  border-radius: 22px 6px 6px 22px;
-  padding: 0 14px; }
-
-.date {
-  border-radius: 6px 6px 6px 6px;
-  padding: 0 16px;
+  font-weight: 600; 
+  color: @c5;
+  background-color: @c0;
+  padding: 0px 10px;
+  border-radius: 8px; 
+  transition: background 1s ease;
 }
 
-.activeapp {
-  border-radius: 22px 22px 22px 22px;
- /* border: 5px solid rgba(233, 225, 220, 0.08); */
-  padding: 0 16px;
+/* system tray */
+.sys_button {
+  min-width: 30px;
+  min-height: 14px;
+  border-radius: 4px;
+  margin: 0px 5px;
+  transition: background 1s ease; 
 }
 
-.workspaces {
-  min-width: 260px; 
-  border-radius: 6px 22px 22px 6px;
-  padding-left: 8px; }
-  .workspaces .workspace-indicator {
-    min-width: 14px;
-    min-height: 14px;
-    border-radius: 100px;
-    margin: 10px 5px;
-    transition: min-width 0.3s ease, background-color 0.3s ease-out;
-    background-color: rgba(255, 255, 255, 0.17); } /* not selected workspace */
-    .workspaces .workspace-indicator:last-child {
-      margin-right: 0px; }
-    .workspaces .workspace-indicator:first-child {
-      margin-left: 0px; }
-    .workspaces .workspace-indicator:hover {
-      background-color: rgba(244, 188, 123, 0.6); } /* hover over not focus workspace */
-    .workspaces .workspace-indicator.active, .workspaces .workspace-indicator:active {
-      min-width: 40px;
-      border-radius: 100px;
-      background-color: #f4bc7b; }
+/* menu */
+/** .menu, ._menu_event, .__menu_inner, .___l/m/r = .____menu_dot */
+.menu,
+.menu .__menu_inner { 
+  padding: 5px;
+  min-width: 14px;
+  min-height: 14px;
+  border-radius: 8px;
+  margin: 0px 0px; }
+._menu_event { 
+  border-radius: 4px;
+  transition: background 1s ease; } 
+/* using different durations on each element, feels less bland
+TODO want to have random duration withina set range */
+.___left * { animation: gradient 30s ease-in-out infinite; }
+.___middle * {  animation: gradient 60s ease-in-out infinite; }
+.___right * {  animation: gradient 45s ease-in-out infinite; }
+.____menu_dot, .____menu_button { 
+  min-width: 8px;
+  min-height: 8px;
+  border-radius: 4px;
+  margin: 0px 2px;
+  background: linear-gradient(-45deg, @cb, @cc, @cd, @ce);
+  background-size: 500% 500%;
+  /* added transition on hover and on the element, for fading in and out */
+  transition: background 1.5s ease; }
+/* sets the dot background from gradient to default bar colour on hover*/
+._menu_event:hover > .__menu_inner > * > * { background: @c0; }
+._menu_event:hover {
+  animation: gradient 30s ease-in-out infinite;
+  background: linear-gradient(-45deg, @cb, @cc, @cd, @ce);
+  background-size: 400% 400%;
+  transition: background 1s ease; }
 
-.bar__controlcenter_container { /* controls taskbar icons */
-  padding-left: 14px;
-  margin-right: 0px;
-  border-radius: 22px 6px 6px 22px;}
-  .bar__controlcenter_container image {
-    margin-right: 6px; }
-  .bar__controlcenter_container .tray > * {
-    margin-right: 6px; }
-    .bar__controlcenter_container .tray > *:last-child {
-      margin-right: 6px; }
-  .bar__controlcenter_container .tray image {
-    font-size: 17px; }
 
-.shader {
-  background: rgba(0, 0, 0, 0.4);
-  border-radius: 30px;
-  padding: 20px; }
+.workspaces, 
+.workspaces .workspace_box {
+  margin: 0px 10px; } 
+.workspaces .indicator {
+  min-width: 14px;
+  min-height: 14px;
+  border-radius: 4px;
+  margin: 0px 8px;
+  background-color: @c2;
+  transition: min-width 0.5s ease, background 1s ease; }
+.occupied > .indicator {
+  background-color: @c4; }
+.urgent > .indicator {
+  background-color: @cf; }
+.active > .indicator,
+.urgent > .indicator,
+.occupied > .indicator { 
+  min-width: 14px;
+  min-height: 14px;
+  border-radius: 4px;
+  margin: 0px 8px; 
+  transition: background 1s ease;}
+.workspaces .active > .indicator:last-child,
+.workspaces .active > .indicator:first-child  {
+  margin: 0px 4px; }
+.workspaces .active > .indicator {
+  min-width: 30px;
+  border-radius: 4px;
+  background: linear-gradient(-45deg, @cb, @cc, @cd, @ce);
+  background-size: 500% 500%;
+  animation: gradient 30s ease-in-out infinite;
+  transition: min-width 0.5s ease, background 1s ease; }
 
-.slider__tooltip {
-  color: #472a00;
-  background-color: #f4bc7b;
-  padding: 0;
-  border-radius: 100px;
-  min-width: 42px;
-  min-height: 42px;
-  margin-right: 8px;
-  font-size: 18px; }
+trough { /* slider / progressbar background */
+  min-height: 14px;
+  min-width: 75px;
+  margin: 10px 5px; 
+  border-radius: 4px;
+  background-color: @c2;
+  transition: background 1s ease; }
+trough highlight, /* slider highlight */
+progressbar trough progress { /* slider progressbar slider */
+  min-height: 14px;
+  min-width: 0px;
+  border-radius: 4px;
+  background: linear-gradient(-45deg, @cb, @cc, @cd, @ce);
+  background-size: 500% 500%;
+  animation: gradient 30s ease infinite;
+  transition: background 1s ease; 
+}
 
-.volume__box .arrow {
-  color: #e9e1dc;
-  background-color: rgba(233, 225, 220, 0.08);
-  padding: 0;
-  border-radius: 100px;
-  min-width: 42px;
-  min-height: 42px;
-  margin-left: 8px; }
+/*
+trough highlight { 
+  min-height: 14px;
+  min-width: 0px;
+  border-radius: 4px;
+  background: linear-gradient(-45deg, @cb, @cc, @cd, @ce);
+  background-size: 500% 500%;
+  animation: gradient 18s ease infinite;
+}*/
 
-.volume__slider trough,
-.brightness__slider trough {
-  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
-  border-radius: 100px;
-  background-color: rgba(233, 225, 220, 0.08);
-  min-height: 42px; }
-  .volume__slider trough highlight,
-  .volume__slider trough progress,
-  .brightness__slider trough highlight,
-  .brightness__slider trough progress {
-    border-radius: 100px;
-    background-color: #f4bc7b;
-    border-radius: 100px;
-    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out; }
-  .volume__slider trough slider,
-  .brightness__slider trough slider {
-    border-radius: 100px;
-    min-height: 42px;
-    min-width: 42px;
-    background-color: transparent;
-    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out; }
 
-.mixer__tooltip {
-  margin-left: 0px;
-  background: #2d2926;
-  min-height: 42px;
-  min-width: 42px;
-  border-radius: 100px; }
 
-.mixer__slider trough {
-  border-radius: 100px;
-  background-color: rgba(233, 225, 220, 0.08);
-  min-height: 14px; }
-  .mixer__slider trough highlight,
-  .mixer__slider trough progress {
-    border-radius: 100px;
-    background-color: #f4bc7b;
-    border-radius: 100px; }
-  .mixer__slider trough slider {
-    border-radius: 100px;
-    min-height: 14px;
-    min-width: 14px;
-    background-color: transparent; }
 
-.notifications {
-  margin-left: 20px;
-  border-radius: 30px;
-  min-width: 400px;
-  min-height: 400px;
-  border-radius: 40px;
-  background: #221f1c;
-  color: #e9e1dc; }
-
-.placeholder > image {
-  font-size: 50px;
-  margin-bottom: 20px; }
-
-.notification-list {
-  min-height: 380px; }
-
-.notification-scrollable {
-  padding: 16px;
-  min-height: 500px; }
-  .notification-scrollable scrollbar,
-  .notification-scrollable scrollbar * {
-    all: unset; }
-  .notification-scrollable scrollbar.vertical:hover slider {
-    background-color: #f4bc7b;
-    min-width: 0.6em; }
-  .notification-scrollable scrollbar.vertical slider {
-    background-color: #998f86;
-    border-radius: 100px;
-    min-width: 0.4em;
-    min-height: 2em; }
-
-.notifications__title {
-  margin-left: 12px;
-  font-size: 18px;
-  font-weight: 500; }
-
-.notifications__clear-button {
-  background: #2d2926;
-  padding: 10px 20px;
-  border-radius: 100px;
-  margin-bottom: 20px;
-  margin-right: 30px;
-  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out; }
-  .notifications__clear-button:hover {
-    background: #383431; }
-  .notifications__clear-button image {
-    margin-left: 4px; }
-
-.notification:first-child > box {
-  border-top-right-radius: 30px;
-  border-top-left-radius: 30px; }
-
-.notification:last-child > box {
-  border-bottom-right-radius: 30px;
-  border-bottom-left-radius: 30px; }
-
-.notification > box {
-  padding: 14px 16px 14px 14px;
-  margin-bottom: 4px;
-  color: #e9e1dc;
-  background-color: #2d2926;
-  border-radius: 4px; }
-
-.notification .icon {
-  margin-right: 16px;
-  background: rgba(233, 225, 220, 0.08);
-  border-radius: 100px; }
-
-.notification .title {
-  font-size: 15px;
-  font-weight: 600;
-  margin-bottom: 4px; }
-
-.notification .time {
-  font-size: 14px;
-  font-weight: 400; }
-
-.notification .description {
-  font-size: 15px;
-  font-weight: 400;
-  color: #d0c4ba; }
-
-.notification .action-button {
-  margin-top: 14px; }
-
-.notification .close-button {
-  margin-left: 14px;
-  padding: 4px;
-  border-radius: 100px;
-  background-color: #f4bc7b;
-  color: #472a00;
-  font-size: 20px;
-  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out; }
-  .notification .close-button:hover {
-    background: #ffddb9; }
-
-.notifications-popup-list {
-  margin-top: 8px;
-  min-width: 400px; }
-  .notifications-popup-list .notification > box {
-    color: #e9e1dc;
-    background-color: rgba(22, 19, 16, 0.8); }
-
-.indicator .progress {
-  padding: 0px;
-  border-radius: 100px;
-  background-color: rgba(22, 19, 16, 0.8);
-  min-width: 70px;
-  margin-left: 24px; }
-  .indicator .progress .fill {
-    border-radius: 100px;
-    background-color: #f4bc7b;
-    color: #472a00;
-    min-width: 60px; }
-    .indicator .progress .fill image {
-      margin-right: 14px;
-      -gtk-icon-transform: scale(1); }
-    .indicator .progress .fill label {
-      margin: 3px;
-      font-size: 12px; }
-
-.calendar {
-  background: rgba(22, 19, 16, 0.8);
-  border-radius: 20px;
-  padding: 20px; }
-  .calendar * {
-    padding: 60px; }
-  .calendar calendar {
-    font-size: 1.1em;
-    padding: 0.2em; }
-    .calendar calendar:selected {
-      min-width: 60px;
-      min-height: 60px;
-      background: #643e07;
-      color: #ffddb9;
-      border-radius: 100px; }
-    .calendar calendar.header {
-      background-color: transparent;
-      border: none; }
-    .calendar calendar.highlight {
-      padding: 40px; }

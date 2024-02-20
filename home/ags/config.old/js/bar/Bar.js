@@ -3,34 +3,19 @@ import Date from './widgets/Date.js';
 
 import Workspaces from './widgets/Workspaces.js';
 import Separator from '../misc/Separator.js';
-import { Widget } from '../imports.js';
+import { App, Widget } from '../imports.js';
 
-import sys_tray from './widgets/sys_tray.js';
-import menu from "./widgets/menu.js";
-import bat_level from './widgets/bat_level.js';
-import vol_level from './widgets/vol_level.js';
+import * as battery from '../misc/battery.js';
+
+import { ActiveApp } from './widgets/ActiveApp.js';
+import SystemIndicators from './widgets/SystemIndicators.js';
 
 const Battery = () => Widget.Box({
     class_name: 'battery',
-    hpack: 'start',
-    children: [ 
-        bat_level(), 
-    ],
-});
-
-const Menu = () => Widget.Box({
-    class_name: 'menu',
-    hpack: 'start',
-    children: [ 
-        menu(), 
-    ],
-});
-
-const Volume = () => Widget.Box({
-    class_name: 'volume',
-    hpack: 'start',
-    children: [ 
-        vol_level(),
+    hpack: 'end',
+    children: [
+        battery.Indicator(),
+        battery.LevelLabel(),
     ],
 });
 
@@ -44,18 +29,14 @@ const Left = () => Widget.Box({
         Separator(),
         Date(),
         Separator(),
+        Workspaces(),
+        Separator(),
     ],
 });
 
 const Center = () => Widget.Box({
     class_name: 'bar__center',
-    children: [
-        Volume(),
-        Separator(),
-        Workspaces(),
-        Separator(),
-        Battery(),
-    ],
+    child: ActiveApp(),
 });
 
 const Right = () => Widget.Box({
@@ -63,9 +44,10 @@ const Right = () => Widget.Box({
     orientation: 'horizontal',
     hpack: 'end',
     children: [
-        sys_tray(),
         Separator(),
-        Menu(),
+        SystemIndicators(),
+        Separator(),
+        Battery(),
     ],
 });
 

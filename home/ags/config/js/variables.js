@@ -1,16 +1,6 @@
 import { Variable } from './imports.js';
+import GLib from 'gi://GLib';
 
-const prettyUptime = str => {
-    if (str.length >= 4)
-        return str;
-
-    if (str.length === 1)
-        return '0:0' + str;
-
-    if (str.length === 2)
-        return '0:' + str;
-};
-
-export const uptime = Variable(0, {
-    poll: [60_000, 'uptime', line => prettyUptime(line.split(/\s+/)[2].replace(',', ''))],
+export const clock = Variable(GLib.DateTime.new_now_local(), {
+    poll: [1000, () => GLib.DateTime.new_now_local()],
 });
