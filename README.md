@@ -24,25 +24,20 @@ clone this repository to your /home/username/
 
  ```git clone https://codeberg.org/kye/nixos``` or ```git clone --recurse-submodules https://codeberg.org/kye/nixos``` to snag the wallpapers
 
-move your /etc/nixos/hardware-configuration.nix to one of the [hosts/hostname](hosts/laptop/) directories you plan to use and replace the hardware.nix with your own
+copy contents of your /etc/nixos/hardware-configuration.nix [hardware.nix](hosts/laptop/hardware.nix) to [hosts/hostname](hosts/laptop/) which you plan to use
 
 open the root [flake.nix](flake.nix), change the ```user = "kel";``` line to your own username, this will change all home-manager and nixos config files
 
 run ```sudo nixos-rebuild switch --flake /home/username/nixos#hostname --show-trace``` while changing username and hostname to what you have configured
 
-you may need to ```cd /``` and ```sudo rm -R boot``` then run another ```rebuild --flake /home/username/nixos#hostname``` command from above to get gdm / grub running, if moving from sddm this will be required as sddm will persist and boot you into a previous nixos generation. you *may* be able to work-around this by deleting older generations.
-
 reboot the system and see what broke
 
-from first reboot you can run ```rebuild``` in a terminal window to save on typing / digging history in your console
+wallpapers may not work out the gate, will require some configuration in per-device.nix
 
-wallpapers may not work out the gate, will require some configuration in per-device.nix *TODO*
+## issues:
 
-## screenshots:
+### boot -
+current configuration uses grub, you may need to ```cd /``` and ```sudo rm -R boot``` then run another ```sudo nixos-rebuild switch --flake /home/username/nixos#hostname``` command from above to get gdm / grub running
 
-hyprland pseudotyping showing off dimmed windows and selected window 
-![kye/nixos](screenshots/2.jpg "screenshot-2")
-
-
-lite-xl 
-![kye/nixos](screenshots/3.jpg "screenshot-3")
+### home-manager -
+it will complain about files in the way in your ```.config```, delete the current files and run another rebuild
