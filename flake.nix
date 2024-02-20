@@ -8,7 +8,7 @@
     # nixpkgs.url = "https://flakehub.com/f/NixOS/nixpkgs/0.1.0.tar.gz"; # testing flakehub
     # nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
-    inputs.agenix.url = "github:ryantm/agenix";
+    agenix.url = "github:ryantm/agenix";
 
     hyprland.url = "github:hyprwm/Hyprland";
 
