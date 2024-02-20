@@ -15,20 +15,14 @@
     promptInit = "info='n host cpu os wm sh n' fet.sh";
     ohMyZsh = {
       enable = true;
-      # theme = "$HOME/nixos/home/zsh/fino-time-mod";
-      # theme = "omzsh-nix";
-      theme = "fino-time";
+      custom = "/home/${user}/.config/omzsh/";
+      theme = "omzsh-nix";
       plugins = [
         "sudo"
         "terraform"
         "systemadmin"
         "vi-mode"
         "colorize"
-        {
-          name = "omzsh-nix";
-          src = "/home${user}/.config/";
-          file = ".omzsh-nix.zsh-theme";
-        }
       ];
     };
   };

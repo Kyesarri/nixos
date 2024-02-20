@@ -15,7 +15,7 @@
   user,
   ...
 }: {
-  home-manager.users.${user}.home.file."/home/${user}/.config/omzsh-nix.zsh-theme" = {
+  home-manager.users.${user}.home.file."/home/${user}/.config/omzsh/omzsh-nix.zsh-theme" = {
     text = ''
       function virtualenv_info {
           [ $CONDA_DEFAULT_ENV ] && echo "($CONDA_DEFAULT_ENV) "
@@ -29,19 +29,17 @@
 
       function box_name {
         local box="''${SHORT_HOST:-$HOST}"
-        [[ -f ~/.box-name ]] && box="$(< ~/.box-name)"
+      #  [[ -f ~/.box-name ]] && box="$(< ~/.box-name)"
         echo "''${box:gs/%/%%}"
       }
 
-      PROMPT="╭─%{$FG[040]%}%n%{$reset_color%} %{$FG[239]%}at%{$reset_color%} %{$FG[033]%}$(box_name)%{$reset_color%} %{$FG[239]%}in%{$reset_color%} %{$terminfo[bold]$FG[226]%}%~%{$reset_color%}\$(git_prompt_info)\$(ruby_prompt_info) %D - %*
+      PROMPT="%F{#${config.colorscheme.palette.base05}}%|╭─%f%F{#${config.colorscheme.palette.base0E}}%n%|%f%F{#${config.colorscheme.palette.base04}}%| on%f%F{#${config.colorscheme.palette.base0A}}%| $(box_name)%f%F{#${config.colorscheme.palette.base04}}%| in%f%F{#${config.colorscheme.palette.base0C}}%| %{$terminfo[bold]%}%~%f\$(git_prompt_info) %D - %*
       ╰─\$(virtualenv_info)\$(prompt_char) "
 
-      ZSH_THEME_GIT_PROMPT_PREFIX=" %{$FG[239]%}on%{$reset_color%} %{$fg[255]%}"
+      ZSH_THEME_GIT_PROMPT_PREFIX=" %F{#${config.colorscheme.palette.base09}}%|git %f"
       ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%}"
-      ZSH_THEME_GIT_PROMPT_DIRTY="%{$FG[202]%}✘✘✘"
-      ZSH_THEME_GIT_PROMPT_CLEAN="%{$FG[040]%}✔"
-      ZSH_THEME_RUBY_PROMPT_PREFIX=" %{$FG[239]%}using%{$FG[243]%} ‹"
-      ZSH_THEME_RUBY_PROMPT_SUFFIX="›%{$reset_color%}"
+      ZSH_THEME_GIT_PROMPT_DIRTY="%F{#${config.colorscheme.palette.base0F}}%| ✘✘✘%f"
+      ZSH_THEME_GIT_PROMPT_CLEAN="%F{#${config.colorscheme.palette.base0B}}%| ✔%f"
     '';
   };
 }
