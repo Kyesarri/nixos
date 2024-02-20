@@ -19,11 +19,8 @@
 
   environment.systemPackages = with pkgs; [
     clinfo
-    gwe
-    nvtop-nvidia
-    virtualglLib
-    vulkan-loader
-    vulkan-tools
+    gwe # gpu overclocking
+    nvtop
   ];
 
   services.xserver = {videoDrivers = ["nvidia"];};

@@ -8,6 +8,8 @@
     # nixpkgs.url = "https://flakehub.com/f/NixOS/nixpkgs/0.1.0.tar.gz"; # testing flakehub
     # nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
+    inputs.agenix.url = "github:ryantm/agenix";
+
     hyprland.url = "github:hyprwm/Hyprland";
 
     nix-colors.url = "github:misterio77/nix-colors"; # may replace with stylix
@@ -29,6 +31,7 @@
     hyprland,
     alejandra,
     nix-colors,
+    agenix,
     ...
   } @ inputs: let
     user = "kel"; # global username
@@ -42,6 +45,7 @@
           ./hosts/laptop
           {environment.systemPackages = [alejandra.defaultPackage.x86_64-linux];} # codium plugins
           home-manager.nixosModules.home-manager
+          agenix.nixosModules.default
           {
             home-manager = {
               useGlobalPkgs = true;

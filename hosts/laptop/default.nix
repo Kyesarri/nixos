@@ -23,7 +23,7 @@ in
       ../../hardware/battery
       ../../hardware/bluetooth
       ../../hardware/nvidia
-      ../../hardware/wireless/nwm # networkmanager change to iwd if you dislike iwd
+      ../../hardware/wireless/nwm # networkmanager
 
       ../../home
       ../../home/ags
@@ -40,7 +40,6 @@ in
       ../../home/kitty
       ../../home/ulauncher
       ../../home/virt
-      # ../../home/waybar # fuckit, lets run ags
       ../../home/gtk
       ../../home/syncthing
       ../../home/tailscale
@@ -76,8 +75,12 @@ in
           CPU_SCALING_GOVERNOR_ON_AC = "performance";
           CPU_SCALING_GOVERNOR_ON_BAT = "powersave";
 
-          CPU_ENERGY_PERF_POLICY_ON_BAT = "power";
+          CPU_BOOST_ON_AC = "1";
+          CPU_BOOST_ON_BAT = "0";
+
+          CPU_ENERGY_PERF_POLICY_ON_BAT = "balance_power";
           CPU_ENERGY_PERF_POLICY_ON_AC = "performance";
+          DEVICES_TO_DISABLE_ON_STARTUP = "bluetooth"; # disabled on-boot was causing hangs waking from suspend
 
           CPU_MIN_PERF_ON_AC = 0;
           CPU_MAX_PERF_ON_AC = 100;
@@ -86,7 +89,7 @@ in
         };
       };
 
-      fprintd.enable = true; # fprint reader, needs work for this model
+      # fprintd.enable = true; # fprint reader, needs work for this model
       xserver.enable = true;
       udev.extraHwdb = ''
         evdev:name:*:dmi:bvn*:bvr*:bd*:svnASUS*:pn*:*

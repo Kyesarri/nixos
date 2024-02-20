@@ -16,14 +16,14 @@
         Experimental = "true";
       };
       Policy = {
-        AutoEnable = "true";
+        AutoEnable = "False";
       };
     };
   };
 
   home-manager.users.${user}.home.file.".config/hypr/per-app/bluetooth.conf" = {
     text = ''
-      # exec-once = blueman-applet
+      exec-once = blueman-applet
       # windowrule = float, ^(blueberry.py)$
     '';
   };
