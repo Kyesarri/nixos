@@ -40,6 +40,7 @@ in
       ../../home/virt
       ../../home/waybar
       ../../home/gtk
+      ../../home/zsh
 
       # ../../home/syncthing # testing without currently
       # ../../home/tailscale # TODO disabled until i can figure out mkif hostname == {nix-serv}; with an else

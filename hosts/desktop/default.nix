@@ -43,6 +43,7 @@ in
       ../../home/syncthing
       ../../home/tailscale
       ../../home/wlogout
+      ../../home/zsh
     ];
 
     colorscheme = inputs.nix-colors.colorSchemes.${scheme};

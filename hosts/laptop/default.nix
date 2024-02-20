@@ -45,6 +45,7 @@ in
       ../../home/tailscale
       ../../home/wallpaper
       ../../home/wlogout
+      ../../home/zsh
     ];
 
     hardware.nvidia = {

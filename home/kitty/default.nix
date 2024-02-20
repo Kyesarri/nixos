@@ -12,7 +12,7 @@
       enable = true;
       settings = {
         active_tab_foreground = "#${config.colorScheme.palette.base05}";
-        active_tab_background = "#${config.colorScheme.palette.base00}";
+        active_tab_background = "#${config.colorScheme.palette.base03}";
 
         foreground = "#${config.colorScheme.palette.base05}";
         background = "#${config.colorScheme.palette.base00}";
