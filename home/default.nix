@@ -9,7 +9,7 @@
     ...
   }: {
     imports = [
-      inputs.ags.homeManagerModules.default # imports from root flake.nix then builds the package which is nice :)
+      inputs.ags.homeManagerModules.default # imports from flake.nix
       inputs.nix-colors.homeManagerModules.default
     ];
     programs.home-manager.enable = true;

@@ -2,6 +2,7 @@ import { Hyprland, Widget } from '../../imports.js';
 import { range } from '../../utils.js';
 
 const dispatch = arg => Hyprland.message(`dispatch workspace ${arg}`);
+
 const ws = 0;
 
 const Workspaces = () => {

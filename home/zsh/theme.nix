@@ -7,7 +7,6 @@
 #   robbyrussell
 #
 # Also borrowing from http://stevelosh.com/blog/2010/02/my-extravagant-zsh-prompt/
-# ${config.colorscheme.palette.base00}
 {
   config,
   inputs,
@@ -29,11 +28,10 @@
 
       function box_name {
         local box="''${SHORT_HOST:-$HOST}"
-      #  [[ -f ~/.box-name ]] && box="$(< ~/.box-name)"
         echo "''${box:gs/%/%%}"
       }
 
-      PROMPT="%F{#${config.colorscheme.palette.base05}}%|╭─%f%F{#${config.colorscheme.palette.base0E}}%n%|%f%F{#${config.colorscheme.palette.base04}}%| on%f%F{#${config.colorscheme.palette.base0A}}%| $(box_name)%f%F{#${config.colorscheme.palette.base04}}%| in%f%F{#${config.colorscheme.palette.base0C}}%| %{$terminfo[bold]%}%~%f\$(git_prompt_info) %D - %*
+      PROMPT="╭─%F{#${config.colorscheme.palette.base0E}}%n%|%f%F{#${config.colorscheme.palette.base04}}%| on%f%F{#${config.colorscheme.palette.base0A}}%| $(box_name)%f%F{#${config.colorscheme.palette.base04}}%| in%f%F{#${config.colorscheme.palette.base0C}}%| %{$terminfo[bold]%}%~%f\$(git_prompt_info) %D - %*
       ╰─\$(virtualenv_info)\$(prompt_char) "
 
       ZSH_THEME_GIT_PROMPT_PREFIX=" %F{#${config.colorscheme.palette.base09}}%|git %f"

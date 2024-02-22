@@ -13,15 +13,16 @@
 @keyframes gradient {
   0% { background-position: 0% 25%; }
   10% { background-position: 10% 50%; }
-  20% { background-position: 20% 75%; }
-  30% { background-position: 30% 100%; }
-  40% { background-position: 40% 50%; }
-  50% { background-position: 80% 20%; }
-  60% { background-position: 100% 10%; }
-  70% { background-position: 75% 0%; }
-  80% { background-position: 40% 75%; }
-  90% { background-position: 20% 50%; }
-  100% { background-position: 10% 30%; } }
+  20% { background-position: 20% 70%; }
+  30% { background-position: 30% 85%; }
+  40% { background-position: 40% 90%; }
+  50% { background-position: 80% 95%; }
+  60% { background-position: 100% 100%; }
+  70% { background-position: 75% 70%; }
+  80% { background-position: 40% 40%; }
+  90% { background-position: 20% 20%; }
+  100% { background-position: 10% 10%; } 
+}
 
 .separator {
   min-width: 10px;
@@ -57,14 +58,29 @@ window.popup menu {
       margin-bottom: 0; }
 
 .bar {
-  background-color: rgba(0, 0, 0, 0);
-  padding: 10px 10px;
+  background-color: transparent;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 5px;
 } 
+
+.wallpaper {
+  background: linear-gradient(-45deg, @cb, @cc, @cd, @ce);
+  background-size: 100% 100%;
+  padding: 300px 300px;
+  opacity: 0.5;
+  /* animation: gradient 15s ease-in-out infinite;*/
+  /* both issues with framerate*/ 
+  /*transition: background 1s ease-in-out;*/
+}
 
 /* standard hover */
 trough:hover, 
 .sys_button:hover { 
-  background: @c4; 
+  background: @c4;
+  opacity: 0.5;
+  transition: opacity 1s ease;  
+  transition: background 1s ease;
 }
 
 /* standard box / backdrop / widget settings */
@@ -72,7 +88,7 @@ trough:hover,
 .menu,
 .battery,
 .volume,
-.bar__controlcenter_container,
+/* .bar__controlcenter_container, */
 .date,
 .sys_box,
 .clock {
@@ -176,18 +192,8 @@ progressbar trough progress { /* slider progressbar slider */
   background: linear-gradient(-45deg, @cb, @cc, @cd, @ce);
   background-size: 500% 500%;
   animation: gradient 30s ease infinite;
-  transition: background 1s ease; 
+  transition: background 1s ease;
 }
-
-/*
-trough highlight { 
-  min-height: 14px;
-  min-width: 0px;
-  border-radius: 4px;
-  background: linear-gradient(-45deg, @cb, @cc, @cd, @ce);
-  background-size: 500% 500%;
-  animation: gradient 18s ease infinite;
-}*/
 
 
 

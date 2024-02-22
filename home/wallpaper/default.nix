@@ -1,14 +1,24 @@
-{}
-#  pkgs,
-#  nix-colors,
-#  inputs,
-#  ...
-#}: let
-#  inherit nix-colors-lib = nix-colors.lib.contrib {inherit pkgs;};
-#in {
-#  colorScheme = nix-colors-lib.colorSchemeFromPicture {
-#    path = ./nixos/wallpaper;
-#    kind = "dark";
-#  };
-#}
-
+{
+  pkgs,
+  nix-colors,
+  inputs,
+  user,
+  config,
+  lib,
+  scheme,
+  ...
+}: let
+  inherit (inputs.nix-colors.lib-contrib {inherit pkgs;}) gtkThemeFromScheme nixWallpaperFromScheme;
+in {
+  programs.hyprland = {
+    wallpaper = {
+      enable = true;
+      path = lib.mkDefault (nixWallpaperFromScheme {
+        scheme = inputs.nix-colors.colorSchemes.${scheme};
+        width = 1920;
+        height = 1080;
+        logoScale = 4;
+      });
+    };
+  };
+}

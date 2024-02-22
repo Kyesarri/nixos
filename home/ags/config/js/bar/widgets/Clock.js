@@ -1,14 +1,10 @@
-import { clock } from '../../variables.js';
-import Widget from 'resource:///com/github/Aylur/ags/widget.js';
+import { Widget } from '../../imports.js';
+import GLib from 'gi://GLib';
 
-export default ({
-    format = '%H:%M',
-    interval = 1000,
-    ...rest
-} = {}) => Widget.Label({
+export default () => Widget.Label({
     class_name: 'clock',
-    label: clock.bind('value').transform(time => {
-        return time.format(format)}),
-//        return time.format(format) || 'yer nar'; }),
-    ...rest,
+    label: GLib.DateTime.new_now_local().format("%H:%M"),
+    setup: (self) => self.poll(5000, label => {
+        label.label = GLib.DateTime.new_now_local().format("%H:%M");
+    }),
 });

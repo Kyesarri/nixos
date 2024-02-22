@@ -67,6 +67,9 @@
           mouse_move_enables_dpms = true
           key_press_enables_dpms = true
           vfr = true
+          allow_session_lock_restore = true
+          render_ahead_safezone = 1
+          # background_color = $c1 # only single colour :(
       }
 
       input {
@@ -89,25 +92,33 @@
       general {
           gaps_in = 5
           gaps_out = 10
-          border_size = 5
+          border_size = 3
           resize_on_border = true
           layout = dwindle
-          col.active_border = $c0 $ca $c3 $c2 $c1 $c0 90deg
-          col.inactive_border = $c0 $c1 90deg
+          col.active_border = $c0 $c1 $c1 $c2 $c1 $c0
+          col.inactive_border = $c0 $c1
+          # border_size = 5
+          # col.active_border = $c0 $ca $c3 $c2 $c1 $c0 90deg
+          # col.inactive_border = $c0 $c1 90deg
       }
 
       decoration {
-          rounding = 10
-          drop_shadow = 1
-          shadow_range = 30
-          shadow_render_power = 3
+          # drop_shadow = 1
+          # shadow_range = 30
+          # shadow_render_power = 3
+          drop_shadow = 0
+          shadow_range = 0
+          shadow_render_power = 0
           col.shadow = $ca
           col.shadow_inactive= $c0
+          rounding = 10
           active_opacity = 1
           inactive_opacity = .90
           dim_inactive = true
           dim_strength = 0.4
           blur {
+              vibrancy = 0.25
+              vibrancy_darkness = 0.25
               enabled = true
               size = 5
               passes = 1
@@ -134,8 +145,8 @@
           animation = fade, 1, 5, smoothIn
           animation = fadeDim, 1, 5, smoothIn
           animation = workspaces, 1, 5, snappy, slide
-          animation = border, 1, 5, liner
-          animation = borderangle, 1, 360, liner, loop
+          animation = border, 1, 5, liner # change window focus
+          animation = borderangle, 1, 360, liner, loop # to animate border
       }
 
       ############################################ Layouts ###################################################

@@ -36,6 +36,7 @@
   } @ inputs: let
     user = "kel"; # global username
     plymouth_theme = "deus_ex"; # device specific?
+    # scheme = "horizon-dark";
   in {
     nixosConfigurations = {
       "nix-laptop" = nixpkgs.lib.nixosSystem {

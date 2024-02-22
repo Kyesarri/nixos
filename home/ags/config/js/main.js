@@ -1,21 +1,21 @@
 import { USER } from 'resource:///com/github/Aylur/ags/utils.js';
-import Bar from './bar/Bar.js';
+import Bar from './bar/main.js';
+//import Wallpaper from './wallpaper.js';
 
-//import * as setup from './utils.js';
 import { forMonitors } from './utils.js';
-
-//setup.globalServices();
 
 const windows = () => [
     forMonitors(Bar),
+//    forMonitors(Wallpaper),
 ];
 
 export default {
-    windows: windows().flat(2),
-    // maxStreamVolume: 1.5,
-    closeWindowDelay: {
-        'quicksettings': 300,
-        'dashboard': 300,
-    },
+    windows: windows().flat(1),
+    //windows: windows().flat(2),
+    //maxStreamVolume: 1.5,
+    //closeWindowDelay: {
+    //    'quicksettings': 300,
+    //    'dashboard': 300,
+    //},
     style: `/home/${USER}/.config/ags/style.css`,
 };

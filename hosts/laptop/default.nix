@@ -1,5 +1,6 @@
 let
-  scheme = "tokyo-night-storm";
+  #scheme = "tokyo-night-storm";
+  scheme = "horizon-dark"; # new hotness
 in
   {
     config,
@@ -23,28 +24,28 @@ in
       ../../hardware/battery
       ../../hardware/bluetooth
       ../../hardware/nvidia
-      ../../hardware/wireless/nwm # networkmanager
+      ../../hardware/wireless/nwm # networkmanager # TODO this is shit, look into mkOption
 
       ../../home
-      ../../home/ags
-      ../../home/asusctl
+      ../../home/ags # TODO pam / menu /
+      ../../home/asusctl # TODO look into issues with this further
       ../../home/bottom
-      ../../home/codium
-      ../../home/copyq
+      ../../home/codium # TODO build custom theme to use, with nix-colors. # TODO pin versions to avoid compiling
+      ../../home/copyq # TODO change to an alternative
       ../../home/dunst # ags has own notification daemon, will require fixing brightness scripts
-      ../../home/firefox
+      ../../home/firefox # why you always need to build from source, check to see if there are nighty / beta precompiled
       ../../home/git
       ../../home/gaming
-      ../../home/hypr
-      ../../home/kde
+      ../../home/hypr # TODO remove wallpaper hyprwal?
+      # ../../home/kde # meh
       ../../home/kitty
-      ../../home/ulauncher
+      ../../home/ulauncher # TODO rename built theme, add credits to og author
       ../../home/virt
       ../../home/gtk
-      ../../home/syncthing
+      ../../home/syncthing # TODO fix not launching at boot
       ../../home/tailscale
-      ../../home/wallpaper
-      ../../home/wlogout
+      #../../home/wallpaper
+      # ../../home/wlogout # removed, will use AGS remember to add AGS to PAM
       ../../home/zsh
     ];
 
@@ -102,6 +103,6 @@ in
 
     environment = {
       systemPackages = with pkgs; [pciutils];
-      shellAliases.rebuild = "sudo nixos-rebuild switch --flake /home/${user}/nixos#nix-laptop --show-trace -j 16";
+      shellAliases.rebuild = "cd /home /${user} && sudo nixos-rebuild switch --flake /home/${user}/nixos#nix-laptop --show-trace -j 16 && hyprctl reload && ./ags.sh";
     };
   }

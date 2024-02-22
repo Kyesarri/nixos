@@ -1,4 +1,4 @@
-import Widget from 'resource:///com/github/Aylur/ags/widget.js';
+import { Widget } from '../../imports.js';
 
 // define single dot, button in a box
 const dots = () => Widget.Box({ 

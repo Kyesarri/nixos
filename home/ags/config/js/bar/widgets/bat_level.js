@@ -1,5 +1,4 @@
-import Battery from 'resource:///com/github/Aylur/ags/service/battery.js';
-import Widget from 'resource:///com/github/Aylur/ags/widget.js';
+import { Battery, Widget } from '../../imports.js';
 
 const state = arg => Battery.bind('charging');
 

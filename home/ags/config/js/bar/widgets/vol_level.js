@@ -1,5 +1,4 @@
-import Audio from 'resource:///com/github/Aylur/ags/service/audio.js';
-import Widget from 'resource:///com/github/Aylur/ags/widget.js';
+import { Widget, Audio } from '../../imports.js';
 
 export default () => Widget.Box({
     class_name: 'vol_level',
