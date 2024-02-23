@@ -11,6 +11,7 @@
         "terminal.integrated.fontFamily" = "Hack Nerd Font Mono";
         "editor.fontFamily" = "Hack Nerd Font Mono";
       };
+      # titleBarStyle = custom for no crashy crashy in wayland
       package = pkgs.vscodium;
       extensions = with pkgs.vscode-extensions; [
         enkia.tokyo-night

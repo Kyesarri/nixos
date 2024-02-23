@@ -17,6 +17,11 @@
     alejandra.url = "github:kamadorueda/alejandra/3.0.0";
     ags.url = "github:Aylur/ags";
 
+    auto-cpufreq = {
+      url = "github:AdnanHodzic/auto-cpufreq";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     home-manager = {
       url = "github:nix-community/home-manager/master"; # added master branch to follow unstable nixos
       inputs.nixpkgs.follows = "nixpkgs";
@@ -32,6 +37,7 @@
     alejandra,
     nix-colors,
     agenix,
+    auto-cpufreq,
     ...
   } @ inputs: let
     user = "kel"; # global username
@@ -41,11 +47,12 @@
     nixosConfigurations = {
       "nix-laptop" = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux"; # 4800hs / 1650 / 16gb TODO download more ram
-        specialArgs = {inherit nix-colors user plymouth_theme inputs;};
+        specialArgs = {inherit nix-colors user plymouth_theme auto-cpufreq inputs;};
         modules = [
           ./hosts/laptop
           {environment.systemPackages = [alejandra.defaultPackage.x86_64-linux];} # codium plugins
           home-manager.nixosModules.home-manager
+          auto-cpufreq.nixosModules.default
           agenix.nixosModules.default
           {
             home-manager = {

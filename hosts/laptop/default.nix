@@ -70,27 +70,25 @@ in
 
     networking.hostName = "nix-laptop";
 
-    services = {
-      tlp = {
+    programs = {
+      # from flake
+      auto-cpufreq = {
         enable = true;
         settings = {
-          CPU_SCALING_GOVERNOR_ON_AC = "performance";
-          CPU_SCALING_GOVERNOR_ON_BAT = "powersave";
+          charger = {
+            governor = "performance";
+            turbo = "auto";
+          };
 
-          CPU_BOOST_ON_AC = "1";
-          CPU_BOOST_ON_BAT = "0";
-
-          CPU_ENERGY_PERF_POLICY_ON_BAT = "balance_power";
-          CPU_ENERGY_PERF_POLICY_ON_AC = "performance";
-          DEVICES_TO_DISABLE_ON_STARTUP = "bluetooth"; # disabled on-boot was causing hangs waking from suspend
-
-          CPU_MIN_PERF_ON_AC = 0;
-          CPU_MAX_PERF_ON_AC = 100;
-          CPU_MIN_PERF_ON_BAT = 0;
-          CPU_MAX_PERF_ON_BAT = 20;
+          battery = {
+            governor = "powersave";
+            turbo = "auto";
+          };
         };
       };
+    };
 
+    services = {
       # fprintd.enable = true; # fprint reader, needs work for this model
       xserver.enable = true;
       udev.extraHwdb = ''
@@ -103,6 +101,6 @@ in
 
     environment = {
       systemPackages = with pkgs; [pciutils];
-      shellAliases.rebuild = "cd /home /${user} && sudo nixos-rebuild switch --flake /home/${user}/nixos#nix-laptop --show-trace -j 16 && hyprctl reload && ./ags.sh";
+      shellAliases.rebuild = "sudo nixos-rebuild switch --flake /home/${user}/nixos#nix-laptop --show-trace -j 16 && hyprctl reload && ./ags.sh";
     };
   }

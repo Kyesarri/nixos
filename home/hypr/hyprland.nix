@@ -106,16 +106,27 @@
           # drop_shadow = 1
           # shadow_range = 30
           # shadow_render_power = 3
+          # removing shadows, favour none for a more minimal look currently
+          # add to the TODO pile, nix mkOption for different theme settings :)
           drop_shadow = 0
           shadow_range = 0
           shadow_render_power = 0
           col.shadow = $ca
           col.shadow_inactive= $c0
           rounding = 10
+          #
+          # # testing nix-colors tweaks # #
+          #
           active_opacity = 1
-          inactive_opacity = .90
-          dim_inactive = true
-          dim_strength = 0.4
+          inactive_opacity = 1
+          dim_inactive = false
+          dim_strength = 1
+          #
+          # # testing nix-colors tweaks # #
+          #
+          # inactive_opacity = .90
+          # dim_inactive = true
+          # dim_strength = 0.4
           blur {
               vibrancy = 0.25
               vibrancy_darkness = 0.25

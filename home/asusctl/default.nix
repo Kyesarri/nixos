@@ -17,10 +17,11 @@
     # sleep.extraConfig = "HibernateMode=hybrid-sleep"; # testing workaround for nvidia sleep issues
   };
 
+  # these are not? required.
   home-manager.users.${user}.home.file.".config/hypr/per-app/asusd.conf" = {
     text = ''
-      exec-once = systemctl start asusd
-      exec-once = sleep 3 && asusctl -c 75
+      # exec-once = systemctl start asusd
+      # exec-once = sleep 3 && asusctl -c 75
     '';
   };
 }

@@ -190,6 +190,8 @@
     description = "${user}";
     extraGroups = ["networkmanager" "wheel"];
     packages = with pkgs; [
+      # emacs-gtk # testing vs codium :D # way too much for now
+      # KISS
       nix-init # git flake helper
       remmina # rdp client
       fet-sh # minimalistic fetch script
