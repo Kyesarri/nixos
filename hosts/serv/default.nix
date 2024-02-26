@@ -58,19 +58,15 @@ in
           22 # ssh, possibly open already but leaving in
           123 # chrony ntp, not working
         ];
-        #allowedUDPPorts = [
-        #  123 # chrony
-        #];
-      };
-      ###### TODO ######
-      #### TAILSCALE ###
-      firewall = {
         checkReversePath = "loose"; # fixes some connection issues with tailscale
-        allowedUDPPorts = [41641]; # tailscale TODO not needed with openFirewall?
-      }; # tailscale config here is temp, will remove once below # TODO has been completed
-      #### TAILSCALE ###
-      ###### TODO ######
+        allowedUDPPorts = [
+          41641 # tailscale TODO not needed with openFirewall?
+          123 # chrony ntp
+        ];
+      };
     };
+
+    # tailscale config above is temp, will remove once below # TODO has been completed
 
     services = {
       ###### TODO ######
