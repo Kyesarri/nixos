@@ -7,7 +7,7 @@
 
   services.asusd = {
     enable = true;
-    enableUserService = true;
+    # enableUserService = true;
   };
 
   services.supergfxd.enable = true;
@@ -20,8 +20,11 @@
   # these are not? required.
   home-manager.users.${user}.home.file.".config/hypr/per-app/asusd.conf" = {
     text = ''
+      # this is already a system service, dont need to start
       # exec-once = systemctl start asusd
-      # exec-once = sleep 3 && asusctl -c 75
+      # run battery level at every boot
+      # if this service has a moment run "systemctl start asusd", hopefully that fixes things
+      exec-once = sleep 3 && asusctl -c 75
     '';
   };
 }

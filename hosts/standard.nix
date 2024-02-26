@@ -190,7 +190,6 @@
     description = "${user}";
     extraGroups = ["networkmanager" "wheel"];
     packages = with pkgs; [
-      # emacs-gtk # testing vs codium :D # way too much for now
       # KISS
       nix-init # git flake helper
       remmina # rdp client
@@ -202,7 +201,6 @@
       gscreenshot # image capture
       hyprpicker # colour picker for wayland TODO fix script
       imagemagick # bitmap editor cli
-      swaylock-effects # lockscreen, TODO needs script for switch to toggle this on lid-close, TODO own /home/* ... why?
       slack # work
       tmux
       tmuxifier
@@ -212,15 +210,11 @@
       mate.mate-calc # calc
       p7zip # TODO needs a gui
       udiskie # usb mounting
-      # nwg-launchers # lockscreen / application launcher utilities TODO move to own /home/* TODO not needed?
-      # nwg-displays
-      # wlr-randr
       bitwarden # password manager
       armcord # discord wrapper / chat
       sleek-grub-theme # testing grub themes TODO grub
       adi1090x-plymouth-themes # plymouth themes
-      spot # gtk / gnome spotify client
-      # gtklock # lockscreen, might be an alternative for swaylock pending update
+      # gtklock # lockscreen, might be an alternative for swaylock pending update # use ags duh...
       # (callPackage ../packages/image-colorizer {})
 
       # (callPackage ../packages/wcp {}) # IT WORKS! Currently has bugs with RGBA colours, see package notes

@@ -26,11 +26,11 @@
         "nixpkgs": "nixpkgs_2"
       },
       "locked": {
-        "lastModified": 1707745842,
-        "narHash": "sha256-lKuGScvAr3Vosm9ix0bCT0G9lJydbNr274u9O/kv7Qw=",
+        "lastModified": 1708631826,
+        "narHash": "sha256-dWhecyCZiNH9gz7jolHSIl7lzeST5pu9osOKgFBimek=",
         "owner": "Aylur",
         "repo": "ags",
-        "rev": "7d0945a5589973049cfa7f8fa9ebdcc0ce6a9f3a",
+        "rev": "958b9c3869eb3c273b404122c45d79576690502a",
         "type": "github"
       },
       "original": {
@@ -273,15 +273,15 @@
         "nixpkgs-lib": "nixpkgs-lib"
       },
       "locked": {
-        "lastModified": 1707825078,
-        "narHash": "sha256-hTfge2J2W+42SZ7VHXkf4kjU+qzFqPeC9k66jAUBMHk=",
-        "owner": "misterio77",
+        "lastModified": 1708735240,
+        "narHash": "sha256-o9wjHlvxVA36eM6iaPwSP2vRhoFjgsZWf7Yxqvk18nU=",
+        "owner": "kyesarri",
         "repo": "nix-colors",
-        "rev": "b01f024090d2c4fc3152cd0cf12027a7b8453ba1",
+        "rev": "f2bade590b377bd95466ace4407865119628182d",
         "type": "github"
       },
       "original": {
-        "owner": "misterio77",
+        "owner": "kyesarri",
         "repo": "nix-colors",
         "type": "github"
       }
@@ -365,11 +365,11 @@
     },
     "nixpkgs_2": {
       "locked": {
-        "lastModified": 1705496572,
-        "narHash": "sha256-rPIe9G5EBLXdBdn9ilGc0nq082lzQd0xGGe092R/5QE=",
+        "lastModified": 1708475490,
+        "narHash": "sha256-g1v0TsWBQPX97ziznfJdWhgMyMGtoBFs102xSYO4syU=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "842d9d80cfd4560648c785f8a4e6f3b096790e19",
+        "rev": "0e74ca98a74bc7270d28838369593635a5db3260",
         "type": "github"
       },
       "original": {

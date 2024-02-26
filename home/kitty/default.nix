@@ -12,21 +12,29 @@
       enable = true;
       settings = {
         active_tab_foreground = "#${config.colorScheme.palette.base05}";
-        active_tab_background = "#${config.colorScheme.palette.base03}";
+        active_tab_background = "#${config.colorScheme.palette.base02}";
 
         foreground = "#${config.colorScheme.palette.base05}";
         background = "#${config.colorScheme.palette.base00}";
         url_color = "#${config.colorScheme.palette.base0E}";
 
-        #test terminal8, hot, love it
-        color0 = "#${config.colorScheme.palette.base00}";
-        color1 = "#${config.colorScheme.palette.base08}";
-        color2 = "#${config.colorScheme.palette.base0B}";
-        color3 = "#${config.colorScheme.palette.base0A}";
-        color4 = "#${config.colorScheme.palette.base0D}";
-        color5 = "#${config.colorScheme.palette.base0E}";
-        color6 = "#${config.colorScheme.palette.base0C}";
-        color7 = "#${config.colorScheme.palette.base07}";
+        # test terminal8, hot, love it, added terminal16
+        color0 = "#${config.colorScheme.palette.base00}"; # black
+        color1 = "#${config.colorScheme.palette.base08}"; # red
+        color2 = "#${config.colorScheme.palette.base0B}"; # green
+        color3 = "#${config.colorScheme.palette.base0A}"; # yellow
+        color4 = "#${config.colorScheme.palette.base0D}"; # blue
+        color5 = "#${config.colorScheme.palette.base0E}"; # magenta
+        color6 = "#${config.colorScheme.palette.base0C}"; # cyan
+        color7 = "#${config.colorScheme.palette.base05}"; # white
+        color8 = "#${config.colorScheme.palette.base03}"; # bright black
+        color9 = "#${config.colorScheme.palette.base08}"; # bright red
+        color10 = "#${config.colorScheme.palette.base0B}"; # bright green
+        color11 = "#${config.colorScheme.palette.base0A}"; # bright yellow
+        color12 = "#${config.colorScheme.palette.base0D}"; # bright blue
+        color13 = "#${config.colorScheme.palette.base0E}"; # bright magenta
+        color14 = "#${config.colorScheme.palette.base0C}"; # bright cyan
+        color15 = "#${config.colorScheme.palette.base07}"; # bright white
 
         repaint_delay = "12";
         sync_to_monitor = "yes";

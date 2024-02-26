@@ -69,7 +69,8 @@
           vfr = true
           allow_session_lock_restore = true
           render_ahead_safezone = 1
-          # background_color = $c1 # only single colour :(
+          background_color = #000000
+          # can only use a single colour
       }
 
       input {

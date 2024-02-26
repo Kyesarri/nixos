@@ -2,9 +2,10 @@
   home-manager.users.${user}.home.file.".config/hypr/per-device.conf" = {
     text = ''
       monitor=,1920x1080@120,auto,1
+      monitor=HDMI-A-1, 1920x1080, 0x0, 1
 
-      bindl =, switch:Lid Switch, exec, swaylock --screenshots --effect-blur 3x5 --fade-in 0.7 --effect-vignette 0.1:0.8
-      # binds lid switch to run swaylock script
+      # bindl =, switch:Lid Switch, exec, swaylock --screenshots --effect-blur 3x5 --fade-in 0.7 --effect-vignette 0.1:0.8
+      # binds lid switch to run swaylock script, swaylock smashing cpu on desktop, byeeeeeee
 
       # env = WLR_DRM_DEVICES,/dev/dri/card0:/dev/dri/card1
       # gpu preference for hypr, set to prefer integrated but will use dedicated if integrated isnt available
@@ -14,6 +15,7 @@
       env = GBM_BACKEND,nvidia-drm
       env = __GLX_VENDOR_LIBRARY_NAME,nvidia
       # hypr specific laptop things that will break tings
+      # tings were ok... what a mad world
 
     '';
   };

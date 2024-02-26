@@ -37,15 +37,13 @@ in
       ../../home/git
       ../../home/gaming
       ../../home/hypr # TODO remove wallpaper hyprwal?
-      # ../../home/kde # meh
       ../../home/kitty
       ../../home/ulauncher # TODO rename built theme, add credits to og author
       ../../home/virt
-      ../../home/gtk
+      ../../home/gtk # uhh, nix-colors gtk theme iirc
       ../../home/syncthing # TODO fix not launching at boot
       ../../home/tailscale
-      #../../home/wallpaper
-      # ../../home/wlogout # removed, will use AGS remember to add AGS to PAM
+      # ../../home/wallpaper # probs broken # yeah broken still :)
       ../../home/zsh
     ];
 
@@ -79,7 +77,6 @@ in
             governor = "performance";
             turbo = "auto";
           };
-
           battery = {
             governor = "powersave";
             turbo = "auto";
@@ -101,6 +98,6 @@ in
 
     environment = {
       systemPackages = with pkgs; [pciutils];
-      shellAliases.rebuild = "sudo nixos-rebuild switch --flake /home/${user}/nixos#nix-laptop --show-trace -j 16 && hyprctl reload && ./ags.sh";
+      shellAliases.rebuild = "sudo nixos-rebuild switch --flake /home/${user}/nixos#nix-laptop --show-trace -j 16 && cd ~ && hyprctl reload && ./ags.sh";
     };
   }

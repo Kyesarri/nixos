@@ -2,8 +2,8 @@
 # example = "#${colour.red1}";
 # # is required, workaround to add transparency if required later
 # to enable transparency:
-# example = "#99${colour.back}";
-# uses hex values 00 to ff case is irrelevant
+# example = "#99${colour.black}";
+# uses hex values 00 to ff for transparency case is irrelevant
 # been calling these from a home-manager module ex :
 #
 #     programs.kitty =

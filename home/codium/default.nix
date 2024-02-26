@@ -14,7 +14,7 @@
       # titleBarStyle = custom for no crashy crashy in wayland
       package = pkgs.vscodium;
       extensions = with pkgs.vscode-extensions; [
-        enkia.tokyo-night
+        # enkia.tokyo-night # removed TODO nix-colors theme
         yzhang.markdown-all-in-one
         kamadorueda.alejandra
         bbenoist.nix

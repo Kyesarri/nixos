@@ -8,7 +8,7 @@
   scheme,
   ...
 }: let
-  inherit (inputs.nix-colors.lib-contrib {inherit pkgs;}) gtkThemeFromScheme nixWallpaperFromScheme;
+  inherit (inputs.nix-colors.lib-contrib {inherit pkgs;}) nixWallpaperFromScheme;
 in {
   programs.hyprland = {
     wallpaper = {

@@ -143,27 +143,10 @@
   };
 
   programs = {
-    # key storage?
+    dconf.enable = true;
     gnupg.agent = {
       enable = true;
       enableSSHSupport = true;
-    };
-
-    dconf.enable = true;
-
-    zsh = {
-      enable = true;
-      enableCompletion = true;
-      autosuggestions.enable = true;
-      syntaxHighlighting.highlighters = ["main" "brackets" "pattern" "cursor" "line"];
-      syntaxHighlighting.patterns = {};
-      syntaxHighlighting.styles = {"globbing" = "none";};
-      promptInit = "info='n host cpu os wm sh n' fet.sh";
-      ohMyZsh = {
-        enable = true;
-        theme = "fino-time";
-        plugins = ["sudo" "terraform" "systemadmin" "vi-mode" "colorize"];
-      };
     };
   };
 

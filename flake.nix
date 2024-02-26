@@ -5,14 +5,13 @@
     nixos.url = "github:nixos/nixpkgs/nixos-unstable";
     nixos-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs.url = "github:nixos/nixpkgs/master";
-    # nixpkgs.url = "https://flakehub.com/f/NixOS/nixpkgs/0.1.0.tar.gz"; # testing flakehub
     # nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
     agenix.url = "github:ryantm/agenix";
 
     hyprland.url = "github:hyprwm/Hyprland";
 
-    nix-colors.url = "github:misterio77/nix-colors"; # may replace with stylix
+    nix-colors.url = "github:kyesarri/nix-colors";
 
     alejandra.url = "github:kamadorueda/alejandra/3.0.0";
     ags.url = "github:Aylur/ags";
@@ -42,7 +41,6 @@
   } @ inputs: let
     user = "kel"; # global username
     plymouth_theme = "deus_ex"; # device specific?
-    # scheme = "horizon-dark";
   in {
     nixosConfigurations = {
       "nix-laptop" = nixpkgs.lib.nixosSystem {
