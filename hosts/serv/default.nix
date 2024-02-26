@@ -53,8 +53,12 @@ in
     networking = {
       hostName = "nix-serv";
       # moved most conf to /containers/default.nix due to bridge conf
-      firewall.allowedTCPPorts = [22]; # ssh, possibly open already but leaving in
-
+      firewall = {
+        allowedTCPPorts = [
+          22 # ssh, possibly open already but leaving in
+          123 # chrony ntp
+        ];
+      };
       ###### TODO ######
       firewall = {
         checkReversePath = "loose"; # fixes some connection issues with tailscale
