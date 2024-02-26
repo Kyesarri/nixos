@@ -50,14 +50,6 @@ in
     colorscheme = inputs.nix-colors.colorSchemes.${scheme};
     home-manager.users.${user}.colorscheme = inputs.nix-colors.colorSchemes.${scheme};
 
-    ###### TODO ######
-    services = {
-      tailscale.enable = true;
-      tailscale.useRoutingFeatures = "server"; # main requirement for the # TODO
-      tailscale.openFirewall = true;
-    };
-    ###### TODO ######
-
     networking = {
       hostName = "nix-serv";
       # moved most conf to /containers/default.nix due to bridge conf
@@ -72,6 +64,19 @@ in
     };
 
     services = {
+      ###### TODO ######
+      tailscale.enable = true;
+      tailscale.useRoutingFeatures = "server"; # main requirement for the # TODO
+      tailscale.openFirewall = true;
+      ###### TODO ######
+
+      xserver.enable = true;
+
+      chrony = {
+        enable = true;
+        servers = ["pool.ntp.org"];
+      };
+
       tlp = {
         enable = true;
         settings = {
@@ -93,7 +98,6 @@ in
           # unsure if these are actually applying on this system yet, do not believe so
         };
       };
-      xserver.enable = true;
     };
 
     environment = {
