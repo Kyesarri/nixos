@@ -58,9 +58,9 @@ in
           22 # ssh, possibly open already but leaving in
           123 # chrony ntp, not working
         ];
-        allowedUDPPorts = [
-          123 # chrony
-        ];
+        #allowedUDPPorts = [
+        #  123 # chrony
+        #];
       };
       ###### TODO ######
       #### TAILSCALE ###
