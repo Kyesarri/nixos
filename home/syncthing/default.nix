@@ -21,5 +21,8 @@
     };
   };
 
-  users.users.${user}.packages = with pkgs; [syncthing syncthingtray];
+  users.users.${user}.packages = with pkgs; [
+    # syncthing
+    syncthingtray
+  ];
 }

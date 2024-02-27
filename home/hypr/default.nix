@@ -5,11 +5,6 @@
   user,
   ...
 }: {
-  programs.hyprland = {
-    enable = true;
-  };
-
-  imports = [
-    ./hyprland.nix
-  ];
+  programs.hyprland.enable = true;
+  imports = [./hyprland.nix];
 }
