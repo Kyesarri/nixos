@@ -6,8 +6,8 @@
   config,
   ...
 }: {
-  home-manager.users.${user}.home.file.".config/ags/colours.css" = {
-    # this shit looks so messy
+  home-manager.users.${user}.
+  home.file.".config/ags/colours.css" = {
     text = ''
       @define-color c0 #${config.colorscheme.palette.base00};
       @define-color c1 #${config.colorscheme.palette.base01};

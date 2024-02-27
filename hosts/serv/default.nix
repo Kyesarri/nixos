@@ -77,6 +77,7 @@ in
 
       xserver.enable = true;
 
+      # used for cameras ntp
       chrony = {
         enable = true;
         servers = ["pool.ntp.org"];

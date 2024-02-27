@@ -1,5 +1,5 @@
 let
-  #scheme = "tokyo-night-storm";
+  #scheme = "tokyo-night-storm"; # old meh
   scheme = "horizon-dark"; # new hotness
 in
   {
@@ -12,13 +12,13 @@ in
     user,
     plymouth_theme,
     ...
-  }: {
+  } @ args: {
     imports = [
       nix-colors.homeManagerModules.default
       ./per-device.nix
+      ./hardware.nix
 
       ../standard.nix
-      ./hardware.nix
 
       ../../hardware/audio
       ../../hardware/battery
@@ -27,7 +27,7 @@ in
       ../../hardware/wireless/nwm # networkmanager # TODO this is shit, look into mkOption
 
       ../../home
-      ../../home/ags # TODO pam / menu /
+      ../../home/ags # TODO pam / menu
       ../../home/asusctl # TODO look into issues with this further
       ../../home/bottom
       ../../home/codium # TODO build custom theme to use, with nix-colors. # TODO pin versions to avoid compiling
@@ -47,9 +47,14 @@ in
       ../../home/zsh
     ];
 
+    # not really services, buuuut this seems like extra steps for some minimal gain for me
+    services = {
+      ags.enable = true;
+      # wireless.enable = true;
+      # wireless.manager = nwm; # nwm, iwd or wpa
+    };
+
     hardware.nvidia = {
-      # PCI-Express Runtime D3 Power Management is enabled by default on this laptop
-      # Enable DRM kernel mode setting
       prime = {
         amdgpuBusId = "PCI:4:0:0";
         nvidiaBusId = "PCI:1:0:0";
@@ -57,19 +62,12 @@ in
       };
     };
 
-    #boot.kernelParams = [
-    #  "nvidia.NVreg_PreserveVideoMemoryAllocations=1"
-    #  "nvidia-drm.modeset=1"
-    #]; # trying to fix suspend problem on nvidia
-
-    # nix-colors
     colorscheme = inputs.nix-colors.colorSchemes.${scheme};
     home-manager.users.${user}.colorscheme = inputs.nix-colors.colorSchemes.${scheme};
 
     networking.hostName = "nix-laptop";
 
     programs = {
-      # from flake
       auto-cpufreq = {
         enable = true;
         settings = {

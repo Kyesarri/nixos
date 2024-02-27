@@ -2,5 +2,6 @@
     "window.autoDetectColorScheme": true,
     "window.commandCenter": false,
     "accessibility.hideAccessibleView": false,
-    "explorer.fileNesting.enabled": true
+    "explorer.fileNesting.enabled": true,
+    "git.timeline.showUncommitted": true
 }

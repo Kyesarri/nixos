@@ -302,20 +302,6 @@
         "type": "github"
       }
     },
-    "nixos-hardware": {
-      "locked": {
-        "lastModified": 1707211557,
-        "narHash": "sha256-LTKTzZ6fM5j8XWXf51IMBzDaOaJg9kYWLUZxoIhzRN8=",
-        "owner": "NixOS",
-        "repo": "nixos-hardware",
-        "rev": "6e5cc385fc8cf5ca6495d70243074ccdea9f64c7",
-        "type": "github"
-      },
-      "original": {
-        "id": "nixos-hardware",
-        "type": "indirect"
-      }
-    },
     "nixos-unstable": {
       "locked": {
         "lastModified": 1707689078,
@@ -437,7 +423,6 @@
         "hyprland": "hyprland",
         "nix-colors": "nix-colors",
         "nixos": "nixos",
-        "nixos-hardware": "nixos-hardware",
         "nixos-unstable": "nixos-unstable",
         "nixpkgs": "nixpkgs_5"
       }

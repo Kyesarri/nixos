@@ -2,8 +2,13 @@
 
 pkill  ags
 
-# Launch ags
-echo "---" | tee -a /tmp/ags.log
-ags 2>&1 | tee -a /tmp/ags.log & disown
+log="/tmp/ags.log"
 
-echo "shell launched..."
+# Launch ags
+echo ""
+echo "(づ ￣ ³￣)づ remember when one-liners were cool?" | tee -a /tmp/ags.log
+ags 2>&1 | tee -a $log & disown
+echo ""
+echo "launching ags, logs at $log, errors to follow:"
+echo " yes, there will be errors"
+echo ""
