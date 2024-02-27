@@ -26,8 +26,12 @@ in
       ../../hardware/nvidia
       ../../hardware/wireless/nwm # networkmanager # TODO this is shit, look into mkOption
 
-      ../../home
+      # TODO # are completed as to mkoption, are enabled / configured via services.pkg.enable = true;
       ../../home/ags # TODO pam / menu
+      ../../home/hypr # TODO remove wallpaper hyprwal?
+      # TODO # are completed as to mkoption, are enabled / configured via services.pkg.enable = true;
+
+      ../../home # set some default values for home-manager
       ../../home/asusctl # TODO look into issues with this further
       ../../home/bottom
       ../../home/codium # TODO build custom theme to use, with nix-colors. # TODO pin versions to avoid compiling
@@ -36,7 +40,6 @@ in
       ../../home/firefox # why you always need to build from source, check to see if there are nighty / beta precompiled
       ../../home/git
       ../../home/gaming
-      ../../home/hypr # TODO remove wallpaper hyprwal?
       ../../home/kitty
       ../../home/ulauncher # TODO rename built theme, add credits to og author
       ../../home/virt
@@ -50,6 +53,7 @@ in
     # not really services, buuuut this seems like extra steps for some minimal gain for me
     services = {
       ags.enable = true;
+      hypr.enable = true;
       # wireless.enable = true;
       # wireless.manager = nwm; # nwm, iwd or wpa
     };
