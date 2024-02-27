@@ -64,6 +64,9 @@
     #
     # imports = [./foo.nix]; # wondering if i can pass multiple atributes / fun tings
     # by importing, maybe just adding ./foo.nix? not tested either :)
+    #
+    # can't do a base homeManager as a let in, attempt to do a base modules
+    baseModules = [];
   in {
     nixosConfigurations = {
       "nix-laptop" = nixpkgs.lib.nixosSystem {
