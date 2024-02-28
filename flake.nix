@@ -11,13 +11,17 @@
     hyprland.url = "github:hyprwm/Hyprland";
     hyprpicker.url = "github:hyprwm/hyprpicker"; # packages.hyprpicker.enable = true; ??
 
-    nix-colors.url = "github:kyesarri/nix-colors";
+    nix-colors.url = "github:kyesarri/nix-colors"; # colour themes
+    prism.url = "github:IogaMaster/prism"; # wallpaper gen
+
     alejandra.url = "github:kamadorueda/alejandra/3.0.0";
     ags.url = "github:Aylur/ags";
+
     auto-cpufreq = {
       url = "github:AdnanHodzic/auto-cpufreq";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
     home-manager = {
       url = "github:nix-community/home-manager/master"; # added master branch to follow unstable nixos
       inputs.nixpkgs.follows = "nixpkgs";
@@ -34,6 +38,7 @@
     nix-colors,
     agenix,
     auto-cpufreq,
+    prism,
     ...
   } @ inputs: let
     #
@@ -58,7 +63,7 @@
     # interesting below is evaluated past the - in { - guess this is to be expected, we're just passsing
     # a string?
     #
-    specialArgs = {inherit nix-colors auto-cpufreq inputs spaghetti;};
+    specialArgs = {inherit nix-colors auto-cpufreq inputs prism spaghetti;};
     # ^
     # ^ FIXME -
     # ^ the specialArgs is pretty loose and a cover-all, not all systems require every input
@@ -83,7 +88,6 @@
     # by importing, maybe just adding ./foo.nix? not tested either :)
     #
     # can't do a base homeManager as a let in, attempt to do a base modules
-    baseModules = [];
   in {
     nixosConfigurations = {
       "nix-laptop" = nixpkgs.lib.nixosSystem {

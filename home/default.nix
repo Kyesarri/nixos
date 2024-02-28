@@ -11,6 +11,7 @@
     imports = [
       inputs.ags.homeManagerModules.default # imports from flake.nix, is this needed in /hosts/laptop/default.nix anymore?
       inputs.nix-colors.homeManagerModules.default
+      inputs.prism.homeModules.prism
     ];
     programs.home-manager.enable = true;
     xdg.enable = true;

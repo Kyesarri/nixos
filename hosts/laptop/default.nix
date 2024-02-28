@@ -47,7 +47,6 @@ in
       ../../home/gtk # uhh, nix-colors gtk theme iirc
       ../../home/syncthing # TODO fix not launching at boot
       ../../home/tailscale
-      # ../../home/wallpaper # probs broken # yeah broken still :)
       ../../home/zsh
     ];
 
