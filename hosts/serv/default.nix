@@ -2,7 +2,7 @@ let
   scheme = "snazzy";
   home = "../../home/";
   cont = "../../containers/";
-  hardware = "../../hardware/"; # not working :)
+  hw = "../../hardware/"; # not working :)
 in
   {
     config,
@@ -11,7 +11,7 @@ in
     inputs,
     outputs,
     nix-colors,
-    user,
+    spaghetti,
     plymouth_theme, # eeeeehhh not sure if this is needed :)
     ...
   }: {
@@ -48,7 +48,7 @@ in
     ];
 
     colorscheme = inputs.nix-colors.colorSchemes.${scheme};
-    home-manager.users.${user}.colorscheme = inputs.nix-colors.colorSchemes.${scheme};
+    home-manager.users.${spaghetti.user}.colorscheme = inputs.nix-colors.colorSchemes.${scheme};
 
     networking = {
       hostName = "nix-serv";
@@ -108,6 +108,6 @@ in
 
     environment = {
       systemPackages = with pkgs; [pciutils];
-      shellAliases.rebuild = "sudo nixos-rebuild switch --flake /home/${user}/nixos#nix-serv --show-trace";
+      shellAliases.rebuild = "sudo nixos-rebuild switch --flake /home/${spaghetti.user}/nixos#nix-serv --show-trace";
     };
   }

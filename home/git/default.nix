@@ -1,10 +1,10 @@
 {
   config,
   pkgs,
-  user,
+  spaghetti,
   ...
 }: {
-  home-manager.users.${user}.programs.git = {
+  home-manager.users.${spaghetti.user}.programs.git = {
     enable = true;
     extraConfig = {
       credential.helper = "libsecret";

@@ -1,9 +1,9 @@
 {
   pkgs,
-  user,
+  spaghetti,
   ...
 }: {
-  users.users.${user}.packages = [pkgs.pciutils];
+  users.users.${spaghetti.user}.packages = [pkgs.pciutils];
 
   services.asusd = {
     enable = true;
@@ -18,7 +18,7 @@
   };
 
   # these are not? required.
-  home-manager.users.${user}.home.file.".config/hypr/per-app/asusd.conf" = {
+  home-manager.users.${spaghetti.user}.home.file.".config/hypr/per-app/asusd.conf" = {
     text = ''
       # this is already a system service, dont need to start
       # exec-once = systemctl start asusd

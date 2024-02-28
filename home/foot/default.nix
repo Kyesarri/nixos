@@ -1,15 +1,14 @@
 {
   config,
-  inputs,
-  outputs,
+  # inputs,
+  # outputs,
   pkgs,
-  nix-colors, # TODO theming
-  user,
+  spaghetti,
   ...
 }: {
-  users.users.${user}.packages = [pkgs.foot];
+  users.users.${spaghetti.user}.packages = [pkgs.foot];
 
-  home-manager.users.${user}.home.file.".config/hypr/per-app/foot.conf" = {
+  home-manager.users.${spaghetti.user}.home.file.".config/hypr/per-app/foot.conf" = {
     text = ''
       windowrulev2 = opacity 0.8 0.8, class:^(foot)$
       windowrulev2 = size 700 300, class:^(foot)$

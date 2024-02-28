@@ -1,5 +1,5 @@
-{user, ...}: {
-  home-manager.users.${user} = {
+{spaghetti, ...}: {
+  home-manager.users.${spaghetti.user} = {
     pkgs,
     lib,
     config,
@@ -9,13 +9,13 @@
     ...
   }: {
     imports = [
-      inputs.ags.homeManagerModules.default # imports from flake.nix
+      inputs.ags.homeManagerModules.default # imports from flake.nix, is this needed in /hosts/laptop/default.nix anymore?
       inputs.nix-colors.homeManagerModules.default
     ];
     programs.home-manager.enable = true;
     xdg.enable = true;
-    home.username = "${user}";
-    home.homeDirectory = "/home/${user}";
+    home.username = "${spaghetti.user}";
+    home.homeDirectory = "/home/${spaghetti.user}";
     home.stateVersion = "23.11";
   };
 }

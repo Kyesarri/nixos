@@ -1,6 +1,6 @@
 {
   pkgs,
-  user,
+  spaghetti,
   ...
 }: {
   imports = [./theme.nix];
@@ -15,7 +15,7 @@
     promptInit = "info='n host cpu os wm sh n' fet.sh";
     ohMyZsh = {
       enable = true;
-      custom = "/home/${user}/.config/omzsh/";
+      custom = "/home/${spaghetti.user}/.config/omzsh/";
       theme = "omzsh-nix";
       plugins = [
         "sudo"

@@ -8,7 +8,7 @@ in
     inputs,
     outputs,
     nix-colors,
-    user,
+    spaghetti,
     ...
   }: {
     imports = [
@@ -39,7 +39,7 @@ in
     ];
 
     colorscheme = inputs.nix-colors.colorSchemes.${scheme};
-    home-manager.users.${user}.colorscheme = inputs.nix-colors.colorSchemes.${scheme};
+    home-manager.users.${spaghetti.user}.colorscheme = inputs.nix-colors.colorSchemes.${scheme};
 
     networking.hostName = "nix-notebook";
 
@@ -47,6 +47,6 @@ in
 
     environment = {
       systemPackages = with pkgs; [pciutils];
-      shellAliases.rebuild = "sudo nixos-rebuild switch --flake /home/${user}/nixos#nix-notebook --show-trace";
+      shellAliases.rebuild = "sudo nixos-rebuild switch --flake /home/${spaghetti.user}/nixos#nix-notebook --show-trace";
     };
   }

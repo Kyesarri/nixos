@@ -1,5 +1,5 @@
-{user, ...}: {
-  home-manager.users.${user}.home.file.".config/hypr/per-device.conf" = {
+{spaghetti, ...}: {
+  home-manager.users.${spaghetti.user}.home.file.".config/hypr/per-device.conf" = {
     text = ''
       monitor=,1920x1080@120,auto,1
       monitor=HDMI-A-1, 1920x1080, 0x0, 1

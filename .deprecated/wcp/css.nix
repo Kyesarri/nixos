@@ -2,10 +2,10 @@
   config,
   inputs,
   outputs,
-  user,
+  spaghetti,
   ...
 }: {
-  home-manager.users.${user}.home.file.".config/wcp/html/main.css" = {
+  home-manager.users.${spaghetti.user}.home.file.".config/wcp/html/main.css" = {
     text = ''
       #main {
           border-radius: 10px;

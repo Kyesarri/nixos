@@ -1,10 +1,10 @@
 {
   config,
-  user,
+  spaghetti,
   ...
   # modified from 00 and 01 to 06 and 07
 }: {
-  home-manager.users.${user}.home.file.".config/ulauncher/user-themes/TokyoNight/manifest.json" = {
+  home-manager.users.${spaghetti.user}.home.file.".config/ulauncher/user-themes/TokyoNight/manifest.json" = {
     text = ''
       {
         "manifest_version": "1",

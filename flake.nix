@@ -76,7 +76,8 @@
     };
     */
     #
-    # good way to cut-down on boilerplate / reused code, but these comments are another thing
+    # good way to cut-down on boilerplate / reused code, and easy to define some static atributes
+    # but these comments are another thing :D
     #
     # imports = [./foo.nix]; # wondering if i can pass multiple atributes / fun tings
     # by importing, maybe just adding ./foo.nix? not tested either :)

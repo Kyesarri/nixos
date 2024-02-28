@@ -3,11 +3,11 @@
   inputs,
   outputs,
   pkgs,
-  nix-colors,
-  user,
+  #nix-colors,
+  spaghetti,
   ...
 }: {
-  home-manager.users.${user} = {
+  home-manager.users.${spaghetti.user} = {
     programs.kitty = {
       enable = true;
       settings = {

@@ -1,7 +1,7 @@
 # please see README.md
 # original theme by SirHades696 with nix-colors added by dai
 {
-  user,
+  spaghetti,
   inputs,
   config,
   ...
@@ -31,7 +31,7 @@
   ### need to work on themes overall to get a more generalised theme applied
   ### that would look better across multiple base-16 themes
 
-  home-manager.users.${user}.home.file.".config/ulauncher/user-themes/TokyoNight/theme.css" = {
+  home-manager.users.${spaghetti.user}.home.file.".config/ulauncher/user-themes/TokyoNight/theme.css" = {
     text = ''
       @define-color bg_color #${config.colorscheme.palette.base00};
       @define-color window_bg @bg_color;

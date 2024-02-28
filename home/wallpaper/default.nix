@@ -1,8 +1,8 @@
 {
   pkgs,
-  nix-colors,
+  # nix-colors,
   inputs,
-  user,
+  spaghetti,
   config,
   lib,
   scheme,

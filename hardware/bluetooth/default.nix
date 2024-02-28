@@ -1,7 +1,7 @@
 {
   config,
   pkgs,
-  user,
+  spaghetti,
   ...
 }: {
   services.blueman.enable = true;
@@ -10,7 +10,7 @@
     enable = true;
     settings = {
       General = {
-        Name = "${user}";
+        Name = "${spaghetti.user}";
         ControllerMode = "dual";
         FastConnectable = "true";
         Experimental = "true";
@@ -21,14 +21,14 @@
     };
   };
 
-  home-manager.users.${user}.home.file.".config/hypr/per-app/bluetooth.conf" = {
+  home-manager.users.${spaghetti.user}.home.file.".config/hypr/per-app/bluetooth.conf" = {
     text = ''
       exec-once = blueman-applet
       # windowrule = float, ^(blueberry.py)$
     '';
   };
 
-  users.users.${user} = {
+  users.users.${spaghetti.user} = {
     packages = with pkgs; [gnome.gnome-bluetooth];
   };
 }

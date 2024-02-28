@@ -1,14 +1,15 @@
 {
   config,
   pkgs,
-  user,
+  spaghetti,
   inputs,
   outputs,
   ...
 }: {
   networking.wireless.iwd.enable = true;
+  users.users.${spaghetti.user}.packages = with pkgs; [iwd iwgtk];
 
-  home-manager.users.${user} = {
+  home-manager.users.${spaghetti.user} = {
     home.file.".config/hypr/per-app/wireless.conf" = {
       text = ''
         windowrule = float, ^(org.twosheds.iwgtk)$
@@ -101,5 +102,4 @@
       '';
     };
   };
-  users.users.${user}.packages = with pkgs; [iwd iwgtk];
 }

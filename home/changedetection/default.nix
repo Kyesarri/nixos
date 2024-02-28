@@ -1,9 +1,9 @@
 {
   pkgs,
-  user,
+  spaghetti,
   ...
 }: {
-  users.users.${user}.packages = [
+  users.users.${spaghetti.user}.packages = [
     chromium
     playwright
   ];

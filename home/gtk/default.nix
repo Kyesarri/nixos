@@ -2,7 +2,7 @@
   config,
   pkgs,
   inputs,
-  user,
+  spaghetti,
   ...
 }: let
   inherit
@@ -10,7 +10,7 @@
     gtkThemeFromScheme
     ;
 in rec {
-  home-manager.users.${user}.gtk = {
+  home-manager.users.${spaghetti.user}.gtk = {
     enable = true;
     theme = {
       name = "${config.colorScheme.slug}";

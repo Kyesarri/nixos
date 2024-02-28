@@ -1,11 +1,11 @@
 {
   pkgs,
-  user,
+  spaghetti,
   ...
 }: {
-  users.users.${user}.packages = with pkgs; [copyq];
+  users.users.${spaghetti.user}.packages = with pkgs; [copyq];
 
-  home-manager.users.${user} = {
+  home-manager.users.${spaghetti.user} = {
     # hypr copyq settings
     home.file.".config/hypr/per-app/copyq.conf" = {
       text = ''

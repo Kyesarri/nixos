@@ -1,10 +1,10 @@
 {
   config,
   pkgs,
-  user,
+  spaghetti,
   ...
 }: {
-  home-manager.users.${user}.home.file.".config/hypr/per-app/firefox.conf" = {
+  home-manager.users.${spaghetti.user}.home.file.".config/hypr/per-app/firefox.conf" = {
     text = ''
       bind = $mainMod, F, exec, firefox
       bind = $mainMod, W, exec, firefox -p work --name work
@@ -15,7 +15,7 @@
 
   environment.sessionVariables = rec {MOZ_ENABLE_WAYLAND = "1";}; # is this required anymore?
 
-  users.users.${user}.packages = with pkgs; [firefox]; # is this required?
+  users.users.${spaghetti.user}.packages = with pkgs; [firefox]; # is this required?
   programs.firefox = {
     enable = true;
     package = pkgs.wrapFirefox pkgs.firefox-unwrapped {

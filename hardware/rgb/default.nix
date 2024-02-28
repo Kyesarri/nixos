@@ -2,10 +2,10 @@
   config,
   pkgs,
   lib,
-  user,
+  spaghetti,
   ...
 }: {
-  home-manager.users.${user}.home.file.".config/hypr/per-app/openrgb.conf" = {
+  home-manager.users.${spaghetti.user}.home.file.".config/hypr/per-app/openrgb.conf" = {
     text = ''
       exec-once = sleep 2 && openrgb --startminimized
     '';
@@ -16,7 +16,7 @@
   boot.kernelModules = ["i2c-dev" "i2c-i801"];
   hardware.i2c.enable = true;
 
-  users.users.${user}.packages = with pkgs; [openrgb-with-all-plugins];
+  users.users.${spaghetti.user}.packages = with pkgs; [openrgb-with-all-plugins];
 
   systemd.timers.morning = {
     wantedBy = ["timers.target"];

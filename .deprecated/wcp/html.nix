@@ -1,11 +1,11 @@
 {
-  config,
+  # config,
   inputs,
   outputs,
-  user,
+  spaghetti,
   ...
 }: {
-  home-manager.users.${user}.home.file.".config/wcp/html/main.html" = {
+  home-manager.users.${spaghetti.user}.home.file.".config/wcp/html/main.html" = {
     text = ''
       <div id="main" class="fullscaleview">
         <div id="mainflex" class="fullscaleview colflex margin5">

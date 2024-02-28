@@ -1,11 +1,11 @@
 {
   pkgs,
-  user,
+  spaghetti,
   ...
 }: {
   imports = [./config.nix];
 
-  home-manager.users.${user} = {
+  home-manager.users.${spaghetti.user} = {
     services.dunst.enable = true;
 
     home.file.".config/hypr/per-app/dunst.conf" = {

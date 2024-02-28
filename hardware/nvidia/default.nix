@@ -1,7 +1,7 @@
 {
   config,
   pkgs,
-  user,
+  spaghetti,
   ...
 }: {
   hardware = {
@@ -15,7 +15,7 @@
     };
   };
 
-  # users.users.${user}.packages = with pkgs; [nvtop];
+  # users.users.${spaghetti.user}.packages = with pkgs; [nvtop];
 
   environment.systemPackages = with pkgs; [
     clinfo

@@ -2,10 +2,10 @@
   config,
   pkgs,
   lib,
-  user,
+  spaghetti,
   ...
 }: {
-  users.users.${user} = {
+  users.users.${spaghetti.user} = {
     extraGroups = ["vboxusers"];
     packages = with pkgs; [
       virt-manager # TODO might need some nix added to configure using qemu as default for OOBE

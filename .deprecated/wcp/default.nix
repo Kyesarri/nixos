@@ -4,10 +4,10 @@
   pkgs,
   config,
   lib,
-  user,
+  spaghetti,
   ...
 }: {
-  users.users.${user}.packages = with pkgs; [(callPackage ../../packages/wcp {})];
+  users.users.${spaghetti.user}.packages = with pkgs; [(callPackage ../../packages/wcp {})];
 
   imports = [
     ./html.nix

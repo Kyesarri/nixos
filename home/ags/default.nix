@@ -4,7 +4,7 @@
   inputs,
   outputs,
   config,
-  user,
+  spaghetti,
   ...
 }:
 with lib; let
@@ -20,7 +20,7 @@ in {
   };
 
   config = mkIf cfg.enable {
-    home-manager.users.${user} = {
+    home-manager.users.${spaghetti.user} = {
       programs.ags.enable = true;
       #
       # TODO editing directly from .config to avoid so-many rebuilds :D

@@ -1,15 +1,15 @@
 {
   config,
   pkgs,
-  user,
+  spaghetti,
   ...
 }: {
-  home-manager.users.${user}.home.file.".config/hypr/per-app/audio.conf" = {
+  home-manager.users.${spaghetti.user}.home.file.".config/hypr/per-app/audio.conf" = {
     text = ''
       windowrule = float, ^(pavucontrol)$
     '';
   };
-  users.users.${user}.packages = with pkgs; [pamixer pavucontrol];
+  users.users.${spaghetti.user}.packages = with pkgs; [pamixer pavucontrol];
   security.rtkit.enable = true;
   sound.enable = true;
   hardware.pulseaudio.enable = false;

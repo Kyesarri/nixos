@@ -4,7 +4,7 @@
   inputs,
   outputs,
   config,
-  user,
+  spaghetti,
   ...
 }:
 with lib; let
@@ -24,7 +24,7 @@ in {
     # define nix-colors, imported by hyprland.conf further down
     # is nix-colors a requirement of my config? do i want to have
     # this as an option now too :D
-    home-manager.users.${user} = {
+    home-manager.users.${spaghetti.user} = {
       home.file.".config/hypr/colours.conf" = {
         text = ''
           $c0 = rgba(${config.colorscheme.palette.base00}FF)
@@ -190,9 +190,9 @@ in {
 
           # move to gscreenshot under home, TODO #
           ## take fullscreen screenshot and send to /user/screenshots/
-          bind = ,Print, exec, gscreenshot -f '/home/${user}/screenshots/screenshot_$hx$w_%Y-%m-%d%M-%S.png' -n
+          bind = ,Print, exec, gscreenshot -f '/home/${spaghetti.user}/screenshots/screenshot_$hx$w_%Y-%m-%d%M-%S.png' -n
           ## open screenshot selection tool with overlay, once region selected send to /user/screenshots/
-          bind = shift ,Print, exec, gscreenshot -f '/home/${user}/screenshots/snip_$hx$w_%Y-%m-%d%M-%S.png' -n -s
+          bind = shift ,Print, exec, gscreenshot -f '/home/${spaghetti.user}/screenshots/snip_$hx$w_%Y-%m-%d%M-%S.png' -n -s
 
 
           bind = $mainMod, S, exec, ~/nixos/scripts/dunst/hyprpicker.sh

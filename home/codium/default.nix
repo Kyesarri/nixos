@@ -1,9 +1,9 @@
 {
   pkgs,
-  user,
+  spaghetti,
   ...
 }: {
-  home-manager.users.${user} = {
+  home-manager.users.${spaghetti.user} = {
     programs.vscode = {
       enable = true;
       userSettings = {

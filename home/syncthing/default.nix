@@ -1,10 +1,10 @@
 {
   config,
   pkgs,
-  user,
+  spaghetti,
   ...
 }: {
-  home-manager.users.${user}.home.file.".config/hypr/per-app/syncthing.conf" = {
+  home-manager.users.${spaghetti.user}.home.file.".config/hypr/per-app/syncthing.conf" = {
     text = ''
       exec-once = sleep 3 && syncthing
       exec-once = sleep 10 && syncthingtray
@@ -17,11 +17,11 @@
     syncthing = {
       systemService = true;
       enable = true;
-      user = "${user}";
+      user = "${spaghetti.user}";
     };
   };
 
-  users.users.${user}.packages = with pkgs; [
+  users.users.${spaghetti.user}.packages = with pkgs; [
     # syncthing
     syncthingtray
   ];

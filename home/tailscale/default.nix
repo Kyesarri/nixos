@@ -1,10 +1,10 @@
 {
   config,
   pkgs,
-  user,
+  spaghetti,
   ...
 }: {
-  home-manager.users.${user}.home.file.".config/hypr/per-app/tailscale.conf" = {
+  home-manager.users.${spaghetti.user}.home.file.".config/hypr/per-app/tailscale.conf" = {
     text = ''
       exec-once = sleep 2 && tailscale-systray
     '';
@@ -22,7 +22,7 @@
     };
   };
 
-  users.users.${user}.packages = with pkgs; [
+  users.users.${spaghetti.user}.packages = with pkgs; [
     tailscale # TODO is this req?
     tailscale-systray
   ];

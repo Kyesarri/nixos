@@ -2,10 +2,10 @@
   config,
   inputs,
   outputs,
-  user,
+  spaghetti, # TODO move to default.nix, mkOption shiz
   ...
 }: {
-  home-manager.users.${user}.home.file.".config/bottom/bottom.toml" = {
+  home-manager.users.${spaghetti.user}.home.file.".config/bottom/bottom.toml" = {
     text = ''
       # This is a default config file for bottom.  All of the settings are commented
       # out by default; if you wish to change them uncomment and modify as you see

@@ -4,8 +4,7 @@
   lib,
   outputs,
   inputs,
-  user,
-  plymouth,
+  spaghetti,
   ...
 }: {
   # standard config for "modern" systems, desktop / laptop config atm
@@ -56,11 +55,11 @@
 
     plymouth = {
       enable = true;
-      theme = "${plymouth.theme}";
+      theme = "${spaghetti.plymouth}";
       themePackages = [
         (
           pkgs.adi1090x-plymouth-themes.override {
-            selected_themes = ["${plymouth.theme}"];
+            selected_themes = ["${spaghetti.plymouth}"];
           }
         )
       ];
@@ -183,10 +182,10 @@
     ];
   };
 
-  users.users.${user} = {
+  users.users.${spaghetti.user} = {
     shell = pkgs.zsh;
     isNormalUser = true;
-    description = "${user}";
+    description = "${spaghetti.user}";
     extraGroups = ["networkmanager" "wheel"];
     packages = with pkgs; [
       # KISS

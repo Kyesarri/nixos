@@ -9,8 +9,7 @@ in
     inputs,
     outputs,
     nix-colors,
-    user,
-    plymouth,
+    spaghetti,
     ...
   }: {
     imports = [
@@ -25,6 +24,8 @@ in
       ../../hardware/bluetooth
       ../../hardware/nvidia
       ../../hardware/wireless/nwm # networkmanager # TODO this is shit, look into mkOption
+
+      # ../../home/changedetection
 
       # TODO # are completed as to mkoption, are enabled / configured via services.pkg.enable = true;
       ../../home/ags # TODO pam / menu
@@ -67,7 +68,7 @@ in
     };
 
     colorscheme = inputs.nix-colors.colorSchemes.${scheme};
-    home-manager.users.${user}.colorscheme = inputs.nix-colors.colorSchemes.${scheme};
+    home-manager.users.${spaghetti.user}.colorscheme = inputs.nix-colors.colorSchemes.${scheme};
 
     networking.hostName = "nix-laptop";
 
@@ -100,6 +101,6 @@ in
 
     environment = {
       systemPackages = with pkgs; [pciutils];
-      shellAliases.rebuild = "sudo nixos-rebuild switch --flake /home/${user}/nixos#nix-laptop --show-trace -j 16 && cd ~ && hyprctl reload && ./ags.sh";
+      shellAliases.rebuild = "sudo nixos-rebuild switch --flake /home/${spaghetti.user}/nixos#nix-laptop --show-trace -j 16 && cd ~ && hyprctl reload && ./ags.sh";
     };
   }

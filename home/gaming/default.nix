@@ -1,9 +1,9 @@
 {
-  user,
+  spaghetti,
   pkgs,
   ...
 }: {
-  home-manager.users.${user}.home.file.".config/hypr/per-app/gaming.conf" = {
+  home-manager.users.${spaghetti.user}.home.file.".config/hypr/per-app/gaming.conf" = {
     text = ''
       windowrule = fullscreen, title:Steam Big Picture Mode
       windowrule = float, title:Steam
@@ -18,7 +18,7 @@
 
   services.ratbagd.enable = true; # mouse configuration tool
 
-  users.users.${user}.packages = with pkgs; [
+  users.users.${spaghetti.user}.packages = with pkgs; [
     # pcsx2 # ps2 emulator # TODO 22/01/24 has issues building, hash mismatch
     piper # frontend for libratbag, which is enabled in services
     protonup-qt # proton-ge # TODO get working with steam
