@@ -7,7 +7,7 @@
   home-manager.users.${spaghetti.user} = {
     prism = {
       enable = true;
-      wallpapers = "./home/prism/wallpapers"; # Path to the wallpapers directory in your config. (IMAGES ONLY)
+      wallpapers = "./wallpapers"; # Path to the wallpapers directory in your config. (IMAGES ONLY)
 
       # There are a few different ways of setting the colorscheme.
 
