@@ -238,7 +238,6 @@ in {
           bind = $mainMod, 0, workspace, 10
 
           # Move active window to a workspace with mainMod + SHIFT + [0-9]
-          ## should add a hyprpaper workspace wallpaper switch here too :)
           bind = $mainMod SHIFT, 1, movetoworkspace, 1
           bind = $mainMod SHIFT, 2, movetoworkspace, 2
           bind = $mainMod SHIFT, 3, movetoworkspace, 3
@@ -247,6 +246,8 @@ in {
           bind = $mainMod SHIFT, 6, movetoworkspace, 6
           bind = $mainMod SHIFT, 7, movetoworkspace, 7
           bind = $mainMod SHIFT, 8, movetoworkspace, 8
+          bind = $mainMod SHIFT, 9, movetoworkspace, 9
+          bind = $mainMod SHIFT, 0, movetoworkspace, 10
 
           # Scroll through existing workspaces with mainMod + scroll
           bind = $mainMod, mouse_down, workspace, e+1
@@ -263,16 +264,3 @@ in {
     };
   };
 }
-/*
-  {
-  config,
-  pkgs,
-  inputs,
-  user,
-  ...
-}: {
-  programs.hyprland.enable = true;
-  imports = [./hyprland.nix];
-}
-*/
-

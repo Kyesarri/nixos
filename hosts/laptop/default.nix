@@ -10,9 +10,9 @@ in
     outputs,
     nix-colors,
     user,
-    plymouth_theme,
+    plymouth,
     ...
-  } @ args: {
+  }: {
     imports = [
       nix-colors.homeManagerModules.default
       ./per-device.nix

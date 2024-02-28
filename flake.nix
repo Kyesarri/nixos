@@ -5,8 +5,12 @@
     nixos.url = "github:nixos/nixpkgs/nixos-unstable";
     nixos-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs.url = "github:nixos/nixpkgs/master";
-    agenix.url = "github:ryantm/agenix";
+
+    agenix.url = "github:ryantm/agenix"; # on the TODO manage secrets and wizard hat things
+
     hyprland.url = "github:hyprwm/Hyprland";
+    hyprpicker.url = "github:hyprwm/hyprpicker"; # packages.hyprpicker.enable = true; ??
+
     nix-colors.url = "github:kyesarri/nix-colors";
     alejandra.url = "github:kamadorueda/alejandra/3.0.0";
     ags.url = "github:Aylur/ags";
@@ -25,6 +29,7 @@
     nixpkgs,
     home-manager,
     hyprland,
+    hyprpicker,
     alejandra,
     nix-colors,
     agenix,
@@ -32,25 +37,36 @@
     ...
   } @ inputs: let
     #
-    # pretty basic tings, passed through to the below nixosConfigurations
+    # pretty basic tings, passed through to the below nixosConfigurations, bring into scope as atributes
+    # if required further in the tree
     #
-    plymouth_theme = "deus_ex"; # passed into hosts/hostname/default.nix, requires plymouth_theme in tree
+    # inherit foo will copy verbatim, using ${foo}; will call the string / value
+    #
+    spaghetti = {
+      user = "kel"; # single user currently, import attribute as spaghetti use ${spaghetti.user}
+      plymouth = "deus_ex"; # as above, use ${spaghetti.plymouth}
+    };
     system = "x86_64-linux"; # i dont use any other arch atm
-    user = "kel"; # using single user in each system currently
     # ^
+    # ^ FIXME -
     # ^ could be easily expanded to other users on diff machines, moving this from here, to specialArgs
     # ^ example: specialArgs = { inherit foo bar; user = "kel"; };
     # ^ if inherit specialArgs, not tested but call again using specialArgs = { user = "kel"; }; maybe? nope!
     # ^ can't call twice :)
+    # ^ FIXME -
     #
     # interesting below is evaluated past the - in { - guess this is to be expected, we're just passsing
     # a string?
     #
-    specialArgs = {inherit nix-colors auto-cpufreq inputs user plymouth_theme;};
+    specialArgs = {inherit nix-colors auto-cpufreq inputs spaghetti;};
     # ^
+    # ^ FIXME -
     # ^ the specialArgs is pretty loose and a cover-all, not all systems require every input
     # ^ want to find out how i can include other inherit in each machine
-    # the above are added to the below by calling inherit foo
+    # ^ FIXME -
+    # the above are added to the below by calling inherit foo or by passing into specialArgs as is the case
+    # with spaghetti
+    #
     # example:
     /*
     nixosConfigurations = {
@@ -70,21 +86,7 @@
   in {
     nixosConfigurations = {
       "nix-laptop" = nixpkgs.lib.nixosSystem {
-        inherit system specialArgs;
-        modules = [
-          ./hosts/laptop # 4800hs / 1650 / 16gb TODO download more ram
-          {environment.systemPackages = [alejandra.defaultPackage.x86_64-linux];} # codium plugins
-          home-manager.nixosModules.home-manager
-          auto-cpufreq.nixosModules.default
-          agenix.nixosModules.default
-          {
-            home-manager = {
-              useGlobalPkgs = true;
-              useUserPackages = true;
-              extraSpecialArgs = {inherit nix-colors inputs;};
-            };
-          }
-        ];
+        imports = [./hosts/laptop/flake.nix];
       };
       "nix-notebook" = nixpkgs.lib.nixosSystem {
         inherit system specialArgs;

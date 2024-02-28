@@ -5,7 +5,7 @@
   outputs,
   inputs,
   user,
-  plymouth_theme,
+  plymouth,
   ...
 }: {
   # standard config for "modern" systems, desktop / laptop config atm
@@ -15,9 +15,8 @@
   nixpkgs.config.allowUnfree = true;
 
   security.pam.services = {
-    ags = {};
+    ags = {}; # TODO move to ags, dont want this enabled if not required
     gdm.enableGnomeKeyring = true; # unlock keyring with gdm / gdm support for keyring
-    swaylock = {}; # enables pam for swaylock, otherwise cannot unlock system TODO swaylock ./home
   };
 
   nix = {
@@ -57,11 +56,11 @@
 
     plymouth = {
       enable = true;
-      theme = "${plymouth_theme}";
+      theme = "${plymouth.theme}";
       themePackages = [
         (
           pkgs.adi1090x-plymouth-themes.override {
-            selected_themes = ["${plymouth_theme}"];
+            selected_themes = ["${plymouth.theme}"];
           }
         )
       ];
