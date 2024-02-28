@@ -1,16 +1,16 @@
 {
   config,
   pkgs,
-  user,
+  spaghetti,
   ...
 }: {
   imports = [
     ./theme.nix
     ./init.lua.nix
   ];
-  users.users.${user}.packages = with pkgs; [lite-xl];
+  users.users.${spaghetti.user}.packages = with pkgs; [lite-xl];
 
-  home-manager.users.${user} = {
+  home-manager.users.${spaghetti.user} = {
     home.file."./.config/lite-xl/plugins/nix.lua".source = ./nix.lua; # symlink from this dir to defined dir
 
     home.file.".config/hypr/per-app/lite-xl.conf" = {

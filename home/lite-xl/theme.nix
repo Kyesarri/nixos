@@ -2,10 +2,10 @@
   config,
   inputs,
   outputs,
-  user,
+  spaghetti,
   ...
 }: {
-  home-manager.users.${user}.home.file.".config/lite-xl/colors/nix.lua" = {
+  home-manager.users.${spaghetti.user}.home.file.".config/lite-xl/colors/nix.lua" = {
     text = ''
       local style = require "core.style"
       local common = require "core.common"

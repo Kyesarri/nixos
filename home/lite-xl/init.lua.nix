@@ -2,11 +2,11 @@
   config,
   inputs,
   outputs,
-  user,
+  spaghetti,
   pkgs,
   ...
 }: {
-  home-manager.users.${user} = {
+  home-manager.users.${spaghetti.user} = {
     home.file.".config/lite-xl/init.lua" = {
       text = ''
         -- put user settings here

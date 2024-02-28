@@ -31,7 +31,7 @@ in
       ../../home/ags # TODO pam / menu
       ../../home/hypr # TODO remove wallpaper hyprwal?
       # TODO # are completed as to mkoption, are enabled / configured via services.pkg.enable = true;
-
+      ../../home/prism
       ../../home # set some default values for home-manager
       ../../home/asusctl # TODO look into issues with this further
       ../../home/bottom
