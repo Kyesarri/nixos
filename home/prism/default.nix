@@ -8,7 +8,6 @@
     prism = {
       enable = true;
       wallpapers = "./home/prism/wallpapers"; # Path to the wallpapers directory in your config. (IMAGES ONLY)
-      outPath = "./"; # Where in your home directory to output to.
 
       # There are a few different ways of setting the colorscheme.
 
