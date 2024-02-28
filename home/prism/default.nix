@@ -2,23 +2,32 @@
   config,
   pkgs,
   spaghetti,
+  scheme,
   ...
 }: {
   home-manager.users.${spaghetti.user} = {
     prism = {
       enable = true;
-      # wallpapers = "/home/${spaghetti.user}/nixos/wallpapers"; # Path to the wallpapers directory in your config. (IMAGES ONLY)
-      wallpapers = ./wallpapers; # Path to the wallpapers directory in your config. (IMAGES ONLY)
-      colorscheme = "horizon-dark";
+      wallpapers = ./wallpapers; # path from this file, inside the nix config could use ../../ to escape here
       outPath = ".config/wallpapers";
-      # outPath = ".config/wallpapers";
-
-      # If you pass a list of colors, it will build a scheme from them.
-      # They are formatted like base16 schemes
-      # colorscheme = [ "FFFFFF" "FAFAFA" ... ];
-
-      # You can also pass a nix-colors scheme attrset and it will parse the colors.
-      # colorscheme = nix-colors.colorscheme.nord;
+      colorscheme = [
+        "#${config.colorscheme.palette.base00}"
+        "#${config.colorscheme.palette.base01}"
+        "#${config.colorscheme.palette.base02}"
+        "#${config.colorscheme.palette.base03}"
+        "#${config.colorscheme.palette.base04}"
+        "#${config.colorscheme.palette.base05}"
+        "#${config.colorscheme.palette.base06}"
+        "#${config.colorscheme.palette.base07}"
+        "#${config.colorscheme.palette.base08}"
+        "#${config.colorscheme.palette.base09}"
+        "#${config.colorscheme.palette.base0A}"
+        "#${config.colorscheme.palette.base0B}"
+        "#${config.colorscheme.palette.base0C}"
+        "#${config.colorscheme.palette.base0D}"
+        "#${config.colorscheme.palette.base0E}"
+        "#${config.colorscheme.palette.base0F}"
+      ]; # went nuclear
     };
   };
 }
