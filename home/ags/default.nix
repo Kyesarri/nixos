@@ -36,7 +36,7 @@ in {
       #
       home.file.".config/hypr/per-app/ags.conf" = {
         text = ''
-          exec-once = ~/nixos/scripts/ags.sh
+          exec-once = sleep 6 && ~/nixos/scripts/ags.sh
         '';
         # ^ script reloads / launches ags, outputs logs to tmp or something
       };

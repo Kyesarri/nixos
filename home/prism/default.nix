@@ -2,14 +2,13 @@
   config,
   pkgs,
   spaghetti,
-  scheme,
   ...
 }: {
   home-manager.users.${spaghetti.user} = {
     prism = {
       enable = true;
-      wallpapers = ./wallpapers; # path from this file, inside the nix config could use ../../ to escape here
-      outPath = ".config/wallpapers";
+      wallpapers = ./wallpapers; # path from this .nix, inside the nix config could use ../../ to escape into the tree
+      outPath = "/wallpapers"; # from root of /users/currentuser/
       colorscheme = [
         "#${config.colorscheme.palette.base00}"
         "#${config.colorscheme.palette.base01}"

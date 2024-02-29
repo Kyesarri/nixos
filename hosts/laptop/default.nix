@@ -50,12 +50,19 @@ in
       ../../home/zsh
     ];
 
-    # not really services, buuuut this seems like extra steps for some minimal gain for me
     services = {
       ags.enable = true;
-      hypr.enable = true;
-      # wireless.enable = true;
-      # wireless.manager = nwm; # nwm, iwd or wpa
+
+      hypr = {
+        enable = true;
+        hyprpaper.enable = false;
+        #animations = false;
+      };
+
+      # wireless = {
+      #   enable = true;
+      #   manager = nwm; # nwm, iwd or wpa
+      # };
     };
 
     hardware.nvidia = {

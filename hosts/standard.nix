@@ -125,7 +125,7 @@
 
   fonts = {
     fontconfig.defaultFonts.monospace = ["Hack Nerd Font Mono"];
-    fontDir.enable = true; # lots of fonts here, remove but most often used?
+    fontDir.enable = true; # lots of fonts here, remove but most often used? not sure what fonts i even use anymore; add to spaghetti
     packages = with pkgs; [
       material-design-icons
       inter
@@ -189,6 +189,7 @@
     extraGroups = ["networkmanager" "wheel"];
     packages = with pkgs; [
       # KISS
+      gnome-text-editor
       nix-init # git flake helper
       remmina # rdp client
       fet-sh # minimalistic fetch script
