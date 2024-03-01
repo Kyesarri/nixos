@@ -8,9 +8,9 @@
   ...
 }:
 with lib; let
-  cfg = config.services.ags;
+  cfg = config.gnocchi.ags;
 in {
-  options.services.ags = {
+  options.gnocchi.ags = {
     enable = mkEnableOption "enable ags shell"; # will be ags.enable = true; in host.nix
     # foo = mkOption {
     # make an option for foo

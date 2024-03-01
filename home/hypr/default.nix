@@ -6,12 +6,12 @@
   ...
 }:
 with lib; let
-  cfg = config.services.hypr; # shorthand some lines
+  cfg = config.gnocchi.hypr; # shorthand some lines
 in {
-  options.services = {
+  options.gnocchi = {
     hypr = {
-      enable = mkEnableOption "enable hyprland"; # will be services.hypr.enable = true; in host.nix
-      hyprpaper.enable = mkEnableOption "enable hyprpaper with config, can do type of and set source dir?"; # services.hypr.hyprpaper.enable =
+      enable = mkEnableOption "enable hyprland"; # will be gnocchi.hypr.enable = true; in host.nix
+      hyprpaper.enable = mkEnableOption "enable hyprpaper with config, can do type of and set source dir?"; # gnocchi.hypr.hyprpaper.enable =
       animations.enable = mkEnableOption "enable hypr animations";
     };
   };
@@ -20,7 +20,7 @@ in {
     (mkIf (cfg.enable) {
       #
       programs.hyprland.enable = true; # enable hyprland
-      #
+      # add nix-colors
       home-manager.users.${spaghetti.user} = {
         home.file.".config/hypr/colours.conf" = {
           text = ''
@@ -50,12 +50,14 @@ in {
             ############################################# spaghetti starts here #############################################
             $mainMod = SUPER
 
-            # hyprland nix-color scheme
+            # import nix-colors
             source = ~/.config/hypr/colours.conf
 
             ############################################# exec-once #############################################
             exec-once = sleep 4 && gnome-keyring-daemon --start --components = pkcs11, secrets, ssh
+
             # move above to seahorse below /home or /services/ unsure about below as its not really machine or software specific yet :)
+
             exec-once = sleep 6 && dbus-update-activation-environment --all
             exec-once = lxqt-policykit-agent & udiskie
 
@@ -78,7 +80,7 @@ in {
                 allow_session_lock_restore = true
                 render_ahead_safezone = 1
                 background_color = #000000
-                # can only use a single colour
+                # ^ can only use a single colour
             }
             ############################################# input #############################################
             input {
@@ -99,6 +101,8 @@ in {
             }
 
             ############################################# general #############################################
+            # TODO might want a source = ~/.config/hypr/general.conf +
+            # source = ~/.config/hypr/decoration.conf
             general {
                 gaps_in = 5
                 gaps_out = 10
@@ -107,6 +111,8 @@ in {
                 layout = dwindle
                 col.active_border = $c0 $c1 $c1 $c2 $c1 $c0
                 col.inactive_border = $c0 $c1
+
+                # TODO below are the fancier settings with coloured borders, with animations
                 # border_size = 5
                 # col.active_border = $c0 $ca $c3 $c2 $c1 $c0 90deg
                 # col.inactive_border = $c0 $c1 90deg
@@ -118,7 +124,8 @@ in {
                 # shadow_range = 30
                 # shadow_render_power = 3
                 # removing shadows, favour none for a more minimal look currently
-                # add to the TODO pile, nix mkOption for different theme settings :)
+                # TODO pile, nix mkOption for different theme settings :)
+
                 drop_shadow = 0
                 shadow_range = 0
                 shadow_render_power = 0

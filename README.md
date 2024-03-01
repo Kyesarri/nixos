@@ -2,27 +2,28 @@
 my public nixos configuration, system specific .nix for ga401 / desktop / cl10w-c
 
  [<img src="screenshots/1.jpg" width="100%" />](screenshots/1.jpg) 
-current wip using ags, my config lacking features currenty
+current wip using ags, not complete by any standard
 
 
 ## included:
 see [standard.nix](hosts/standard.nix), [minimal.nix](hosts/minimal.nix) or [headless.nix](hosts/headless.nix) for base packages
 
-in addition any of the hosts ["default.nix"](hosts/laptop/default.nix) for additional packages with configuration
+in addition any of the hosts ["default.nix"](hosts/laptop/default.nix) for additional packages with configuration.
+modules are having options (slowly) added, see ["/home/hypr/default.nix"](home/hypr/default.nix)
 
 ## about:
-programs are modular, [home/pkgname](home/kitty/default.nix) will come with hypr keybindings and exec at boot where applicable. add remove in [hosts/hostname/default.nix](hosts/laptop/default.nix)
+programs are modular, [home/pkgname](home/kitty/default.nix) will come with hypr keybindings and exec at boot where applicable. add remove in [hosts/hostname/default.nix](hosts/laptop/default.nix) FIXME these are changing as per above
 
-some hypr keybind conflicts will apply if you are using multiple applications for the same purpose (wofi / ulauncher for example) I'll eventually add nix mkOption to avoid this. 
+some hypr keybind conflicts will apply if you are using multiple applications for the same purpose (wofi / ulauncher for example) I'll eventually add some options to (hopefully) avoid this. 
 
-username & plymouth theme configurable in flake.nix
+username & plymouth theme configurable in flake.nix, see spaghetti
 
-programs under [home](home/) come with nix-colors themes, change theme in [hosts/hostname/default.nix](hosts/laptop/default.nix) for that system
+programs under [home](home/) come with nix-colors themes, change theme in [hosts/hostname/default.nix](hosts/laptop/default.nix) per system.
 
 ## use:
 clone this repository to your /home/username/
 
- ```git clone https://codeberg.org/kye/nixos``` or ```git clone --recurse-submodules https://codeberg.org/kye/nixos``` to snag the wallpapers
+ ```git clone https://codeberg.org/kye/nixos``` or ```git clone --recurse-submodules https://codeberg.org/kye/nixos``` to snag the wallpapers *depreciated
 
 copy contents of your /etc/nixos/hardware-configuration.nix [hardware.nix](hosts/laptop/hardware.nix) to [hosts/hostname](hosts/laptop/) which you plan to use
 

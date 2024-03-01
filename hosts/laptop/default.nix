@@ -52,7 +52,7 @@ in
     ];
 
     # rename to gnocchi ?
-    services = {
+    gnocchi = {
       ags.enable = true;
 
       hypr = {
