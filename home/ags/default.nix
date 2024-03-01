@@ -38,7 +38,7 @@ in {
         text = ''
           exec-once = sleep 6 && ~/nixos/scripts/ags.sh
         '';
-        # ^ script reloads / launches ags, outputs logs to tmp or something
+        # ^ script reloads / launches ags, outputs logs to tmp dir
       };
       home.file.".config/ags/colours.css" = {
         text = ''

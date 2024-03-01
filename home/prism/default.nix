@@ -1,3 +1,4 @@
+# TODO: mkOption this, add configurables for directories with notes and such
 {
   config,
   pkgs,

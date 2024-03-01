@@ -365,11 +365,11 @@
         "nixpkgs-lib": "nixpkgs-lib"
       },
       "locked": {
-        "lastModified": 1708735240,
-        "narHash": "sha256-o9wjHlvxVA36eM6iaPwSP2vRhoFjgsZWf7Yxqvk18nU=",
+        "lastModified": 1709265404,
+        "narHash": "sha256-xVM29NbSWqvoIt0y7rDDxAcZu25egUVZea52PhcWeVM=",
         "owner": "kyesarri",
         "repo": "nix-colors",
-        "rev": "f2bade590b377bd95466ace4407865119628182d",
+        "rev": "21ebf3032138cb89e1664d3441354027a383f4ff",
         "type": "github"
       },
       "original": {

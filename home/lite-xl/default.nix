@@ -23,4 +23,5 @@
 }
 # need to rename some of the subfiles here, need to define naming scheme.
 # dont mind filename.extension.nix
+# won't happen now, need to add as mkOption config files now :)
 

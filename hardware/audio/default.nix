@@ -19,5 +19,6 @@
     alsa.enable = true;
     alsa.support32Bit = true;
     pulse.enable = true;
+    # will need to break this out to pipewire and / or av covering both audio and visual aspects of pipewire
   };
 }

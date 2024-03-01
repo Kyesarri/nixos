@@ -3,7 +3,6 @@
   inputs,
   outputs,
   pkgs,
-  #nix-colors,
   spaghetti,
   ...
 }: {
@@ -60,7 +59,6 @@
         windowrulev2 = opacity 0.8 0.8, class:^(kitty)$
         windowrulev2 = size 700 300, class:^(kitty)$
         windowrulev2 = center, class:^(kitty)$
-        # TODO make above a single line :)
         bind = $mainMod, Q, exec, kitty
         bind = control, escape, exec, kitty -e btm
         windowrule = float, title:zsh

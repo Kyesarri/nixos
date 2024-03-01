@@ -4,9 +4,10 @@
   ...
 }: {
   # TODO add nix-colors to bottom.toml.nix
+  # TODO don't add new nix mkOption pls
   imports = [./bottom.toml.nix];
 
-  users.users.${spaghetti.user}.packages = with pkgs; [bottom];
+  users.users.${spaghetti.user}.packages = with pkgs; [bottom]; # enables the package
 
   home-manager.users.${spaghetti.user} = {
     home.file.".config/hypr/per-app/bottom.conf" = {

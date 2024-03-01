@@ -7,7 +7,10 @@
   };
 }
 /*
+wet noodles
+
 planning to see if I can import this into flake.nix and pass-through to other modules
+
 will really add more spaghetti to the config, thanks magic wizard linux people
 */
 

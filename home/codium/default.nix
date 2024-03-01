@@ -18,6 +18,7 @@
         yzhang.markdown-all-in-one
         kamadorueda.alejandra
         bbenoist.nix
+        gruntfuggly.todo-tree
       ];
     };
 

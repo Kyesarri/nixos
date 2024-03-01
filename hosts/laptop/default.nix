@@ -25,12 +25,13 @@ in
       ../../hardware/nvidia
       ../../hardware/wireless/nwm # networkmanager # TODO this is shit, look into mkOption
 
-      # ../../home/changedetection
+      ../../home/changedetection # easy fix
 
       # TODO # are completed as to mkoption, are enabled / configured via services.pkg.enable = true;
       ../../home/ags # TODO pam / menu
       ../../home/hypr # TODO remove wallpaper hyprwal?
       # TODO # are completed as to mkoption, are enabled / configured via services.pkg.enable = true;
+
       ../../home/prism
       ../../home # set some default values for home-manager
       ../../home/asusctl # TODO look into issues with this further
@@ -50,16 +51,18 @@ in
       ../../home/zsh
     ];
 
+    # rename to gnocchi ?
     services = {
       ags.enable = true;
 
       hypr = {
         enable = true;
         hyprpaper.enable = false;
-        #animations = false;
+        # isNvidia = true; # nvidia
+        # animations = false;
       };
 
-      # wireless = {
+      # wireless = { /* networking.wireless? */
       #   enable = true;
       #   manager = nwm; # nwm, iwd or wpa
       # };

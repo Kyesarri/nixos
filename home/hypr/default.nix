@@ -1,8 +1,6 @@
 {
   lib,
   pkgs,
-  #inputs,
-  #outputs,
   config,
   spaghetti,
   ...
@@ -13,14 +11,16 @@ in {
   options.services = {
     hypr = {
       enable = mkEnableOption "enable hyprland"; # will be services.hypr.enable = true; in host.nix
-      hyprpaper.enable = mkEnableOption "enable hyprpaper with config, can do type of and set source dir?";
+      hyprpaper.enable = mkEnableOption "enable hyprpaper with config, can do type of and set source dir?"; # services.hypr.hyprpaper.enable =
       animations.enable = mkEnableOption "enable hypr animations";
     };
   };
 
   config = mkMerge [
     (mkIf (cfg.enable) {
+      #
       programs.hyprland.enable = true; # enable hyprland
+      #
       home-manager.users.${spaghetti.user} = {
         home.file.".config/hypr/colours.conf" = {
           text = ''
@@ -42,30 +42,33 @@ in {
             $cf = rgba(${config.colorscheme.palette.base0F}FF)
           '';
         };
+        #
+        # break for humans
+        #
         home.file.".config/hypr/hyprland.conf" = {
           text = ''
             ############################################# spaghetti starts here #############################################
             $mainMod = SUPER
 
-            # moved all nix-colors to own conf, imported here
+            # hyprland nix-color scheme
             source = ~/.config/hypr/colours.conf
 
-            ## exec-once ##
-
-            ## TODO move to /home/
-            exec-once = sleep 2 && hyprpaper
-
+            ############################################# exec-once #############################################
             exec-once = sleep 4 && gnome-keyring-daemon --start --components = pkcs11, secrets, ssh
             # move above to seahorse below /home or /services/ unsure about below as its not really machine or software specific yet :)
             exec-once = sleep 6 && dbus-update-activation-environment --all
             exec-once = lxqt-policykit-agent & udiskie
 
+            ############################################# per-device #############################################
             ## per-device config, from ./hosts/hostname/per-device.nix ##
             source = ~/.config/hypr/per-device.conf
+            ## NOTE this is configured in /hosts/foo/per-device.nix
 
+            ############################################# env #############################################
             env = XCURSOR_SIZE,20
             env = WLR_NO_HARDWARE_CURSORS,1
 
+            ############################################# misc #############################################
             misc {
                 disable_hyprland_logo = true
                 disable_splash_rendering = true
@@ -77,7 +80,7 @@ in {
                 background_color = #000000
                 # can only use a single colour
             }
-
+            ############################################# input #############################################
             input {
                 kb_layout = us
                 kb_variant =
@@ -95,6 +98,7 @@ in {
                 }
             }
 
+            ############################################# general #############################################
             general {
                 gaps_in = 5
                 gaps_out = 10
@@ -108,6 +112,7 @@ in {
                 # col.inactive_border = $c0 $c1 90deg
             }
 
+            ############################################# decoration see TODO below #############################################
             decoration {
                 # drop_shadow = 1
                 # shadow_range = 30
@@ -121,7 +126,7 @@ in {
                 col.shadow_inactive= $c0
                 rounding = 10
                 #
-                # # testing nix-colors tweaks # #
+                # # testing nix-colors tweaks # # TODO Review / mkOption this
                 #
                 active_opacity = 1
                 inactive_opacity = 1
@@ -146,7 +151,6 @@ in {
             }
 
             ############################################ animations ############################################
-
             animations {
                 enabled = true
                 bezier = overshot, 0.34, 1.56, 0.64, 1
@@ -167,7 +171,6 @@ in {
             }
 
             ############################################ Layouts ###################################################
-
             dwindle {
                 no_gaps_when_only = false
                 pseudotile = true # master switch for pseudotiling. Enabling is bound to mainMod + P in the keybinds section below
@@ -181,23 +184,14 @@ in {
             }
 
             ############################################ binds ############################################
-
             # move to gscreenshot under home, TODO #
             ## take fullscreen screenshot and send to /user/screenshots/
             bind = ,Print, exec, gscreenshot -f '/home/${spaghetti.user}/screenshots/screenshot_$hx$w_%Y-%m-%d%M-%S.png' -n
             ## open screenshot selection tool with overlay, once region selected send to /user/screenshots/
             bind = shift ,Print, exec, gscreenshot -f '/home/${spaghetti.user}/screenshots/snip_$hx$w_%Y-%m-%d%M-%S.png' -n -s
 
-
             bind = $mainMod, S, exec, ~/nixos/scripts/dunst/hyprpicker.sh
-            ## not working, check script TODO changed above from bash to nothing
-
-            bind = $mainMod, C, killactive,
-            bind = $mainMod, M, exit,
-            bind = $mainMod, E, exec, nemo
-            bind = $mainMod, V, togglefloating,
-            bind = $mainMod, P, pseudo, dwindle
-            bind = $mainMod, J, togglesplit, # dwindle
+            # not working, check script TODO changed above from bash to nothing
 
             # sound
             binde = , xf86audioraisevolume, exec, ~/nixos/scripts/dunst/pipewire.sh up
@@ -211,6 +205,14 @@ in {
             ## keyboard
             binde = , XF86KbdBrightnessUp, exec, ~/nixos/scripts/dunst/asusctl.sh up
             binde = , XF86KbdBrightnessDown, exec, ~/nixos/scripts/dunst/asusctl.sh down
+
+            # workspace
+            bind = $mainMod, C, killactive,
+            bind = $mainMod, M, exit,
+            bind = $mainMod, E, exec, nemo
+            bind = $mainMod, V, togglefloating,
+            bind = $mainMod, P, pseudo, dwindle
+            bind = $mainMod, J, togglesplit, # dwindle
 
             # Move focus with mainMod + arrow keys
             bind = $mainMod, left, movefocus, l
@@ -251,12 +253,21 @@ in {
             bindm = $mainMod, mouse:272, movewindow
             bindm = $mainMod, mouse:273, resizewindow
 
+            ############################################# per-app #############################################
             ## wildcard per-app enabled in each ./home/app*/*.nix ##
             source = ~/.config/hypr/per-app/*.conf
+
+            # NOTES use ' ' \ to escape, ex
+            # ''\${spaghetti.user} & ${spaghetti.user}
+            # will output as $/ {spaghetti.user} & kel
           '';
         };
       };
     })
+    #
+    # break for humans
+    # make if hypr + hyprpaper are enabled
+    #
     (mkIf (cfg.enable || cfg.hyprpaper.enable) {
       users.users.${spaghetti.user}.packages = [pkgs.hyprpaper];
       home-manager.users.${spaghetti.user} = {
@@ -267,8 +278,16 @@ in {
             preload = /home/${spaghetti.user}/wallpapers/3.jpg
             preload = /home/${spaghetti.user}/wallpapers/4.jpg
             preload = /home/${spaghetti.user}/wallpapers/5.png
+            # ^ images must be preloaded to display
             wallpaper = , /home/${spaghetti.user}/wallpapers/5.png
+            # ^ any display, directory/image.extension
             splash = false
+          '';
+        };
+        home.file.".config/hypr/per-app/hyprpaper.conf" = {
+          text = ''
+            exec-once = sleep 2 && hyprpaper
+            # launch hyprpaper in per-app
           '';
         };
       };

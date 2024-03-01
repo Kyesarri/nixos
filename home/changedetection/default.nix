@@ -4,13 +4,16 @@
   ...
 }: {
   users.users.${spaghetti.user}.packages = [
-    chromium
-    playwright
+    # pkgs.chromium # not sure if this is required, hate chromium
+    pkgs.playwright
+    pkgs.selenium-server-standalone
   ];
 
   services.changedetection-io = {
     enable = true;
-    webDriverSupport = true;
+    # webDriverSupport = true;
     playwrightSupport = true;
   };
 }
+# lots of options to create here :)
+
