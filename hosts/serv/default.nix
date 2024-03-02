@@ -28,6 +28,7 @@ in
       ../../hardware/battery # this server comes with its own built-in "ups"
 
       ../../home # home-manaager config for all machines currently
+      ../../home/ags
       ../../home/bottom
       ../../home/dunst
       ../../home/firefox
@@ -37,7 +38,6 @@ in
       ../../home/codium
       ../../home/ulauncher
       ../../home/virt
-      ../../home/waybar
       ../../home/gtk
       ../../home/zsh
 
