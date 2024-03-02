@@ -43,6 +43,7 @@ in
       ../../home/git
       ../../home/gaming
       ../../home/kitty
+      ../../home/kde
       ../../home/ulauncher # TODO rename built theme, add credits to og author
       ../../home/virt
       ../../home/gtk # uhh, nix-colors gtk theme iirc
