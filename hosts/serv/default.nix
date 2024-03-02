@@ -12,7 +12,6 @@ in
     outputs,
     nix-colors,
     spaghetti,
-    plymouth_theme, # eeeeehhh not sure if this is needed :)
     ...
   }: {
     imports = [
@@ -46,6 +45,23 @@ in
       # ../../home/tailscale # TODO disabled until i can figure out mkif hostname == {nix-serv}; with an else
       # ../../home/wlogout
     ];
+
+    # rename to gnocchi ?
+    gnocchi = {
+      ags.enable = true;
+
+      hypr = {
+        enable = true;
+        hyprpaper.enable = false;
+        # isNvidia = true; # nvidia
+        # animations = false;
+      };
+
+      # wireless = { /* networking.wireless? */
+      #   enable = true;
+      #   manager = nwm; # nwm, iwd or wpa
+      # };
+    };
 
     colorscheme = inputs.nix-colors.colorSchemes.${scheme};
     home-manager.users.${spaghetti.user}.colorscheme = inputs.nix-colors.colorSchemes.${scheme};
