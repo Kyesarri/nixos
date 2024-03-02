@@ -179,6 +179,7 @@
       libsecret
       gitAndTools.gitFull
       polkit_gnome
+      waypipe
     ];
   };
 

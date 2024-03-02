@@ -1,3 +1,4 @@
+# https://nixos.wiki/wiki/NixOS_modules
 {
   pkgs,
   spaghetti,

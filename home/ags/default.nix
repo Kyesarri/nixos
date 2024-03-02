@@ -1,8 +1,6 @@
 {
   lib,
   pkgs,
-  inputs,
-  outputs,
   config,
   spaghetti,
   ...
@@ -11,7 +9,7 @@ with lib; let
   cfg = config.gnocchi.ags;
 in {
   options.gnocchi.ags = {
-    enable = mkEnableOption "enable ags shell"; # will be ags.enable = true; in host.nix
+    enable = mkEnableOption "enable ags shell"; # will be gnocchi.ags.enable = true; in host.nix
     # foo = mkOption {
     # make an option for foo
     # type = types.str; # string, makes sense
