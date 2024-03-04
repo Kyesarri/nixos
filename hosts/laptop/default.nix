@@ -21,7 +21,7 @@
     ../../hardware/nvidia
     ../../hardware/wireless/nwm # networkmanager # TODO this is shit, look into mkOption
 
-    ../../home/changedetection # easy fix
+    #../../home/changedetection # easy fix
 
     # TODO # are completed as to mkoption, are enabled / configured via gnocchi.pkg.enable = true;
     ../../home/ags # TODO pam / menu
@@ -37,6 +37,7 @@
     ../../home/firefox # why you always need to build from source, check to see if there are nighty / beta precompiled
     ../../home/git
     ../../home/gaming
+    ../../home/greetd
     #
     ../../home/kitty # /home/shell/ under mkOption, have foot / kitty / more? in there
     #
@@ -49,6 +50,8 @@
     ../../home/tailscale
     ../../home/zsh
   ];
+
+  boot.supportedFilesystems = ["ntfs"];
 
   gnocchi = {
     ags.enable = true;

@@ -113,14 +113,16 @@
 
     gnome.gnome-keyring.enable = true;
 
-    # TODO should this be pushed to a n o t h e r nix under /home/ for GDM / SDDM or /boot/
+    /*
+    # TODO move to gnocchi
     xserver = {
       enable = true;
-      displayManager.gdm = {
+      displayManager.lightdm = {
         enable = true;
-        wayland = true;
+        greeters.slick.enable = true;
       };
     };
+    */
   };
 
   fonts = {
@@ -212,6 +214,8 @@
       armcord # discord wrapper / chat
       sleek-grub-theme # testing grub themes TODO grub
       adi1090x-plymouth-themes # plymouth themes
+      ntfs3g # ntfs support
+
       ## TESTING ##
       tmux
       tmuxifier

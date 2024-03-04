@@ -22,15 +22,18 @@ in {
   config = mkMerge [
     (mkIf (cfg.enable) {
       #
-      programs.hyprland.enable = true; # enable hyprland, needed w below?
+      # programs.hyprland.enable = true; # enable hyprland, needed w below?
       home-manager.users.${spaghetti.user} = {
         wayland.windowManager.hyprland = {
           enable = true;
           systemd.enable = true;
           # plugins = [inputs.hy3.packages.x86_64-linux.hy3];
-          extraConfig = ''source = /home/${spaghetti.user}/nixos/home/hypr/config/main.conf'';
-          # endgame would be, write a config file that sources the /home/hypr/config/main.conf
-          # lets do now
+          extraConfig = ''
+            # ^^ autogen by home-manager ^^
+            # this is a hacky workaround, but works for me
+            # pulls config from nix config tree, no symlinks, means faster editing without rebuilds / reloading hypr
+            source = /home/${spaghetti.user}/nixos/home/hypr/config/main.conf
+          '';
         };
         home.file.".config/hypr/colours.conf" = {
           text = ''
