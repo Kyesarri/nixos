@@ -22,7 +22,6 @@ in {
   config = mkMerge [
     (mkIf (cfg.enable) {
       #
-      # programs.hyprland.enable = true; # enable hyprland, needed w below?
       home-manager.users.${spaghetti.user} = {
         wayland.windowManager.hyprland = {
           enable = true;
@@ -30,11 +29,12 @@ in {
           # plugins = [inputs.hy3.packages.x86_64-linux.hy3];
           extraConfig = ''
             # ^^ autogen by home-manager ^^
-            # this is a hacky workaround, but works for me
+            # this is a hacky workaround, but it works and i don't care
             # pulls config from nix config tree, no symlinks, means faster editing without rebuilds / reloading hypr
             source = /home/${spaghetti.user}/nixos/home/hypr/config/main.conf
           '';
         };
+        #
         home.file.".config/hypr/colours.conf" = {
           text = ''
             # add nix-colors below, sourced in hyprland.conf
@@ -57,16 +57,11 @@ in {
           '';
         };
         #
-        # break for humans
-        #
       };
     })
-
-    #
-    # break for humans
-    # make if hypr + hyprpaper are enabled
     #
     (mkIf (cfg.enable || cfg.hyprpaper.enable) {
+      # make if hypr and hyprpaper are enabled
       users.users.${spaghetti.user}.packages = [pkgs.hyprpaper];
       home-manager.users.${spaghetti.user} = {
         home.file.".config/hypr/hyprpaper.conf" = {
@@ -77,9 +72,10 @@ in {
             preload = /home/${spaghetti.user}/wallpapers/4.jpg
             preload = /home/${spaghetti.user}/wallpapers/5.png
             # ^ images must be preloaded to display
-            wallpaper = , /home/${spaghetti.user}/wallpapers/5.png
-            # ^ any display, directory/image.extension
+            # wallpaper = , /home/${spaghetti.user}/wallpapers/4.png # disabled wallpaper on boot, can set using hyprctl - want to add to agsr
+            # ^ any display, directory/name.ext
             splash = false
+            # ^ adds text to the image
           '';
         };
         home.file.".config/hypr/per-app/hyprpaper.conf" = {

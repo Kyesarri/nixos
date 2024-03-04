@@ -37,7 +37,7 @@
     ../../home/firefox # why you always need to build from source, check to see if there are nighty / beta precompiled
     ../../home/git
     ../../home/gaming
-    ../../home/greetd
+    ../../home/greetd # replaced gdm
     #
     ../../home/kitty # /home/shell/ under mkOption, have foot / kitty / more? in there
     #
