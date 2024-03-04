@@ -18,6 +18,7 @@ in {
   };
 
   config = mkIf cfg.enable {
+    security.pam.services.ags = {};
     home-manager.users.${spaghetti.user} = {
       programs.ags.enable = true;
       #
@@ -34,7 +35,7 @@ in {
       #
       home.file.".config/hypr/per-app/ags.conf" = {
         text = ''
-          exec-once = sleep 6 && ~/nixos/scripts/ags.sh
+          exec-once = sleep 2 && ~/nixos/scripts/ags.sh
         '';
         # ^ script reloads / launches ags, outputs logs to tmp dir
       };

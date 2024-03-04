@@ -15,7 +15,6 @@
   nixpkgs.config.allowUnfree = true;
 
   security.pam.services = {
-    ags = {}; # TODO move to ags, dont want this enabled if not required
     gdm.enableGnomeKeyring = true; # unlock keyring with gdm / gdm support for keyring
   };
 

@@ -1,3 +1,4 @@
+# adds nix-colors palette to boot console / tuigreetd
 {config, ...}: {
   console.colors = [
     # terminal8

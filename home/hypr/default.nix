@@ -80,7 +80,7 @@ in {
         };
         home.file.".config/hypr/per-app/hyprpaper.conf" = {
           text = ''
-            exec-once = sleep 2 && hyprpaper
+            exec-once = sleep 1 && hyprpaper
             # launch hyprpaper in per-app
           '';
         };
