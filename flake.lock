@@ -272,6 +272,26 @@
         "type": "github"
       }
     },
+    "hy3": {
+      "inputs": {
+        "hyprland": [
+          "hyprland"
+        ]
+      },
+      "locked": {
+        "lastModified": 1709385539,
+        "narHash": "sha256-R/8xrwDd28x4Z0l41xacSyOX41OBzsWs8aSWMRD+s1A=",
+        "owner": "outfoxxed",
+        "repo": "hy3",
+        "rev": "a726135c861229c8cde9dcf3b01e12a1689aeea6",
+        "type": "github"
+      },
+      "original": {
+        "owner": "outfoxxed",
+        "repo": "hy3",
+        "type": "github"
+      }
+    },
     "hyprland": {
       "inputs": {
         "hyprland-protocols": "hyprland-protocols",
@@ -564,6 +584,7 @@
         "alejandra": "alejandra",
         "auto-cpufreq": "auto-cpufreq",
         "home-manager": "home-manager_2",
+        "hy3": "hy3",
         "hyprland": "hyprland",
         "hyprpicker": "hyprpicker",
         "nix-colors": "nix-colors",

@@ -189,8 +189,8 @@
     description = "${spaghetti.user}";
     extraGroups = ["networkmanager" "wheel"];
     packages = with pkgs; [
-      # KISS
-      gnome-text-editor
+      # KISS, PLEASE #
+      gnome-text-editor # still might want something with slightly more features, bit too barebones?
       nix-init # git flake helper
       remmina # rdp client
       fet-sh # minimalistic fetch script
@@ -202,8 +202,6 @@
       hyprpicker # colour picker for wayland TODO fix script
       imagemagick # bitmap editor cli
       slack # work
-      tmux
-      tmuxifier
       libnotify # notifications
       gimp-with-plugins # gimp, handy to have
       wf-recorder # screen recorder
@@ -214,6 +212,11 @@
       armcord # discord wrapper / chat
       sleek-grub-theme # testing grub themes TODO grub
       adi1090x-plymouth-themes # plymouth themes
+      ## TESTING ##
+      tmux
+      tmuxifier
+      ## TESTING ##
+
       # gtklock # lockscreen, might be an alternative for swaylock pending update # use ags duh...
       # (callPackage ../packages/image-colorizer {})
 

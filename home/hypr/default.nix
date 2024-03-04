@@ -3,15 +3,18 @@
   pkgs,
   config,
   spaghetti,
+  inputs,
   ...
 }:
 with lib; let
   cfg = config.gnocchi.hypr; # shorthand some lines
 in {
+  # wayland.windowManager.hyprland.extraConfig = lib.mkAfter ''
+  # libmkafter looks vvv interesting
   options.gnocchi = {
     hypr = {
       enable = mkEnableOption "enable hyprland"; # will be gnocchi.hypr.enable = true; in host.nix
-      hyprpaper.enable = mkEnableOption "enable hyprpaper with config, can do type of and set source dir?"; # gnocchi.hypr.hyprpaper.enable =
+      hyprpaper.enable = mkEnableOption "enable hyprpaper with config, can do type of, and set source dir?";
       animations.enable = mkEnableOption "enable hypr animations";
     };
   };
@@ -19,9 +22,17 @@ in {
   config = mkMerge [
     (mkIf (cfg.enable) {
       #
-      programs.hyprland.enable = true; # enable hyprland
-      # add nix-colors
+      programs.hyprland.enable = true; # enable hyprland, needed w below?
       home-manager.users.${spaghetti.user} = {
+        wayland.windowManager.hyprland = {
+          enable = true;
+          systemd.enable = true;
+          plugins = [inputs.hy3.packages.x86_64-linux.hy3];
+          extraConfig = ''
+            ${builtins.readFile ./hyprland.conf}
+          '';
+        };
+        # add nix-colors
         home.file.".config/hypr/colours.conf" = {
           text = ''
             $c0 = rgba(${config.colorscheme.palette.base00}FF)
@@ -111,6 +122,8 @@ in {
                 layout = dwindle
                 col.active_border = $c0 $c1 $c1 $c2 $c1 $c0
                 col.inactive_border = $c0 $c1
+
+                layout = hy3
 
                 # TODO below are the fancier settings with coloured borders, with animations
                 # border_size = 5
@@ -222,6 +235,7 @@ in {
             bind = $mainMod, J, togglesplit, # dwindle
 
             # Move focus with mainMod + arrow keys
+            # FIXME add hy3:movefocus once working
             bind = $mainMod, left, movefocus, l
             bind = $mainMod, right, movefocus, r
             bind = $mainMod, up, movefocus, u
@@ -264,9 +278,115 @@ in {
             ## wildcard per-app enabled in each ./home/app*/*.nix ##
             source = ~/.config/hypr/per-app/*.conf
 
-            # NOTES use ' ' \ to escape, ex
-            # ''\${spaghetti.user} & ${spaghetti.user}
-            # will output as $/ {spaghetti.user} & kel
+            plugin {
+              hy3 {
+                # disable gaps when only one window is onscreen
+                no_gaps_when_only = true
+
+                # policy controlling what happens when a node is removed from a group,
+                # leaving only a group
+                # 0 = remove the nested group
+                # 1 = keep the nested group
+                # 2 = keep the nested group only if its parent is a tab group
+                node_collapse_policy = 2
+
+                # policy controlling what windows will be focused using `hy3:movefocused`
+                # 0 = focus strictly by layout, don't attempt to skip windows that are obscured by another one
+                # 1 = do not focus windows which are entirely obscured by a floating window
+                # 2 = when `hy3:movefocus` layer is `samelayer` then use focus policy 0 (focus strictly by layout)
+                #     when `hy3:movefocus` layer is `all` then use focus policy 1 (don't focus obscured windows)
+                focus_obscured_windows_policy = 2
+
+                # which layers should be considered when changing focus with `hy3:movefocus`?
+                # samelayer = only focus windows on same layer as the source window (floating or tiled)
+                # all       = choose the closest window irrespective of the layout
+                # tiled     = only choose tiled windows, not especially useful but permitted by parser
+                # floating  = only choose floating windows, not especially useful but permitted by parser
+                default_movefocus_layer = samelayer
+
+                # offset from group split direction when only one window is in a group
+                group_inset = 10
+
+                # if a tab group will automatically be created for the first window spawned in a workspace
+                tab_first_window = true
+
+                # tab group settings
+                tabs {
+                  # height of the tab bar
+                  height = 15
+
+                  # padding between the tab bar and its focused node
+                  padding = 5
+
+                  # the tab bar should animate in/out from the top instead of below the window
+                  from_top = false
+
+                  # rounding of tab bar corners
+                  rounding = 3
+
+                  # render the window title on the bar
+                  render_text = true
+
+                  # center the window title
+                  text_center =false
+
+                  # font to render the window title with
+                  text_font = Sans
+
+                  # height of the window title
+                  text_height = 8
+
+                  # left padding of the window title
+                  text_padding = 3
+
+                  # active tab bar segment color
+                  col.active = 0xff32b4ff
+
+                  # urgent tab bar segment color
+                  col.urgent = 0xffff4f4f
+
+                  # inactive tab bar segment color
+                  col.inactive = 0x80808080
+
+                  # active tab bar text color
+                  col.text.active = 0xff000000
+
+                  # urgent tab bar text color
+                  col.text.urgent = 0xff000000
+
+                  # inactive tab bar text color
+                  col.text.inactive = 0xff000000
+                }
+
+                # autotiling settings
+                autotile {
+                  # enable autotile
+                  enable = false
+
+                  # make autotile-created groups ephemeral
+                  ephemeral_groups = true
+
+                  # if a window would be squished smaller than this width, a vertical split will be created
+                  # -1 = never automatically split vertically
+                  # 0 = always automatically split vertically
+                  # <number> = pixel height to split at
+                  trigger_width = 0
+
+                  # if a window would be squished smaller than this height, a horizontal split will be created
+                  # -1 = never automatically split horizontally
+                  # 0 = always automatically split horizontally
+                  # <number> = pixel height to split at
+                  trigger_height = 0
+
+                  # a space or comma separated list of workspace ids where autotile should be enabled
+                  # it's possible to create an exception rule by prefixing the definition with "not:"
+                  # workspaces = 1,2 # autotiling will only be enabled on workspaces 1 and 2
+                  # workspaces = not:1,2 # autotiling will be enabled on all workspaces except 1 and 2
+                  workspaces = all
+                }
+              }
+            }
+
           '';
         };
       };
