@@ -27,8 +27,10 @@ in {
         wayland.windowManager.hyprland = {
           enable = true;
           systemd.enable = true;
-          # plugins = [hy3.packages.x86_64-linux.hy3];
-          extraConfig = ''${builtins.readFile ./config/hyprland.conf}'';
+          # plugins = [inputs.hy3.packages.x86_64-linux.hy3];
+          extraConfig = ''source = /home/${spaghetti.user}/nixos/home/hypr/config/main.conf'';
+          # endgame would be, write a config file that sources the /home/hypr/config/main.conf
+          # lets do now
         };
         home.file.".config/hypr/colours.conf" = {
           text = ''
