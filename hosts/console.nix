@@ -1,4 +1,4 @@
-{...}: {
+{config, ...}: {
   console.colors = [
     # terminal8
     "${config.colorScheme.palette.base00}" # black
