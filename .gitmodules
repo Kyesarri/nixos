@@ -1,3 +1,6 @@
 [submodule "wallpaper"]
 	path = wallpaper
 	url = https://codeberg.org/kye/wallpaper
+[submodule "packages/wallpaper-generator"]
+	path = packages/wallpaper-generator
+	url = https://github.com/pinpox/wallpaper-generator/
