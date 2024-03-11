@@ -23,7 +23,7 @@
 
     nix-colors.url = "github:kyesarri/nix-colors"; # colour themes
     prism.url = "github:IogaMaster/prism"; # wallpaper gen
-    wp-gen.url = "github:pinpox/wallpaper-generator"; # another one
+    wp-gen.url = "flake:packages/wallpaper-generator"; # another one
 
     alejandra.url = "github:kamadorueda/alejandra/3.0.0"; # codeium nix
     ags.url = "github:Aylur/ags";

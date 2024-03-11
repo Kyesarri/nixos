@@ -196,7 +196,7 @@
       imagemagick # bitmap editor cli
       slack # work
       libnotify # notifications
-      gimp-with-plugins # gimp, handy to have
+      # gimp-with-plugins # gimp, handy to have, failed to build with 11/03/24 flake update
       wf-recorder # screen recorder
       mate.mate-calc # calc
       p7zip # TODO needs a gui
