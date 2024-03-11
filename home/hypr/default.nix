@@ -22,15 +22,20 @@ in {
   config = mkMerge [
     (mkIf (cfg.enable) {
       #
+      users.users.${spaghetti.user}.packages = [pkgs.hyprland-protocols];
       home-manager.users.${spaghetti.user} = {
         wayland.windowManager.hyprland = {
           enable = true;
           systemd.enable = true;
-          # plugins = [inputs.hy3.packages.x86_64-linux.hy3];
+          plugins = [
+            inputs.hyprland-plugins.packages.${pkgs.system}.hyprtrails
+            #inputs.hyprland-plugins.packages.${pkgs.system}.hyprwinwrap # throws errors, might be hy3 or lack of plugin config :)
+            inputs.hy3.packages.x86_64-linux.hy3
+          ];
           extraConfig = ''
             # ^^ autogen by home-manager ^^
             # this is a hacky workaround, but it works and i don't care
-            # pulls config from nix config tree, no symlinks, means faster editing without rebuilds / reloading hypr
+            # pulls config from nix install dir, no symlinks, means faster editing without rebuilds / reloading hypr
             source = /home/${spaghetti.user}/nixos/home/hypr/config/main.conf
           '';
         };
@@ -54,6 +59,23 @@ in {
             $cd = rgba(${config.colorscheme.palette.base0D}FF)
             $ce = rgba(${config.colorscheme.palette.base0E}FF)
             $cf = rgba(${config.colorscheme.palette.base0F}FF)
+            # testing some with transparency 99 ~ 60%
+            $c099 = rgba(${config.colorscheme.palette.base00}99)
+            $c199 = rgba(${config.colorscheme.palette.base01}99)
+            $c299 = rgba(${config.colorscheme.palette.base02}99)
+            $c399 = rgba(${config.colorscheme.palette.base03}99)
+            $c499 = rgba(${config.colorscheme.palette.base04}99)
+            $c599 = rgba(${config.colorscheme.palette.base05}99)
+            $c699 = rgba(${config.colorscheme.palette.base06}99)
+            $c799 = rgba(${config.colorscheme.palette.base07}99)
+            $c899 = rgba(${config.colorscheme.palette.base08}99)
+            $c999 = rgba(${config.colorscheme.palette.base09}99)
+            $ca99 = rgba(${config.colorscheme.palette.base0A}99)
+            $cb99 = rgba(${config.colorscheme.palette.base0B}99)
+            $cc99 = rgba(${config.colorscheme.palette.base0C}99)
+            $cd99 = rgba(${config.colorscheme.palette.base0D}99)
+            $ce99 = rgba(${config.colorscheme.palette.base0E}99)
+            $cf99 = rgba(${config.colorscheme.palette.base0F}99)
           '';
         };
         #
@@ -61,7 +83,7 @@ in {
     })
     #
     (mkIf (cfg.enable || cfg.hyprpaper.enable) {
-      # make if hypr and hyprpaper are enabled
+      # make if (hypr and hyprpaper) enabled
       users.users.${spaghetti.user}.packages = [pkgs.hyprpaper];
       home-manager.users.${spaghetti.user} = {
         home.file.".config/hypr/hyprpaper.conf" = {
@@ -72,7 +94,7 @@ in {
             preload = /home/${spaghetti.user}/wallpapers/4.jpg
             preload = /home/${spaghetti.user}/wallpapers/5.png
             # ^ images must be preloaded to display
-            # wallpaper = , /home/${spaghetti.user}/wallpapers/4.png # disabled wallpaper on boot, can set using hyprctl - want to add to agsr
+            wallpaper = , /home/${spaghetti.user}/wallpapers/3.jpg # disabled wallpaper on boot, can set using hyprctl - want to add to agsr
             # ^ any display, directory/name.ext
             splash = false
             # ^ adds text to the image

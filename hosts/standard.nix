@@ -8,15 +8,12 @@
   ...
 }: {
   imports = [./console.nix]; # console colours
-  # standard config for "modern" systems, desktop / laptop config atm
   system.stateVersion = "23.11";
   time.timeZone = "Australia/Melbourne";
 
   nixpkgs.config.allowUnfree = true;
 
-  security.pam.services = {
-    gdm.enableGnomeKeyring = true; # unlock keyring with gdm / gdm support for keyring
-  };
+  security.pam.services = {gdm.enableGnomeKeyring = true;};
 
   nix = {
     sshServe.enable = true; # enable ssh server
@@ -56,13 +53,7 @@
     plymouth = {
       enable = true;
       theme = "${spaghetti.plymouth}";
-      themePackages = [
-        (
-          pkgs.adi1090x-plymouth-themes.override {
-            selected_themes = ["${spaghetti.plymouth}"];
-          }
-        )
-      ];
+      themePackages = [(pkgs.adi1090x-plymouth-themes.override {selected_themes = ["${spaghetti.plymouth}"];})];
     };
 
     # TODO can i with a single value defined in ./flake.nix select the plymouth theme and prevent all other themes from being
@@ -219,6 +210,7 @@
       ## TESTING ##
       tmux
       tmuxifier
+      inputs.wp-gen.defaultPackage.x86_64-linux
       ## TESTING ##
 
       # gtklock # lockscreen, might be an alternative for swaylock pending update # use ags duh...

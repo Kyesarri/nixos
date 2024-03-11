@@ -10,7 +10,7 @@ with lib; let
 in {
   options.gnocchi = {
     gscreenshot = {
-      enable = mkEnableOption "enable gscreenshot"; # will be gnocchi.hypr.enable = true; in host.nix
+      enable = mkEnableOption "enable gscreenshot"; # will be gnocchi.pkg.enable = true; in host.nix
     };
   };
 
@@ -18,7 +18,7 @@ in {
     (
       mkIf (cfg.enable) {
         #
-        programs.gscreenshot.enable = true;
+        users.users.${spaghetti.user}.packages = [pkgs.gscreenshot];
 
         home-manager.users.${spaghetti.user} = {
           home.file.".config/hypr/per-app/gscreenshot.conf" = {

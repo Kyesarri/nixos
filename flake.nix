@@ -12,13 +12,18 @@
     agenix.url = "github:ryantm/agenix"; # on the TODO manage secrets and wizard hat things
 
     hyprland.url = "github:hyprwm/Hyprland";
-    hyprpicker.url = "github:hyprwm/hyprpicker";
+    hyprland-plugins = {
+      url = "github:hyprwm/hyprland-plugins";
+      inputs.hyprland.follows = "hyprland";
+    };
 
+    hyprpicker.url = "github:hyprwm/hyprpicker";
     hy3.url = "github:outfoxxed/hy3"; # dev branch
     hy3.inputs.hyprland.follows = "hyprland";
 
     nix-colors.url = "github:kyesarri/nix-colors"; # colour themes
     prism.url = "github:IogaMaster/prism"; # wallpaper gen
+    wp-gen.url = "github:pinpox/wallpaper-generator"; # another one
 
     alejandra.url = "github:kamadorueda/alejandra/3.0.0"; # codeium nix
     ags.url = "github:Aylur/ags";
@@ -39,21 +44,22 @@
     agenix,
     auto-cpufreq,
     prism,
+    wp-gen,
     ...
   } @ inputs: let
     #
     # pretty basic tings, passed through to the below nixosConfigurations, bring into scope as atributes
     # if required further in the tree { spaghetti, ... }:{ ...
     #
-    # inherit foo will copy verbatim, using ${foo}; will call the string / value
+    # inherit foo will copy verbatim, using ${foo}; or ${foo.bar}; will call the string / value
     #
     spaghetti = {
       user = "kel"; # single user currently, import attribute as spaghetti use ${spaghetti.user}
       plymouth = "deus_ex"; # as above, use ${spaghetti.plymouth}
-      scheme = "horizon-dark";
+      scheme = "horizon-dark"; # mmm, this should still be per machine but idk right now :)
     };
     system = "x86_64-linux"; # i dont use any other arch atm
-    specialArgs = {inherit nix-colors auto-cpufreq inputs prism spaghetti;};
+    specialArgs = {inherit nix-colors auto-cpufreq inputs prism spaghetti wp-gen;};
     # ^
     # ^ FIXME -
     # ^ the specialArgs is pretty loose and a cover-all, not all systems require every input

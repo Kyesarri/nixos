@@ -26,6 +26,7 @@
     # TODO # are completed as to mkoption, are enabled / configured via gnocchi.pkg.enable = true;
     ../../home/ags # TODO pam / menu
     ../../home/hypr # TODO remove wallpaper hyprwal?
+    ../../home/gscreenshot
     # TODO # are completed as to mkoption, are enabled / configured via gnocchi.pkg.enable = true;
 
     ../../home # set some default values for home-manager
@@ -37,7 +38,7 @@
     ../../home/firefox # why you always need to build from source, check to see if there are nighty / beta precompiled
     ../../home/git
     ../../home/gaming
-    ../../home/greetd # replaced gdm
+    ../../home/greetd
     #
     ../../home/kitty # /home/shell/ under mkOption, have foot / kitty / more? in there
     #
@@ -55,13 +56,13 @@
 
   gnocchi = {
     ags.enable = true;
+    gscreenshot.enable = true;
     hypr = {
       enable = true;
       hyprpaper.enable = false;
       # isNvidia = true; # nvidia
       # animations = false;
     };
-
     # wireless = { /* networking.wireless? */
     #   enable = true;
     #   manager = nwm; # nwm, iwd or wpa
