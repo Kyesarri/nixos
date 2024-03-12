@@ -13,7 +13,6 @@
         foreground = "#${config.colorScheme.palette.base05}";
         background = "#${config.colorScheme.palette.base00}";
         url_color = "#${config.colorScheme.palette.base0E}";
-
         # terminal8
         color0 = "#${config.colorScheme.palette.base00}"; # black
         color1 = "#${config.colorScheme.palette.base08}"; # red

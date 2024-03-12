@@ -208,6 +208,10 @@
       adi1090x-plymouth-themes # plymouth themes
       ntfs3g # ntfs support
 
+      # fprintd shit
+      python311Packages.pyusb
+      python3Full
+
       ## TESTING ##
       tmux
       tmuxifier

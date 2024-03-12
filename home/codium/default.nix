@@ -43,9 +43,9 @@
           "editor.tokenColorCustomizations": {
             "comments": "#24A8B499",
             "functions": "#E3E6EE",
-            "keywords": "#B072D1",
+            "keywords": "#E93C58",
             "strings": "#EFB993",
-            "numbers": "#E93C58",
+            "numbers": "#B072D1",
             "variables": "#E3E6EEff",
             "types": "#9DA0A2",
             "textMateRules": [
@@ -55,8 +55,11 @@
               { "scope": [ "constant.language.nix", "variable.parameter.name.nix", ],
                 "settings": { "foreground": "#24A8B4", "fontStyle": "italic",},
               },
-              { "scope": [ "string.quoted.other.nix", "string.quoted.double.nix", ],
-              "settings": { "foreground": "#E58D7D", "fontStyle": "italic",},
+              { "scope": [ "string.quoted.other.nix", ],
+              "settings": { "foreground": "#E58D7DFF", "fontStyle": "italic",},
+              },
+              { "scope": [ "string.quoted.double.nix", ],
+              "settings": { "foreground": "#CBCED0FF", "fontStyle": "",},
               },
               { "scope": ["comment", "comment.block",],
                 "settings": { "foreground": "#DF5273AA","fontStyle": "italic bold", }
@@ -109,8 +112,8 @@
             "editor.selectionHighlightBackground": "#E93C5866",
             //
             // toolbar
-            "toolbar.activeBackground": "#B072D1",          //
-            "toolbar.activeForeground": "#B072D1",            // unsure of these two for now
+            "toolbar.activeBackground": "#24A8B4",          //
+            "toolbar.activeForeground": "#DF5273",            // unsure of these two for now
             //
             // activitybar / sidebars
             "activityBar.background": "#1C1E26",            // background colour

@@ -46,10 +46,8 @@ in
       # ../../home/wlogout
     ];
 
-    # rename to gnocchi ?
     gnocchi = {
       ags.enable = true;
-
       hypr = {
         enable = true;
         hyprpaper.enable = false;

@@ -10,12 +10,14 @@
       bind = $mainMod, W, exec, firefox -p work --name work
       windowrulev2 = bordercolor $ce, initialClass:^(work)$
       windowrulev2 = noshadow, nodim, initialClass:^(work)$
+      windowrulev2=float, class:.*$, title:Extension: (Bitwarden - Free Password Manager) - Bitwarden — Mozilla Firefox
+      windowrulev2 = nomaximizerequest, class:.*$, title:Extension: (Bitwarden - Free Password Manager) - Bitwarden — Mozilla Firefox
     '';
   };
 
   environment.sessionVariables = rec {MOZ_ENABLE_WAYLAND = "1";}; # is this required anymore?
 
-  users.users.${spaghetti.user}.packages = with pkgs; [firefox]; # is this required?
+  users.users.${spaghetti.user}.packages = with pkgs; [firefox]; # is this required? probs
   programs.firefox = {
     enable = true;
     package = pkgs.wrapFirefox pkgs.firefox-unwrapped {

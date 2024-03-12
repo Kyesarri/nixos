@@ -98,6 +98,11 @@
   };
 
   services = {
+    fprintd.enable = true;
+    fprintd.tod = {
+      enable = true;
+      driver = pkgs.libfprint-2-tod1-goodix;
+    };
     # fprintd.enable = true; # fprint reader, needs work for this model
     xserver.enable = true;
     udev.extraHwdb = ''
