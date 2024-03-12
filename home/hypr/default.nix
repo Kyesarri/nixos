@@ -22,9 +22,10 @@ in {
   config = mkMerge [
     (mkIf (cfg.enable) {
       #
-      users.users.${spaghetti.user}.packages = [pkgs.hyprland-protocols];
+      #  users.users.${spaghetti.user}.packages = [pkgs.hyprland-protocols];
       home-manager.users.${spaghetti.user} = {
         wayland.windowManager.hyprland = {
+          package = inputs.hyprland.packages.${pkgs.system}.hyprland;
           enable = true;
           systemd.enable = true;
           plugins = [

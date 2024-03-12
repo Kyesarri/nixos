@@ -714,7 +714,7 @@
         "nixos-unstable": "nixos-unstable",
         "nixpkgs": "nixpkgs_6",
         "prism": "prism",
-        "wp-gen": "wp-gen"
+        "wallpaper-generator": "wallpaper-generator"
       }
     },
     "rust-analyzer-src": {
@@ -817,6 +817,26 @@
         "type": "github"
       }
     },
+    "wallpaper-generator": {
+      "inputs": {
+        "flake-compat": "flake-compat_2",
+        "flake-utils": "flake-utils_2",
+        "nixpkgs": "nixpkgs_8"
+      },
+      "locked": {
+        "lastModified": 1710127540,
+        "narHash": "sha256-r5J0J7kzOCk9yGcpQKBDvPF4j3AwNJ6woTDUzW1/0/I=",
+        "owner": "kyesarri",
+        "repo": "wallpaper-generator",
+        "rev": "86e3d95a6b464073a59a02c7f087dabd5da690fc",
+        "type": "github"
+      },
+      "original": {
+        "owner": "kyesarri",
+        "repo": "wallpaper-generator",
+        "type": "github"
+      }
+    },
     "wlroots": {
       "flake": false,
       "locked": {
@@ -834,26 +854,6 @@
         "repo": "wlroots",
         "rev": "50eae512d9cecbf0b3b1898bb1f0b40fa05fe19b",
         "type": "gitlab"
-      }
-    },
-    "wp-gen": {
-      "inputs": {
-        "flake-compat": "flake-compat_2",
-        "flake-utils": "flake-utils_2",
-        "nixpkgs": "nixpkgs_8"
-      },
-      "locked": {
-        "lastModified": 1672425573,
-        "narHash": "sha256-/5axSF9ow9R+5VDaXS/ehs14kkIY6xICxoWJ791nHGY=",
-        "owner": "pinpox",
-        "repo": "wallpaper-generator",
-        "rev": "6461fa794745fb18f2b04f58015e9a2871ca7099",
-        "type": "github"
-      },
-      "original": {
-        "owner": "pinpox",
-        "repo": "wallpaper-generator",
-        "type": "github"
       }
     },
     "xdph": {

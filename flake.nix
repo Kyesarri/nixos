@@ -23,7 +23,7 @@
 
     nix-colors.url = "github:kyesarri/nix-colors"; # colour themes
     prism.url = "github:IogaMaster/prism"; # wallpaper gen
-    wp-gen.url = "flake:packages/wallpaper-generator"; # another one
+    wallpaper-generator.url = "github:kyesarri/wallpaper-generator"; # another one
 
     alejandra.url = "github:kamadorueda/alejandra/3.0.0"; # codeium nix
     ags.url = "github:Aylur/ags";
@@ -44,7 +44,7 @@
     agenix,
     auto-cpufreq,
     prism,
-    wp-gen,
+    wallpaper-generator,
     ...
   } @ inputs: let
     #
@@ -59,7 +59,7 @@
       scheme = "horizon-dark"; # mmm, this should still be per machine but idk right now :)
     };
     system = "x86_64-linux"; # i dont use any other arch atm
-    specialArgs = {inherit nix-colors auto-cpufreq inputs prism spaghetti wp-gen;};
+    specialArgs = {inherit nix-colors auto-cpufreq inputs prism spaghetti wallpaper-generator;};
     # ^
     # ^ FIXME -
     # ^ the specialArgs is pretty loose and a cover-all, not all systems require every input

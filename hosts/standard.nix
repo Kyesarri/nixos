@@ -101,7 +101,6 @@
       enable = true;
       packages = [pkgs.gnome.seahorse];
     };
-
     gnome.gnome-keyring.enable = true;
 
     /*
@@ -182,7 +181,9 @@
     description = "${spaghetti.user}";
     extraGroups = ["networkmanager" "wheel"];
     packages = with pkgs; [
-      # KISS, PLEASE #
+      ###############
+      # KISS PLEASE #
+      ###############
       gnome-text-editor # still might want something with slightly more features, bit too barebones?
       nix-init # git flake helper
       remmina # rdp client
@@ -210,7 +211,7 @@
       ## TESTING ##
       tmux
       tmuxifier
-      inputs.wp-gen.defaultPackage.x86_64-linux
+      inputs.wallpaper-generator.defaultPackage.x86_64-linux
       ## TESTING ##
 
       # gtklock # lockscreen, might be an alternative for swaylock pending update # use ags duh...
