@@ -42,7 +42,7 @@
   boot = {
     kernelPackages = pkgs.linuxPackages_xanmod_latest; # use latest xanmod kernel
     kernelParams = [
-      "nowatchdog" # disables watchdog, was causing shutdown / reboot issues
+      "nowatchdog" # disables watchdog, was causing shutdown / reboot issues with wifi
       "clocksource=tsc" # now working with tsc nowatchdog & tsc reliable
       "tsc=nowatchdog" # workaround for check_tsc_sync_source failed, could cause issues
       "tsc=reliable" # flags tsc clock as reliable, workaround to get tsc working on laptop
@@ -208,19 +208,14 @@
       adi1090x-plymouth-themes # plymouth themes
       ntfs3g # ntfs support
 
-      # fprintd shit
-      python311Packages.pyusb
-      python3Full
-
       ## TESTING ##
       tmux
       tmuxifier
+      libfprint-2-tod1-goodix
       inputs.wallpaper-generator.defaultPackage.x86_64-linux
       ## TESTING ##
 
-      # gtklock # lockscreen, might be an alternative for swaylock pending update # use ags duh...
       # (callPackage ../packages/image-colorizer {})
-
       # (callPackage ../packages/wcp {}) # IT WORKS! Currently has bugs with RGBA colours, see package notes
       # (callPackage ../packages/libfprint {}) # builds, need to write to the fprint reader now :)
       # (callPackage ../packages/sov {}) # sway overview, needs some hyprland config to see if works on hyprland

@@ -10,8 +10,7 @@
       bind = $mainMod, W, exec, firefox -p work --name work
       windowrulev2 = bordercolor $ce, initialClass:^(work)$
       windowrulev2 = noshadow, nodim, initialClass:^(work)$
-      windowrulev2=float, class:.*$, title:Extension: (Bitwarden - Free Password Manager) - Bitwarden — Mozilla Firefox
-      windowrulev2 = nomaximizerequest, class:.*$, title:Extension: (Bitwarden - Free Password Manager) - Bitwarden — Mozilla Firefox
+      windowrulev2=float, class:firefox.*$, title:Extension: (Bitwarden - Free Password Manager) - Bitwarden — Mozilla Firefox
     '';
   };
 
@@ -46,3 +45,23 @@
     };
   };
 }
+/*
+flake.nix
+    firefox-gnome-theme = {
+      url = "github:rafaelmardojai/firefox-gnome-theme";
+      flake = false;
+    };
+
+firefox.nix
+
+  home-manager.users.${spaghetti.user}.home = {
+
+  sessionVariables.BROWSER = "firefox";
+
+  file."firefox-gnome-theme" = {
+    target = ".mozilla/firefox/default/chrome/firefox-gnome-theme";
+    source = inputs.firefox-gnome-theme;
+  };
+};
+*/
+

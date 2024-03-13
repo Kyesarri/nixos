@@ -98,12 +98,7 @@
   };
 
   services = {
-    fprintd.enable = true;
-    fprintd.tod = {
-      enable = true;
-      driver = pkgs.libfprint-2-tod1-goodix;
-    };
-    # fprintd.enable = true; # fprint reader, needs work for this model
+    # fprintd.enable = true;
     xserver.enable = true;
     udev.extraHwdb = ''
       evdev:name:*:dmi:bvn*:bvr*:bd*:svnASUS*:pn*:*

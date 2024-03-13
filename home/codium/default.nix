@@ -14,10 +14,8 @@
         "editor.bracketPairColorization.independentColorPoolPerBracketType" = true;
       };
       */
-      # titleBarStyle = custom for no crashy crashy in wayland
       package = pkgs.vscodium;
       extensions = with pkgs.vscode-extensions; [
-        # enkia.tokyo-night # removed # TODO nix-colors theme
         yzhang.markdown-all-in-one
         kamadorueda.alejandra
         bbenoist.nix
@@ -29,8 +27,10 @@
       text = ''
         windowrule = tile, title:VSCodium
         bind = $mainMod, K, exec, codium
+        windowrulev2 = bordercolor $cd $c8, initialClass:^(codium-url-handler)$
       '';
     };
+    # TODO needs nix-colors added rather than hard-coded
     home.file.".config/VSCodium/User/settings.json" = {
       text = ''
         {
@@ -50,35 +50,41 @@
             "types": "#9DA0A2",
             "textMateRules": [
               { "scope": [ "entity.other.attribute-name.multipart.nix", ],
-                "settings": { "foreground": "#EFAF8EFF", "fontStyle": "bold",},
+                "settings": { "foreground": "#E3E6EE", "fontStyle": "",},
               },
-              { "scope": [ "constant.language.nix", "variable.parameter.name.nix", ],
-                "settings": { "foreground": "#24A8B4", "fontStyle": "italic",},
+              { "scope": [ "keyword.other.nix", "keyword.other.inherit.nix", ],
+                "settings": { "foreground": "#B072D1", "fontStyle": "italic",},
               },
               { "scope": [ "string.quoted.other.nix", ],
               "settings": { "foreground": "#E58D7DFF", "fontStyle": "italic",},
               },
               { "scope": [ "string.quoted.double.nix", ],
-              "settings": { "foreground": "#CBCED0FF", "fontStyle": "",},
+              "settings": { "foreground": "#EFB993", "fontStyle": "",},
               },
-              { "scope": ["comment", "comment.block",],
-                "settings": { "foreground": "#DF5273AA","fontStyle": "italic bold", }
-              }
+              { "scope": [ "comment", "comment.block", ],
+                "settings": { "foreground": "#24A8B4","fontStyle": "", }
+              },
+              { "scope": [ "entity.other.attribute-name.single.nix", ],
+                "settings": { "foreground": "#CBCED0","fontStyle": "bold", }
+              },
+              { "scope": [ "constant.language.nix", ],
+                "settings": { "foreground": "#E58D7D","fontStyle": "bold", }
+              },
+              { "scope": [ "variable.parameter.name.nix", ],
+                "settings": { "foreground": "#DF5273","fontStyle": "italic", }
+              },
             ]
           },
 
           "workbench.colorCustomizations": {
-            //
             "markdown.extension.print.theme": "dark",
 
-            //
-            /*
-            "editorBracketHighlight.foreground1": "#ff6767",
-            "editorBracketHighlight.foreground2": "#3de890",
-            "editorBracketHighlight.foreground3": "#90e83d",
-            "editorBracketHighlight.foreground4": "#903de8",
-            "editorBracketHighlight.foreground5": "#3d90e8",
-            "editorBracketHighlight.foreground6": "#e83d90",*/
+            "editorBracketHighlight.foreground1": "#EFB993",
+            "editorBracketHighlight.foreground2": "#B072D1",
+            "editorBracketHighlight.foreground3": "#24A8B4",
+            "editorBracketHighlight.foreground4": "#E58D7D",
+            "editorBracketHighlight.foreground5": "#B072D1",
+            "editorBracketHighlight.foreground6": "#24A8B4",
 
             // menu
             "menubar.selectionForeground":"#E3E6EE",
@@ -182,10 +188,13 @@
             // random things i never added to a category
             "panel.background": "#1C1E26",
             "input.background": "#232530",
+            // mipmap
             "minimap.background": "#232530",              // big scroll boi background
             "minimap.selectionOccurrenceHighlight": "#E93C5844",
             "minimap.findMatchHighlight": "#E93C5899",
             "minimap.selectionHighlight": "#24A8B499",
+            //
+            //buttons and other fun things
             "button.background": "#DF5273",
             "badge.background": "#E93C58",
             "checkbox.background": "#1C1E26",

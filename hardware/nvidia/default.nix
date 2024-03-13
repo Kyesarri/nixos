@@ -8,7 +8,10 @@
     nvidia = {
       # nvidiaPersistenced = true; # ensures nv gpus stay awake
       modesetting.enable = true;
-      # powerManagement.enable = true; # supposed to fix suspend issues
+      powerManagement = {
+        enable = true;
+        finegrained = true;
+      };
       open = false;
       nvidiaSettings = true;
       package = config.boot.kernelPackages.nvidiaPackages.latest;
