@@ -1,7 +1,10 @@
 # 🍝 nixos
 my public nixos configuration, system specific .nix for ga401 / desktop / cl10w-c
 
- [<img src="screenshots/1.jpg" width="100%" />](screenshots/1.jpg) 
+ [<img src="screenshots/1.jpg" width="45%" />](screenshots/1.jpg) 
+ [<img src="screenshots/2.jpg" width="45%" />](screenshots/2.jpg) 
+ [<img src="screenshots/3.jpg" width="90%" />](screenshots/3.jpg) 
+
 current wip using ags, not complete by any standard
 
 
