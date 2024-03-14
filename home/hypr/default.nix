@@ -29,8 +29,8 @@ in {
           enable = true;
           systemd.enable = true;
           plugins = [
-            inputs.hyprland-plugins.packages.${pkgs.system}.hyprtrails
-            #inputs.hyprland-plugins.packages.${pkgs.system}.hyprwinwrap # throws errors, might be hy3 or lack of plugin config :)
+            # inputs.hyprland-plugins.packages.${pkgs.system}.hyprtrails
+            # inputs.hyprland-plugins.packages.${pkgs.system}.hyprwinwrap # throws errors, might be hy3 or lack of plugin config :)
             inputs.hy3.packages.x86_64-linux.hy3
           ];
           extraConfig = ''

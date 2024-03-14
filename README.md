@@ -36,12 +36,12 @@ run ```sudo nixos-rebuild switch --flake /home/username/nixos#hostname --show-tr
 
 reboot the system and see what broke
 
-wallpapers may not work out the gate, will require some configuration in per-device.nix
+wallpapers may not work out the gate, will require some configuration in per-device.nix # TODO - wallpapers have changed lots
 
 ## issues:
 
 ### boot -
-current configuration uses grub, you may need to ```cd /``` and ```sudo rm -R boot``` then run another ```sudo nixos-rebuild switch --flake /home/username/nixos#hostname``` command from above to get gdm / grub running
+current configuration uses grub, you may need to ```cd /``` and ```sudo rm -R boot``` then run another ```sudo nixos-rebuild switch --flake /home/username/nixos#hostname``` command from above to get gdm / grub running # TODO - gdm no longer uses, may be a mkoption
 
 ### home-manager -
 it will complain about files in the way in your ```.config```, delete the files home-manager listed and run another rebuild

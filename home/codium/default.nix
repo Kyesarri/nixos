@@ -27,7 +27,7 @@
       text = ''
         windowrule = tile, title:VSCodium
         bind = $mainMod, K, exec, codium
-        windowrulev2 = bordercolor $cd $c8, initialClass:^(codium-url-handler)$
+        windowrulev2 = bordercolor $cd99, initialClass:^(codium-url-handler)$
       '';
     };
     # TODO needs nix-colors added rather than hard-coded

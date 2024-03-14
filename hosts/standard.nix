@@ -211,7 +211,7 @@
       ## TESTING ##
       tmux
       tmuxifier
-      libfprint-2-tod1-goodix
+      # libfprint-2-tod1-goodix
       inputs.wallpaper-generator.defaultPackage.x86_64-linux
       ## TESTING ##
 

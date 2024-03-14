@@ -42,7 +42,7 @@
           charge_control_end_threshold: 75,
           panel_od: false,
           mini_led_mode: false,
-          disable_nvidia_powerd_on_battery: false,
+          disable_nvidia_powerd_on_battery: true,
           ac_command: "",
           bat_command: "",
           platform_policy_linked_epp: false,
@@ -59,14 +59,7 @@
       '';
     };
   };
-
-  # this fucking thing, always seems to break for no good reason
-  # really want to get rid of this and have something that will
-  # work without too many hitches on my machine
-  #
-  # pending re-enabling userservice and idk somemthing else
-
-  # these are not? required.
+  # below not required
   home-manager.users.${spaghetti.user}.home.file.".config/hypr/per-app/asusd.conf" = {
     text = ''
       # this is already a system service, dont need to start

@@ -52,7 +52,7 @@
     };
     home.file.".config/hypr/per-app/kitty.conf" = {
       text = ''
-        windowrulev2 = opacity 0.8 0.8, class:^(kitty)$
+        # windowrulev2 = opacity 0.8 0.8, class:^(kitty)$
         windowrulev2 = size 700 300, class:^(kitty)$
         windowrulev2 = center, class:^(kitty)$
         bind = $mainMod, Q, exec, kitty
