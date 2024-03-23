@@ -19,6 +19,7 @@
   services.ratbagd.enable = true; # mouse configuration tool
 
   users.users.${spaghetti.user}.packages = with pkgs; [
+    shattered-pixel-dungeon
     # pcsx2 # ps2 emulator # TODO 22/01/24 has issues building, hash mismatch
     piper # frontend for libratbag, which is enabled in services
     protonup-qt # proton-ge # TODO get working with steam

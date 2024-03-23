@@ -8,7 +8,7 @@
   home-manager.users.${spaghetti.user}.home.file."/.config/dunst/dunstrc" = {
     text = ''
       [global]
-      font="Hasklug Nerd Font Regular 9"
+      font="Hack Nerd Font Mono" 10
       frame_color="#${config.colorscheme.palette.base0A}"
       background="#${config.colorscheme.palette.base00}"
       foreground="#${config.colorscheme.palette.base05}"

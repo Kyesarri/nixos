@@ -158,6 +158,7 @@
       XDG_SESSION_DESKTOP = "Hyprland";
       XDG_SESSION_TYPE = "wayland";
       NIXOS_OZONE_WL = "1"; # fixes electron apps in wayland... why do i use electron?
+      XCURSOR_THEME = "graphite-dark";
     };
 
     shells = with pkgs; [zsh]; # default shell to zsh
@@ -184,6 +185,7 @@
       ###############
       # KISS PLEASE #
       ###############
+      graphite-cursors
       gnome-text-editor # still might want something with slightly more features, bit too barebones?
       nix-init # git flake helper
       remmina # rdp client

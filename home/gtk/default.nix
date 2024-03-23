@@ -10,20 +10,28 @@
     gtkThemeFromScheme
     ;
 in rec {
-  users.users.${spaghetti.user}.packages = [
-    pkgs.arc-icon-theme
-    # pkgs.moka-icon-theme
-  ];
-
-  home-manager.users.${spaghetti.user}.gtk = {
-    enable = true;
-    theme = {
-      name = "${config.colorScheme.slug}";
-      package = gtkThemeFromScheme {scheme = config.colorScheme;};
+  users.users.${spaghetti.user}.packages = [pkgs.zafiro-icons]; # pkgs.arc-icon-theme  # pkgs.moka-icon-theme
+  home-manager.users.${spaghetti.user} = {
+    home.sessionVariables = {
+      XCURSOR_PATH = "${pkgs.graphite-cursors}/share/icons";
+      XCURSOR_SIZE = 17;
+      XCURSOR_THEME = "graphite-dark";
     };
-    iconTheme = {
-      package = pkgs.arc-icon-theme;
-      name = "Arc";
+    gtk = {
+      enable = true;
+      theme = {
+        name = "${config.colorScheme.slug}";
+        package = gtkThemeFromScheme {scheme = config.colorScheme;};
+      };
+      iconTheme = {
+        package = pkgs.zafiro-icons;
+        name = "Zafiro-icons-Dark";
+      };
+      cursorTheme = {
+        package = pkgs.graphite-cursors;
+        name = "graphite-dark";
+        size = 17;
+      };
     };
   };
 }
