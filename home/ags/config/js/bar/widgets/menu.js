@@ -32,7 +32,7 @@ const right = () => Widget.EventBox({
 });
 
 // combine all dots into a box, cant be eventbox - can only have child:
-const combined_box = () => Widget.Box({ 
+const combined_box = () => Widget.Box({
     class_name: '__menu_inner',
     children: [
         left({class_name: 'dot1',}),
@@ -47,5 +47,5 @@ export default () => Widget.EventBox({
     class_name: '_menu_event',
     cursor: 'pointer',
     sensitive: 1,
-    child: combined_box({}),
+    child: combined_box(),
 })

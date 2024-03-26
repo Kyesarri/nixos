@@ -43,6 +43,7 @@
     ../../home/kitty # /home/shell/ under mkOption, have foot / kitty / more? in there
     #
     ../../home/kde # TODO rename kdeconnect
+    ../../home/nebula
     ../../home/ulauncher # TODO rename built theme, add credits to og author
     ../../home/virt
     ../../home/gtk # uhh, nix-colors gtk theme iirc

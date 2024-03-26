@@ -14,12 +14,10 @@
       pkgs,
       ...
     }: {
+      system.stateVersion = "23.11";
       services.authelia = {
         enable = true;
       };
-
-      system.stateVersion = "23.11";
-
       networking = {
         defaultGateway = "192.168.87.251";
         firewall = {

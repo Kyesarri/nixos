@@ -1,12 +1,12 @@
 import { USER } from 'resource:///com/github/Aylur/ags/utils.js';
 import Bar from './bar/main.js';
-//import Wallpaper from './wallpaper.js';
+import Wallpaper from './wallpaper.js';
 
 import { forMonitors } from './utils.js';
 
 const windows = () => [
     forMonitors(Bar),
-//    forMonitors(Wallpaper),
+    forMonitors(Wallpaper),
 ];
 
 export default {

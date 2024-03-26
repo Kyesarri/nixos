@@ -42,10 +42,7 @@ const Left = () => Widget.Box({
     hpack: 'start',
     hexpand: true,
     children: [
-        Clock(),
-        Separator(),
-        Date(),
-        Separator(),
+        Workspaces(),
     ],
 });
 
@@ -54,7 +51,9 @@ const Center = () => Widget.Box({
     children: [
         Volume(),
         Separator(),
-        Workspaces(),
+        Date(),
+        Separator(),
+        Clock(),
         Separator(),
         Battery(),
     ],

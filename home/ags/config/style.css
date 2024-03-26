@@ -21,7 +21,7 @@
   70% { background-position: 75% 70%; }
   80% { background-position: 40% 40%; }
   90% { background-position: 20% 20%; }
-  100% { background-position: 10% 10%; } 
+  100% { background-position: 10% 10%; }
 }
 
 .separator {
@@ -48,7 +48,7 @@ window.popup menu {
     padding: 8px 10px;
     color: @c5;
     border-radius: 8px;
-    transition: background-color 0.3s ease; }
+    transition: background-color 0.3s ease-in-out; }
     window.popup menu menuitem:hover {
       background-color: @c4;
       color: @c0; }
@@ -62,25 +62,23 @@ window.popup menu {
   padding-left: 10px;
   padding-right: 10px;
   padding-top: 5px;
-} 
+  /*transition: 1s ease;*/
+}
 
 .wallpaper {
-  background: linear-gradient(-45deg, @cb, @cc, @cd, @ce);
+  background: linear-gradient(130deg, @cb, @cc, @cd, @ce);
   background-size: 100% 100%;
-  padding: 300px 300px;
-  opacity: 0.5;
+  opacity: 0.2;
   /* animation: gradient 15s ease-in-out infinite;*/
-  /* both issues with framerate*/ 
-  /*transition: background 1s ease-in-out;*/
+  /* both issues with framerate*/
+  /* transition: 10s ease-in; */
 }
 
 /* standard hover */
-trough:hover, 
-.sys_button:hover { 
-  background: @c4;
-  opacity: 0.5;
-  transition: opacity 1s ease;  
-  transition: background 1s ease;
+trough:hover,
+.sys_button:hover {
+  background: @c3;
+  transition: 1s ease-in-out;
 }
 
 /* standard box / backdrop / widget settings */
@@ -92,12 +90,12 @@ trough:hover,
 .date,
 .sys_box,
 .clock {
-  font-weight: 600; 
+  font-weight: 600;
   color: @c5;
   background-color: @c0;
   padding: 0px 10px;
-  border-radius: 8px; 
-  transition: background 1s ease;
+  border-radius: 8px;
+  /*transition: min-width 1s ease-in-out;*/
 }
 
 /* system tray */
@@ -106,27 +104,27 @@ trough:hover,
   min-height: 14px;
   border-radius: 4px;
   margin: 0px 5px;
-  transition: background 1s ease; 
+  transition: background 1s ease-in-out;
 }
 
 /* menu */
 /** .menu, ._menu_event, .__menu_inner, .___l/m/r = .____menu_dot */
 .menu,
-.menu .__menu_inner { 
+.menu .__menu_inner {
   padding: 5px;
   min-width: 14px;
   min-height: 14px;
   border-radius: 8px;
   margin: 0px 0px; }
-._menu_event { 
+._menu_event {
   border-radius: 4px;
-  transition: background 1s ease; } 
+  transition: background 1s ease-in-out; }
 /* using different durations on each element, feels less bland
 TODO want to have random duration withina set range */
 .___left * { animation: gradient 30s ease-in-out infinite; }
 .___middle * {  animation: gradient 60s ease-in-out infinite; }
 .___right * {  animation: gradient 45s ease-in-out infinite; }
-.____menu_dot, .____menu_button { 
+.____menu_dot, .____menu_button {
   min-width: 8px;
   min-height: 8px;
   border-radius: 4px;
@@ -134,66 +132,65 @@ TODO want to have random duration withina set range */
   background: linear-gradient(-45deg, @cb, @cc, @cd, @ce);
   background-size: 500% 500%;
   /* added transition on hover and on the element, for fading in and out */
-  transition: background 1.5s ease; }
+  transition: background 1s ease-in-out; }
 /* sets the dot background from gradient to default bar colour on hover*/
 ._menu_event:hover > .__menu_inner > * > * { background: @c0; }
 ._menu_event:hover {
   animation: gradient 30s ease-in-out infinite;
   background: linear-gradient(-45deg, @cb, @cc, @cd, @ce);
   background-size: 400% 400%;
-  transition: background 1s ease; }
+  transition: background 0.5s ease-in-out; }
 
-
-.workspaces, 
+.workspaces,
 .workspaces .workspace_box {
-  margin: 0px 10px; } 
+  margin: 0px 8px;
+  min-width: 0px; }
 .workspaces .indicator {
   min-width: 14px;
   min-height: 14px;
   border-radius: 4px;
   margin: 0px 8px;
   background-color: @c2;
-  transition: min-width 0.5s ease, background 1s ease; }
+  transition: min-width 0.25s ease-in-out, background 1s ease-in-out; }
 .occupied > .indicator {
   background-color: @c4; }
-.urgent > .indicator {
+.multiple > .indicator {
   background-color: @cf; }
 .active > .indicator,
-.urgent > .indicator,
-.occupied > .indicator { 
+.multiple > .indicator,
+.occupied > .indicator {
   min-width: 14px;
   min-height: 14px;
   border-radius: 4px;
-  margin: 0px 8px; 
-  transition: background 1s ease;}
+  margin: 0px 8px;
+  transition: min-width 0.25s ease-in-out, background 1s ease-in-out; }
 .workspaces .active > .indicator:last-child,
 .workspaces .active > .indicator:first-child  {
-  margin: 0px 4px; }
+  margin: 0px 8px; }
 .workspaces .active > .indicator {
   min-width: 30px;
-  border-radius: 4px;
   background: linear-gradient(-45deg, @cb, @cc, @cd, @ce);
-  background-size: 500% 500%;
+  background-size: 400% 400%;
   animation: gradient 30s ease-in-out infinite;
-  transition: min-width 0.5s ease, background 1s ease; }
+  transition: min-width 0.25s ease-in-out, background 1s ease-in-out; }
 
 trough { /* slider / progressbar background */
   min-height: 14px;
   min-width: 75px;
-  margin: 10px 5px; 
+  margin: 0px 8px;
   border-radius: 4px;
   background-color: @c2;
-  transition: background 1s ease; }
+  transition: min-width 1s ease-in-out, background 1s ease-in-out;}
 trough highlight, /* slider highlight */
 progressbar trough progress { /* slider progressbar slider */
   min-height: 14px;
   min-width: 0px;
   border-radius: 4px;
   background: linear-gradient(-45deg, @cb, @cc, @cd, @ce);
-  background-size: 500% 500%;
-  animation: gradient 30s ease infinite;
-  transition: background 1s ease;
-}
+  /*background: mix(@ce, @cd, 1);*/
+  background-size: 400% 400%;
+  animation: gradient 30s ease-in-out infinite;
+  transition: min-width 1s ease-in-out, background 1s ease-in-out;}
 
 
 

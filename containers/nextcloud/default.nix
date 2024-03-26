@@ -21,14 +21,17 @@
       pkgs,
       ...
     }: {
-      services.nextcloud = {
-        enable = true;
-        package = pkgs.nextcloud28;
-        hostName = "nextcloud";
-        config.adminpassFile = "${pkgs.writeText "adminpass" "test123"}"; # DON'T DO THIS IN PRODUCTION - the password file will be world-readable in the Nix Store!
-      };
-
       system.stateVersion = "23.11";
+
+      services = {
+        resolved.enable = true;
+        nextcloud = {
+          enable = true;
+          package = pkgs.nextcloud28;
+          hostName = "nextcloud";
+          config.adminpassFile = "${pkgs.writeText "adminpass" "test123"}"; # DON'T DO THIS IN PRODUCTION - the password file will be world-readable in the Nix Store!
+        };
+      };
 
       networking = {
         defaultGateway = "192.168.87.251";
@@ -40,7 +43,6 @@
         # Workaround for bug https://github.com/NixOS/nixpkgs/issues/162686
         useHostResolvConf = lib.mkForce false;
       };
-      services.resolved.enable = true;
     };
   };
 }

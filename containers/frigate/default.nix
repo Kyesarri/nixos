@@ -15,6 +15,8 @@
       pkgs,
       ...
     }: {
+      system.stateVersion = "23.11";
+
       services.frigate = {
         enable = true;
         hostname = "frigate.nix-serv";
@@ -42,8 +44,6 @@
           };
         };
       };
-
-      system.stateVersion = "23.11";
 
       networking = {
         defaultGateway = "192.168.87.251";

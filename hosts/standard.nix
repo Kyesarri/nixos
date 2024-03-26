@@ -62,6 +62,7 @@
     loader = {
       efi.efiSysMountPoint = "/boot";
       grub = {
+        memtest86.enable = true;
         enable = true;
         efiSupport = true;
         efiInstallAsRemovable = true; # Otherwise /boot/EFI/BOOT/BOOTX64.EFI isn't generated
@@ -126,7 +127,7 @@
       ibm-plex
       nerdfonts
       hack-font
-      (nerdfonts.override {fonts = ["Iosevka" "CascadiaCode" "JetBrainsMono"];})
+      # (nerdfonts.override {fonts = ["Iosevka" "CascadiaCode" "JetBrainsMono"];})
     ];
   };
 
@@ -185,7 +186,7 @@
       ###############
       # KISS PLEASE #
       ###############
-      graphite-cursors
+      graphite-cursors # cursor package, is this handled by /home/gtk/default.nix now? nope manual atm
       gnome-text-editor # still might want something with slightly more features, bit too barebones?
       nix-init # git flake helper
       remmina # rdp client
@@ -197,7 +198,7 @@
       gscreenshot # image capture
       hyprpicker # colour picker for wayland TODO fix script
       imagemagick # bitmap editor cli
-      slack # work
+      # slack # work # nope electron byeee
       libnotify # notifications
       # gimp-with-plugins # gimp, handy to have, failed to build with 11/03/24 flake update
       wf-recorder # screen recorder
@@ -205,7 +206,7 @@
       p7zip # TODO needs a gui
       udiskie # usb mounting
       bitwarden # password manager
-      armcord # discord wrapper / chat
+      # armcord # discord wrapper / chat # nope electron
       sleek-grub-theme # testing grub themes TODO grub
       adi1090x-plymouth-themes # plymouth themes
       ntfs3g # ntfs support

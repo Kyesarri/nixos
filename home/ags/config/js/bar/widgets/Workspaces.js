@@ -16,11 +16,11 @@ const Workspaces = () => {
             on_clicked: () => dispatch(i),
             child: Widget.Box({
                 class_name: 'indicator',
-                vpack: 'center',
+                hpack: 'center',
             }),
             setup: self => self.hook(Hyprland, () => {
                 self.toggleClassName('active', Hyprland.active.workspace.id === i);
-                self.toggleClassName('urgent', Hyprland.getWorkspace()?.urgent-window === i); // idk, need to work on this, or do i?
+                self.toggleClassName('multiple', (Hyprland.getWorkspace(i)?.windows || 0) > 1);
                 self.toggleClassName('occupied', (Hyprland.getWorkspace(i)?.windows || 0) > 0);
             }),
         })),
@@ -37,9 +37,11 @@ export default () => Widget.EventBox({
     class_name: 'workspaces',
     child: Widget.Box({
         hpack: 'center',
+        vpack: 'center',
         child: Widget.EventBox({
             class_name: 'eventbox',
-            child: Workspaces({}),
+            hpack: 'center',
+            child: Workspaces(),
         }),
     }),
 });

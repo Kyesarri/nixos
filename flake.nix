@@ -30,6 +30,8 @@
 
     auto-cpufreq.url = "github:AdnanHodzic/auto-cpufreq";
     auto-cpufreq.inputs.nixpkgs.follows = "nixpkgs";
+
+    # ulauncher.url = "github:Ulauncher/Ulauncher";
   };
 
   outputs = {
@@ -45,6 +47,7 @@
     auto-cpufreq,
     prism,
     wallpaper-generator,
+    # ulauncher,
     ...
   } @ inputs: let
     #
