@@ -43,9 +43,9 @@
     ../../home/kitty # /home/shell/ under mkOption, have foot / kitty / more? in there
     #
     ../../home/kde # TODO rename kdeconnect
-    # ../../home/nebula
     ../../home/ulauncher # TODO rename built theme, add credits to og author
     ../../home/virt
+    ../../home/vpn
     ../../home/gtk # uhh, nix-colors gtk theme iirc
     ../../home/prism
     ../../home/syncthing # TODO fix not launching at boot
