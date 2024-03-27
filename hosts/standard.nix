@@ -137,16 +137,16 @@
       enable = true;
       enableSSHSupport = true;
     };
+    seahorse.enable = true;
   };
 
   environment = {
     sessionVariables = rec
     {
       # one of these was causing multiple wayland applications to crash (mostly firefox)
-      # GBM_BACKEND = "nvidia-drm";
       # __GLX_VENDOR_LIBRARY_NAME = "nvidia";
       # WLR_RENDERER = "vulkan";
-      GBM_BACKEND = "nvidia-drm"; # required to run the correct GBM backend for nvidia GPUs on wayland
+      # GBM_BACKEND = "nvidia-drm"; # testing to fix firefox crash 26/03/24
       CLUTTER_BACKEND = "wayland";
       QT_QPA_PLATFORM = "wayland";
       QT_QPA_PLATFORMTHEME = "qt5ct";
@@ -194,7 +194,6 @@
       brightnessctl # brightness control, used in waybar TODO laptop / notebook specific not needed as no worky on desktop :)
       cinnamon.nemo-with-extensions # file manager
       qview # image viewer
-      gnome.seahorse # key management
       gscreenshot # image capture
       hyprpicker # colour picker for wayland TODO fix script
       imagemagick # bitmap editor cli
@@ -210,6 +209,7 @@
       sleek-grub-theme # testing grub themes TODO grub
       adi1090x-plymouth-themes # plymouth themes
       ntfs3g # ntfs support
+      curl
 
       ## TESTING ##
       tmux

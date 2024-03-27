@@ -10,7 +10,10 @@
     gtkThemeFromScheme
     ;
 in rec {
-  users.users.${spaghetti.user}.packages = [pkgs.zafiro-icons]; # pkgs.arc-icon-theme  # pkgs.moka-icon-theme
+  users.users.${spaghetti.user} = {
+    packages = [pkgs.zafiro-icons]; # pkgs.arc-icon-theme  # pkgs.moka-icon-theme
+  };
+  qt.platformTheme = "gtk2";
   home-manager.users.${spaghetti.user} = {
     home.sessionVariables = {
       XCURSOR_PATH = "${pkgs.graphite-cursors}/share/icons";

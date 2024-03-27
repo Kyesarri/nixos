@@ -1,8 +1,5 @@
 let
   scheme = "snazzy";
-  home = "../../home/";
-  cont = "../../containers/";
-  hw = "../../hardware/"; # not working :)
 in
   {
     config,
@@ -48,13 +45,13 @@ in
 
     gnocchi = {
       ags.enable = true;
+      gscreenshot.enable = true;
       hypr = {
         enable = true;
         hyprpaper.enable = false;
         # isNvidia = true; # nvidia
         # animations = false;
       };
-
       # wireless = { /* networking.wireless? */
       #   enable = true;
       #   manager = nwm; # nwm, iwd or wpa

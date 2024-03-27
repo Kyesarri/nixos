@@ -11,6 +11,7 @@
   # for now to get it off the ground
   # wont be completely "headless" leaving hypr and some basicboi programs installed
   # is the plan of attack, see how this progresses
+  imports = [./console.nix]; # console colours
   system.stateVersion = "23.11";
   time.timeZone = "Australia/Melbourne";
 
@@ -183,12 +184,10 @@
     extraGroups = ["networkmanager" "wheel"];
     packages = with pkgs; [
       fet-sh # minimalistic fetch script
-      brightnessctl # brightness control, used in waybar TODO laptop / notebook specific not needed as no worky on desktop :)
       cinnamon.nemo-with-extensions # file manager
       qview # image viewer
       gnome.seahorse # key management
       gscreenshot # image capture
-      swaylock-effects # lockscreen, TODO needs script for switch to toggle this on lid-close, TODO own /home/* ... why?
       libnotify # notifications
       p7zip # TODO needs a gui
       udiskie # usb mounting
