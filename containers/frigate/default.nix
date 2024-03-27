@@ -69,14 +69,14 @@
               };
             };
 
-            #go2rtc = {
-            #  streams = {
-            #    entry = ["rtsp://user:password@192.168.87.22:554/h264Preview_01_sub"];
-            #    driveway = ["rtsp://user:password@192.168.87.20:554/h264Preview_01_sub"];
-            #  };
-            #  # rtsp.listen = ":8554";
-            #  # webrtc.listen = ":8555";
-            #};
+            go2rtc = {
+              streams = {
+                entry = ["rtsp://user:password@192.168.87.22:554/h264Preview_01_sub"];
+                driveway = ["rtsp://user:password@192.168.87.20:554/h264Preview_01_sub"];
+              };
+              #  # rtsp.listen = ":8554";
+              #  # webrtc.listen = ":8555";
+            };
 
             mqtt.enabled = false;
             ffmpeg.hwaccel_args = "preset-vaapi";
