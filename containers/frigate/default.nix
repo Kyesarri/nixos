@@ -63,12 +63,12 @@
               };
             };
 
-            #go2rtc = {
-            #  streams = {
-            #    "entry" = ["rtsp://user:password@192.168.87.22:554/h264Preview_01_sub"];
-            #    "driveway" = ["rtsp://user:password@192.168.87.20:554/h264Preview_01_sub"];
-            #  };
-            #};
+            go2rtc = {
+              streams = {
+                "entry" = ["rtsp://user:password@192.168.87.22:554/h264Preview_01_sub"];
+                "driveway" = ["rtsp://user:password@192.168.87.20:554/h264Preview_01_sub"];
+              };
+            };
 
             # detectors.ov = {
             #   type = "openvino";
