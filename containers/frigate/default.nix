@@ -48,7 +48,7 @@
 
             go2rtc = {
               streams = {
-                "entry" = [
+                entry = [
                   "rtsp://user:password@192.168.87.22:554/h264Preview_01_sub"
                 ];
                 "driveway" = [
@@ -60,7 +60,7 @@
             };
 
             cameras = {
-              "entry" = {
+              entry = {
                 ffmpeg.inputs = [
                   {
                     path = "rtsp://user:password@192.168.87.22:1935";
