@@ -49,11 +49,26 @@
           settings = {
             mqtt.enabled = false;
             ffmpeg.hwaccel_args = "preset-vaapi";
+
+            record = {
+              enabled = true;
+              retain = {
+                days = 2;
+                mode = "all";
+              };
+            };
+
             go2rtc = {
               streams = {
                 "entry" = ["rtsp://user:password@192.168.87.22:554/h264Preview_01_sub"];
                 "driveway" = ["rtsp://user:password@192.168.87.20:554/h264Preview_01_sub"];
               };
+            };
+
+            detectors.ov = {
+              type = "openvino";
+              device = "AUTO";
+              model.path = "/var/lib/frigate/openvino-model/ssdlite_mobilenet_v2.xml";
             };
 
             cameras = {
@@ -65,7 +80,6 @@
                   }
                   {
                     path = "rtsp://user:password@192.168.87.22:554/h264Preview_01_main";
-                    input_args = "preset-rtsp-restream";
                     roles = ["record" "detect"];
                   }
                 ];
@@ -76,21 +90,12 @@
                   {
                     path = "rtsp://user:password@192.168.87.20:554/h264Preview_01_main";
                     roles = ["record" "detect"];
-                    input_args = ["preset-rtsp-restream"];
                   }
                   {
                     path = "rtmp://user:password@192.168.87.20:1935";
                     roles = ["rtmp"];
                   }
                 ];
-              };
-            };
-
-            record = {
-              enabled = true;
-              retain = {
-                days = 7;
-                mode = "all";
               };
             };
           };
