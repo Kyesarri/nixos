@@ -16,7 +16,7 @@
       ...
     }: {
       system.stateVersion = "23.11";
-      environment.systemPackages = with pkgs; [ffmpeg_5-full];
+      # environment.systemPackages = with pkgs; [ffmpeg_5-full];
       networking = {
         defaultGateway = "192.168.87.251";
         firewall = {
@@ -29,7 +29,8 @@
       };
 
       services = {
-        go2rtc = {
+        /*
+          go2rtc = {
           enable = true;
           settings = {
             streams = {
@@ -40,6 +41,7 @@
             #webrtc.listen = ":8555";
           };
         };
+        */
 
         resolved.enable = true;
 
