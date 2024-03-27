@@ -16,7 +16,7 @@
       ...
     }: {
       system.stateVersion = "23.11";
-      enviornment.systemPackagespackages = with pkgs; [ffmpeg_5-full];
+      environment.systemPackagespackages = with pkgs; [ffmpeg_5-full];
       networking = {
         defaultGateway = "192.168.87.251";
         firewall = {
