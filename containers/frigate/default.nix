@@ -28,6 +28,8 @@
       };
 
       services = {
+        go2rtc.enable = true;
+
         resolved.enable = true;
 
         frigate = {
