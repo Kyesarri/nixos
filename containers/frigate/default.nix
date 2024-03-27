@@ -57,8 +57,8 @@
                     "rtsp://user:password@192.168.87.20:554/h264Preview_01_sub"
                   ];
                 };
-                rtsp.listen = ":8554";
-                webrtc.listen = ":8555";
+                # rtsp.listen = ":8554";
+                # webrtc.listen = ":8555";
               };
             };
 
