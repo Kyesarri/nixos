@@ -83,10 +83,7 @@
         modules = [
           ./hosts/laptop # 4800hs / 1650 / 16gb TODO download more ram
           {
-            environment.systemPackages = [
-              alejandra.defaultPackage.x86_64-linux
-              agenix.packages.x86_64-linux.default
-            ];
+            environment.systemPackages = [alejandra.defaultPackage.x86_64-linux];
           } # codium plugins
           auto-cpufreq.nixosModules.default
           agenix.nixosModules.default
@@ -121,7 +118,6 @@
           {
             environment.systemPackages = [
               alejandra.defaultPackage.x86_64-linux
-              agenix.nixosModules.default
             ];
           }
           agenix.nixosModules.default
