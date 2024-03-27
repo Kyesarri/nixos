@@ -29,6 +29,7 @@
         # workaround for bug https://github.com/NixOS/nixpkgs/issues/162686
         useHostResolvConf = lib.mkForce false;
       };
+      enviornment.systemPackagespackages = with pkgs; [ffmpeg_5-full];
 
       services = {
         go2rtc = {
@@ -53,7 +54,8 @@
           # settings written to /var/lib/frigate/frigate.yml its not?
           settings = {
             mqtt.enabled = false;
-            ffmpeg.hwaccel_args = "preset-vaapi";
+            # ffmpeg.hwaccel_args = "preset-vaapi"; # generic intel < 10th gen
+            ffmpeg.hwaccel_args = "preset-intel-qsv-h264"; # quicksync > 10th gen
 
             record = {
               enabled = true;
