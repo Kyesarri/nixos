@@ -29,7 +29,7 @@
         # workaround for bug https://github.com/NixOS/nixpkgs/issues/162686
         useHostResolvConf = lib.mkForce false;
       };
-      enviornment.systemPackagespackages = with pkgs; [ffmpeg_5-full];
+      enviornment.systemPackages = with pkgs; [ffmpeg_5-full];
 
       services = {
         go2rtc = {
