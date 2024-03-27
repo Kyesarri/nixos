@@ -32,17 +32,21 @@
         resolved.enable = true;
 
         go2rtc = {
-          enable = false;
+          enable = true;
           settings = {
             streams = {
-              "test1" = [
-                "rtsp://10.83.16.12/11"
+              "entry_cam" = [
+                "rtsp://user:password@192.168.87.22:554/h264Preview_01_sub"
+              ];
+              "driveway_cam" = [
+                "rtsp://user:password@192.168.87.20:554/h264Preview_01_sub"
               ];
             };
             rtsp.listen = ":8554";
             webrtc.listen = ":8555";
           };
         };
+
         frigate = {
           enable = true;
           hostname = "frigate.nix-serv";

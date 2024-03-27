@@ -82,7 +82,12 @@
         inherit system specialArgs;
         modules = [
           ./hosts/laptop # 4800hs / 1650 / 16gb TODO download more ram
-          {environment.systemPackages = [alejandra.defaultPackage.x86_64-linux];} # codium plugins
+          {
+            environment.systemPackages = [
+              alejandra.defaultPackage.x86_64-linux
+              agenix.packages.x86_64-linux.default
+            ];
+          } # codium plugins
           auto-cpufreq.nixosModules.default
           agenix.nixosModules.default
           home-manager.nixosModules.home-manager
@@ -113,7 +118,14 @@
         inherit system specialArgs;
         modules = [
           ./hosts/desktop # msi-z790i edge wifi / 13900kf / 3070 / 32gb
-          {environment.systemPackages = [alejandra.defaultPackage.x86_64-linux];}
+          {
+            environment.systemPackages = [
+              alejandra.defaultPackage.x86_64-linux
+              agenix.nixosModules.default
+            ];
+          }
+          agenix.nixosModules.default
+
           home-manager.nixosModules.home-manager
           {
             home-manager = {
@@ -128,7 +140,12 @@
         inherit system specialArgs;
         modules = [
           ./hosts/serv # 15s-fq2050TU / i5-1135G7 / iris x / 8gb FIXME
-          {environment.systemPackages = [alejandra.defaultPackage.x86_64-linux];}
+          {
+            environment.systemPackages =
+              [alejandra.defaultPackage.x86_64-linux]
+              agenix.packages.x86_64-linux.default;
+          }
+          agenix.nixosModules.default
           home-manager.nixosModules.home-manager
           {
             home-manager = {

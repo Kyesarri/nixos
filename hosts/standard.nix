@@ -5,6 +5,7 @@
   outputs,
   inputs,
   spaghetti,
+  agenix,
   ...
 }: {
   imports = [./console.nix]; # console colours
