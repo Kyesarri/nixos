@@ -10,35 +10,35 @@
     hostBridge = "br0";
     localAddress = "192.168.87.7/24"; # container ip
 
-    config = {
-      config,
-      pkgs,
-      ...
-    }: {
-      system.stateVersion = "23.11";
-      environment.systemPackages = with pkgs; [ffmpeg_5-full];
-      networking = {
-        defaultGateway = "192.168.87.251";
-        firewall = {
-          enable = false;
-          allowedTCPPorts = [80];
+    services = {
+      go2rtc = {
+        enable = true;
+        settings = {
+          streams = {
+            entry = ["rtsp://user:password@192.168.87.22:554/h264Preview_01_sub"];
+            driveway = ["rtsp://user:password@192.168.87.20:554/h264Preview_01_sub"];
+          };
+          rtsp.listen = ":8554";
+          webrtc.listen = ":8555";
         };
-        # Use systemd-resolved inside the container
-        # Workaround for bug https://github.com/NixOS/nixpkgs/issues/162686
-        useHostResolvConf = lib.mkForce false;
       };
 
-      services = {
-        go2rtc = {
-          enable = true;
-          settings = {
-            streams = {
-              entry = ["rtsp://user:password@192.168.87.22:554/h264Preview_01_sub"];
-              driveway = ["rtsp://user:password@192.168.87.20:554/h264Preview_01_sub"];
-            };
-            rtsp.listen = ":8554";
-            webrtc.listen = ":8555";
+      config = {
+        config,
+        pkgs,
+        ...
+      }: {
+        system.stateVersion = "23.11";
+        environment.systemPackages = with pkgs; [ffmpeg_5-full];
+        networking = {
+          defaultGateway = "192.168.87.251";
+          firewall = {
+            enable = false;
+            allowedTCPPorts = [80];
           };
+          # Use systemd-resolved inside the container
+          # Workaround for bug https://github.com/NixOS/nixpkgs/issues/162686
+          useHostResolvConf = lib.mkForce false;
         };
 
         resolved.enable = true;
