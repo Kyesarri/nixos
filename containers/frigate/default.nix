@@ -35,10 +35,10 @@
           enable = true;
           settings = {
             streams = {
-              "entry_cam" = [
+              "entry" = [
                 "rtsp://user:password@192.168.87.22:554/h264Preview_01_sub"
               ];
-              "driveway_cam" = [
+              "driveway" = [
                 "rtsp://user:password@192.168.87.20:554/h264Preview_01_sub"
               ];
             };
@@ -64,16 +64,21 @@
             };
 
             cameras = {
-              "test1" = {
+              "entry" = {
                 ffmpeg.inputs = [
                   {
-                    path = "rtsp://127.0.0.1:8554/test1";
+                    path = "rtsp://user:password@192.168.87.22:1935";
                     input_args = "preset-rtsp-restream";
-                    roles = ["record"];
+                    roles = ["rtmp"];
+                  }
+                  {
+                    path = "rtsp://user:password@192.168.87.22:554/h264Preview_01_main";
+                    input_args = "preset-rtsp-restream";
+                    roles = ["record" "detect"];
                   }
                 ];
               };
-              "test2" = {
+              "driveway" = {
                 ffmpeg.inputs = [
                   {
                     path = "rtsp://localaccount:localaccount@172.20.65.103:554/stream1";
