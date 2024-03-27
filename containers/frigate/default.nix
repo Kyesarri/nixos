@@ -73,19 +73,17 @@
 
             cameras = {
               entry = {
-                ffmpeg.inputs.text = ''
-                  cameras:
-                     driveway:
-                      ffmpeg:
-                        inputs:
-                          - path: rtmp://user:password@192.168.87.20:1935
-                            roles:
-                              - rtmp
-                          - path : rtsp://user:password@192.168.87.20:554/h264Preview_01_main
-                            roles:
-                             - detect
-                             - record
-                '';
+                ffmpeg.inputs = [
+                  {
+                    "path" = "rtmp://user:password@192.168.87.22:1935";
+                    roles = ["rtmp"];
+                  }
+                  {
+                    "path" = "rtsp://user:password@192.168.87.22:554/h264Preview_01_main";
+                    input_args = "preset-rtsp-restream";
+                    roles = ["record" "detect"];
+                  }
+                ];
               };
 
               driveway = {
