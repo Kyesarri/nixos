@@ -6,7 +6,7 @@
 }: {
   containers.frigate = {
     autoStart = true;
-    privateNetwork = true; # gives container its own "adaptor"
+    privateNetwork = true; # seperate from host network interface
     hostBridge = "br0";
     localAddress = "192.168.87.7/24"; # container ip
 
@@ -16,7 +16,6 @@
       ...
     }: {
       system.stateVersion = "23.11";
-      # environment.systemPackages = with pkgs; [ffmpeg_5-full];
       networking = {
         defaultGateway = "192.168.87.251";
         firewall = {
@@ -32,12 +31,12 @@
         go2rtc = {
           enable = true;
           settings = {
+            rtsp.listen = ":8554";
+            webrtc.listen = ":8555";
             streams = {
               "entry" = ["rtsp://user:password@192.168.87.22:554/h264Preview_01_sub"];
               "driveway" = ["rtsp://user:password@192.168.87.20:554/h264Preview_01_sub"];
             };
-            #rtsp.listen = ":8554";
-            #webrtc.listen = ":8555";
           };
         };
 
@@ -53,6 +52,7 @@
                 "driveway" = ["rtsp://user:password@192.168.87.20:554/h264Preview_01_sub"];
               };
             };
+
             cameras = {
               entry = {
                 ffmpeg.inputs = [
@@ -61,7 +61,7 @@
                     roles = ["rtmp"];
                   }
                   {
-                    path = "rtsp://user:password@192.168.87.22:554/h264Preview_01_main";
+                    path = "rtsp://user:password@192.168.87.22:554";
                     roles = ["record" "detect"];
                   }
                 ];
