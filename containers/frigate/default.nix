@@ -91,8 +91,8 @@
               entry = {
                 ffmpeg.inputs = [
                   {
-                    "path" = "rtmp://user:password@192.168.87.22:1935/h264Preview_01_sub";
-                    roles = ["rtmp" "detect" "record"];
+                    "path" = "rtsp://user:password@192.168.87.22:1935/h264Preview_01_sub";
+                    roles = ["detect" "record"];
                   }
                   #{
                   #  "path" = "rtsp://user:password@192.168.87.22:554/h264Preview_01_main";
