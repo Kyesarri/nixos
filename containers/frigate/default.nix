@@ -76,7 +76,7 @@
                   {
                     path = "rtsp://user:password@192.168.87.20:554/h264Preview_01_main";
                     roles = ["record" "detect"];
-                    input_args = "preset-rtsp-restream";
+                    input_args = ["preset-rtsp-restream"];
                   }
                   {
                     path = "rtmp://user:password@192.168.87.20:1935";
