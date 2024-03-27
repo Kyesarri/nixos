@@ -38,11 +38,12 @@
               entry = {
                 ffmpeg.inputs = [
                   {
-                    path = "rtsp://user:password@192.168.87.22:1935";
+                    path = "rtmp://user:password@192.168.87.22:1935";
                     roles = ["rtmp"];
                   }
                   {
                     path = "rtsp://user:password@192.168.87.22:554/h264Preview_01_main";
+                    input_args = "preset-rtsp-generic";
                     roles = ["record" "detect"];
                   }
                 ];
@@ -50,11 +51,12 @@
               driveway = {
                 ffmpeg.inputs = [
                   {
-                    path = "rtsp://user:password@192.168.87.20:1935";
+                    path = "rtmp://user:password@192.168.87.20:1935";
                     roles = ["rtmp"];
                   }
                   {
                     path = "rtsp://user:password@192.168.87.20:554/h264Preview_01_main";
+                    input_args = "preset-rtsp-generic";
                     roles = ["record" "detect"];
                   }
                 ];
