@@ -6,9 +6,9 @@
 }: {
   containers.frigate = {
     autoStart = true;
-    privateNetwork = true;
+    privateNetwork = true; # gives container its own "adaptor"
     hostBridge = "br0";
-    localAddress = "192.168.87.7/24";
+    localAddress = "192.168.87.7/24"; # container ip
 
     config = {
       config,
@@ -16,6 +16,7 @@
       ...
     }: {
       system.stateVersion = "23.11";
+      enviornment.systemPackagespackages = with pkgs; [ffmpeg_5-full];
       networking = {
         defaultGateway = "192.168.87.251";
         firewall = {
