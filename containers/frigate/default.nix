@@ -17,6 +17,8 @@
     }: {
       system.stateVersion = "23.11";
 
+      programs.enableSSHSupport = true;
+
       networking = {
         defaultGateway = "192.168.87.251";
         firewall = {
