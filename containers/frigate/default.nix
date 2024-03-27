@@ -83,11 +83,14 @@
               "driveway" = {
                 ffmpeg.inputs = [
                   {
-                    path = "rtsp://localaccount:localaccount@172.20.65.103:554/stream1";
-                    roles = [
-                      "record"
-                      "detect"
-                    ];
+                    path = "rtsp://user:password@192.168.87.20:1935";
+                    # input_args = "preset-rtsp-restream";
+                    roles = ["rtmp"];
+                  }
+                  {
+                    path = "rtsp://user:password@192.168.87.20:554/h264Preview_01_main";
+                    # input_args = "preset-rtsp-restream";
+                    roles = ["record" "detect"];
                   }
                 ];
               };
