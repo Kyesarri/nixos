@@ -197,7 +197,6 @@
       gscreenshot # image capture
       hyprpicker # colour picker for wayland TODO fix script
       imagemagick # bitmap editor cli
-      # slack # work # nope electron byeee
       libnotify # notifications
       # gimp-with-plugins # gimp, handy to have, failed to build with 11/03/24 flake update
       wf-recorder # screen recorder
@@ -205,7 +204,6 @@
       p7zip # TODO needs a gui
       udiskie # usb mounting
       bitwarden # password manager
-      # armcord # discord wrapper / chat # nope electron
       sleek-grub-theme # testing grub themes TODO grub
       adi1090x-plymouth-themes # plymouth themes
       ntfs3g # ntfs support
@@ -214,7 +212,6 @@
       ## TESTING ##
       tmux
       tmuxifier
-      # libfprint-2-tod1-goodix
       inputs.wallpaper-generator.defaultPackage.x86_64-linux
       ## TESTING ##
 
