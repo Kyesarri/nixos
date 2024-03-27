@@ -116,9 +116,7 @@
         modules = [
           ./hosts/desktop # msi-z790i edge wifi / 13900kf / 3070 / 32gb
           {
-            environment.systemPackages = [
-              alejandra.defaultPackage.x86_64-linux
-            ];
+            environment.systemPackages = [alejandra.defaultPackage.x86_64-linux];
           }
           agenix.nixosModules.default
 
@@ -137,9 +135,7 @@
         modules = [
           ./hosts/serv # 15s-fq2050TU / i5-1135G7 / iris x / 8gb FIXME
           {
-            environment.systemPackages =
-              [alejandra.defaultPackage.x86_64-linux]
-              agenix.packages.x86_64-linux.default;
+            environment.systemPackages = [alejandra.defaultPackage.x86_64-linux];
           }
           agenix.nixosModules.default
           home-manager.nixosModules.home-manager
