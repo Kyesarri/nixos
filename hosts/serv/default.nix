@@ -9,12 +9,10 @@ in
     outputs,
     nix-colors,
     spaghetti,
-    agenix,
     ...
   }: {
     imports = [
       nix-colors.homeManagerModules.default
-      agenix.packages.x86_64-linux.default
       ./per-device.nix # per device hypr config
       ./hardware.nix # device specific hardware config
 
