@@ -48,12 +48,8 @@
 
             go2rtc = {
               streams = {
-                entry = [
-                  "rtsp://user:password@192.168.87.22:554/h264Preview_01_sub"
-                ];
-                "driveway" = [
-                  "rtsp://user:password@192.168.87.20:554/h264Preview_01_sub"
-                ];
+                entry = ["rtsp://user:password@192.168.87.22:554/h264Preview_01_sub"];
+                driveway = ["rtsp://user:password@192.168.87.20:554/h264Preview_01_sub"];
               };
               # rtsp.listen = ":8554";
               # webrtc.listen = ":8555";
@@ -64,26 +60,22 @@
                 ffmpeg.inputs = [
                   {
                     path = "rtsp://user:password@192.168.87.22:1935";
-                    # input_args = "preset-rtsp-restream";
                     roles = ["rtmp"];
                   }
                   {
                     path = "rtsp://user:password@192.168.87.22:554/h264Preview_01_main";
-                    # input_args = "preset-rtsp-restream";
                     roles = ["record" "detect"];
                   }
                 ];
               };
-              "driveway" = {
+              driveway = {
                 ffmpeg.inputs = [
                   {
                     path = "rtsp://user:password@192.168.87.20:1935";
-                    # input_args = "preset-rtsp-restream";
                     roles = ["rtmp"];
                   }
                   {
                     path = "rtsp://user:password@192.168.87.20:554/h264Preview_01_main";
-                    # input_args = "preset-rtsp-restream";
                     roles = ["record" "detect"];
                   }
                 ];
