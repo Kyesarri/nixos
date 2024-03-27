@@ -33,28 +33,7 @@
         frigate = {
           enable = true;
           hostname = "frigate.nix-serv";
-
           settings = {
-            mqtt.enabled = false;
-            ffmpeg.hwaccel_args = "preset-vaapi";
-
-            record = {
-              enabled = true;
-              retain = {
-                days = 7;
-                mode = "all";
-              };
-            };
-
-            go2rtc = {
-              streams = {
-                entry = ["rtsp://user:password@192.168.87.22:554/h264Preview_01_sub"];
-                driveway = ["rtsp://user:password@192.168.87.20:554/h264Preview_01_sub"];
-              };
-              # rtsp.listen = ":8554";
-              # webrtc.listen = ":8555";
-            };
-
             cameras = {
               entry = {
                 ffmpeg.inputs = [
@@ -81,6 +60,26 @@
                 ];
               };
             };
+
+            record = {
+              enabled = true;
+              retain = {
+                days = 7;
+                mode = "all";
+              };
+            };
+
+            #go2rtc = {
+            #  streams = {
+            #    entry = ["rtsp://user:password@192.168.87.22:554/h264Preview_01_sub"];
+            #    driveway = ["rtsp://user:password@192.168.87.20:554/h264Preview_01_sub"];
+            #  };
+            #  # rtsp.listen = ":8554";
+            #  # webrtc.listen = ":8555";
+            #};
+
+            mqtt.enabled = false;
+            ffmpeg.hwaccel_args = "preset-vaapi";
           };
         };
       };
