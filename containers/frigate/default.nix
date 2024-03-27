@@ -45,7 +45,10 @@
         frigate = {
           enable = true;
           hostname = "frigate.nix-serv";
+
           settings = {
+            mqtt.enabled = false;
+            ffmpeg.hwaccel_args = "preset-vaapi";
             go2rtc = {
               streams = {
                 "entry" = ["rtsp://user:password@192.168.87.22:554/h264Preview_01_sub"];
@@ -76,7 +79,7 @@
                   }
                   {
                     path = "rtsp://user:password@192.168.87.20:554/h264Preview_01_main";
-                    "input_args" = "preset-rtsp-restream";
+                    input_args = preset-rtsp-restream;
                     roles = ["record" "detect"];
                   }
                 ];
@@ -90,9 +93,6 @@
                 mode = "all";
               };
             };
-
-            mqtt.enabled = false;
-            ffmpeg.hwaccel_args = "preset-vaapi";
           };
         };
       };
