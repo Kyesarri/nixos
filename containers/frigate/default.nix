@@ -30,8 +30,6 @@
       services = {
         resolved.enable = true;
 
-        go2rc.enable = true;
-
         frigate = {
           enable = true;
           hostname = "frigate.nix-serv";
