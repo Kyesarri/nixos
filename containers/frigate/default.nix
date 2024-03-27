@@ -20,7 +20,7 @@
       networking = {
         defaultGateway = "192.168.87.251";
         firewall = {
-          enable = true;
+          enable = false;
           allowedTCPPorts = [80];
         };
         # Use systemd-resolved inside the container
