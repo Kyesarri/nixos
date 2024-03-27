@@ -6,6 +6,15 @@
 }: {
   # declare some basicboi host settings for container
   containers.frigate = {
+    /*
+    # to use later, hardware passthrough?
+    allowedDevices = [
+      {
+        modifier = "rw";
+        node = "/dev/net/tun";
+      }
+    ];
+    */
     autoStart = true;
     privateNetwork = true; # seperate from host network interface
     hostBridge = "br0";
@@ -29,7 +38,7 @@
         # workaround for bug https://github.com/NixOS/nixpkgs/issues/162686
         useHostResolvConf = lib.mkForce false;
       };
-      enviornment.systemPackages = with pkgs; [ffmpeg_5-full];
+      environment.systemPackages = with pkgs; [ffmpeg_5-full];
 
       services = {
         go2rtc = {
@@ -68,7 +77,7 @@
             go2rtc = {
               streams = {
                 "entry" = ["rtsp://user:password@192.168.87.22:554/h264Preview_01_sub"];
-                "driveway" = ["rtsp://user:password@192.168.87.20:554/h264Preview_01_sub"];
+                # "driveway" = ["rtsp://user:password@192.168.87.20:554/h264Preview_01_sub"];
               };
             };
 
@@ -99,10 +108,10 @@
                     path = "rtsp://user:password@192.168.87.20:554/h264Preview_01_main";
                     roles = ["record" "detect"];
                   }
-                  {
-                    path = "rtmp://user:password@192.168.87.20:1935";
-                    roles = ["rtmp"];
-                  }
+                  #{
+                  #  path = "rtmp://user:password@192.168.87.20:1935";
+                  #  roles = ["rtmp"];
+                  #}
                 ];
               };
             };
