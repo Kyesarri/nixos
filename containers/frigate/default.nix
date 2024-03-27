@@ -65,21 +65,22 @@
               };
             };
 
-            detectors.ov = {
-              type = "openvino";
-              device = "AUTO";
-              model.path = "/var/lib/frigate/openvino-model/ssdlite_mobilenet_v2.xml";
-            };
+            # detectors.ov = {
+            #   type = "openvino";
+            #   device = "AUTO";
+            #   model.path = "/var/lib/frigate/openvino-model/ssdlite_mobilenet_v2.xml";
+            # };
 
             cameras = {
               entry = {
                 ffmpeg.inputs = [
                   {
-                    path = "rtmp://user:password@192.168.87.22:1935";
+                    path = ["rtmp://user:password@192.168.87.22:1935"];
                     roles = ["rtmp"];
                   }
                   {
-                    path = "rtsp://user:password@192.168.87.22:554/h264Preview_01_main";
+                    path = ["rtsp://user:password@192.168.87.22:554/h264Preview_01_main"];
+                    input_args = "preset-rtsp-restream";
                     roles = ["record" "detect"];
                   }
                 ];
