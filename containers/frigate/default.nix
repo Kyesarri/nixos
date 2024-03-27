@@ -17,6 +17,17 @@
     }: {
       system.stateVersion = "23.11";
 
+      networking = {
+        defaultGateway = "192.168.87.251";
+        firewall = {
+          enable = true;
+          allowedTCPPorts = [80];
+        };
+        # Use systemd-resolved inside the container
+        # Workaround for bug https://github.com/NixOS/nixpkgs/issues/162686
+        useHostResolvConf = lib.mkForce false;
+      };
+
       services = {
         resolved.enable = true;
 
@@ -24,7 +35,7 @@
           enable = false;
           settings = {
             streams = {
-              "test1" = [
+              test1 = [
                 "rtsp://10.83.16.12/11"
               ];
             };
@@ -47,39 +58,31 @@
                 mode = "all";
               };
 
-              cameras."test1" = {
-                ffmpeg.inputs = [
-                  {
-                    path = "rtsp://127.0.0.1:8554/test1";
-                    input_args = "preset-rtsp-restream";
-                    roles = ["record"];
-                  }
-                ];
-              };
-              cameras."test2" = {
-                ffmpeg.inputs = [
-                  {
-                    path = "rtsp://localaccount:localaccount@172.20.65.103:554/stream1";
-                    roles = [
-                      "record"
-                      "detect"
-                    ];
-                  }
-                ];
+              cameras = {
+                test1 = {
+                  ffmpeg.inputs = [
+                    {
+                      path = "rtsp://127.0.0.1:8554/test1";
+                      input_args = "preset-rtsp-restream";
+                      roles = ["record"];
+                    }
+                  ];
+                };
+                test2 = {
+                  ffmpeg.inputs = [
+                    {
+                      path = "rtsp://localaccount:localaccount@172.20.65.103:554/stream1";
+                      roles = [
+                        "record"
+                        "detect"
+                      ];
+                    }
+                  ];
+                };
               };
             };
           };
         };
-      };
-      networking = {
-        defaultGateway = "192.168.87.251";
-        firewall = {
-          enable = true;
-          allowedTCPPorts = [80];
-        };
-        # Use systemd-resolved inside the container
-        # Workaround for bug https://github.com/NixOS/nixpkgs/issues/162686
-        useHostResolvConf = lib.mkForce false;
       };
     };
   };
