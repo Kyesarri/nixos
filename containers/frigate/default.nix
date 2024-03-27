@@ -30,6 +30,8 @@
       services = {
         resolved.enable = true;
 
+        go2rc.enable = true;
+
         frigate = {
           enable = true;
           hostname = "frigate.nix-serv";
@@ -47,19 +49,16 @@
             };
 
             go2rtc = {
-              enable = true;
-              settings = {
-                streams = {
-                  "entry" = [
-                    "rtsp://user:password@192.168.87.22:554/h264Preview_01_sub"
-                  ];
-                  "driveway" = [
-                    "rtsp://user:password@192.168.87.20:554/h264Preview_01_sub"
-                  ];
-                };
-                # rtsp.listen = ":8554";
-                # webrtc.listen = ":8555";
+              streams = {
+                "entry" = [
+                  "rtsp://user:password@192.168.87.22:554/h264Preview_01_sub"
+                ];
+                "driveway" = [
+                  "rtsp://user:password@192.168.87.20:554/h264Preview_01_sub"
+                ];
               };
+              # rtsp.listen = ":8554";
+              # webrtc.listen = ":8555";
             };
 
             cameras = {
