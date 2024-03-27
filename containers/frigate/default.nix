@@ -29,8 +29,7 @@
       };
 
       services = {
-        /*
-          go2rtc = {
+        go2rtc = {
           enable = true;
           settings = {
             streams = {
@@ -41,7 +40,6 @@
             #webrtc.listen = ":8555";
           };
         };
-        */
 
         resolved.enable = true;
 
