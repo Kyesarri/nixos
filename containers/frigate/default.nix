@@ -118,7 +118,7 @@ in
               enabled = true;
               retain = {
                 days = 2;
-                mode = "all";
+                mode = "active_objects";
               };
             };
 
