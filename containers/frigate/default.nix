@@ -60,6 +60,7 @@ in
             };
           };
         };
+
         services.frigate = {
           enable = true;
           hostname = "${hostName}";

@@ -54,10 +54,17 @@
     opengl = {
       enable = true;
       driSupport = true;
-      extraPackages = with pkgs; [vaapiIntel libvdpau-va-gl vaapiVdpau intel-ocl];
-      extraPackages32 = with pkgs.pkgsi686Linux; [libva vaapiIntel libvdpau-va-gl vaapiVdpau];
+      extraPackages = with pkgs; [
+        vaapiIntel
+        libvdpau-va-gl
+        vaapiVdpau
+        intel-ocl
+        intel-media-driver # LIBVA_DRIVER_NAME=iHD
+        intel-vaapi-driver # LIBVA_DRIVER_NAME=i965 (older but works better for Firefox/Chromium)
+      ];
     };
   };
+
   boot = {
     kernelPackages = pkgs.linuxPackages_xanmod_latest; # use latest xanmod kernel
     kernelParams = [
@@ -142,6 +149,7 @@
   environment = {
     sessionVariables = rec
     {
+      LIBVA_DRIVER_NAME = "iHD"; # Force intel-media-driver
       QT_QPA_PLATFORM = "wayland";
       QT_QPA_PLATFORMTHEME = "qt5ct";
       GTK_THEME = "${config.colorscheme.slug}"; # sets default gtk theme the package built by nix-colors
