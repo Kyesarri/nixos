@@ -100,6 +100,7 @@
 
   hardware = {
     pulseaudio.enable = false;
+    enableRedistributableFirmware = lib.mkDefault true;
     opengl = {
       enable = true;
       driSupport = true;

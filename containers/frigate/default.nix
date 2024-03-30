@@ -25,6 +25,7 @@ in
         ...
       }: {
         system.stateVersion = "23.11";
+        hardware.opengl.enable = true;
 
         networking = {
           hostName = "${hostName}";
