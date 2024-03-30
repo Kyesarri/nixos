@@ -147,11 +147,14 @@ in
               fps = 4;
             };
 
+            # logs not working :)
             logger = {
               default = "info";
-              # logs = {
-              #   frigate.mqtt = "error";
-              # };
+              logs = {
+                peewee = "info";
+                ws4py = "info";
+                # frigate.mqtt = "error";
+              };
             };
 
             /*
