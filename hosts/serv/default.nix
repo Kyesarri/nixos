@@ -19,8 +19,8 @@ in
       ../headless.nix # base packages, not really "headless" yet
 
       ../../containers # handles networking / bridge for host / containers
-      ../../containers/frigate
-      ../../containers/nginx
+      ../../containers/frigate # camera nvr
+      ../../containers/nginx # reverse proxy boi
 
       ../../home/gscreenshot
 
