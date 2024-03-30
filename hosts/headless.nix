@@ -7,10 +7,6 @@
   spaghetti,
   ...
 }: {
-  # TODO start stripping out parts for the headless laptop, is currently built as my ASUS laptop
-  # for now to get it off the ground
-  # wont be completely "headless" leaving hypr and some basicboi programs installed
-  # is the plan of attack, see how this progresses
   imports = [./console.nix]; # console colours
   system.stateVersion = "23.11";
   time.timeZone = "Australia/Melbourne";
@@ -46,22 +42,6 @@
     settings = {
       auto-optimise-store = true; # runs gc, need to set interval otherwise defaults to 14d from memory
       experimental-features = ["nix-command" "flakes"]; # flakes and nixcommand required for config
-    };
-  };
-
-  hardware = {
-    pulseaudio.enable = false;
-    opengl = {
-      enable = true;
-      driSupport = true;
-      extraPackages = with pkgs; [
-        vaapiIntel
-        libvdpau-va-gl
-        vaapiVdpau
-        intel-ocl
-        intel-media-driver # LIBVA_DRIVER_NAME=iHD
-        intel-vaapi-driver # LIBVA_DRIVER_NAME=i965 (older but works better for Firefox/Chromium)
-      ];
     };
   };
 
@@ -141,34 +121,6 @@
       enable = true;
       enableSSHSupport = true;
     };
-  };
-
-  environment = {
-    sessionVariables = rec
-    {
-      LIBVA_DRIVER_NAME = "iHD"; # Force intel-media-driver
-      QT_QPA_PLATFORM = "wayland";
-      QT_QPA_PLATFORMTHEME = "qt5ct";
-      GTK_THEME = "${config.colorscheme.slug}"; # sets default gtk theme the package built by nix-colors
-      XDG_CACHE_HOME = "$HOME/.cache";
-      XDG_CONFIG_HOME = "$HOME/.config";
-      XDG_DATA_HOME = "$HOME/.local/share";
-      XDG_STATE_HOME = "$HOME/.local/state";
-      NIXOS_OZONE_WL = "1"; # fixes electron apps in wayland... why do i use electron?
-    };
-
-    shells = with pkgs; [zsh]; # default shell to zsh
-    systemPackages = with pkgs; [
-      lshw # list hardware
-      usbutils # usb thing
-      busybox # nice-to-have
-      curl
-      wget
-      libsecret
-      gitAndTools.gitFull
-      polkit_gnome
-      waypipe
-    ];
   };
 
   users.users.${spaghetti.user} = {
