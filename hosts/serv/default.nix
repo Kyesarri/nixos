@@ -21,23 +21,18 @@ in
       ../../containers # handles networking / bridge for host / containers
       ../../containers/frigate # camera nvr
       ../../containers/nginx # reverse proxy boi
-      ../../containers/blocky
-
-      ../../home/gscreenshot
+      ../../containers/blocky # testing, to replace pi-hole lxc on proxmox
+      ../../containers/authelia # local web auth
 
       ../../hardware/audio # probs worthwile for warning sounds or something
       ../../hardware/battery # this server comes with its own built-in "ups"
 
       ../../home # home-manaager config for all machines currently
-      ../../home/ags
       ../../home/bottom
       ../../home/dunst
-      ../../home/firefox
       ../../home/git
-      ../../home/hypr
       ../../home/kitty
       ../../home/codium
-      ../../home/ulauncher
       ../../home/virt
       ../../home/gtk
       ../../home/zsh
@@ -53,13 +48,7 @@ in
       hypr = {
         enable = false;
         hyprpaper.enable = false;
-        # isNvidia = true; # nvidia
-        # animations = false;
       };
-      # wireless = { /* networking.wireless? */
-      #   enable = true;
-      #   manager = nwm; # nwm, iwd or wpa
-      # };
     };
 
     colorscheme = inputs.nix-colors.colorSchemes.${scheme};
