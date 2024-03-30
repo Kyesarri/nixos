@@ -25,7 +25,7 @@ in
         pkgs,
         ...
       }: {
-        users.users.${hostName}.isSystemUser = true; # believe this is already set?
+        users.groups.${hostName} = ["render" "video"]; # believe this is already set?
         nixpkgs.config.allowUnfree = lib.mkDefault true; # need unfree for intel drivers
         system.stateVersion = "23.11";
         services.xserver.enable = true;
@@ -99,7 +99,7 @@ in
 
         services.frigate = {
           enable = true;
-          hostname = "${hostName}";
+          hostname = "${hostName}.home.lan";
           settings = {
             cameras = {
               driveway = {
@@ -170,7 +170,7 @@ in
             motion.threshold = 90;
             rtmp.enabled = false;
 
-            # detect stream, used for snapshots, live view, debug?
+            # detect stream, used for snapshots, live view, debug
             detect = {
               enabled = true;
               width = 1024;
