@@ -187,22 +187,18 @@ in
               };
             };
 
-            /*
-
             detectors.ov = {
               type = "openvino";
               device = "AUTO";
-              model.path = "/var/lib/frigate/openvino-model/ssdlite_mobilenet_v2.xml";
-            };
 
-            model = {
-              width = 300;
-              height = 300;
-              input_tensor = "nhwc";
-              input_pixel_format = "bgr";
-              labelmap_path = "/openvino-model/coco_91cl_bkgr.txt";
+              model = {
+                width = 300;
+                height = 300;
+                input_tensor = "nhwc";
+                input_pixel_format = "bgr";
+                labelmap_path = "${pkgs.frigate}/share/frigate/openvino-model/coco_91cl_bkgr.txt";
+              };
             };
-            */
           };
         };
       };
