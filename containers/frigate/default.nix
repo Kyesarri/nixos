@@ -55,7 +55,11 @@ in
           useHostResolvConf = lib.mkForce false;
         };
 
-        environment.systemPackages = with pkgs; [ffmpeg_5-full lshw];
+        environment.systemPackages = with pkgs; [
+          ffmpeg_5-full
+          lshw
+          libva-utils
+        ];
 
         services.resolved.enable = true;
 
