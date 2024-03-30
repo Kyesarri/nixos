@@ -38,6 +38,7 @@ in
               default_2fa_method = "totp";
               log.level = "debug";
               server.disable_healthcheck = true;
+              server.host = "192.168.87.5";
             };
           };
         };
