@@ -25,8 +25,21 @@ in
         ...
       }: {
         system.stateVersion = "23.11";
-        hardware.opengl.enable = true;
-
+        hardware = {
+          enableRedistributableFirmware = lib.mkDefault true;
+          opengl = {
+            enable = true;
+            driSupport = true;
+            extraPackages = with pkgs; [
+              vaapiIntel
+              libvdpau-va-gl
+              vaapiVdpau
+              intel-ocl
+              intel-media-driver # LIBVA_DRIVER_NAME=iHD
+              intel-vaapi-driver # LIBVA_DRIVER_NAME=i965 (older but works better for Firefox/Chromium)
+            ];
+          };
+        };
         networking = {
           hostName = "${hostName}";
           domain = "home.lan";
