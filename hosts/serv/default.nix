@@ -13,7 +13,7 @@ in
   }: {
     imports = [
       nix-colors.homeManagerModules.default
-      ./per-device.nix # per device hypr config
+      ./per-device.nix # per device hypr config # not required, TODO remove?
       ./hardware.nix # device specific hardware config
 
       ../headless.nix # base packages, not really "headless" yet
@@ -41,15 +41,6 @@ in
       # ../../home/tailscale # TODO disabled until i can figure out mkif hostname == {nix-serv}; with an else
       # ../../home/wlogout
     ];
-
-    gnocchi = {
-      ags.enable = false;
-      gscreenshot.enable = false;
-      hypr = {
-        enable = false;
-        hyprpaper.enable = false;
-      };
-    };
 
     colorscheme = inputs.nix-colors.colorSchemes.${scheme};
     home-manager.users.${spaghetti.user}.colorscheme = inputs.nix-colors.colorSchemes.${scheme};
