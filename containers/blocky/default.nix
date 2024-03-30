@@ -4,7 +4,7 @@
   lib,
   ...
 }: {
-  containers.nginx = {
+  containers.blocky = {
     autoStart = true;
     privateNetwork = true;
     hostBridge = "br0";
