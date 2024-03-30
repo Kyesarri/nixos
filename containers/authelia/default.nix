@@ -12,7 +12,7 @@ in
       autoStart = true;
       privateNetwork = true;
       hostBridge = "br0"; # specify the bridge name
-      localAddress = "192.168.87.5/24";
+      localAddress = "192.168.87.5/24"; # containers ip
       config = {
         config,
         pkgs,
@@ -37,7 +37,7 @@ in
             default_2fa_method = "totp";
             log.level = "debug";
             server.disable_healthcheck = true;
-            server.host = "192.168.87.5";
+            server.host = "127.0.0.1";
             server.port = webPort;
           };
         };
