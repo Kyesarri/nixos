@@ -71,9 +71,6 @@
       "nowatchdog" # disables watchdog, was causing shutdown / reboot issues
     ];
 
-    # TODO can i with a single value defined in ./flake.nix select the plymouth theme and prevent all other themes from being
-    # installed on my system? should save 500mb if i can do so.
-
     loader = {
       efi.efiSysMountPoint = "/boot";
       grub = {
