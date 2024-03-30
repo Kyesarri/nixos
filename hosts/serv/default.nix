@@ -20,6 +20,7 @@ in
 
       ../../containers # handles networking / bridge for host / containers
       ../../containers/frigate
+      ../../containers/nginx
 
       ../../home/gscreenshot
 
