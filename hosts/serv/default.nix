@@ -1,5 +1,5 @@
 let
-  scheme = "snazzy";
+  scheme = "measured-dark";
 in
   {
     config,
