@@ -21,7 +21,7 @@ in
         system.stateVersion = "23.11";
         services.resolved.enable = true;
         networking.defaultGateway = "192.168.87.251";
-        useHostResolvConf = lib.mkForce false;
+        networking.useHostResolvConf = lib.mkForce false;
         networking.firewall = {
           enable = true;
           allowedTCPPorts = [webPort];
