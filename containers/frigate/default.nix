@@ -186,7 +186,7 @@ in
                 # frigate.mqtt = "error";
               };
             };
-
+            /*
             detectors.ov = {
               type = "openvino";
               device = "AUTO";
@@ -200,6 +200,7 @@ in
               input_pixel_format = "bgr";
               labelmap_path = "${pkgs.frigate}/share/frigate/openvino-model/coco_91cl_bkgr.txt";
             };
+            */
           };
         };
       };
