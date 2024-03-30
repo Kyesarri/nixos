@@ -89,8 +89,6 @@ in
       tailscale.openFirewall = true;
       ###### TODO ######
 
-      xserver.enable = true;
-
       # used for cameras ntp
       chrony = {
         enable = true;
