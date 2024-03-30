@@ -28,6 +28,18 @@ in
             allowedTCPPorts = [webPort];
           };
         };
+        systemd.services.authelia-main.preStart = ''
+          [ -f /var/lib/authelia-main/jwt-secret ] || {
+            "${pkgs.openssl}/bin/openssl" rand -base64 32 > /var/lib/authelia-main/jwt-secret
+          }
+          [ -f /var/lib/authelia-main/storage-encryption-file ] || {
+            "${pkgs.openssl}/bin/openssl" rand -base64 32 > /var/lib/authelia-main/storage-encryption-file
+          }
+          [ -f /var/lib/authelia-main/session-secret-file ] || {
+            "${pkgs.openssl}/bin/openssl" rand -base64 32 > /var/lib/authelia-main/session-secret-file
+          }
+        '';
+
         services.authelia.instances.main = {
           enable = true;
           name = "${hostName}";
