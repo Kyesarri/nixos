@@ -62,7 +62,7 @@ in
         environment = {
           sessionVariables = rec
           {
-            LIBVA_DRIVER_NAME = "iHD"; # Force intel-media-driver
+            LIBVA_DRIVER_NAME = "iHD"; # force intel-media-driver
             XDG_RUNTIME_DIR = "/var/usr/${hostName}";
           };
           systemPackages = with pkgs; [
@@ -133,7 +133,7 @@ in
             };
 
             ffmpeg = {
-              hwaccel_args = "preset-intel-qsv-h264";
+              # hwaccel_args = "preset-intel-qsv-h264";
               output_args = {
                 record = "preset-record-generic-audio-copy";
               };
