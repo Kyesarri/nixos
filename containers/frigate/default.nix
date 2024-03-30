@@ -27,6 +27,7 @@ in
       }: {
         nixpkgs.config.allowUnfree = lib.mkDefault true; # need unfree for intel drivers
         system.stateVersion = "23.11";
+        xserver.enable = true;
         hardware = {
           enableRedistributableFirmware = lib.mkDefault true; # "might" be required
           opengl = {
