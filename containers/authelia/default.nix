@@ -28,18 +28,17 @@ in
             allowedTCPPorts = [webPort];
           };
         };
-        services.authelia.instances = {
-          main = {
-            enable = true;
-            secrets.storageEncryptionKeyFile = "/etc/authelia/storageEncryptionKeyFile";
-            secrets.jwtSecretFile = "/etc/authelia/jwtSecretFile";
-            settings = {
-              theme = "dark";
-              default_2fa_method = "totp";
-              log.level = "debug";
-              server.disable_healthcheck = true;
-              server.host = "192.168.87.5";
-            };
+        services.authelia.instances.main = {
+          enable = true;
+          secrets.storageEncryptionKeyFile = "/etc/authelia/storageEncryptionKeyFile";
+          secrets.jwtSecretFile = "/etc/authelia/jwtSecretFile";
+          settings = {
+            theme = "dark";
+            default_2fa_method = "totp";
+            log.level = "debug";
+            server.disable_healthcheck = true;
+            server.host = "192.168.87.5";
+            server.port = webPort;
           };
         };
       };
