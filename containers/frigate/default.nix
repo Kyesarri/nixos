@@ -141,14 +141,14 @@ in
             };
 
             # logs not working :)
-            #logger = {
-            #  default = "info";
-            #  logs = {
-            #    peewee = "info";
-            #    ws4py = "info";
-            #    # frigate.mqtt = "error";
-            #  };
-            #};
+            logger = {
+              default = "info";
+              logs = {
+                peewee = "info";
+                ws4py = "info";
+                # frigate.mqtt = "error";
+              };
+            };
 
             /*
 
