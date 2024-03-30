@@ -13,7 +13,12 @@ in
       privateNetwork = true; # seperate from host network interface
       hostBridge = "br0"; # using bridged interface for containers
       localAddress = "192.168.87.7/24"; # container ip
-
+      bindMounts = {
+        dri = rec {
+          hostPath = "/dev/dri";
+          mountPoint = hostPath;
+        };
+      };
       config = {
         config,
         pkgs,
