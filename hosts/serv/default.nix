@@ -104,6 +104,7 @@
       enable = true;
       driSupport = true;
       extraPackages = with pkgs; [
+        libva-utils
         vaapiIntel
         libvdpau-va-gl
         vaapiVdpau
