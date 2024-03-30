@@ -104,7 +104,6 @@
       enable = true;
       driSupport = true;
       extraPackages = with pkgs; [
-        libva-utils
         vaapiIntel
         libvdpau-va-gl
         vaapiVdpau
@@ -132,6 +131,7 @@
       lshw # list hardware
       usbutils # usb thing
       busybox # nice-to-have
+      libva-utils
       curl
       wget
       libsecret
