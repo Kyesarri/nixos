@@ -25,8 +25,7 @@ in
         pkgs,
         ...
       }: {
-        users.users.${hostName}.isNormalUser = true;
-
+        users.users.${hostName}.isSystemUser = true;
         nixpkgs.config.allowUnfree = lib.mkDefault true; # need unfree for intel drivers
         system.stateVersion = "23.11";
         services.xserver.enable = true;
