@@ -1,5 +1,5 @@
 let
-  scheme = "mocha";
+  scheme = "gigavolt";
 in
   {
     config,
@@ -16,7 +16,7 @@ in
       ./per-device.nix # per device hypr config # not required, TODO remove?
       ./hardware.nix # device specific hardware config
 
-      ../headless.nix # base packages, not really "headless" yet
+      ../headless.nix # base packages and config, may need to move some of those values to this config
 
       ../../containers # handles networking / bridge for host / containers
       ../../containers/frigate # camera nvr
@@ -29,17 +29,15 @@ in
 
       ../../home # home-manaager config for all machines currently
       ../../home/bottom
-      ../../home/dunst
       ../../home/git
       ../../home/kitty
-      ../../home/codium
+      ../../home/codium # need to add server into this
       ../../home/virt
       ../../home/gtk
       ../../home/zsh
 
       # ../../home/syncthing # testing without currently
       # ../../home/tailscale # TODO disabled until i can figure out mkif hostname == {nix-serv}; with an else
-      # ../../home/wlogout
     ];
 
     colorscheme = inputs.nix-colors.colorSchemes.${scheme};
