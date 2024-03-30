@@ -125,7 +125,7 @@
 
     # TODO should this be pushed to a n o t h e r nix under /home/ for GDM / SDDM or /boot/
     xserver = {
-      enable = true;
+      enable = false;
       displayManager.gdm = {
         enable = true;
         wayland = true;

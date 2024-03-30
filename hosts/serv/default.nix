@@ -47,10 +47,10 @@ in
     ];
 
     gnocchi = {
-      ags.enable = true;
-      gscreenshot.enable = true;
+      ags.enable = false;
+      gscreenshot.enable = false;
       hypr = {
-        enable = true;
+        enable = false;
         hyprpaper.enable = false;
         # isNvidia = true; # nvidia
         # animations = false;
