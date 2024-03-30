@@ -25,7 +25,7 @@ in
           useHostResolvConf = lib.mkForce false;
           firewall = {
             enable = true;
-            allowedTCPPorts = [webPort];
+            allowedTCPPorts = [80];
           };
         };
         services.authelia.instances.main = {
@@ -38,7 +38,7 @@ in
             log.level = "debug";
             server.disable_healthcheck = true;
             server.host = "127.0.0.1";
-            server.port = webPort;
+            server.port = 80;
           };
         };
       };
