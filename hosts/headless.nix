@@ -54,9 +54,10 @@
     opengl = {
       enable = true;
       driSupport = true;
+      extraPackages = with pkgs; [vaapiIntel libvdpau-va-gl vaapiVdpau intel-ocl];
+      extraPackages32 = with pkgs.pkgsi686Linux; [libva vaapiIntel libvdpau-va-gl vaapiVdpau];
     };
   };
-
   boot = {
     kernelPackages = pkgs.linuxPackages_xanmod_latest; # use latest xanmod kernel
     kernelParams = [

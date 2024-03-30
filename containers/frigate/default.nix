@@ -145,7 +145,7 @@ in
               "lo"
             ];
 
-            # detect stream, used for snapshots too
+            # detect stream, used for snapshots, live view, debug?
             detect = {
               enabled = true;
               width = 1024;
