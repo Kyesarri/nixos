@@ -42,12 +42,14 @@
         recommendedOptimisation = true;
         recommendedProxySettings = true;
         recommendedTlsSettings = true;
-        virtualHosts."whatever.net" = {
+        /*
+          virtualHosts."whatever.net" = {
           default = true;
           enableACME = false;
           addSSL = true;
           locations."/".proxyPass = "http://127.0.0.1:9955/";
         };
+        */
       };
     };
   };
