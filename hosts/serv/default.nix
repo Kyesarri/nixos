@@ -59,22 +59,6 @@ in
       };
     };
 
-    hardware = {
-      pulseaudio.enable = false;
-      opengl = {
-        enable = true;
-        driSupport = true;
-        extraPackages = with pkgs; [
-          vaapiIntel
-          libvdpau-va-gl
-          vaapiVdpau
-          intel-ocl
-          intel-media-driver # LIBVA_DRIVER_NAME=iHD
-          intel-vaapi-driver # LIBVA_DRIVER_NAME=i965 (older but works better for Firefox/Chromium)
-        ];
-      };
-    };
-
     # tailscale config above is temp, will remove once below # TODO has been completed
 
     services = {
@@ -113,6 +97,22 @@ in
       };
     };
 
+    hardware = {
+      pulseaudio.enable = false;
+      opengl = {
+        enable = true;
+        driSupport = true;
+        extraPackages = with pkgs; [
+          vaapiIntel
+          libvdpau-va-gl
+          vaapiVdpau
+          intel-ocl
+          intel-media-driver # LIBVA_DRIVER_NAME=iHD
+          intel-vaapi-driver # LIBVA_DRIVER_NAME=i965 (older but works better for Firefox/Chromium)
+        ];
+      };
+    };
+
     environment = {
       shellAliases.rebuild = "sudo nixos-rebuild switch --flake /home/${spaghetti.user}/nixos#nix-serv --show-trace";
       sessionVariables = rec
@@ -125,7 +125,6 @@ in
         XDG_CONFIG_HOME = "$HOME/.config";
         XDG_DATA_HOME = "$HOME/.local/share";
         XDG_STATE_HOME = "$HOME/.local/state";
-        NIXOS_OZONE_WL = "1"; # fixes electron apps in wayland... why do i use electron?
       };
 
       shells = with pkgs; [zsh]; # default shell to zsh

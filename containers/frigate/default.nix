@@ -100,7 +100,7 @@ in
             };
 
             ffmpeg = {
-              # hwaccel_args = "preset-vaapi"; # kernel bug?
+              hwaccel_args = "preset-intel-qsv-h264";
               output_args = {
                 record = "preset-record-generic-audio-copy";
               };
