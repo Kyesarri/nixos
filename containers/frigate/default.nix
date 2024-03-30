@@ -38,9 +38,12 @@ in
 
         services.resolved.enable = true;
 
-        systemd.services.frigate.serviceConfig = {
-          SupplementaryGroups = ["render" "video"]; # for access to dev/dri/*
-          AmbientCapabilities = "CAP_PERFMON";
+        systemd.services.frigate = {
+          LIBVA_DRIVER_NAME = "iHD"; # Force intel-media-driver
+          serviceConfig = {
+            SupplementaryGroups = ["render" "video"]; # for access to dev/dri/*
+            AmbientCapabilities = "CAP_PERFMON";
+          };
         };
 
         # go2rtc was not working for me in the frigate config, added as another service here
@@ -69,7 +72,7 @@ in
               driveway = {
                 record = {enabled = true;};
                 motion = {mask = ["1024,0,1024,30,650,30,650,0"];};
-                zones = {carpark = "coordinates: 619,768,0,768,0,477,362,124,377,200,578,206";};
+                # zones = {carpark = "coordinates: 619,768,0,768,0,477,362,124,377,200,578,206";};
                 ffmpeg = {
                   input_args = "";
                   inputs = [
@@ -97,7 +100,7 @@ in
             };
 
             ffmpeg = {
-              # hwaccel_args = "preset-vaapi"; # kernel bug?
+              hwaccel_args = "preset-vaapi"; # kernel bug?
               output_args = {
                 record = "preset-record-generic-audio-copy";
               };
@@ -138,14 +141,14 @@ in
             };
 
             # logs not working :)
-            logger = {
-              default = "info";
-              logs = {
-                peewee = "info";
-                ws4py = "info";
-                # frigate.mqtt = "error";
-              };
-            };
+            #logger = {
+            #  default = "info";
+            #  logs = {
+            #    peewee = "info";
+            #    ws4py = "info";
+            #    # frigate.mqtt = "error";
+            #  };
+            #};
 
             /*
 
