@@ -141,8 +141,13 @@ in
 
             mqtt = {
               enabled = true;
-              host = "haos.home.lan";
+              host = "192.168.87.10";
               port = 1883;
+              topic_prefix = "frigate";
+              client_id = "frigate";
+              user = "frigate";
+              password = "frigate";
+              stats_interval = 60;
             };
 
             record = {
