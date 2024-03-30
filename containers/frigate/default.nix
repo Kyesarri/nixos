@@ -132,7 +132,7 @@ in
             };
 
             ffmpeg = {
-              hwaccel_args = "preset-intel-qsv-h264";
+              # hwaccel_args = "preset-intel-qsv-h264";
               output_args = {
                 record = "preset-record-generic-audio-copy";
               };
@@ -186,7 +186,7 @@ in
                 # frigate.mqtt = "error";
               };
             };
-
+            /*
             detectors.ov = {
               type = "openvino";
               device = "AUTO";
@@ -199,6 +199,7 @@ in
                 labelmap_path = "${pkgs.frigate}/share/frigate/openvino-model/coco_91cl_bkgr.txt";
               };
             };
+            */
           };
         };
       };
