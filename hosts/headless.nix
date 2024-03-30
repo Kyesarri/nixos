@@ -63,18 +63,6 @@
       "nowatchdog" # disables watchdog, was causing shutdown / reboot issues
     ];
 
-    plymouth = {
-      enable = true;
-      theme = "${spaghetti.plymouth}";
-      themePackages = [
-        (
-          pkgs.adi1090x-plymouth-themes.override {
-            selected_themes = ["${spaghetti.plymouth}"];
-          }
-        )
-      ];
-    };
-
     # TODO can i with a single value defined in ./flake.nix select the plymouth theme and prevent all other themes from being
     # installed on my system? should save 500mb if i can do so.
 
@@ -184,16 +172,12 @@
     extraGroups = ["networkmanager" "wheel"];
     packages = with pkgs; [
       fet-sh # minimalistic fetch script
-      cinnamon.nemo-with-extensions # file manager
-      qview # image viewer
       gnome.seahorse # key management
-      gscreenshot # image capture
       libnotify # notifications
       p7zip # TODO needs a gui
       udiskie # usb mounting
       bitwarden # password manager
       sleek-grub-theme # testing grub themes TODO grub
-      adi1090x-plymouth-themes # plymouth themes
     ];
   };
 }
