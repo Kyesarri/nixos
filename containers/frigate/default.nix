@@ -13,6 +13,7 @@ in
       privateNetwork = true; # seperate from host network interface
       hostBridge = "br0"; # using bridged interface for containers
       localAddress = "192.168.87.7/24"; # container ip
+      # pass intel igpu to container
       bindMounts = {
         dri = rec {
           hostPath = "/dev/dri/";
@@ -24,11 +25,10 @@ in
         pkgs,
         ...
       }: {
-        nixpkgs.config.allowUnfree = lib.mkDefault true;
-
+        nixpkgs.config.allowUnfree = lib.mkDefault true; # need unfree for intel drivers
         system.stateVersion = "23.11";
         hardware = {
-          enableRedistributableFirmware = lib.mkDefault true;
+          enableRedistributableFirmware = lib.mkDefault true; # "might" be required
           opengl = {
             enable = true;
             driSupport = true;
@@ -121,7 +121,7 @@ in
             };
 
             ffmpeg = {
-              # hwaccel_args = "preset-intel-qsv-h264";
+              hwaccel_args = "preset-intel-qsv-h264";
               output_args = {
                 record = "preset-record-generic-audio-copy";
               };
