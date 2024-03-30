@@ -69,6 +69,7 @@ in
               driveway = {
                 record = {enabled = true;};
                 motion = {mask = ["1024,0,1024,30,650,30,650,0"];};
+                zones = {carpark = "coordinates: 619,768,0,768,0,477,362,124,377,200,578,206";};
                 ffmpeg = {
                   input_args = "";
                   inputs = [
@@ -96,7 +97,7 @@ in
             };
 
             ffmpeg = {
-              # hwaccel_args = "preset-vaapi";
+              # hwaccel_args = "preset-vaapi"; # kernel bug?
               output_args = {
                 record = "preset-record-generic-audio-copy";
               };
@@ -127,17 +128,6 @@ in
             objects.track = ["cat" "person" "dog"];
             motion.threshold = 90;
             rtmp.enabled = false;
-
-            # Optional: Enabled network interfaces for bandwidth stats monitoring
-            # (default: empty list, let nethogs search all)
-            telemetry.network_interfaces = [
-              "eth"
-              "enp"
-              "eno"
-              "ens"
-              "wl"
-              "lo"
-            ];
 
             # detect stream, used for snapshots, live view, debug?
             detect = {
