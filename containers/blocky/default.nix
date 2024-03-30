@@ -20,8 +20,7 @@ in
         ...
       }: {
         system.stateVersion = "23.11";
-        security.acme.defaults.email = "kyesarri@gmail.com";
-        security.acme.acceptTerms = true;
+
         networking = {
           hostName = "${hostName}";
           domain = "home.lan";

@@ -35,6 +35,9 @@
 
       # environment.systemPackages = with pkgs; [ffmpeg_5-full lshw];
 
+      security.acme.defaults.email = "kyesarri@gmail.com";
+      security.acme.acceptTerms = true;
+
       services.resolved.enable = true;
       services.nginx = {
         enable = true;
