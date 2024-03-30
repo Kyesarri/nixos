@@ -4,118 +4,177 @@
   lib,
   ...
 }: {
-  # declare some basicboi host settings for container
   containers.frigate = {
-    /*
-    # to use later, hardware passthrough?
-    allowedDevices = [
-      {
-        modifier = "rw";
-        node = "/dev/net/tun";
-      }
-    ];
-    */
     autoStart = true;
     privateNetwork = true; # seperate from host network interface
     hostBridge = "br0";
     localAddress = "192.168.87.7/24"; # container ip
 
-    # container nix config
-
     config = {
       config,
       pkgs,
       ...
-    }: {
+    }: let
+      hostName = "frigate";
+      webPort = 6020;
+    in {
       system.stateVersion = "23.11";
 
       networking = {
+        hostName = "${hostName}";
+        domain = "home.lan";
+        nameservers = ["192.168.87.1"];
         defaultGateway = "192.168.87.251";
         firewall = {
-          enable = false;
-          allowedTCPPorts = [80];
+          enable = true;
+          allowedTCPPorts = [80 webPort 1984 8555];
         };
         # workaround for bug https://github.com/NixOS/nixpkgs/issues/162686
         useHostResolvConf = lib.mkForce false;
       };
-      environment.systemPackages = with pkgs; [ffmpeg_5-full];
 
-      services = {
-        go2rtc = {
-          enable = true;
-          settings = {
-            rtsp.listen = ":8554";
-            webrtc.listen = ":8555";
-            streams = {
-              "entry" = ["rtsp://user:password@192.168.87.22:554/h264Preview_01_sub"];
-              "driveway" = ["rtsp://user:password@192.168.87.20:554/h264Preview_01_sub"];
-            };
+      environment.systemPackages = with pkgs; [ffmpeg_5-full lshw];
+
+      services.resolved.enable = true;
+
+      systemd.services.frigate.serviceConfig = {
+        SupplementaryGroups = ["render" "video"]; # for access to dev/dri/*
+        AmbientCapabilities = "CAP_PERFMON";
+      };
+
+      # go2rtc was not working for me in the frigate config, added as another service here
+      services.go2rtc = {
+        enable = true;
+        settings = {
+          api = {
+            listen = ":1984";
+            username = "";
+            password = "";
+          };
+          rtsp.listen = ":8554";
+          webrtc.listen = ":8555";
+          streams = {
+            entry = "rtsp://user:password@192.168.87.22:554/h264Preview_01_main";
+            driveway = "rtsp://user:password@192.168.87.20:554/h264Preview_01_main";
           };
         };
+      };
+      services.frigate = {
+        enable = true;
+        hostname = "${hostName}";
+        settings = {
+          /*
+          # no worky, not sure why
+          go2rtc.streams = {
+            entry = ["rtsp://user:password@192.168.87.22:554/h264Preview_01_main"];
+            driveway = ["rtsp://user:password@192.168.87.20:554/h264Preview_01_main"];
+          };
+          */
 
-        resolved.enable = true;
-
-        # frigate container service
-        frigate = {
-          enable = true;
-          hostname = "frigate.nix-serv";
-
-          # settings written to /var/lib/frigate/frigate.yml its not?
-          settings = {
-            mqtt.enabled = false;
-            # ffmpeg.hwaccel_args = "preset-vaapi"; # generic intel < 10th gen
-            ffmpeg.hwaccel_args = "preset-intel-qsv-h264"; # quicksync > 10th gen
-
-            record = {
-              enabled = true;
-              retain = {
-                days = 2;
-                mode = "all";
-              };
-            };
-
-            go2rtc = {
-              streams = {
-                "entry" = ["rtsp://user:password@192.168.87.22:554/h264Preview_01_sub"];
-                # "driveway" = ["rtsp://user:password@192.168.87.20:554/h264Preview_01_sub"];
-              };
-            };
-
-            # detectors.ov = {
-            #   type = "openvino";
-            #   device = "AUTO";
-            #   model.path = "/var/lib/frigate/openvino-model/ssdlite_mobilenet_v2.xml";
-            # };
-
-            cameras = {
-              entry = {
-                ffmpeg.inputs = [
+          cameras = {
+            driveway = {
+              record = {enabled = true;};
+              motion = {mask = ["1024,0,1024,30,650,30,650,0"];};
+              ffmpeg = {
+                input_args = "";
+                inputs = [
                   {
-                    "path" = "rtsp://user:password@192.168.87.22:1935/h264Preview_01_sub";
+                    path = "rtsp://127.0.0.1:8554/driveway";
                     roles = ["detect" "record"];
                   }
-                  #{
-                  #  "path" = "rtsp://user:password@192.168.87.22:554/h264Preview_01_main";
-                  #  input_args = "preset-rtsp-restream";
-                  #  roles = ["record"];
-                  #}
                 ];
               };
+            };
 
-              driveway = {
-                ffmpeg.inputs = [
+            entry = {
+              record = {enabled = true;};
+              motion = {mask = ["0,768,305,768,170,0,0,0" "1024,0,1024,30,650,30,650,0"];};
+              ffmpeg = {
+                input_args = "";
+                inputs = [
                   {
-                    path = "rtsp://user:password@192.168.87.20:554/h264Preview_01_main";
-                    roles = ["record" "detect"];
+                    path = "rtsp://127.0.0.1:8554/entry";
+                    roles = ["detect" "record"];
                   }
-                  #{
-                  #  path = "rtmp://user:password@192.168.87.20:1935";
-                  #  roles = ["rtmp"];
-                  #}
                 ];
               };
             };
           };
+
+          ffmpeg = {
+            output_args = {
+              record = "preset-record-generic-audio-copy";
+            };
+          };
+
+          mqtt = {
+            enabled = true;
+            host = "haos.home.lan";
+            port = 1883;
+          };
+
+          record = {
+            enabled = true;
+            retain = {
+              days = 2;
+              mode = "all";
+            };
+          };
+
+          snapshots = {
+            enabled = true;
+            clean_copy = true;
+            timestamp = false;
+            crop = false;
+            bounding_box = true;
+          };
+
+          objects.track = ["cat" "person" "dog"];
+          motion.threshold = 90;
+          rtmp.enabled = false;
+
+          # Optional: Enabled network interfaces for bandwidth stats monitoring
+          # (default: empty list, let nethogs search all)
+          telemetry.network_interfaces = [
+            "eth"
+            "enp"
+            "eno"
+            "ens"
+            "wl"
+            "lo"
+          ];
+
+          # detect stream, used for snapshots too
+          detect = {
+            enabled = true;
+            width = 1024;
+            height = 768;
+            fps = 4;
+          };
+
+          logger = {
+            default = "info";
+            # logs = {
+            #   frigate.mqtt = "error";
+            # };
+          };
+
+          /*
+
+          detectors.ov = {
+            type = "openvino";
+            device = "AUTO";
+            model.path = "/var/lib/frigate/openvino-model/ssdlite_mobilenet_v2.xml";
+          };
+
+          model = {
+            width = 300;
+            height = 300;
+            input_tensor = "nhwc";
+            input_pixel_format = "bgr";
+            labelmap_path = "/openvino-model/coco_91cl_bkgr.txt";
+          };
+          */
         };
       };
     };
