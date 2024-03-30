@@ -25,11 +25,12 @@ in
           useHostResolvConf = lib.mkForce false;
           firewall = {
             enable = true;
-            allowedTCPPorts = [80];
+            allowedTCPPorts = [webPort];
           };
         };
         services.authelia.instances.main = {
           enable = true;
+          name = "${hostName}";
           secrets.storageEncryptionKeyFile = "/etc/authelia/storageEncryptionKeyFile";
           secrets.jwtSecretFile = "/etc/authelia/jwtSecretFile";
           settings = {
@@ -38,7 +39,7 @@ in
             log.level = "debug";
             server.disable_healthcheck = true;
             server.host = "127.0.0.1";
-            server.port = 80;
+            server.port = webPort;
           };
         };
       };
