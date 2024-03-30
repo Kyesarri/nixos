@@ -12,7 +12,7 @@ in
       autoStart = true;
       privateNetwork = true;
       hostBridge = "br0"; # specify the bridge name
-      localAddress = "192.168.87.7/24";
+      localAddress = "192.168.87.5/24";
       config = {
         config,
         pkgs,
@@ -20,11 +20,13 @@ in
       }: {
         system.stateVersion = "23.11";
         services.resolved.enable = true;
-        networking.defaultGateway = "192.168.87.251";
-        networking.useHostResolvConf = lib.mkForce false;
-        networking.firewall = {
-          enable = true;
-          allowedTCPPorts = [webPort];
+        networking = {
+          defaultGateway = "192.168.87.251";
+          useHostResolvConf = lib.mkForce false;
+          firewall = {
+            enable = true;
+            allowedTCPPorts = [webPort];
+          };
         };
         services.authelia.instances = {
           main = {
