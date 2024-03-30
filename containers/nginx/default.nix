@@ -26,8 +26,8 @@
         nameservers = ["192.168.87.1"];
         defaultGateway = "192.168.87.251";
         firewall = {
-          enable = false;
-          allowedTCPPorts = [];
+          enable = true;
+          allowedTCPPorts = [webPort];
         };
         # workaround for bug https://github.com/NixOS/nixpkgs/issues/162686
         useHostResolvConf = lib.mkForce false;
