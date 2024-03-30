@@ -25,7 +25,7 @@ in
         pkgs,
         ...
       }: {
-        users.users.${hostName}.isSystemUser = true;
+        users.users.${hostName}.isSystemUser = true; # believe this is already set?
         nixpkgs.config.allowUnfree = lib.mkDefault true; # need unfree for intel drivers
         system.stateVersion = "23.11";
         services.xserver.enable = true;
@@ -62,8 +62,9 @@ in
         environment = {
           sessionVariables = rec
           {
-            LIBVA_DRIVER_NAME = "iHD";
-          }; # Force intel-media-driver
+            LIBVA_DRIVER_NAME = "iHD"; # Force intel-media-driver
+            XDG_RUNTIME_DIR = "/var/usr/${hostName}";
+          };
           systemPackages = with pkgs; [
             ffmpeg_5-full
             lshw
