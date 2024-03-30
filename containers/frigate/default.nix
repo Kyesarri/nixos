@@ -57,14 +57,19 @@ in
           useHostResolvConf = lib.mkForce false;
         };
 
-        environment.systemPackages = with pkgs; [
-          ffmpeg_5-full
-          lshw
-          libva-utils
-        ];
-
+        environment = {
+          sessionVariables = rec
+          {
+            LIBVA_DRIVER_NAME = "iHD";
+          }; # Force intel-media-driver
+          systemPackages = with pkgs; [
+            ffmpeg_5-full
+            lshw
+            libva-utils
+          ];
+        };
         systemd.services.frigate = {
-          environment.LIBVA_DRIVER_NAME = "iHD"; # Force intel-media-driver
+          environment.LIBVA_DRIVER_NAME = "iHD"; # force intel-media-driver
           serviceConfig = {
             SupplementaryGroups = ["render" "video"]; # for access to dev/dri/*
             AmbientCapabilities = "CAP_PERFMON";
