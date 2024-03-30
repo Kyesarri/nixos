@@ -1,5 +1,5 @@
 let
-  scheme = "measured-dark";
+  scheme = "mocha";
 in
   {
     config,
