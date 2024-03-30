@@ -60,6 +60,8 @@
       user = "kel"; # single user currently, import attribute as spaghetti use ${spaghetti.user}
       plymouth = "deus_ex"; # as above, use ${spaghetti.plymouth}
       scheme = "horizon-dark"; # mmm, this should still be per machine but idk right now :)
+      scheme1 = "gigavolt";
+      scheme2 = "tokyonight";
       iconPkg = "pkgs.zafiro-icons";
     };
     system = "x86_64-linux"; # i dont use any other arch atm
