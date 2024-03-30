@@ -25,7 +25,6 @@ in
         pkgs,
         ...
       }: {
-        users.groups.${hostName} = ["render" "video"]; # believe this is already set?
         nixpkgs.config.allowUnfree = lib.mkDefault true; # need unfree for intel drivers
         system.stateVersion = "23.11";
         services.xserver.enable = true;
