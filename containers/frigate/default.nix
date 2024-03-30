@@ -39,7 +39,7 @@ in
         services.resolved.enable = true;
 
         systemd.services.frigate = {
-          LIBVA_DRIVER_NAME = "iHD"; # Force intel-media-driver
+          environment.LIBVA_DRIVER_NAME = "iHD"; # Force intel-media-driver
           serviceConfig = {
             SupplementaryGroups = ["render" "video"]; # for access to dev/dri/*
             AmbientCapabilities = "CAP_PERFMON";
