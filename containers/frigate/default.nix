@@ -24,6 +24,8 @@ in
         pkgs,
         ...
       }: {
+        nixpkgs.config.allowUnfree = lib.mkDefault true;
+
         system.stateVersion = "23.11";
         hardware = {
           enableRedistributableFirmware = lib.mkDefault true;

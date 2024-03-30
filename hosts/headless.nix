@@ -11,7 +11,7 @@
   system.stateVersion = "23.11";
   time.timeZone = "Australia/Melbourne";
 
-  nixpkgs.config.allowUnfree = true;
+  nixpkgs.config.allowUnfree = lib.mkDefault true;
 
   security = {
     polkit.extraConfig = ''
