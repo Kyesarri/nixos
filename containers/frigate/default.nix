@@ -15,7 +15,7 @@ in
       localAddress = "192.168.87.7/24"; # container ip
       bindMounts = {
         dri = rec {
-          hostPath = "/dev/dri";
+          hostPath = "/dev/dri/";
           mountPoint = hostPath;
         };
       };
