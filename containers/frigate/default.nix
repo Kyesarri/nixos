@@ -27,7 +27,8 @@ in
       }: {
         nixpkgs.config.allowUnfree = lib.mkDefault true; # need unfree for intel drivers
         system.stateVersion = "23.11";
-        xserver.enable = true;
+        services.xserver.enable = true;
+        services.resolved.enable = true;
         hardware = {
           enableRedistributableFirmware = lib.mkDefault true; # "might" be required
           opengl = {
@@ -61,8 +62,6 @@ in
           lshw
           libva-utils
         ];
-
-        services.resolved.enable = true;
 
         systemd.services.frigate = {
           environment.LIBVA_DRIVER_NAME = "iHD"; # Force intel-media-driver
