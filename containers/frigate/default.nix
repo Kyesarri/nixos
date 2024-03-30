@@ -64,14 +64,6 @@ in
           enable = true;
           hostname = "${hostName}";
           settings = {
-            /*
-            # no worky, not sure why
-            go2rtc.streams = {
-              entry = ["rtsp://user:password@192.168.87.22:554/h264Preview_01_main"];
-              driveway = ["rtsp://user:password@192.168.87.20:554/h264Preview_01_main"];
-            };
-            */
-
             cameras = {
               driveway = {
                 record = {enabled = true;};
@@ -103,6 +95,7 @@ in
             };
 
             ffmpeg = {
+              hwaccel_args = "preset-vaapi";
               output_args = {
                 record = "preset-record-generic-audio-copy";
               };
