@@ -8,15 +8,15 @@
     autoStart = true;
     privateNetwork = true;
     hostBridge = "br0";
-    localAddress = "192.168.87.44/24"; # container ip
+    localAddress = "192.168.87.2/24"; # container ip
 
     config = {
       config,
       pkgs,
       ...
     }: let
-      hostName = "nginx";
-      webPort = 81;
+      hostName = "blocky";
+      webPort = 80;
     in {
       system.stateVersion = "23.11";
 
@@ -35,20 +35,7 @@
 
       # environment.systemPackages = with pkgs; [ffmpeg_5-full lshw];
 
-      services.resolved.enable = true;
-      services.nginx = {
-        enable = true;
-        recommendedGzipSettings = true;
-        recommendedOptimisation = true;
-        recommendedProxySettings = true;
-        recommendedTlsSettings = true;
-        virtualHosts."whatever.net" = {
-          default = true;
-          enableACME = true;
-          addSSL = true;
-          locations."/".proxyPass = "http://127.0.0.1:9955/";
-        };
-      };
+      services.blocky.enable = true;
     };
   };
 }
