@@ -35,9 +35,6 @@
 
       # environment.systemPackages = with pkgs; [ffmpeg_5-full lshw];
 
-      security.acme.defaults.email = "kyesarri@gmail.com";
-      security.acme.acceptTerms = true;
-
       services.resolved.enable = true;
       services.nginx = {
         enable = true;
@@ -47,7 +44,7 @@
         recommendedTlsSettings = true;
         virtualHosts."whatever.net" = {
           default = true;
-          enableACME = true;
+          enableACME = false;
           addSSL = true;
           locations."/".proxyPass = "http://127.0.0.1:9955/";
         };
