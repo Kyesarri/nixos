@@ -21,6 +21,7 @@ in
       ../../containers # handles networking / bridge for host / containers
       ../../containers/frigate # camera nvr
       ../../containers/nginx # reverse proxy boi
+      ../../containers/blocky
 
       ../../home/gscreenshot
 
