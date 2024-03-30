@@ -71,7 +71,11 @@ in
       # used for cameras ntp
       chrony = {
         enable = true;
-        servers = ["pool.ntp.org"];
+        enableNTS = true;
+        servers = [
+          "ntp.nml.csiro.au"
+          "ntp.ise.canberra.edu.au"
+        ];
       };
 
       tlp = {
