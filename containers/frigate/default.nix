@@ -74,7 +74,6 @@ in
             ffmpeg_5-full
             lshw
             libva-utils
-            vainfo
           ];
         };
         systemd.services.frigate = {
