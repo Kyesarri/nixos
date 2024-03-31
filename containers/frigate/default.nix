@@ -17,14 +17,15 @@ in
       privateNetwork = true; # seperate from host network interface
       hostBridge = "br0"; # using bridged interface for containers
       localAddress = "192.168.87.7/24"; # container ip
-      # pass intel igpu to container
-
+      # pass intel igpu to container, computer says no
+      /*
       allowedDevices = [
         {
           modifier = "rwm";
           node = "/dev/dri/";
         }
       ];
+      */
       /*
       bindMounts = {
         dri = rec {
@@ -177,18 +178,16 @@ in
               stats_interval = 60;
             };
 
-            events = {
-              pre_capture = 6;
-              post_capture = 10;
-              objects = ["person" "dog"]; # should be - person
-              retain = {
-                default = 5;
-                mode = "motion";
-              };
-            };
-
             record = {
               enabled = true;
+              events = {
+                pre_capture = 6;
+                post_capture = 10;
+                objects = ["person" "dog"]; # should be - person
+                retain = {
+                  default = 5;
+                };
+              };
               retain = {
                 days = 0;
                 mode = "all";
