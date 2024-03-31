@@ -14,20 +14,21 @@ in
       hostBridge = "br0"; # using bridged interface for containers
       localAddress = "192.168.87.7/24"; # container ip
       # pass intel igpu to container
-      /*
-        bindMounts = {
+
+      bindMounts = {
         dri = rec {
           hostPath = "/dev/dri/";
           mountPoint = hostPath;
         };
       };
-      */
+      /*
       allowedDevices = [
         {
           node = "/dev/dri/";
           modifier = "rw";
         }
       ];
+      */
       config = {
         config,
         pkgs,
@@ -35,9 +36,7 @@ in
       }: {
         nixpkgs.config.allowUnfree = lib.mkDefault true; # need unfree for intel drivers
         system.stateVersion = "23.11";
-        services.xserver.enable = true;
         services.resolved.enable = true;
-        services.getty.autologinUser = "${hostName}";
         hardware = {
           enableRedistributableFirmware = lib.mkDefault true; # "might" be required
           opengl = {
@@ -70,7 +69,7 @@ in
           sessionVariables = rec
           {
             LIBVA_DRIVER_NAME = "iHD"; # force intel-media-driver
-            XDG_RUNTIME_DIR = "/var/usr/${hostName}";
+            XDG_RUNTIME_DIR = "/var/${hostName}";
           };
           systemPackages = with pkgs; [
             ffmpeg_5-full
