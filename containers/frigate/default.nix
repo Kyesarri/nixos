@@ -130,7 +130,7 @@ in
                 best_image_timeout = 60;
                 record = {enabled = true;};
                 motion = {mask = ["1024,0,1024,30,650,30,650,0"];};
-                # zones.carpark = {coordinates = "619,768,0,768,0,477,362,124,377,200,578,206";};
+                zones.carpark = {coordinates = "619,768,0,768,0,477,362,124,377,200,578,206";};
                 ffmpeg = {
                   input_args = "";
                   inputs = [
