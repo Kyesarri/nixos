@@ -55,14 +55,13 @@ in
         networking = {
           hostName = "${hostName}";
           domain = "home.lan";
+          useHostResolvConf = lib.mkForce false;
           nameservers = ["192.168.87.1"];
           defaultGateway = "192.168.87.251";
           firewall = {
             enable = true;
             allowedTCPPorts = [80 webPort 1984 8555];
           };
-          # workaround for bug https://github.com/NixOS/nixpkgs/issues/162686
-          useHostResolvConf = lib.mkForce false;
         };
 
         environment = {
@@ -75,6 +74,7 @@ in
             ffmpeg_5-full
             lshw
             libva-utils
+            vainfo
           ];
         };
         systemd.services.frigate = {
@@ -131,7 +131,7 @@ in
                 best_image_timeout = 60;
                 record = {enabled = true;};
                 motion = {mask = ["1024,0,1024,30,650,30,650,0"];};
-                # zones = {carpark = "coordinates: 619,768,0,768,0,477,362,124,377,200,578,206";};
+                zones.carpark = {coordinates = "619,768,0,768,0,477,362,124,377,200,578,206";};
                 ffmpeg = {
                   input_args = "";
                   inputs = [
@@ -195,7 +195,7 @@ in
 
             stats = {
               intel_gpu_stats = true;
-              network_bandwidth = true;
+              # network_bandwidth = true;
             };
 
             ui.use_experimental = true;
