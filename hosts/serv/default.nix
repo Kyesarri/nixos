@@ -16,7 +16,7 @@
     ../headless.nix # base packages and config, may need to move some of those values to this config
 
     ../../containers # handles networking / bridge for host / containers
-    # ../../containers/frigate # camera nvr
+    ../../containers/frigate # camera nvr
     ../../containers/nginx # reverse proxy boi
     ../../containers/blocky # testing, to replace pi-hole lxc on proxmox
     ../../containers/authelia # local web auth
