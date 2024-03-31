@@ -27,6 +27,7 @@ in
         ...
       }: {
         nixpkgs.config.allowUnfree = lib.mkDefault true; # need unfree for intel drivers
+        users.users.${root}.uid = 1000; # same uid in container as host TODO spaghetti this
         system.stateVersion = "23.11";
         services.resolved.enable = true;
         hardware = {
