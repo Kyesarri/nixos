@@ -156,7 +156,7 @@ in
             };
 
             ffmpeg = {
-              hwaccel_args = "hwaccel_args: -hwaccel vaapi -hwaccel_device /dev/dri/renderD128";
+              hwaccel_args = "-hwaccel vaapi -hwaccel_device /dev/dri/renderD128";
               # hwaccel_args = "preset-intel-qsv-h264";
               output_args = {
                 record = "preset-record-generic-audio-copy";
