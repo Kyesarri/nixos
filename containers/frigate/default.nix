@@ -102,7 +102,24 @@ in
             };
           };
         };
-
+        /*
+            trigger = {
+        "platform" = ["mqtt"];
+            };
+        topic: frigate/events
+        id: frigate-event
+        payload: front_cam
+        value_template: "{{ value_json['after']['camera'] }}"
+        variables:
+          after_zones: "{{ trigger.payload_json['after']['entered_zones'] }}"
+          before_zones: "{{ trigger.payload_json['before']['entered_zones'] }}"
+          camera: "{{ trigger.payload_json['after']['camera'] }}"
+          id: "{{ trigger.payload_json['after']['id'] }}"
+          label: "{{ trigger.payload_json['after']['label'] }}"
+          score: "{{ trigger.payload_json['after']['score'] }}"
+          time_clip_start: "{{ trigger.payload_json['after']['start_time'] - 10.0 }}"
+          after_attributes: "{{ trigger.payload_json['after']['current_attributes'] }}"
+        */
         services.frigate = {
           enable = true;
           hostname = "${hostName}.home.lan";
@@ -139,6 +156,7 @@ in
             };
 
             ffmpeg = {
+              hwaccel_args = "-c:v h264_qsv";
               # hwaccel_args = "preset-intel-qsv-h264";
               output_args = {
                 record = "preset-record-generic-audio-copy";
