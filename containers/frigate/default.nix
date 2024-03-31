@@ -132,7 +132,7 @@ in
                 motion = {mask = ["1024,0,1024,30,650,30,650,0"];};
                 zones.carpark = {coordinates = "619,768,0,768,0,477,362,124,377,200,578,206";};
                 ffmpeg = {
-                  input_args = "";
+                  # input_args = "";
                   inputs = [
                     {
                       path = "rtsp://127.0.0.1:8554/driveway";
@@ -146,7 +146,7 @@ in
                 record = {enabled = true;};
                 motion = {mask = ["0,768,305,768,170,0,0,0" "1024,0,1024,30,650,30,650,0"];};
                 ffmpeg = {
-                  input_args = "";
+                  # input_args = "";
                   inputs = [
                     {
                       path = "rtsp://127.0.0.1:8554/entry";
