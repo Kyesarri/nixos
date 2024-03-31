@@ -180,6 +180,10 @@ in
 
             record = {
               enabled = true;
+              retain = {
+                days = 0;
+                mode = "all";
+              };
               events = {
                 pre_capture = 6;
                 post_capture = 10;
@@ -187,10 +191,6 @@ in
                 retain = {
                   default = 5;
                 };
-              };
-              retain = {
-                days = 0;
-                mode = "all";
               };
             };
 
