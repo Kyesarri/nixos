@@ -190,6 +190,7 @@ in
                 objects = ["person" "dog"]; # should be - person
                 retain = {
                   default = 5;
+                  mode = "motion";
                 };
               };
             };
