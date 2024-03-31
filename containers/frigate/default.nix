@@ -195,7 +195,7 @@ in
               };
             };
 
-            # ui.use_experimental = true;
+            ui.use_experimental = true;
 
             objects.track = ["cat" "person" "dog" "bike"];
             motion.threshold = 90;
