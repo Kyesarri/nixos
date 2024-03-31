@@ -177,11 +177,21 @@ in
               stats_interval = 60;
             };
 
+            events = {
+              pre_capture = 6;
+              post_capture = 10;
+              objects = ["person" "dog"]; # should be - person
+              retain = {
+                default = 5;
+                mode = "motion";
+              };
+            };
+
             record = {
               enabled = true;
               retain = {
-                days = 2;
-                mode = "active_objects";
+                days = 0;
+                mode = "all";
               };
             };
 
@@ -192,7 +202,7 @@ in
               crop = false;
               bounding_box = true;
             };
-            # Optional: Telemetry configuration
+
             telemetry = {
               stats = {
                 intel_gpu_stats = true;
