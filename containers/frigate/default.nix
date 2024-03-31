@@ -1,3 +1,6 @@
+# seems to be issues with frigate running in a container - nix containers run as root
+# so passing through hardware from the host will fail to run, due to UID issues ( i believe )
+# means this config cannot use iGPU for decoding, and am stuck with just CPU decoding
 let
   hostName = "frigate";
   webPort = 6020;
@@ -27,7 +30,7 @@ in
         ...
       }: {
         nixpkgs.config.allowUnfree = lib.mkDefault true; # need unfree for intel drivers
-        users.users.root.uid = lib.mkForce 1000; # same uid in container as host TODO spaghetti this
+        # root user needs uid of 0 # users.users.root.uid = lib.mkForce 1000;
         system.stateVersion = "23.11";
         services.resolved.enable = true;
         hardware = {
@@ -69,6 +72,7 @@ in
             libva-utils
           ];
         };
+
         systemd.services.frigate = {
           environment.LIBVA_DRIVER_NAME = "iHD"; # force intel-media-driver
           serviceConfig = {
@@ -118,9 +122,7 @@ in
           settings = {
             cameras = {
               driveway = {
-                # Optional: timeout for highest scoring image before allowing it
-                # to be replaced by a newer image. (default: shown below)
-                best_image_timeout = 60;
+                best_image_timeout = 15;
                 record = {enabled = true;};
                 motion = {mask = ["1024,0,1024,30,650,30,650,0"];}; # timestamp
                 zones.carpark = {coordinates = "619,768,0,768,0,477,362,124,377,200,578,206";};
@@ -153,7 +155,7 @@ in
             ffmpeg = {
               # hwaccel_args = "-hwaccel vaapi -hwaccel_device /dev/dri/renderD128";
               # hwaccel_args = "preset-intel-qsv-h264";
-              hwaccel_args = "preset-vaapi";
+              # hwaccel_args = "preset-vaapi";
               output_args = {
                 record = "preset-record-generic-audio-copy";
               };
