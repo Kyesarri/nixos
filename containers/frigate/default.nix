@@ -193,7 +193,7 @@ in
             };
 
             stats = {
-              intel_gpu_stats = true;
+              # intel_gpu_stats = true;
               # network_bandwidth = true;
             };
 
@@ -223,7 +223,7 @@ in
             detectors.ov = {
               type = "openvino";
               device = "AUTO";
-              model.path = "${pkgs.frigate}/share/frigate/openvino-model/ssdlite_mobilenet_v2.xml";
+              # model.path = "${pkgs.frigate}/share/frigate/openvino-model/ssdlite_mobilenet_v2.xml";
             };
 
             model = {
