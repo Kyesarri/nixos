@@ -21,14 +21,6 @@ in
           mountPoint = hostPath;
         };
       };
-      /*
-      allowedDevices = [
-        {
-          node = "/dev/dri/";
-          modifier = "rw";
-        }
-      ];
-      */
       config = {
         config,
         pkgs,
@@ -129,7 +121,7 @@ in
                 # to be replaced by a newer image. (default: shown below)
                 best_image_timeout = 60;
                 record = {enabled = true;};
-                motion = {mask = ["1024,0,1024,30,650,30,650,0"];};
+                motion = {mask = ["1024,0,1024,30,650,30,650,0"];}; # timestamp
                 zones.carpark = {coordinates = "619,768,0,768,0,477,362,124,377,200,578,206";};
                 ffmpeg = {
                   input_args = "";
@@ -160,6 +152,7 @@ in
             ffmpeg = {
               # hwaccel_args = "-hwaccel vaapi -hwaccel_device /dev/dri/renderD128";
               # hwaccel_args = "preset-intel-qsv-h264";
+              hwaccel_args = "preset-vaapi";
               output_args = {
                 record = "preset-record-generic-audio-copy";
               };
