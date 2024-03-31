@@ -22,10 +22,12 @@ in
         };
       };
       */
-      allowedDevices = {
-        node = "/dev/dri/";
-        modifier = "rw";
-      };
+      allowedDevices = [
+        {
+          node = "/dev/dri/";
+          modifier = "rw";
+        }
+      ];
       config = {
         config,
         pkgs,
