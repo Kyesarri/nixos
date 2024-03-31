@@ -1,6 +1,7 @@
 # seems to be issues with frigate running in a container - nix containers run as root
 # so passing through hardware from the host will fail to run, due to UID issues ( i believe )
 # means this config cannot use iGPU for decoding, and am stuck with just CPU decoding
+# unless this is to run on metal
 let
   hostName = "frigate";
   webPort = 6020;
@@ -18,6 +19,13 @@ in
       localAddress = "192.168.87.7/24"; # container ip
       # pass intel igpu to container
 
+      allowedDevices = [
+        {
+          modifier = "rwm";
+          node = "/dev/dri/";
+        }
+      ];
+
       bindMounts = {
         dri = rec {
           hostPath = "/dev/dri/";
@@ -30,7 +38,6 @@ in
         ...
       }: {
         nixpkgs.config.allowUnfree = lib.mkDefault true; # need unfree for intel drivers
-        # root user needs uid of 0 # users.users.root.uid = lib.mkForce 1000;
         system.stateVersion = "23.11";
         services.resolved.enable = true;
         hardware = {
@@ -54,17 +61,13 @@ in
           useHostResolvConf = lib.mkForce false;
           nameservers = ["192.168.87.1"];
           defaultGateway = "192.168.87.251";
-          firewall = {
-            enable = true;
-            allowedTCPPorts = [80 webPort 1984 8555];
-          };
+          firewall.allowedTCPPorts = [80 webPort 1984 8555];
         };
 
         environment = {
           sessionVariables = rec
           {
             LIBVA_DRIVER_NAME = "iHD"; # force intel-media-driver
-            XDG_RUNTIME_DIR = "/var/${hostName}";
           };
           systemPackages = with pkgs; [
             ffmpeg_5-full
@@ -99,11 +102,12 @@ in
           };
         };
         /*
+        toying with triggers
             trigger = {
         "platform" = ["mqtt"];
             };
         topic: frigate/events
-        id: frigate-event
+        id: frigate-event# force intel-media-driver
         payload: front_cam
         value_template: "{{ value_json['after']['camera'] }}"
         variables:
@@ -124,7 +128,7 @@ in
               driveway = {
                 best_image_timeout = 15;
                 record = {enabled = true;};
-                motion = {mask = ["1024,0,1024,30,650,30,650,0"];}; # timestamp
+                motion = {mask = ["1024,0,1024,30,650,30,650,0"];};
                 zones.carpark = {coordinates = "619,768,0,768,0,477,362,124,377,200,578,206";};
                 ffmpeg = {
                   input_args = "";
