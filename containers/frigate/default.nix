@@ -187,7 +187,7 @@ in
               events = {
                 pre_capture = 6;
                 post_capture = 10;
-                objects = ["person" "dog"]; # should be - person
+                objects = ["person" "dog"];
                 retain = {
                   default = 5;
                   mode = "motion";
@@ -202,13 +202,14 @@ in
               crop = false;
               bounding_box = true;
             };
-
+            /*
             telemetry = {
               stats = {
                 intel_gpu_stats = true;
-                # network_bandwidth = true;
+                network_bandwidth = true;
               };
             };
+            */
 
             ui.use_experimental = true;
 
