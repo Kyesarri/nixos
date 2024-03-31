@@ -14,11 +14,17 @@ in
       hostBridge = "br0"; # using bridged interface for containers
       localAddress = "192.168.87.7/24"; # container ip
       # pass intel igpu to container
-      bindMounts = {
+      /*
+        bindMounts = {
         dri = rec {
           hostPath = "/dev/dri/";
           mountPoint = hostPath;
         };
+      };
+      */
+      allowedDevices = {
+        node = "/dev/dri/";
+        modifier = "rw";
       };
       config = {
         config,
