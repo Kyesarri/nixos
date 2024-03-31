@@ -126,6 +126,9 @@ in
           settings = {
             cameras = {
               driveway = {
+                # Optional: timeout for highest scoring image before allowing it
+                # to be replaced by a newer image. (default: shown below)
+                best_image_timeout = 60;
                 record = {enabled = true;};
                 motion = {mask = ["1024,0,1024,30,650,30,650,0"];};
                 # zones = {carpark = "coordinates: 619,768,0,768,0,477,362,124,377,200,578,206";};
@@ -190,6 +193,12 @@ in
               bounding_box = true;
             };
 
+            stats = {
+              intel_gpu_stats = true;
+              network_bandwidth = true;
+            };
+
+            ui.use_experimental = true;
             objects.track = ["cat" "person" "dog" "bike"];
             motion.threshold = 90;
             rtmp.enabled = false;
