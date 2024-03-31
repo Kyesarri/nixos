@@ -191,10 +191,12 @@ in
               crop = false;
               bounding_box = true;
             };
-
-            stats = {
-              # intel_gpu_stats = true;
-              # network_bandwidth = true;
+            # Optional: Telemetry configuration
+            telemetry = {
+              stats = {
+                intel_gpu_stats = true;
+                # network_bandwidth = true;
+              };
             };
 
             # ui.use_experimental = true;
