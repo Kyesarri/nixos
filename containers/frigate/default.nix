@@ -29,7 +29,7 @@ in
         }
       ];
       */
-
+      /*
       bindMounts = {
         dri = rec {
           hostPath = "/dev/dri/";
@@ -37,16 +37,16 @@ in
           isReadOnly = false;
         };
       };
-
+      */
       config = {
         config,
         pkgs,
         ...
       }: {
-        users.users.root = {extraGroups = ["render" "video"];};
+        # users.users.root = {extraGroups = ["render" "video"];};
         nixpkgs.config.allowUnfree = lib.mkDefault true; # need unfree for intel drivers
         system.stateVersion = "23.11";
-        services.resolved.enable = true;
+        services.resolved.enable = true; # enabled inside container, wont use host due to bug?
         hardware = {
           enableRedistributableFirmware = lib.mkDefault true; # "might" be required
           opengl = {
@@ -74,7 +74,7 @@ in
         environment = {
           sessionVariables = rec
           {
-            XDG_RUNTIME_DIR = "/run/user/${hostName}";
+            XDG_RUNTIME_DIR = "/var/lib/${hostName}";
             LIBVA_DRIVER_NAME = "i965"; # force intel-vaapi-driver
           };
           systemPackages = with pkgs; [
