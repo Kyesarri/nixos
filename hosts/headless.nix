@@ -14,6 +14,10 @@
   nixpkgs.config.allowUnfree = lib.mkDefault true;
 
   security = {
+    # believe there were issues with suspend / hibernate on this "laptop"
+    # this resolved those issues however this device is "always-on" now
+    # or, this would forbid programs from turning-off the "laptop
+    # feel the latter is true, wish i wrote this shit down :D
     polkit.extraConfig = ''
       polkit.addRule(function(action, subject) {
           if (action.id == "org.freedesktop.login1.suspend" ||
@@ -25,10 +29,8 @@
           }
       });
     '';
-    pam.services = {
-      gdm.enableGnomeKeyring = true; # unlock keyring with gdm / gdm support for keyring
-      swaylock = {}; # enables pam for swaylock, otherwise cannot unlock system TODO swaylock ./home
-    };
+
+    pam.services = {gdm.enableGnomeKeyring = true;}; # unlock keyring with gdm / gdm support for keyring
   };
 
   nix = {
@@ -40,16 +42,17 @@
       options = "--delete-older-than 5d";
     };
     settings = {
-      auto-optimise-store = true; # runs gc, need to set interval otherwise defaults to 14d from memory
+      auto-optimise-store = true; # runs gc, need to set interval otherwise defaults to 14d iirc
       experimental-features = ["nix-command" "flakes"]; # flakes and nixcommand required for config
     };
   };
 
   boot = {
     kernelPackages = pkgs.linuxPackages_xanmod_latest; # use latest xanmod kernel
+
     kernelParams = [
-      "intel_iommu=on"
-      "nowatchdog" # disables watchdog, was causing shutdown / reboot issues
+      "intel_iommu=on" # pci device pass-through
+      "nowatchdog" # disables watchdog, was causing shutdown / reboot issues on laptop, left in cos
     ];
 
     loader = {
@@ -57,13 +60,13 @@
       grub = {
         enable = true;
         efiSupport = true;
-        efiInstallAsRemovable = true; # Otherwise /boot/EFI/BOOT/BOOTX64.EFI isn't generated
+        efiInstallAsRemovable = true; # otherwise /boot/EFI/BOOT/BOOTX64.EFI isn't generated
         devices = ["nodev"];
-        theme = pkgs.sleek-grub-theme; # how to get dark theme?
       };
     };
   };
 
+  # magic language wizzard show
   i18n = {
     defaultLocale = "en_AU.UTF-8";
     extraLocaleSettings = {
@@ -88,32 +91,28 @@
 
   services = {
     fstrim.enable = true; # ssd trim in background, not enabled by default :0
+    gnome.gnome-keyring.enable = true; # keyboi
     gvfs.enable = true; # gnome trash support
-    printing.enable = false;
+    printing.enable = false; # cpus printer thingy
     dbus = {
       enable = true;
       packages = [pkgs.gnome.seahorse];
     };
-
-    gnome.gnome-keyring.enable = true;
-
-    # TODO should this be pushed to a n o t h e r nix under /home/ for GDM / SDDM or /boot/
     xserver = {
-      enable = false;
-      displayManager.gdm = {
+      enable = false; # headless, see how many issues this causes wtih pcie passthrough
+      /*
+        displayManager.gdm = {
         enable = true;
         wayland = true;
       };
+      */
     };
   };
 
   fonts = {
     fontconfig.defaultFonts.monospace = ["Hack Nerd Font Mono"];
     fontDir.enable = true;
-    packages = with pkgs; [
-      hack-font
-      (nerdfonts.override {fonts = ["Iosevka" "CascadiaCode" "JetBrainsMono"];})
-    ];
+    packages = with pkgs; [hack-font];
   };
 
   programs = {
@@ -128,15 +127,12 @@
     shell = pkgs.zsh;
     isNormalUser = true;
     description = "${spaghetti.user}";
-    extraGroups = ["networkmanager" "wheel"];
+    extraGroups = ["networkmanager" "wheel" "docker" "apex"];
     packages = with pkgs; [
-      fet-sh # minimalistic fetch script
+      fet-sh # minimal fetch script
       gnome.seahorse # key management
       libnotify # notifications
-      p7zip # TODO needs a gui
       udiskie # usb mounting
-      bitwarden # password manager
-      sleek-grub-theme # testing grub themes TODO grub
     ];
   };
 }

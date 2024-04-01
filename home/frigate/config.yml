@@ -1,0 +1,88 @@
+cameras:
+  driveway:
+    best_image_timeout: 15
+    ffmpeg:
+      inputs:
+      - path: rtsp://127.0.0.1:8554/driveway
+        roles:
+        - detect
+        - record
+    motion:
+      mask:
+      - 1024,0,1024,30,650,30,650,0
+    record:
+      enabled: true
+    zones:
+      carpark:
+        coordinates: 619,768,0,768,0,477,362,124,377,200,578,206
+  entry:
+    ffmpeg:
+      inputs:
+      - path: rtsp://127.0.0.1:8554/entry
+        roles:
+        - detect
+        - record
+    motion:
+      mask:
+      - 0,768,305,768,170,0,0,0
+      - 1024,0,1024,30,650,30,650,0
+    record:
+      enabled: true
+database:
+  path: /var/lib/frigate/frigate.db
+detect:
+  enabled: true
+  fps: 5
+  height: 768
+  width: 1024
+logger:
+  default: info
+  logs:
+    peewee: info
+    ws4py: info
+motion:
+  threshold: 90
+mqtt:
+  client_id: frigate
+  enabled: true
+  host: 192.168.87.10
+  password: frigate
+  port: 1883
+  stats_interval: 60
+  topic_prefix: frigate
+  user: frigate
+objects:
+  track:
+  - cat
+  - person
+  - dog
+  - bike
+record:
+  enabled: true
+  events:
+    objects:
+    - cat
+    - person
+    - dog
+    - bike
+    post_capture: 10
+    pre_capture: 6
+    retain:
+      default: 5
+      mode: motion
+  expire_interval: 60
+  retain:
+    days: 0
+    mode: all
+  sync_recordings: 'true'
+rtmp:
+  enabled: false
+snapshots:
+  bounding_box: true
+  clean_copy: true
+  crop: false
+  enabled: true
+  quality: 70
+  timestamp: false
+ui:
+  time_format: browser

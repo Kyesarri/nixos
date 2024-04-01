@@ -208,7 +208,7 @@ in
             record = {
               enabled = true;
               expire_interval = 60;
-              sync_recordings = "true";
+              sync_recordings = true;
               retain = {
                 days = 0; # dont want to retain all footage per day, only motion of objects
                 mode = "all"; # without all i belive all footage will fail to be retained
@@ -242,7 +242,7 @@ in
             */
 
             ui = {
-              # use_experimental = true;
+              # use_experimental = true; # not complete yet :)
               time_format = "browser";
             };
 
