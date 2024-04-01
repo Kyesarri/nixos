@@ -181,6 +181,8 @@ in
 
             record = {
               enabled = true;
+              expire_interval = 60;
+              sync_recordings = "true";
               retain = {
                 days = 0;
                 mode = "all";
@@ -202,6 +204,7 @@ in
               timestamp = false;
               crop = false;
               bounding_box = true;
+              quality = 70;
             };
             /*
             telemetry = {
@@ -212,8 +215,10 @@ in
             };
             */
 
-            ui.use_experimental = true;
-
+            ui = {
+              use_experimental = true;
+              time_format = "browser";
+            };
             objects.track = ["cat" "person" "dog" "bike"];
             motion.threshold = 90;
             rtmp.enabled = false;
