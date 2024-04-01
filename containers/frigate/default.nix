@@ -3,6 +3,8 @@
 # means this config cannot use iGPU for decoding, and am stuck with just CPU decoding
 # unless this is to run on metal
 # done with the container for now, may look at metal config shortly
+# much of the config for drivers and such were a wip for the container
+# and are not required for a CPU detector
 let
   hostName = "frigate";
   webPort = 6020;
@@ -18,18 +20,11 @@ in
       privateNetwork = true; # seperate from host network interface
       hostBridge = "br0"; # using bridged interface for containers
       localAddress = "192.168.87.7/24"; # container ip
-      # extraFlags = ["-U"];
+      # extraFlags = ["-U"]; # removes privileged container
 
       # pass intel igpu to container, computer says no
-      /*
-      allowedDevices = [
-        {
-          modifier = "rwm";
-          node = "/dev/dri/";
-        }
-      ];
-      */
 
+      /*
       bindMounts = {
         dri = rec {
           hostPath = "/dev/dri/";
@@ -37,15 +32,17 @@ in
           isReadOnly = false;
         };
       };
+      */
 
       config = {
         config,
         pkgs,
         ...
       }: {
-        # users.users.root = {extraGroups = ["render" "video"];};
-        nixpkgs.config.allowUnfree = lib.mkDefault true; # need unfree for intel drivers
+        # users.users.${hostName} = {extraGroups = ["render" "video"];};
         system.stateVersion = "23.11";
+
+        nixpkgs.config.allowUnfree = lib.mkDefault true; # need unfree for intel drivers
         services.resolved.enable = true; # enabled inside container, wont use host due to bug?
         hardware = {
           enableRedistributableFirmware = lib.mkDefault true; # "might" be required
@@ -167,7 +164,7 @@ in
             ffmpeg = {
               # hwaccel_args = "-hwaccel vaapi -hwaccel_device /dev/dri/renderD128";
               # hwaccel_args = "preset-intel-qsv-h264";
-              hwaccel_args = "preset-vaapi";
+              # hwaccel_args = "preset-vaapi";
               output_args = {
                 record = "preset-record-generic-audio-copy";
               };
@@ -189,7 +186,7 @@ in
               expire_interval = 60;
               sync_recordings = "true";
               retain = {
-                days = 0;
+                days = 0; # dont want to retail all footage per day, only motion of objects
                 mode = "all";
               };
               events = {
