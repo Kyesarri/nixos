@@ -56,7 +56,7 @@ in
             };
           };
         };
-        environment.system.activationScripts.setup-container.text = ''
+        system.activationScripts.setup-container.text = ''
           # Set display variable
           echo "export DISPLAY=:0" > /home/${hostName}/.bash_profile
         '';
