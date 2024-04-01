@@ -165,12 +165,12 @@ in
               };
             };
 
-            /*
             ffmpeg = {
               # hwaccel_args = "-hwaccel vaapi -hwaccel_device /dev/dri/renderD128";
-              # hwaccel_args = "preset-intel-qsv-h264";
+              hwaccel_args = "preset-intel-qsv-h264";
               # hwaccel_args = "preset-vaapi";
-              hwaccel_args = [
+              /*
+                hwaccel_args = [
                 "-hwaccel"
                 "vaapi"
                 "-hwaccel_device"
@@ -178,8 +178,8 @@ in
                 "-hwaccel_output_format"
                 "yuv420p"
               ];
+              */
             };
-            */
 
             mqtt = {
               enabled = true;
