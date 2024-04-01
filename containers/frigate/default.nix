@@ -27,14 +27,15 @@ in
         }
       ];
       */
-      /*
+
       bindMounts = {
         dri = rec {
           hostPath = "/dev/dri/";
           mountPoint = hostPath;
+          isReadOnly = false;
         };
       };
-      */
+
       config = {
         config,
         pkgs,
@@ -49,7 +50,6 @@ in
             enable = true;
             driSupport = true;
             extraPackages = [
-              hostCfg.hardware.opengl.extraPackages
               pkgs.vaapiIntel
               pkgs.libvdpau-va-gl
               pkgs.vaapiVdpau
