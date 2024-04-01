@@ -27,12 +27,6 @@
     fsType = "vfat";
   };
 
-  fileSystems."/temp/cache" = {
-    device = "none";
-    fsType = "tmpfs";
-    options = ["defaults" "size=1G" "mode=755"];
-  };
-
   swapDevices = [
     {device = "/dev/disk/by-uuid/93b9238f-8793-4360-bb7c-798300ff34bb";}
   ];
