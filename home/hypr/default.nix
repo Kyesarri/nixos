@@ -98,7 +98,7 @@ in {
             wallpaper = , /home/${spaghetti.user}/wallpapers/3.jpg # disabled wallpaper on boot, can set using hyprctl - want to add to agsr
             # ^ any display, directory/name.ext
             splash = false
-            # ^ adds text to the image
+            # ^ adds splash text to wallpaper when true
           '';
         };
         home.file.".config/hypr/per-app/hyprpaper.conf" = {

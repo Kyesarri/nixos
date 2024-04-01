@@ -7,7 +7,7 @@ services:
     image: ghcr.io/blakeblackshear/frigate:stable
     shm_size: "128mb" # update for your cameras see installation link above
     devices:
-      # - /dev/apex_0:/dev/apex_0 # passes a PCIe Coral, follow driver instructions here https://coral.ai/docs/m2/get-started/#2a-on-linux
+      - /dev/apex_0:/dev/apex_0 # passes a PCIe Coral, follow driver instructions here https://coral.ai/docs/m2/get-started/#2a-on-linux
       - /dev/dri/renderD128 # for intel hwaccel
     volumes:
     # think this should get some spaghetti, add usernames, other vars

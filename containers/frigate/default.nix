@@ -24,7 +24,10 @@ in
 
       # pass intel igpu to container, computer says no
       bindMounts = {
-        "/tmp/.X11-unix".hostPath = "/tmp/.X11-unix";
+        "/tmp/.X11-unix" = {
+          hostPath = "/tmp/.X11-unix";
+          isReadOnly = false;
+        };
         "/dev/dri" = {
           hostPath = "/dev/dri";
           isReadOnly = false;
@@ -57,12 +60,6 @@ in
             };
           };
         };
-        */
-        /*
-        system.activationScripts.setup-container.text = ''
-          # Set display variable
-          echo "export DISPLAY=:0" > /home/${hostName}/.bash_profile
-        '';
         */
         system.stateVersion = "23.11";
 
@@ -107,7 +104,7 @@ in
         };
 
         systemd.services.frigate = {
-          environment.LIBVA_DRIVER_NAME = "i965"; # force intel-vaapi-driver
+          environment.LIBVA_DRIVER_NAME = "iHD"; # force intel-vaapi-driver
           serviceConfig = {
             SupplementaryGroups = ["render" "video"]; # for access to dev/dri/*
             AmbientCapabilities = "CAP_PERFMON";
@@ -138,6 +135,10 @@ in
           settings = {
             cameras = {
               driveway = {
+                go2rtc.streams = {
+                  entry = "rtsp://user:password@192.168.87.22:554/h264Preview_01_main";
+                  driveway = "rtsp://user:password@192.168.87.20:554/h264Preview_01_main";
+                };
                 best_image_timeout = 15;
                 record = {enabled = true;};
                 motion = {mask = ["1024,0,1024,30,650,30,650,0"];};

@@ -4,7 +4,7 @@
   pkgs,
   ...
 }: {
-  # make tmpdir for frigate to use, reduce ssd wear
+  # make tmpdir for frigate to use, ssd wear bla bla
   fileSystems."/tmp/cache" = {
     device = "none";
     fsType = "tmpfs";
@@ -12,12 +12,18 @@
   };
 
   # enable docker
-  virtualisation.docker = {
-    enable = true;
-  };
+  virtualisation.docker = {enable = true;};
+
+  # adds docker-compose to system packages
+  environment.systemPackages = with pkgs; [docker-compose];
+
+  # adds user to docker group
+  # users.user.${spaghetti.user}.extraGroups = ["docker"];
+  # may not need this :D
 
   home-manager.users.${spaghetti.user} = {
     # docker compose.yml
+    # can use virtualisation.oci-containers too
     home.file.".docker/nvr/compose.yml" = {
       text = ''
         version: "3.9"
