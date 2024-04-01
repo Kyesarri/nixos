@@ -75,7 +75,7 @@ in
           sessionVariables = rec
           {
             XDG_RUNTIME_DIR = "/run/user/${hostName}";
-            LIBVA_DRIVER_NAME = "i965"; # force intel-media-driver
+            LIBVA_DRIVER_NAME = "i965"; # force intel-vaapi-driver
           };
           systemPackages = with pkgs; [
             ffmpeg_5-full
@@ -85,7 +85,7 @@ in
         };
 
         systemd.services.frigate = {
-          environment.LIBVA_DRIVER_NAME = "i965"; # force intel-media-driver
+          environment.LIBVA_DRIVER_NAME = "i965"; # force intel-vaapi-driver
           serviceConfig = {
             SupplementaryGroups = ["render" "video"]; # for access to dev/dri/*
             AmbientCapabilities = "CAP_PERFMON";
@@ -167,7 +167,7 @@ in
             ffmpeg = {
               # hwaccel_args = "-hwaccel vaapi -hwaccel_device /dev/dri/renderD128";
               # hwaccel_args = "preset-intel-qsv-h264";
-              hwaccel_args = "preset-vaapi";
+              # hwaccel_args = "preset-vaapi";
               output_args = {
                 record = "preset-record-generic-audio-copy";
               };
