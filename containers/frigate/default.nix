@@ -74,7 +74,7 @@ in
         environment = {
           sessionVariables = rec
           {
-            XDG_RUNTIME_DIR = "/run/user/${toString userUid}";
+            XDG_RUNTIME_DIR = "/run/user/${hostName}";
             LIBVA_DRIVER_NAME = "iHD"; # force intel-media-driver
           };
           systemPackages = with pkgs; [
