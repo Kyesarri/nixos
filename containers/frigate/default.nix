@@ -50,7 +50,7 @@ in
             root = {password = "pass";};
             ${hostName} = {
               password = "pass";
-              isNormalUser = true;
+              isSystemUser = true;
               extraGroups = ["wheel" "render" "video"];
               home = "/home/${hostName}";
             };
