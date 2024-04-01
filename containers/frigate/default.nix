@@ -45,7 +45,7 @@ in
         pkgs,
         ...
       }: {
-        users.users.${hostName}.uid = 1000;
+        # users.users.${hostName}.uid = 1000;
         nixpkgs.config.allowUnfree = lib.mkDefault true; # need unfree for intel drivers
         system.stateVersion = "23.11";
         services.resolved.enable = true;
@@ -169,7 +169,7 @@ in
             ffmpeg = {
               # hwaccel_args = "-hwaccel vaapi -hwaccel_device /dev/dri/renderD128";
               # hwaccel_args = "preset-intel-qsv-h264";
-              # hwaccel_args = "preset-vaapi";
+              hwaccel_args = "preset-vaapi";
               output_args = {
                 record = "preset-record-generic-audio-copy";
               };
