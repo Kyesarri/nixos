@@ -2,7 +2,7 @@
 # so passing through hardware from the host will fail to run, due to UID issues ( i believe )
 # means this config cannot use iGPU for decoding, and am stuck with just CPU decoding
 # unless this is to run on metal
-# can we run without that privelage?
+# done with the container for now, may look at metal config shortly
 let
   hostName = "frigate";
   webPort = 6020;
@@ -18,9 +18,7 @@ in
       privateNetwork = true; # seperate from host network interface
       hostBridge = "br0"; # using bridged interface for containers
       localAddress = "192.168.87.7/24"; # container ip
-      extraFlags = [
-        "-U" # unprivelaged container
-      ];
+      # extraFlags = ["-U"];
 
       # pass intel igpu to container, computer says no
       /*
@@ -45,10 +43,7 @@ in
         pkgs,
         ...
       }: {
-        users.users.root = {
-          # uid = 1000;
-          extraGroups = ["render" "video"];
-        };
+        users.users.root = {extraGroups = ["render" "video"];};
         nixpkgs.config.allowUnfree = lib.mkDefault true; # need unfree for intel drivers
         system.stateVersion = "23.11";
         services.resolved.enable = true;
@@ -80,7 +75,7 @@ in
           sessionVariables = rec
           {
             XDG_RUNTIME_DIR = "/run/user/${hostName}";
-            LIBVA_DRIVER_NAME = "iHD"; # force intel-media-driver
+            LIBVA_DRIVER_NAME = "i965"; # force intel-media-driver
           };
           systemPackages = with pkgs; [
             ffmpeg_5-full
@@ -90,7 +85,7 @@ in
         };
 
         systemd.services.frigate = {
-          environment.LIBVA_DRIVER_NAME = "iHD"; # force intel-media-driver
+          environment.LIBVA_DRIVER_NAME = "i965"; # force intel-media-driver
           serviceConfig = {
             SupplementaryGroups = ["render" "video"]; # for access to dev/dri/*
             AmbientCapabilities = "CAP_PERFMON";
