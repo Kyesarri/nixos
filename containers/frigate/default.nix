@@ -23,7 +23,7 @@ in
       # extraFlags = ["-U"]; # removes privileged container
 
       # pass intel igpu to container, computer says no
-
+      /*
       bindMounts = {
         dri = rec {
           hostPath = "/dev/dri/";
@@ -31,7 +31,7 @@ in
           isReadOnly = false;
         };
       };
-
+      */
       config = {
         config,
         pkgs,
@@ -142,6 +142,7 @@ in
               };
             };
 
+            /*
             ffmpeg = {
               # hwaccel_args = "-hwaccel vaapi -hwaccel_device /dev/dri/renderD128";
               # hwaccel_args = "preset-intel-qsv-h264";
@@ -154,12 +155,8 @@ in
                 "-hwaccel_output_format"
                 "yuv420p"
               ];
-              /*
-              output_args = {
-                record = "preset-record-generic-audio-copy";
-              };
-              */
             };
+            */
 
             mqtt = {
               enabled = true;
