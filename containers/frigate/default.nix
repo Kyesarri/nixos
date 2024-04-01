@@ -48,13 +48,14 @@ in
           opengl = {
             enable = true;
             driSupport = true;
-            extraPackages = with pkgs; [
-              vaapiIntel
-              libvdpau-va-gl
-              vaapiVdpau
-              intel-ocl
-              intel-media-driver # LIBVA_DRIVER_NAME=iHD
-              intel-vaapi-driver # LIBVA_DRIVER_NAME=i965 (older but works better for Firefox/Chromium)
+            extraPackages = [
+              hostCfg.hardware.opengl.extraPackages
+              pkgs.vaapiIntel
+              pkgs.libvdpau-va-gl
+              pkgs.vaapiVdpau
+              pkgs.intel-ocl
+              pkgs.intel-media-driver # LIBVA_DRIVER_NAME=iHD
+              pkgs.intel-vaapi-driver # LIBVA_DRIVER_NAME=i965 (older but works better for Firefox/Chromium)
             ];
           };
         };
@@ -231,7 +232,7 @@ in
               fps = 5;
             };
 
-            # logs not working :)
+            # logs not working in container :)
             logger = {
               default = "info";
               logs = {
@@ -241,6 +242,7 @@ in
               };
             };
 
+            /*
             detectors = {
               # Required: name of the detector
               ov = {
@@ -252,6 +254,7 @@ in
                 type = "openvino";
               };
             };
+            */
             /*
             detectors.ov = {
               type = "openvino";
