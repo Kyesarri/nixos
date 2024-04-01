@@ -240,6 +240,18 @@ in
                 # frigate.mqtt = "error";
               };
             };
+
+            detectors = {
+              # Required: name of the detector
+              ov = {
+                # Required: type of the detector
+                # Frigate provided types include 'cpu', 'edgetpu', 'openvino' and 'tensorrt'
+                # Additional detector types can also be plugged in.
+                # Detectors may require additional configuration.
+                # Refer to the Detectors configuration page for more information.
+                type = "openvino";
+              };
+            };
             /*
             detectors.ov = {
               type = "openvino";
