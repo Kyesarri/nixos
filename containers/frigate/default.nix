@@ -59,6 +59,7 @@ in
             ];
           };
         };
+
         networking = {
           hostName = "${hostName}";
           domain = "home.lan";
@@ -71,7 +72,7 @@ in
         environment = {
           sessionVariables = rec
           {
-            XDG_RUNTIME_DIR = "/var/lib/${hostName}";
+            # XDG_RUNTIME_DIR = "/var/lib/${hostName}";
             LIBVA_DRIVER_NAME = "i965"; # force intel-vaapi-driver
           };
           systemPackages = with pkgs; [
@@ -106,25 +107,7 @@ in
             };
           };
         };
-        /*
-        toying with triggers
-            trigger = {
-        "platform" = ["mqtt"];
-            };
-        topic: frigate/events
-        id: frigate-event# force intel-media-driver
-        payload: front_cam
-        value_template: "{{ value_json['after']['camera'] }}"
-        variables:
-          after_zones: "{{ trigger.payload_json['after']['entered_zones'] }}"
-          before_zones: "{{ trigger.payload_json['before']['entered_zones'] }}"
-          camera: "{{ trigger.payload_json['after']['camera'] }}"
-          id: "{{ trigger.payload_json['after']['id'] }}"
-          label: "{{ trigger.payload_json['after']['label'] }}"
-          score: "{{ trigger.payload_json['after']['score'] }}"
-          time_clip_start: "{{ trigger.payload_json['after']['start_time'] - 10.0 }}"
-          after_attributes: "{{ trigger.payload_json['after']['current_attributes'] }}"
-        */
+
         services.frigate = {
           enable = true;
           hostname = "${hostName}.home.lan";
@@ -165,6 +148,14 @@ in
               # hwaccel_args = "-hwaccel vaapi -hwaccel_device /dev/dri/renderD128";
               # hwaccel_args = "preset-intel-qsv-h264";
               # hwaccel_args = "preset-vaapi";
+              hwaccel_args = [
+                "-hwaccel"
+                "vaapi"
+                "-hwaccel_device"
+                "/dev/dri/renderD128"
+                "-hwaccel_output_format"
+                "yuv420p"
+              ];
               output_args = {
                 record = "preset-record-generic-audio-copy";
               };
