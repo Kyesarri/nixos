@@ -24,7 +24,6 @@ in
 
       # pass intel igpu to container, computer says no
 
-      /*
       bindMounts = {
         dri = rec {
           hostPath = "/dev/dri/";
@@ -32,7 +31,6 @@ in
           isReadOnly = false;
         };
       };
-      */
 
       config = {
         config,
