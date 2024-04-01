@@ -209,6 +209,7 @@
       adi1090x-plymouth-themes # plymouth themes
       ntfs3g # ntfs support
       curl
+      wl-clipboard # wl-copy and wl-paste for copy/paste from stdin / stdout
 
       ## TESTING ##
       tmux

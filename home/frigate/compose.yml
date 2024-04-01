@@ -7,14 +7,14 @@ services:
     image: ghcr.io/blakeblackshear/frigate:stable
     shm_size: "128mb" # update for your cameras see installation link above
     devices:
-      - /dev/apex_0:/dev/apex_0 # passes a PCIe Coral, follow driver instructions here https://coral.ai/docs/m2/get-started/#2a-on-linux
-      - /dev/dri/renderD128 # for intel hwaccel, needs to be updated for your hardware
+      # - /dev/apex_0:/dev/apex_0 # passes a PCIe Coral, follow driver instructions here https://coral.ai/docs/m2/get-started/#2a-on-linux
+      - /dev/dri/renderD128 # for intel hwaccel
     volumes:
     # think this should get some spaghetti, add usernames, other vars
       - /etc/localtime:/etc/localtime:ro
-      - /home/USER/.docker/nvr/config.yml:/config/config.yml
-      - /home/USER/.docker/nvr:/media/frigate
-      - /home/USER/.docker/nvr:/db
+      - /home/kel/.docker/nvr/config.yml:/config/config.yml
+      - /home/kel/.docker/nvr:/media/frigate
+      - /home/kel/.docker/nvr:/db
       - type: tmpfs # Optional: 1GB of memory, reduces SSD/SD Card wear
         target: /tmp/cache
         tmpfs:
