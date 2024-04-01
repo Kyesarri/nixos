@@ -29,7 +29,7 @@ in
         }
       ];
       */
-      /*
+
       bindMounts = {
         dri = rec {
           hostPath = "/dev/dri/";
@@ -37,7 +37,7 @@ in
           isReadOnly = false;
         };
       };
-      */
+
       config = {
         config,
         pkgs,
@@ -167,7 +167,7 @@ in
             ffmpeg = {
               # hwaccel_args = "-hwaccel vaapi -hwaccel_device /dev/dri/renderD128";
               # hwaccel_args = "preset-intel-qsv-h264";
-              # hwaccel_args = "preset-vaapi";
+              hwaccel_args = "preset-vaapi";
               output_args = {
                 record = "preset-record-generic-audio-copy";
               };
