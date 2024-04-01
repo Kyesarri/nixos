@@ -154,9 +154,11 @@ in
                 "-hwaccel_output_format"
                 "yuv420p"
               ];
+              /*
               output_args = {
                 record = "preset-record-generic-audio-copy";
               };
+              */
             };
 
             mqtt = {
