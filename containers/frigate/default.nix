@@ -45,7 +45,10 @@ in
         pkgs,
         ...
       }: {
-        # users.users.${hostName}.uid = 1000;
+        users.users.root = {
+          # uid = 1000;
+          extraGroups = ["render" "video"];
+        };
         nixpkgs.config.allowUnfree = lib.mkDefault true; # need unfree for intel drivers
         system.stateVersion = "23.11";
         services.resolved.enable = true;
