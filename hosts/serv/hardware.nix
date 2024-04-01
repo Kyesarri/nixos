@@ -27,7 +27,7 @@
     fsType = "vfat";
   };
 
-  fileSystems."/temp/cache" = {
+  fileSystems."/tmp/cache" = {
     device = "none";
     fsType = "tmpfs";
     options = ["defaults" "size=1G" "mode=755"];
