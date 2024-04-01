@@ -18,7 +18,9 @@ in
       privateNetwork = true; # seperate from host network interface
       hostBridge = "br0"; # using bridged interface for containers
       localAddress = "192.168.87.7/24"; # container ip
-      extraFlags = "-U"; # unprivelage container
+      extraFlags = [
+        "-U" # unprivelaged container
+      ];
 
       # pass intel igpu to container, computer says no
       /*
