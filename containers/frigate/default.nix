@@ -19,7 +19,6 @@ in
       hostBridge = "br0"; # using bridged interface for containers
       localAddress = "192.168.87.7/24"; # container ip
       extraFlags = "-U"; # unprivelage container
-      users.users.${hostName}.uid = 1000;
 
       # pass intel igpu to container, computer says no
       /*
@@ -44,6 +43,7 @@ in
         pkgs,
         ...
       }: {
+        users.users.${hostName}.uid = 1000;
         nixpkgs.config.allowUnfree = lib.mkDefault true; # need unfree for intel drivers
         system.stateVersion = "23.11";
         services.resolved.enable = true;
