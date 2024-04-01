@@ -2,6 +2,7 @@
 # so passing through hardware from the host will fail to run, due to UID issues ( i believe )
 # means this config cannot use iGPU for decoding, and am stuck with just CPU decoding
 # unless this is to run on metal
+# can we run without that privelage?
 let
   hostName = "frigate";
   webPort = 6020;
@@ -187,7 +188,7 @@ in
               events = {
                 pre_capture = 6;
                 post_capture = 10;
-                objects = ["person" "dog"];
+                objects = ["cat" "person" "dog" "bike"];
                 retain = {
                   default = 5;
                   mode = "motion";
@@ -222,7 +223,7 @@ in
               enabled = true;
               width = 1024;
               height = 768;
-              fps = 4;
+              fps = 5;
             };
 
             # logs not working :)
