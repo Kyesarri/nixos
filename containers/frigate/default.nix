@@ -18,6 +18,9 @@ in
       privateNetwork = true; # seperate from host network interface
       hostBridge = "br0"; # using bridged interface for containers
       localAddress = "192.168.87.7/24"; # container ip
+      extraFlags = "-U"; # unprivelage container
+      users.users.${hostName}.uid = 1000;
+
       # pass intel igpu to container, computer says no
       /*
       allowedDevices = [
@@ -71,6 +74,7 @@ in
         environment = {
           sessionVariables = rec
           {
+            XDG_RUNTIME_DIR = "/run/user/${toString userUid}";
             LIBVA_DRIVER_NAME = "iHD"; # force intel-media-driver
           };
           systemPackages = with pkgs; [
@@ -220,6 +224,7 @@ in
               use_experimental = true;
               time_format = "browser";
             };
+
             objects.track = ["cat" "person" "dog" "bike"];
             motion.threshold = 90;
             rtmp.enabled = false;
@@ -255,6 +260,7 @@ in
               };
             };
             */
+
             /*
             detectors.ov = {
               type = "openvino";
