@@ -48,6 +48,7 @@
   boot = {
     kernelPackages = pkgs.linuxPackages_xanmod_latest; # use latest xanmod kernel
     kernelParams = [
+      "intel_iommu=on"
       "nowatchdog" # disables watchdog, was causing shutdown / reboot issues
     ];
 

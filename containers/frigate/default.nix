@@ -23,6 +23,13 @@ in
       # extraFlags = ["-U"]; # removes privileged container
 
       # pass intel igpu to container, computer says no
+      bindMounts = {
+        "/tmp/.X11-unix".hostPath = "/tmp/.X11-unix";
+        "/dev/dri" = {
+          hostPath = "/dev/dri";
+          isReadOnly = false;
+        };
+      };
       /*
       bindMounts = {
         dri = rec {
@@ -37,7 +44,23 @@ in
         pkgs,
         ...
       }: {
-        # users.users.${hostName} = {extraGroups = ["render" "video"];};
+        users = {
+          mutableUsers = false;
+          users = {
+            root = {password = "pass";};
+            ${hostName} = {
+              password = "pass";
+              isNormalUser = true;
+              extraGroups = ["wheel" "render" "video"];
+              home = "/home/${hostName}";
+            };
+          };
+        };
+        environment.system.activationScripts.setup-container.text = ''
+          # Set display variable
+          echo "export DISPLAY=:0" > /home/${hostName}/.bash_profile
+        '';
+
         system.stateVersion = "23.11";
 
         nixpkgs.config.allowUnfree = lib.mkDefault true; # need unfree for intel drivers
@@ -108,7 +131,7 @@ in
 
         services.frigate = {
           enable = true;
-          hostname = "${hostName}.home.lan";
+          hostname = "${hostName}";
           settings = {
             cameras = {
               driveway = {
@@ -174,8 +197,8 @@ in
               expire_interval = 60;
               sync_recordings = "true";
               retain = {
-                days = 0; # dont want to retail all footage per day, only motion of objects
-                mode = "all";
+                days = 0; # dont want to retain all footage per day, only motion of objects
+                mode = "all"; # without all i belive all footage will fail to be retained
               };
               events = {
                 pre_capture = 6;
@@ -206,7 +229,7 @@ in
             */
 
             ui = {
-              use_experimental = true;
+              # use_experimental = true;
               time_format = "browser";
             };
 
@@ -222,7 +245,7 @@ in
               fps = 5;
             };
 
-            # logs not working in container :)
+            # use "sudo journalctl -M frigate -u frigate"
             logger = {
               default = "info";
               logs = {
