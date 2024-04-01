@@ -114,8 +114,7 @@ in
           };
         };
 
-        # go2rtc was not working for me in the frigate config, added as another service here
-        /*
+        # go2rtc was not working for me in the frigate container config, added as another service here
         services.go2rtc = {
           enable = true;
           settings = {
@@ -132,7 +131,6 @@ in
             };
           };
         };
-        */
 
         services.frigate = {
           enable = true;
@@ -187,12 +185,14 @@ in
             };
             */
 
+            /*
             go2rtc = {
               streams = {
                 entry = ["rtsp://user:password@192.168.87.22:554/h264Preview_01_main"];
                 driveway = ["rtsp://user:password@192.168.87.20:554/h264Preview_01_main"];
               };
             };
+            */
 
             mqtt = {
               enabled = true;
