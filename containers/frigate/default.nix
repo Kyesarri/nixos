@@ -44,6 +44,7 @@ in
         pkgs,
         ...
       }: {
+        /*
         users = {
           mutableUsers = false;
           users = {
@@ -56,11 +57,13 @@ in
             };
           };
         };
+        */
+        /*
         system.activationScripts.setup-container.text = ''
           # Set display variable
           echo "export DISPLAY=:0" > /home/${hostName}/.bash_profile
         '';
-
+        */
         system.stateVersion = "23.11";
 
         nixpkgs.config.allowUnfree = lib.mkDefault true; # need unfree for intel drivers
@@ -112,6 +115,7 @@ in
         };
 
         # go2rtc was not working for me in the frigate config, added as another service here
+        /*
         services.go2rtc = {
           enable = true;
           settings = {
@@ -128,6 +132,7 @@ in
             };
           };
         };
+        */
 
         services.frigate = {
           enable = true;
@@ -179,6 +184,13 @@ in
                 "yuv420p"
               ];
               */
+            };
+
+            go2rtc = {
+              streams = {
+                entry = ["rtsp://user:password@192.168.87.22:554/h264Preview_01_main"];
+                driveway = ["rtsp://user:password@192.168.87.20:554/h264Preview_01_main"];
+              };
             };
 
             mqtt = {
