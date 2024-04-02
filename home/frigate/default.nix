@@ -55,9 +55,9 @@
       '';
     };
     # frigate config.yml
-    home.file.".docker/frigate/config/" = {
-      source = ./config; # symlink ~/nixos/home/frigate/config dir (1 file atm)
-      recursive = true; # to ~/.docker/nvr/config/
+    home.file.".docker/frigate/config.yml" = {
+      source = ./config.yml; # symlink ~/nixos/home/frigate/config.yml
+      recursive = true; # to ~/.docker/frigate/config/
     };
   };
 }
