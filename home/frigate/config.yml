@@ -30,24 +30,33 @@ cameras:
       - 1024,0,1024,30,650,30,650,0
     record:
       enabled: true
+
 database:
   path: /db/frigate.db
+
+ffmpeg:
+  hwaccel_args: preset-intel-qsv-h264
+
 detect:
   enabled: true
   fps: 5
   height: 768
   width: 1024
+
 go2rtc:
   streams:
     driveway: rtsp://user:password@192.168.87.20:554/h264Preview_01_main
     entry: rtsp://user:password@192.168.87.22:554/h264Preview_01_main
+
 logger:
   default: info
   logs:
     peewee: info
     ws4py: info
+
 motion:
   threshold: 100
+
 mqtt:
   client_id: frigate
   enabled: true
@@ -57,12 +66,14 @@ mqtt:
   stats_interval: 60
   topic_prefix: frigate
   user: frigate
+
 objects:
   track:
   - cat
   - person
   - dog
   - bike
+
 record:
   enabled: true
   events:
@@ -81,8 +92,10 @@ record:
     days: 0
     mode: all
   sync_recordings: true
+
 rtmp:
   enabled: false
+
 snapshots:
   bounding_box: true
   clean_copy: true
@@ -90,5 +103,6 @@ snapshots:
   enabled: true
   quality: 70
   timestamp: false
+
 ui:
   time_format: browser
