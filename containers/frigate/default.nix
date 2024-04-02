@@ -131,14 +131,17 @@ in
 
         services.frigate = {
           enable = true;
-          hostname = "${hostName}";
+          hostname = "${hostName}.home.lan";
           settings = {
             cameras = {
               driveway = {
                 best_image_timeout = 15;
                 record = {enabled = true;};
                 motion = {mask = ["1024,0,1024,30,650,30,650,0"];};
-                zones.carpark = {coordinates = "619,768,0,768,0,477,362,124,377,200,578,206";};
+                zones = {
+                  carpark = {coordinates = "619,768,0,768,0,370,305,24,311,103,526,94";};
+                  verandah = {coordinates = "1024,768,1024,442,584,465,621,768";};
+                };
                 ffmpeg = {
                   # input_args = "";
                   inputs = [
@@ -249,7 +252,7 @@ in
             };
 
             objects.track = ["cat" "person" "dog" "bike"];
-            motion.threshold = 90;
+            motion.threshold = 100; # 0 - 255 less is more sens
             rtmp.enabled = false;
 
             # detect stream, used for snapshots, live view, debug
