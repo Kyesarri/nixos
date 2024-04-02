@@ -12,8 +12,8 @@
   };
 
   networking.firewall = {
-    allowedTCPPorts = [5000];
-    allowedUDPPorts = [5000];
+    allowedTCPPorts = [5000 8554 8555];
+    allowedUDPPorts = [5000 8555];
   };
 
   # enable docker
