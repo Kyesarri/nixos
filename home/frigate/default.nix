@@ -15,6 +15,31 @@
     allowedTCPPorts = [5000 8554 8555];
     allowedUDPPorts = [5000 8555];
   };
+  /*
+    { config, lib, pkgs, ... }: {
+    virtualisation.oci-containers.containers.frigate = {
+      image = "blakeblackshear/frigate:stable-amd64";
+      ports = [ "5000:5000" "1935:1935" ];
+      # environmentFiles = [ ../secrets/frigate.env ];
+      volumes = [
+        "/state/frigate/media:/media/frigate"
+        "${./frigate.yml}:/config/config.yml:ro"
+        "/etc/localtime:/etc/localtime:ro"
+      ];
+      extraOptions = [
+        "--shm-size=64m"
+        # "--device=/dev/apex_0:/dev/apex_0"
+        "--device=/dev/dri/renderD128"
+        "--mount=type=tmpfs,target=/tmp/cache,tmpfs-size=1000000000"
+        "--pull=always"
+      ];
+    };
+    # systemd.services.docker-frigate = {
+    #   after = [ "mosquitto.service" ];
+    #   requires = [ "mosquitto.service" ];
+    # };
+  }
+  */
 
   # enable docker
   virtualisation.docker = {enable = true;};
@@ -61,8 +86,117 @@
     };
     # frigate config.yml
     home.file.".docker/frigate/config.yml" = {
-      source = ./config.yml; # symlink ~/nixos/home/frigate/config.yml
-      recursive = true; # to ~/.docker/frigate/config/
+      text = ''
+        cameras:
+          driveway:
+            best_image_timeout: 15
+            ffmpeg:
+              inputs:
+              - path: rtsp://127.0.0.1:8554/driveway
+                roles:
+                - detect
+                - record
+            motion:
+              mask:
+              - 1024,0,1024,30,650,30,650,0
+            record:
+              enabled: true
+            zones:
+              carpark:
+                coordinates: 619,768,0,768,0,370,305,24,311,103,526,94
+              verandah:
+                coordinates: 1024,768,1024,442,584,465,621,768
+          entry:
+            ffmpeg:
+              inputs:
+              - path: rtsp://127.0.0.1:8554/entry
+                roles:
+                - detect
+                - record
+            motion:
+              mask:
+              - 0,768,305,768,170,0,0,0
+              - 1024,0,1024,30,650,30,650,0
+            record:
+              enabled: true
+
+        database:
+          path: /db/frigate.db
+
+        ffmpeg:
+          hwaccel_args: preset-intel-qsv-h264
+
+        detect:
+          enabled: true
+          fps: 5
+          height: 768
+          width: 1024
+
+        go2rtc:
+          streams:
+            driveway: rtsp://user:password@192.168.87.20:554/h264Preview_01_main
+            entry: rtsp://user:password@192.168.87.22:554/h264Preview_01_main
+
+        logger:
+          default: info
+          logs:
+            peewee: info
+            ws4py: info
+
+        motion:
+          threshold: 100
+
+        mqtt:
+          client_id: frigate
+          enabled: true
+          host: 192.168.87.10
+          password: frigate
+          port: 1883
+          stats_interval: 60
+          topic_prefix: frigate
+          user: frigate
+
+        objects:
+          track:
+          - cat
+          - person
+          - dog
+          - bike
+
+        record:
+          enabled: true
+          events:
+            objects:
+            - cat
+            - person
+            - dog
+            - bike
+            post_capture: 10
+            pre_capture: 6
+            retain:
+              default: 5
+              mode: motion
+          expire_interval: 60
+          retain:
+            days: 0
+            mode: all
+          sync_recordings: true
+
+        rtmp:
+          enabled: false
+
+        snapshots:
+          bounding_box: true
+          clean_copy: true
+          crop: false
+          enabled: true
+          quality: 70
+          timestamp: false
+
+        ui:
+          time_format: browser
+
+      '';
     };
   };
 }
