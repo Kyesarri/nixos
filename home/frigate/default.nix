@@ -12,9 +12,8 @@
   };
 
   networking.firewall = {
-    allowedTCPPorts = [
-      5000 # frigate webui
-    ];
+    allowedTCPPorts = [5000];
+    allowedUDPPorts = [5000];
   };
 
   # enable docker
