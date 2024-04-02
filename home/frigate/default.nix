@@ -29,8 +29,9 @@
       # virtualisation.oci-containers.backend = "docker"; # or podman
       hostname = "frigate";
       autoStart = true;
-      image = "blakeblackshear/frigate:stable"; # or ghcr.io/blakeblackshear/frigate:stable
+      image = "ghcr.io/blakeblackshear/frigate:stable"; # or ghcr.io/blakeblackshear/frigate:stable
       ports = [
+        # hostPort:containerPort
         "5000:5000"
         "1935:1935"
         "8554:8554" # rtsp
