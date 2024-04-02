@@ -14,10 +14,10 @@
   nixpkgs.config.allowUnfree = lib.mkDefault true;
 
   security = {
-    # believe there were issues with suspend / hibernate on this "laptop"
-    # this resolved those issues however this device is "always-on" now
-    # or, this would forbid programs from turning-off the "laptop
-    # feel the latter is true, wish i wrote this shit down :D
+    pam.services = {gdm.enableGnomeKeyring = true;}; # unlock keyring with gdm / gdm support for keyring
+
+    # forbid programs from turning-off the "laptop"
+    # device is always on, dont want to hibernate
     polkit.extraConfig = ''
       polkit.addRule(function(action, subject) {
           if (action.id == "org.freedesktop.login1.suspend" ||
@@ -29,13 +29,11 @@
           }
       });
     '';
-
-    pam.services = {gdm.enableGnomeKeyring = true;}; # unlock keyring with gdm / gdm support for keyring
   };
 
   nix = {
     sshServe.enable = true; # enable ssh server
-    package = pkgs.nixUnstable; # prefer nixunstable over stable
+    package = pkgs.nixUnstable; # prefer nixunstable over stable, hi exploits
     gc = {
       automatic = true; # auto nix garbage collection
       dates = "weekly";
@@ -66,7 +64,7 @@
     };
   };
 
-  # magic language wizzard show
+  # magic language wizard show
   i18n = {
     defaultLocale = "en_AU.UTF-8";
     extraLocaleSettings = {
@@ -85,7 +83,9 @@
   networking = {
     firewall = {
       enable = true;
-      allowedTCPPorts = [3389]; # rdp
+      allowedTCPPorts = [
+        3389 # rdp
+      ];
     };
   };
 
@@ -127,12 +127,12 @@
     shell = pkgs.zsh;
     isNormalUser = true;
     description = "${spaghetti.user}";
-    extraGroups = ["networkmanager" "wheel" "docker" "apex"];
+    extraGroups = ["networkmanager" "wheel" "apex"]; # wheel is sudo, apex is for coral usb, but i bought a pcie :D
     packages = with pkgs; [
       fet-sh # minimal fetch script
       gnome.seahorse # key management
-      libnotify # notifications
-      udiskie # usb mounting
+      libnotify # notifications might not be needed on headless lol
+      udiskie # usb mounting, probs for the best atm
     ];
   };
 }

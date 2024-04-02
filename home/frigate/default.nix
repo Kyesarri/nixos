@@ -24,7 +24,7 @@
   home-manager.users.${spaghetti.user} = {
     # docker compose.yml
     # can use virtualisation.oci-containers too
-    home.file.".docker/nvr/compose.yml" = {
+    home.file.".docker/frigate/compose.yml" = {
       text = ''
         version: "3.9"
         services:
@@ -55,7 +55,7 @@
       '';
     };
     # frigate config.yml
-    home.file.".docker/nvr/config/" = {
+    home.file.".docker/frigate/config/" = {
       source = ./config; # symlink ~/nixos/home/frigate/config dir (1 file atm)
       recursive = true; # to ~/.docker/nvr/config/
     };

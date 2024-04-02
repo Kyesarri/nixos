@@ -190,15 +190,6 @@ in
             };
             */
 
-            /*
-            go2rtc = {
-              streams = {
-                entry = ["rtsp://user:password@192.168.87.22:554/h264Preview_01_main"];
-                driveway = ["rtsp://user:password@192.168.87.20:554/h264Preview_01_main"];
-              };
-            };
-            */
-
             mqtt = {
               enabled = true;
               host = "192.168.87.10";
@@ -218,6 +209,7 @@ in
                 days = 0; # dont want to retain all footage per day, only motion of objects
                 mode = "all"; # without all i belive all footage will fail to be retained
               };
+
               events = {
                 pre_capture = 6;
                 post_capture = 10;
@@ -237,6 +229,7 @@ in
               bounding_box = true;
               quality = 70;
             };
+
             /*
             telemetry = {
               stats = {
