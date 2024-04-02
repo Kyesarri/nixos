@@ -135,10 +135,6 @@ in
           settings = {
             cameras = {
               driveway = {
-                go2rtc.streams = {
-                  entry = "rtsp://user:password@192.168.87.22:554/h264Preview_01_main";
-                  driveway = "rtsp://user:password@192.168.87.20:554/h264Preview_01_main";
-                };
                 best_image_timeout = 15;
                 record = {enabled = true;};
                 motion = {mask = ["1024,0,1024,30,650,30,650,0"];};
@@ -167,6 +163,11 @@ in
                   ];
                 };
               };
+            };
+
+            go2rtc.streams = {
+              entry = "rtsp://user:password@192.168.87.22:554/h264Preview_01_main";
+              driveway = "rtsp://user:password@192.168.87.20:554/h264Preview_01_main";
             };
 
             /*
