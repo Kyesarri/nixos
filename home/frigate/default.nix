@@ -24,7 +24,7 @@
 
   # test.nix added here, see if we can run this as a systemd service
   virtualisation.oci-containers.containers.frigate = {
-    backend = "docker"; # or podman
+    # backend = "docker"; # or podman
     hostname = "frigate";
     autoStart = true;
     image = "blakeblackshear/frigate:stable"; # or ghcr.io/blakeblackshear/frigate:stable
