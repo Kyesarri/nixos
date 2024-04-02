@@ -14,7 +14,9 @@ cameras:
       enabled: true
     zones:
       carpark:
-        coordinates: 619,768,0,768,0,477,362,124,377,200,578,206
+        coordinates: 619,768,0,768,0,370,305,24,311,103,526,94
+      verandah:
+        coordinates: 1024,768,1024,442,584,465,621,768
   entry:
     ffmpeg:
       inputs:
@@ -28,18 +30,24 @@ cameras:
       - 1024,0,1024,30,650,30,650,0
     record:
       enabled: true
+database:
+  path: /var/lib/frigate/frigate.db
 detect:
   enabled: true
   fps: 5
   height: 768
   width: 1024
+go2rtc:
+  streams:
+    driveway: rtsp://user:password@192.168.87.20:554/h264Preview_01_main
+    entry: rtsp://user:password@192.168.87.22:554/h264Preview_01_main
 logger:
   default: info
   logs:
     peewee: info
     ws4py: info
 motion:
-  threshold: 90
+  threshold: 100
 mqtt:
   client_id: frigate
   enabled: true
@@ -72,7 +80,7 @@ record:
   retain:
     days: 0
     mode: all
-  sync_recordings: 'true'
+  sync_recordings: true
 rtmp:
   enabled: false
 snapshots:
