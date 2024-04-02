@@ -1,7 +1,6 @@
 {
   spaghetti,
   config,
-  lib,
   pkgs,
   ...
 }: {
