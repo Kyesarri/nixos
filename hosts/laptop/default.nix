@@ -19,7 +19,7 @@
     ../../hardware/battery
     ../../hardware/bluetooth
     ../../hardware/nvidia
-    ../../hardware/wireless/nwm # networkmanager # TODO this is shit, look into mkOption
+    ../../hardware/wireless/nwm # networkmanager # TODO this is shit
 
     #../../home/changedetection # easy fix
 
@@ -28,7 +28,7 @@
     ../../home/hypr # TODO remove wallpaper hyprwal?
     ../../home/gscreenshot
     # TODO # are completed as to mkoption, are enabled / configured via gnocchi.pkg.enable = true;
-
+    #
     ../../home # set some default values for home-manager
     ../../home/asusctl # TODO look into issues with this further
     ../../home/bottom # task-manager

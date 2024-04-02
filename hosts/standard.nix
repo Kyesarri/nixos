@@ -212,6 +212,7 @@
       wl-clipboard # wl-copy and wl-paste for copy/paste from stdin / stdout
 
       ## TESTING ##
+      xpipe
       tmux
       tmuxifier
       inputs.wallpaper-generator.defaultPackage.x86_64-linux
