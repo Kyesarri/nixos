@@ -49,6 +49,7 @@
     kernelPackages = pkgs.linuxPackages_xanmod_latest; # use latest xanmod kernel
 
     kernelParams = [
+      "i915.enable_fbc=1" # iGPU framebuffer compression
       "intel_iommu=on" # pci device pass-through
       "nowatchdog" # disables watchdog, was causing shutdown / reboot issues on laptop, left in cos
     ];

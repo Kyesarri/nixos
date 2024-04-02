@@ -22,7 +22,9 @@
   # adds docker-compose to system packages
   environment.systemPackages = with pkgs; [docker-compose];
 
-  # test.nix added here, see if we can run this as a systemd service
+  # runs as a systemd service
+  ## only issue is that GPU monitoring isn't working from inside
+  ## the container, but gpu is working
   virtualisation.oci-containers = {
     backend = "docker";
     containers.frigate = {
@@ -56,6 +58,7 @@
   };
 
   /*
+  # use this for standard docker compose running manually
   home-manager.users.${spaghetti.user} = {
   # docker compose.yml
   # can use virtualisation.oci-containers too
