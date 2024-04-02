@@ -144,8 +144,8 @@
 
         go2rtc:
           streams:
-            driveway: rtsp://user:password@192.168.87.20:554/h264Preview_01_main
-            entry: rtsp://user:password@192.168.87.22:554/h264Preview_01_main
+            driveway: http://user:password@192.168.87.20:554/h264Preview_01_main
+            entry: http://user:password@192.168.87.22:554/h264Preview_01_main
 
         logger:
           default: info
