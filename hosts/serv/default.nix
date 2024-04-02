@@ -46,9 +46,10 @@
     hostName = "nix-serv";
     # moved most conf to /containers/default.nix due to bridge conf
     firewall = {
+      enable = true;
       allowedTCPPorts = [
         22 # ssh, possibly open already but leaving in
-        123 # chrony ntp, not working
+        123 # chrony ntp, not working?
       ];
       checkReversePath = "loose"; # fixes some connection issues with tailscale
       allowedUDPPorts = [

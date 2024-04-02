@@ -49,7 +49,7 @@
     kernelPackages = pkgs.linuxPackages_xanmod_latest; # use latest xanmod kernel
 
     kernelParams = [
-      "i915.enable_fbc=1" # iGPU framebuffer compression
+      "i915.enable_fbc=1" # iGPU framebuffer compression, nfi if this works
       "intel_iommu=on" # pci device pass-through
       "nowatchdog" # disables watchdog, was causing shutdown / reboot issues on laptop, left in cos
     ];
@@ -81,16 +81,8 @@
     };
   };
 
-  networking = {
-    firewall = {
-      enable = true;
-      allowedTCPPorts = [
-        3389 # rdp
-      ];
-    };
-  };
-
   services = {
+    xserver.enable = false; # headless
     fstrim.enable = true; # ssd trim in background, not enabled by default :0
     gnome.gnome-keyring.enable = true; # keyboi
     gvfs.enable = true; # gnome trash support
@@ -98,15 +90,6 @@
     dbus = {
       enable = true;
       packages = [pkgs.gnome.seahorse];
-    };
-    xserver = {
-      enable = false; # headless, see how many issues this causes wtih pcie passthrough
-      /*
-        displayManager.gdm = {
-        enable = true;
-        wayland = true;
-      };
-      */
     };
   };
 
@@ -128,7 +111,7 @@
     shell = pkgs.zsh;
     isNormalUser = true;
     description = "${spaghetti.user}";
-    extraGroups = ["networkmanager" "wheel" "apex"]; # wheel is sudo, apex is for coral usb, but i bought a pcie :D
+    extraGroups = ["networkmanager" "wheel" "apex"]; # wheel is sudo, apex is for coral
     packages = with pkgs; [
       fet-sh # minimal fetch script
       gnome.seahorse # key management
