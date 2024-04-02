@@ -28,8 +28,6 @@ cameras:
       - 1024,0,1024,30,650,30,650,0
     record:
       enabled: true
-database:
-  path: /var/lib/frigate/frigate.db
 detect:
   enabled: true
   fps: 5
