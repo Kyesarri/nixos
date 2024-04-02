@@ -11,6 +11,12 @@
     options = ["defaults" "size=1G" "mode=755"];
   };
 
+  networking.firewall = {
+    allowedTCPPorts = [
+      5000 # frigate webui
+    ];
+  };
+
   # enable docker
   virtualisation.docker = {enable = true;};
 
@@ -40,9 +46,9 @@
             volumes:
             # think this should get some spaghetti, add usernames, other vars
               - /etc/localtime:/etc/localtime:ro
-              - /home/${spaghetti.user}/.docker/nvr/config.yml:/config/config.yml
-              - /home/${spaghetti.user}/.docker/nvr:/media/frigate
-              - /home/${spaghetti.user}/.docker/nvr:/db
+              - /home/${spaghetti.user}/.docker/frigate/config.yml:/config/config.yml
+              - /home/${spaghetti.user}/.docker/frigate:/media/frigate
+              - /home/${spaghetti.user}/.docker/frigate:/db
               - type: tmpfs # Optional: 1GB of memory, reduces SSD/SD Card wear
                 target: /tmp/cache
                 tmpfs:
