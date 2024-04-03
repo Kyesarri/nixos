@@ -41,9 +41,6 @@ cameras:
 database:
   path: /db/frigate.db
 
-ffmpeg:
-  hwaccel_args: preset-intel-qsv-h264
-
 detect:
   enabled: true
   fps: 4
@@ -103,7 +100,7 @@ record:
   sync_recordings: true
 
 rtmp:
-  enabled: false
+  enabled: true
 
 snapshots:
   bounding_box: true
@@ -115,6 +112,9 @@ snapshots:
 
 ui:
   time_format: browser
+
+ffmpeg:
+  hwaccel_args: preset-intel-qsv-h264
 
 detectors:
   ov:
