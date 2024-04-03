@@ -15,7 +15,7 @@ cameras:
       enabled: true
     zones:
       carpark:
-        coordinates:  0,480,352,480,326,70,200,71,191,21,0,240
+        coordinates: 0,480,352,480,326,70,200,71,191,21,0,240
       verandah:
         coordinates: 640,480,640,274,358,289,389,480
 #
@@ -32,10 +32,14 @@ cameras:
         - record
     motion:
       mask:
-      - 0,768,305,768,170,0,0,0
-      - 1024,0,1024,30,650,30,650,0
+        - 0,480,146,480,89,0,0,0
     record:
       enabled: true
+    zones:
+      steps_chairs:
+        coordinates: 278,260,282,80,408,146,391,297,575,480,163,480,134,292
+      side_path:
+        coordinates: 142,269,125,132,213,66,217,187,261,247
 #
 database:
   path: /db/frigate.db
