@@ -3,20 +3,22 @@ cameras:
     best_image_timeout: 15
     ffmpeg:
       inputs:
-      - path: rtsp://127.0.0.1:8554/driveway
+      - path: rtsp://127.0.0.1:8554/driveway_sub
         roles:
         - detect
+      - path: rtsp://127.0.0.1:8554/driveway
+        roles:
         - record
-    motion:
-      mask:
-      - 1024,0,1024,30,650,30,650,0
+    # motion:
+    #   mask:
+    #   - 1024,0,1024,30,650,30,650,0
     record:
       enabled: true
-    zones:
-      carpark:
-        coordinates: 619,768,0,768,0,370,305,24,311,103,526,94
-      verandah:
-        coordinates: 1024,768,1024,442,584,465,621,768
+    # zones:
+    #   carpark:
+    #     coordinates: 619,768,0,768,0,370,305,24,311,103,526,94
+    #   verandah:
+    #     coordinates: 1024,768,1024,442,584,465,621,768
   entry:
     ffmpeg:
       inputs:
@@ -39,14 +41,16 @@ ffmpeg:
 
 detect:
   enabled: true
-  fps: 5
-  height: 768
-  width: 1024
+  fps: 4
+  height: 480
+  width: 640
 
 go2rtc:
   streams:
     driveway: rtsp://user:password@192.168.87.20:554/h264Preview_01_main
     entry: rtsp://user:password@192.168.87.22:554/h264Preview_01_main
+    driveway_sub: rtsp://user:password@192.168.87.20:554/h264Preview_01_sub
+    entry_sub: rtsp://user:password@192.168.87.22:554/h264Preview_01_sub
 
 logger:
   default: info
@@ -55,7 +59,7 @@ logger:
     ws4py: info
 
 motion:
-  threshold: 100
+  threshold: 90
 
 mqtt:
   client_id: frigate
@@ -106,3 +110,17 @@ snapshots:
 
 ui:
   time_format: browser
+
+detectors:
+  ov:
+    type: openvino
+    device: AUTO
+    model:
+      path: /openvino-model/ssdlite_mobilenet_v2.xml
+
+model:
+  width: 300
+  height: 300
+  input_tensor: nhwc
+  input_pixel_format: bgr
+  labelmap_path: /openvino-model/coco_91cl_bkgr.txt
