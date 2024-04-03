@@ -1,9 +1,14 @@
 cameras:
+  testy:
+    ffmpeg:
+      inputs:
+        - path: http://192.168.87.22:/flv?port=1935&app=bcs&stream=channel0_ext.bcs&user=user&password=password
   driveway:
     best_image_timeout: 15
     ffmpeg:
       inputs:
       - path: rtsp://127.0.0.1:8554/driveway_sub
+        input_args: preset-rtsp-restream-low-latency
         roles:
         - detect
       - path: rtsp://127.0.0.1:8554/driveway
@@ -14,11 +19,11 @@ cameras:
     #   - 1024,0,1024,30,650,30,650,0
     record:
       enabled: true
-    # zones:
-    #   carpark:
-    #     coordinates: 619,768,0,768,0,370,305,24,311,103,526,94
-    #   verandah:
-    #     coordinates: 1024,768,1024,442,584,465,621,768
+    zones:
+      carpark:
+        coordinates:  0,480,352,480,326,70,200,71,191,21,0,240
+      verandah:
+        coordinates: 1024,768,1024,442,584,465,621,768
   entry:
     ffmpeg:
       inputs:
