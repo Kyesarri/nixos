@@ -1,11 +1,4 @@
 cameras:
-  testy:
-    ffmpeg:
-      inputs:
-        - path: http://192.168.87.22:/flv?port=1935&app=bcs&stream=channel0_ext.bcs&user=user&password=password
-          input_args: preset-http-reolink
-          roles:
-            - detect
   driveway:
     best_image_timeout: 15
     ffmpeg:
@@ -100,7 +93,7 @@ record:
   sync_recordings: true
 
 rtmp:
-  enabled: true
+  enabled: false
 
 snapshots:
   bounding_box: true
