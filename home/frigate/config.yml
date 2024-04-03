@@ -3,6 +3,9 @@ cameras:
     ffmpeg:
       inputs:
         - path: http://192.168.87.22:/flv?port=1935&app=bcs&stream=channel0_ext.bcs&user=user&password=password
+          input_args: preset-http-reolink
+          roles:
+            - detect
   driveway:
     best_image_timeout: 15
     ffmpeg:
@@ -14,9 +17,6 @@ cameras:
       - path: rtsp://127.0.0.1:8554/driveway
         roles:
         - record
-    # motion:
-    #   mask:
-    #   - 1024,0,1024,30,650,30,650,0
     record:
       enabled: true
     zones:
