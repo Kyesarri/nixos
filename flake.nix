@@ -12,10 +12,8 @@
     agenix.url = "github:ryantm/agenix";
 
     hyprland.url = "github:hyprwm/Hyprland";
-    hyprland-plugins = {
-      url = "github:hyprwm/hyprland-plugins";
-      inputs.hyprland.follows = "hyprland";
-    };
+    # hyprland-plugins. url = "github:hyprwm/hyprland-plugins";
+    # hyprland-plugins.inputs.hyprland.follows = "hyprland";
 
     hyprpicker.url = "github:hyprwm/hyprpicker";
     hy3.url = "github:outfoxxed/hy3"; # dev branch

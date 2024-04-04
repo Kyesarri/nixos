@@ -1,6 +1,5 @@
 let
   # public keys added here
-  # rename to secrets.nix
   #
   # from https://github.com/ryantm/agenix
   # This secrets.nix file is not imported into your NixOS configuration.
