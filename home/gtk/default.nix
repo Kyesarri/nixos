@@ -10,9 +10,7 @@
     gtkThemeFromScheme
     ;
 in rec {
-  users.users.${spaghetti.user} = {
-    packages = [pkgs.zafiro-icons]; # pkgs.arc-icon-theme  # pkgs.moka-icon-theme
-  };
+  users.users.${spaghetti.user}.packages = [pkgs.zafiro-icons];
   qt.platformTheme = "gtk2";
   home-manager.users.${spaghetti.user} = {
     home.sessionVariables = {

@@ -1,4 +1,4 @@
-# seems to be issues with frigate running in a container - nix containers run as root
+# seems to be issues with frigate running in a container - (thoughts) nix containers run as root
 # so passing through hardware from the host will fail to run, due to UID issues ( i believe )
 # means this config cannot use iGPU for decoding, and am stuck with just CPU decoding
 # unless this is to run on metal

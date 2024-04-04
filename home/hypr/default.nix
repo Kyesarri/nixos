@@ -9,8 +9,7 @@
 with lib; let
   cfg = config.gnocchi.hypr; # shorthand some lines
 in {
-  # wayland.windowManager.hyprland.extraConfig = lib.mkAfter ''
-  # libmkafter looks vvv interesting
+  #
   options.gnocchi = {
     hypr = {
       enable = mkEnableOption "enable hyprland"; # will be gnocchi.hypr.enable = true; in host.nix
@@ -18,11 +17,10 @@ in {
       animations.enable = mkEnableOption "enable hypr animations";
     };
   };
-
+  #
   config = mkMerge [
     (mkIf (cfg.enable) {
       #
-      #  users.users.${spaghetti.user}.packages = [pkgs.hyprland-protocols];
       home-manager.users.${spaghetti.user} = {
         wayland.windowManager.hyprland = {
           package = inputs.hyprland.packages.${pkgs.system}.hyprland;
@@ -95,7 +93,7 @@ in {
             preload = /home/${spaghetti.user}/wallpapers/4.jpg
             preload = /home/${spaghetti.user}/wallpapers/5.png
             # ^ images must be preloaded to display
-            wallpaper = , /home/${spaghetti.user}/wallpapers/3.jpg # disabled wallpaper on boot, can set using hyprctl - want to add to agsr
+            wallpaper = , /home/${spaghetti.user}/wallpapers/3.jpg
             # ^ any display, directory/name.ext
             splash = false
             # ^ adds splash text to wallpaper when true

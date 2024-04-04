@@ -175,6 +175,8 @@
       gitAndTools.gitFull
       polkit_gnome
       waypipe
+      age
+      agenix.packages.x86_64-linux.default
     ];
   };
 

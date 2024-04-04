@@ -9,7 +9,7 @@
     home-manager.url = "github:nix-community/home-manager/master"; # added master branch to follow unstable nixos
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
-    agenix.url = "github:ryantm/agenix"; # on the TODO manage secrets and wizard hat things
+    agenix.url = "github:ryantm/agenix";
 
     hyprland.url = "github:hyprwm/Hyprland";
     hyprland-plugins = {
@@ -43,10 +43,10 @@
     hy3,
     alejandra,
     nix-colors,
-    agenix,
     auto-cpufreq,
     prism,
     wallpaper-generator,
+    agenix,
     # ulauncher,
     ...
   } @ inputs: let
@@ -58,19 +58,21 @@
     #
     spaghetti = {
       user = "kel"; # single user currently, import attribute as spaghetti use ${spaghetti.user}
+      user1 = "test";
       plymouth = "deus_ex"; # as above, use ${spaghetti.plymouth}
-      scheme = "horizon-dark"; # mmm, this should still be per machine but idk right now :)
+      scheme = "horizon-dark";
       scheme1 = "gigavolt";
       scheme2 = "tokyonight";
       iconPkg = "pkgs.zafiro-icons";
     };
     system = "x86_64-linux"; # i dont use any other arch atm
-    specialArgs = {inherit nix-colors auto-cpufreq inputs prism spaghetti wallpaper-generator;};
+    specialArgs = {inherit nix-colors agenix auto-cpufreq inputs prism spaghetti wallpaper-generator;};
     # ^
     # ^ FIXME -
     # ^ the specialArgs is pretty loose and a cover-all, not all systems require every input
     # ^ want to find out how i can include other inherit in each machine
     # ^ FIXME -
+    #
     # the above are added to the below by calling inherit foo or by passing into specialArgs as is the case
     # with spaghetti
     #
@@ -83,13 +85,13 @@
       "nix-laptop" = nixpkgs.lib.nixosSystem {
         inherit system specialArgs;
         modules = [
+          agenix.nixosModules.default
+          auto-cpufreq.nixosModules.default
+          home-manager.nixosModules.home-manager
           ./hosts/laptop # 4800hs / 1650 / 16gb TODO download more ram
           {
-            environment.systemPackages = [alejandra.defaultPackage.x86_64-linux];
-          } # codium plugins
-          auto-cpufreq.nixosModules.default
-          agenix.nixosModules.default
-          home-manager.nixosModules.home-manager
+            environment.systemPackages = [alejandra.defaultPackage.x86_64-linux]; # codium plugin
+          }
           {
             home-manager = {
               useGlobalPkgs = true;
@@ -121,7 +123,6 @@
             environment.systemPackages = [alejandra.defaultPackage.x86_64-linux];
           }
           agenix.nixosModules.default
-
           home-manager.nixosModules.home-manager
           {
             home-manager = {
@@ -135,12 +136,12 @@
       "nix-serv" = nixpkgs.lib.nixosSystem {
         inherit system specialArgs;
         modules = [
+          agenix.nixosModules.default
+          home-manager.nixosModules.home-manager
           ./hosts/serv # 15s-fq2050TU / i5-1135G7 / iris x / 8gb FIXME
           {
             environment.systemPackages = [alejandra.defaultPackage.x86_64-linux];
           }
-          agenix.nixosModules.default
-          home-manager.nixosModules.home-manager
           {
             home-manager = {
               useGlobalPkgs = true;
