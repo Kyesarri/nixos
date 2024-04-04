@@ -96,7 +96,7 @@
             home-manager = {
               useGlobalPkgs = true;
               useUserPackages = true;
-              extraSpecialArgs = {inherit nix-colors inputs hy3 hyprland;};
+              extraSpecialArgs = {inherit nix-colors agenix inputs hy3 hyprland;};
             };
           }
         ];
@@ -105,6 +105,7 @@
         inherit system specialArgs;
         modules = [
           ./hosts/notebook # celeron N3050 / i"gpu" / 4gb?
+          agenix.nixosModules.default
           home-manager.nixosModules.home-manager
           {
             home-manager = {
