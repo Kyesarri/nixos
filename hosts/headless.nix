@@ -81,18 +81,6 @@
     };
   };
 
-  services = {
-    xserver.enable = false; # headless
-    fstrim.enable = true; # ssd trim in background, not enabled by default :0
-    gnome.gnome-keyring.enable = true; # keyboi
-    gvfs.enable = true; # gnome trash support
-    printing.enable = false; # cpus printer thingy
-    dbus = {
-      enable = true;
-      packages = [pkgs.gnome.seahorse];
-    };
-  };
-
   fonts = {
     fontconfig.defaultFonts.monospace = ["Hack Nerd Font Mono"];
     fontDir.enable = true;

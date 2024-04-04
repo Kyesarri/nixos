@@ -97,6 +97,7 @@
   };
 
   services = {
+    openssh.enable = true;
     fstrim.enable = true; # ssd trim in background, not enabled by default :0
     gvfs.enable = true; # gnome trash support
     printing.enable = true; # need more than this to print afik? http://localhost:631/ for config

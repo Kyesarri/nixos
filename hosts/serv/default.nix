@@ -63,6 +63,16 @@
   # tailscale config above is temp, will remove once below # TODO has been completed
 
   services = {
+    openssh.enable = true;
+    xserver.enable = false; # headless
+    fstrim.enable = true; # ssd trim in background, not enabled by default :0
+    gvfs.enable = true; # gnome trash support
+    printing.enable = false; # cpus printer thingy
+    gnome.gnome-keyring.enable = true; # keyboi
+    dbus = {
+      enable = true;
+      packages = [pkgs.gnome.seahorse];
+    };
     ###### TODO ######
     tailscale.enable = true;
     tailscale.useRoutingFeatures = "server"; # main requirement for the # TODO
