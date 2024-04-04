@@ -13,6 +13,7 @@
     # import flake home-manager modules here
     imports = [
       inputs.ags.homeManagerModules.default
+      # inputs.agenix.homeManagerModules.age
       inputs.nix-colors.homeManagerModules.default
       inputs.prism.homeModules.prism
       inputs.hyprland.homeManagerModules.default

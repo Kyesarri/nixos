@@ -61,6 +61,7 @@
     # installed on my system? should save 500mb if i can do so.
 
     loader = {
+      systemd-boot.enable = false;
       efi.efiSysMountPoint = "/boot";
       grub = {
         memtest86.enable = true;

@@ -112,5 +112,7 @@
   environment = {
     systemPackages = with pkgs; [pciutils];
     shellAliases.rebuild = "sudo nixos-rebuild switch --flake /home/${spaghetti.user}/nixos#nix-laptop --show-trace -j 16 && cd ~ && hyprctl reload && ./ags.sh";
+    shellAliases.rebuildboot = "sudo nixos-rebuild --flake /home/${spaghetti.user}/nixos#nix-laptop --install-bootloader boot";
+    shellAliases.garbage = "sudo nix-collect-garbage && nix-collect-garbage -d";
   };
 }

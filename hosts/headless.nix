@@ -107,6 +107,10 @@
     };
   };
 
+  environment.systemPackages = with pkgs; [
+    agenix.packages.x86_64-linux.default
+  ];
+
   users.users.${spaghetti.user} = {
     shell = pkgs.zsh;
     isNormalUser = true;
