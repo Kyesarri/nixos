@@ -10,6 +10,7 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
     agenix.url = "github:ryantm/agenix";
+    sops-nix.url = "github:Mic92/sops-nix";
 
     hyprland.url = "github:hyprwm/Hyprland";
     # hyprland-plugins. url = "github:hyprwm/hyprland-plugins";
@@ -45,6 +46,7 @@
     prism,
     wallpaper-generator,
     agenix,
+    sops-nix,
     # ulauncher,
     ...
   } @ inputs: let
@@ -64,7 +66,7 @@
       iconPkg = "pkgs.zafiro-icons";
     };
     system = "x86_64-linux"; # i dont use any other arch atm
-    specialArgs = {inherit nix-colors agenix auto-cpufreq inputs prism spaghetti wallpaper-generator;};
+    specialArgs = {inherit nix-colors agenix auto-cpufreq sops-nix inputs prism spaghetti wallpaper-generator;};
     # ^
     # ^ FIXME -
     # ^ the specialArgs is pretty loose and a cover-all, not all systems require every input
@@ -84,6 +86,7 @@
         inherit system specialArgs;
         modules = [
           agenix.nixosModules.default
+          sops-nix.nixosModules.sops
           auto-cpufreq.nixosModules.default
           home-manager.nixosModules.home-manager
           ./hosts/laptop # 4800hs / 1650 / 16gb TODO download more ram

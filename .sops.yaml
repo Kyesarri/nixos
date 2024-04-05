@@ -1,0 +1,9 @@
+keys:
+  - &laptop age19g4mynp888gq9apwtjsy8ky2edufcr3l0s0kjrauykt2nlv0dufq854v02
+  - &serv age1zmx38rzkm4a9akula7wm2e67tr8p8ljpqhfsj8pmq7ct7epelc4svt674k
+creation_rules:
+  - path_regex: secrets/
+    key_groups:
+    - age:
+      - *laptop
+      - *serv

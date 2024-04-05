@@ -116,10 +116,10 @@ snapshots:
 ui:
   time_format: browser
 #
-live:
-  stream_name: driveway_sub
-  height: 480
-  quality: 8 # 31 (low) to 1 (high) quality
+# live:
+#  stream_name: driveway_sub
+#  height: 480
+#  quality: 8 # 31 (low) to 1 (high) quality
 #
 ffmpeg:
   hwaccel_args: preset-intel-qsv-h264
