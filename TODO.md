@@ -39,3 +39,8 @@ secrets added [x]
 
 integrate into config [~]
 
+
+# ~codeium~
+change hard-coded theme to nix-colors [ ]
+
+workaround for read-only symlink config [ ]

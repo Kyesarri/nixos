@@ -20,12 +20,13 @@
         kamadorueda.alejandra
         bbenoist.nix
         gruntfuggly.todo-tree
+        # schoofskelvin.vscode-sshfs # not packaged, reminder for myself here to install manually
       ];
     };
 
     home.file.".config/hypr/per-app/codium.conf" = {
       text = ''
-        windowrule = tile, title:VSCodium
+        # windowrule = tile, title:VSCodium # was causing pop-up / prompts to be full-screen
         bind = $mainMod, K, exec, codium
         windowrulev2 = bordercolor $cd99, initialClass:^(codium-url-handler)$
       '';
@@ -119,13 +120,13 @@
             //
             // toolbar
             "toolbar.activeBackground": "#24A8B4",          //
-            "toolbar.activeForeground": "#DF5273",            // unsure of these two for now
+            "toolbar.activeForeground": "#DF5273",          // unsure of these two for now
             //
             // activitybar / sidebars
             "activityBar.background": "#1C1E26",            // background colour
             "activityBar.foreground": "#DF5273",            // forefround colour, icons
             "activityBar.inactiveForeground": "#9DA0A2",    // inactive icon colour
-            "activityBar.border": "#2E303E",              // divider between action bar and tree / explorer
+            "activityBar.border": "#2E303E",                // divider between action bar and tree / explorer
             "activityBarBadge.background": "#DF5273",       // badge icon background colour
             "activityBarBadge.foreground": "#E3E6EE",       // badge text / icon colour
             "activityBar.activeBorder": "#DF5273",          // highlighted icon border colour
@@ -153,7 +154,7 @@
             "statusBar.foreground": "#CBCED0",
             //
             // tabs
-            "editorGroupHeader.tabsBackground": "#1C1E26",
+            "editorGroupHeader.tabsBackground": "#1C1E26",  //
             "tab.activeBackground": "#2E303E",              // active tab background
             "tab.hoverBackground": "#2E303E",               // hover background
             "tab.inactiveBackground": "#232530",            // inactive tab background
@@ -166,30 +167,30 @@
             "gitDecoration.stageModifiedResourceForeground": "#24A8B4",
             "gitDecoration.modifiedResourceForeground": "#EFAF8E",
             //
-            "tab.unfocusedActiveForeground": "#E3E6EE",   // when using tab groups
-            "tab.unfocusedInactiveForeground": "#9DA0A2", // same as above
-            "tab.unfocusedActiveBorderTop": "#00000000",  //
+            "tab.unfocusedActiveForeground": "#E3E6EE",     // when using tab groups
+            "tab.unfocusedInactiveForeground": "#9DA0A2",   // same as above
+            "tab.unfocusedActiveBorderTop": "#00000000",    //
             "tab.dragAndDropBorder": "#DF5273",
             "tab.unfocusedHoverBackground": "#2E303E",
             //
-            "tab.unfocusedHoverForeground": "#E3E6EE",    // hover inactive text
-            "tab.activeModifiedBorder": "#00000000",      // all transparent
-            "tab.inactiveModifiedBorder": "#00000000",    //
-            "tab.unfocusedActiveBorder": "#00000000",     //
-            "tab.lastPinnedBorder": "#00000000",          //
+            "tab.unfocusedHoverForeground": "#E3E6EE",      // hover inactive text
+            "tab.activeModifiedBorder": "#00000000",        // all transparent
+            "tab.inactiveModifiedBorder": "#00000000",      //
+            "tab.unfocusedActiveBorder": "#00000000",       //
+            "tab.lastPinnedBorder": "#00000000",            //
 
             //
             // titlebar
-            "titleBar.activeForeground": "#E3E6EE",       // text
-            "titleBar.inactiveForeground": "#6F6F70",     // text inactive
-            "titleBar.activeBackground": "#1C1E26",       // top-bar background
-            "titleBar.inactiveBackground": "#232530",     // when inactive window, titlebar background
-            "titleBar.border": "#2E303E",                 // border of titlebar, meh
+            "titleBar.activeForeground": "#E3E6EE",         // text
+            "titleBar.inactiveForeground": "#6F6F70",       // text inactive
+            "titleBar.activeBackground": "#1C1E26",         // top-bar background
+            "titleBar.inactiveBackground": "#232530",       // when inactive window, titlebar background
+            "titleBar.border": "#2E303E",                   // border of titlebar, meh
             // random things i never added to a category
             "panel.background": "#1C1E26",
             "input.background": "#232530",
             // mipmap
-            "minimap.background": "#232530",              // big scroll boi background
+            "minimap.background": "#232530",                // big scroll boi background
             "minimap.selectionOccurrenceHighlight": "#E93C5844",
             "minimap.findMatchHighlight": "#E93C5899",
             "minimap.selectionHighlight": "#24A8B499",
