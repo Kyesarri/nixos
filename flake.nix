@@ -10,13 +10,16 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
     sops-nix.url = "github:Mic92/sops-nix";
+    sops-nix.inputs.nixpkgs.follows = "nixpkgs";
 
+    # clan #
     flake-parts.url = "github:hercules-ci/flake-parts";
     flake-parts.inputs.nixpkgs-lib.follows = "nixpkgs";
 
     clan-core.url = "git+https://git.clan.lol/clan/clan-core";
     clan-core.inputs.nixpkgs.follows = "nixpkgs";
     clan-core.inputs.flake-parts.follows = "flake-parts";
+    # clan #
 
     hyprland.url = "github:hyprwm/Hyprland";
     # hyprland-plugins. url = "github:hyprwm/hyprland-plugins";
@@ -69,10 +72,10 @@
       "nix-laptop" = nixpkgs.lib.nixosSystem {
         inherit system specialArgs;
         modules = [
+          sops-nix.nixosModules.sops
           auto-cpufreq.nixosModules.default
           home-manager.nixosModules.home-manager
           ./hosts/laptop # 4800hs / 1650 / 16gb TODO download more ram
-          ./sops.nix
           {
             environment.systemPackages = [alejandra.defaultPackage.x86_64-linux];
           }

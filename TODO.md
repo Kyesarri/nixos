@@ -37,5 +37,5 @@ animation options [ ]
 # ~sops~
 secrets added [x]
 
-integrate into config [ ]
+integrate into config [~]
 

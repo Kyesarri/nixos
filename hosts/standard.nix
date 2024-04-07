@@ -160,7 +160,7 @@
       XDG_CURRENT_DESKTOP = "Hyprland";
       XDG_SESSION_DESKTOP = "Hyprland";
       XDG_SESSION_TYPE = "wayland";
-      NIXOS_OZONE_WL = "1"; # fixes electron apps in wayland... why do i use electron?
+      NIXOS_OZONE_WL = "1"; # fixes electron apps in wayland... why do i use electron? fucking codium
       XCURSOR_THEME = "graphite-dark";
     };
 
@@ -176,7 +176,7 @@
       gitAndTools.gitFull
       polkit_gnome
       waypipe
-      age
+      age # its a secret
     ];
   };
 

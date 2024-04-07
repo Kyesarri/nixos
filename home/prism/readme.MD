@@ -1,5 +1,5 @@
-basic like bolognese, add images to /nixos/home/prism/wallpapers/ 
-nix-colors handles the palette 
+basic like bolognese, add images to /nixos/home/prism/wallpapers/
+nix-colors handles the palette
 prism applies voodo wizard sleve magic to images
 outputs to ~/wallpapers/ with tint, from nix-colors scheme
 

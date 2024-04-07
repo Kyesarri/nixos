@@ -55,6 +55,9 @@
 
   boot.supportedFilesystems = ["ntfs"];
 
+  sops.defaultSopsFile = ../../secrets/secrets.yaml;
+  sops.age.keyFile = "/home/${spaghetti.user}/.config/sops/age/keys.txt";
+
   gnocchi = {
     ags.enable = true;
     gscreenshot.enable = true;
