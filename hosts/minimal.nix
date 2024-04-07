@@ -57,7 +57,7 @@
   };
 
   boot = {
-    kernelPackages = pkgs.linuxPackages_xanmod;
+    kernelPackages = pkgs.linuxPackages_xanmod; # not using latest branch
     kernelParams = [];
     loader = {
       efi.efiSysMountPoint = "/boot";
@@ -97,7 +97,7 @@
       ibm-plex
       nerdfonts
       hack-font
-      (nerdfonts.override {fonts = ["Iosevka" "CascadiaCode" "JetBrainsMono"];})
+      # (nerdfonts.override {fonts = ["Iosevka" "CascadiaCode" "JetBrainsMono"];})
     ];
   };
 
@@ -143,18 +143,16 @@
     extraGroups = ["networkmanager" "wheel"];
     packages = with pkgs; [
       brightnessctl # brightness control, used in waybar config for laptops only
-      wl-color-picker # wayland colour picker
       cinnamon.nemo-with-extensions # file manager
       qview # image viewer
       gnome.seahorse # key management
       shotman # image capture
-      hyprpicker # colour picker for wayland TODO fix script
+      hyprpicker # colour picker for wayland
       libnotify # notifications
       mate.mate-calc # calc
       p7zip # TODO needs a gui
       udiskie # usb mounting
       bitwarden # password manager
-      armcord # discord client / chat
     ];
   };
 }

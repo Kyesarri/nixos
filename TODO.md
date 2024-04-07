@@ -28,12 +28,14 @@ wallpaper toggled via hyprpaper [ ]
 -- remember last wallpaper "somehow" via json?
 
 # ~hyprland~
-hy3 added [~]
+hy3 added [x]
 
-hy3 config [ ]
+hy3 config [x]
 
 animation options [ ]
 
-# agenix
-lots [ ]
+# ~sops~
+secrets added [x]
+
+integrate into config [ ]
 

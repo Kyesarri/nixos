@@ -5,10 +5,9 @@
   outputs,
   inputs,
   spaghetti,
-  agenix,
   ...
 }: {
-  imports = [./console.nix]; # console colours
+  imports = [./console.nix];
   system.stateVersion = "23.11";
   time.timeZone = "Australia/Melbourne";
 
@@ -178,7 +177,6 @@
       polkit_gnome
       waypipe
       age
-      agenix.packages.x86_64-linux.default
     ];
   };
 
