@@ -40,7 +40,7 @@ secrets added [x]
 integrate into config [~]
 
 
-# ~codeium~
+# ~codium~
 change hard-coded theme to nix-colors [ ]
 
 workaround for read-only symlink config [ ]
