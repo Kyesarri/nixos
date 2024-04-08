@@ -33,7 +33,7 @@
     ../../home/asusctl # TODO look into issues with this further
     ../../home/bottom # task-manager
     ../../home/codium # TODO build custom theme to use, with nix-colors. # TODO pin versions to avoid compiling
-    ../../home/copyq # TODO change to an alternative
+    ../../home/copyq # TODO change to an alternative maybe?
     ../../home/dunst # ags has own notification daemon, will require fixing brightness scripts
     ../../home/firefox # why you always need to build from source, check to see if there are nighty / beta precompiled
     ../../home/git
@@ -46,9 +46,9 @@
     ../../home/ulauncher # TODO rename built theme, add credits to og author
     ../../home/virt
     ../../home/vpn
-    ../../home/gtk # uhh, nix-colors gtk theme iirc
+    ../../home/gtk # uhh, nix-colors gtk theme iirc # TODO rename to theme?
     ../../home/prism
-    ../../home/syncthing # TODO fix not launching at boot
+    ../../home/syncthing
     ../../home/tailscale
     ../../home/zsh
   ];
@@ -102,7 +102,6 @@
   };
 
   services = {
-    # fprintd.enable = true;
     xserver.enable = true;
     udev.extraHwdb = ''
       evdev:name:*:dmi:bvn*:bvr*:bd*:svnASUS*:pn*:*

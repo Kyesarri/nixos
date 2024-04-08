@@ -93,7 +93,7 @@ in {
             preload = /home/${spaghetti.user}/wallpapers/4.jpg
             preload = /home/${spaghetti.user}/wallpapers/5.png
             # ^ images must be preloaded to display
-            wallpaper = , /home/${spaghetti.user}/wallpapers/3.jpg
+            wallpaper = , /home/${spaghetti.user}/wallpapers/1.jpg
             # ^ any display, directory/name.ext
             splash = false
             # ^ adds splash text to wallpaper when true
