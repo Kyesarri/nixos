@@ -6,7 +6,6 @@
   outputs,
   nix-colors,
   spaghetti,
-  agenix,
   ...
 }: {
   imports = [
