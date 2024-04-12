@@ -25,6 +25,7 @@
   # runs as a systemd service
   ## only issue is that GPU monitoring isn't working from inside
   ## the container, but gpu is working
+  ### intel-gpu-tools may fix this?
   virtualisation.oci-containers = {
     backend = "docker"; # or podman
     containers.frigate = {
@@ -47,7 +48,7 @@
         "/etc/localtime:/etc/localtime:ro"
       ];
       extraOptions = [
-        "--shm-size=64m"
+        "--shm-size=256m"
         # "--device=/dev/apex_0:/dev/apex_0" # dont have coral yet
         "--device=/dev/dri/renderD128"
         "--mount=type=tmpfs,target=/tmp/cache,tmpfs-size=1000000000"
