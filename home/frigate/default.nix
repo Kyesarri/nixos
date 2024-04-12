@@ -20,7 +20,7 @@
   virtualisation.docker = {enable = true;};
 
   # adds docker-compose to system packages
-  environment.systemPackages = with pkgs; [docker-compose];
+  environment.systemPackages = with pkgs; [docker-compose intel-gpu-tools];
 
   # runs as a systemd service
   ## only issue is that GPU monitoring isn't working from inside

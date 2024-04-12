@@ -135,16 +135,16 @@ ui:
 ffmpeg:
   hwaccel_args: preset-intel-qsv-h264
 #
-#detectors:
-#  coral_pci:
-#    type: edgetpu
-#    device: pci
 detectors:
    deepstack:
      api_url: http://192.168.87.30:32168/v1/vision/detection
      type: deepstack
      api_timeout: 1 # seconds
 #
+birdseye:
+  enabled: true
+  width: 1280
+  height: 720
 #
 #
 #
