@@ -1,61 +1,75 @@
 cameras:
 #
   driveway:
-    best_image_timeout: 15
+    best_image_timeout: 60
     ffmpeg:
       inputs:
-      - path: rtsp://127.0.0.1:8554/driveway_sub
-        input_args: preset-rtsp-restream-low-latency
+      - path: rtsp://127.0.0.1:8554/driveway
+        input_args: preset-rtsp-restream
         roles:
         - detect
       - path: rtsp://127.0.0.1:8554/driveway
+        input_args: preset-rtsp-restream
         roles:
         - record
     record:
       enabled: true
     zones:
       carpark:
-        coordinates: 0,480,352,480,326,70,200,71,191,21,0,240
+        coordinates: 1315,235,793,267,768,73,471,407,0,954,0,1345,1357,1317
+      street:
+        coordinates: 0,0,2560,0,2560,123,2560,147,1325,161,1320,223,806,259,766,40,0,897,0,326
+      front_lawn:
+        coordinates: 2262,161,2560,155,2560,1074,1792,1120,1764,894,1384,924,1312,160
       verandah:
-        coordinates: 640,480,640,274,358,289,389,480
+        coordinates: 2560,1084,2560,1920,1543,1920,1440,1157
+      carpark_gate:
+        coordinates: 1483,1920,0,1920,0,1385,1397,1358
 #
   entry:
-    best_image_timeout: 15
+    best_image_timeout: 60
     ffmpeg:
       inputs:
-      - path: rtsp://127.0.0.1:8554/entry_sub
-        input_args: preset-rtsp-restream-low-latency
+      - path: rtsp://127.0.0.1:8554/entry
+        input_args: preset-rtsp-restream
         roles:
         - detect
       - path: rtsp://127.0.0.1:8554/entry
+        input_args: preset-rtsp-restream
         roles:
         - record
     motion:
       mask:
-        - 0,480,146,480,89,0,0,0
+        - 0,1920,734,1920,638,1518,574,1215,529,795,508,777,481,154,495,101,492,0,0,0
     record:
       enabled: true
     zones:
-      steps_chairs:
-        coordinates: 278,260,282,80,408,146,391,297,575,480,163,480,134,292
-      side_path:
-        coordinates: 142,269,125,132,213,66,217,187,261,247
+      door_verandah:
+        coordinates: 1095,332,1610,614,1553,1100,1438,1141,1341,1205,1262,1280,1098,1328,878,1409,645,1503,581,1122,1084,1037
+      stairs_bed_window:
+        coordinates: 530,827,699,768,846,709,884,172,1069,180,1045,745,1023,1012,560,1109
+      side_fence:
+        coordinates: 843,260,504,388,533,795,858,709
 #
 database:
   path: /db/frigate.db
 #
 detect:
   enabled: true
-  fps: 4
-  height: 480
-  width: 640
+  fps: 5
+  height: 1920
+  width: 2560
 #
 go2rtc:
   streams:
-    driveway: rtsp://user:password@192.168.87.20:554/h264Preview_01_main
-    entry: rtsp://user:password@192.168.87.22:554/h264Preview_01_main
-    driveway_sub: rtsp://user:password@192.168.87.20:554/h264Preview_01_sub
-    entry_sub: rtsp://user:password@192.168.87.22:554/h264Preview_01_sub
+    driveway: 
+      - "ffmpeg:http://192.168.87.20/flv?port=1935&app=bcs&stream=channel0_main.bcs&user=frigate&password=Mj3iNSUJydpaaiT87d65NZgS9kh#video=copy#audio=copy#audio=opus"
+    entry: 
+      - rtsp://frigate:Mj3iNSUJydpaaiT87d65NZgS9kh@192.168.87.22:554/h264Preview_01_main
+#    driveway_sub: 
+#      - rtsp://frigate:Mj3iNSUJydpaaiT87d65NZgS9kh@192.168.87.20:554/h264Preview_01_sub
+#    entry_sub: 
+#      - rtsp://frigate:Mj3iNSUJydpaaiT87d65NZgS9kh@192.168.87.22:554/h264Preview_01_sub
 #
 logger:
   default: info
@@ -68,7 +82,7 @@ motion:
 #
 mqtt:
   client_id: frigate
-  enabled: true
+  enabled: false
   host: 192.168.87.10
   password: frigate
   port: 1883
@@ -82,6 +96,8 @@ objects:
   - person
   - dog
   - bike
+  - phone
+  - package
 #
 record:
   enabled: true
@@ -110,31 +126,28 @@ snapshots:
   clean_copy: true
   crop: false
   enabled: true
-  quality: 70
-  timestamp: false
+  quality: 90
+  timestamp: true
 #
 ui:
   time_format: browser
 #
-# live:
-#  stream_name: driveway_sub
-#  height: 480
-#  quality: 8 # 31 (low) to 1 (high) quality
-#
 ffmpeg:
   hwaccel_args: preset-intel-qsv-h264
 #
+#detectors:
+#  coral_pci:
+#    type: edgetpu
+#    device: pci
 detectors:
-  ov:
-    type: openvino
-    device: AUTO
-    model:
-      path: /openvino-model/ssdlite_mobilenet_v2.xml
+   deepstack:
+     api_url: http://192.168.87.30:32168/v1/vision/detection
+     type: deepstack
+     api_timeout: 1 # seconds
 #
-model:
-  width: 300
-  height: 300
-  input_tensor: nhwc
-  input_pixel_format: bgr
-  labelmap_path: /openvino-model/coco_91cl_bkgr.txt
+#
+#
+#
+# eof
+#
 #

@@ -25,7 +25,7 @@
 
     ../../home # home-manaager config for all machines currently
     ../../home/bottom # nice to have terminal task manager / perfmon
-    # ../../home/frigate # testing in docker, not on metal TODO - docker :D
+    ../../home/frigate # testing in docker, not on metal TODO - docker :D
     ../../home/git # some baseline git config in there
     ../../home/kitty # yes pls
     ../../home/codium # need to add server into this
