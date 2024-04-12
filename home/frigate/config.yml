@@ -62,13 +62,13 @@ detect:
 #
 go2rtc:
   streams:
-    driveway: 
-      - "ffmpeg:http://192.168.87.20/flv?port=1935&app=bcs&stream=channel0_main.bcs&user=frigate&password=Mj3iNSUJydpaaiT87d65NZgS9kh#video=copy#audio=copy#audio=opus"
-    entry: 
+    driveway:
+      - rtsp://frigate:Mj3iNSUJydpaaiT87d65NZgS9kh@192.168.87.20:554/h264Preview_01_main
+    entry:
       - rtsp://frigate:Mj3iNSUJydpaaiT87d65NZgS9kh@192.168.87.22:554/h264Preview_01_main
-#    driveway_sub: 
+#    driveway_sub:
 #      - rtsp://frigate:Mj3iNSUJydpaaiT87d65NZgS9kh@192.168.87.20:554/h264Preview_01_sub
-#    entry_sub: 
+#    entry_sub:
 #      - rtsp://frigate:Mj3iNSUJydpaaiT87d65NZgS9kh@192.168.87.22:554/h264Preview_01_sub
 #
 logger:
