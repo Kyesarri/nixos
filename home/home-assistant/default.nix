@@ -30,6 +30,11 @@
           "/home/${spaghetti.user}/.docker/haos:/config"
         ];
         environment = {};
+        extraOptions = [
+          "--device=/dev/ttyUSB0"
+          "--network=host"
+          "--privileged"
+        ];
       };
     };
   };
