@@ -107,6 +107,8 @@ record:
     - person
     - dog
     - bike
+    - phone
+    - package
     post_capture: 10
     pre_capture: 6
     retain:

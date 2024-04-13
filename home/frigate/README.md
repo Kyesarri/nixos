@@ -2,7 +2,7 @@
 
 module runs frigate as a docker container / service on host machine, configuration assumes using modern (= or > 10th gen) intel with iGPU for hw accel
 
-sees around 1% cpu core usage per camera feed
+sees around 1% cpu core usage per camera feed, gpu sees around 15 - 25% busy (iGPU) use while processing 2 x 2560x1920 feeds 30fps / 5fps detect
 
 my config consists of 3 (one not installed) reolink RLC-520A / IPC_523128M5MP running the latest firmware (as of 03.04.24)
 
