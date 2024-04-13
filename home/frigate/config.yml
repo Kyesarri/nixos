@@ -83,7 +83,7 @@ motion:
 mqtt:
   client_id: frigate
   enabled: true
-  host: 192.168.87.30
+  host: 192.168.87.9
   password: $iFQhh^QXu2^r&s%!MX%h969PNW
   port: 1883
   stats_interval: 60
