@@ -138,11 +138,25 @@ ui:
 ffmpeg:
   hwaccel_args: preset-intel-qsv-h264
 #
+#detectors:
+#   deepstack:
+#     api_url: http://192.168.87.30:32168/v1/vision/detection
+#     type: deepstack
+#     api_timeout: 1 # seconds
+#
 detectors:
-   deepstack:
-     api_url: http://192.168.87.30:32168/v1/vision/detection
-     type: deepstack
-     api_timeout: 1 # seconds
+  ov:
+    type: openvino
+    device: AUTO
+    model:
+      path: /openvino-model/ssdlite_mobilenet_v2.xml
+
+model:
+  width: 300
+  height: 300
+  input_tensor: nhwc
+  input_pixel_format: bgr
+  labelmap_path: /openvino-model/coco_91cl_bkgr.txt
 #
 birdseye:
   enabled: true
