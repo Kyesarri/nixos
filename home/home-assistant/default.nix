@@ -25,7 +25,10 @@
         ports = [
           "8123:8123"
         ];
-        volumes = ["/home/${spaghetti.user}/.docker/emqx:/opt/emqx/data"];
+        volumes = [
+          "/etc/localtime:/etc/localtime:ro"
+          "/home/${spaghetti.user}/.docker/haos:/config"
+        ];
         environment = {};
       };
     };
