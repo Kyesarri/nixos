@@ -17,15 +17,17 @@
   virtualisation.oci-containers = {
     backend = "docker"; # or podman
     #
-    home-assistant = {
-      hostname = "haos-nix-serv";
-      autoStart = true;
-      image = "ghcr.io/home-assistant/home-assistant:stable";
-      ports = [
-        "8123:8123"
-      ];
-      volumes = ["/home/${spaghetti.user}/.docker/emqx:/opt/emqx/data"];
-      environment = {};
+    containers = {
+      home-assistant = {
+        hostname = "haos-nix-serv";
+        autoStart = true;
+        image = "ghcr.io/home-assistant/home-assistant:stable";
+        ports = [
+          "8123:8123"
+        ];
+        volumes = ["/home/${spaghetti.user}/.docker/emqx:/opt/emqx/data"];
+        environment = {};
+      };
     };
   };
 }
