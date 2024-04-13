@@ -32,6 +32,7 @@
     ../../home/virt
     ../../home/gtk # has some theming bits, might have some requirement still
     ../../home/zsh # yes pls
+    ../../home/homeassistant
 
     # ../../home/syncthing # testing without currently
     # ../../home/tailscale # TODO disabled until i can figure out mkif hostname == {nix-serv}; with an else
