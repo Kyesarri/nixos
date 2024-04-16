@@ -45,6 +45,7 @@
 
   networking = {
     hostName = "nix-serv";
+    hostId = "bed5b7cd";
     # moved most conf to /containers/default.nix due to bridge conf
     firewall = {
       enable = true;

@@ -48,6 +48,7 @@
   boot = {
     kernelPackages = pkgs.linuxPackages_xanmod_latest; # use latest xanmod kernel
     supportedFilesystems = ["zfs"];
+    zfs.forceImportRoot = false;
     kernelParams = [
       "i915.enable_fbc=1" # iGPU framebuffer compression, nfi if this works
       "intel_iommu=on" # pci device pass-through
