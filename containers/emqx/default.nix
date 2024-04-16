@@ -10,7 +10,7 @@
   };
   virtualisation.oci-containers = {
     backend = "docker";
-    emqx = {
+    containers.emqx = {
       hostname = "emqx-nix-serv";
       autoStart = true;
       image = "emqx:latest";
