@@ -22,6 +22,7 @@
       fsType = "ext4";
     };
     "/tmp/cache" = {
+      # cache, for frigate?
       device = "none";
       fsType = "tmpfs";
     };
