@@ -12,7 +12,7 @@ in
       autoStart = true;
       privateNetwork = true;
       hostBridge = "br0";
-      localAddress = "192.168.87.44/24"; # container ip
+      localAddress = "192.168.87.2/24"; # container ip
 
       config = {
         config,
