@@ -23,16 +23,19 @@
           "18083:18083"
         ];
         volumes = [
-          "/home/${spaghetti.user}/.docker/emqx:/opt/emqx/data"
+          "/home/${spaghetti.user}/.docker/emqx/data:/opt/emqx/data"
+          "/home/${spaghetti.user}/.docker/emqx/etc:/opt/emqx/etc"
+          "/home/${spaghetti.user}/.docker/emqx/log:/opt/emqx/log"
           "/etc/localtime:/etc/localtime:ro"
         ];
         environment = {
-          EMQX_NODE_NAME = "emqx-nix-serv";
+          EMQX_NODE_NAME = "emqx@nix-serv.home.lan";
           EMQX_CLUSTER__DISCOVERY_STRATEGY = "static";
-          EMQX_CLUSTER__STATIC__SEEDS = "emqx@emqx-nix-serv";
+          EMQX_CLUSTER__STATIC__SEEDS = "emqx@nix-serv.home.lan";
         };
         extraOptions = [
           "--network=host"
+          "--pull=always"
         ];
       };
     };
