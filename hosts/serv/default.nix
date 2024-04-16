@@ -143,6 +143,7 @@
 
     shells = with pkgs; [zsh]; # default shell to zsh
     systemPackages = with pkgs; [
+      udiskie # usb mounting
       lshw # list hardware
       usbutils # usb thing
       busybox # nice-to-have
