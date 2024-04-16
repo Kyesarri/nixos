@@ -6,13 +6,14 @@
 }: {
   networking.firewall.allowedTCPPorts = [32400];
 
-  virtualisation.docker = {enable = true;};
+  virtualisation.docker = {
+    enable = true;
+  };
 
   environment.systemPackages = with pkgs; [docker-compose];
 
   virtualisation.oci-containers = {
-    backend = "podman";
-    dockerCompat = true;
+    backend = "docker";
     #
     containers = {
       plex = {
