@@ -123,7 +123,8 @@
         inherit system specialArgs;
         modules = [
           home-manager.nixosModules.home-manager
-          ./hosts/serv # 15s-fq2050TU / i5-1135G7 / iris x / 8gb FIXME
+          ./hosts/serv # ASUSz390i / 9900k / 32gb
+          # 15s-fq2050TU / i5-1135G7 / iris x / 8gb FIXME #RIP
           {
             environment.systemPackages = [alejandra.defaultPackage.x86_64-linux];
           }

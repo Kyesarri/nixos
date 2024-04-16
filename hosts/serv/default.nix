@@ -17,8 +17,8 @@
 
     ../../containers # handles networking / bridge for host / containers
     ../../containers/nginx # reverse proxy boi
-    ../../containers/blocky # testing, to replace pi-hole lxc on proxmox
-    ../../containers/authelia # local web auth
+    #../../containers/blocky # testing, to replace pi-hole lxc on proxmox
+    #../../containers/authelia # local web auth
 
     ../../hardware/audio # probs worthwile for warning sounds or something
     ../../hardware/battery # this server comes with its own built-in "ups"
