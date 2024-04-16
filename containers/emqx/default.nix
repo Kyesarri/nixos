@@ -29,6 +29,7 @@
         environment = {
           EMQX_NODE_NAME = "emqx-nix-serv";
           EMQX_CLUSTER__DISCOVERY_STRATEGY = "static";
+          EMQX_CLUSTER__STATIC__SEEDS = ["emqx@emqx-nix-serv"];
         };
         extraOptions = [
           "--network=host"
