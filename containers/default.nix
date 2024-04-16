@@ -1,7 +1,7 @@
 {config, ...}: {
   ## bridge
   networking = {
-    bridges.br0.interfaces = ["enp1s0"]; # serv interface
+    bridges.br0.interfaces = ["eno1"]; # serv interface
     useDHCP = false; # for host?
     interfaces."br0".useDHCP = true; # bridged devices use dhcp by default
     interfaces."br0".ipv4.addresses = [
