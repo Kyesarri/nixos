@@ -5,7 +5,7 @@
   ...
 }: {
   networking.firewall = {
-    allowedTCPPorts = [];
+    allowedTCPPorts = [32400];
   };
 
   virtualisation.docker = {enable = true;};
