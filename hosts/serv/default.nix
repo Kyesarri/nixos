@@ -21,7 +21,7 @@
     # ../../containers/authelia # local web auth
 
     ../../hardware/audio # probs worthwile for warning sounds or something
-    # ../../hardware/battery # this server comes with its own built-in "ups"
+    # ../../hardware/battery # this server comes with its own built-in "ups" # RIP
 
     ../../home # home-manaager config for all machines currently
     ../../home/bottom # nice to have terminal task manager / perfmon
@@ -87,28 +87,6 @@
         "ntp.nml.csiro.au"
         "ntp.ise.canberra.edu.au"
       ];
-    };
-
-    tlp = {
-      enable = true;
-      settings = {
-        CPU_SCALING_GOVERNOR_ON_AC = "performance";
-        CPU_SCALING_GOVERNOR_ON_BAT = "powersave";
-
-        CPU_ENERGY_PERF_POLICY_ON_BAT = "power";
-        CPU_ENERGY_PERF_POLICY_ON_AC = "performance";
-
-        CPU_MIN_PERF_ON_AC = 0;
-        CPU_MAX_PERF_ON_AC = 100;
-        CPU_MIN_PERF_ON_BAT = 0;
-        CPU_MAX_PERF_ON_BAT = 20;
-
-        # optional helps save long term battery health
-        ## using battery as ups for this machine :)
-        START_CHARGE_THRESH_BAT0 = 40; # 40 and bellow it starts to charge
-        STOP_CHARGE_THRESH_BAT0 = 65; # 65 and above it stops charging
-        # unsure if these are actually applying on this system yet, do not believe so
-      };
     };
   };
 
