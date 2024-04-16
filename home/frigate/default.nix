@@ -26,6 +26,7 @@
   ## only issue is that GPU monitoring isn't working from inside
   ## the container, but gpu is working
   ### intel-gpu-tools may fix this?
+  #### nope :)
   virtualisation.oci-containers = {
     backend = "docker"; # or podman
     #
@@ -52,7 +53,7 @@
         ];
         extraOptions = [
           "--shm-size=256m"
-          # "--device=/dev/apex_0:/dev/apex_0" # dont have coral yet - implement 9900k as nix?
+          # "--device=/dev/apex_0:/dev/apex_0" # dont have coral yet - implement 9900k as nix? yespls
           "--device=/dev/dri/renderD128"
           "--mount=type=tmpfs,target=/tmp/cache,tmpfs-size=1000000000"
           "--pull=always"
@@ -81,6 +82,7 @@
 
   home-manager.users.${spaghetti.user} = {
     # frigate config.yml symlink, easier to edit in codeium as a .yml vs pure nix
+    # will move to text = '' ''; soon
     home.file.".docker/frigate/config.yml" = {
       source = ./config.yml;
     };
