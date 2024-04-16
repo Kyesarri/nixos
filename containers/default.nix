@@ -1,20 +1,35 @@
+{config, ...}:
+{
+  ## bridge
+  networking = {
+    bridges.br0.interfaces = ["enp1s0"]; # serv interface
+    useDHCP = false; # for host?
+    interfaces."br0".useDHCP = true; # bridged devices use dhcp by default
+    interfaces."br0".ipv4.addresses = [
+      {
+        address = "192.168.87.9"; # host ip
+        prefixLength = 24;
+      }
+    ];
+    defaultGateway = "192.168.87.251";
+    nameservers = ["1.1.1.1"];
+  };
+}
 {
   config,
   pkgs,
   ...
 }: {
-  ## bridge
-
   virtualisation.docker = {enable = true;};
 
   environment.systemPackages = with pkgs; [docker-compose intel-gpu-tools];
 
   networking = {
+    useDHCP = false; # for host?
+    bridges.br0.interfaces = ["eno1"]; # serv bridge #1
+    defaultGateway = "192.168.87.251";
+    nameservers = ["1.1.1.1"];
     interfaces = {
-      useDHCP = false; # for host?
-      bridges.br0.interfaces = ["eno1"]; # serv interface #1
-      defaultGateway = "192.168.87.251";
-      nameservers = ["1.1.1.1"];
       #
       "br0" = {
         useDHCP = true; # bridged devices use dhcp by default
