@@ -26,8 +26,6 @@
     # ../../containers/authelia # local web auth
 
     ../../hardware/audio # probs worthwile for warning sounds or something
-    # ../../hardware/battery # this server comes with its own built-in "ups" # RIP
-
     ../../home # home-manaager config for all machines currently
     ../../home/bottom # nice to have terminal task manager / perfmon
     ../../home/git # some baseline git config in there
@@ -83,7 +81,8 @@
     tailscale.openFirewall = true;
     ###### TODO ######
 
-    # used for cameras ntp
+    # used for cameras ntp - can i make this host, use this ntp server? :D
+    # sounds like it'l cause issues, lets send
     chrony = {
       enable = true;
       enableNTS = true;

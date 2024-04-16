@@ -11,7 +11,8 @@
   environment.systemPackages = with pkgs; [docker-compose];
 
   virtualisation.oci-containers = {
-    backend = "docker";
+    backend = "podman";
+    dockerCompat = true;
     #
     containers = {
       plex = {
