@@ -34,7 +34,7 @@
           PGID = 1000;
         };
         extraOptions = [
-          "--network=host"
+          "--ip=192.168.87.11"
         ];
       };
       #
@@ -54,7 +54,7 @@
           PGID = 1000;
         };
         extraOptions = [
-          "--network=host"
+          "--ip=192.168.87.12"
         ];
       };
     };
