@@ -20,6 +20,7 @@
     ../../containers/plex # oci / docker not nix-container
     ../../containers/home-assistant
     ../../containers/frigate # testing in docker, not on metal TODO - docker :D
+    ../../containers/emqx
 
     # ../../containers/blocky # testing, to replace pi-hole lxc on proxmox
     # ../../containers/authelia # local web auth
