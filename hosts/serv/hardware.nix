@@ -21,7 +21,7 @@
       device = "/dev/disk/by-uuid/29b03be4-7107-4825-a062-ae8cedfc3001";
       fsType = "ext4";
     };
-    fileSystems."/tmp/cache" = {
+    "/tmp/cache" = {
       device = "none";
       fsType = "tmpfs";
     };
