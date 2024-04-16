@@ -18,6 +18,8 @@
     ../../containers # handles networking / bridge for host / containers
     ../../containers/nginx # reverse proxy boi
     ../../containers/plex # oci / docker not nix-container
+    ../../containers/home-assistant
+    ../../containers/frigate # testing in docker, not on metal TODO - docker :D
 
     # ../../containers/blocky # testing, to replace pi-hole lxc on proxmox
     # ../../containers/authelia # local web auth
@@ -27,14 +29,12 @@
 
     ../../home # home-manaager config for all machines currently
     ../../home/bottom # nice to have terminal task manager / perfmon
-    ../../home/frigate # testing in docker, not on metal TODO - docker :D
     ../../home/git # some baseline git config in there
     ../../home/kitty # yes pls
     ../../home/codium # need to add server into this
     ../../home/virt # ehhhhh not sure if wanted / needed whatsoever
     ../../home/gtk # has some theming bits, might have some requirement still
     ../../home/zsh # yes pls
-    ../../home/home-assistant
 
     # ../../home/syncthing # testing without currently
     # ../../home/tailscale # TODO disabled until i can figure out mkif hostname == {nix-serv}; with an else

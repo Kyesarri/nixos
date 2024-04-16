@@ -1,5 +1,10 @@
 {config, ...}: {
   ## bridge
+
+  virtualisation.docker = {enable = true;};
+
+  environment.systemPackages = with pkgs; [docker-compose intel-gpu-tools];
+
   networking = {
     bridges.br0.interfaces = ["eno1"]; # serv interface
     useDHCP = false; # for host?

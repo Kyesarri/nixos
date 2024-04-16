@@ -4,9 +4,7 @@
   pkgs,
   ...
 }: {
-  networking.firewall = {
-    allowedTCPPorts = [32400];
-  };
+  networking.firewall.allowedTCPPorts = [32400];
 
   virtualisation.docker = {enable = true;};
 
@@ -23,7 +21,9 @@
         ports = [];
         volumes = [
           "/etc/localtime:/etc/localtime:ro"
+
           "/dev/dri:/dev/dri"
+
           "/hddb/movies:/movies/hddb"
           "/hddc/movies:/movies/hddc"
           "/hddd/movies:/movies/hddd"
