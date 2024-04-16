@@ -31,39 +31,6 @@
       device = "/dev/disk/by-uuid/84DE-719A";
       fsType = "vfat";
     };
-
-    "/mnt/hddb" = {
-      # 4tb HGST
-      device = "/dev/disk/by-uuid/7182536065359074828";
-      fsType = "zfs";
-      label = "hddc";
-    };
-    /*
-    "/mnt/hddc" = {
-      # 4tb HGST
-      device = "/dev/disk/by-uuid/13382217039397317973";
-      fsType = "";
-      label = "hddc";
-    };
-    "/mnt/hddd" = {
-      # 4tb HGST
-      device = "/dev/disk/by-uuid/17716687067702416013";
-      fsType = "";
-      label = "hddd";
-    };
-    "/mnt/hdde" = {
-      # 2tb 10yo WD Green
-      device = "/dev/disk/by-uuid/7553634185575903635";
-      fsType = "";
-      label = "hdde";
-    };
-    "/mnt/nvmea" = {
-      # 1tb sp nvme
-      device = "/dev/disk/by-uuid/12014723615036891191";
-      fsType = "";
-      label = "nvmea";
-    };
-    */
   };
 
   swapDevices = [{device = "/dev/disk/by-uuid/31007c77-40ea-4c3c-b5a7-08db63f333d8";}];
