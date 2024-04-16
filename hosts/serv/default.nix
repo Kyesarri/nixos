@@ -17,6 +17,8 @@
 
     ../../containers # handles networking / bridge for host / containers
     ../../containers/nginx # reverse proxy boi
+    ../../containers/plex # oci / docker not nix-container
+
     # ../../containers/blocky # testing, to replace pi-hole lxc on proxmox
     # ../../containers/authelia # local web auth
 

@@ -17,17 +17,14 @@
 
   fileSystems = {
     "/" = {
-      # root fs
       device = "/dev/disk/by-uuid/29b03be4-7107-4825-a062-ae8cedfc3001";
       fsType = "ext4";
     };
     "/tmp/cache" = {
-      # cache, for frigate?
       device = "none";
       fsType = "tmpfs";
     };
     "/boot" = {
-      # boot
       device = "/dev/disk/by-uuid/84DE-719A";
       fsType = "vfat";
     };

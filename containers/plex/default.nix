@@ -23,6 +23,17 @@
         ports = [];
         volumes = [
           "/etc/localtime:/etc/localtime:ro"
+
+          "/hddb/movies:/movies/hddb"
+          "/hddc/movies:/movies/hddc"
+          "/hddd/movies:/movies/hddd"
+          "/hdde/movies:/movies/hdde"
+
+          "/hddb/tv_shows:/tv_shows/hddb"
+          "/hddc/tv_shows:/tv_shows/hddc"
+          "/hddd/tv_shows:/tv_shows/hddd"
+          "/hdde/tv_shows:/tv_shows/hdde"
+
           "/home/${spaghetti.user}/.docker/plex:/config"
         ];
         environment = {};
