@@ -1,4 +1,8 @@
-{config, ...}: {
+{
+  config,
+  pkgs,
+  ...
+}: {
   ## bridge
 
   virtualisation.docker = {enable = true;};
