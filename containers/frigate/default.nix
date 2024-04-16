@@ -55,7 +55,7 @@
       };
     };
   };
-
+  #
   home-manager.users.${spaghetti.user} = {
     # frigate config.yml symlink, easier to edit in codeium as a .yml vs pure nix
     # will move to text = '' ''; soon

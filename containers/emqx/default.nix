@@ -27,9 +27,12 @@
           "/etc/localtime:/etc/localtime:ro"
         ];
         environment = {
-          EMQX_NODE_NAME = "emqx@nix-serv";
+          EMQX_NODE_NAME = "emqx-nix-serv";
           EMQX_CLUSTER__DISCOVERY_STRATEGY = "static";
         };
+        extraOptions = [
+          "--network=host"
+        ];
       };
     };
   };
