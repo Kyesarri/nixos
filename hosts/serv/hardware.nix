@@ -31,13 +31,14 @@
       device = "/dev/disk/by-uuid/84DE-719A";
       fsType = "vfat";
     };
-    /*
+
     "/mnt/hddb" = {
       # 4tb HGST
       device = "/dev/disk/by-uuid/7182536065359074828";
-      fsType = "auto";
+      fsType = "zfs";
       label = "hddc";
     };
+    /*
     "/mnt/hddc" = {
       # 4tb HGST
       device = "/dev/disk/by-uuid/13382217039397317973";

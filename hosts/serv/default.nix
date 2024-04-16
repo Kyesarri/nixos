@@ -29,7 +29,7 @@
     ../../home/git # some baseline git config in there
     ../../home/kitty # yes pls
     ../../home/codium # need to add server into this
-    ../../home/virt
+    ../../home/virt # ehhhhh not sure if wanted / needed whatsoever
     ../../home/gtk # has some theming bits, might have some requirement still
     ../../home/zsh # yes pls
     ../../home/home-assistant
@@ -122,7 +122,6 @@
 
     shells = with pkgs; [zsh]; # default shell to zsh
     systemPackages = with pkgs; [
-      udiskie # usb mounting
       lshw # list hardware
       usbutils # usb thing
       busybox # nice-to-have
