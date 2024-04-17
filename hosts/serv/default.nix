@@ -21,6 +21,7 @@
     ../../containers/home-assistant
     ../../containers/frigate # testing in docker, not on metal TODO - docker :D
     ../../containers/emqx
+    ../../containers/dockge
 
     # ../../containers/blocky # testing, to replace pi-hole lxc on proxmox
     # ../../containers/authelia # local web auth
