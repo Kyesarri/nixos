@@ -11,7 +11,7 @@ in
     containers.${hostName} = {
       #
       autoStart = true;
-      # privateNetwork = true;
+      privateNetwork = true;
       hostBridge = "br0";
       localAddress = "192.168.87.2/24"; # container ip
       forwardPorts = [
@@ -28,11 +28,11 @@ in
         ...
       }: {
         system.stateVersion = "23.11";
-
+        #
         networking = {
           hostName = "${hostName}";
           domain = "home.lan";
-          nameservers = ["1.1.1.1"];
+          nameservers = ["192.168.87.251"];
           defaultGateway = "192.168.87.251";
           firewall = {
             enable = false;
@@ -41,9 +41,9 @@ in
           # workaround for bug https://github.com/NixOS/nixpkgs/issues/162686
           useHostResolvConf = lib.mkForce false;
         };
-
+        #
         # environment.systemPackages = with pkgs; [ffmpeg_5-full lshw];
-
+        #
         services.resolved.enable = true;
         services.nginx = {
           enable = true;

@@ -8,6 +8,7 @@
   environment.systemPackages = with pkgs; [docker-compose intel-gpu-tools];
 
   networking = {
+    nat.enable = true;
     useDHCP = false; # for host?
     bridges.br0.interfaces = ["eno1"]; # serv bridge #1
     defaultGateway = "192.168.87.251";
