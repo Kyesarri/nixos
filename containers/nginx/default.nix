@@ -8,6 +8,7 @@ in
     lib,
     ...
   }: {
+    networking.firewall.allowedTCPPorts = [webPort];
     containers.${hostName} = {
       #
       autoStart = true;
