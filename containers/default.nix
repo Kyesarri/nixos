@@ -12,7 +12,7 @@
     useDHCP = false; # for host?
     bridges.br0.interfaces = ["eno1"]; # serv bridge #1
     defaultGateway = "192.168.87.251";
-    nameservers = ["1.1.1.1"];
+    nameservers = ["192.168.87.251"];
     interfaces = {
       #
       "br0" = {
@@ -20,6 +20,10 @@
         ipv4.addresses = [
           {
             address = "192.168.87.9"; # bridge ip?
+            prefixLength = 24;
+          }
+          {
+            address = "192.168.87.2"; # have to define this for hosts?
             prefixLength = 24;
           }
         ];
