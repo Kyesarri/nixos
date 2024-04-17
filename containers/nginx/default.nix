@@ -8,6 +8,7 @@ in
     lib,
     ...
   }: {
+    networking.firewall.allowedTCPPorts = [webPort];
     containers.${hostName} = {
       autoStart = true;
       privateNetwork = true;
@@ -24,7 +25,7 @@ in
         networking = {
           hostName = "${hostName}";
           domain = "home.lan";
-          nameservers = ["192.168.87.1"];
+          nameservers = ["1.1.1.1"];
           defaultGateway = "192.168.87.251";
           firewall = {
             enable = true;
