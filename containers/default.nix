@@ -22,10 +22,6 @@
             address = "192.168.87.9"; # bridge ip?
             prefixLength = 24;
           }
-          {
-            address = "192.168.87.2"; # have to define this for hosts?
-            prefixLength = 24;
-          }
         ];
       };
       #
