@@ -13,7 +13,6 @@
   environment.systemPackages = with pkgs; [docker-compose intel-gpu-tools];
 
   virtualisation.oci-containers = {
-    backend = "docker";
     #
     containers = {
       home-assistant = {

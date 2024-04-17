@@ -13,7 +13,6 @@
   environment.systemPackages = with pkgs; [docker-compose];
 
   virtualisation.oci-containers = {
-    backend = "docker";
     #
     containers = {
       plex = {

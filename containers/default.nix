@@ -3,7 +3,16 @@
   pkgs,
   ...
 }: {
-  virtualisation.docker = {enable = true;};
+  # virtualisation.docker = {enable = true;};
+
+  virtualisation = {
+    oci-containers.backend = "podman";
+    podman = {
+      enable = true;
+      autoPrune.enable = true;
+      dockerCompat = true;
+    };
+  };
 
   environment.systemPackages = with pkgs; [docker-compose intel-gpu-tools];
 
