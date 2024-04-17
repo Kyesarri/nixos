@@ -20,6 +20,8 @@
         ipv4.addresses = [
           {
             address = "192.168.87.9"; # bridge ip?
+            defaultGateway = "192.168.87.251";
+            nameservers = "192.168.87.251";
             prefixLength = 24;
           }
         ];
