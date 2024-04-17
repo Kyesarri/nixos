@@ -125,7 +125,7 @@
 
     shells = with pkgs; [zsh]; # default shell to zsh
     systemPackages = with pkgs; [
-      gasket # coral tpu
+      linuxKernel.packages.linux_xanmod_latest.gasket # coral tpu
       lshw # list hardware
       usbutils # usb thing
       busybox # nice-to-have
