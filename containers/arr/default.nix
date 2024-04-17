@@ -18,6 +18,9 @@
         hostname = "transmission-nix-serv";
         autoStart = true;
         image = "lscr.io/linuxserver/transmission:latest";
+        privateNetwork = true;
+        hostBridge = "br0";
+        localAddress = "192.168.87.11/24";
         ports = [
           "9091:9091"
           "51413:51413"
@@ -36,7 +39,7 @@
         };
         */
         extraOptions = [
-          "--ip=192.168.87.11"
+          # "--ip=192.168.87.11"
         ];
       };
       #
@@ -44,6 +47,9 @@
         hostname = "radarr-nix-serv";
         autoStart = true;
         image = "lscr.io/linuxserver/radarr:latest";
+        privateNetwork = true;
+        hostBridge = "br0";
+        localAddress = "192.168.87.12/24";
         ports = ["7878:7878"];
         volumes = [
           "/home/${spaghetti.user}/.docker/radarr:/config"
@@ -58,7 +64,7 @@
         };
         */
         extraOptions = [
-          "--ip=192.168.87.12"
+          # "--ip=192.168.87.12"
         ];
       };
     };
