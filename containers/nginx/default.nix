@@ -17,7 +17,7 @@ in
       forwardPorts = [
         {
           containerPort = webPort;
-          hostPort = 81;
+          hostPort = webPort;
           protocol = "tcp";
         }
       ];
@@ -35,7 +35,7 @@ in
           nameservers = ["1.1.1.1"];
           defaultGateway = "192.168.87.251";
           firewall = {
-            enable = true;
+            enable = false;
             allowedTCPPorts = [webPort];
           };
           # workaround for bug https://github.com/NixOS/nixpkgs/issues/162686
