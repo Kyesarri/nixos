@@ -15,7 +15,13 @@ in
       privateNetwork = true;
       hostBridge = "br0";
       localAddress = "192.168.87.2/24"; # container ip
-      forwardPorts = [{containerPort = 80;}];
+      forwardPorts = [
+        {
+          containerPort = webPort;
+          hostPort = webPort;
+          protocol = "tcp";
+        }
+      ];
       #
       config = {
         config,
