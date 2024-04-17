@@ -29,10 +29,12 @@
           # TODO "/path/to/watch/folder:/watch"
           "/etc/localtime:/etc/localtime:ro"
         ];
+        /*
         environment = {
           PUID = 1000;
           PGID = 1000;
         };
+        */
         extraOptions = [
           "--ip=192.168.87.11"
         ];
@@ -49,10 +51,12 @@
           # TODO "/path/to/watch/folder:/watch"
           "/etc/localtime:/etc/localtime:ro"
         ];
-        environment = {
+        /*
+          environment = {
           PUID = 1000;
           PGID = 1000;
         };
+        */
         extraOptions = [
           "--ip=192.168.87.12"
         ];
