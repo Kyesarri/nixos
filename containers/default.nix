@@ -14,7 +14,7 @@
     };
   };
 
-  environment.systemPackages = with pkgs; [docker-compose intel-gpu-tools];
+  environment.systemPackages = with pkgs; [podman intel-gpu-tools];
 
   networking = {
     nat.enable = true;
