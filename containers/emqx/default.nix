@@ -14,7 +14,7 @@
       emqx = {
         hostname = "emqx-nix-serv";
         autoStart = true;
-        image = "ghcr.ioemqx/emqx:latest";
+        image = "ghcr.io/emqx/emqx:latest";
         ports = [
           "1883:1883"
           "8083:8083"
