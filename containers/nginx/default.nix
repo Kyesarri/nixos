@@ -10,11 +10,13 @@ in
   }: {
     networking.firewall.allowedTCPPorts = [webPort];
     containers.${hostName} = {
+      #
       autoStart = true;
       privateNetwork = true;
       hostBridge = "br0";
       localAddress = "192.168.87.2/24"; # container ip
-
+      forwardPorts = [{containerPort = 80;}];
+      #
       config = {
         config,
         pkgs,
