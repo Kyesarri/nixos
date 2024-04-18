@@ -9,10 +9,12 @@
       enable = true;
       autoPrune.enable = true;
       dockerCompat = true;
+      /*
       networkSocket = {
         openFirewall = true;
         enable = true;
       };
+      */
       defaultNetwork.settings = {};
     };
   };
