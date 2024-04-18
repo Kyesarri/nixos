@@ -1,14 +1,16 @@
-{
-  spaghetti,
-  config,
-  pkgs,
-  ...
-}: {
-  networking.firewall.allowedTCPPorts = [32400];
+let
+  hostName = "plex";
+in
+  {
+    spaghetti,
+    config,
+    pkgs,
+    ...
+  }: {
+    networking.firewall.allowedTCPPorts = [32400];
 
-  virtualisation.oci-containers.containers = {
-    plex = {
-      hostname = "plex-nix-serv";
+    virtualisation.oci-containers.containers.${hostName} = {
+      hostname = "${hostName}-nix-serv";
       autoStart = true;
       image = "lscr.io/linuxserver/plex:latest";
       ports = [];
@@ -27,7 +29,7 @@
         "/hddd/tv_shows:/tv_shows/hddd"
         "/hdde/tv_shows:/tv_shows/hdde"
 
-        "/home/${spaghetti.user}/.docker/plex:/config"
+        "/home/${spaghetti.user}/.docker/${hostName}:/config"
       ];
       environment = {};
       extraOptions = [
@@ -35,5 +37,4 @@
         "--privileged"
       ];
     };
-  };
-}
+  }

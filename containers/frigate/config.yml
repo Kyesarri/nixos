@@ -57,7 +57,7 @@ database:
 #
 detect:
   enabled: true
-  fps: 5
+  fps: 4
   height: 480
   width: 640
 #
@@ -123,7 +123,7 @@ record:
   sync_recordings: true
 #
 rtmp:
-  enabled: false
+  enabled: true
 #
 snapshots:
   bounding_box: true
@@ -137,7 +137,7 @@ ui:
   time_format: browser
 #
 ffmpeg:
-  hwaccel_args: preset-intel-qsv-h264
+  hwaccel_args: preset-vaapi
 #
 #detectors:
 #   deepstack:
@@ -163,9 +163,3 @@ birdseye:
   enabled: true
   width: 640
   height: 480
-#
-#
-#
-# eof
-#
-#
