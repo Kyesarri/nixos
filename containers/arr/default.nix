@@ -23,9 +23,11 @@ in
           resolved.enable = true;
           transmission = {
             enable = true;
-            # webHome = "pkgs.flood";
+            webHome = "";
             performanceNetParameters = true;
             openFirewall = true;
+            openRPCPort = true;
+            openPeerPorts = true;
           };
         };
 
@@ -37,7 +39,7 @@ in
             allowedTCPPorts = [webPort];
           };
         };
-        environment.systemPackages = with pkgs; [flood];
+        environment.systemPackages = with pkgs; [flood kitty];
       };
     };
   }
