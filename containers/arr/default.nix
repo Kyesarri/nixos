@@ -19,7 +19,16 @@ in
         ...
       }: {
         system.stateVersion = "23.11";
-        services.resolved.enable = true;
+        services = {
+          resolved.enable = true;
+          transmission = {
+            enable = true;
+            webHome = "pkgs.flood-for-transmission";
+            performanceNetParameters = true;
+            openFirewall = true;
+          };
+        };
+
         networking = {
           defaultGateway = "192.168.87.251";
           useHostResolvConf = lib.mkForce false;
@@ -27,14 +36,8 @@ in
             enable = true;
             allowedTCPPorts = [webPort];
           };
-          environment.systemPackages = with pkgs; [flood];
-          services.transmission = {
-            enable = true;
-            webHome = "pkgs.flood-for-transmission";
-            performanceNetParameters = true;
-            openFirewall = true;
-          };
         };
+        environment.systemPackages = with pkgs; [flood];
       };
     };
   }
