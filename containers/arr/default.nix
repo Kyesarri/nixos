@@ -25,12 +25,12 @@
         "/etc/localtime:/etc/localtime:ro"
         "/etc/timezone:/etc/timezone:ro"
       ];
-      /*
+
       environment = {
-        PUID = 1000;
-        PGID = 1000;
+        PUID = "1000";
+        PGID = "1000";
       };
-      */
+
       extraOptions = [
         "--network=host"
         "--privileged"
