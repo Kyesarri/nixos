@@ -11,7 +11,9 @@
   imports = [
     nix-colors.homeManagerModules.default
     ./per-device.nix # per device hypr config # not required, TODO remove?
+
     ./hardware.nix # device specific hardware config
+    ../../hardware/audio # probs worthwile for warning sounds or something
 
     ../headless.nix # base packages and config, may need to move some of those values to this config
 
@@ -26,7 +28,6 @@
     # ../../containers/blocky # testing, to replace pi-hole lxc on proxmox
     # ../../containers/authelia # local web auth
 
-    ../../hardware/audio # probs worthwile for warning sounds or something
     ../../home # home-manaager config for all machines currently
     ../../home/bottom # nice to have terminal task manager / perfmon
     ../../home/git # some baseline git config in there
@@ -125,7 +126,7 @@
 
     shells = with pkgs; [zsh]; # default shell to zsh
     systemPackages = with pkgs; [
-      linuxKernel.packages.linux_xanmod_latest.gasket # coral tpu
+      linuxKernel.packages.linux_xanmod.gasket # coral tpu
       lshw # list hardware
       usbutils # usb thing
       busybox # nice-to-have
