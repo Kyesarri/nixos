@@ -15,8 +15,8 @@ in
     containers.${hostName} = {
       autoStart = true;
       privateNetwork = true;
-      hostAddress = "192.168.87.9";
-      localAddress = "192.168.87.11";
+      hostAddress = "192.168.87.9/24";
+      localAddress = "192.168.87.11/24";
       #hostBridge = "br0";
       #localAddress = "192.168.87.11/24";
       config = {
@@ -39,6 +39,13 @@ in
 
         networking = {
           defaultGateway = "192.168.87.251";
+          interfaces."eno1".ipv4.routes = [
+            {
+              address = "192.168.87.0";
+              prefixLength = 24;
+              via = "192.168.87.9";
+            }
+          ];
           useHostResolvConf = lib.mkForce false;
           firewall = {
             enable = true;
