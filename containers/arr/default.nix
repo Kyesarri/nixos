@@ -1,61 +1,40 @@
-{
-  spaghetti,
-  config,
-  pkgs,
-  ...
-}: {
-  networking.firewall = {
-    allowedTCPPorts = [9091 7878];
-  };
-
-  virtualisation.oci-containers.containers = {
-    transmission = {
-      hostname = "transmission-nix-serv";
+let
+  hostName = "arr";
+  webPort = 80;
+in
+  {
+    config,
+    pkgs,
+    lib,
+    ...
+  }: {
+    containers.${hostName} = {
       autoStart = true;
-      image = "lscr.io/linuxserver/transmission:latest";
-      ports = [
-        "9091:9091"
-        "51413:51413"
-        "51413:51413/udp"
-      ];
-      volumes = [
-        "/home/${spaghetti.user}/.docker/transmission:/config"
-        # TODO "/path/to/downloads:/downloads"
-        # TODO "/path/to/watch/folder:/watch"
-        "/etc/localtime:/etc/localtime:ro"
-        "/etc/timezone:/etc/timezone:ro"
-      ];
-
-      environment = {
-        PUID = "1000";
-        PGID = "1000";
+      privateNetwork = true;
+      hostBridge = "br0";
+      localAddress = "192.168.87.11/24";
+      config = {
+        config,
+        pkgs,
+        ...
+      }: {
+        system.stateVersion = "23.11";
+        services.resolved.enable = true;
+        networking = {
+          defaultGateway = "192.168.87.251";
+          useHostResolvConf = lib.mkForce false;
+          firewall = {
+            enable = true;
+            allowedTCPPorts = [webPort];
+          };
+          environment.systemPackages = with pkgs; [flood];
+          services.transmission = {
+            enable = true;
+            webHome = "pkgs.flood-for-transmission";
+            performanceNetParameters = true;
+            openFirewall = true;
+          };
+        };
       };
-
-      extraOptions = [
-        "--network=host"
-        "--privileged"
-      ];
     };
-    #
-    radarr = {
-      hostname = "radarr-nix-serv";
-      autoStart = true;
-      image = "lscr.io/linuxserver/radarr:latest";
-      ports = ["7878:7878"];
-      volumes = [
-        "/home/${spaghetti.user}/.docker/radarr:/config"
-        # TODO "/path/to/downloads:/downloads"
-        # TODO "/path/to/watch/folder:/watch"
-        "/etc/localtime:/etc/localtime:ro"
-        "/etc/timezone:/etc/timezone:ro"
-      ];
-      /*
-        environment = {
-        PUID = 1000;
-        PGID = 1000;
-      };
-      */
-      extraOptions = [];
-    };
-  };
-}
+  }
