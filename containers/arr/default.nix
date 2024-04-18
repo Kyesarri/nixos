@@ -1,6 +1,7 @@
 let
   hostName = "arr";
   webPort = 9091;
+  floodPort = 3000;
 in
   {
     config,
@@ -36,7 +37,7 @@ in
           useHostResolvConf = lib.mkForce false;
           firewall = {
             enable = true;
-            allowedTCPPorts = [webPort];
+            allowedTCPPorts = [webPort floodPort];
           };
         };
         environment.systemPackages = with pkgs; [flood kitty];
