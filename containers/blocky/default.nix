@@ -11,8 +11,8 @@ in
     containers.${hostName} = {
       autoStart = true;
       privateNetwork = true;
-      hostBridge = "br0";
-      localAddress = "192.168.87.2/24"; # container ip
+      localAddress = "192.168.87.2/24";
+      hostAddress = "192.168.87.9/24";
 
       config = {
         config,
@@ -24,7 +24,7 @@ in
         networking = {
           hostName = "${hostName}";
           domain = "home.lan";
-          nameservers = ["192.168.87.1"];
+          nameservers = ["192.168.87.251"];
           defaultGateway = "192.168.87.251";
           firewall = {
             enable = true;

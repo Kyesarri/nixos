@@ -10,13 +10,13 @@ in
     lib,
     ...
   }: {
-    networking.firewall.allowedTCPPorts = [webPort floodPort];
+    networking.firewall.allowedTCPPorts = [webPort transmissionPort floodPort];
 
     containers.${hostName} = {
       autoStart = true;
       privateNetwork = true;
       hostAddress = "192.168.87.9";
-      localAddress = "192.168.100.11";
+      localAddress = "192.168.87.11";
       #hostBridge = "br0";
       #localAddress = "192.168.87.11/24";
       config = {
@@ -39,11 +39,10 @@ in
 
         networking = {
           defaultGateway = "192.168.87.251";
-
           useHostResolvConf = lib.mkForce false;
           firewall = {
             enable = true;
-            allowedTCPPorts = [webPort floodPort];
+            allowedTCPPorts = [webPort floodPort transmissionPort];
           };
         };
         environment.systemPackages = with pkgs; [flood kitty];

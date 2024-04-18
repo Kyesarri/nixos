@@ -14,8 +14,8 @@
   containers.nextcloud = {
     autoStart = true;
     privateNetwork = true;
-    hostBridge = "br0"; # Specify the bridge name
     localAddress = "192.168.87.8/24";
+    hostAddress = "192.168.87.9/24";
     config = {
       config,
       pkgs,

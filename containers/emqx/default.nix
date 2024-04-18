@@ -30,6 +30,9 @@
       EMQX_CLUSTER__DISCOVERY_STRATEGY = "static";
       # EMQX_CLUSTER__STATIC__SEEDS = "emqx-nix-serv";
     };
-    extraOptions = [];
+    extraOptions = [
+      "--network=host"
+      "--privileged"
+    ];
   };
 }

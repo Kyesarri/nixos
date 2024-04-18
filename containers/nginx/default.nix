@@ -13,8 +13,8 @@ in
       #
       autoStart = true;
       privateNetwork = true;
-      hostBridge = "br0";
-      localAddress = "192.168.87.2/24"; # container ip
+      hostAddress = "192.168.87.9";
+      localAddress = "192.168.87.2";
       forwardPorts = [
         {
           containerPort = webPort;
