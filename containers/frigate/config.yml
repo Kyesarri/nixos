@@ -5,7 +5,7 @@ cameras:
     best_image_timeout: 60
     ffmpeg:
       inputs:
-      - path: rtsp://127.0.0.1:8554/driveway
+      - path: rtsp://127.0.0.1:8554/driveway_sub
         input_args: preset-rtsp-restream
         roles:
         - detect
@@ -31,7 +31,7 @@ cameras:
     best_image_timeout: 60
     ffmpeg:
       inputs:
-      - path: rtsp://127.0.0.1:8554/entry
+      - path: rtsp://127.0.0.1:8554/entry_sub
         input_args: preset-rtsp-restream
         roles:
         - detect
@@ -58,8 +58,8 @@ database:
 detect:
   enabled: true
   fps: 5
-  height: 1920
-  width: 2560
+  height: 480
+  width: 640
 #
 go2rtc:
   streams:
@@ -67,10 +67,11 @@ go2rtc:
       - rtsp://frigate:Mj3iNSUJydpaaiT87d65NZgS9kh@192.168.87.20:554/h264Preview_01_main
     entry:
       - rtsp://frigate:Mj3iNSUJydpaaiT87d65NZgS9kh@192.168.87.22:554/h264Preview_01_main
-#    driveway_sub:
-#      - rtsp://frigate:Mj3iNSUJydpaaiT87d65NZgS9kh@192.168.87.20:554/h264Preview_01_sub
-#    entry_sub:
-#      - rtsp://frigate:Mj3iNSUJydpaaiT87d65NZgS9kh@192.168.87.22:554/h264Preview_01_sub
+    #
+    driveway_sub:
+      - rtsp://frigate:Mj3iNSUJydpaaiT87d65NZgS9kh@192.168.87.20:554/h264Preview_01_sub
+    entry_sub:
+      - rtsp://frigate:Mj3iNSUJydpaaiT87d65NZgS9kh@192.168.87.22:554/h264Preview_01_sub
 #
 logger:
   default: info
@@ -160,8 +161,8 @@ model:
 #
 birdseye:
   enabled: true
-  width: 1280
-  height: 720
+  width: 640
+  height: 480
 #
 #
 #

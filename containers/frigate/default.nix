@@ -11,10 +11,8 @@
     options = ["defaults" "size=1G" "mode=755"];
   };
 
-  networking.firewall = {
-    allowedTCPPorts = [5000 8554 8555];
-    allowedUDPPorts = [5000 8555];
-  };
+  networking.firewall.allowedTCPPorts = [5000 8554 8555];
+  networking.firewall.allowedUDPPorts = [5000 8555];
 
   # runs as a systemd service
   ## only issue is that GPU monitoring isn't working from inside
