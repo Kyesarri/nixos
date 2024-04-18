@@ -15,8 +15,10 @@ in
     containers.${hostName} = {
       autoStart = true;
       privateNetwork = true;
-      hostBridge = "br0";
-      localAddress = "192.168.87.11/24";
+      hostAddress = "192.168.87.9";
+      localAddress = "192.168.100.11";
+      #hostBridge = "br0";
+      #localAddress = "192.168.87.11/24";
       config = {
         config,
         pkgs,
@@ -37,6 +39,7 @@ in
 
         networking = {
           defaultGateway = "192.168.87.251";
+
           useHostResolvConf = lib.mkForce false;
           firewall = {
             enable = true;
