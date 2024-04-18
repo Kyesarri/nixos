@@ -11,8 +11,8 @@ in
     containers.${hostName} = {
       autoStart = true;
       privateNetwork = true;
-      hostAddress = "192.168.87.9/24";
-      localAddress = "192.168.87.5/24";
+      hostAddress = "192.168.87.9";
+      localAddress = "192.168.87.5";
       config = {
         config,
         pkgs,
@@ -50,7 +50,7 @@ in
             default_2fa_method = "totp";
             log.level = "debug";
             server.disable_healthcheck = true;
-            server.host = "127.0.0.1";
+            server.host = "192.168.87.5";
             server.port = webPort;
           };
         };

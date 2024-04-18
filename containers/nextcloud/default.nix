@@ -14,8 +14,8 @@
   containers.nextcloud = {
     autoStart = true;
     privateNetwork = true;
-    hostAddress = "192.168.87.9/24";
-    localAddress = "192.168.87.8/24";
+    hostAddress = "192.168.87.9";
+    localAddress = "192.168.87.8";
     config = {
       config,
       pkgs,
