@@ -23,7 +23,7 @@ in
           resolved.enable = true;
           transmission = {
             enable = true;
-            webHome = null;
+            webHome = pkgs.flood-for-transmission;
             performanceNetParameters = true;
             openFirewall = true;
             openRPCPort = true;
