@@ -46,9 +46,9 @@
   };
 
   boot = {
-    kernelPackages = pkgs.linuxPackages_xanmod_latest; # use latest xanmod kernel
+    kernelPackages = pkgs.linuxPackages_xanmod; # use mainline xanmod kernel
     supportedFilesystems = ["zfs"]; # add zfs, for storage
-    zfs.forceImportRoot = false; #
+    zfs.forceImportRoot = false;
     zfs.extraPools = ["nvmea" "hddb" "hddc" "hddd" "hdde"];
     kernelParams = [
       "i915.enable_fbc=1" # iGPU framebuffer compression, nfi if this works
