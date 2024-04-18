@@ -3,20 +3,35 @@
   pkgs,
   ...
 }: {
-  # virtualisation.docker = {enable = true;};
-
   virtualisation = {
     oci-containers.backend = "podman";
     podman = {
       enable = true;
       autoPrune.enable = true;
       dockerCompat = true;
+      networkSocket = {
+        openFirewall = true;
+        enable = true;
+      };
+      defaultNetwork.settings = {};
     };
   };
-
+  /*
+    systemd.network.links = {
+    "10-wan" = {
+      matchConfig.MACAddress = "68:27:19:a5:79:51";
+      linkConfig.Name = "wan0";
+    };
+    "10-lan" = {
+      matchConfig.MACAddress = "68:27:19:a5:79:52";
+      linkConfig.Name = "lan0";
+    };
+  };
+  */
   environment.systemPackages = with pkgs; [podman intel-gpu-tools];
 
   networking = {
+    usePredictableInterfaceNames = true;
     nat.enable = true;
     useDHCP = false; # for host?
     bridges.br0.interfaces = ["eno1"]; # serv bridge #1
@@ -34,7 +49,7 @@
         ];
       };
       #
-      "enp5s0" = {
+      "enp6s0" = {
         useDHCP = false;
         ipv4.addresses = [
           {

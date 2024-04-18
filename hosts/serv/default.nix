@@ -18,10 +18,10 @@
     ../../containers # handles networking / bridge for host / containers
     ../../containers/nginx # reverse proxy boi
     ../../containers/plex # oci / docker not nix-container
-    ../../containers/home-assistant
+    ../../containers/home-assistant # not much managed within nix yet
     ../../containers/frigate # testing in docker, not on metal TODO - docker :D
-    ../../containers/emqx
-    ../../containers/arr
+    ../../containers/emqx # emqx not working currently
+    ../../containers/arr # arr stack, not working currently
 
     # ../../containers/blocky # testing, to replace pi-hole lxc on proxmox
     # ../../containers/authelia # local web auth
