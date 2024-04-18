@@ -57,7 +57,7 @@
         windowrulev2 = center, class:^(kitty)$
         bind = $mainMod, Q, exec, kitty
         bind = control, escape, exec, kitty -e btm
-        windowrule = float, title:zsh
+        windowrulev2 = float, class:^(kitty)$
       '';
     };
   };

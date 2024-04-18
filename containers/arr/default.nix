@@ -4,12 +4,10 @@
   pkgs,
   ...
 }: {
-  /*
-    networking.firewall = {
-    allowedTCPPorts = [];
-    allowedUDPPorts = [];
+  networking.firewall = {
+    allowedTCPPorts = [9091 7878];
   };
-  */
+
   virtualisation.oci-containers.containers = {
     transmission = {
       hostname = "transmission-nix-serv";
@@ -34,7 +32,8 @@
       };
       */
       extraOptions = [
-        "--ip=192.168.87.11/24"
+        "--network=host"
+        "--privileged"
       ];
     };
     #
@@ -56,9 +55,7 @@
         PGID = 1000;
       };
       */
-      extraOptions = [
-        "--ip=192.168.87.12/24"
-      ];
+      extraOptions = [];
     };
   };
 }
