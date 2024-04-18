@@ -34,11 +34,15 @@
 
   networking = {
     usePredictableInterfaceNames = true;
-    nat.enable = true;
     useDHCP = false; # for host?
     bridges.br0.interfaces = ["eno1"]; # serv bridge #1
     defaultGateway = "192.168.87.251";
     nameservers = ["192.168.87.251"];
+    nat = {
+      enable = true;
+      internalInterfaces = ["ve-+"];
+      externalInterface = "br0";
+    };
     interfaces = {
       #
       "br0" = {

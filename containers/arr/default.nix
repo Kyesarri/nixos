@@ -1,6 +1,7 @@
 let
   hostName = "arr";
-  webPort = 9091;
+  webPort = 80;
+  transmissionPort = 9091;
   floodPort = 3000;
 in
   {
@@ -26,7 +27,7 @@ in
           resolved.enable = true;
           transmission = {
             enable = true;
-            webHome = pkgs.flood;
+            # webHome = pkgs.flood;
             performanceNetParameters = true;
             openFirewall = true;
             openRPCPort = true;
