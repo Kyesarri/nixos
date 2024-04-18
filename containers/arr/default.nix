@@ -23,7 +23,7 @@ in
           resolved.enable = true;
           transmission = {
             enable = true;
-            webHome = "";
+            webHome = null;
             performanceNetParameters = true;
             openFirewall = true;
             openRPCPort = true;
