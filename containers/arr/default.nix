@@ -9,6 +9,8 @@ in
     lib,
     ...
   }: {
+    networking.firewall.allowedTCPPorts = [webPort floodPort];
+
     containers.${hostName} = {
       autoStart = true;
       privateNetwork = true;
