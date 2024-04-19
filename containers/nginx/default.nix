@@ -31,6 +31,7 @@ in
 
         networking = {
           hostName = "${hostName}";
+          interfaces."eth0".useDHCP = true;
           useHostResolvConf = lib.mkForce false;
         };
 

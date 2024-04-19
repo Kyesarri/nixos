@@ -34,6 +34,7 @@ in
       useDHCP = false;
       usePredictableInterfaceNames = true; # not sure if this changed anything
       defaultGateway = "192.168.87.251";
+      defaultGateway.interface = "br0";
       nameservers = ["192.168.87.251"];
 
       bridges.br0.interfaces = ["eno1"]; # serv bridge
