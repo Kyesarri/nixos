@@ -39,13 +39,6 @@ in
 
         networking = {
           defaultGateway = "192.168.87.251";
-          interfaces."eno1".ipv4.routes = [
-            {
-              address = "192.168.87.0";
-              prefixLength = 24;
-              via = "192.168.87.9";
-            }
-          ];
           useHostResolvConf = lib.mkForce false;
           firewall = {
             enable = true;

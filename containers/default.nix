@@ -16,7 +16,7 @@
   environment.systemPackages = with pkgs; [podman intel-gpu-tools];
 
   networking = {
-    usePredictableInterfaceNames = true;
+    usePredictableInterfaceNames = true; # not sure if this changed anything
     defaultGateway = "192.168.87.251";
     nameservers = ["192.168.87.251"];
     nat = {
@@ -25,12 +25,20 @@
       externalInterface = "eno1";
     };
 
+    interfaces."eno1".ipv4.routes = [
+      {
+        address = "192.168.87.11";
+        prefixLength = 24;
+        via = "192.168.87.9";
+      }
+    ];
+
     interfaces = {
       "eno1" = {
         useDHCP = false;
         ipv4.addresses = [
           {
-            address = "192.168.87.9"; # testing realtek m.2 e 2.5g card in serv
+            address = "192.168.87.9";
             prefixLength = 24;
           }
         ];
