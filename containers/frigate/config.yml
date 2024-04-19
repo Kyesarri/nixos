@@ -123,7 +123,7 @@ record:
   sync_recordings: true
 #
 rtmp:
-  enabled: true
+  enabled: false
 #
 snapshots:
   bounding_box: true
