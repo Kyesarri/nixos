@@ -24,16 +24,11 @@ in
         ...
       }: {
         system.stateVersion = "23.11";
-        systemd.services.foo = {
-          script = ''
-            flood -h 192.168.87.11 -p 3000
-          '';
-          wantedBy = ["multi-user.target"];
-        };
         services = {
           resolved.enable = true;
           transmission = {
             enable = true;
+            user = "root";
             # webHome = pkgs.flood;
             performanceNetParameters = true;
             openFirewall = true;
