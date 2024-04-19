@@ -1,3 +1,13 @@
+/*
+let
+cont = {
+  nginx = {
+  ip = "192.168.87.1";
+  webPort = 81;
+  };
+};
+in
+*/
 {
   config,
   pkgs,
@@ -19,11 +29,13 @@
     usePredictableInterfaceNames = true; # not sure if this changed anything
     defaultGateway = "192.168.87.251";
     nameservers = ["192.168.87.251"];
+    /*
     nat = {
       enable = true;
       internalInterfaces = ["ve-+"];
       externalInterface = "br0";
     };
+    */
     bridges.br0.interfaces = ["eno1"]; # serv bridge #1
 
     interfaces = {
