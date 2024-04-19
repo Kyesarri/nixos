@@ -19,13 +19,11 @@
     usePredictableInterfaceNames = true; # not sure if this changed anything
     defaultGateway = "192.168.87.251";
     nameservers = ["192.168.87.251"];
-    /*
     nat = {
       enable = true;
       internalInterfaces = ["ve-+"];
-      externalInterface = "eno1";
+      externalInterface = "br0";
     };
-    */
     bridges.br0.interfaces = ["eno1"]; # serv bridge #1
 
     interfaces = {
@@ -60,7 +58,7 @@
         useDHCP = false;
         ipv4.addresses = [
           {
-            address = "192.168.87.1"; # testing realtek m.2 e 2.5g card in serv
+            address = "192.168.87.99"; # testing realtek m.2 e 2.5g card in serv
             prefixLength = 24;
           }
         ];
