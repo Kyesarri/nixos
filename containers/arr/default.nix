@@ -15,26 +15,31 @@ in
       transmission = {
         hostname = "transmission-nix-serv";
         autoStart = true;
-        image = "linuxserver/transmission";
+        image = "lscr.io/linuxserver/transmission:latest";
         ports = [
-          "9091:9091"
+          "192.168.87.11:9091:9091"
           "51413:51413"
           "51413:51413/udp"
         ];
         volumes = [
           "/home/${spaghetti.user}/.docker/transmission:/config"
-          # TODO "/path/to/downloads:/downloads"
-          # TODO "/path/to/watch/folder:/watch"
+
+          "/hddb:/hddb"
+          "/hddc:/hddc"
+          "/hddd:/hddd"
+          "/hdde:/hdde"
+          "/hdde/torrents:/downloads"
+          "/hdde/watch:/watch"
+
           "/etc/localtime:/etc/localtime:ro"
           "/etc/timezone:/etc/timezone:ro"
         ];
 
-        environment = {
-          PUID = "1000";
-          PGID = "1000";
-        };
+        environment = {};
 
         extraOptions = [
+          "PUID=1000"
+          "PGID=1000"
           "--network=host"
           "--privileged"
         ];
