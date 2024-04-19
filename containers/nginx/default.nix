@@ -8,35 +8,30 @@ in
     lib,
     ...
   }: {
-    networking.firewall.allowedTCPPorts = [webPort];
+    networking = {
+      firewall.allowedTCPPorts = [webPort];
+      nat = {
+        enable = true;
+        internalInterfaces = ["ve-${hostName}"];
+        externalInterface = "br0";
+      };
+    };
     containers.${hostName} = {
-      #
-      autoStart = true;
       extraFlags = ["-U"];
+      autoStart = true;
       privateNetwork = true;
       hostBridge = "br0";
-      #hostAddress = "192.168.87.9";
       localAddress = "192.168.87.1/24";
-      forwardPorts = [
-        {
-          containerPort = webPort;
-          hostPort = webPort;
-          protocol = "tcp";
-        }
-      ];
-      #
       config = {
         config,
         pkgs,
         ...
       }: {
         system.stateVersion = "23.11";
-        #
+
         networking = {
-          nameservers = ["192.168.87.251"];
-          defaultGateway = "192.168.87.251";
-          # interfaces."eth0".useDHCP = true;
           hostName = "${hostName}";
+          interfaces."eth0".useDHCP = true;
           useHostResolvConf = lib.mkForce false;
         };
 
@@ -53,3 +48,14 @@ in
       };
     };
   }
+/*
+forwardPorts = [
+  {
+    containerPort = webPort;
+    hostPort = webPort;
+    protocol = "tcp";
+  }
+];
+*/
+#
+
