@@ -25,6 +25,7 @@
     ../../containers/emqx # emqx not working currently
     ../../containers/arr # arr stack, not working currently
     ../../containers/codeproject # was using this for frigate detections
+    ../../containers/pihole
 
     # ../../containers/blocky # testing, to replace pi-hole lxc on proxmox
     # ../../containers/authelia # local web auth
