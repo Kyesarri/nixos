@@ -13,8 +13,8 @@ in
       #
       autoStart = true;
       privateNetwork = true;
-      hostAddress = "192.168.87.9";
-      localAddress = "192.168.87.1";
+      hostAddress = "192.168.87.9/24";
+      localAddress = "192.168.87.1/24";
       forwardPorts = [
         {
           containerPort = webPort;
@@ -36,7 +36,7 @@ in
           nameservers = ["192.168.87.251"];
           defaultGateway = "192.168.87.251";
           firewall = {
-            enable = false;
+            enable = true;
             allowedTCPPorts = [webPort];
           };
           # workaround for bug https://github.com/NixOS/nixpkgs/issues/162686
