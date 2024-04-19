@@ -26,7 +26,7 @@
       externalInterface = "eno1";
     };
     */
-    bridges."br0".interfaces = ["eno1"]; # serv bridge #1
+    bridges.br0.interfaces = ["eno1"]; # serv bridge #1
 
     interfaces = {
       "br0" = {
