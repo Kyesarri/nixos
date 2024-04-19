@@ -25,14 +25,6 @@
       externalInterface = "eno1";
     };
 
-    interfaces."eno1".ipv4.routes = [
-      {
-        address = "192.168.87.11";
-        prefixLength = 24;
-        via = "192.168.87.9";
-      }
-    ];
-
     interfaces = {
       "eno1" = {
         useDHCP = false;
@@ -40,6 +32,13 @@
           {
             address = "192.168.87.9";
             prefixLength = 24;
+          }
+        ];
+        ipv4.routes = [
+          {
+            address = "192.168.87.1";
+            prefixLength = 24;
+            via = "192.168.87.9";
           }
         ];
       };
