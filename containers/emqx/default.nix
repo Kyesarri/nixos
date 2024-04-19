@@ -8,7 +8,7 @@ in
     ...
   }: {
     networking.firewall = {
-      allowedTCPPorts = [1883 8083 8084 8883 18083];
+      allowedTCPPorts = [1001 1002 1003 1004 18083];
       allowedUDPPorts = [18083];
     };
     virtualisation.oci-containers.containers.${hostName} = {
@@ -16,10 +16,10 @@ in
       autoStart = true;
       image = "ghcr.io/emqx/emqx:latest";
       ports = [
-        "1883:1883"
-        "8083:8083"
-        "8084:8084"
-        "8883:8883"
+        "1001:1883"
+        "1002:8083"
+        "1003:8084"
+        "1004:8883"
         "18083:18083"
       ];
       volumes = [
