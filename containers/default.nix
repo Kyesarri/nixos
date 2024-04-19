@@ -30,11 +30,10 @@ in
     environment.systemPackages = with pkgs; [podman podman-tui intel-gpu-tools];
 
     networking = {
-      useNetworkd = true;
+      # useNetworkd = true;
       useDHCP = false;
       usePredictableInterfaceNames = true; # not sure if this changed anything
       defaultGateway = "192.168.87.251";
-      defaultGateway.interface = "br0";
       nameservers = ["192.168.87.251"];
 
       bridges.br0.interfaces = ["eno1"]; # serv bridge
