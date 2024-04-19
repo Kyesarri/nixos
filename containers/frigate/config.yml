@@ -15,7 +15,7 @@ cameras:
         - record
     record:
       enabled: true
-    zones:
+    # zones:
       #carpark:
       #  coordinates: 1315,235,793,267,768,73,471,407,0,954,0,1345,1357,1317
       #street:
@@ -39,12 +39,12 @@ cameras:
         input_args: preset-rtsp-restream
         roles:
         - record
-    motion:
-      mask:
+    # motion:
+      # mask:
        #  - 0,1920,734,1920,638,1518,574,1215,529,795,508,777,481,154,495,101,492,0,0,0
     record:
       enabled: true
-    zones:
+    # zones:
       # door_verandah:
         # coordinates: 1095,332,1610,614,1553,1100,1438,1141,1341,1205,1262,1280,1098,1328,878,1409,645,1503,581,1122,1084,1037
       # stairs_bed_window:
