@@ -36,7 +36,7 @@
         ];
         ipv4.routes = [
           {
-            address = "192.168.87.1";
+            address = "192.168.87.0";
             prefixLength = 24;
             via = "192.168.87.9";
           }
