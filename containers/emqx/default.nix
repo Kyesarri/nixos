@@ -9,18 +9,18 @@ in
   }: {
     networking.firewall = {
       allowedTCPPorts = [1001 1002 1003 1004 18083];
-      allowedUDPPorts = [18083];
+      # allowedUDPPorts = [18083];
     };
     virtualisation.oci-containers.containers.${hostName} = {
       hostname = "${hostName}-nix-serv";
       autoStart = true;
       image = "ghcr.io/emqx/emqx:latest";
       ports = [
-        "1001:1883"
-        "1002:8083"
-        "1003:8084"
-        "1004:8883"
-        "18083:18083"
+        "1001:1883/tcp"
+        "1002:8083/tcp"
+        "1003:8084/tcp"
+        "1004:8883/tcp"
+        "18083:18083/tcp"
       ];
       volumes = [
         "/home/${spaghetti.user}/.docker/${hostName}/data:/opt/emqx/data"
@@ -33,8 +33,6 @@ in
         # EMQX_CLUSTER__DISCOVERY_STRATEGY = "static";
         # EMQX_CLUSTER__STATIC__SEEDS = "emqx-nix-serv";
       };
-      extraOptions = [
-        "--network=host"
-      ];
+      extraOptions = [];
     };
   }
