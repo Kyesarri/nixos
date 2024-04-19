@@ -35,7 +35,7 @@ in
         networking = {
           nameservers = ["192.168.87.251"];
           defaultGateway = "192.168.87.251";
-          interfaces."eth0".useDHCP = true;
+          # interfaces."eth0".useDHCP = true;
           hostName = "${hostName}";
           useHostResolvConf = lib.mkForce false;
         };
