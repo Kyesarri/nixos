@@ -19,13 +19,26 @@
     usePredictableInterfaceNames = true; # not sure if this changed anything
     defaultGateway = "192.168.87.251";
     nameservers = ["192.168.87.251"];
+    /*
     nat = {
       enable = true;
       internalInterfaces = ["ve-+"];
       externalInterface = "eno1";
     };
+    */
+    bridges."br0".interfaces = ["eno1"]; # serv bridge #1
 
     interfaces = {
+      "br0" = {
+        useDHCP = true; # bridged devices use dhcp by default
+        ipv4.addresses = [
+          {
+            address = "192.168.87.9"; # bridge ip?
+            prefixLength = 24;
+          }
+        ];
+      };
+      /*
       "eno1" = {
         useDHCP = false;
         ipv4.addresses = [
@@ -42,6 +55,7 @@
           }
         ];
       };
+      */
       "enp6s0" = {
         useDHCP = false;
         ipv4.addresses = [
@@ -66,15 +80,5 @@
   };
 };
 */
-/*
-"br0" = {
-  useDHCP = true; # bridged devices use dhcp by default
-  ipv4.addresses = [
-    {
-      address = "192.168.87.9"; # bridge ip?
-      prefixLength = 24;
-    }
-  ];
-};
-*/
+/**/
 

@@ -13,7 +13,8 @@ in
       #
       autoStart = true;
       privateNetwork = true;
-      hostAddress = "192.168.87.9/24";
+      hostBridge = "br0";
+      #hostAddress = "192.168.87.9";
       localAddress = "192.168.87.1/24";
       forwardPorts = [
         {

@@ -29,8 +29,8 @@ in
         "/etc/localtime:/etc/localtime:ro"
       ];
       environment = {
-        EMQX_NODE_NAME = "${hostName}-nix-serv";
-        EMQX_CLUSTER__DISCOVERY_STRATEGY = "static";
+        # EMQX_NODE_NAME = "${hostName}-nix-serv";
+        # EMQX_CLUSTER__DISCOVERY_STRATEGY = "static";
         # EMQX_CLUSTER__STATIC__SEEDS = "emqx-nix-serv";
       };
       extraOptions = [

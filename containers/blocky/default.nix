@@ -11,8 +11,9 @@ in
     containers.${hostName} = {
       autoStart = true;
       privateNetwork = true;
-      hostAddress = "192.168.87.9";
-      localAddress = "192.168.87.2";
+      # hostAddress = "192.168.87.9";
+      hostBridge = "br0";
+      localAddress = "192.168.87.2/24";
       config = {
         config,
         pkgs,
