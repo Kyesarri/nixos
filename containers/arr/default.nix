@@ -7,18 +7,16 @@ in
     pkgs,
     ...
   }: {
-    networking.firewall = {
-      allowedTCPPorts = [9091 7878];
-    };
+    networking.firewall = {allowedTCPPorts = [9091 7878];};
 
     virtualisation.oci-containers.containers.transmission = {
       hostname = "transmission-nix-serv";
       autoStart = true;
       image = "lscr.io/linuxserver/transmission:latest";
       ports = [
-        "9091:9091"
-        "51413:51413"
+        "9091:9091/tcp"
         "51413:51413/udp"
+        "51413:51413/tcp"
       ];
       volumes = [
         "/home/${spaghetti.user}/.docker/transmission:/config"
@@ -36,10 +34,7 @@ in
 
       environment = {};
 
-      extraOptions = [
-        "--network=host"
-        "--privileged"
-      ];
+      extraOptions = [];
     };
   }
 #
