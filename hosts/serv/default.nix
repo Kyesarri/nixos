@@ -23,14 +23,14 @@
     ../../containers/home-assistant # not much managed within nix yet
     ../../containers/frigate # testing in docker, not on metal TODO - docker :D
     ../../containers/emqx # emqx not working currently
-    ../../containers/arr # arr stack, not working currently
     ../../containers/codeproject # was using this for frigate detections
-    ../../containers/pihole
+    ../../containers/pihole # neeed to workout password
 
     # ../../containers/blocky # testing, to replace pi-hole lxc on proxmox
     # ../../containers/authelia # local web auth
 
     ../../home # home-manaager config for all machines currently
+    ../../home/arr # arr stack, not working currently
     ../../home/bottom # nice to have terminal task manager / perfmon
     ../../home/git # some baseline git config in there
     ../../home/kitty # yes pls
