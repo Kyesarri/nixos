@@ -1,5 +1,5 @@
 let
-  # ${ct.service.value}
+  # ${ct.service.value} # TODO
   ct = {
     nginx = {
       hostName = "nginx";
@@ -27,7 +27,21 @@ in
       };
     };
 
-    environment.systemPackages = with pkgs; [podman podman-tui intel-gpu-tools];
+    environment.systemPackages = with pkgs; [
+      podman
+      podman-tui
+      intel-gpu-tools
+    ];
+
+    systemd.network.networks."2.5-rt-lan" = {
+      # linkConfig.RequiredForOnline = "routable";
+      matchConfig.Name = "enp6s0";
+      networkConfig = {
+        Address = "192.168.87.99/24";
+        Gateway = "192.168.87.251";
+        DNS = ["1.1.1.1"];
+      };
+    };
 
     networking = {
       # useNetworkd = true;
@@ -38,9 +52,11 @@ in
 
       bridges.br0.interfaces = ["eno1"]; # serv bridge
 
+      firewall.enable = true;
+
       interfaces = {
         "br0" = {
-          useDHCP = true; # bridged devices use dhcp by default
+          useDHCP = false; # bridged devices use dhcp by default
           ipv4.addresses = [
             {
               address = "192.168.87.9"; # bridge ip
@@ -48,7 +64,7 @@ in
             }
           ];
         };
-
+        /*
         "enp6s0" = {
           useDHCP = false;
           ipv4.addresses = [
@@ -58,11 +74,7 @@ in
             }
           ];
         };
-      };
-
-      firewall = {
-        enable = true;
-        allowedTCPPorts = [3000];
+        */
       };
     };
   }
