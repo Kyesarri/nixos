@@ -42,8 +42,10 @@
       openFirewall = true;
       openRPCPort = true;
       openPeerPorts = true;
-      rpc-port = 9091;
-      rpc-bind-address = "0.0.0.0";
+      settings = {
+        rpc-port = 9091;
+        rpc-bind-address = "0.0.0.0";
+      };
     };
     radarr = {
       enable = true;
