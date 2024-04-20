@@ -9,17 +9,17 @@
   users.users.radarr = {
     name = "radarr";
     isNormalUser = false;
-    extraGroups = "media";
+    extraGroups = ["media"];
   };
   users.users.sonarr = {
     name = "sonarr";
     isNormalUser = false;
-    extraGroups = "media";
+    extraGroups = ["media"];
   };
   users.users.transmission = {
     name = "transmission";
     isNormalUser = false;
-    extraGroups = "media";
+    extraGroups = ["media"];
   };
   services = {
     resolved.enable = true;
