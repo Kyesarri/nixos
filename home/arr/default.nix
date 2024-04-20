@@ -5,21 +5,21 @@
   spaghetti,
   ...
 }: {
-  users.users.${spaghetti.user}.extraGroups = "media";
+  users.users.${spaghetti.user}.extraGroups = "media" "radarr" "sonarr" "transmission";
   users.users.radarr = {
     name = "radarr";
     isNormalUser = false;
-    group = "media";
+    extraGroups = "media";
   };
   users.users.sonarr = {
     name = "sonarr";
     isNormalUser = false;
-    group = "media";
+    extraGroups = "media";
   };
   users.users.transmission = {
     name = "transmission";
     isNormalUser = false;
-    group = "media";
+    extraGroups = "media";
   };
   services = {
     resolved.enable = true;
