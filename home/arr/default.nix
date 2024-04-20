@@ -29,9 +29,7 @@
     name = "transmission";
     isNormalUser = false;
   };
-  users.users.prowlarr = {
-    name = "prowlarr";
-  };
+
   services = {
     resolved.enable = true;
     transmission = {
