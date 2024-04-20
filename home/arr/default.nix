@@ -5,7 +5,8 @@
   spaghetti,
   ...
 }: {
-  environment.systemPackages = [pkgs.flood];
+  imports = [./flood.nix];
+  # environment.systemPackages = [pkgs.flood];
 
   # define a new group "media", add services / users to this group
   users.groups.media = {
@@ -37,14 +38,14 @@
     transmission = {
       enable = true;
       user = "transmission";
-      webHome = "${pkgs.flood}/lib/node_modules/flood/dist/assets";
+      # webHome = "${pkgs.flood}/lib/node_modules/flood/dist/assets";
       performanceNetParameters = true;
       openFirewall = true;
       openRPCPort = true;
       openPeerPorts = true;
       settings = {
         dht-enabled = true;
-        #download-dir = "/srv/ftp/";
+        # download-dir = "/srv/ftp/";
         download-queue-enabled = false;
         peer-port = 51413;
         rpc-authentication-required = false;
