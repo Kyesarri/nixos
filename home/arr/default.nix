@@ -5,7 +5,7 @@
   spaghetti,
   ...
 }: {
-  users.users.${spaghetti.user}.extraGroups = ["media" "radarr" "sonarr" "transmission"];
+  users.users.${spaghetti.user}.extraGroups = ["radarr" "sonarr" "transmission"];
   users.users.radarr = {
     name = "radarr";
     isNormalUser = false;

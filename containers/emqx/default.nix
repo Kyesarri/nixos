@@ -26,7 +26,7 @@ in
         "/home/${spaghetti.user}/.docker/${hostName}/data:/opt/emqx/data"
         "/home/${spaghetti.user}/.docker/${hostName}/etc:/opt/emqx/etc"
         "/home/${spaghetti.user}/.docker/${hostName}/log:/opt/emqx/log"
-        "/etc/localtime:/etc/localtime:ro"
+        # "/etc/localtime:/etc/localtime:ro"
       ];
       environment = {
         # EMQX_NODE_NAME = "${hostName}-nix-serv";
