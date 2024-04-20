@@ -2,8 +2,25 @@
   config,
   pkgs,
   lib,
+  spaghetti,
   ...
 }: {
+  users.users.${spaghetti.user}.extraGroups = "media";
+  users.users.radarr = {
+    name = "radarr";
+    isNormalUser = false;
+    group = "media";
+  };
+  users.users.sonarr = {
+    name = "sonarr";
+    isNormalUser = false;
+    group = "media";
+  };
+  users.users.transmission = {
+    name = "transmission";
+    isNormalUser = false;
+    group = "media";
+  };
   services = {
     resolved.enable = true;
     transmission = {
@@ -26,13 +43,6 @@
     prowlarr = {
       enable = true;
       openFirewall = true;
-    };
-  };
-
-  networking = {
-    firewall = {
-      enable = true;
-      allowedTCPPorts = [3000];
     };
   };
   environment.systemPackages = [pkgs.flood];
