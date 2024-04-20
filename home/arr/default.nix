@@ -43,8 +43,15 @@
       openRPCPort = true;
       openPeerPorts = true;
       settings = {
+        dht-enabled = true;
+        #download-dir = "/srv/ftp/";
+        download-queue-enabled = false;
+        peer-port = 51413;
+        rpc-authentication-required = true;
+        rpc-host-whitelist-enabled = false;
+        rpc-whitelist-enabled = false;
         rpc-port = 9091;
-        rpc-bind-address = "0.0.0.0";
+        rpc-bind-address = "192.168.87.9";
       };
     };
     radarr = {
