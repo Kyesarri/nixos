@@ -28,6 +28,7 @@
   users.users.prowlarr = {
     name = "prowlarr";
     isNormalUser = false;
+    group = "prowlarr";
   };
   services = {
     resolved.enable = true;
