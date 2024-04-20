@@ -47,7 +47,7 @@
         #download-dir = "/srv/ftp/";
         download-queue-enabled = false;
         peer-port = 51413;
-        rpc-authentication-required = true;
+        rpc-authentication-required = false;
         rpc-host-whitelist-enabled = false;
         rpc-whitelist-enabled = false;
         rpc-port = 9091;
