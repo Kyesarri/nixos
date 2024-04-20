@@ -31,7 +31,6 @@
   };
   users.users.prowlarr = {
     name = "prowlarr";
-    isNormalUser = false;
   };
   services = {
     resolved.enable = true;
