@@ -4,8 +4,6 @@
   lib,
   ...
 }: {
-  networking.firewall.allowedTCPPorts = [3000];
-
   services = {
     resolved.enable = true;
     transmission = {
