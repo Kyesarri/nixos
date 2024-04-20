@@ -10,6 +10,10 @@
     name = "media";
     members = ["transmission" "radarr" "sonarr" "prowlarr" "${spaghetti.user}"];
   };
+  users.groups.prowlarr = {
+    name = "prowlarr";
+    members = ["${spaghetti.user}" "prowlarr"];
+  };
   # add user to groups created by services
   users.users.${spaghetti.user}.extraGroups = ["radarr" "sonarr" "transmission" "prowlarr"];
 
@@ -28,7 +32,6 @@
   users.users.prowlarr = {
     name = "prowlarr";
     isNormalUser = false;
-    group = "prowlarr";
   };
   services = {
     resolved.enable = true;
