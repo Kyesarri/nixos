@@ -16,7 +16,7 @@ in
       ports = [];
       volumes = [
         "/etc/localtime:/etc/localtime:ro"
-        "/etc/timezone:/etc/timezone:ro"
+        # "/etc/timezone:/etc/timezone:ro"
 
         "/dev/dri:/dev/dri"
 
