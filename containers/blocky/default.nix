@@ -13,7 +13,8 @@ in
       privateNetwork = true;
       # hostAddress = "192.168.87.9";
       hostBridge = "br0";
-      localAddress = "192.168.87.2/24";
+      localAddress = "192.168.87.1/24";
+
       config = {
         config,
         pkgs,
@@ -23,15 +24,14 @@ in
 
         networking = {
           hostName = "${hostName}";
-          domain = "home.lan";
-          nameservers = ["192.168.87.251"];
-          defaultGateway = "192.168.87.251";
+          # domain = "home.lan";
+          # nameservers = ["192.168.87.251"];
+          # defaultGateway = "192.168.87.251";
+          useHostResolvConf = lib.mkForce false;
           firewall = {
             enable = true;
             allowedTCPPorts = [webPort];
           };
-          # workaround for bug https://github.com/NixOS/nixpkgs/issues/162686
-          useHostResolvConf = lib.mkForce false;
         };
 
         # environment.systemPackages = with pkgs; [ffmpeg_5-full lshw];

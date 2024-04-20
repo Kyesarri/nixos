@@ -6,7 +6,6 @@
   ...
 }: {
   imports = [./flood.nix];
-  # environment.systemPackages = [pkgs.flood];
 
   # define a new group "media", add services / users to this group
   users.groups.media = {
@@ -20,25 +19,11 @@
   # add user to groups created by services
   users.users.${spaghetti.user}.extraGroups = ["radarr" "sonarr" "transmission"];
 
-  users.users.radarr = {
-    name = "radarr";
-    isNormalUser = false;
-  };
-  users.users.sonarr = {
-    name = "sonarr";
-    isNormalUser = false;
-  };
-  users.users.transmission = {
-    name = "transmission";
-    isNormalUser = false;
-  };
-
   services = {
     resolved.enable = true;
     transmission = {
       enable = true;
       user = "transmission";
-      # webHome = "${pkgs.flood}/lib/node_modules/flood/dist/assets";
       performanceNetParameters = true;
       openFirewall = true;
       openRPCPort = true;

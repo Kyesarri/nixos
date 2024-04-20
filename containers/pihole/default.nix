@@ -8,9 +8,10 @@ in
     spaghetti,
     ...
   }: {
-    system.activationScripts.makeRediaryDir = lib.stringAfter ["var"] ''
-      mkdir -p /home/${spaghetti.user}/.docker/${hostName}/etc /home/${spaghetti.user}/.docker/${hostName}/etc/dnsmasq.d
-    '';
+    # looks to make directories on boot / rebuild - not sure if docker will handle this by itself?
+    # system.activationScripts.makeRediaryDir = lib.stringAfter ["var"] ''
+    #   mkdir -p /home/${spaghetti.user}/.docker/${hostName}/etc /home/${spaghetti.user}/.docker/${hostName}/etc/dnsmasq.d
+    # '';
 
     networking.firewall.allowedTCPPorts = [53 8080];
     networking.firewall.allowedUDPPorts = [53 8080];
@@ -30,9 +31,7 @@ in
       ];
 
       extraOptions = ["-h=pihole"];
-      environment = {
-        WEBPASSWORD = "fcXC2zkU5y8zvRuFugb9k9zOoIbwkkCEXOsxdvCCwNFd3IomyLBFIVfiLz4j";
-      };
+      environment = {WEBPASSWORD = "fcXC2zkU5y8zvRuFugb9k9zOoIbwkkCEXOsxdvCCwNFd3IomyLBFIVfiLz4j";};
     };
   }
 # yoinked from https://gitlab.com/yramagicman/stow-dotfiles/-/blob/master/nixos/browncoat/pihole.nix?ref_type=heads

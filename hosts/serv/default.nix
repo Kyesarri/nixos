@@ -21,7 +21,7 @@
     ../../containers/nginx # reverse proxy boi
     ../../containers/plex # oci / docker not nix-container
     ../../containers/home-assistant # not much managed within nix yet
-    ../../containers/frigate # testing in docker, not on metal TODO - docker :D
+    ../../containers/frigate # testing in docker, working OK! 9900k iGPU is trash compared to old nix-serv RIP
     ../../containers/emqx # emqx not working currently
     ../../containers/codeproject # was using this for frigate detections
     ../../containers/pihole # neeed to workout password
@@ -30,7 +30,6 @@
     # ../../containers/authelia # local web auth
 
     ../../home # home-manaager config for all machines currently
-    ../../home/arr # arr stack, not working currently
     ../../home/bottom # nice to have terminal task manager / perfmon
     ../../home/git # some baseline git config in there
     ../../home/kitty # yes pls
@@ -38,6 +37,9 @@
     ../../home/virt # ehhhhh not sure if wanted / needed whatsoever
     ../../home/gtk # has some theming bits, might have some requirement still
     ../../home/zsh # yes pls
+
+    ../../serv/arr
+    # ../../changedetection
 
     # ../../home/syncthing # testing without currently
     # ../../home/tailscale # TODO disabled until i can figure out mkif hostname == {nix-serv}; with an else
