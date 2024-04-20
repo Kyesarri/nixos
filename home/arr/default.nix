@@ -37,7 +37,7 @@
     transmission = {
       enable = true;
       user = "transmission";
-      webHome = pkgs.flood;
+      webHome = "${pkgs.flood}/lib/node_modules/flood/dist/assets";
       performanceNetParameters = true;
       openFirewall = true;
       openRPCPort = true;
