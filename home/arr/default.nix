@@ -5,6 +5,8 @@
   spaghetti,
   ...
 }: {
+  environment.systemPackages = [pkgs.flood];
+
   # define a new group "media", add services / users to this group
   users.groups.media = {
     name = "media";
@@ -15,7 +17,7 @@
     members = ["${spaghetti.user}" "prowlarr"];
   };
   # add user to groups created by services
-  users.users.${spaghetti.user}.extraGroups = ["radarr" "sonarr" "transmission" "prowlarr"];
+  users.users.${spaghetti.user}.extraGroups = ["radarr" "sonarr" "transmission"];
 
   users.users.radarr = {
     name = "radarr";
@@ -40,6 +42,8 @@
       openFirewall = true;
       openRPCPort = true;
       openPeerPorts = true;
+      rpc-port = 9091;
+      rpc-bind-address = "0.0.0.0";
     };
     radarr = {
       enable = true;
@@ -54,5 +58,4 @@
       openFirewall = true;
     };
   };
-  environment.systemPackages = [pkgs.flood];
 }
