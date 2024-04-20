@@ -5,21 +5,29 @@
   spaghetti,
   ...
 }: {
-  users.users.${spaghetti.user}.extraGroups = ["radarr" "sonarr" "transmission"];
+  # define a new group "media", add services / users to this group
+  users.groups.media = {
+    name = "media";
+    members = ["transmission" "radarr" "sonarr" "prowlarr" "${spaghetti.user}"];
+  };
+  # add user to groups created by services
+  users.users.${spaghetti.user}.extraGroups = ["radarr" "sonarr" "transmission" "prowlarr"];
+
   users.users.radarr = {
     name = "radarr";
     isNormalUser = false;
-    extraGroups = ["media"];
   };
   users.users.sonarr = {
     name = "sonarr";
     isNormalUser = false;
-    extraGroups = ["media"];
   };
   users.users.transmission = {
     name = "transmission";
     isNormalUser = false;
-    extraGroups = ["media"];
+  };
+  users.users.prowlarr = {
+    name = "prowlarr";
+    isNormalUser = false;
   };
   services = {
     resolved.enable = true;
