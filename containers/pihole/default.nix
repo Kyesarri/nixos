@@ -31,7 +31,7 @@ in
       ];
 
       extraOptions = ["-h=pihole"];
-      environment = {WEBPASSWORD = "fcXC2zkU5y8zvRuFugb9k9zOoIbwkkCEXOsxdvCCwNFd3IomyLBFIVfiLz4j";};
+      # environment = {WEBPASSWORD = "fcXC2zkU5y8zvRuFugb9k9zOoIbwkkCEXOsxdvCCwNFd3IomyLBFIVfiLz4j";};
     };
   }
 # yoinked from https://gitlab.com/yramagicman/stow-dotfiles/-/blob/master/nixos/browncoat/pihole.nix?ref_type=heads
