@@ -11,7 +11,7 @@
     extraGroups = ["wheel"];
     group = "nginx";
     isNormalUser = false;
-    uid = 999;
+    # uid = 999;
   };
   services.nginx = {
     enable = true;
