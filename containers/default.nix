@@ -57,16 +57,15 @@ in
       interfaces = {
         "br0" = {
           useDHCP = false; # bridged devices use dhcp by default
-          /*
+
           ipv4.addresses = [
             {
               address = "192.168.87.9"; # bridge ip
               prefixLength = 24;
             }
           ];
-          */
         };
-        /*
+
         "enp6s0" = {
           useDHCP = false;
           ipv4.addresses = [
@@ -76,7 +75,6 @@ in
             }
           ];
         };
-        */
       };
     };
   }
