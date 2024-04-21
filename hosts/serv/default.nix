@@ -39,6 +39,7 @@
 
     ../../serv/arr
     ../../serv/nginx # reverse proxy boi
+    ../../serv/caddy
 
     # ../../serv/changedetection
 
