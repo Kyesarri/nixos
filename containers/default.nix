@@ -56,11 +56,11 @@ in
 
       interfaces = {
         "br0" = {
-          useDHCP = false; # bridged devices use dhcp by default
+          useDHCP = false;
 
           ipv4.addresses = [
             {
-              address = "192.168.87.9"; # bridge ip
+              address = "192.168.87.9";
               prefixLength = 24;
             }
           ];
@@ -71,7 +71,7 @@ in
           ipv4.addresses = [
             {
               address = "192.168.87.99"; # testing realtek m.2 e 2.5g card in serv
-              prefixLength = 24;
+              prefixLength = 24; # may bring this interface or onboard in as a vlan for cameras and iot
             }
           ];
         };
