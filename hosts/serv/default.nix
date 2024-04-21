@@ -23,7 +23,6 @@
     ../../containers/frigate # testing in docker, working OK! 9900k iGPU is trash compared to old nix-serv RIP
     ../../containers/emqx # emqx not working currently
     ../../containers/codeproject # was using this for frigate detections
-    ../../containers/pihole # neeed to workout password
 
     # ../../containers/blocky # testing, to replace pi-hole lxc on proxmox
     # ../../containers/authelia # local web auth
