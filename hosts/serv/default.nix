@@ -18,7 +18,6 @@
     ../headless.nix # base packages and config, may need to move some of those values to this config
 
     ../../containers # handles networking / bridge for host / containers
-    ../../containers/nginx # reverse proxy boi
     ../../containers/plex # oci / docker not nix-container
     ../../containers/home-assistant # not much managed within nix yet
     ../../containers/frigate # testing in docker, working OK! 9900k iGPU is trash compared to old nix-serv RIP
@@ -39,7 +38,9 @@
     ../../home/zsh # yes pls
 
     ../../serv/arr
-    # ../../changedetection
+    ../../serv/nginx # reverse proxy boi
+
+    # ../../serv/changedetection
 
     # ../../home/syncthing # testing without currently
     # ../../home/tailscale # TODO disabled until i can figure out mkif hostname == {nix-serv}; with an else
