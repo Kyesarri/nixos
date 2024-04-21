@@ -18,13 +18,13 @@
     ../headless.nix # base packages and config, may need to move some of those values to this config
 
     ../../containers # handles networking / bridge for host / containers
-    ../../containers/plex # oci / docker not nix-container
+    ../../containers/plex # oci / podman not nix-container
     ../../containers/home-assistant # not much managed within nix yet
-    ../../containers/frigate # testing in docker, working OK! 9900k iGPU is trash compared to old nix-serv RIP
-    ../../containers/emqx # emqx not working currently
+    ../../containers/frigate # testing in podman, working OK! 9900k iGPU is trash compared to old nix-serv RIP # TODO increase iGPU Vram
+    # ../../containers/emqx # emqx not working currently
     ../../containers/codeproject # was using this for frigate detections
 
-    # ../../containers/blocky # testing, to replace pi-hole lxc on proxmox
+    ../../containers/blocky # testing, to replace pi-hole lxc on proxmox
     # ../../containers/authelia # local web auth
 
     ../../home # home-manaager config for all machines currently
