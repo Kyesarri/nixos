@@ -27,7 +27,7 @@
       openPeerPorts = true;
       settings = {
         dht-enabled = true;
-        # download-dir = "/srv/ftp/";
+        download-dir = "/hddb/torrents/";
         download-queue-enabled = false;
         peer-port = 51413;
         rpc-authentication-required = false;
