@@ -77,7 +77,7 @@
     xserver.enable = false; # headless
     fstrim.enable = true; # ssd trim in background, not enabled by default :0
     gvfs.enable = true; # gnome trash support
-    printing.enable = false; # cpus printer thingy
+    printing.enable = false; # cpus printers
     gnome.gnome-keyring.enable = true; # keyboi
     dbus = {
       enable = true;
@@ -98,6 +98,16 @@
         "ntp.nml.csiro.au"
         "ntp.ise.canberra.edu.au"
       ];
+    };
+
+    smartd = {
+      # notifies via cli on failing disks
+      enable = true;
+      autodetect = true;
+      notifications = {
+        x11.enable = false;
+        wall.enable = true;
+      };
     };
   };
 
@@ -133,9 +143,9 @@
     shells = with pkgs; [zsh]; # default shell to zsh
     systemPackages = with pkgs; [
       linuxKernel.packages.linux_xanmod.gasket # coral tpu
-      lshw # list hardware
-      usbutils # usb thing
-      busybox # nice-to-have
+      lshw
+      usbutils
+      busybox
       libva-utils
       curl
       wget
