@@ -29,6 +29,23 @@
     intel-gpu-tools
   ];
 
+  networking = {
+    hostName = "nix-serv";
+    hostId = "bed5b7cd";
+    firewall = {
+      enable = true;
+      allowedTCPPorts = [
+        22 # ssh
+        123 # chrony ntp
+      ];
+      checkReversePath = "loose"; # fixes some connection issues with tailscale
+      allowedUDPPorts = [
+        41641 # tailscale
+        123 # chrony ntp
+      ];
+    };
+  };
+
   systemd.network = {
     enable = true;
     netdevs = {

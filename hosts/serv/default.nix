@@ -36,24 +36,6 @@
 
   users.users.${spaghetti.user}.uid = 1000;
 
-  networking = {
-    hostName = "nix-serv";
-    hostId = "bed5b7cd";
-    # moved most conf to /containers/default.nix due to bridge conf
-    firewall = {
-      enable = true;
-      allowedTCPPorts = [
-        22 # ssh, possibly open already but leaving in
-        123 # chrony ntp, not working?
-      ];
-      checkReversePath = "loose"; # fixes some connection issues with tailscale
-      allowedUDPPorts = [
-        41641 # tailscale TODO not needed with openFirewall?
-        123 # chrony ntp
-      ];
-    };
-  };
-
   # tailscale config above is temp, will remove once below # TODO has been completed
 
   services = {
