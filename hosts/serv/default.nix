@@ -12,12 +12,11 @@
     nix-colors.homeManagerModules.default
 
     ./hardware.nix # device specific hardware config
+    ./networking.nix # systemd networking config
 
     ../headless.nix # base packages and config, may need to move some of those values to this config
 
-    ../../hardware/audio
-
-    ../../containers # handles networking / bridge for host / containers
+    ../../containers
 
     ../../home # home-manaager config for all machines currently
     ../../home/bottom # nice to have terminal task manager / perfmon
@@ -45,10 +44,12 @@
     gvfs.enable = true; # gnome trash support
     printing.enable = false; # cpus printers
     gnome.gnome-keyring.enable = true; # keyboi
+
     dbus = {
       enable = true;
       packages = [pkgs.gnome.seahorse];
     };
+
     ###### TODO ######
     tailscale.enable = true;
     tailscale.useRoutingFeatures = "server"; # main requirement for the # TODO
@@ -57,6 +58,7 @@
 
     # used for cameras ntp - can i make this host, use this ntp server? :D
     # sounds like it'l cause issues, lets send
+
     chrony = {
       enable = true;
       enableNTS = true;

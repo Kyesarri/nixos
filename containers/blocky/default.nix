@@ -10,33 +10,35 @@ in
   }: {
     containers.${hostName} = {
       autoStart = true;
-      privateNetwork = true;
-      # hostAddress = "192.168.87.9";
+      macvlans = ["enp2s0"];
+      privateNetwork = false;
       hostBridge = "br0";
-      localAddress = "192.168.87.1/24";
-
-      config = {
-        config,
-        pkgs,
-        ...
-      }: {
+      config = {pkgs, ...}: {
+        services.blocky.enable = true;
         system.stateVersion = "23.11";
-
         networking = {
+          useDHCP = false;
+          useNetworkd = true;
+          useHostResolvConf = false;
           hostName = "${hostName}";
-          # domain = "home.lan";
-          # nameservers = ["192.168.87.251"];
-          # defaultGateway = "192.168.87.251";
-          useHostResolvConf = lib.mkForce false;
           firewall = {
-            enable = true;
+            enable = false;
             allowedTCPPorts = [webPort];
           };
         };
-
-        # environment.systemPackages = with pkgs; [ffmpeg_5-full lshw];
-
-        services.blocky.enable = true;
+        systemd.network = {
+          enable = true;
+          networks = {
+            "40-mv-enp2s0" = {
+              matchConfig.Name = "mv-enp2s0";
+              address = [
+                "192.168.1.3/24"
+              ];
+              networkConfig.DHCP = "yes";
+              dhcpV4Config.ClientIdentifier = "mac";
+            };
+          };
+        };
       };
     };
   }
