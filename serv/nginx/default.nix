@@ -37,7 +37,6 @@
 
       "radarr.home" = {
         addSSL = false;
-        proxyWebsockets = true;
         enableACME = false;
         locations."/" = {proxyPass = "http://localhost:7878";};
         serverAliases = [
@@ -56,7 +55,6 @@
       };
       "frigate.home" = {
         addSSL = false;
-        proxyWebsockets = true;
         enableACME = false;
         locations."/" = {proxyPass = "http://localhost:5000";};
         serverAliases = [
@@ -65,7 +63,6 @@
       };
       "plex.home" = {
         addSSL = false;
-        proxyWebsockets = true;
         enableACME = false;
         locations."/" = {proxyPass = "http://localhost:32400";};
         serverAliases = [
