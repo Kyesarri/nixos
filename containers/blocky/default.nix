@@ -21,7 +21,10 @@ in
           useNetworkd = true;
           useHostResolvConf = false;
           hostName = "${hostName}";
-          firewall.enable = false;
+          firewall = {
+            enable = false;
+            interfaces."mv-enp6s0".allowedUDPPorts = [webPort];
+          };
         };
 
         systemd.network = {
@@ -30,7 +33,7 @@ in
             "10-mv-enp6s0" = {
               matchConfig.Name = "mv-enp6s0";
               address = ["192.168.87.1/24"];
-              networkConfig.DHCP = "yes";
+              # networkConfig.DHCP = "yes";
               dhcpV4Config.ClientIdentifier = "mac";
             };
           };
