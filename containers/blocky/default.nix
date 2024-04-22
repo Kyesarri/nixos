@@ -1,43 +1,37 @@
-let
-  hostName = "blocky";
-  webPort = 80;
-in
-  {
-    config,
-    pkgs,
-    lib,
-    ...
-  }: {
-    containers.${hostName} = {
-      autoStart = true;
-      macvlans = ["enp6s0"]; # call the network device to use by name, not by networkd name
-      privateNetwork = false;
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}: {
+  containers.${hostName} = {
+    autoStart = true;
+    privateNetwork = true;
+    hostBridge = "br0";
+    localAddress = "192.168.87.1/24";
 
-      config = {pkgs, ...}: {
-        services.blocky.enable = true;
-        system.stateVersion = "23.11";
+    config = {
+      config,
+      pkgs,
+      ...
+    }: {
+      system.stateVersion = "23.11";
 
-        networking = {
-          useNetworkd = true;
-          useHostResolvConf = false;
-          hostName = "${hostName}";
-          firewall = {
-            enable = false;
-            interfaces."mv-enp6s0".allowedUDPPorts = [webPort];
-          };
-        };
-
-        systemd.network = {
+      networking = {
+        hostName = "${hostName}";
+        # domain = "home.lan";
+        # nameservers = ["192.168.87.251"];
+        # defaultGateway = "192.168.87.251";
+        useHostResolvConf = lib.mkForce false;
+        firewall = {
           enable = true;
-          networks = {
-            "10-mv-enp6s0" = {
-              matchConfig.Name = "mv-enp6s0";
-              address = ["192.168.87.1/24"];
-              # networkConfig.DHCP = "yes";
-              dhcpV4Config.ClientIdentifier = "mac";
-            };
-          };
+          allowedTCPPorts = [webPort];
         };
       };
+
+      # environment.systemPackages = with pkgs; [ffmpeg_5-full lshw];
+
+      services.blocky.enable = true;
     };
-  }
+  };
+}
