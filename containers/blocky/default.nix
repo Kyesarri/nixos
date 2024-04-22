@@ -18,13 +18,13 @@ in
         system.stateVersion = "23.11";
 
         networking = {
-          useDHCP = false;
+          useDHCP = true;
           useNetworkd = true;
           useHostResolvConf = false;
           hostName = "${hostName}";
           firewall.enable = false;
         };
-
+        /*
         systemd.network = {
           enable = true;
           networks = {
@@ -36,6 +36,7 @@ in
             };
           };
         };
+        */
       };
     };
   }
