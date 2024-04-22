@@ -18,14 +18,6 @@
     ../headless.nix # base packages and config, may need to move some of those values to this config
 
     ../../containers # handles networking / bridge for host / containers
-    ../../containers/plex # oci / podman not nix-container
-    ../../containers/home-assistant # not much managed within nix yet
-    ../../containers/frigate # testing in podman, working OK! 9900k iGPU is trash compared to old nix-serv RIP # TODO increase iGPU Vram
-    # ../../containers/emqx # emqx not working currently
-    ../../containers/codeproject # was using this for frigate detections
-
-    ../../containers/blocky # testing, to replace pi-hole lxc on proxmox
-    # ../../containers/authelia # local web auth
 
     ../../home # home-manaager config for all machines currently
     ../../home/bottom # nice to have terminal task manager / perfmon
@@ -36,14 +28,7 @@
     ../../home/gtk # has some theming bits, might have some requirement still
     ../../home/zsh # yes pls
 
-    ../../serv/arr
-    ../../serv/nginx
-    ../../serv/caddy
-
-    # ../../serv/changedetection
-
-    # ../../home/syncthing # testing without currently
-    # ../../home/tailscale # TODO disabled until i can figure out mkif hostname == {nix-serv}; with an else
+    ../../serv # import all serv services
   ];
 
   colorscheme = inputs.nix-colors.colorSchemes.${spaghetti.scheme1};
@@ -100,7 +85,6 @@
     };
 
     smartd = {
-      # notifies via cli on failing disks
       enable = true;
       autodetect = true;
       notifications = {

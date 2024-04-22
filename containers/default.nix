@@ -4,8 +4,16 @@
   ...
 }: {
   imports = [
+    ./authelia
+    # ./blocky
+    # ./codeproject
+    ./frigate
+    ./home-assistant
+    # ./nextcloud
     ./nginx-proxy-manager
+    ./plex
   ];
+
   virtualisation = {
     oci-containers.backend = "podman";
     podman = {
