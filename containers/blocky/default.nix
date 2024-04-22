@@ -9,8 +9,6 @@ in
     ...
   }: {
     containers.${hostName} = {
-      services.blocky.enable = true;
-
       autoStart = true;
       privateNetwork = true;
       hostBridge = "br0";
@@ -20,7 +18,7 @@ in
         ...
       }: {
         system.stateVersion = "23.11";
-
+        services.blocky.enable = true;
         networking = {
           hostName = "${hostName}";
           # domain = "home.lan";
