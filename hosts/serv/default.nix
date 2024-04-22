@@ -37,7 +37,7 @@
     ../../home/zsh # yes pls
 
     ../../serv/arr
-    ../../serv/nginx # reverse proxy boi
+    ../../serv/nginx
     ../../serv/caddy
 
     # ../../serv/changedetection

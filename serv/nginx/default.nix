@@ -13,7 +13,7 @@
     isNormalUser = false;
   };
 
-  networking.firewall.allowedTCPPorts = [80 81];
+  networking.firewall.allowedTCPPorts = [80 81 443];
 
   services.nginx = {
     enable = true;

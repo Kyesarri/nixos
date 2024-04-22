@@ -26,6 +26,7 @@
       openRPCPort = true;
       openPeerPorts = true;
       settings = {
+        incomplete-dir-enabled = false;
         dht-enabled = true;
         download-dir = "/hddb/torrents/";
         download-queue-enabled = false;
