@@ -30,15 +30,15 @@ in
       wait-online.enable = lib.mkForce false;
 
       netdevs.lan = {
-        enable = mkDefault true;
+        enable = lib.mkDefault true;
         netdevConfig.Kind = "macvlan";
         netdevConfig.Name = "lan";
-        macvlanConfig.Mode = mkDefault "bridge";
+        macvlanConfig.Mode = lib.mkDefault "bridge";
       };
 
       networks.lan = {
-        networkConfig.DNSSEC = mkDefault false;
-        matchConfig.Name = mkDefault "lan";
+        networkConfig.DNSSEC = lib.mkDefault false;
+        matchConfig.Name = lib.mkDefault "lan";
         linkConfig.ARP = true;
         networkConfig.IPv6AcceptRA = "no";
         networkConfig.LinkLocalAddressing = "no";
