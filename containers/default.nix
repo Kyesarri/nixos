@@ -1,86 +1,71 @@
-let
-  # ${ct.service.value} # TODO
-  ct = {
-    nginx = {
-      hostName = "nginx";
-      ip = "192.168.87.30";
-      webPort = 81;
-    };
-    pihole = {
-      hostName = "pihole";
-      ip = "192.168.87.1";
-      webPort = 8080;
+{
+  config,
+  pkgs,
+  ...
+}: {
+  imports = [
+    ./nginx-proxy-manager
+  ];
+  virtualisation = {
+    oci-containers.backend = "podman";
+    podman = {
+      enable = true;
+      autoPrune.enable = true;
+      dockerCompat = true;
     };
   };
-in
-  {
-    config,
-    pkgs,
-    ...
-  }: {
-    imports = [
-      ./nginx-proxy-manager
-    ];
-    virtualisation = {
-      oci-containers.backend = "podman";
-      podman = {
-        enable = true;
-        autoPrune.enable = true;
-        dockerCompat = true;
+
+  environment.systemPackages = with pkgs; [
+    podman
+    podman-tui
+    intel-gpu-tools
+  ];
+
+  systemd.network.networks."2.5-rt-lan" = {
+    # linkConfig.RequiredForOnline = "routable";
+    matchConfig.Name = "enp6s0";
+    networkConfig = {
+      Address = "192.168.87.99/24";
+      Gateway = "192.168.87.251";
+      DNS = ["1.1.1.1"];
+    };
+  };
+
+  networking = {
+    # useNetworkd = true;
+    useDHCP = false;
+    usePredictableInterfaceNames = true; # not sure if this changed anything
+    defaultGateway = "192.168.87.251";
+    nameservers = ["192.168.87.251"];
+
+    bridges.br0.interfaces = ["eno1"]; # serv bridge
+
+    firewall.enable = true;
+
+    interfaces = {
+      "br0" = {
+        useDHCP = false;
+
+        ipv4.addresses = [
+          {
+            address = "192.168.87.9";
+            prefixLength = 24;
+          }
+        ];
+      };
+
+      "enp6s0" = {
+        useDHCP = false;
+        ipv4.addresses = [
+          {
+            address = "192.168.87.99"; # testing realtek m.2 e 2.5g card in serv
+            prefixLength = 24; # may bring this interface or onboard in as a vlan for cameras and iot
+          }
+        ];
       };
     };
-
-    environment.systemPackages = with pkgs; [
-      podman
-      podman-tui
-      intel-gpu-tools
-    ];
-
-    systemd.network.networks."2.5-rt-lan" = {
-      # linkConfig.RequiredForOnline = "routable";
-      matchConfig.Name = "enp6s0";
-      networkConfig = {
-        Address = "192.168.87.99/24";
-        Gateway = "192.168.87.251";
-        DNS = ["1.1.1.1"];
-      };
-    };
-
-    networking = {
-      # useNetworkd = true;
-      useDHCP = false;
-      usePredictableInterfaceNames = true; # not sure if this changed anything
-      defaultGateway = "192.168.87.251";
-      nameservers = ["192.168.87.251"];
-
-      bridges.br0.interfaces = ["eno1"]; # serv bridge
-
-      firewall.enable = true;
-
-      interfaces = {
-        "br0" = {
-          useDHCP = false;
-
-          ipv4.addresses = [
-            {
-              address = "192.168.87.9";
-              prefixLength = 24;
-            }
-          ];
-        };
-
-        "enp6s0" = {
-          useDHCP = false;
-          ipv4.addresses = [
-            {
-              address = "192.168.87.99"; # testing realtek m.2 e 2.5g card in serv
-              prefixLength = 24; # may bring this interface or onboard in as a vlan for cameras and iot
-            }
-          ];
-        };
-      };
-    };
-  }
+  };
+}
 /*
 nat = {
   enable = true;
