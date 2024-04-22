@@ -23,19 +23,18 @@ in
           hostName = "${hostName}";
           firewall.enable = false;
         };
-        /*
+
         systemd.network = {
           enable = true;
           networks = {
             "10-enp6s0" = {
-              matchConfig.Name = "enp6s0";
+              matchConfig.Name = "mv-enp6s0";
               address = ["192.168.87.1/24"];
-              # networkConfig.DHCP = "yes";
+              networkConfig.DHCP = "yes";
               dhcpV4Config.ClientIdentifier = "mac";
             };
           };
         };
-        */
       };
     };
   }
