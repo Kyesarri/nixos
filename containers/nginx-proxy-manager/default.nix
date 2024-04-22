@@ -3,6 +3,7 @@
   config,
   pkgs,
   ct,
+  nginx,
   ...
 }: {
   networking.firewall = {allowedTCPPorts = [80 81 443];};
