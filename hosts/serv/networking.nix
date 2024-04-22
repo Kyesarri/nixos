@@ -6,6 +6,7 @@ in
   {
     config,
     pkgs,
+    lib,
     ...
   }: {
     networking = {
