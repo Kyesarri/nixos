@@ -27,7 +27,7 @@ in
         systemd.network = {
           enable = true;
           networks = {
-            "10-enp6s0" = {
+            "10-mv-enp6s0" = {
               matchConfig.Name = "mv-enp6s0";
               address = ["192.168.87.1/24"];
               networkConfig.DHCP = "yes";
