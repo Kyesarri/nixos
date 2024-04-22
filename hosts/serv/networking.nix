@@ -1,5 +1,4 @@
 let
-  # toss some ports here
   chrony = 123;
   tailscale = 41641;
   ssh = 22;
@@ -15,7 +14,7 @@ in
       hostId = "bed5b7cd"; # required for lvm disks
       networkmanager.enable = false;
       useNetworkd = true;
-      usePredictableInterfaceNames = lib.mkDefault true;
+      usePredictableInterfaceNames = mkDefault true;
 
       firewall = {
         enable = true;
@@ -29,27 +28,11 @@ in
       enable = true;
       wait-online.enable = lib.mkForce false;
 
-      netdevs.lan = {
-        enable = lib.mkDefault true;
-        netdevConfig.Kind = "macvlan";
-        netdevConfig.Name = "lan";
-        macvlanConfig.Mode = lib.mkDefault "bridge";
-      };
-
-      networks.lan = {
-        networkConfig.DNSSEC = lib.mkDefault false;
-        matchConfig.Name = lib.mkDefault "lan";
-        linkConfig.ARP = true;
-        networkConfig.IPv6AcceptRA = "no";
-        networkConfig.LinkLocalAddressing = "no";
-      };
-
-      networks.local-eth = {
-        macvlan = ["lan"];
-        matchConfig.Name = "eno1";
-        linkConfig.ARP = false;
-        networkConfig.IPv6AcceptRA = "no";
-        networkConfig.LinkLocalAddressing = "no";
+      netdevs."30-br0-eno1" = {
+        netdevConfig = {
+          Kind = "bridge";
+          Name = "br0";
+        };
       };
 
       networks."10-enp6s0" = {
@@ -58,14 +41,11 @@ in
         routes = [{routeConfig.Gateway = "192.168.87.251";}];
         linkConfig.RequiredForOnline = "routable";
       };
+
+      networks."20-eno1" = {
+        matchConfig.Name = "eno1"; # integrated 1g
+        networkConfig.Bridge = "br0";
+        linkConfig.RequiredForOnline = "enslaved";
+      };
     };
   }
-/*
-# use onboard 1g as our macvlan
-"20-eno1" = {
-  matchConfig.Name = "eno1"; # integrated 1g
-  networkConfig.Bridge = "br0";
-  linkConfig.RequiredForOnline = "enslaved";
-};
-*/
-
