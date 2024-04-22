@@ -46,7 +46,6 @@
 
       "sonarr.home" = {
         addSSL = false;
-        proxyWebsockets = true;
         enableACME = false;
         locations."/" = {proxyPass = "http://localhost:8989";};
         serverAliases = [
