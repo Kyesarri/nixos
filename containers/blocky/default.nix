@@ -9,11 +9,11 @@ in
     ...
   }: {
     containers.${hostName} = {
+      services.blocky.enable = true;
+
       autoStart = true;
       privateNetwork = true;
       hostBridge = "br0";
-      localAddress = "192.168.87.1/24";
-
       config = {
         config,
         pkgs,
@@ -32,10 +32,6 @@ in
             allowedTCPPorts = [webPort];
           };
         };
-
-        # environment.systemPackages = with pkgs; [ffmpeg_5-full lshw];
-
-        services.blocky.enable = true;
       };
     };
   }
