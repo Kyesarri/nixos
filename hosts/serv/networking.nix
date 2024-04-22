@@ -41,11 +41,12 @@ in
         routes = [{routeConfig.Gateway = "192.168.87.251";}];
         linkConfig.RequiredForOnline = "routable";
       };
-
+      /*
       networks."20-eno1" = {
         matchConfig.Name = "eno1"; # integrated 1g
         networkConfig.Bridge = "br0";
         linkConfig.RequiredForOnline = "enslaved";
       };
+      */
     };
   }
