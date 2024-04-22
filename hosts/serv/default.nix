@@ -10,12 +10,12 @@
 }: {
   imports = [
     nix-colors.homeManagerModules.default
-    ./per-device.nix # per device hypr config # not required, TODO remove?
 
     ./hardware.nix # device specific hardware config
-    ../../hardware/audio # probs worthwile for warning sounds or something
 
     ../headless.nix # base packages and config, may need to move some of those values to this config
+
+    ../../hardware/audio
 
     ../../containers # handles networking / bridge for host / containers
 

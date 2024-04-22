@@ -4,7 +4,7 @@
   ...
 }: {
   imports = [
-    ./authelia
+    # ./authelia
     # ./blocky
     # ./codeproject
     ./frigate
@@ -29,77 +29,79 @@
     intel-gpu-tools
   ];
 
-  systemd.network.networks."2.5-rt-lan" = {
-    # linkConfig.RequiredForOnline = "routable";
-    matchConfig.Name = "enp6s0";
-    networkConfig = {
-      Address = "192.168.87.99/24";
-      Gateway = "192.168.87.251";
-      DNS = ["1.1.1.1"];
+  systemd.network = {
+    enable = true;
+    netdevs = {
+      "30-br0" = {
+        netdevConfig = {
+          Kind = "bridge";
+          Name = "br0";
+        };
+      };
     };
-  };
-
-  networking = {
-    # useNetworkd = true;
-    useDHCP = false;
-    usePredictableInterfaceNames = true; # not sure if this changed anything
-    defaultGateway = "192.168.87.251";
-    nameservers = ["192.168.87.251"];
-
-    bridges.br0.interfaces = ["eno1"]; # serv bridge
-
-    firewall.enable = true;
-
-    interfaces = {
-      "br0" = {
-        useDHCP = false;
-
-        ipv4.addresses = [
-          {
-            address = "192.168.87.9";
-            prefixLength = 24;
-          }
-        ];
+    networks = {
+      "10-lan" = {
+        matchConfig.Name = "enp6s0"; # 2.5g m.2
+        address = ["192.168.87.9/24"];
+        routes = [{routeConfig.Gateway = "192.168.87.251";}];
+        linkConfig.RequiredForOnline = "routable";
       };
-
-      "enp6s0" = {
-        useDHCP = false;
-        ipv4.addresses = [
-          {
-            address = "192.168.87.99"; # testing realtek m.2 e 2.5g card in serv
-            prefixLength = 24; # may bring this interface or onboard in as a vlan for cameras and iot
-          }
-        ];
+      /*
+        networkConfig = {
+          Address = "192.168.87.99/24";
+          Gateway = "192.168.87.251";
+          DNS = ["1.1.1.1"];
+        };
       };
+      */
+      "20-eno1" = {
+        matchConfig.Name = "eno1"; # integrated 1g
+        networkConfig.Bridge = "br0";
+        linkConfig.RequiredForOnline = "enslaved";
+      };
+      /*
+      "10-wan" = {
+        matchConfig.Name = "eno1";
+        address = ["192.168.87.9/24"];
+        routes = [{routeConfig.Gateway = "192.168.87.251";}];
+        linkConfig.RequiredForOnline = "routable";
+      };
+      */
     };
   };
 }
 /*
-nat = {
-  enable = true;
-  internalInterfaces = ["ve-+"];
-  externalInterface = "br0";
-};
-*/
-/*
-  systemd.network.links = {
-  "10-wan" = {
-    matchConfig.MACAddress = "68:27:19:a5:79:51";
-    linkConfig.Name = "wan0";
+networking = {
+  # useNetworkd = true;
+  useDHCP = false;
+  usePredictableInterfaceNames = true; # not sure if this changed anything
+  defaultGateway = "192.168.87.251";
+  nameservers = ["192.168.87.251"];
+
+  bridges.br0.interfaces = ["eno1"]; # serv bridge
+
+  interfaces = {
+    "br0" = {
+      useDHCP = false;
+
+      ipv4.addresses = [
+        {
+          address = "192.168.87.9";
+          prefixLength = 24;
+        }
+      ];
+    };
+
+    "enp6s0" = {
+      useDHCP = false;
+      ipv4.addresses = [
+        {
+          address = "192.168.87.99"; # testing realtek m.2 e 2.5g card in serv
+          prefixLength = 24; # may bring this interface or onboard in as a vlan for cameras and iot
+        }
+      ];
+    };
   };
-  "10-lan" = {
-    matchConfig.MACAddress = "68:27:19:a5:79:52";
-    linkConfig.Name = "lan0";
-  };
 };
-*/
-/*
-ipv4.routes = [
-  {
-    address = "192.168.87.0";
-    prefixLength = 24;
-    via = "192.168.87.9";
-  }
-];
 */
 
