@@ -14,7 +14,7 @@ in
       hostId = "bed5b7cd"; # required for lvm disks
       networkmanager.enable = false;
       useNetworkd = true;
-      usePredictableInterfaceNames = mkDefault true;
+      usePredictableInterfaceNames = lib.mkDefault true;
 
       firewall = {
         enable = true;
