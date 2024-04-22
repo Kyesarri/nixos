@@ -13,6 +13,8 @@
     isNormalUser = false;
   };
 
+  networking.firewall.allowedTCPPorts = [80 81];
+
   services.nginx = {
     enable = true;
 
@@ -35,6 +37,7 @@
 
       "radarr.home" = {
         addSSL = false;
+        proxyWebsockets = true;
         enableACME = false;
         locations."/" = {proxyPass = "http://localhost:7878";};
         serverAliases = [
@@ -44,6 +47,7 @@
 
       "sonarr.home" = {
         addSSL = false;
+        proxyWebsockets = true;
         enableACME = false;
         locations."/" = {proxyPass = "http://localhost:8989";};
         serverAliases = [
@@ -52,10 +56,20 @@
       };
       "frigate.home" = {
         addSSL = false;
+        proxyWebsockets = true;
         enableACME = false;
         locations."/" = {proxyPass = "http://localhost:5000";};
         serverAliases = [
           "www.frigate.home"
+        ];
+      };
+      "plex.home" = {
+        addSSL = false;
+        proxyWebsockets = true;
+        enableACME = false;
+        locations."/" = {proxyPass = "http://localhost:32400";};
+        serverAliases = [
+          "www.plex.home"
         ];
       };
     };

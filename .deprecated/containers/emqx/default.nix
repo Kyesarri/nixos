@@ -16,10 +16,10 @@ in
       autoStart = true;
       image = "ghcr.io/emqx/emqx:latest";
       ports = [
-        "1001:1883/tcp"
-        "1002:8083/tcp"
-        "1003:8084/tcp"
-        "1004:8883/tcp"
+        "1883:1883/tcp"
+        "8083:8083/tcp"
+        "8084:8084/tcp"
+        "8883:8883/tcp"
         "18083:18083/tcp"
       ];
       volumes = [
@@ -29,7 +29,7 @@ in
         # "/etc/localtime:/etc/localtime:ro"
       ];
       environment = {
-        # EMQX_NODE_NAME = "${hostName}-nix-serv";
+        EMQX_NODE_NAME = "${hostName}-nix-serv";
         # EMQX_CLUSTER__DISCOVERY_STRATEGY = "static";
         # EMQX_CLUSTER__STATIC__SEEDS = "emqx-nix-serv";
       };
