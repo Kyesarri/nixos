@@ -18,7 +18,6 @@ in
         system.stateVersion = "23.11";
 
         networking = {
-          useDHCP = true;
           useNetworkd = true;
           useHostResolvConf = false;
           hostName = "${hostName}";
