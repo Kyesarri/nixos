@@ -20,3 +20,5 @@ in {
 
   systemd.services.transmission.environment.TRANSMISSION_WEB_HOME = "${pkgs.transmission}/share/transmission/web/flood";
 }
+# the other method mentioned in the above thread was not working for me, the above works fine
+

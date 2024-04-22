@@ -18,6 +18,9 @@ in
     pkgs,
     ...
   }: {
+    imports = [
+      ./nginx-proxy-manager
+    ];
     virtualisation = {
       oci-containers.backend = "podman";
       podman = {
