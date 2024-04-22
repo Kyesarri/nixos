@@ -9,7 +9,7 @@ in
     pkgs,
     ...
   }: {
-    networking.firewall.allowedTCPPorts = [32168];
+    networking.firewall.allowedTCPPorts = [32168 8081];
     virtualisation.oci-containers.containers.${hostName} = {
       hostname = "${hostName}-nix-serv";
       autoStart = true;
