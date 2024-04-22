@@ -14,7 +14,7 @@ in
       hostname = "${hostName}-nix-serv";
       autoStart = true;
       image = "codeproject/ai-server";
-      ports = ["32168:32168"];
+      ports = ["32168:32168" "8081:80"];
       volumes = [
         "/etc/localtime:/etc/localtime:ro"
         "/home/${spaghetti.user}/.docker/${hostName}/data:/etc/codeproject/ai"
