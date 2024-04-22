@@ -25,9 +25,9 @@ in
     systemd.network = {
       enable = true;
       wait-online.enable = lib.mkForce false;
-      # create network bridge
+
       netdevs = {
-        "30-br0" = {
+        "30-br0-eno1" = {
           netdevConfig = {
             Kind = "bridge";
             Name = "br0";

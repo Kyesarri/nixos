@@ -10,31 +10,27 @@ in
   }: {
     containers.${hostName} = {
       autoStart = true;
-      macvlans = ["enp2s0"];
+      macvlans = ["enp6s0"]; # call the network device to use by name, not by networkd name
       privateNetwork = false;
-      hostBridge = "br0";
       config = {pkgs, ...}: {
         services.blocky.enable = true;
         system.stateVersion = "23.11";
+
         networking = {
           useDHCP = false;
           useNetworkd = true;
           useHostResolvConf = false;
           hostName = "${hostName}";
-          firewall = {
-            enable = false;
-            allowedTCPPorts = [webPort];
-          };
+          firewall.enable = false;
         };
+
         systemd.network = {
           enable = true;
           networks = {
-            "40-mv-enp2s0" = {
-              matchConfig.Name = "mv-enp2s0";
-              address = [
-                "192.168.1.3/24"
-              ];
-              networkConfig.DHCP = "yes";
+            "10-enp6s0" = {
+              matchConfig.Name = "11-enp6s0";
+              address = ["192.168.87.1/24"];
+              # networkConfig.DHCP = "yes";
               dhcpV4Config.ClientIdentifier = "mac";
             };
           };

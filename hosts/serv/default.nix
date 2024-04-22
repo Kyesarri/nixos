@@ -35,8 +35,6 @@
 
   users.users.${spaghetti.user}.uid = 1000;
 
-  # tailscale config above is temp, will remove once below # TODO has been completed
-
   services = {
     openssh.enable = true;
     xserver.enable = false; # headless
