@@ -8,10 +8,9 @@ in
     lib,
     ...
   }: {
+    systemd.nspawn.vlandemo.networkConfig.MACVLAN = "enp6s0";
     containers.${hostName} = {
       autoStart = true;
-      privateNetwork = true;
-      hostBridge = "br0";
       config = {
         config,
         pkgs,
@@ -21,13 +20,20 @@ in
         services.blocky.enable = true;
         networking = {
           hostName = "${hostName}";
-          # domain = "home.lan";
-          # nameservers = ["192.168.87.251"];
-          # defaultGateway = "192.168.87.251";
           useHostResolvConf = lib.mkForce false;
           firewall = {
             enable = true;
             allowedTCPPorts = [webPort];
+          };
+          systemd.network = {
+            networks."10-mv-enp6s0" = {
+              matchConfig.Name = "mv-enp6s0";
+              address = ["192.168.87.2/24"];
+            };
+            netdevs."10-mv-enp6s0" = {
+              netdevConfig.Name = "mv-enp6s0";
+              netdevConfig.Kind = "veth";
+            };
           };
         };
       };

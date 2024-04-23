@@ -28,11 +28,18 @@ in
       enable = true;
       wait-online.enable = lib.mkForce false;
 
-      netdevs."30-br0-eno1" = {
+      # create a bridge, named br0
+      netdevs."br0" = {
         netdevConfig = {
-          Kind = "bridge";
           Name = "br0";
+          Kind = "bridge";
         };
+      };
+      # bridge adaptor
+      networks."20-eno1" = {
+        matchConfig.Name = "eno1"; # integrated 1g
+        networkConfig.Bridge = "br0";
+        linkConfig.RequiredForOnline = "enslaved";
       };
 
       networks."10-enp6s0" = {
@@ -41,12 +48,5 @@ in
         routes = [{routeConfig.Gateway = "192.168.87.251";}];
         linkConfig.RequiredForOnline = "routable";
       };
-      /*
-      networks."20-eno1" = {
-        matchConfig.Name = "eno1"; # integrated 1g
-        networkConfig.Bridge = "br0";
-        linkConfig.RequiredForOnline = "enslaved";
-      };
-      */
     };
   }

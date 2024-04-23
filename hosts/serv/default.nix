@@ -12,7 +12,8 @@
     nix-colors.homeManagerModules.default
 
     ./hardware.nix # device specific hardware config
-    ./networking.nix # systemd networking config
+    #./networking.nix # systemd networking config
+    ./net.test.nix
 
     ../headless.nix # base packages and config, may need to move some of those values to this config
 
