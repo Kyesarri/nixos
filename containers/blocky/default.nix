@@ -20,6 +20,7 @@ in
         system.stateVersion = "23.11";
         services.blocky.enable = true;
         networking.hostName = "${hostName}";
+        networking.useHostResolvConf = lib.mkForce false;
 
         systemd.network = {
           enable = true;
