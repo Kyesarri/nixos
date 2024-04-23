@@ -48,13 +48,8 @@ in
       matchConfig.Name = "mv-enp6s0-host";
       networkConfig.IPForward = "yes";
       dhcpV4Config.ClientIdentifier = "mac";
-      address = lib.mkForce [
-        "192.168.87.99/24"
-
-        "192.168.87.1/24"
-      ];
+      address = lib.mkForce ["192.168.87.99/24"];
     };
-
     systemd.network.netdevs."20-mv-enp6s0-host" = {
       netdevConfig = {
         Name = "mv-enp6s0-host";

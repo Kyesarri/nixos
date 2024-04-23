@@ -8,9 +8,9 @@ in
     lib,
     ...
   }: {
-    systemd.nspawn.${hostName}.networkConfig.MACVLAN = "enp6s0";
     containers.${hostName} = {
       autoStart = true;
+      networkConfig.MACVLAN = "enp6s0";
       config = {
         config,
         pkgs,
