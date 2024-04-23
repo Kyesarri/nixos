@@ -24,12 +24,13 @@ in
       };
     };
 
-    systemd.network.networks."10-eno1" = {
+    systemd.network.networks."50-eno1" = {
       matchConfig.Name = "eno1"; # integrated 1g
       address = ["192.168.87.9/24"];
       routes = [{routeConfig.Gateway = "192.168.87.251";}];
       linkConfig.RequiredForOnline = "routable";
     };
+
     # Config for the physical interface itself with DHCP enabled and associated to a MACVLAN.
     systemd.network.networks."40-enp6s0" = {
       matchConfig.Name = "enp6s0";
