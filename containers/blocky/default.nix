@@ -8,7 +8,7 @@ in
     lib,
     ...
   }: {
-    systemd.nspawn.vlandemo.networkConfig.MACVLAN = "enp6s0";
+    systemd.nspawn.${hostName}.networkConfig.MACVLAN = "enp6s0";
     containers.${hostName} = {
       autoStart = true;
       config = {
