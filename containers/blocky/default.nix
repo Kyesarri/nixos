@@ -10,6 +10,8 @@ in
   }: {
     containers.${hostName} = {
       autoStart = true;
+      privateNetwork = true;
+
       config = {
         config,
         pkgs,
