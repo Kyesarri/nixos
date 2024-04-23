@@ -42,13 +42,15 @@ in
     };
 
     # The host-side sub-interface of the MACVLAN. This means that the host is reachable
-    # at `192.168.87.9`, both on the physical interface and from the container.
+    # at `192.168.87.99`, both on the physical interface and from the container.
     systemd.network.networks."20-mv-enp6s0-host" = {
       matchConfig.Name = "mv-enp6s0-host";
       networkConfig.IPForward = "yes";
       dhcpV4Config.ClientIdentifier = "mac";
       address = lib.mkForce [
         "192.168.87.99/24"
+
+        "192.168.87.1/24"
       ];
     };
 
