@@ -20,6 +20,18 @@ in
         system.stateVersion = "23.11";
         services.blocky.enable = true;
         networking.hostName = "${hostName}";
+
+        systemd.network = {
+          enable = true;
+          networks."10-mv-enp6s0" = {
+            matchConfig.Name = "mv-enp6s0";
+            address = ["192.168.87.2/24"];
+          };
+          netdevs."10-mv-enp6s0" = {
+            netdevConfig.Name = "mv-enp6s0";
+            netdevConfig.Kind = "veth";
+          };
+        };
       };
     };
   }
