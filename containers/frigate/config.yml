@@ -148,10 +148,10 @@ ffmpeg:
 detectors:
   ov:
     type: openvino
-    device: AUTO
+    device: edgetpu
     model:
       path: /openvino-model/ssdlite_mobilenet_v2.xml
-
+#
 model:
   width: 300
   height: 300
@@ -163,3 +163,8 @@ birdseye:
   enabled: true
   width: 640
   height: 480
+#
+#
+#
+#
+#
