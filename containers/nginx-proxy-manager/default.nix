@@ -19,8 +19,8 @@ in
         "/home/${spaghetti.user}/.docker/${hostName}/letsencrypt:/etc/letsencrypt"
       ];
       extraOptions = [
-        # "--network=host"
-        "--network=pod-net"
+        "--network=host"
+        # "--network=pod-net"
       ];
     };
   }

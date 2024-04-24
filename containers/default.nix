@@ -39,6 +39,6 @@
   environment.systemPackages = with pkgs; [
     podman
     podman-tui
-    intel-gpu-tools
+    intel-gpu-tools # useful for monitoring igpu usage
   ];
 }
