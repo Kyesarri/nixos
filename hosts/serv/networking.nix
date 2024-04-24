@@ -15,7 +15,13 @@ in
       networkmanager.enable = false;
       useNetworkd = true;
       usePredictableInterfaceNames = lib.mkDefault true;
-
+      nat = {
+        enable = true;
+        internalInterfaces = ["ve-+"];
+        externalInterface = "enp6s0";
+        # Lazy IPv6 connectivity for the container
+        enableIPv6 = true;
+      };
       firewall = {
         enable = true;
         checkReversePath = "loose"; # fixes connection issues with tailscale
@@ -35,6 +41,7 @@ in
           Kind = "bridge";
         };
       };
+
       # bridge adaptor
       networks."20-eno1" = {
         matchConfig.Name = "eno1"; # integrated 1g
