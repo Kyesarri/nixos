@@ -10,8 +10,8 @@ in
     containers.${hostName} = {
       autoStart = true;
       privateNetwork = true;
-      # hostAddress = "192.168.87.99/24";
-      localAddress = "192.168.87.2/24";
+      hostAddress = "192.168.87.99";
+      localAddress = "192.168.87.2";
       config = {
         config,
         pkgs,
