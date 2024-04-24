@@ -20,6 +20,5 @@ in
         "/home/${spaghetti.user}/.docker/${hostName}/data:/etc/codeproject/ai"
         "/home/${spaghetti.user}/.docker/${hostName}/modules:/app/modules"
       ];
-      extraOptions = [];
     };
   }

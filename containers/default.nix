@@ -6,7 +6,7 @@
   imports = [
     # ./authelia
     ./blocky # nspawn
-    # ./codeproject
+    ./codeproject
     ./frigate # oci
     ./home-assistant # oci
     # ./nextcloud
