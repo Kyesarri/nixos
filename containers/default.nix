@@ -15,11 +15,11 @@
   ];
 
   virtualisation = {
-    oci-containers.backend = "podman";
+    oci-containers.backend = "podman"; # set podman as our default backend for containers
     podman = {
       enable = true;
       autoPrune.enable = true;
-      dockerCompat = true;
+      dockerCompat = true; # lets us use docker commands - translate to podman
     };
   };
   /*

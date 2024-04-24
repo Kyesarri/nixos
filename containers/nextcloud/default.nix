@@ -14,8 +14,8 @@
   containers.nextcloud = {
     autoStart = true;
     privateNetwork = true;
-    #hostAddress = "192.168.87.9";
-    hostBridge = "br0";
+    hostAddress = "192.168.87.9";
+    # hostBridge = "br0";
     localAddress = "192.168.87.8/24";
     config = {
       config,
@@ -38,7 +38,7 @@
         defaultGateway = "192.168.87.251";
         firewall = {
           enable = true;
-          allowedTCPPorts = [80];
+          allowedTCPPorts = [8082];
         };
         # Use systemd-resolved inside the container
         # Workaround for bug https://github.com/NixOS/nixpkgs/issues/162686
