@@ -21,6 +21,9 @@
         nextcloud = {
           enable = true;
           hostName = "nextcloud";
+          extraOptions = {
+            redis.port = 8081;
+          };
           config.adminpassFile = "${pkgs.writeText "adminpass" "test123"}"; # DON'T DO THIS IN PRODUCTION - the password file will be world-readable in the Nix Store!
         };
       };
