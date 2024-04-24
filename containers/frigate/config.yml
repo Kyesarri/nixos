@@ -146,11 +146,9 @@ ffmpeg:
 #     api_timeout: 1 # seconds
 #
 detectors:
-  ov:
-    type: openvino
-    device: edgetpu
-    model:
-      path: /openvino-model/ssdlite_mobilenet_v2.xml
+  coral_pci:
+    type: edgetpu
+    device: pci
 #
 model:
   width: 300
