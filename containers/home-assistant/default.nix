@@ -11,7 +11,7 @@
       hostname = "haos-nix-serv";
       autoStart = true;
       image = "ghcr.io/home-assistant/home-assistant:stable";
-      ports = ["192.168.87.1:8123:8123/tcp"];
+      ports = ["8123:8123/tcp"];
       volumes = [
         "/etc/localtime:/etc/localtime:ro"
         "/home/${spaghetti.user}/.docker/haos:/config"
