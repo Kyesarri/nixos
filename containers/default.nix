@@ -29,7 +29,7 @@
   # creates one network for the containers to live inside of
   systemd.services.create-pod-network = with config.virtualisation.oci-containers; {
     serviceConfig.Type = "oneshot";
-    wantedBy = ["${backend}-nginx-proxy-manager.service" "${backend}-frigate.service" "${backend}-home-assistant.service" "${backend}-plex.service"];
+    wantedBy = ["podman-nginx-proxy-manager.service" "podman-frigate.service" "podman-home-assistant.service" "podman-plex.service"];
     script = ''
       ${pkgs.podman}/bin/podman network exists pod-net || \
       ${pkgs.podman}/bin/podman network create pod-net

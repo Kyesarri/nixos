@@ -1,5 +1,3 @@
-# un-used for now - incomplete need to work out more container networking
-## before i start making *more* unworking containers :)
 let
   hostName = "codeproject";
 in
