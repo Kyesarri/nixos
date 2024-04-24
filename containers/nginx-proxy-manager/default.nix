@@ -12,7 +12,7 @@ in
       hostname = "${hostName}";
       autoStart = true;
       image = "docker.io/jc21/nginx-proxy-manager:latest";
-      ports = ["80:80" "192.168.87.1:81:81" "443:443"];
+      ports = ["80:80" "81:81" "443:443"];
       volumes = [
         "/etc/localtime:/etc/localtime:ro"
         "/home/${spaghetti.user}/.docker/${hostName}/data:/data"
