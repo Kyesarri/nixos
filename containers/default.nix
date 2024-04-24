@@ -6,7 +6,7 @@
   imports = [
     # ./authelia # nsp
     # ./blocky # nsp
-    ./codeproject # oci
+    # ./codeproject # oci
     ./frigate # oci
     ./home-assistant # oci
     ./nginx-proxy-manager # oci
