@@ -36,7 +36,7 @@ in
       extraOptions = [
         # "--network=host"
         "--privileged"
-        "--network=pod-net"
+        # "--network=pod-net"
       ];
     };
   }
