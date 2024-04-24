@@ -20,8 +20,9 @@
       environment = {};
       extraOptions = [
         "--device=/dev/ttyUSB0"
-        "--network=host"
+        # "--network=host"
         "--privileged"
+        "--network=pod-net"
       ];
     };
   };

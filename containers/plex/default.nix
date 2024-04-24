@@ -34,8 +34,9 @@ in
       ];
       environment = {};
       extraOptions = [
-        "--network=host"
+        # "--network=host"
         "--privileged"
+        "--network=pod-net"
       ];
     };
   }
