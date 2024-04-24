@@ -22,6 +22,7 @@
       dockerCompat = true; # lets us use docker commands - translate to podman
     };
   };
+
   /*
   # https://madison-technologies.com/take-your-nixos-container-config-and-shove-it/
   # we create a systemd service so that we can create a single "pod"
@@ -36,6 +37,7 @@
     '';
   };
   */
+  # dont think this is required currently - if i want to isolate containers and have a proxy deal with connections this would be the deal
 
   environment.systemPackages = with pkgs; [
     podman

@@ -38,7 +38,7 @@
         defaultGateway = "192.168.87.251";
         firewall = {
           enable = true;
-          allowedTCPPorts = [8082];
+          allowedTCPPorts = [80];
         };
         # Use systemd-resolved inside the container
         # Workaround for bug https://github.com/NixOS/nixpkgs/issues/162686
