@@ -10,7 +10,8 @@ in
     containers.${hostName} = {
       autoStart = true;
       privateNetwork = true;
-      hostAddress = "192.168.87.99";
+      macvlans = ["enp6s0"];
+      # hostAddress = "192.168.87.99";
       localAddress = "192.168.87.2";
       config = {
         config,
