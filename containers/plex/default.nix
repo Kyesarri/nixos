@@ -13,7 +13,7 @@ in
       hostname = "${hostName}-nix-serv";
       autoStart = true;
       image = "lscr.io/linuxserver/plex:latest";
-      ports = [];
+      ports = ["32400:32400"];
       volumes = [
         "/etc/localtime:/etc/localtime:ro"
         # "/etc/timezone:/etc/timezone:ro"
