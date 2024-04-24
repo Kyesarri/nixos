@@ -35,7 +35,7 @@
         defaultGateway = "192.168.87.251";
         firewall = {
           enable = true;
-          allowedTCPPorts = [80];
+          allowedTCPPorts = [80 8081];
         };
       };
     };
