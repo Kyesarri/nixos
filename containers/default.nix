@@ -6,7 +6,7 @@
   imports = [
     # ./authelia
     ./blocky # nspawn
-    ./codeproject
+    ./codeproject # oci
     ./frigate # oci
     ./home-assistant # oci
     # ./nextcloud
@@ -29,7 +29,7 @@
   # creates one network for the containers to live inside of
   systemd.services.create-pod-network = with config.virtualisation.oci-containers; {
     serviceConfig.Type = "oneshot";
-    wantedBy = ["podman-nginx-proxy-manager.service" "podman-frigate.service" "podman-home-assistant.service" "podman-plex.service"];
+    wantedBy = ["${backend}-nginx-proxy-manager.service" "${backend}-frigate.service" "${backend}-home-assistant.service" "${backend}-plex.service"];
     script = ''
       ${pkgs.podman}/bin/podman network exists pod-net || \
       ${pkgs.podman}/bin/podman network create pod-net
