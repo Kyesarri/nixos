@@ -9,7 +9,6 @@
     # ./codeproject # oci
     ./frigate # oci
     ./home-assistant # oci
-    ./nextcloud # nsp
     ./nginx-proxy-manager # oci
     ./plex # oci
   ];
