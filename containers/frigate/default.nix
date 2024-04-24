@@ -46,7 +46,6 @@
         "--device=/dev/dri/renderD128"
         "--mount=type=tmpfs,target=/tmp/cache,tmpfs-size=1000000000"
         "--pull=always"
-        # "--network=pod-net"
       ];
     };
   };

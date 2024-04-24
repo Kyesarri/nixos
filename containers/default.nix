@@ -4,12 +4,12 @@
   ...
 }: {
   imports = [
-    # ./authelia
-    ./blocky # nspawn
-    ./codeproject # oci
+    # ./authelia # nsp
+    # ./blocky # nsp
+    # ./codeproject # oci
     ./frigate # oci
     ./home-assistant # oci
-    # ./nextcloud
+    ./nextcloud # nsp
     ./nginx-proxy-manager # oci
     ./plex # oci
   ];
