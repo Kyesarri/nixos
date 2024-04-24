@@ -16,6 +16,14 @@ in
       useNetworkd = true;
       usePredictableInterfaceNames = lib.mkDefault true;
 
+      nat = {
+        enable = true;
+        internalInterfaces = ["ve-+"];
+        externalInterface = "mv-enp6s0-host";
+        # Lazy IPv6 connectivity for the container
+        enableIPv6 = false;
+      };
+
       firewall = {
         enable = true;
         checkReversePath = "loose"; # fixes connection issues with tailscale
@@ -50,6 +58,7 @@ in
       dhcpV4Config.ClientIdentifier = "mac";
       address = lib.mkForce ["192.168.87.99/24"];
     };
+
     systemd.network.netdevs."20-mv-enp6s0-host" = {
       netdevConfig = {
         Name = "mv-enp6s0-host";

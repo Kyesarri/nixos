@@ -22,7 +22,7 @@
       dockerCompat = true;
     };
   };
-
+  /*
   # https://madison-technologies.com/take-your-nixos-container-config-and-shove-it/
   # we create a systemd service so that we can create a single "pod"
   # for our containers to live inside of. This will mimic how docker compose
@@ -35,6 +35,7 @@
       ${pkgs.podman}/bin/podman network create pod-net
     '';
   };
+  */
 
   environment.systemPackages = with pkgs; [
     podman
