@@ -108,9 +108,8 @@
 
     shells = with pkgs; [zsh]; # default shell to zsh
     systemPackages = with pkgs; [
-      linuxKernel.packages.linux_xanmod.gasket # coral tpu
       lm_sensors # sensor monitoring
-      lshw
+      lshw # list hardware
       usbutils
       busybox
       libva-utils

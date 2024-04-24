@@ -46,6 +46,9 @@
   };
 
   boot = {
+    extraModulePackages = [
+      linuxKernel.packages.linux_xanmod.gasket # coral tpu
+    ];
     kernelPackages = pkgs.linuxPackages_xanmod; # use mainline xanmod kernel
     supportedFilesystems = ["zfs"]; # add zfs, for storage
     zfs.forceImportRoot = false;
