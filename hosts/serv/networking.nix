@@ -20,7 +20,7 @@ in
         internalInterfaces = ["ve-+"];
         externalInterface = "enp6s0";
         # Lazy IPv6 connectivity for the container
-        enableIPv6 = true;
+        enableIPv6 = false;
       };
       firewall = {
         enable = true;
