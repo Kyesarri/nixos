@@ -109,7 +109,7 @@
     shells = with pkgs; [zsh]; # default shell to zsh
     systemPackages = with pkgs; [
       linuxKernel.packages.linux_xanmod.gasket # coral tpu
-      lm-sensors # sensor monitoring
+      lm_sensors # sensor monitoring
       lshw
       usbutils
       busybox
