@@ -19,9 +19,7 @@ in
       nat = {
         enable = true;
         internalInterfaces = ["ve-+"];
-        externalInterface = "mv-enp6s0-host";
-        # Lazy IPv6 connectivity for the container
-        enableIPv6 = false;
+        externalInterface = "enp6s0";
       };
 
       firewall = {
@@ -33,7 +31,7 @@ in
     };
 
     systemd.network.networks."50-eno1" = {
-      matchConfig.Name = "eno1"; # integrated 1g
+      matchConfig.Name = "eno1"; # integrated 1g, primary connection
       address = ["192.168.87.9/24"];
       routes = [{routeConfig.Gateway = "192.168.87.251";}];
       linkConfig.RequiredForOnline = "routable";
@@ -57,6 +55,7 @@ in
       networkConfig.IPForward = "yes";
       dhcpV4Config.ClientIdentifier = "mac";
       address = lib.mkForce ["192.168.87.99/24"];
+      routes = [{routeConfig.Gateway = "192.168.87.251";}];
     };
 
     systemd.network.netdevs."20-mv-enp6s0-host" = {
