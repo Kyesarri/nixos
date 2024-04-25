@@ -6,11 +6,15 @@
   ...
 }: {
   # grafana configuration
+  networking.firewall.allowedTCPPorts = [2342];
+
   services.grafana = {
     enable = true;
-    domain = "grafana.home";
-    port = 2342;
-    addr = "127.0.0.1";
+    settings = {
+      domain = "grafana.home";
+      port = 2342;
+      addr = "127.0.0.1";
+    };
   };
 
   # nginx reverse proxy
