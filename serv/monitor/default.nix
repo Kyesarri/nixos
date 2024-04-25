@@ -10,10 +10,10 @@
 
   services.grafana = {
     enable = true;
-    settings = {
+    settings.server = {
       domain = "grafana.home";
-      port = 2342;
-      addr = "127.0.0.1";
+      http_port = 2342;
+      http_addr = "127.0.0.1";
     };
   };
 
