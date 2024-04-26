@@ -7,12 +7,12 @@ in
     pkgs,
     ...
   }: {
-    networking.firewall.allowedTCPPorts = [32168 8081];
+    networking.firewall.allowedTCPPorts = [32168];
     virtualisation.oci-containers.containers.${hostName} = {
       hostname = "${hostName}-nix-serv";
       autoStart = true;
       image = "codeproject/ai-server";
-      ports = ["32168:32168" "8081:80"];
+      ports = ["32168:32168"];
       volumes = [
         "/etc/localtime:/etc/localtime:ro"
         "/home/${spaghetti.user}/.docker/${hostName}/data:/etc/codeproject/ai"
