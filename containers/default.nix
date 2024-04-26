@@ -10,6 +10,7 @@
     ./frigate # oci
     ./home-assistant # oci
     ./nginx-proxy-manager # oci
+    ./pihole
     ./plex # oci
   ];
 

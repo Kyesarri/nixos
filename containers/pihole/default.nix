@@ -14,15 +14,15 @@ in
     # '';
 
     networking.firewall.allowedTCPPorts = [53 8080];
-    networking.firewall.allowedUDPPorts = [53 8080];
+    networking.firewall.allowedUDPPorts = [53 57 67];
 
-    virtualisation.oci-containers.containers."pihole" = {
+    virtualisation.oci-containers.containers."${hostName}" = {
       autoStart = true;
       image = "pihole/pihole:latest";
-
       ports = [
         "53:53/udp"
         "53:53/tcp"
+        "67:67/udp"
         "8080:80/tcp" # maps 8080 on host interface to 80 in container
       ];
       volumes = [
