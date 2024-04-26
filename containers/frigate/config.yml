@@ -60,7 +60,7 @@ logger:
 #
 motion:
   threshold: 90
-#
+# un used currently v
 mqtt:
   client_id: frigate
   enabled: true
@@ -118,9 +118,10 @@ ui:
 ffmpeg:
   hwaccel_args: preset-vaapi
 #
+# when using cpai for detections v
 #detectors:
 #   deepstack:
-#     api_url: http://192.168.87.30:32168/v1/vision/detection
+#     api_url: http://192.168.87.9:32168/v1/vision/detection
 #     type: deepstack
 #     api_timeout: 1 # seconds
 #
