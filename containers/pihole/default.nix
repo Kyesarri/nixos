@@ -20,7 +20,7 @@ in
       autoStart = true;
       image = "pihole/pihole:latest";
       ports = [
-        "53:53/udp"
+        "533:53/udp"
         "53:53/tcp"
         "67:67/udp"
         "8080:80/tcp" # maps 8080 on host interface to 80 in container
