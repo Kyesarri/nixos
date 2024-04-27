@@ -12,18 +12,7 @@
     sops-nix.url = "github:Mic92/sops-nix";
     sops-nix.inputs.nixpkgs.follows = "nixpkgs";
 
-    # clan #
-    flake-parts.url = "github:hercules-ci/flake-parts";
-    flake-parts.inputs.nixpkgs-lib.follows = "nixpkgs";
-
-    clan-core.url = "git+https://git.clan.lol/clan/clan-core";
-    clan-core.inputs.nixpkgs.follows = "nixpkgs";
-    clan-core.inputs.flake-parts.follows = "flake-parts";
-    # clan #
-
     hyprland.url = "github:hyprwm/Hyprland";
-    # hyprland-plugins. url = "github:hyprwm/hyprland-plugins";
-    # hyprland-plugins.inputs.hyprland.follows = "hyprland";
 
     hyprpicker.url = "github:hyprwm/hyprpicker";
     hy3.url = "github:outfoxxed/hy3"; # dev branch
@@ -34,6 +23,7 @@
     wallpaper-generator.url = "github:kyesarri/wallpaper-generator"; # another one
 
     alejandra.url = "github:kamadorueda/alejandra/3.0.0"; # codeium nix
+
     ags.url = "github:Aylur/ags";
 
     auto-cpufreq.url = "github:AdnanHodzic/auto-cpufreq";
@@ -52,7 +42,6 @@
     auto-cpufreq,
     prism,
     wallpaper-generator,
-    clan-core,
     sops-nix,
     ...
   } @ inputs: let
@@ -91,8 +80,9 @@
       "nix-notebook" = nixpkgs.lib.nixosSystem {
         inherit system specialArgs;
         modules = [
-          ./hosts/notebook # celeron N3050 / i"gpu" / 4gb?
           home-manager.nixosModules.home-manager
+          sops-nix.nixosModules.sops
+          ./hosts/notebook # celeron N3050 / i"gpu" / 4gb?
           {
             home-manager = {
               useGlobalPkgs = true;
@@ -105,11 +95,12 @@
       "nix-desktop" = nixpkgs.lib.nixosSystem {
         inherit system specialArgs;
         modules = [
+          home-manager.nixosModules.home-manager
+          sops-nix.nixosModules.sops
           ./hosts/desktop # msi-z790i edge wifi / 13900kf / 3070 / 32gb
           {
             environment.systemPackages = [alejandra.defaultPackage.x86_64-linux];
           }
-          home-manager.nixosModules.home-manager
           {
             home-manager = {
               useGlobalPkgs = true;
@@ -123,6 +114,7 @@
         inherit system specialArgs;
         modules = [
           home-manager.nixosModules.home-manager
+          sops-nix.nixosModules.sops
           ./hosts/serv # ASUS z390i / 9900k / 32gb
           # 15s-fq2050TU / i5-1135G7 / iris x / 8gb FIXME #RIP
           {
@@ -140,11 +132,12 @@
       "nix-erying" = nixpkgs.lib.nixosSystem {
         inherit system specialArgs;
         modules = [
+          home-manager.nixosModules.home-manager
+          sops-nix.nixosModules.sops
           ./hosts/erying # erying Q1J2 (i7 ES 0000) 14C20T/ iris xe / 32gb
           {
             environment.systemPackages = [alejandra.defaultPackage.x86_64-linux];
           }
-          home-manager.nixosModules.home-manager
           {
             home-manager = {
               useGlobalPkgs = true;

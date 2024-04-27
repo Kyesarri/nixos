@@ -6,7 +6,6 @@
 }: {
   networking = {
     hostName = "nix-erying";
-    # hostId = "bed5b7cd"; # required for lvm disks
     networkmanager.enable = false;
     useNetworkd = true;
     usePredictableInterfaceNames = lib.mkDefault true;
@@ -31,8 +30,8 @@
     /*
     networks."20-xxx:" = {
       matchConfig.Name = "xxx:"; # TODO - m.2 ethernet
-      address = ["192.168.87.40/24"];
-      routes = [{routeConfig.Gateway = "192.168.87.251";}];
+      address = ["192.168.xx.xx/24"];
+      routes = [{routeConfig.Gateway = "192.168.xx.xx";}];
       linkConfig.RequiredForOnline = "routable";
     };
     */

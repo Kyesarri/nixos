@@ -1,10 +1,11 @@
 keys:
-  - &laptop age19g4mynp888gq9apwtjsy8ky2edufcr3l0s0kjrauykt2nlv0dufq854v02
+  - &laptop age1t7nwy3fy8n7dk7ual8cpzw442n7ue7kldfj2ete55llf90fswves3u92ew
   - &serv age1zmx38rzkm4a9akula7wm2e67tr8p8ljpqhfsj8pmq7ct7epelc4svt674k
-  - &nix-laptop-host age1zywwmux5h2u98myvve2xc6n8vet2jkrkt6vvkz85yyndg20n8gqsjn653z
+  - &erying age1lp7hsz5wm6elvh0sgyvvlg30gqsl7lwds488fgkf73ugj77tddxqanmjd6
 creation_rules:
-  - path_regex: secrets/
+  - path_regex: secrets/(yaml|json|env|ini)$
     key_groups:
     - age:
       - *laptop
       - *serv
+      - *erying
