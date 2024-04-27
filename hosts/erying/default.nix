@@ -13,11 +13,9 @@
 
     ./hardware.nix # device specific hardware config
     ./networking.nix # systemd networking config
-    # ./net.test.nix
+    ./boot.nix
 
-    ../headless.nix # base packages and config, may need to move some of those values to this config
-
-    # ../../containers
+    ../headless.nix # base packages and config
 
     ../../home # home-manaager config for all machines
     ../../home/bottom # nice to have terminal task manager / perfmon
@@ -26,8 +24,6 @@
     ../../home/codium # need to add server into this
     ../../home/gtk # has some theming bits, might have some requirement still
     ../../home/zsh # yes pls
-
-    # ../../serv # import all serv services
   ];
 
   colorscheme = inputs.nix-colors.colorSchemes.${spaghetti.scheme2};
@@ -73,6 +69,7 @@
   };
 
   environment = {
+    shells = with pkgs; [zsh]; # default shell to zsh
     shellAliases.rebuild = "sudo nixos-rebuild switch --flake /home/${spaghetti.user}/nixos#nix-erying --show-trace";
     sessionVariables = rec
     {
@@ -84,7 +81,6 @@
       XDG_STATE_HOME = "$HOME/.local/state";
     };
 
-    shells = with pkgs; [zsh]; # default shell to zsh
     systemPackages = with pkgs; [
       lm_sensors # sensor monitoring
       lshw # list hardware
