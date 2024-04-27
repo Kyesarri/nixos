@@ -31,6 +31,14 @@
     ../../serv # import all serv...ices
   ];
 
+  sops = {
+    defaultSopsFile = ../../secrets/secrets.yaml;
+    age.keyFile = "/home/${spaghetti.user}/.config/sops/age/keys.txt";
+    sops.secrets = {
+      "network/gateway" = {};
+    };
+  };
+
   colorscheme = inputs.nix-colors.colorSchemes.${spaghetti.scheme1};
   home-manager.users.${spaghetti.user}.colorscheme = inputs.nix-colors.colorSchemes.${spaghetti.scheme1};
 

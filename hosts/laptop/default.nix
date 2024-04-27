@@ -12,8 +12,6 @@
   imports = [
     nix-colors.homeManagerModules.default
 
-    <sops-nix/modules/sops>
-
     ./per-device.nix
     ./hardware.nix
 
@@ -59,10 +57,13 @@
 
   boot.supportedFilesystems = ["ntfs"];
 
-  sops.defaultSopsFile = ../../secrets/secrets.yaml;
-  sops.age.keyFile = "/home/${spaghetti.user}/.config/sops/age/keys.txt";
-  # This is the actual specification of the secrets.
-  sops.secrets."network/gateway" = {};
+  sops = {
+    defaultSopsFile = ../../secrets/secrets.yaml;
+    age.keyFile = "/home/${spaghetti.user}/.config/sops/age/keys.txt";
+    sops.secrets = {
+      "network/gateway" = {};
+    };
+  };
 
   gnocchi = {
     ags.enable = true;
