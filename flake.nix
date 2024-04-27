@@ -62,7 +62,7 @@
       plymouth = "deus_ex";
       scheme = "horizon-dark";
       scheme1 = "gigavolt";
-      scheme2 = "tokyonight";
+      scheme2 = "darkviolet";
       iconPkg = "pkgs.zafiro-icons";
     };
     system = "x86_64-linux";
