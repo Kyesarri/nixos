@@ -137,6 +137,23 @@
           }
         ];
       };
+      "nix-erying" = nixpkgs.lib.nixosSystem {
+        inherit system specialArgs;
+        modules = [
+          ./hosts/erying # erying Q1J2 (i7 ES 0000) 14C20T / 32gb
+          {
+            environment.systemPackages = [alejandra.defaultPackage.x86_64-linux];
+          }
+          home-manager.nixosModules.home-manager
+          {
+            home-manager = {
+              useGlobalPkgs = true;
+              useUserPackages = true;
+              extraSpecialArgs = {inherit nix-colors inputs;};
+            };
+          }
+        ];
+      };
     };
   };
 }
