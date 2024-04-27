@@ -98,7 +98,6 @@
       polkit_gnome
       pciutils
       age
-      zfs
     ];
   };
 }

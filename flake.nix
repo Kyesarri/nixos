@@ -140,7 +140,7 @@
       "nix-erying" = nixpkgs.lib.nixosSystem {
         inherit system specialArgs;
         modules = [
-          ./hosts/erying # erying Q1J2 (i7 ES 0000) 14C20T / 32gb
+          ./hosts/erying # erying Q1J2 (i7 ES 0000) 14C20T/ iris xe / 32gb
           {
             environment.systemPackages = [alejandra.defaultPackage.x86_64-linux];
           }
