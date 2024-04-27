@@ -1,6 +1,6 @@
 keys:
   - &laptop age1t7nwy3fy8n7dk7ual8cpzw442n7ue7kldfj2ete55llf90fswves3u92ew
-  - &serv age1xc93zewhfvxgdpec4zvddtxlm8ssa4nwwshagl38zndxcv928vxs7xl5d4
+  - &serv age1xdwsd3s4703myzg2aq6gweq808zw0gdqk5lcylwhggmeus0lrcnskgs5td
   - &erying age1lp7hsz5wm6elvh0sgyvvlg30gqsl7lwds488fgkf73ugj77tddxqanmjd6
 creation_rules:
   - path_regex: secrets/
@@ -9,4 +9,3 @@ creation_rules:
       - *laptop
       - *serv
       - *erying
-#
