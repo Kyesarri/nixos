@@ -60,7 +60,7 @@
   sops = {
     defaultSopsFile = ../../secrets/secrets.yaml;
     age.keyFile = "/home/${spaghetti.user}/.config/sops/age/keys.txt";
-    sops.secrets = {
+    secrets = {
       "network/gateway" = {};
     };
   };
