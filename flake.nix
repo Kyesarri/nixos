@@ -64,7 +64,7 @@
           sops-nix.nixosModules.sops
           auto-cpufreq.nixosModules.default
           home-manager.nixosModules.home-manager
-          ./hosts/laptop # 4800hs / 1650 / 16gb TODO download more ram
+          ./hosts/laptop # 4800hs / 1650 / 16gb ddr4 TODO download more ram
           {
             environment.systemPackages = [alejandra.defaultPackage.x86_64-linux];
           }
@@ -82,7 +82,7 @@
         modules = [
           home-manager.nixosModules.home-manager
           sops-nix.nixosModules.sops
-          ./hosts/notebook # celeron N3050 / i"gpu" / 4gb?
+          ./hosts/notebook # celeron N3050 / i"gpu" / 4gb? ddr3?
           {
             home-manager = {
               useGlobalPkgs = true;
@@ -97,7 +97,7 @@
         modules = [
           home-manager.nixosModules.home-manager
           sops-nix.nixosModules.sops
-          ./hosts/desktop # msi-z790i edge wifi / 13900kf / 3070 / 32gb
+          ./hosts/desktop # msi-z790i edge wifi / 13900kf / 3070 / 32gb ddr5
           {
             environment.systemPackages = [alejandra.defaultPackage.x86_64-linux];
           }
@@ -115,8 +115,8 @@
         modules = [
           home-manager.nixosModules.home-manager
           sops-nix.nixosModules.sops
-          ./hosts/serv # ASUS z390i / 9900k / 32gb
-          # 15s-fq2050TU / i5-1135G7 / iris x / 8gb FIXME #RIP
+          ./hosts/serv # ASUS z390i / 9900k / 32gb ddr5
+          # 15s-fq2050TU / i5-1135G7 / iris x / 8gb ddr4 FIXME #RIP
           {
             environment.systemPackages = [alejandra.defaultPackage.x86_64-linux];
           }
@@ -134,7 +134,7 @@
         modules = [
           home-manager.nixosModules.home-manager
           sops-nix.nixosModules.sops
-          ./hosts/erying # erying Q1J2 (i7 ES 0000) 14C20T/ iris xe / 32gb
+          ./hosts/erying # erying Q1J2 (i7 ES 0000) 14C20T / iris xe / 32gb ddr5
           {
             environment.systemPackages = [alejandra.defaultPackage.x86_64-linux];
           }

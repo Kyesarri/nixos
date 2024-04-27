@@ -6,10 +6,14 @@
   outputs,
   nix-colors,
   spaghetti,
+  sops-nix,
   ...
 }: {
   imports = [
     nix-colors.homeManagerModules.default
+
+    <sops-nix/modules/sops>
+
     ./per-device.nix
     ./hardware.nix
 
@@ -57,6 +61,8 @@
 
   sops.defaultSopsFile = ../../secrets/secrets.yaml;
   sops.age.keyFile = "/home/${spaghetti.user}/.config/sops/age/keys.txt";
+  # This is the actual specification of the secrets.
+  sops.secrets."network/gateway" = {};
 
   gnocchi = {
     ags.enable = true;

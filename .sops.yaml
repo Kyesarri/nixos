@@ -3,7 +3,7 @@ keys:
   - &serv age1zmx38rzkm4a9akula7wm2e67tr8p8ljpqhfsj8pmq7ct7epelc4svt674k
   - &erying age1lp7hsz5wm6elvh0sgyvvlg30gqsl7lwds488fgkf73ugj77tddxqanmjd6
 creation_rules:
-  - path_regex: secrets/(yaml|json|env|ini)$
+  - path_regex: secrets/
     key_groups:
     - age:
       - *laptop
