@@ -85,7 +85,10 @@ in
     };
 
     environment = {
-      systemPackages = with pkgs; [pciutils];
+      systemPackages = with pkgs; [
+        pciutils
+        tailscale # lets users control tailscale
+      ];
       shellAliases.rebuild = "sudo nixos-rebuild switch --flake /home/${spaghetti.user}/nixos#nix-desktop --show-trace";
     };
   }

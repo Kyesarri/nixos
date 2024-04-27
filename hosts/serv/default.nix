@@ -11,10 +11,9 @@
   imports = [
     nix-colors.homeManagerModules.default
 
-    ./hardware.nix # device specific hardware config
-    #./networking.nix # systemd networking config
-    ./net.test.nix
     ./boot.nix
+    ./hardware.nix # device specific hardware config
+    ./networking.nix # systemd networking config
 
     ../headless.nix # base packages and config, may need to move some of those values to this config
 
@@ -29,7 +28,7 @@
     ../../home/gtk # has some theming bits, might have some requirement still
     ../../home/zsh # yes pls
 
-    ../../serv # import all serv services
+    ../../serv # import all serv...ices
   ];
 
   colorscheme = inputs.nix-colors.colorSchemes.${spaghetti.scheme1};
@@ -111,6 +110,7 @@
     systemPackages = with pkgs; [
       lm_sensors # sensor monitoring
       lshw # list hardware
+      tailscale # lets users control tailscale
       usbutils
       busybox
       libva-utils

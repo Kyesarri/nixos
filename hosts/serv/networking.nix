@@ -15,45 +15,57 @@ in
       networkmanager.enable = false;
       useNetworkd = true;
       usePredictableInterfaceNames = lib.mkDefault true;
+
       nat = {
         enable = true;
         internalInterfaces = ["ve-+"];
-        externalInterface = "br0";
-        # Lazy IPv6 connectivity for the container
-        enableIPv6 = false;
+        externalInterface = "enp6s0";
       };
+
       firewall = {
         enable = true;
         checkReversePath = "loose"; # fixes connection issues with tailscale
-        allowedTCPPorts = [ssh chrony];
-        allowedUDPPorts = [tailscale chrony];
+        allowedTCPPorts = [ssh chrony 22];
+        allowedUDPPorts = [tailscale chrony 53];
       };
     };
 
-    systemd.network = {
-      enable = true;
-      wait-online.enable = lib.mkForce false;
+    systemd.network.networks."50-eno1" = {
+      matchConfig.Name = "eno1"; # integrated 1g, primary connection
+      address = ["192.168.87.9/24"];
+      routes = [{routeConfig.Gateway = "192.168.87.251";}];
+      linkConfig.RequiredForOnline = "routable";
+    };
 
-      # create a bridge, named br0
-      netdevs."br0" = {
-        netdevConfig = {
-          Name = "br0";
-          Kind = "bridge";
-        };
-      };
+    # Config for the physical interface itself with DHCP enabled and associated to a MACVLAN.
+    systemd.network.networks."40-enp6s0" = {
+      matchConfig.Name = "enp6s0";
+      networkConfig.DHCP = "yes";
+      dhcpConfig.UseDNS = "no";
+      networkConfig.MACVLAN = "mv-enp6s0-host";
+      linkConfig.RequiredForOnline = "no";
+      address = lib.mkForce [];
+      addresses = lib.mkForce [];
+    };
 
-      # bridge adaptor
-      networks."20-eno1" = {
-        matchConfig.Name = "eno1"; # integrated 1g
-        networkConfig.Bridge = "br0";
-        linkConfig.RequiredForOnline = "enslaved";
-      };
+    # The host-side sub-interface of the MACVLAN. This means that the host is reachable
+    # at `192.168.87.99`, both on the physical interface and from the container.
+    systemd.network.networks."20-mv-enp6s0-host" = {
+      matchConfig.Name = "mv-enp6s0-host";
+      networkConfig.IPForward = "yes";
+      dhcpV4Config.ClientIdentifier = "mac";
+      address = lib.mkForce ["192.168.87.99/24"];
+      routes = [{routeConfig.Gateway = "192.168.87.251";}];
+    };
 
-      networks."10-enp6s0" = {
-        matchConfig.Name = "enp6s0"; # 2.5g m.2
-        address = ["192.168.87.9/24"];
-        routes = [{routeConfig.Gateway = "192.168.87.251";}];
-        linkConfig.RequiredForOnline = "routable";
+    systemd.network.netdevs."20-mv-enp6s0-host" = {
+      netdevConfig = {
+        Name = "mv-enp6s0-host";
+        Kind = "macvlan";
       };
+      extraConfig = ''
+        [MACVLAN]
+        Mode=bridge
+      '';
     };
   }

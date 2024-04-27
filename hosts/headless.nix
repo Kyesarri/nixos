@@ -79,7 +79,7 @@
     shell = pkgs.zsh;
     isNormalUser = true;
     description = "${spaghetti.user}";
-    extraGroups = ["networkmanager" "wheel" "apex" "media" "podman"]; # wheel is sudo, apex is for coral
+    extraGroups = ["networkmanager" "wheel" "apex" "media" "podman"];
     packages = with pkgs; [
       fet-sh # minimal fetch script
       gnome.seahorse # key management

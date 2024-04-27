@@ -11,9 +11,9 @@
   imports = [
     nix-colors.homeManagerModules.default
 
+    ./boot.nix
     ./hardware.nix # device specific hardware config
     ./networking.nix # systemd networking config
-    ./boot.nix
 
     ../headless.nix # base packages and config
 
@@ -53,7 +53,7 @@
 
   hardware = {
     pulseaudio.enable = false;
-    enableRedistributableFirmware = lib.mkDefault true;
+    # enableRedistributableFirmware = lib.mkDefault true;
     opengl = {
       enable = true;
       driSupport = true;
@@ -84,6 +84,7 @@
     systemPackages = with pkgs; [
       lm_sensors # sensor monitoring
       lshw # list hardware
+      tailscale # lets users control tailscale
       usbutils
       busybox
       libva-utils
