@@ -2,6 +2,7 @@ keys:
   - &laptop age1t7nwy3fy8n7dk7ual8cpzw442n7ue7kldfj2ete55llf90fswves3u92ew
   - &serv age1xdwsd3s4703myzg2aq6gweq808zw0gdqk5lcylwhggmeus0lrcnskgs5td
   - &erying age1lp7hsz5wm6elvh0sgyvvlg30gqsl7lwds488fgkf73ugj77tddxqanmjd6
+  - &servhost age126fmy8japutfe80h8dp7u4qum86t773hyxvk8cwhwdql4pjhk5hqy45xk6
 creation_rules:
   - path_regex: secrets/
     key_groups:
