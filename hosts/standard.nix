@@ -189,6 +189,7 @@
       ###############
       # KISS PLEASE #
       ###############
+      termius
       graphite-cursors # cursor package, is this handled by /home/gtk/default.nix now? nope manual atm
       gnome-text-editor # still might want something with slightly more features, bit too barebones?
       nix-init # git flake helper
