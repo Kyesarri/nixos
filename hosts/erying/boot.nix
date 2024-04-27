@@ -1,4 +1,4 @@
-{...}: {
+{pkgs, ...}: {
   boot = {
     kernelPackages = pkgs.linuxPackages_xanmod; # use mainline xanmod kernel
     kernelParams = [
