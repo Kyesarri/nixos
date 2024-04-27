@@ -6,6 +6,7 @@
   outputs,
   nix-colors,
   spaghetti,
+  sops-nix,
   ...
 }: {
   imports = [
