@@ -29,7 +29,7 @@
       };
     };
 
-    "10-lan-bridge" = {
+    networks."10-lan-bridge" = {
       matchConfig.Name = "br0";
       linkConfig.RequiredForOnline = "routable";
       networkConfig = {
