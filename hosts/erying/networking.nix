@@ -21,12 +21,11 @@
     enable = true;
     wait-online.enable = lib.mkForce false;
 
-    netdevs = {
-      "10-br0-enp1s0" = {
-        netdevConfig = {
-          Kind = "bridge";
-          Name = "br0";
-        };
+    netdevs."10-lan" = {
+      matchConfig.Name = ["enp1s0" "veth@*"];
+      netdevConfig = {
+        Kind = "bridge";
+        Name = "br0";
       };
     };
 
@@ -40,6 +39,9 @@
         IPv6AcceptRA = true;
       };
     };
+
+    # working from https://github.com/ryan4yin/nix-config/blob/bec52f9d60f493d8bb31f298699dfc99eaf18dcc/hosts/12kingdoms-suzu/networking.nix#L15
+
     /*
     "20-eno1" = {
       matchConfig.Name = "enp1s0";
