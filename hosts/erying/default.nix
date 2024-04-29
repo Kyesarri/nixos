@@ -11,9 +11,10 @@
   imports = [
     nix-colors.homeManagerModules.default
 
-    ./boot.nix
+    ./boot.nix # may migrate systems back to systemd boot - testing here
     ./hardware.nix # device specific hardware config
     ./networking.nix # systemd networking config
+    ./containers.nix # testing selecting specific ccontainers per-host
 
     ../headless.nix # base packages and config
 

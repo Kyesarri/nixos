@@ -15,6 +15,7 @@
     ./boot.nix
     ./hardware.nix # device specific hardware config
     ./networking.nix # systemd networking config
+    ./containers.nix
 
     ../headless.nix # base packages and config, may need to move some of those values to this config
 

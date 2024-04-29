@@ -11,6 +11,12 @@
     options = ["defaults" "size=1G" "mode=755"];
   };
 
+  environment.systemPackages = with pkgs; [
+    podman
+    podman-tui
+    intel-gpu-tools # useful for monitoring igpu usage
+  ];
+
   networking.firewall.allowedTCPPorts = [5000 8554 8555];
   networking.firewall.allowedUDPPorts = [5000 8555];
 

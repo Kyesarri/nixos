@@ -1,0 +1,6 @@
+{...}: {
+  imports = [
+    ../../containers
+    ../../containers/frigate
+  ];
+}
