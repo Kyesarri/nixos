@@ -27,6 +27,7 @@
       routes = [{routeConfig.Gateway = "192.168.87.251";}];
       linkConfig.RequiredForOnline = "routable";
     };
+
     /*
     networks."20-xxx:" = {
       matchConfig.Name = "xxx:"; # TODO - m.2 ethernet

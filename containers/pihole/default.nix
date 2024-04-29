@@ -13,15 +13,15 @@ in
     #   mkdir -p /home/${spaghetti.user}/.docker/${hostName}/etc /home/${spaghetti.user}/.docker/${hostName}/etc/dnsmasq.d
     # '';
 
-    networking.firewall.allowedTCPPorts = [53 8080];
-    networking.firewall.allowedUDPPorts = [53 57 67];
+    networking.firewall.allowedTCPPorts = [533 8080];
+    networking.firewall.allowedUDPPorts = [533 57 67];
 
     virtualisation.oci-containers.containers."${hostName}" = {
       autoStart = true;
       image = "pihole/pihole:latest";
       ports = [
         "533:53/udp"
-        "53:53/tcp"
+        "533:53/tcp"
         "67:67/udp"
         "8080:80/tcp" # maps 8080 on host interface to 80 in container
       ];
