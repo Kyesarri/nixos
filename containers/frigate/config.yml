@@ -38,7 +38,7 @@ database:
 #
 detect:
   enabled: true
-  fps: 30
+  fps: 10
   height: 1920
   width: 2560
 #
