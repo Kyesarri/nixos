@@ -63,5 +63,8 @@ in
       ln -s $out/lib/libedgetpu.so.1.0 $out/lib/libedgetpu.so.1
       mkdir -p $out/lib/udev/rules.d
       cp debian/edgetpu-accelerator.rules $out/lib/udev/rules.d/99-edgetpu-accelerator.rules
+
+      # PCIe rule
+      echo 'SUBSYSTEM=="apex", MODE="0660", GROUP="apex"' > $out/lib/udev/rules.d/65-apex.rules
     '';
   }
