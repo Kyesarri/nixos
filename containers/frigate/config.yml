@@ -5,14 +5,15 @@ cameras:
     best_image_timeout: 60
     ffmpeg:
       inputs:
-      - path: rtsp://127.0.0.1:8554/driveway_sub
-        input_args: preset-rtsp-restream
-        roles:
-        - detect
+#      - path: rtsp://127.0.0.1:8554/driveway_sub
+#        input_args: preset-rtsp-restream
+#        roles:
+#        - detect
       - path: rtsp://127.0.0.1:8554/driveway
         input_args: preset-rtsp-restream
         roles:
         - record
+        - detect
     record:
       enabled: true
 #
@@ -20,14 +21,15 @@ cameras:
     best_image_timeout: 60
     ffmpeg:
       inputs:
-      - path: rtsp://127.0.0.1:8554/entry_sub
-        input_args: preset-rtsp-restream
-        roles:
-        - detect
+#      - path: rtsp://127.0.0.1:8554/entry_sub
+#        input_args: preset-rtsp-restream
+#        roles:
+#        - detect
       - path: rtsp://127.0.0.1:8554/entry
         input_args: preset-rtsp-restream
         roles:
         - record
+        - detect
     record:
       enabled: true
 #
@@ -36,9 +38,9 @@ database:
 #
 detect:
   enabled: true
-  fps: 4
-  height: 480
-  width: 640
+  fps: 30
+  height: 1920
+  width: 2560
 #
 go2rtc:
   streams:
@@ -46,11 +48,10 @@ go2rtc:
       - rtsp://frigate:Mj3iNSUJydpaaiT87d65NZgS9kh@192.168.87.20:554/h264Preview_01_main
     entry:
       - rtsp://frigate:Mj3iNSUJydpaaiT87d65NZgS9kh@192.168.87.22:554/h264Preview_01_main
-    #
-    driveway_sub:
-      - rtsp://frigate:Mj3iNSUJydpaaiT87d65NZgS9kh@192.168.87.20:554/h264Preview_01_sub
-    entry_sub:
-      - rtsp://frigate:Mj3iNSUJydpaaiT87d65NZgS9kh@192.168.87.22:554/h264Preview_01_sub
+#    driveway_sub:
+#      - rtsp://frigate:Mj3iNSUJydpaaiT87d65NZgS9kh@192.168.87.20:554/h264Preview_01_sub
+#    entry_sub:
+#      - rtsp://frigate:Mj3iNSUJydpaaiT87d65NZgS9kh@192.168.87.22:554/h264Preview_01_sub
 #
 logger:
   default: info
@@ -60,7 +61,7 @@ logger:
 #
 motion:
   threshold: 90
-# un used currently v
+# not used currently v
 mqtt:
   client_id: frigate
   enabled: true
@@ -119,17 +120,19 @@ ffmpeg:
   hwaccel_args: preset-vaapi
 #
 # when using cpai for detections v
-#detectors:
-#   deepstack:
-#     api_url: http://192.168.87.9:32168/v1/vision/detection
-#     type: deepstack
-#     api_timeout: 1 # seconds
-#
 detectors:
-  coral_pci:
-    type: edgetpu
-    device: pci
+   deepstack:
+     api_url: http://192.168.87.9:32168/v1/vision/detection
+     type: deepstack
+     api_timeout: 1 # seconds
 #
+# using onboard coral v
+#detectors:
+#  coral_pci:
+#    type: edgetpu
+#    device: pci
+#
+# using cpu for detections v
 #model:
 #  width: 320
 #  height: 320
@@ -146,3 +149,8 @@ birdseye:
 #
 #
 #
+#
+#
+#
+#
+# padding at eof

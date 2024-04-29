@@ -11,20 +11,9 @@
     options = ["defaults" "size=1G" "mode=755"];
   };
 
-  environment.systemPackages = with pkgs; [
-    podman
-    podman-tui
-    intel-gpu-tools # useful for monitoring igpu usage
-  ];
-
   networking.firewall.allowedTCPPorts = [5000 8554 8555];
   networking.firewall.allowedUDPPorts = [5000 8555];
 
-  # runs as a systemd service
-  ## only issue is that GPU monitoring isn't working from inside
-  ## the container, but gpu is working
-  ### intel-gpu-tools may fix this?
-  #### nope :)
   virtualisation.oci-containers.containers = {
     #
     frigate = {
@@ -33,8 +22,8 @@
       image = "ghcr.io/blakeblackshear/frigate:stable";
       ports = [
         # hostPort:containerPort
-        "5000:5000"
-        "1935:1935"
+        "5000:5000" # webui
+        "1935:1935" #
         "8554:8554" # rtsp
         "8555:8555/tcp" # webrtc
         "8555:8555/udp" # webrtc
@@ -48,16 +37,16 @@
       ];
       extraOptions = [
         "--shm-size=256m"
-        "--device=/dev/apex_0:/dev/apex_0"
-        "--device=/dev/dri/renderD128"
+        # "--device=/dev/apex_0:/dev/apex_0" # enable if using coral in frigate
+        "--device=/dev/dri/renderD128" # gpu
         "--mount=type=tmpfs,target=/tmp/cache,tmpfs-size=1000000000"
-        "--pull=always"
+        "--pull=always" # always want a good pull
       ];
     };
   };
   #
   home-manager.users.${spaghetti.user} = {
-    # frigate config.yml symlink, easier to edit in codeium as a .yml vs pure nix
+    # frigate config.yml symlink, easier to edit in codium as a .yml vs pure nix
     # will move to text = '' ''; soon
     home.file.".docker/frigate/config.yml" = {
       source = ./config.yml;

@@ -9,9 +9,9 @@ in
     ...
   }: {
     # looks to make directories on boot / rebuild - not sure if docker will handle this by itself?
-    # system.activationScripts.makeRediaryDir = lib.stringAfter ["var"] ''
-    #   mkdir -p /home/${spaghetti.user}/.docker/${hostName}/etc /home/${spaghetti.user}/.docker/${hostName}/etc/dnsmasq.d
-    # '';
+    system.activationScripts.makePiHoleDir = lib.stringAfter ["var"] ''
+      mkdir -p /home/${spaghetti.user}/.docker/${hostName}/etc /home/${spaghetti.user}/.docker/${hostName}/etc/dnsmasq.d
+    '';
 
     networking.firewall.allowedTCPPorts = [533 8080];
     networking.firewall.allowedUDPPorts = [533 57 67];
@@ -20,10 +20,11 @@ in
       autoStart = true;
       image = "pihole/pihole:latest";
       ports = [
+        # "host:container"
         "533:53/udp"
         "533:53/tcp"
         "67:67/udp"
-        "8080:80/tcp" # maps 8080 on host interface to 80 in container
+        "8080:80/tcp"
       ];
       volumes = [
         "/home/${spaghetti.user}/.docker/${hostName}/etc:/etc/pihole"
