@@ -33,7 +33,7 @@
       matchConfig.Name = "br0";
       linkConfig.RequiredForOnline = "routable";
       networkConfig = {
-        Address = ["192.168.87.30/24"];
+        Address = ["192.168.87.5/24"];
         Gateway = "192.168.87.251";
         DNS = "1.1.1.1";
         IPv6AcceptRA = true;
