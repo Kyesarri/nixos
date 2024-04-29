@@ -119,7 +119,7 @@ ui:
 ffmpeg:
   hwaccel_args: preset-vaapi
 #
-# when using cpai for detections v
+# when cpai v
 detectors:
    deepstack:
      api_url: http://192.168.87.9:32168/v1/vision/detection
@@ -132,7 +132,7 @@ detectors:
 #    type: edgetpu
 #    device: pci
 #
-# using cpu for detections v
+# using cpu v & missing some things :)
 #model:
 #  width: 320
 #  height: 320
