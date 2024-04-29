@@ -4,7 +4,7 @@
   spaghetti,
   ...
 }: let
-  libedgetpu = config.boot.kernelPackages.callPackage /home/${spaghetti.user}nixos/hardware/coral/libedgetpu.nix {};
+  libedgetpu = config.boot.kernelPackages.callPackage ./libedgetpu.nix {};
   #gasket = config.boot.kernelPackages.callPackage /home/${spaghetti.user}nixos/hardware/coral/gasket.nix {};
 in {
   services.udev.packages = [libedgetpu];
