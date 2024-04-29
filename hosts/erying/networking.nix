@@ -40,13 +40,13 @@
         IPv6AcceptRA = true;
       };
     };
-
+    /*
     "20-eno1" = {
       matchConfig.Name = "enp1s0";
       networkConfig.Bridge = "br0";
       linkConfig.RequiredForOnline = "enslaved";
     };
-
+    */
     /*
     networks."10-enp1s0:" = {
       matchConfig.Name = "enp1s0"; # 2.5g built-in
