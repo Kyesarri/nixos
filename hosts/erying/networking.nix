@@ -21,6 +21,15 @@
     enable = true;
     wait-online.enable = lib.mkForce false;
 
+    netdevs = {
+      "10-br0-enp1s0" = {
+        netdevConfig = {
+          Kind = "bridge";
+          Name = "br0";
+        };
+      };
+    };
+
     networks."10-enp1s0:" = {
       matchConfig.Name = "enp1s0"; # 2.5g built-in
       address = ["192.168.87.30/24"];
