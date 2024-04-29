@@ -4,6 +4,7 @@
   config,
   spaghetti,
   inputs,
+  nix-sops,
   ...
 }:
 with lib; let

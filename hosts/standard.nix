@@ -102,9 +102,9 @@
     printing.enable = true; # need more than this to print afik? http://localhost:631/ for config
     dbus = {
       enable = true;
-      packages = [pkgs.gnome.seahorse];
+      packages = [pkgs.keepassxc];
     };
-    gnome.gnome-keyring.enable = true;
+    # gnome.gnome-keyring.enable = true;
 
     /*
     # TODO move to gnocchi
@@ -176,7 +176,8 @@
       gitAndTools.gitFull
       polkit_gnome
       waypipe
-      age # its a secret
+      age # is secret
+      keepassxc # another key manager - replace bitwarden and sops-nix?
     ];
   };
 

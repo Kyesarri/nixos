@@ -82,7 +82,7 @@
         modules = [
           home-manager.nixosModules.home-manager
           sops-nix.nixosModules.sops
-          ./hosts/notebook # celeron N3050 / i"gpu" / 4gb? ddr3?
+          ./hosts/notebook # celeron N3050 / intel "hd" / 4gb ddr3
           {
             home-manager = {
               useGlobalPkgs = true;
@@ -135,6 +135,24 @@
           home-manager.nixosModules.home-manager
           sops-nix.nixosModules.sops
           ./hosts/erying # erying Q1J2 (i7 ES 0000) 14C20T / iris xe / 32gb ddr5
+          {
+            environment.systemPackages = [alejandra.defaultPackage.x86_64-linux];
+          }
+          {
+            home-manager = {
+              useGlobalPkgs = true;
+              useUserPackages = true;
+              extraSpecialArgs = {inherit nix-colors inputs;};
+            };
+          }
+        ];
+      };
+      "nix-lighthouse" = nixpkgs.lib.nixosSystem {
+        inherit system specialArgs;
+        modules = [
+          sops-nix.nixosModules.sops
+          home-manager.nixosModules.home-manager
+          ./hosts/lighthouse # VPS / AMD EPYC 7551 1C / 1gb DDR4
           {
             environment.systemPackages = [alejandra.defaultPackage.x86_64-linux];
           }
