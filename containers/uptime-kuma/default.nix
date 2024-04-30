@@ -15,7 +15,7 @@ in
       # hostAddress = "192.168.87.1";
       hostBridge = "enp1s0";
       # macvlans = ["enp1s0"];
-      enableTun = true;
+      # enableTun = true;
       config = {
         config,
         pkgs,
