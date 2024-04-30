@@ -1,7 +1,7 @@
 {...}: {
   imports = [
     ../../containers
-    ../../containers/authelia
+    # ../../containers/authelia
     ../../containers/uptime-kuma
     ../../containers/frigate
   ];
