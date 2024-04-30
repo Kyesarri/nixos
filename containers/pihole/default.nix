@@ -24,13 +24,13 @@ in
         "533:53/udp"
         "533:53/tcp"
         "67:67/udp"
-        "8080:80/tcp"
+        "192.168.87.3:8080:80/tcp"
       ];
       volumes = [
         "/home/${spaghetti.user}/.docker/${hostName}/etc:/etc/pihole"
         "/home/${spaghetti.user}/.docker/${hostName}/etc/dnsmasq.d:/etc/dnsmasq.d"
       ];
-
+      extraOptions = ["--cap-add=net_admin"];
       # extraOptions = ["-h=pihole"];
       # environment = {WEBPASSWORD = "fcXC2zkU5y8zvRuFugb9k9zOoIbwkkCEXOsxdvCCwNFd3IomyLBFIVfiLz4j";};
     };
