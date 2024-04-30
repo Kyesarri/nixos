@@ -73,11 +73,4 @@
       linkConfig.Unmanaged = "yes";
     };
   };
-
-  networking.nftables.firewall = {
-    zones.untrusted.interfaces = ["lan-self"];
-  };
-
-  # Allow accessing influx
-  wireguard.proxy-sentinel.client.via = "sentinel";
 }
