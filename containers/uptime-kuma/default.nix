@@ -8,14 +8,13 @@ in
     lib,
     ...
   }: {
-    networking.firewall.allowedTCPPorts = [webPort];
-
     containers.${hostName} = {
       autoStart = true;
       privateNetwork = true;
       localAddress = "192.168.87.2/24";
       # hostBridge = "br0";
-      macvlans = ["10-lan"];
+      macvlans = ["enp1s0"];
+      enableTun = true;
       config = {
         config,
         pkgs,
@@ -27,6 +26,8 @@ in
           PORT = "4000";
         };
         networking.hostName = "${hostName}";
+        networking.firewall.allowedTCPPorts = [webPort];
+
         networking.useHostResolvConf = lib.mkForce false;
         networking.useNetworkd = true;
       };
