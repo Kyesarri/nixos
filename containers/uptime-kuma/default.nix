@@ -13,8 +13,8 @@ in
       privateNetwork = true;
       localAddress = "192.168.87.2/24";
       # hostAddress = "192.168.87.1";
-      hostBridge = "enp1s0";
-      # macvlans = ["enp1s0"];
+      # hostBridge = "enp1s0";
+      macvlans = ["enp1s0"];
       # enableTun = true;
       config = {
         config,
