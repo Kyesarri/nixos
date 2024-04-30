@@ -12,8 +12,9 @@ in
       autoStart = true;
       privateNetwork = true;
       localAddress = "192.168.87.2/24";
+      hostAddress = "192.168.87.1";
       # hostBridge = "br0";
-      macvlans = ["enp1s0"];
+      # macvlans = ["enp1s0"];
       enableTun = true;
       config = {
         config,
@@ -27,7 +28,6 @@ in
         };
         networking.hostName = "${hostName}";
         networking.firewall.allowedTCPPorts = [webPort];
-
         networking.useHostResolvConf = lib.mkForce false;
         networking.useNetworkd = true;
       };
