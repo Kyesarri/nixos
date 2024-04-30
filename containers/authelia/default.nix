@@ -8,6 +8,7 @@ in
     lib,
     ...
   }: {
+    networking.firewall.allowedTCPPorts = [80];
     containers.${hostName} = {
       autoStart = true;
       privateNetwork = true;

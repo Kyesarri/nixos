@@ -12,11 +12,11 @@ in
       hostname = "${hostName}";
       autoStart = true;
       image = "quay.io/invidious/invidious:latest";
-      ports = ["3000:3000"];
+      ports = ["3000:3000"]; # TODO
       volumes = [
         "/etc/localtime:/etc/localtime:ro"
-        "/home/${spaghetti.user}/.docker/${hostName}/data:/data"
-        "/home/${spaghetti.user}/.docker/${hostName}/letsencrypt:/etc/letsencrypt"
+        "/home/${spaghetti.user}/.docker/${hostName}/data:/data" # TODO
+        "/home/${spaghetti.user}/.docker/${hostName}/letsencrypt:/etc/letsencrypt" # TODO
       ];
       extraOptions = [
         # "--network=host"
