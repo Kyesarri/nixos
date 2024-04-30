@@ -7,7 +7,7 @@ in
     pkgs,
     ...
   }: {
-    networking.firewall.allowedTCPPorts = [80 81 443];
+    networking.firewall.allowedTCPPorts = [3000];
     virtualisation.oci-containers.containers.${hostName} = {
       hostname = "${hostName}";
       autoStart = true;

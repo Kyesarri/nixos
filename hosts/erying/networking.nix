@@ -16,6 +16,12 @@
     };
   };
 
+  boot.kernel.sysctl = {
+    # forward network packets that are not destined for the interface on which they were received
+    "net.ipv4.conf.all.forwarding" = true;
+    "net.ipv6.conf.all.forwarding" = true;
+  };
+
   boot.initrd.systemd.network = {
     enable = true;
     networks."10-lan" = {
@@ -45,7 +51,7 @@
 
   systemd.network.networks = {
     "10-lan" = {
-      matchConfig.Name = ["enp1s0"];
+      matchConfig.Name = ["enp1s0" "ve-+"];
       # This interface should only be used from attached macvtaps.
       # So don't acquire a link local address and only wait for
       # this interface to gain a carrier.
