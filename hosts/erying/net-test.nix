@@ -15,8 +15,8 @@
 
   networking = {
     hostName = "nix-erying";
-    networkmanager.enable = false;
-    useNetworkd = true;
+    # networkmanager.enable = false;
+    # useNetworkd = true;
     usePredictableInterfaceNames = lib.mkDefault true;
     firewall = {
       enable = true;
