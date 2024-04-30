@@ -13,7 +13,8 @@
 
     ./boot.nix # may migrate systems back to systemd boot - testing here
     ./hardware.nix # device specific hardware config
-    ./networking.nix # systemd networking config
+    # ./networking.nix # systemd networking config
+    ./net-test.nix
     ./containers.nix # testing selecting specific ccontainers per-host
 
     ../headless.nix # base packages and config
@@ -26,6 +27,7 @@
     ../../home/gtk # has some theming bits, might have some requirement still
     ../../home/zsh # yes pls
   ];
+
   sops = {
     defaultSopsFile = ../../secrets/secrets.yaml;
     age.keyFile = "/home/${spaghetti.user}/.config/sops/age/keys.txt";

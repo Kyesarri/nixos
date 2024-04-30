@@ -11,11 +11,10 @@ in
     containers.${hostName} = {
       autoStart = true;
       privateNetwork = true;
-      extraVeths."ve-local".localAddress = "192.168.87.7/24";
-      # localAddress = "192.168.87.2/24";
+      localAddress = "192.168.87.2/24";
       # hostAddress = "192.168.87.1";
-      # hostBridge = "enp1s0";
-      macvlans = ["enp1s0"];
+      hostBridge = "br0";
+      # macvlans = ["enp1s0"];
       # enableTun = true;
       config = {
         config,
