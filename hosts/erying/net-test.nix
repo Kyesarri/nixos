@@ -25,7 +25,7 @@
       allowedUDPPorts = [53 config.services.tailscale.port];
     };
 
-    bridges.br0.interfaces = ["enp1s0"]; # serv interface
+    bridges.br0.interfaces = ["enp1s0"];
 
     # Get bridge-ip with DHCP
     useDHCP = false;
