@@ -147,24 +147,6 @@
           }
         ];
       };
-      "nix-lighthouse" = nixpkgs.lib.nixosSystem {
-        inherit system specialArgs;
-        modules = [
-          sops-nix.nixosModules.sops
-          home-manager.nixosModules.home-manager
-          ./hosts/lighthouse # VPS / AMD EPYC 7551 1C / 1gb DDR4
-          {
-            environment.systemPackages = [alejandra.defaultPackage.x86_64-linux];
-          }
-          {
-            home-manager = {
-              useGlobalPkgs = true;
-              useUserPackages = true;
-              extraSpecialArgs = {inherit nix-colors inputs;};
-            };
-          }
-        ];
-      };
     };
   };
 }

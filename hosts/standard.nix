@@ -13,7 +13,7 @@
 
   nixpkgs.config.allowUnfree = true;
 
-  security.pam.services = {gdm.enableGnomeKeyring = true;};
+  # security.pam.services = {gdm.enableGnomeKeyring = true;};
 
   nix = {
     sshServe.enable = true; # enable ssh server
@@ -50,28 +50,25 @@
       "quiet" # removes boot messages, testing for plymouth themes, TODO move to plymouth /service/ ?
     ]; # TODO tsc and cache laptop only?
 
-    plymouth = {
-      enable = true;
-      theme = "${spaghetti.plymouth}";
-      themePackages = [(pkgs.adi1090x-plymouth-themes.override {selected_themes = ["${spaghetti.plymouth}"];})];
-    };
-
-    # TODO can i with a single value defined in ./flake.nix select the plymouth theme and prevent all other themes from being
-    # installed on my system? should save 500mb if i can do so.
-
     loader = {
-      systemd-boot.enable = false;
-      efi.efiSysMountPoint = "/boot";
-      grub = {
-        memtest86.enable = true;
-        enable = true;
-        efiSupport = true;
-        efiInstallAsRemovable = true; # Otherwise /boot/EFI/BOOT/BOOTX64.EFI isn't generated
-        devices = ["nodev"];
-        theme = pkgs.sleek-grub-theme; # how to get dark theme?
-      };
+      systemd-boot.enable = true;
+      efi.canTouchEfiVariables = true;
     };
   };
+  /*
+  loader = {
+    systemd-boot.enable = false;
+    efi.efiSysMountPoint = "/boot";
+    grub = {
+      memtest86.enable = true;
+      enable = true;
+      efiSupport = true;
+      efiInstallAsRemovable = true; # Otherwise /boot/EFI/BOOT/BOOTX64.EFI isn't generated
+      devices = ["nodev"];
+      theme = pkgs.sleek-grub-theme; # TODO move back to systemd
+    };
+  };
+  */
 
   i18n = {
     defaultLocale = "en_AU.UTF-8";
@@ -105,17 +102,6 @@
       packages = [pkgs.keepassxc];
     };
     # gnome.gnome-keyring.enable = true;
-
-    /*
-    # TODO move to gnocchi
-    xserver = {
-      enable = true;
-      displayManager.lightdm = {
-        enable = true;
-        greeters.slick.enable = true;
-      };
-    };
-    */
   };
 
   fonts = {
@@ -145,10 +131,6 @@
   environment = {
     sessionVariables = rec
     {
-      # one of these was causing multiple wayland applications to crash (mostly firefox)
-      # __GLX_VENDOR_LIBRARY_NAME = "nvidia";
-      # WLR_RENDERER = "vulkan";
-      # GBM_BACKEND = "nvidia-drm"; # testing to fix firefox crash 26/03/24
       CLUTTER_BACKEND = "wayland";
       QT_QPA_PLATFORM = "wayland";
       QT_QPA_PLATFORMTHEME = "qt5ct";

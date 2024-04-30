@@ -21,49 +21,25 @@
     enable = true;
     wait-online.enable = lib.mkForce false;
 
-    netdevs."10-lan" = {
-      matchConfig.Name = ["enp1s0" "veth@*"];
-      netdevConfig = {
-        Kind = "bridge";
-        Name = "br0";
+    netdevs = {
+      # Create the bridge interface
+      "10-br0" = {
+        netdevConfig = {
+          Kind = "bridge";
+          Name = "br0";
+        };
       };
     };
 
-    networks."10-lan-bridge" = {
+    networks."10-bridge" = {
       matchConfig.Name = "br0";
-      linkConfig.RequiredForOnline = "routable";
       networkConfig = {
-        Address = ["192.168.87.5/24"];
+        Address = ["192.168.87.1/24"];
         Gateway = "192.168.87.251";
-        DNS = "1.1.1.1";
+        DNS = ["192.168.87.251"];
         IPv6AcceptRA = true;
       };
-    };
-
-    # working from https://github.com/ryan4yin/nix-config/blob/bec52f9d60f493d8bb31f298699dfc99eaf18dcc/hosts/12kingdoms-suzu/networking.nix#L15
-
-    /*
-    "20-eno1" = {
-      matchConfig.Name = "enp1s0";
-      networkConfig.Bridge = "br0";
-      linkConfig.RequiredForOnline = "enslaved";
-    };
-    */
-    /*
-    networks."10-enp1s0:" = {
-      matchConfig.Name = "enp1s0"; # 2.5g built-in
-      address = ["192.168.87.30/24"];
-      routes = [{routeConfig.Gateway = "192.168.87.251";}];
       linkConfig.RequiredForOnline = "routable";
     };
-    */
-    /*
-    networks."20-xxx:" = {
-      matchConfig.Name = "xxx:"; # TODO - m.2 ethernet
-      address = ["192.168.xx.xx/24"];
-      routes = [{routeConfig.Gateway = "192.168.xx.xx";}];
-      linkConfig.RequiredForOnline = "routable";
-    };
-    */
   };
 }
