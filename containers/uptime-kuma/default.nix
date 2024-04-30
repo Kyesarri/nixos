@@ -15,7 +15,7 @@ in
       privateNetwork = true;
       localAddress = "192.168.87.2/24";
       # hostBridge = "br0";
-      macvlans = ["br0"];
+      macvlans = ["10-lan"];
       config = {
         config,
         pkgs,
