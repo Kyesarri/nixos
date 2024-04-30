@@ -28,6 +28,7 @@ in
         };
         networking.hostName = "${hostName}";
         networking.useHostResolvConf = lib.mkForce false;
+        networking.useNetworkd = true;
       };
     };
   }
