@@ -1,6 +1,6 @@
 let
   hostName = "uptime-kuma";
-  webPort = 4000;
+  webPort = 3001;
 in
   {
     config,
@@ -8,8 +8,6 @@ in
     lib,
     ...
   }: {
-    networking.firewall.allowedTCPPorts = [webPort 80 22];
-
     containers.${hostName} = {
       autoStart = true;
       privateNetwork = true;
@@ -22,10 +20,9 @@ in
         boot.isContainer = true;
         system.stateVersion = "23.11";
         services.uptime-kuma.enable = true;
-        services.uptime-kuma.settings = {PORT = "4000";};
         networking.interfaces.eth0.useDHCP = true;
         networking.hostName = "${hostName}";
-        networking.firewall.allowedTCPPorts = [webPort 80 22];
+        networking.firewall.allowedTCPPorts = [${webPort} 80 22];
         networking.useHostResolvConf = lib.mkForce false;
       };
     };
