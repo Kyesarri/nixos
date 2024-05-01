@@ -51,7 +51,7 @@
 
   systemd.network.networks = {
     "10-lan" = {
-      matchConfig.Name = ["enp1s0" "ve-*"];
+      matchConfig.Name = ["enp1s0"];
       # This interface should only be used from attached macvtaps.
       # So don't acquire a link local address and only wait for
       # this interface to gain a carrier.

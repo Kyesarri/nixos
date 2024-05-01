@@ -11,9 +11,9 @@ in
     containers.${hostName} = {
       autoStart = true;
       privateNetwork = true;
-      localAddress = "192.168.87.2/24";
-      hostAddress = "192.168.87.1";
-      # hostBridge = "enp1s0";
+      # localAddress = "192.168.87.2/24";
+      # hostAddress = "192.168.87.1";
+      hostBridge = "br0";
       # macvlans = ["enp1s0"];
       # enableTun = true;
       config = {
@@ -21,11 +21,11 @@ in
         pkgs,
         ...
       }: {
+        boot.isContainer = true;
         system.stateVersion = "23.11";
         services.uptime-kuma.enable = true;
-        services.uptime-kuma.settings = {
-          PORT = "4000";
-        };
+        services.uptime-kuma.settings = {PORT = "4000";};
+        networking.interfaces.eth0.useDHCP = true;
         networking.hostName = "${hostName}";
         networking.firewall.allowedTCPPorts = [webPort];
         networking.useHostResolvConf = lib.mkForce false;
