@@ -22,7 +22,7 @@ in
         services.uptime-kuma.enable = true;
         networking.interfaces.eth0.useDHCP = true;
         networking.hostName = "${hostName}";
-        networking.firewall.allowedTCPPorts = [${webPort} 80 22];
+        networking.firewall.allowedTCPPorts = [webPort 80 22];
         networking.useHostResolvConf = lib.mkForce false;
       };
     };
