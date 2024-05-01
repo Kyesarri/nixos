@@ -11,11 +11,7 @@ in
     containers.${hostName} = {
       autoStart = true;
       privateNetwork = true;
-      # localAddress = "192.168.87.2/24";
-      # hostAddress = "192.168.87.1";
       hostBridge = "br0";
-      # macvlans = ["enp1s0"];
-      # enableTun = true;
       config = {
         config,
         pkgs,
@@ -27,9 +23,8 @@ in
         services.uptime-kuma.settings = {PORT = "4000";};
         networking.interfaces.eth0.useDHCP = true;
         networking.hostName = "${hostName}";
-        networking.firewall.allowedTCPPorts = [webPort];
+        networking.firewall.allowedTCPPorts = [webPort 80 22];
         networking.useHostResolvConf = lib.mkForce false;
-        networking.useNetworkd = true;
       };
     };
   }
