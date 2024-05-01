@@ -30,6 +30,14 @@ in
             prefixLength = 24;
           }
         ];
+        networking.interfaces."eth0".ipv4.routes = [
+          {
+            address = "192.168.87.0";
+            prefixLength = 24;
+            via = "192.168.87.1";
+          }
+        ];
+
         networking.hostName = "${hostName}";
         networking.firewall.enable = false;
         # networking.firewall.allowedTCPPorts = [webPort 80 22];
