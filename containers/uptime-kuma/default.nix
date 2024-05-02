@@ -12,7 +12,6 @@ in
       autoStart = true;
       privateNetwork = true;
       hostBridge = "br0";
-      extraVeths."test0".hostBridge = "br0";
       #
       config = {
         config,
