@@ -85,9 +85,9 @@
     go2rtc:
       streams:
         driveway:
-          - rtsp://frigate:${secrets.password.drivecam}@${secrets.ip.drivecam}:554/h264Preview_01_main
+          - rtsp://${secrets.user.drivecam}:${secrets.password.drivecam}@${secrets.ip.drivecam}:554/h264Preview_01_main
         entry:
-          - rtsp://frigate:${secrets.password.entrycam}@${secrets.ip.entrycam}:554/h264Preview_01_main
+          - rtsp://${secrets.user.entrycam}:${secrets.password.entrycam}@${secrets.ip.entrycam}:554/h264Preview_01_main
     #
     logger:
       default: info
