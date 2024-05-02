@@ -11,7 +11,7 @@ in
     containers.${hostName} = {
       autoStart = true;
       privateNetwork = true;
-      # hostBridge = "br0";
+      hostBridge = "br0";
       extraVeths."test0".hostBridge = "br0";
       #
       config = {
