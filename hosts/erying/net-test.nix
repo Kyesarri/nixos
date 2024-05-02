@@ -8,11 +8,12 @@
     # networkmanager.enable = false;
     # useNetworkd = true;
     usePredictableInterfaceNames = lib.mkDefault true;
+
     firewall = {
       enable = true;
       checkReversePath = "loose"; # fixes connection issues with tailscale
       allowedTCPPorts = [22];
-      allowedUDPPorts = [53 config.services.tailscale.port];
+      allowedUDPPorts = [config.services.tailscale.port];
     };
 
     bridges."br0".interfaces = ["enp1s0"];
@@ -29,6 +30,6 @@
       }
     ];
     defaultGateway = "192.168.87.251";
-    nameservers = ["192.168.87.251"];
+    nameservers = ["1.1.1.1"];
   };
 }
