@@ -11,7 +11,7 @@ in
     virtualisation.oci-containers.containers.${hostName} = {
       hostname = "${hostName}-nix-serv";
       autoStart = true;
-      image = "codeproject/ai-server";
+      image = "codeproject/ai-server:latest";
       ports = ["32168:32168"];
       volumes = [
         "/etc/localtime:/etc/localtime:ro"
