@@ -16,7 +16,7 @@ in
       volumes = [
         "/etc/localtime:/etc/localtime:ro"
         "/home/${spaghetti.user}/.docker/${hostName}/data:/etc/codeproject/ai"
-        "/home/${spaghetti.user}/.docker/${hostName}/modules:/app/modules"
+        "/home/${spaghetti.user}/.docker/${hostName}/app:/app"
       ];
       extraOptions = [
         "--device=/dev/apex_0:/dev/apex_0"
