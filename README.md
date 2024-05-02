@@ -1,5 +1,5 @@
 # 🍝 nixos
-my public nixos configuration, system specific .nix for ga401 / desktop / cl10w-c
+my public nixos configuration, system specific configs for ga401 / desktop / cl10w-c / erying Q1J2
 
  [<img src="screenshots/1.jpg" width="45%" />](screenshots/1.jpg) 
  [<img src="screenshots/2.jpg" width="45%" />](screenshots/2.jpg) 
@@ -15,20 +15,20 @@ in addition any of the hosts ["default.nix"](hosts/laptop/default.nix) for addit
 modules are having options (slowly) added, see ["/home/hypr/default.nix"](home/hypr/default.nix)
 
 ## about:
-programs are modular, [home/pkgname](home/kitty/default.nix) will come with hypr keybindings and exec at boot where applicable. add remove in [hosts/hostname/default.nix](hosts/laptop/default.nix) FIXME these are changing as per above
+programs in /home [home/pkgname](home/kitty/default.nix) have bindings, themes and exec at boot where applicable. add / remove in [hosts/hostname/default.nix](hosts/laptop/default.nix) FIXME these are changing as per above
 
-some hypr keybind conflicts will apply if you are using multiple applications for the same purpose (wofi / ulauncher for example) I'll eventually add some options to (hopefully) avoid this. 
+some hypr keybind conflicts will apply if you are using multiple applications for the same purpose (wofi / ulauncher for example) I'll eventually add some options to (hopefully) avoid this.
 
 username & plymouth theme configurable in flake.nix, see spaghetti
 
-programs under [home](home/) come with nix-colors themes, change theme in [hosts/hostname/default.nix](hosts/laptop/default.nix) per system.
+programs under [home](home/) come with nix-colors themes, change theme in [hosts/hostname/default.nix](hosts/laptop/default.nix) per system. TODO update this - not correct now :)
 
 ## use:
 clone this repository to your /home/username/
 
- ```git clone https://codeberg.org/kye/nixos``` or ```git clone --recurse-submodules https://codeberg.org/kye/nixos``` to snag the wallpapers *depreciated
+ ```git clone https://codeberg.org/kye/nixos```
 
-copy contents of your /etc/nixos/hardware-configuration.nix [hardware.nix](hosts/laptop/hardware.nix) to [hosts/hostname](hosts/laptop/) which you plan to use
+copy contents of your /etc/nixos/hardware-configuration.nix into a[hardware.nix](hosts/laptop/hardware.nix) of which host you plan to use
 
 open the root [flake.nix](flake.nix), change the ```user = "kel";``` line to your own username, this will change all home-manager and nixos config files
 
@@ -36,12 +36,7 @@ run ```sudo nixos-rebuild switch --flake /home/username/nixos#hostname --show-tr
 
 reboot the system and see what broke
 
-wallpapers may not work out the gate, will require some configuration in per-device.nix # TODO - wallpapers have changed lots
-
 ## issues:
-
-### boot -
-current configuration uses grub, you may need to ```cd /``` and ```sudo rm -R boot``` then run another ```sudo nixos-rebuild switch --flake /home/username/nixos#hostname``` command from above to get gdm / grub running # TODO - gdm no longer uses, may be a mkoption
 
 ### home-manager -
 it will complain about files in the way in your ```.config```, delete the files home-manager listed and run another rebuild
@@ -50,22 +45,37 @@ it will complain about files in the way in your ```.config```, delete the files 
 ## tree:
 
 ```
-~/nixos/
+~/nixos/.
 ├── README.md
-├── TODO.md
-├── TREE
 ├── containers
 │   ├── authelia
 │   │   └── default.nix
 │   ├── blocky
 │   │   └── default.nix
-│   ├── default.nix
-│   ├── nextcloud
+│   ├── codeproject
 │   │   └── default.nix
-│   └── nginx
+│   ├── default.nix
+│   ├── esphome
+│   │   └── default.nix
+│   ├── frigate
+│   │   ├── README.md
+│   │   ├── default.nix
+│   │   └── igpu_stats.png
+│   ├── home-assistant
+│   │   └── default.nix
+│   ├── invidious
+│   │   └── default.nix
+│   ├── nginx-proxy-manager
+│   │   └── default.nix
+│   ├── pihole
+│   │   └── default.nix
+│   ├── plex
+│   │   └── default.nix
+│   └── uptime-kuma
 │       └── default.nix
 ├── flake.lock
 ├── flake.nix
+├── gitcrypt.key
 ├── hardware
 │   ├── audio
 │   │   └── default.nix
@@ -73,6 +83,10 @@ it will complain about files in the way in your ```.config```, delete the files 
 │   │   └── default.nix
 │   ├── bluetooth
 │   │   └── default.nix
+│   ├── coral
+│   │   ├── default.nix
+│   │   ├── libedgetpu-stddef.diff
+│   │   └── libedgetpu.nix
 │   ├── nvidia
 │   │   └── default.nix
 │   ├── rgb
@@ -114,8 +128,6 @@ it will complain about files in the way in your ```.config```, delete the files 
 │   ├── bottom
 │   │   ├── bottom.toml.nix
 │   │   └── default.nix
-│   ├── changedetection
-│   │   └── default.nix
 │   ├── codium
 │   │   └── default.nix
 │   ├── copyq
@@ -127,10 +139,6 @@ it will complain about files in the way in your ```.config```, delete the files 
 │   ├── firefox
 │   │   └── default.nix
 │   ├── foot
-│   │   └── default.nix
-│   ├── frigate
-│   │   ├── README.md
-│   │   ├── config.yml
 │   │   └── default.nix
 │   ├── gaming
 │   │   └── default.nix
@@ -191,11 +199,20 @@ it will complain about files in the way in your ```.config```, delete the files 
 ├── hosts
 │   ├── console.nix
 │   ├── desktop
+│   │   ├── boot.nix
 │   │   ├── default.nix
 │   │   ├── hardware.nix
 │   │   └── per-device.nix
+│   ├── erying
+│   │   ├── boot.nix
+│   │   ├── containers.nix
+│   │   ├── default.nix
+│   │   ├── hardware.nix
+│   │   ├── net-test.nix
+│   │   └── networking.nix
 │   ├── headless.nix
 │   ├── laptop
+│   │   ├── boot.nix
 │   │   ├── default.nix
 │   │   ├── hardware.nix
 │   │   └── per-device.nix
@@ -206,11 +223,13 @@ it will complain about files in the way in your ```.config```, delete the files 
 │   │   ├── hardware.nix
 │   │   └── per-device.nix
 │   ├── serv
+│   │   ├── boot.nix
+│   │   ├── containers.nix
 │   │   ├── default.nix
-│   │   ├── hardware-configuration.nix
 │   │   ├── hardware.nix
-│   │   └── per-device.nix
+│   │   └── networking.nix
 │   └── standard.nix
+├── nixos.code-workspace
 ├── packages
 │   ├── image-colorizer
 │   │   └── default.nix
@@ -238,10 +257,21 @@ it will complain about files in the way in your ```.config```, delete the files 
 │       ├── hyprpicker.sh
 │       └── pipewire.sh
 ├── secrets
-│   └── secrets.yaml
-├── shells
-│   └── fprintd.nix
+│   └── secrets.json
+├── serv
+│   ├── arr
+│   │   ├── default.nix
+│   │   └── flood.nix
+│   ├── caddy
+│   │   └── default.nix
+│   ├── changedetection
+│   │   └── default.nix
+│   ├── default.nix
+│   ├── monitor
+│   │   └── default.nix
+│   └── nginx
+│       └── default.nix
 └── theme.css
 
-69 directories (nice), 122 files
+81 directories, 145 files
 ```
