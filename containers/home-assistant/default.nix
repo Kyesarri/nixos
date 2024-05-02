@@ -6,6 +6,7 @@ in
     spaghetti,
     config,
     pkgs,
+    lib,
     ...
   }: {
     networking.firewall.allowedTCPPorts = [webPort];

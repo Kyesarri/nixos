@@ -2,10 +2,10 @@ let
   hostName = "pihole";
 in
   {
+    spaghetti,
     config,
     pkgs,
     lib,
-    spaghetti,
     ...
   }: {
     # looks to make directories on boot / rebuild - not sure if podman will handle this by itself?
