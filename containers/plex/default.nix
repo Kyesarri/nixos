@@ -5,6 +5,7 @@ in
     spaghetti,
     config,
     pkgs,
+    lib,
     ...
   }: {
     # looks to make directories on boot / rebuild - not sure if podman will handle this by itself?
