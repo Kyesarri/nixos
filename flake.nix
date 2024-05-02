@@ -1,5 +1,5 @@
 {
-  description = "spaghetti nixos by kye";
+  description = "spaghetti nixos";
 
   inputs = {
     nixos.url = "github:nixos/nixpkgs/nixos-unstable";
