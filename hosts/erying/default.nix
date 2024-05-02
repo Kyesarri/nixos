@@ -28,13 +28,6 @@
     ../../home/zsh # yes pls
   ];
 
-  sops = {
-    defaultSopsFile = ../../secrets/secrets.yaml;
-    age.keyFile = "/home/${spaghetti.user}/.config/sops/age/keys.txt";
-    secrets = {
-      #"network/gateway" = {};
-    };
-  };
   colorscheme = inputs.nix-colors.colorSchemes.${spaghetti.scheme2};
   home-manager.users.${spaghetti.user}.colorscheme = inputs.nix-colors.colorSchemes.${spaghetti.scheme2};
 

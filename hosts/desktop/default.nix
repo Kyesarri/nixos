@@ -22,7 +22,7 @@ in
       ../../hardware/bluetooth
       ../../hardware/nvidia
       ../../hardware/rgb
-      ../../hardware/wireless/wpa
+      ../../hardware/wireless/wpa # TODO please eventually fix this POS
 
       ../../home
       ../../home/ags
@@ -38,11 +38,9 @@ in
       ../../home/kitty
       ../../home/ulauncher
       ../../home/virt
-      ../../home/waybar
       ../../home/gtk
       ../../home/syncthing
       ../../home/tailscale
-      ../../home/wlogout
       ../../home/zsh
     ];
 
@@ -68,13 +66,6 @@ in
             prefixLength = 24;
           }
         ];
-        #routes = [
-        #  {
-        #    address = "192.168.87.0";
-        #    prefixLength = 24;
-        #    via = "192.168.87.251";
-        #  }
-        #];
       };
     };
 

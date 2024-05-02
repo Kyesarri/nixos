@@ -6,7 +6,6 @@
   outputs,
   nix-colors,
   spaghetti,
-  sops-nix,
   ...
 }: {
   imports = [
@@ -57,14 +56,6 @@
   ];
 
   boot.supportedFilesystems = ["ntfs"];
-
-  sops = {
-    defaultSopsFile = ../../secrets/secrets.yaml;
-    age.keyFile = "/home/${spaghetti.user}/.config/sops/age/keys.txt";
-    secrets = {
-      "network/gateway" = {};
-    };
-  };
 
   gnocchi = {
     ags.enable = true;

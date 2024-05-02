@@ -1,3 +1,4 @@
 *.vscode
 secrets.nix
 nixos.code-workspace
+gitcrypt.key

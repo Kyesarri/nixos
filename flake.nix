@@ -54,6 +54,7 @@
       scheme2 = "darkviolet";
       iconPkg = "pkgs.zafiro-icons";
     };
+    secrets = builtins.fromJSON (builtins.readFile "${self}/secrets/secrets.json");
     system = "x86_64-linux";
     specialArgs = {inherit nix-colors auto-cpufreq sops-nix inputs prism spaghetti wallpaper-generator;};
   in {
