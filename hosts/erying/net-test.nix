@@ -10,7 +10,7 @@
     usePredictableInterfaceNames = lib.mkDefault true;
 
     firewall = {
-      enable = false;
+      enable = true;
       checkReversePath = "loose"; # fixes connection issues with tailscale
       allowedTCPPorts = [22];
       allowedUDPPorts = [config.services.tailscale.port];

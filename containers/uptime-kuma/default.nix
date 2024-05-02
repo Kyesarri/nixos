@@ -12,6 +12,8 @@ in
       autoStart = true;
       privateNetwork = true;
       hostBridge = "br0";
+      hostAddress = "192.168.87.1";
+      localAddress = "192.168.87.2/24";
       #
       config = {
         config,
@@ -30,6 +32,7 @@ in
           # firewall.interfaces."eth0".allowedTCPPorts = [webPort];
           firewall.enable = false;
           useHostResolvConf = lib.mkForce false;
+          /*
           interfaces."eth0" = {
             useDHCP = false;
             ipv4.addresses = [
@@ -38,7 +41,7 @@ in
                 prefixLength = 24;
               }
             ];
-            /*
+
             ipv4.routes = [
               {
                 address = "192.168.87.0";
@@ -46,8 +49,9 @@ in
                 via = "192.168.87.1";
               }
             ];
-            */
+
           };
+          */
         };
       };
     };
