@@ -1,5 +1,6 @@
 let
   hostName = "plex";
+  webPort = 32400;
 in
   {
     spaghetti,
@@ -8,18 +9,17 @@ in
     lib,
     ...
   }: {
-    # looks to make directories on boot / rebuild - not sure if podman will handle this by itself?
-    # don't believe so, this is quite handy xoxo
-    system.activationScripts.makePlexDir = lib.stringAfter ["var"] ''
-      mkdir -p /home/${spaghetti.user}/.docker/${hostName}
-    '';
-    networking.firewall.allowedTCPPorts = [32400];
+    system.activationScripts.makePlexDir =
+      lib.stringAfter ["var"]
+      ''mkdir -p /home/${spaghetti.user}/.containers/${hostName}'';
+
+    networking.firewall.allowedTCPPorts = [webPort];
 
     virtualisation.oci-containers.containers.${hostName} = {
       hostname = "${hostName}-nix-serv";
       autoStart = true;
       image = "lscr.io/linuxserver/plex:latest";
-      ports = ["32400:32400"];
+      ports = ["${webPort}:${webPort}"]; # this might fail
       volumes = [
         "/etc/localtime:/etc/localtime:ro"
         # "/etc/timezone:/etc/timezone:ro"
@@ -36,13 +36,9 @@ in
         "/hddd/tv_shows:/tv_shows/hddd"
         "/hdde/tv_shows:/tv_shows/hdde"
 
-        "/home/${spaghetti.user}/.docker/${hostName}:/config"
+        "/home/${spaghetti.user}/.containers/${hostName}:/config"
       ];
       environment = {};
-      extraOptions = [
-        # "--network=host"
-        "--privileged"
-        # "--network=pod-net"
-      ];
+      extraOptions = ["--privileged"];
     };
   }

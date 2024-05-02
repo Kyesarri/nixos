@@ -11,7 +11,7 @@ in
     # looks to make directories on boot / rebuild - not sure if podman will handle this by itself?
     # don't believe so, this is quite handy xoxo
     system.activationScripts.makePiHoleDir = lib.stringAfter ["var"] ''
-      mkdir -p /home/${spaghetti.user}/.docker/${hostName}/etc /home/${spaghetti.user}/.docker/${hostName}/etc/dnsmasq.d
+      mkdir -p /home/${spaghetti.user}/.containers/${hostName}/etc /home/${spaghetti.user}/.containers/${hostName}/etc/dnsmasq.d
     '';
 
     networking.firewall.allowedTCPPorts = [533 8080];
@@ -28,8 +28,8 @@ in
         "8080:80/tcp"
       ];
       volumes = [
-        "/home/${spaghetti.user}/.docker/${hostName}/etc:/etc/pihole"
-        "/home/${spaghetti.user}/.docker/${hostName}/etc/dnsmasq.d:/etc/dnsmasq.d"
+        "/home/${spaghetti.user}/.containers/${hostName}/etc:/etc/pihole"
+        "/home/${spaghetti.user}/.containers/${hostName}/etc/dnsmasq.d:/etc/dnsmasq.d"
       ];
       extraOptions = ["--cap-add=net_admin"];
     };
