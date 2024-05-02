@@ -161,7 +161,6 @@
       udiskie # usb mounting
       bitwarden # password manager
       sleek-grub-theme # testing grub themes TODO grub
-      adi1090x-plymouth-themes # plymouth themes
       ntfs3g # ntfs support
       curl
       wl-clipboard # wl-copy and wl-paste for copy/paste from stdin / stdout
