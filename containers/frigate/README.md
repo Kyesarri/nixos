@@ -1,6 +1,7 @@
 # frigate
 
 module runs frigate as a docker container / service on host machine, configuration assumes using modern (= or > 10th gen) intel with iGPU for hw accel
+in addition config looks for a google coral tpu running under codeproject.ai for image processing / detections
 
 sees around 1% cpu core usage per camera feed, gpu sees around 15 - 25% busy (iGPU) use while processing 2 x 2560x1920 feeds 30fps / 5fps detect
 
@@ -10,4 +11,4 @@ most port forwarding should be enabled by this module, however you may need to c
 
 config is using placeholder credentials, need to work on secrets management :D
 
-see [serv](../../hosts/serv/default.nix) > hardware + enviornment config
+see [serv](../../hosts/serv/default.nix) > hardware + config

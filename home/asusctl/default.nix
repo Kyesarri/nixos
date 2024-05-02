@@ -60,14 +60,12 @@
     };
   };
   # below not required
-  home-manager.users.${spaghetti.user}.home.file.".config/hypr/per-app/asusd.conf" = {
-    text = ''
-      # this is already a system service, dont need to start
-      # exec-once = systemctl start asusd
-      # run battery level at every boot
-      # if this service has a moment run "systemctl start asusd", hopefully that fixes things
-      # disabled below, not sure if causing issues
-      # exec-once = sleep 3 && asusctl -c 75 && rog-control-center
-    '';
-  };
+  home-manager.users.${spaghetti.user}.home.file.".config/hypr/per-app/asusd.conf".text = ''
+    # this is already a system service, dont need to start
+    # exec-once = systemctl start asusd
+    # run battery level at every boot
+    # if this service has a moment run "systemctl start asusd", hopefully that fixes things
+    # disabled below, not sure if causing issues
+    # exec-once = sleep 3 && asusctl -c 75 && rog-control-center
+  '';
 }
