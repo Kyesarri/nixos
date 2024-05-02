@@ -17,7 +17,7 @@ in
         "/etc/localtime:/etc/localtime:ro"
         "/home/${spaghetti.user}/.docker/${hostName}/data:/etc/codeproject/ai"
         "/home/${spaghetti.user}/.docker/${hostName}/app/modules:/app/modules"
-        "/home/${spaghetti.user}/.docker/${hostName}/usr/lib/:/usr/lib/"
+        # "/home/${spaghetti.user}/.docker/${hostName}/usr/lib/:/usr/lib/"
       ];
       extraOptions = [
         "--device=/dev/apex_0:/dev/apex_0"
