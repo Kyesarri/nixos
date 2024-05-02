@@ -9,9 +9,6 @@
     home-manager.url = "github:nix-community/home-manager/master"; # added master branch to follow unstable nixos
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
-    sops-nix.url = "github:Mic92/sops-nix";
-    sops-nix.inputs.nixpkgs.follows = "nixpkgs";
-
     hyprland.url = "github:hyprwm/Hyprland";
 
     hyprpicker.url = "github:hyprwm/hyprpicker";
@@ -42,12 +39,10 @@
     auto-cpufreq,
     prism,
     wallpaper-generator,
-    sops-nix,
     ...
   } @ inputs: let
     spaghetti = {
       user = "kel";
-      user1 = "test";
       plymouth = "deus_ex";
       scheme = "horizon-dark";
       scheme1 = "gigavolt";
@@ -56,13 +51,12 @@
     };
     secrets = builtins.fromJSON (builtins.readFile "${self}/secrets/secrets.json");
     system = "x86_64-linux";
-    specialArgs = {inherit nix-colors auto-cpufreq sops-nix inputs prism spaghetti wallpaper-generator;};
+    specialArgs = {inherit nix-colors secrets auto-cpufreq inputs prism spaghetti wallpaper-generator;};
   in {
     nixosConfigurations = {
       "nix-laptop" = nixpkgs.lib.nixosSystem {
         inherit system specialArgs;
         modules = [
-          sops-nix.nixosModules.sops
           auto-cpufreq.nixosModules.default
           home-manager.nixosModules.home-manager
           ./hosts/laptop # 4800hs / 1650 / 16gb ddr4 TODO download more ram
@@ -82,7 +76,6 @@
         inherit system specialArgs;
         modules = [
           home-manager.nixosModules.home-manager
-          sops-nix.nixosModules.sops
           ./hosts/notebook # celeron N3050 / intel "hd" / 4gb ddr3
           {
             home-manager = {
@@ -97,7 +90,6 @@
         inherit system specialArgs;
         modules = [
           home-manager.nixosModules.home-manager
-          sops-nix.nixosModules.sops
           ./hosts/desktop # msi-z790i edge wifi / 13900kf / 3070 / 32gb ddr5
           {
             environment.systemPackages = [alejandra.defaultPackage.x86_64-linux];
@@ -115,7 +107,6 @@
         inherit system specialArgs;
         modules = [
           home-manager.nixosModules.home-manager
-          sops-nix.nixosModules.sops
           ./hosts/serv # ASUS z390i / 9900k / 32gb ddr5
           # 15s-fq2050TU / i5-1135G7 / iris x / 8gb ddr4 FIXME #RIP
           {
@@ -134,7 +125,6 @@
         inherit system specialArgs;
         modules = [
           home-manager.nixosModules.home-manager
-          sops-nix.nixosModules.sops
           ./hosts/erying # erying Q1J2 (i7 ES 0000) 14C20T / iris xe / 32gb ddr5
           {
             environment.systemPackages = [alejandra.defaultPackage.x86_64-linux];
