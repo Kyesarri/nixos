@@ -2,6 +2,7 @@
   spaghetti,
   config,
   pkgs,
+  secrets,
   ...
 }: {
   # make tmpdir for frigate to use, ssd wear bla bla
@@ -46,17 +47,12 @@
   };
   #
   home-manager.users.${spaghetti.user}.home.file.".docker/frigate/config.yml".text = ''
-    # i know passwords are currently exposed here, these are "temp"
     cameras:
     #
       driveway:
         best_image_timeout: 60
         ffmpeg:
           inputs:
-    #      - path: rtsp://127.0.0.1:8554/driveway_sub
-    #        input_args: preset-rtsp-restream
-    #        roles:
-    #        - detect
           - path: rtsp://127.0.0.1:8554/driveway
             input_args: preset-rtsp-restream
             roles:
@@ -69,10 +65,6 @@
         best_image_timeout: 60
         ffmpeg:
           inputs:
-    #      - path: rtsp://127.0.0.1:8554/entry_sub
-    #        input_args: preset-rtsp-restream
-    #        roles:
-    #        - detect
           - path: rtsp://127.0.0.1:8554/entry
             input_args: preset-rtsp-restream
             roles:
@@ -93,13 +85,9 @@
     go2rtc:
       streams:
         driveway:
-          - rtsp://frigate:Mj3iNSUJydpaaiT87d65NZgS9kh@192.168.87.20:554/h264Preview_01_main
+          - rtsp://frigate:${secrets.password.drivecam}@${secrets.ip.drivecam}:554/h264Preview_01_main
         entry:
-          - rtsp://frigate:Mj3iNSUJydpaaiT87d65NZgS9kh@192.168.87.22:554/h264Preview_01_main
-    #    driveway_sub:
-    #      - rtsp://frigate:Mj3iNSUJydpaaiT87d65NZgS9kh@192.168.87.20:554/h264Preview_01_sub
-    #    entry_sub:
-    #      - rtsp://frigate:Mj3iNSUJydpaaiT87d65NZgS9kh@192.168.87.22:554/h264Preview_01_sub
+          - rtsp://frigate:${secrets.password.entrycam}@${secrets.ip.entrycam}:554/h264Preview_01_main
     #
     logger:
       default: info
@@ -109,16 +97,16 @@
     #
     motion:
       threshold: 90
-    # not used currently v
+    #
     mqtt:
-      client_id: frigate
-      enabled: true
-      host: 192.168.87.9
-      password: $iFQhh^QXu2^r&s%!MX%h969PNW
+      client_id: ${secrets.user.frigate}
+      enabled: false
+      host: ${secrets.ip.mqtt}
+      password: ${secrets.password.mqtt}
       port: 1883
       stats_interval: 60
       topic_prefix: frigate
-      user: frigate
+      user: ${secrets.user.frigate}
     #
     objects:
       track:
@@ -170,7 +158,7 @@
     # when cpai v
     detectors:
        deepstack:
-         api_url: http://192.168.87.9:32168/v1/vision/detection
+         api_url: http://${secrets.ip.codeproject}:32168/v1/vision/detection
          type: deepstack
          api_timeout: 1 # seconds
     #
@@ -185,14 +173,5 @@
       width: 640
       height: 480
     #
-    #
-    #
-    #
-    #
-    #
-    #
-    #
-    #
-    # padding at eof
   '';
 }
