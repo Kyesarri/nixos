@@ -22,7 +22,7 @@ in
         "--device=/dev/apex_0:/dev/apex_0"
       ];
     };
-
+    /*
     home-manager.users.${spaghetti.user}.home.file.".docker/codeproject/data/modulesettings.json".text = ''
             {
         "Modules": {
@@ -47,4 +47,5 @@ in
         }
       }
     '';
+    */
   }
