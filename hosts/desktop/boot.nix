@@ -1,6 +1,5 @@
 {pkgs, ...}: {
   boot = {
-    kernelPackages = pkgs.linuxPackages_xanmod_latest; # use latest xanmod kernel
     kernelParams = [
       "nowatchdog" # disables watchdog, was causing shutdown / reboot issues with wifi
       "quiet" # removes boot messages, testing for plymouth themes, TODO move to plymouth /service/ ?
