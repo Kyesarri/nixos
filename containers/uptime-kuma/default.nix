@@ -11,37 +11,43 @@ in
     containers.${hostName} = {
       autoStart = true;
       privateNetwork = true;
-      hostBridge = "br0";
+      # hostBridge = "br0";
+      extraVeths."test0".hostBridge = "br0";
+      #
       config = {
         config,
         pkgs,
         ...
       }: {
+        #
         boot.isContainer = true;
         system.stateVersion = "23.11";
         services.uptime-kuma.enable = true;
-        networking.defaultGateway.address = "192.168.87.251";
-        networking.nameservers = ["1.1.1.1"];
-        networking.firewall.interfaces."eth0".allowedTCPPorts = [webPort];
-        networking.interfaces."eth0".useDHCP = false;
-        networking.interfaces."eth0".ipv4.addresses = [
-          {
-            address = "192.168.87.2";
-            prefixLength = 24;
-          }
-        ];
-        networking.interfaces."eth0".ipv4.routes = [
-          {
-            address = "192.168.87.0";
-            prefixLength = 24;
-            via = "192.168.87.1";
-          }
-        ];
 
-        networking.hostName = "${hostName}";
-        networking.firewall.enable = false;
-        # networking.firewall.allowedTCPPorts = [webPort 80 22];
-        networking.useHostResolvConf = lib.mkForce false;
+        networking = {
+          hostName = "${hostName}";
+          defaultGateway.address = "192.168.87.251";
+          nameservers = ["1.1.1.1"];
+          # firewall.interfaces."eth0".allowedTCPPorts = [webPort];
+          firewall.enable = false;
+          useHostResolvConf = lib.mkForce false;
+          interfaces."eth0" = {
+            useDHCP = false;
+            ipv4.addresses = [
+              {
+                address = "192.168.87.2";
+                prefixLength = 24;
+              }
+            ];
+            ipv4.routes = [
+              {
+                address = "192.168.87.0";
+                prefixLength = 24;
+                via = "192.168.87.1";
+              }
+            ];
+          };
+        };
       };
     };
   }
