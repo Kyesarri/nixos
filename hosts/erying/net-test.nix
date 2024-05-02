@@ -10,21 +10,20 @@
     usePredictableInterfaceNames = lib.mkDefault true;
 
     firewall = {
-      enable = true;
+      enable = false;
       checkReversePath = "loose"; # fixes connection issues with tailscale
       allowedTCPPorts = [22];
       allowedUDPPorts = [config.services.tailscale.port];
     };
 
+    # configure the bridge interface
     bridges."br0".interfaces = ["enp1s0"];
 
-    # Get bridge-ip with DHCP
+    # give the bridge an ip with dhcp
     useDHCP = false;
-    interfaces."br0" = {
-      useDHCP = true;
-      firewall.enable = false;
-    };
-    # Set bridge-ip static
+    interfaces."br0".useDHCP = true;
+
+    # set a static ip for the bridge itself
     interfaces."br0".ipv4.addresses = [
       {
         address = "192.168.87.1";
