@@ -12,8 +12,9 @@
   imports = [
     nix-colors.homeManagerModules.default
 
-    ./per-device.nix
-    ./hardware.nix
+    ./per-device.nix # hyprland per-device config
+    ./hardware.nix # machine hardware
+    ./boot.nix # per device boot config
 
     ../standard.nix
 
