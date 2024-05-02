@@ -7,6 +7,11 @@ in
     pkgs,
     ...
   }: {
+    # looks to make directories on boot / rebuild - not sure if podman will handle this by itself?
+    # don't believe so, this is quite handy xoxo
+    system.activationScripts.makePlexDir = lib.stringAfter ["var"] ''
+      mkdir -p /home/${spaghetti.user}/.docker/${hostName}
+    '';
     networking.firewall.allowedTCPPorts = [32400];
 
     virtualisation.oci-containers.containers.${hostName} = {
