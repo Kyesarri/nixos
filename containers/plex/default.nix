@@ -38,6 +38,6 @@ in
         "/home/${spaghetti.user}/.containers/${hostName}:/config"
       ];
       environment = {};
-      extraOptions = ["--privileged"];
+      extraOptions = ["--privileged" "--network=host"];
     };
   }
