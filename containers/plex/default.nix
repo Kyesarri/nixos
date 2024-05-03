@@ -19,12 +19,10 @@ in
       hostname = "${hostName}-nix-serv";
       autoStart = true;
       image = "lscr.io/linuxserver/plex:latest";
-      ports = ["32400:32400"]; # toString is hot!
+      ports = ["192.168.87.99:32400:32400"];
       # ports = ["${toString webPort}:${toString webPort}"]; # toString is hot!
       volumes = [
         "/etc/localtime:/etc/localtime:ro"
-        # "/etc/timezone:/etc/timezone:ro"
-
         "/dev/dri:/dev/dri"
 
         "/hddb/movies:/movies/hddb"
