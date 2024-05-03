@@ -9,10 +9,12 @@ in
     lib,
     ...
   }: {
+    /*
     system.activationScripts.makePlexDir =
       lib.stringAfter ["var"]
       ''mkdir -p /home/${spaghetti.user}/.containers/${hostName}'';
-
+    */
+    # issues with this - dirs are owned by user and not root / containers
     networking.firewall.allowedTCPPorts = [32400];
 
     virtualisation.oci-containers.containers.${hostName} = {
