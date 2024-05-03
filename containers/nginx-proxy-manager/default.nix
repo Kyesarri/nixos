@@ -9,10 +9,6 @@ in
     lib,
     ...
   }: {
-    system.activationScripts.makeNGINXDir =
-      lib.stringAfter ["var"]
-      ''mkdir -p /home/${spaghetti.user}/.containers/${hostName}/data /home/${spaghetti.user}/.containers/${hostName}/letsencrypt'';
-
     networking.firewall.allowedTCPPorts = [80 webPort 443];
 
     virtualisation.oci-containers.containers.${hostName} = {

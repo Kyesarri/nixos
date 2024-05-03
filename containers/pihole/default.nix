@@ -8,12 +8,6 @@ in
     lib,
     ...
   }: {
-    # looks to make directories on boot / rebuild - not sure if podman will handle this by itself?
-    # don't believe so, this is quite handy xoxo
-    system.activationScripts.makePiHoleDir = lib.stringAfter ["var"] ''
-      mkdir -p /home/${spaghetti.user}/.containers/${hostName}/etc /home/${spaghetti.user}/.containers/${hostName}/etc/dnsmasq.d
-    '';
-
     networking.firewall.allowedTCPPorts = [533 8080];
     networking.firewall.allowedUDPPorts = [533 57 67];
 

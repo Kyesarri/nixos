@@ -10,9 +10,6 @@ in
     ...
   }: {
     networking.firewall.allowedTCPPorts = [webPort];
-    system.activationScripts.makeHome-AssistantDir =
-      lib.stringAfter ["var"]
-      ''mkdir -p /home/${spaghetti.user}/.containers/${hostName}/data /home/${spaghetti.user}/.containers/${hostName}/letsencrypt'';
 
     virtualisation.oci-containers.containers = {
       home-assistant = {
