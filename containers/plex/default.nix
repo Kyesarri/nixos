@@ -1,26 +1,27 @@
 let
   hostName = "plex";
+  webPort = 32400;
 in
   {
     spaghetti,
     config,
     pkgs,
+    lib,
     ...
   }: {
+    system.activationScripts.makePlexDir =
+      lib.stringAfter ["var"]
+      ''mkdir -p /home/${spaghetti.user}/.containers/${hostName}'';
+
     networking.firewall.allowedTCPPorts = [32400];
 
     virtualisation.oci-containers.containers.${hostName} = {
       hostname = "${hostName}-nix-serv";
       autoStart = true;
       image = "lscr.io/linuxserver/plex:latest";
-      ports = [
-        "32400:32400/tcp"
-        "32400:32400/udp"
-      ];
+      ports = ["${toString webPort}:${toString webPort}"]; # toString is hot!
       volumes = [
         "/etc/localtime:/etc/localtime:ro"
-        # "/etc/timezone:/etc/timezone:ro"
-
         "/dev/dri:/dev/dri"
 
         "/hddb/movies:/movies/hddb"
@@ -36,10 +37,6 @@ in
         "/home/${spaghetti.user}/.containers/${hostName}:/config"
       ];
       environment = {};
-      extraOptions = [
-        # "--network=host"
-        "--privileged"
-        # "--network=pod-net"
-      ];
+      extraOptions = ["--privileged"];
     };
   }
