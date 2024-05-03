@@ -9,9 +9,11 @@ in
     lib,
     ...
   }: {
+    /*
     system.activationScripts.makePlexDir =
       lib.stringAfter ["var"]
       ''mkdir -p /home/${spaghetti.user}/.containers/${hostName}'';
+    */
 
     networking.firewall.allowedTCPPorts = [32400];
 
@@ -19,7 +21,7 @@ in
       hostname = "${hostName}-nix-serv";
       autoStart = true;
       image = "lscr.io/linuxserver/plex:latest";
-      ports = ["192.168.87.99:32400:32400"];
+      ports = ["32400:32400"];
       # ports = ["${toString webPort}:${toString webPort}"]; # toString is hot!
       volumes = [
         "/etc/localtime:/etc/localtime:ro"
