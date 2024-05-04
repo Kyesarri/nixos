@@ -8,14 +8,14 @@
   hostName = "pihole";
   webPort = 8080;
   dir1 = "/home/${spaghetti.user}/.containers/${hostName}/etc/";
-  dir2 = "/home/${spaghetti.user}/.containers/${hostName}/etc/dnsmasq.d:";
+  dir2 = "/home/${spaghetti.user}/.containers/${hostName}/etc/dnsmasq.d";
 in {
   system.activationScripts.makeCodeProjectDir = lib.stringAfter ["var"] ''
-    mkdir -p ${toString dir1} ${toString dir2}
+    mkdir -p ${toString dir1} ${toString dir2}y
   '';
 
   networking.firewall.allowedTCPPorts = [53 webPort];
-  networking.firewall.allowedUDPPorts = [53 67];
+  networking.firewall.allowedUDPPorts = [53 67 webPort];
 
   virtualisation.oci-containers.containers."${hostName}" = {
     hostname = "${hostName}";
