@@ -12,7 +12,7 @@
       enable = true;
       checkReversePath = "loose"; # fixes connection issues with tailscale
       allowedTCPPorts = [22];
-      allowedUDPPorts = [53 config.services.tailscale.port];
+      # allowedUDPPorts = [53 config.services.tailscale.port];
     };
   };
 
