@@ -5,6 +5,7 @@ in
     spaghetti,
     config,
     pkgs,
+    lib,
     ...
   }: {
     system.activationScripts.makeCodeProjectDir = lib.stringAfter ["var"] ''
