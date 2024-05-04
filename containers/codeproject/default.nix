@@ -1,5 +1,8 @@
 let
   hostName = "codeproject";
+  dir1 = "/home/${spaghetti.user}/.containers/${hostName}/etc/codeproject/ai";
+  dir2 = "/home/${spaghetti.user}/.containers/${hostName}/app/modules";
+  dir3 = "/home/${spaghetti.user}/.containers/${hostName}/usr/lib/x86_64-linux-gnu";
 in
   {
     spaghetti,
@@ -9,9 +12,7 @@ in
     ...
   }: {
     system.activationScripts.makeCodeProjectDir = lib.stringAfter ["var"] ''
-      mkdir -p /home/${spaghetti.user}/.containers/${hostName}/etc/codeproject/ai &&
-      mkdir -p /home/${spaghetti.user}/.containers/${hostName}/app/modules &&
-      mkdir -p /home/${spaghetti.user}/.containers/${hostName}/usr/lib/x86_64-linux-gnu
+      mkdir -p ${toString dir1} ${toString dir2} ${toString dir3} && echo volumes created for ${toString hostName}
     '';
     networking.firewall.allowedTCPPorts = [32168];
     virtualisation.oci-containers.containers.${hostName} = {
@@ -21,9 +22,9 @@ in
       ports = ["32168:32168"];
       volumes = [
         "/etc/localtime:/etc/localtime:ro"
-        "/home/${spaghetti.user}/.containers/${hostName}/data:/etc/codeproject/ai"
-        "/home/${spaghetti.user}/.containers/${hostName}/app/modules:/app/modules"
-        "/home/${spaghetti.user}/.containers/${hostName}/usr/lib/x86_64-linux-gnu:/usr/lib/x86_64-linux-gnu"
+        "${toString dir1}:/etc/codeproject/ai"
+        "${toString dir2}:/app/modules"
+        "${toString dir3}:/usr/lib/x86_64-linux-gnu"
       ];
       extraOptions = [
         "--device=/dev/apex_0:/dev/apex_0"
