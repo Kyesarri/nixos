@@ -11,7 +11,7 @@
   dir2 = "/home/${spaghetti.user}/.containers/${hostName}/app/modules";
 in {
   system.activationScripts.makeCodeProjectDir = lib.stringAfter ["var"] ''
-    mkdir -p ${toString dir1} ${toString dir2} && echo (づ ￣ ³￣)づ ${hostName}
+    mkdir -p ${toString dir1} ${toString dir2}
   '';
 
   networking.firewall.allowedTCPPorts = [32168];
