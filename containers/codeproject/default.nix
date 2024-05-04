@@ -7,6 +7,11 @@ in
     pkgs,
     ...
   }: {
+    system.activationScripts.makeCodeProjectDir = lib.stringAfter ["var"] ''
+      mkdir -p /home/${spaghetti.user}/.containers/${hostName}/etc/codeproject/ai &&
+      mkdir -p /home/${spaghetti.user}/.containers/${hostName}/app/modules &&
+      mkdir -p /home/${spaghetti.user}/.containers/${hostName}/usr/lib/x86_64-linux-gnu
+    '';
     networking.firewall.allowedTCPPorts = [32168];
     virtualisation.oci-containers.containers.${hostName} = {
       hostname = "${hostName}-nix-serv";
@@ -15,38 +20,12 @@ in
       ports = ["32168:32168"];
       volumes = [
         "/etc/localtime:/etc/localtime:ro"
-        "/home/${spaghetti.user}/.docker/${hostName}/data:/etc/codeproject/ai"
-        "/home/${spaghetti.user}/.docker/${hostName}/app/modules:/app/modules"
-        "/home/${spaghetti.user}/.docker/${hostName}/usr/lib/x86_64-linux-gnu:/usr/lib/x86_64-linux-gnu"
+        "/home/${spaghetti.user}/.containers/${hostName}/data:/etc/codeproject/ai"
+        "/home/${spaghetti.user}/.containers/${hostName}/app/modules:/app/modules"
+        "/home/${spaghetti.user}/.containers/${hostName}/usr/lib/x86_64-linux-gnu:/usr/lib/x86_64-linux-gnu"
       ];
       extraOptions = [
         "--device=/dev/apex_0:/dev/apex_0"
       ];
     };
-    /*
-    home-manager.users.${spaghetti.user}.home.file.".docker/codeproject/data/modulesettings.json".text = ''
-            {
-        "Modules": {
-          "FaceProcessing": {
-            "LaunchSettings": {
-              "AutoStart": false
-            },
-            "GpuOptions": {}
-          },
-          "ObjectDetectionYOLOv5-6.2": {
-            "LaunchSettings": {
-              "AutoStart": false
-            },
-            "GpuOptions": {}
-          },
-          "ObjectDetectionCoral": {
-            "LaunchSettings": {
-              "AutoStart": true
-            },
-            "GpuOptions": {}
-          }
-        }
-      }
-    '';
-    */
   }
