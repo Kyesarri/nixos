@@ -6,26 +6,26 @@
   ...
 }: let
   hostName = "pihole";
-  webPort = 32168;
+  webPort = 8080;
   dir1 = "/home/${spaghetti.user}/.containers/${hostName}/etc/";
   dir2 = "/home/${spaghetti.user}/.containers/${hostName}/etc/dnsmasq.d:";
 in {
   system.activationScripts.makeCodeProjectDir = lib.stringAfter ["var"] ''
-    mkdir -p ${toString dir1} ${toString dir2} && echo volumes created for ${hostName}
+    mkdir -p ${toString dir1} ${toString dir2} && echo (づ ￣ ³￣)づ ${hostName}
   '';
 
-  networking.firewall.allowedTCPPorts = [53 8080];
+  networking.firewall.allowedTCPPorts = [53 webPort];
   networking.firewall.allowedUDPPorts = [53 67];
 
   virtualisation.oci-containers.containers."${hostName}" = {
+    hostname = "${hostName}";
     autoStart = true;
     image = "pihole/pihole:latest";
     ports = [
-      # "host:container"
       "53:53/udp"
       "53:53/tcp"
       "67:67/udp"
-      "8080:80/tcp"
+      "${toString webPort}:80/tcp"
     ];
     volumes = [
       "${toString dir1}:/etc/pihole"
@@ -34,6 +34,5 @@ in {
     extraOptions = ["--cap-add=net_admin"];
   };
 }
-# yoinked from https://gitlab.com/yramagicman/stow-dotfiles/-/blob/master/nixos/browncoat/pihole.nix?ref_type=heads
-# added my own tweaks
+# yoinked base config from https://gitlab.com/yramagicman/stow-dotfiles/-/blob/master/nixos/browncoat/pihole.nix?ref_type=heads
 
