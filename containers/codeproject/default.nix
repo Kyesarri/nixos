@@ -7,7 +7,7 @@
 }: let
   hostName = "codeproject";
   webPort = 32168;
-  dir1 = "/home/${spaghetti.user}/.containers/${hostName}/usr";
+  dir1 = "/home/${spaghetti.user}/.containers/${hostName}/usr/lib/x86_64-linux-gnu";
   dir2 = "/home/${spaghetti.user}/.containers/${hostName}/etc/codeproject/ai";
   dir3 = "/home/${spaghetti.user}/.containers/${hostName}/app";
 in {
@@ -22,7 +22,7 @@ in {
     ports = ["${toString webPort}:${toString webPort}"];
     volumes = [
       "/etc/localtime:/etc/localtime:ro"
-      "${toString dir1}:/usr"
+      "${toString dir1}:/usr/lib/x86_64-linux-gnu"
       "${toString dir2}:/etc/codeproject/ai"
       "${toString dir3}:/app"
     ];
