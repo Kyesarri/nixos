@@ -18,7 +18,7 @@ in
 
       nat = {
         enable = true;
-        internalInterfaces = ["ve-*"];
+        internalInterfaces = ["veth*"];
         externalInterface = "enp*";
       };
 
