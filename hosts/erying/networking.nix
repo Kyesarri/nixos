@@ -16,11 +16,7 @@
     };
   };
 
-  boot.kernel.sysctl = {
-    # forward network packets that are not destined for the interface on which they were received
-    "net.ipv4.conf.all.forwarding" = true;
-    "net.ipv6.conf.all.forwarding" = true;
-  };
+  systemd.network.enable = true;
 
   boot.initrd.systemd.network = {
     enable = true;
@@ -36,47 +32,35 @@
     };
   };
 
-  # Create a MACVTAP for ourselves too, so that we can communicate with
-  # our guests on the same interface.
-  systemd.network.netdevs."10-lan-self" = {
+  systemd.network.netdevs."br0" = {
     netdevConfig = {
-      Name = "lan-self";
-      Kind = "macvlan";
+      Name = "br0";
+      Kind = "bridge";
     };
-    extraConfig = ''
-      [MACVLAN]
-      Mode=bridge
-    '';
   };
 
-  systemd.network.networks = {
-    "10-lan" = {
-      matchConfig.Name = ["enp1s0"];
-      # This interface should only be used from attached macvtaps.
-      # So don't acquire a link local address and only wait for
-      # this interface to gain a carrier.
-      networkConfig.LinkLocalAddressing = "no";
-      linkConfig.RequiredForOnline = "carrier";
-      extraConfig = ''
-        [Network]
-        MACVLAN=lan-self
-      '';
+  systemd.network.networks."10-lan" = {
+    matchConfig.Name = ["enp1s0"];
+    networkConfig = {
+      Bridge = "br0";
     };
-    "20-lan-self" = {
-      address = ["192.168.87.1/24"];
-      gateway = ["192.168.87.251"];
-      matchConfig.Name = "lan-self";
-      networkConfig = {
-        IPv6PrivacyExtensions = "yes";
-        MulticastDNS = true;
-      };
-      linkConfig.RequiredForOnline = "routable";
+  };
+
+  systemd.network.networks."19-podman" = {
+    matchConfig.Name = "veth*";
+    linkConfig = {
+      Unmanaged = true;
     };
-    # Remaining macvtap interfaces should not be touched.
-    "90-macvtap-ignore" = {
-      matchConfig.Kind = "macvtap";
-      linkConfig.ActivationPolicy = "manual";
-      linkConfig.Unmanaged = "yes";
+  };
+
+  systemd.network.networks."10-lan-bridge" = {
+    matchConfig.Name = "br0";
+    networkConfig = {
+      Address = ["192.168.87.1/24"];
+      Gateway = "192.168.87.251";
+      DNS = ["192.168.87.251"];
+      IPv6AcceptRA = true;
     };
+    linkConfig.RequiredForOnline = "routable";
   };
 }
