@@ -18,8 +18,8 @@ in
 
       nat = {
         enable = true;
-        internalInterfaces = ["ve-+"];
-        externalInterface = "enp6s0";
+        internalInterfaces = ["ve-*"];
+        externalInterface = "enp*";
       };
 
       firewall = {
@@ -38,11 +38,11 @@ in
     };
 
     # Config for the physical interface itself with DHCP enabled and associated to a MACVLAN.
-    systemd.network.networks."40-enp6s0" = {
-      matchConfig.Name = "enp6s0";
+    systemd.network.networks."40-enp" = {
+      matchConfig.Name = "enp*";
       networkConfig.DHCP = "yes";
       dhcpConfig.UseDNS = "no";
-      networkConfig.MACVLAN = "mv-enp6s0-host";
+      networkConfig.MACVLAN = "mv-enp-host";
       linkConfig.RequiredForOnline = "no";
       address = lib.mkForce [];
       addresses = lib.mkForce [];
@@ -50,17 +50,17 @@ in
 
     # The host-side sub-interface of the MACVLAN. This means that the host is reachable
     # at `192.168.87.99`, both on the physical interface and from the container.
-    systemd.network.networks."20-mv-enp6s0-host" = {
-      matchConfig.Name = "mv-enp6s0-host";
+    systemd.network.networks."20-mv-enp-host" = {
+      matchConfig.Name = "mv-enp-host";
       networkConfig.IPForward = "yes";
       dhcpV4Config.ClientIdentifier = "mac";
       address = lib.mkForce ["192.168.87.99/24"];
       routes = [{routeConfig.Gateway = "192.168.87.251";}];
     };
 
-    systemd.network.netdevs."20-mv-enp6s0-host" = {
+    systemd.network.netdevs."20-mv-enp-host" = {
       netdevConfig = {
-        Name = "mv-enp6s0-host";
+        Name = "mv-enp-host";
         Kind = "macvlan";
       };
       extraConfig = ''
