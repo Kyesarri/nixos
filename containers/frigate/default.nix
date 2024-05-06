@@ -38,7 +38,7 @@
       ];
       extraOptions = [
         "--shm-size=256m"
-        # "--device=/dev/apex_0:/dev/apex_0" # enable if using coral in frigate
+        "--device=/dev/apex_0:/dev/apex_0" # enable if using coral in frigate
         "--device=/dev/dri/renderD128" # gpu
         "--mount=type=tmpfs,target=/tmp/cache,tmpfs-size=1000000000"
         "--pull=always" # always want a good pull
