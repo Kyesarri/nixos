@@ -41,7 +41,6 @@
 
   systemd.network.netdevs."mv0" = {
     netdevConfig = {
-      Name = "mv0";
       Kind = "macvlan";
       Mode = "private";
     };
