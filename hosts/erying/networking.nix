@@ -32,22 +32,24 @@
     };
   };
 
-  systemd.network.netdevs = {
-    "br0" = {
-      netdevConfig = {
-        Name = "br0";
-        Kind = "bridge";
-      };
-    };
-    "mv0" = {
-      netdevConfig = {
-        Name = "mv0";
-      };
-      macvlanConfig = {
-        Mode = "private";
-      };
+  systemd.network.netdevs."br0" = {
+    netdevConfig = {
+      Name = "br0";
+      Kind = "bridge";
     };
   };
+
+  systemd.network.netdevs."mv0" = {
+    netdevConfig = {
+      Name = "mv0";
+      Kind = "macvlan";
+    };
+    extraConfig = ''
+      [MACVLAN]
+      Mode=bridge
+    '';
+  };
+
   systemd.network.networks."10-lan" = {
     matchConfig.Name = ["enp3s0"];
     networkConfig = {
@@ -55,14 +57,13 @@
     };
   };
 
-  /*
-  systemd.network.networks."19-podman" = {
-    matchConfig.Name = "veth+";
-    linkConfig = {
-      Unmanaged = true;
-    };
+  systemd.network.networks."mv0" = {
+    matchConfig.Name = "mv0";
+    networkConfig.IPForward = "yes";
+    dhcpV4Config.ClientIdentifier = "mac";
+    address = lib.mkForce ["192.168.87.2/24"];
+    routes = [{routeConfig.Gateway = "192.168.87.251";}];
   };
-  */
 
   systemd.network.networks."10-lan-bridge" = {
     matchConfig.Name = "br0";

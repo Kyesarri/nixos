@@ -18,8 +18,8 @@ in
 
       nat = {
         enable = true;
-        internalInterfaces = ["veth*"];
-        externalInterface = "enp*";
+        internalInterfaces = ["veth+"];
+        externalInterface = "enp3s0";
       };
 
       firewall = {
@@ -39,7 +39,7 @@ in
 
     # Config for the physical interface itself with DHCP enabled and associated to a MACVLAN.
     systemd.network.networks."40-enp" = {
-      matchConfig.Name = "enp*";
+      matchConfig.Name = "enp3s0";
       networkConfig.DHCP = "yes";
       dhcpConfig.UseDNS = "no";
       networkConfig.MACVLAN = "mv-enp-host";
