@@ -32,16 +32,22 @@
     };
   };
 
+  boot.kernel.sysctl = {
+    # forward network packets that are not destined for the interface on which they were received
+    "net.ipv4.conf.all.forwarding" = true;
+    "net.ipv6.conf.all.forwarding" = true;
+  };
+  /*
   systemd.network.netdevs."br0" = {
     netdevConfig = {
       Name = "br0";
       Kind = "bridge";
     };
   };
-
-  systemd.network.netdevs."mv0" = {
+  */
+  systemd.network.netdevs."br0" = {
     netdevConfig = {
-      Name = "mv0";
+      Name = "br0";
       Kind = "macvlan";
     };
     extraConfig = ''
@@ -56,7 +62,7 @@
       Bridge = "br0";
     };
   };
-
+  /*
   systemd.network.networks."mv0" = {
     matchConfig.Name = "mv0";
     networkConfig.IPForward = "yes";
@@ -64,7 +70,7 @@
     address = lib.mkForce ["192.168.87.2/24"];
     routes = [{routeConfig.Gateway = "192.168.87.251";}];
   };
-
+  */
   systemd.network.networks."10-lan-bridge" = {
     matchConfig.Name = "br0";
     networkConfig = {
