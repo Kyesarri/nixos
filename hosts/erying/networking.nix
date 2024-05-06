@@ -23,7 +23,7 @@
     networks."10-lan" = {
       address = ["192.168.87.1/24"];
       gateway = ["192.168.87.251"];
-      matchConfig.Name = ["enp1s0"];
+      matchConfig.Name = ["enp3s0"];
       networkConfig = {
         IPv6PrivacyExtensions = "yes";
         MulticastDNS = true;
@@ -40,7 +40,7 @@
   };
 
   systemd.network.networks."10-lan" = {
-    matchConfig.Name = ["enp1s0"];
+    matchConfig.Name = ["enp3s0"];
     networkConfig = {
       Bridge = "br0";
     };
