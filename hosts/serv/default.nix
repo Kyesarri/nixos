@@ -20,7 +20,7 @@
 
     ../../containers
 
-    ../../hardware/coral
+    # ../../hardware/coral
 
     ../../home # home-manaager config for all machines currently
     ../../home/bottom # nice to have terminal task manager / perfmon

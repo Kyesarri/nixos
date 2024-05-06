@@ -3,7 +3,7 @@
     kernelPackages = pkgs.linuxPackages_xanmod; # use mainline xanmod kernel
     supportedFilesystems = ["zfs"]; # add zfs, for storage
     zfs.forceImportRoot = false;
-    zfs.extraPools = ["nvmea" "hddb" "hddc" "hddd" "hdde"];
+    zfs.extraPools = ["hddb" "hddc" "hddd" "hdde"];
     kernelParams = [
       "i915.enable_fbc=1" # iGPU framebuffer compression, nfi if this works
       "intel_iommu=on" # pci device pass-through

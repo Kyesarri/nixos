@@ -18,6 +18,8 @@
 
     ../headless.nix # base packages and config
 
+    ../../hardware/coral
+
     ../../home # home-manaager config for all machines
     ../../home/bottom # nice to have terminal task manager / perfmon
     ../../home/git # some baseline git config in there
