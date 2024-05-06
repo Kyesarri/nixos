@@ -54,12 +54,14 @@
     };
   };
 
+  /*
   systemd.network.networks."19-podman" = {
-    matchConfig.Name = "veth*";
+    matchConfig.Name = "veth+";
     linkConfig = {
       Unmanaged = true;
     };
   };
+  */
 
   systemd.network.networks."10-lan-bridge" = {
     matchConfig.Name = "br0";
