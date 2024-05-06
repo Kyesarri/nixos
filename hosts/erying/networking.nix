@@ -32,20 +32,19 @@
     };
   };
 
-  systemd.network.netdevs."br0" = {
-    netdevConfig = {
-      Name = "br0";
-      Kind = "bridge";
+  systemd.network.netdevs = {
+    "br0" = {
+      netdevConfig = {
+        Name = "br0";
+        Kind = "bridge";
+      };
+    };
+    "mv0" = {
+      macvlanConfig = {
+        Mode = "private";
+      };
     };
   };
-
-  systemd.network.netdevs."mv0" = {
-    netdevConfig = {
-      Kind = "macvlan";
-      Mode = "private";
-    };
-  };
-
   systemd.network.networks."10-lan" = {
     matchConfig.Name = ["enp3s0"];
     networkConfig = {
