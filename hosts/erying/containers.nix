@@ -4,6 +4,6 @@
     # ../../containers/authelia
     # ../../containers/uptime-kuma
     ../../containers/frigate
-    ../../containers/pihole
+    # ../../containers/pihole
   ];
 }

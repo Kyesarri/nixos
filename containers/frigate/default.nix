@@ -156,17 +156,17 @@
       hwaccel_args: preset-vaapi
     #
     # when cpai v
-    detectors:
-       deepstack:
-         api_url: http://${secrets.ip.codeproject}:32168/v1/vision/detection
-         type: deepstack
-         api_timeout: 1 # seconds
+    #detectors:
+    #   deepstack:
+    #     api_url: http://${secrets.ip.codeproject}:32168/v1/vision/detection
+    #     type: deepstack
+    #     api_timeout: 1 # seconds
     #
     # using onboard coral v
-    #detectors:
-    #  coral_pci:
-    #    type: edgetpu
-    #    device: pci
+    detectors:
+      coral_pci:
+        type: edgetpu
+        device: pci
     #
     birdseye:
       enabled: true
