@@ -39,6 +39,14 @@
     };
   };
 
+  systemd.network.netdevs."mv0" = {
+    netdevConfig = {
+      Name = "mv0";
+      Kind = "macvlan";
+      Mode = "private";
+    };
+  };
+
   systemd.network.networks."10-lan" = {
     matchConfig.Name = ["enp3s0"];
     networkConfig = {
