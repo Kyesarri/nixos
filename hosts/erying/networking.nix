@@ -40,6 +40,9 @@
       };
     };
     "mv0" = {
+      netdevConfig = {
+        Name = "mv0";
+      };
       macvlanConfig = {
         Mode = "private";
       };
