@@ -17,7 +17,7 @@
 in {
   system.activationScripts.makeFrigateDir = lib.stringAfter ["var"] ''
     mkdir -v -m 777 -p ${toString dir1} ${toString dir2} ${toString dir3}
-  '';
+  ''; # shitty perms, "temp" workaround
 
   # make tmpdir for frigate to use, ssd wear bla bla, probs isnt even working :)
   fileSystems."/tmp/cache" = {
