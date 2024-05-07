@@ -37,7 +37,7 @@
         "/etc/localtime:/etc/localtime:ro"
       ];
       extraOptions = [
-        "--pod=pod-net"
+        "--pod=burrow"
         "--shm-size=256m"
         "--device=/dev/apex_0:/dev/apex_0" # enable if using coral in frigate
         "--device=/dev/dri/renderD128" # gpu
