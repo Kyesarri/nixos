@@ -23,11 +23,11 @@
       image = "ghcr.io/blakeblackshear/frigate:stable";
       ports = [
         # hostPort:containerPort
-        "192.168.87.2:5000:5000" # webui
-        "192.168.87.2:1935:1935" #
-        "192.168.87.2:8554:8554" # rtsp
-        "192.168.87.2:8555:8555/tcp" # webrtc
-        "192.168.87.2:8555:8555/udp" # webrtc
+        "5000:5000" # webui
+        "1935:1935" #
+        "8554:8554" # rtsp
+        "8555:8555/tcp" # webrtc
+        "8555:8555/udp" # webrtc
       ];
       # environmentFiles = [ ../secrets/frigate.env ]; # TODO
       volumes = [
