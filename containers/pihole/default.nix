@@ -19,7 +19,7 @@ in {
   networking.firewall.allowedUDPPorts = [53 67 web];
 
   virtualisation.oci-containers.containers."${hostName}" = {
-    hostname = "${hostName}";
+    hostname = "${hostName}-nix-erying";
     autoStart = true;
     image = "pihole/pihole:latest";
     ports = [
