@@ -16,7 +16,7 @@
   dir3 = "/home/${spaghetti.user}/.containers/${hostName}/config";
 in {
   system.activationScripts.makeFrigateDir = lib.stringAfter ["var"] ''
-    mkdir -p ${toString dir1} ${toString dir2} ${toString dir3}
+    mkdir -v -m 777 -p ${toString dir1} ${toString dir2} ${toString dir3}
   '';
 
   # make tmpdir for frigate to use, ssd wear bla bla, probs isnt even working :)
