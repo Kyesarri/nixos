@@ -13,7 +13,9 @@
 
     ./boot.nix # may migrate systems back to systemd boot - testing here
     ./hardware.nix # device specific hardware config
-    ./networking.nix # systemd networking config
+    ./systemd.macvlan.nix # systemd networking config
+    # ./net-test.nix
+    # ./networking.nix # systemd networking config
     ./containers.nix # testing selecting specific ccontainers per-host
 
     ../headless.nix # base packages and config

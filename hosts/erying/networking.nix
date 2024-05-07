@@ -23,7 +23,7 @@
     networks."10-lan" = {
       address = ["192.168.87.1/24"];
       gateway = ["192.168.87.251"];
-      matchConfig.Name = ["enp3s0"];
+      matchConfig.Name = ["enp1s0"];
       networkConfig = {
         IPv6PrivacyExtensions = "yes";
         MulticastDNS = true;
@@ -32,45 +32,20 @@
     };
   };
 
-  boot.kernel.sysctl = {
-    # forward network packets that are not destined for the interface on which they were received
-    "net.ipv4.conf.all.forwarding" = true;
-    "net.ipv6.conf.all.forwarding" = true;
-  };
-  /*
   systemd.network.netdevs."br0" = {
     netdevConfig = {
       Name = "br0";
       Kind = "bridge";
     };
   };
-  */
-  systemd.network.netdevs."br0" = {
-    netdevConfig = {
-      Name = "br0";
-      Kind = "macvlan";
-    };
-    extraConfig = ''
-      [MACVLAN]
-      Mode=bridge
-    '';
-  };
 
   systemd.network.networks."10-lan" = {
-    matchConfig.Name = ["enp3s0"];
+    matchConfig.Name = ["enp1s0"];
     networkConfig = {
       Bridge = "br0";
     };
   };
-  /*
-  systemd.network.networks."mv0" = {
-    matchConfig.Name = "mv0";
-    networkConfig.IPForward = "yes";
-    dhcpV4Config.ClientIdentifier = "mac";
-    address = lib.mkForce ["192.168.87.2/24"];
-    routes = [{routeConfig.Gateway = "192.168.87.251";}];
-  };
-  */
+
   systemd.network.networks."10-lan-bridge" = {
     matchConfig.Name = "br0";
     networkConfig = {
