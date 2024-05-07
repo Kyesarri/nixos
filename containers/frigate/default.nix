@@ -3,6 +3,7 @@
   secrets,
   config,
   pkgs,
+  lib,
   ...
 }: let
   hostName = "frigate";
