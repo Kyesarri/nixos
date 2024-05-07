@@ -37,16 +37,18 @@
         "/etc/localtime:/etc/localtime:ro"
       ];
       extraOptions = [
-        "--pod=burrow"
-        "--shm-size=256m"
-        "--device=/dev/apex_0:/dev/apex_0" # enable if using coral in frigate
-        "--device=/dev/dri/renderD128" # gpu
-        "--mount=type=tmpfs,target=/tmp/cache,tmpfs-size=1000000000"
+        "--network=burrow"
         "--pull=always" # always want a good pull
+        "--privileged"
+        "--shm-size=256m" # 64m was too low for high res
+        "--device=/dev/apex_0:/dev/apex_0" # coral
+        "--device=/dev/dri/renderD128" # gpu
+        "--mount=type=tmpfs,target=/tmp/cache,tmpfs-size=1000000000" # tempfs
       ];
     };
   };
-  #
+  # # writes config to dir - for frigate,
+  # # changes to this post-rebuild will require frigate to be restarted
   home-manager.users.${spaghetti.user}.home.file.".docker/frigate/config.yml".text = ''
     cameras:
     #
