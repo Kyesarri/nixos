@@ -38,7 +38,7 @@
       ];
       extraOptions = [
         "--network=macvlan_lan"
-        "--pull=always" # always want a good pull
+        # "--pull=always" # always want a good pull
         "--privileged"
         "--shm-size=256m" # 64m was too low for high res
         "--device=/dev/apex_0:/dev/apex_0" # coral
