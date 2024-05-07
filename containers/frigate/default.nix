@@ -36,11 +36,11 @@ in {
       autoStart = true;
       image = "ghcr.io/blakeblackshear/frigate:stable";
       ports = [
-        "${rtmp}:${rtmp}"
-        "${web}:${web}"
-        "${rtsp}:${rtsp}"
-        "${webRTC}:${webRTC}/tcp"
-        "${webRTC}:${webRTC}/udp"
+        "${toString rtmp}:${toString rtmp}"
+        "${toString web}:${toString web}"
+        "${toString rtsp}:${toString rtsp}"
+        "${toString webRTC}:${toString webRTC}/tcp"
+        "${toString webRTC}:${toString webRTC}/udp"
       ];
 
       volumes = [
