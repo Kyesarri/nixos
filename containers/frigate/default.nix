@@ -32,7 +32,7 @@ in {
   virtualisation.oci-containers.containers = {
     #
     frigate = {
-      hostname = "${hostName}-nix-serv";
+      hostname = "${hostName}-nix-erying";
       autoStart = true;
       image = "ghcr.io/blakeblackshear/frigate:stable";
       ports = [
