@@ -1,21 +1,22 @@
 {
   spaghetti,
+  secrets,
   config,
   pkgs,
   lib,
   ...
 }: let
   hostName = "pihole";
-  webPort = 8080;
+  web = 8080;
   dir1 = "/home/${spaghetti.user}/.containers/${hostName}/etc/";
   dir2 = "/home/${spaghetti.user}/.containers/${hostName}/etc/dnsmasq.d";
 in {
   system.activationScripts.makeCodeProjectDir = lib.stringAfter ["var"] ''
-    mkdir -p ${toString dir1} ${toString dir2}
+    mkdir -v -p ${toString dir1} ${toString dir2}
   '';
 
-  networking.firewall.allowedTCPPorts = [53 webPort];
-  networking.firewall.allowedUDPPorts = [53 67 webPort];
+  networking.firewall.allowedTCPPorts = [53 web];
+  networking.firewall.allowedUDPPorts = [53 67 web];
 
   virtualisation.oci-containers.containers."${hostName}" = {
     hostname = "${hostName}";
@@ -25,13 +26,18 @@ in {
       "53:53/udp"
       "53:53/tcp"
       "67:67/udp"
-      "${toString webPort}:80/tcp"
+      "${toString web}:80/tcp"
     ];
     volumes = [
       "${toString dir1}:/etc/pihole"
       "${toString dir2}:/etc/dnsmasq.d"
     ];
-    extraOptions = ["--cap-add=net_admin"];
+    extraOptions = [
+      "--network=macvlan_lan"
+      # "--privileged"
+      "--cap-add=net_admin"
+      "--ip=${secrets.ip.pihole}"
+    ];
   };
 }
 # yoinked base config from https://gitlab.com/yramagicman/stow-dotfiles/-/blob/master/nixos/browncoat/pihole.nix?ref_type=heads
