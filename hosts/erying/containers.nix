@@ -27,6 +27,7 @@
   */
   systemd.services."podman-network-macvlan_lan" = {
     path = [pkgs.podman];
+    wantedBy = ["podman-frigate.service"];
     serviceConfig = {
       Type = "oneshot";
       RemainAfterExit = true;
@@ -35,7 +36,5 @@
     script = ''
       podman network exists macvlan_lan || podman network create --driver macvlan --opt parent=enp3s0 --subnet 192.168.87.0/24 --ip-range 192.168.87.254/27 --gateway 192.168.87.251 --route 224.0.0.0/4,192.168.1.1  macvlan_lan
     '';
-    partOf = ["podman-compose-root.target"];
-    wantedBy = ["podman-compose-root.target"];
   };
 }
