@@ -29,18 +29,20 @@
         "8555:8555/tcp" # webrtc
         "8555:8555/udp" # webrtc
       ];
-      # environmentFiles = [ ../secrets/frigate.env ]; # TODO
+
       volumes = [
         "/home/${spaghetti.user}/.docker/frigate:/db"
         "/home/${spaghetti.user}/.docker/frigate:/media/frigate"
         "/home/${spaghetti.user}/.docker/frigate/config.yml:/config/config.yml:ro"
         "/etc/localtime:/etc/localtime:ro"
       ];
+
       extraOptions = [
         "--network=macvlan_lan"
+        "--ip=192.168.87.20"
         # "--pull=always" # always want a good pull
         "--privileged"
-        "--shm-size=256m" # 64m was too low for high res
+        "--shm-size=256m" # 64m was too low
         "--device=/dev/apex_0:/dev/apex_0" # coral
         "--device=/dev/dri/renderD128" # gpu
         "--mount=type=tmpfs,target=/tmp/cache,tmpfs-size=1000000000" # tempfs
