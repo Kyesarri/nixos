@@ -37,7 +37,7 @@
         "/etc/localtime:/etc/localtime:ro"
       ];
       extraOptions = [
-        "--network=burrow"
+        "--network=macvlan_lan"
         "--pull=always" # always want a good pull
         "--privileged"
         "--shm-size=256m" # 64m was too low for high res
