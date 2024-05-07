@@ -1,10 +1,23 @@
 {
   spaghetti,
+  secrets,
   config,
   pkgs,
-  secrets,
   ...
-}: {
+}: let
+  hostName = "frigate";
+  rtmp = 1935;
+  web = 5000;
+  rtsp = 8554;
+  webRTC = 8555;
+  dir1 = "/home/${spaghetti.user}/.containers/${hostName}/db";
+  dir2 = "/home/${spaghetti.user}/.containers/${hostName}/media/frigate";
+  dir3 = "/home/${spaghetti.user}/.containers/${hostName}/config";
+in {
+  system.activationScripts.makeFrigateDir = lib.stringAfter ["var"] ''
+    mkdir -p ${toString dir1} ${toString dir2} ${toString dir3}
+  '';
+
   # make tmpdir for frigate to use, ssd wear bla bla, probs isnt even working :)
   fileSystems."/tmp/cache" = {
     device = "none";
@@ -12,35 +25,34 @@
     options = ["defaults" "size=1G" "mode=755"];
   };
 
-  networking.firewall.allowedTCPPorts = [5000 8554 8555];
-  networking.firewall.allowedUDPPorts = [5000 8555];
+  networking.firewall.allowedTCPPorts = [web rtsp webRTC];
+  networking.firewall.allowedUDPPorts = [web webRTC];
 
   virtualisation.oci-containers.containers = {
     #
     frigate = {
-      hostname = "frigate-nix-serv";
+      hostname = "${hostName}-nix-serv";
       autoStart = true;
       image = "ghcr.io/blakeblackshear/frigate:stable";
       ports = [
-        # hostPort:containerPort
-        "5000:5000" # webui
-        "1935:1935" #
-        "8554:8554" # rtsp
-        "8555:8555/tcp" # webrtc
-        "8555:8555/udp" # webrtc
+        "${rtmp}:${rtmp}"
+        "${web}:${web}"
+        "${rtsp}:${rtsp}"
+        "${webRTC}:${webRTC}/tcp"
+        "${webRTC}:${webRTC}/udp"
       ];
 
       volumes = [
-        "/home/${spaghetti.user}/.docker/frigate:/db"
-        "/home/${spaghetti.user}/.docker/frigate:/media/frigate"
-        "/home/${spaghetti.user}/.docker/frigate/config.yml:/config/config.yml:ro"
+        "${toString dir1}:/db"
+        "${toString dir2}:/media/frigate"
+        "${toString dir3}:/config/config.yml:ro"
         "/etc/localtime:/etc/localtime:ro"
       ];
 
       extraOptions = [
         "--network=macvlan_lan"
         "--ip=${secrets.ip.frigate}"
-        # "--pull=always" # always want a good pull
+        "--pull=always" # always want a good pull
         "--privileged"
         "--shm-size=256m" # 64m was too low
         "--device=/dev/apex_0:/dev/apex_0" # coral
@@ -49,9 +61,9 @@
       ];
     };
   };
-  # # writes config to dir - for frigate,
-  # # changes to this post-rebuild will require frigate to be restarted
-  home-manager.users.${spaghetti.user}.home.file.".docker/frigate/config.yml".text = ''
+  # write file, symlink to dir via home-manager <3
+  # changes to this post-rebuild will require frigate to be restarted
+  home-manager.users.${spaghetti.user}.home.file.".containers/${hostName}/config/config.yml".text = ''
     cameras:
     #
       driveway:
