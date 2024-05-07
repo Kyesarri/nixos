@@ -5,7 +5,7 @@
   secrets,
   ...
 }: {
-  # make tmpdir for frigate to use, ssd wear bla bla
+  # make tmpdir for frigate to use, ssd wear bla bla, probs isnt even working :)
   fileSystems."/tmp/cache" = {
     device = "none";
     fsType = "tmpfs";
@@ -39,7 +39,7 @@
 
       extraOptions = [
         "--network=macvlan_lan"
-        "--ip=192.168.87.20"
+        "--ip=${secrets.ip.frigate}"
         # "--pull=always" # always want a good pull
         "--privileged"
         "--shm-size=256m" # 64m was too low
