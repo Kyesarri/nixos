@@ -11,21 +11,21 @@
   dir1 = "/home/${spaghetti.user}/.containers/${hostName}/etc/pihole";
   dir2 = "/home/${spaghetti.user}/.containers/${hostName}/etc/dnsmasq.d";
 in {
-  system.activationScripts.makeCodeProjectDir = lib.stringAfter ["var"] ''
+  system.activationScripts.makePiHoleDir = lib.stringAfter ["var"] ''
     mkdir -v -m 777 -p ${toString dir1} ${toString dir2}
   '';
 
-  networking.firewall.allowedTCPPorts = [53 web];
-  networking.firewall.allowedUDPPorts = [53 67 web];
+  # networking.firewall.allowedTCPPorts = [53 web];
+  # networking.firewall.allowedUDPPorts = [53 67 web];
 
   virtualisation.oci-containers.containers."${hostName}" = {
     hostname = "${hostName}-nix-erying";
     autoStart = true;
     image = "pihole/pihole:latest";
     ports = [
-      "53:53/udp"
-      "53:53/tcp"
-      "67:67/udp"
+      #"53:53/udp"
+      #"53:53/tcp"
+      #"67:67/udp"
       "${toString web}:80/tcp"
     ];
     volumes = [
@@ -35,6 +35,7 @@ in {
     ];
 
     extraOptions = [
+      "--pull=always" # always want a good pull
       "--network=macvlan_lan"
       "--privileged"
       "--ip=${secrets.ip.pihole}"
