@@ -15,18 +15,18 @@ in {
     mkdir -v -m 777 -p ${toString dir1} ${toString dir2}
   '';
 
-  networking.firewall.allowedTCPPorts = [53 web];
-  networking.firewall.allowedUDPPorts = [53 67 web];
+  # networking.firewall.allowedTCPPorts = [53 web];
+  # networking.firewall.allowedUDPPorts = [53 67 web];
 
   virtualisation.oci-containers.containers."${hostName}" = {
     hostname = "${hostName}-nix-erying";
     autoStart = true;
     image = "pihole/pihole:latest";
     ports = [
-      # "53:53/udp"
-      # "53:53/tcp"
-      # "67:67/udp"
-      "${toString web}:80/tcp"
+      "53:53/udp"
+      "53:53/tcp"
+      "67:67/udp"
+      "80:80/tcp"
     ];
     volumes = [
       "/etc/localtime:/etc/localtime:ro"
