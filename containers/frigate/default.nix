@@ -29,38 +29,35 @@ in {
   networking.firewall.allowedTCPPorts = [web rtsp webRTC];
   networking.firewall.allowedUDPPorts = [web webRTC];
 
-  virtualisation.oci-containers.containers = {
-    #
-    frigate = {
-      hostname = "${hostName}-nix-erying";
-      autoStart = true;
-      image = "ghcr.io/blakeblackshear/frigate:stable";
-      ports = [
-        "${toString rtmp}:${toString rtmp}"
-        "${toString web}:${toString web}"
-        "${toString rtsp}:${toString rtsp}"
-        "${toString webRTC}:${toString webRTC}/tcp"
-        "${toString webRTC}:${toString webRTC}/udp"
-      ];
+  virtualisation.oci-containers.containers.${hostName} = {
+    hostname = "${hostName}-nix-erying";
+    autoStart = true;
+    image = "ghcr.io/blakeblackshear/frigate:stable";
+    ports = [
+      "${toString rtmp}:${toString rtmp}"
+      "${toString web}:${toString web}"
+      "${toString rtsp}:${toString rtsp}"
+      "${toString webRTC}:${toString webRTC}/tcp"
+      "${toString webRTC}:${toString webRTC}/udp"
+    ];
 
-      volumes = [
-        "${toString dir1}:/db"
-        "${toString dir2}:/media/frigate"
-        "${toString dir3}/config.yml:/config/config.yml:ro"
-        "/etc/localtime:/etc/localtime:ro"
-      ];
+    volumes = [
+      "${toString dir1}:/db"
+      "${toString dir2}:/media/frigate"
+      "${toString dir3}/config.yml:/config/config.yml:ro"
+      "/etc/localtime:/etc/localtime:ro"
+    ];
 
-      extraOptions = [
-        "--network=macvlan_lan"
-        "--ip=${secrets.ip.frigate}"
-        "--pull=always" # always want a good pull
-        "--privileged"
-        "--shm-size=256m" # 64m was too low
-        "--device=/dev/apex_0:/dev/apex_0" # coral
-        "--device=/dev/dri/renderD128" # gpu
-        "--mount=type=tmpfs,target=/tmp/cache,tmpfs-size=1000000000" # tempfs
-      ];
-    };
+    extraOptions = [
+      "--network=macvlan_lan"
+      "--ip=${secrets.ip.frigate}"
+      "--pull=always" # always want a good pull
+      "--privileged"
+      "--shm-size=256m" # 64m was too low
+      "--device=/dev/apex_0:/dev/apex_0" # coral
+      "--device=/dev/dri/renderD128" # gpu
+      "--mount=type=tmpfs,target=/tmp/cache,tmpfs-size=1000000000" # tempfs
+    ];
   };
   # write file, symlink to dir via home-manager <3
   # changes to this post-rebuild will require frigate to be restarted

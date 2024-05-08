@@ -29,9 +29,11 @@ in {
       "${toString web}:80/tcp"
     ];
     volumes = [
+      "/etc/localtime:/etc/localtime:ro"
       "${toString dir1}:/etc/pihole"
       "${toString dir2}:/etc/dnsmasq.d"
     ];
+
     extraOptions = [
       "--network=macvlan_lan"
       "--privileged"
