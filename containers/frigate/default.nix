@@ -176,7 +176,7 @@ in {
     # when cpai v
     #detectors:
     #   deepstack:
-    #     api_url: http://${secrets.ip.codeproject}:32168/v1/vision/detection
+    #     api_url: http://{secret.ip.here.lol}:32168/v1/vision/detection
     #     type: deepstack
     #     api_timeout: 1 # seconds
     #
