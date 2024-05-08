@@ -1,4 +1,5 @@
 {
+  secrets,
   config,
   lib,
   ...
@@ -25,7 +26,7 @@
   boot.initrd.systemd.network = {
     enable = true;
     networks."10-lan" = {
-      address = ["192.168.87.1/24"];
+      address = ["${toString secrets.ip.erying}/24"];
       gateway = ["192.168.87.251"];
       matchConfig.Name = ["enp3s0"];
       networkConfig = {
@@ -63,7 +64,7 @@
       '';
     };
     "20-lan-self" = {
-      address = ["192.168.87.1/24"];
+      address = ["${toString secrets.ip.erying}/24"];
       gateway = ["192.168.87.251"];
       matchConfig.Name = "lan-self";
       networkConfig = {
