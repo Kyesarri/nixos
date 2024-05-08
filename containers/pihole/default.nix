@@ -8,7 +8,7 @@
 }: let
   hostName = "pihole";
   web = 8080;
-  dir1 = "/home/${spaghetti.user}/.containers/${hostName}/etc/";
+  dir1 = "/home/${spaghetti.user}/.containers/${hostName}/etc/pihole";
   dir2 = "/home/${spaghetti.user}/.containers/${hostName}/etc/dnsmasq.d";
 in {
   system.activationScripts.makeCodeProjectDir = lib.stringAfter ["var"] ''
