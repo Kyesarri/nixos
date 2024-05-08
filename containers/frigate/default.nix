@@ -44,7 +44,7 @@ in {
     volumes = [
       "${toString dir1}:/db"
       "${toString dir2}:/media/frigate"
-      "${toString dir3}/config.yml:/config/config.yml:ro"
+      "${toString dir3}/config.yml:/config/config.yml:ro" # set to read-only, can only be modified here
       "/etc/localtime:/etc/localtime:ro"
     ];
 
