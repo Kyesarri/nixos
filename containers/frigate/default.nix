@@ -26,8 +26,8 @@ in {
     options = ["defaults" "size=1G" "mode=755"];
   };
 
-  networking.firewall.allowedTCPPorts = [web rtsp webRTC];
-  networking.firewall.allowedUDPPorts = [web webRTC];
+  # networking.firewall.allowedTCPPorts = [web rtsp webRTC];
+  # networking.firewall.allowedUDPPorts = [web webRTC];
 
   virtualisation.oci-containers.containers.${hostName} = {
     hostname = "${hostName}-nix-erying";
