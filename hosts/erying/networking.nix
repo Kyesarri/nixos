@@ -18,7 +18,7 @@
     };
   };
   services.resolved.dnssec = "false";
-  services.resolved.enable = false;
+  # services.resolved.enable = false;
 
   boot.kernel.sysctl = {
     # forward network packets that are not destined for the interface on which they were received

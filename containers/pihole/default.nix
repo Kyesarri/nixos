@@ -31,6 +31,7 @@ in {
     ];
 
     extraOptions = [
+      "--TZ=Australia/Melbourne"
       "--network=macvlan_lan"
       "--ip=${secrets.ip.pihole}"
       "--pull=always"
