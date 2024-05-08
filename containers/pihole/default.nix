@@ -22,7 +22,7 @@ in {
       "533:53/udp"
       "533:53/tcp"
       "677:67/udp"
-      "8080:80/tcp"
+      "80:80/tcp"
     ];
     volumes = [
       "/etc/localtime:/etc/localtime:ro"
