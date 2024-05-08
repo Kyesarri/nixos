@@ -12,7 +12,7 @@
   dir2 = "/home/${spaghetti.user}/.containers/${hostName}/etc/dnsmasq.d";
 in {
   system.activationScripts.makeCodeProjectDir = lib.stringAfter ["var"] ''
-    mkdir -v -p ${toString dir1} ${toString dir2}
+    mkdir -v -m 777 -p ${toString dir1} ${toString dir2}
   '';
 
   networking.firewall.allowedTCPPorts = [53 web];
@@ -34,8 +34,7 @@ in {
     ];
     extraOptions = [
       "--network=macvlan_lan"
-      # "--privileged"
-      "--cap-add=net_admin"
+      "--privileged"
       "--ip=${secrets.ip.pihole}"
     ];
   };
