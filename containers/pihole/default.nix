@@ -7,7 +7,6 @@
   ...
 }: let
   hostName = "pihole";
-  web = 8080;
   dir1 = "/home/${spaghetti.user}/.containers/${hostName}/etc/pihole";
   dir2 = "/home/${spaghetti.user}/.containers/${hostName}/etc/dnsmasq.d";
 in {
@@ -20,10 +19,10 @@ in {
     autoStart = true;
     image = "pihole/pihole:latest";
     ports = [
-      "53:53/udp"
-      "53:53/tcp"
-      "67:67/udp"
-      "80:80/tcp"
+      "533:53/udp"
+      "533:53/tcp"
+      "677:67/udp"
+      "8080:80/tcp"
     ];
     volumes = [
       "/etc/localtime:/etc/localtime:ro"
