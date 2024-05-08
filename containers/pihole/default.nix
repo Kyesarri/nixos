@@ -23,9 +23,9 @@ in {
     autoStart = true;
     image = "pihole/pihole:latest";
     ports = [
-      "${toString secrets.ip.pihole}53:53/udp"
-      "${toString secrets.ip.pihole}53:53/tcp"
-      "${toString secrets.ip.pihole}67:67/udp"
+      #"${toString secrets.ip.pihole}53:53/udp"
+      #"${toString secrets.ip.pihole}53:53/tcp"
+      #"${toString secrets.ip.pihole}67:67/udp"
       "${toString secrets.ip.pihole}80:80/tcp"
     ];
     volumes = [
