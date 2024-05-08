@@ -33,8 +33,10 @@ in {
     extraOptions = [
       "--network=macvlan_lan"
       "--ip=${secrets.ip.pihole}"
-      "--pull=always" # always want a good pull
+      "--pull=always"
       "--privileged"
+      "--FTLCONF_LOCAL_IPV4=${secrets.ip.pihole}"
+      "--dns=127.0.0.1"
     ];
   };
 }

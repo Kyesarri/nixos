@@ -9,6 +9,7 @@
     networkmanager.enable = false;
     useNetworkd = true;
     usePredictableInterfaceNames = lib.mkDefault true;
+    resolvconf.dnsExtensionMechanism = false;
     firewall = {
       enable = true;
       checkReversePath = "loose"; # fixes connection issues with tailscale
@@ -16,6 +17,8 @@
       allowedUDPPorts = [config.services.tailscale.port];
     };
   };
+  services.resolved.dnssec = "false";
+  services.resolved.enable = false;
 
   boot.kernel.sysctl = {
     # forward network packets that are not destined for the interface on which they were received
