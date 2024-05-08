@@ -19,9 +19,9 @@ in {
     autoStart = true;
     image = "pihole/pihole:latest";
     ports = [
-      "533:53/udp"
-      "533:53/tcp"
-      "677:67/udp"
+      #"53:53/udp"
+      #"53:53/tcp"
+      "67:67/udp"
       "80:80/tcp"
     ];
     volumes = [
