@@ -23,10 +23,10 @@ in {
     autoStart = true;
     image = "pihole/pihole:latest";
     ports = [
-      #"${toString secrets.ip.pihole}53:53/udp"
-      #"${toString secrets.ip.pihole}53:53/tcp"
-      #"${toString secrets.ip.pihole}67:67/udp"
-      "${toString secrets.ip.pihole}80:80/tcp"
+      "${toString secrets.ip.pihole}:53:53/udp"
+      "${toString secrets.ip.pihole}:53:53/tcp"
+      "${toString secrets.ip.pihole}:67:67/udp"
+      "${toString secrets.ip.pihole}:80:80/tcp"
     ];
     volumes = [
       "/etc/localtime:/etc/localtime:ro"
@@ -35,11 +35,10 @@ in {
     ];
 
     extraOptions = [
-      "--cap-add=net_admin"
-      "--pull=always" # always want a good pull
       "--network=macvlan_lan"
-      "--privileged"
       "--ip=${secrets.ip.pihole}"
+      "--pull=always" # always want a good pull
+      "--privileged"
     ];
   };
 }
