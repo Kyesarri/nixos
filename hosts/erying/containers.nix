@@ -7,6 +7,7 @@
     ../../containers
     # ../../containers/authelia
     # ../../containers/uptime-kuma
+    ../../containers/nginx
     ../../containers/frigate
     ../../containers/pihole
   ];
@@ -15,6 +16,7 @@
     path = [pkgs.podman];
     wantedBy = [
       "podman-frigate.service"
+      "podman-nginx-proxy-manager.service"
       "podman-pihole.service"
     ];
     serviceConfig = {
