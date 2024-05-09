@@ -28,7 +28,7 @@ in {
     environment = {
       TZ = "Australia/Melbourne";
       DNS1 = "1.1.1.1";
-      DNS2 = "8.8.8.8";
+      DNS2 = "1.0.0.1";
       FTLCONF_LOCAL_IPV4 = "${secrets.ip.pihole}";
     };
 

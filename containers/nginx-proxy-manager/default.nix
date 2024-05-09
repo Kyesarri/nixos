@@ -1,29 +1,28 @@
-let
+{
+  spaghetti,
+  config,
+  pkgs,
+  lib,
+  ...
+}: let
   hostName = "nginx-proxy-manager";
-  webPort = 81;
-in
-  {
-    spaghetti,
-    config,
-    pkgs,
-    lib,
-    ...
-  }: {
-    networking.firewall.allowedTCPPorts = [80 webPort 443];
-
-    virtualisation.oci-containers.containers.${hostName} = {
-      hostname = "${hostName}";
-      autoStart = true;
-      image = "docker.io/jc21/nginx-proxy-manager:latest";
-      ports = ["80:80" "81:81" "443:443"];
-      volumes = [
-        "/etc/localtime:/etc/localtime:ro"
-        "/home/${spaghetti.user}/.containers/${hostName}/data:/data"
-        "/home/${spaghetti.user}/.containers/${hostName}/letsencrypt:/etc/letsencrypt"
-      ];
-      extraOptions = [
-        # "--network=host"
-        # "--network=pod-net"
-      ];
-    };
-  }
+  dir1 = "/home/${spaghetti.user}/.containers/${hostName}/data";
+  dir2 = "/home/${spaghetti.user}/.containers/${hostName}/etc/letsencrypt";
+in {
+  virtualisation.oci-containers.containers.${hostName} = {
+    hostname = "${hostName}";
+    autoStart = true;
+    image = "docker.io/jc21/nginx-proxy-manager:latest";
+    # ports = ["80:80" "81:81" "443:443"];
+    volumes = [
+      "/etc/localtime:/etc/localtime:ro"
+      "${toString dir1}:/data"
+      "${toString dir2}:/etc/letsencrypt"
+    ];
+    extraOptions = [
+      "--network=macvlan_lan"
+      "--ip=${secrets.ip.nginx}"
+      "--pull=always"
+    ];
+  };
+}

@@ -27,7 +27,7 @@ in {
   };
 
   virtualisation.oci-containers.containers.${hostName} = {
-    hostname = "${hostName}-nix-erying";
+    hostname = "${hostName}-erying";
     autoStart = true;
     image = "ghcr.io/blakeblackshear/frigate:stable";
     ports = [
@@ -41,16 +41,16 @@ in {
     volumes = [
       "${toString dir1}:/db"
       "${toString dir2}:/media/frigate"
-      "${toString dir3}/config.yml:/config/config.yml:ro" # set to read-only, can only be modified here
+      "${toString dir3}/config.yml:/config/config.yml:ro"
       "/etc/localtime:/etc/localtime:ro"
     ];
 
     extraOptions = [
       "--network=macvlan_lan"
       "--ip=${secrets.ip.frigate}"
-      "--pull=always" # always want a good pull
+      "--pull=always"
       "--privileged"
-      "--shm-size=256m" # 64m was too low
+      "--shm-size=256m"
       "--device=/dev/apex_0:/dev/apex_0" # coral
       "--device=/dev/dri/renderD128" # gpu
       "--mount=type=tmpfs,target=/tmp/cache,tmpfs-size=1000000000" # tempfs
