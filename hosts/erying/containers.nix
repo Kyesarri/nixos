@@ -7,7 +7,7 @@
     ../../containers
     # ../../containers/authelia
     # ../../containers/uptime-kuma
-    ../../containers/nginx
+    ../../containers/nginx-proxy-manager
     ../../containers/frigate
     ../../containers/pihole
   ];
