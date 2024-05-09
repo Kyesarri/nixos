@@ -8,7 +8,7 @@
 }: let
   hostName = "nginx-proxy-manager";
   dir1 = "/home/${spaghetti.user}/.containers/${hostName}/data";
-  dir2 = "/home/${spaghetti.user}/.containers/${hostName}/etc/letsencrypt";
+  dir2 = "/home/${spaghetti.user}/.containers/${hostName}/letsencrypt";
 in {
   system.activationScripts.makeNginxDir = lib.stringAfter ["var"] ''
     mkdir -v -m 777 -p ${toString dir1} ${toString dir2}
@@ -18,7 +18,11 @@ in {
     hostname = "${hostName}";
     autoStart = true;
     image = "docker.io/jc21/nginx-proxy-manager:latest";
-    # ports = ["80:80" "81:81" "443:443"];
+    ports = [
+      #"80:80"
+      #"81:81"
+      #"443:443"
+    ];
     volumes = [
       "/etc/localtime:/etc/localtime:ro"
       "${toString dir1}:/data"
