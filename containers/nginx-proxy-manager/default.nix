@@ -1,5 +1,6 @@
 {
   spaghetti,
+  secrets,
   config,
   pkgs,
   lib,
