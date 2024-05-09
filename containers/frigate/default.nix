@@ -65,7 +65,7 @@ in {
         best_image_timeout: 60
         ffmpeg:
           inputs:
-          - path: rtsp://127.0.0.1:8554/driveway
+          - path: rtsp://127.0.0.1:8554/driveway?video&audio
             input_args: preset-rtsp-restream
             roles:
             - record
@@ -77,7 +77,7 @@ in {
         best_image_timeout: 60
         ffmpeg:
           inputs:
-          - path: rtsp://127.0.0.1:8554/entry
+          - path: rtsp://127.0.0.1:8554/entry?video&audio
             input_args: preset-rtsp-restream
             roles:
             - record
@@ -98,8 +98,10 @@ in {
       streams:
         driveway:
           - rtsp://${secrets.user.drivecam}:${secrets.password.drivecam}@${secrets.ip.drivecam}:554/h264Preview_01_main
+          - "ffmpeg:driveway#audio=opus"
         entry:
           - rtsp://${secrets.user.entrycam}:${secrets.password.entrycam}@${secrets.ip.entrycam}:554/h264Preview_01_main
+          - "ffmpeg:entry#audio=opus"
     #
     logger:
       default: info
