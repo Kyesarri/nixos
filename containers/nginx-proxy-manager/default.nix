@@ -18,11 +18,7 @@ in {
     hostname = "${hostName}";
     autoStart = true;
     image = "docker.io/jc21/nginx-proxy-manager:latest";
-    ports = [
-      "80"
-      "81"
-      "443"
-    ];
+    # ports = ["80""81""443"];
     volumes = [
       "/etc/localtime:/etc/localtime:ro"
       "${toString dir1}:/data"
@@ -31,7 +27,7 @@ in {
     extraOptions = [
       "--network=macvlan_lan"
       "--ip=${secrets.ip.nginx}"
-      "--pull=always"
+      # "--pull=always"
     ];
   };
 }

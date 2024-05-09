@@ -48,7 +48,7 @@ in {
     extraOptions = [
       "--network=macvlan_lan"
       "--ip=${secrets.ip.frigate}"
-      "--pull=always"
+      # "--pull=always"
       "--privileged"
       "--shm-size=256m"
       "--device=/dev/apex_0:/dev/apex_0" # coral

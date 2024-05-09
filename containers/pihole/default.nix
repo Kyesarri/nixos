@@ -40,7 +40,7 @@ in {
 
     extraOptions = [
       "--network=macvlan_lan"
-      "--pull=always"
+      # "--pull=always"
       "--privileged"
     ];
   };
