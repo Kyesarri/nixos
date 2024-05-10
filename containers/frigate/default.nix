@@ -113,14 +113,14 @@ in {
       threshold: 90
     #
     mqtt:
-      client_id: ${secrets.user.frigate}
-      enabled: false
-      host: ${secrets.ip.mqtt}
-      password: ${secrets.password.mqtt}
+      client_id: ${secrets.user.frigate-emqx}
+      enabled: true
+      host: ${secrets.ip.emqx}
+      password: ${secrets.password.frigate-emqx}
       port: 1883
       stats_interval: 60
       topic_prefix: frigate
-      user: ${secrets.user.frigate}
+      user: ${secrets.user.frigate-emqx}
     #
     objects:
       track:
