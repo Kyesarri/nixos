@@ -35,6 +35,7 @@
   users.users.${spaghetti.user}.uid = 1000;
 
   power.ups = {
+    upsmon = ["MINSUPPLIES=1"];
     enable = true;
     mode = "netserver";
     ups.ups = {
@@ -42,20 +43,6 @@
       driver = "usbhid-ups";
     };
   };
-
-  environment.etc = {
-    "nut/upsd.conf".text = "LISTEN 0.0.0.0";
-    "nut/upsd.users".text = ''
-      [monuser]
-      upsmon master
-      password = "monuser"
-    '';
-    "nut/upsmon.conf".text = ''
-      MONITOR ups@localhost 1 monuser "monuser" master
-    '';
-  };
-
-  system.activationScripts.var-lib-nut = "mkdir -p /var/lib/nut; chmod o-r /var/lib/nut";
 
   services = {
     openssh.enable = true;
