@@ -34,6 +34,8 @@
 
   users.users.${spaghetti.user}.uid = 1000;
 
+  power.ups.enable = true; # add ups support
+
   services = {
     openssh.enable = true;
     xserver.enable = false; # headless
