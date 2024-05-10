@@ -3,6 +3,7 @@
   secrets,
   config,
   pkgs,
+  lib,
   ...
 }: let
   contName = "emqx";
@@ -13,6 +14,7 @@ in {
   system.activationScripts.makeEMQXDir = lib.stringAfter ["var"] ''
     mkdir -v -m 777 -p ${toString dir1} ${toString dir2} ${toString dir3}
   ''; # shitty perms, "temp" workaround
+
   virtualisation.oci-containers.containers.${contName} = {
     hostname = "${contName}";
     autoStart = true;
