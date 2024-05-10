@@ -6,6 +6,7 @@
 }: {
   networking = {
     hostName = "nix-erying";
+    hostId = "9f7ea1ec";
     networkmanager.enable = false;
     useNetworkd = true;
     usePredictableInterfaceNames = lib.mkDefault true;
