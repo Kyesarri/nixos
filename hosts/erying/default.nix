@@ -34,20 +34,6 @@
 
   users.users.${spaghetti.user}.uid = 1000;
 
-  environment.etc."nut/upsd.conf".source = ./config/upsd.conf;
-  environment.etc."nut/upsd.users".source = ./config/upsd.users;
-  environment.etc."nut/upsmon.conf".source = ./config/upsmon.conf;
-
-  users.groups.nut.name = "nut";
-  users.users.local_mon = {
-    group = "nut";
-    isNormalUser = false;
-    isSystemUser = true;
-    createHome = true;
-    home = "/var/lib/nut";
-    hashedPassword = "xxxxxx";
-  };
-
   services = {
     openssh.enable = true;
     xserver.enable = false; # headless
