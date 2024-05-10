@@ -26,10 +26,10 @@ in {
       "${toString dir3}:/opt/emqx/log"
     ];
     environment = {
-      EMQX_NODE_NAME = "${contName}";
+      #EMQX_NODE_NAME = "${contName}";
     };
     extraOptions = [
-      "--pull=always"
+      #"--pull=always"
       "--network=macvlan_lan"
       "--ip=${secrets.ip.emqx}"
     ];
