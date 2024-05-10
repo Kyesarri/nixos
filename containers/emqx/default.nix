@@ -18,7 +18,7 @@ in {
   virtualisation.oci-containers.containers.${contName} = {
     hostname = "${contName}";
     autoStart = true;
-    image = "ghcr.io/emqx/emqx:latest";
+    image = "emqx/emqx:latest";
     volumes = [
       "/etc/localtime:/etc/localtime:ro"
       "${toString dir1}:/opt/emqx/data"
