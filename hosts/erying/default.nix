@@ -34,6 +34,20 @@
 
   users.users.${spaghetti.user}.uid = 1000;
 
+  environment.etc = {
+    "nut/upsd.conf".text = "LISTEN 0.0.0.0";
+    "nut/upsd.users".text = ''
+      [monuser]
+      upsmon master
+      password = "monuser"
+    '';
+    "nut/upsmon.conf".text = ''
+      MONITOR ups@localhost 1 monuser "monuser" master
+    '';
+  };
+
+  system.activationScripts.var-lib-nut = "mkdir -p /var/lib/nut; chmod o-r /var/lib/nut";
+
   services = {
     openssh.enable = true;
     xserver.enable = false; # headless
@@ -85,7 +99,7 @@
     };
 
     systemPackages = with pkgs; [
-      nut # network ups
+      nut # ups monitor
       lm_sensors # sensor monitoring
       lshw # list hardware
       tailscale # lets users control tailscale
