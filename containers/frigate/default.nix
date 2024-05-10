@@ -11,9 +11,9 @@
   web = 5000;
   rtsp = 8554;
   webRTC = 8555;
-  dir1 = "/etc/containers/${contName}/db";
-  dir2 = "/etc/containers/${contName}/media/frigate";
-  dir3 = "/etc/containers/${contName}/config";
+  dir1 = "/etc/oci.cont/${contName}/db";
+  dir2 = "/etc/oci.cont/${contName}/media/frigate";
+  dir3 = "/etc/oci.cont/${contName}/config";
 in {
   system.activationScripts.makeFrigateDir = lib.stringAfter ["var"] ''
     mkdir -v -p ${toString dir1} ${toString dir2} ${toString dir3}
@@ -56,7 +56,7 @@ in {
     ];
   };
 
-  environment.etc."containers/${contName}/config/config.yml" = {
+  environment.etc."oci.cont/${contName}/config/config.yml" = {
     text = ''
       cameras:
       #
