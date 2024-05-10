@@ -7,17 +7,24 @@
   ...
 }: let
   contName = "haos";
-  dir1 = "/home/${spaghetti.user}/.containers/${contName}";
+  dir1 = "/etc/nixos/.containers/${contName}";
 in {
+  system.activationScripts."make${contName}Dir" = lib.stringAfter ["var"] ''
+    mkdir -v -p ${toString dir1}
+  '';
+
   virtualisation.oci-containers.containers."${contName}" = {
     hostname = "${contName}";
     autoStart = true;
     image = "ghcr.io/home-assistant/home-assistant:stable";
+
     volumes = [
       "/etc/localtime:/etc/localtime:ro"
       "${toString dir1}:/config"
     ];
+
     environment = {};
+
     extraOptions = [
       "--network=macvlan_lan"
       "--ip=${secrets.ip.haos}"
