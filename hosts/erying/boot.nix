@@ -1,6 +1,6 @@
 {pkgs, ...}: {
   boot = {
-    kernelPackages = pkgs.linuxPackages_xanmod_latest; # test latest :D
+    kernelPackages = pkgs.linuxPackages_xanmod; # backto mainline
     supportedFilesystems = ["zfs"]; # add zfs
     zfs.forceImportRoot = false;
     # zfs.extraPools = ["nvmea"]; # add new pools ere'
