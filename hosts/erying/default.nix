@@ -50,15 +50,6 @@
   system.activationScripts.var-lib-nut = "mkdir -p /var/lib/nut; chmod o-r /var/lib/nut";
   ### nut wip config ###
 
-  chrony = {
-    enable = true;
-    enableNTS = true;
-    servers = [
-      "ntp.nml.csiro.au"
-      "ntp.ise.canberra.edu.au"
-    ];
-  };
-
   services = {
     openssh.enable = true;
     xserver.enable = false; # headless
@@ -70,6 +61,15 @@
     dbus = {
       enable = true;
       packages = [pkgs.gnome.seahorse];
+    };
+
+    chrony = {
+      enable = true;
+      enableNTS = true;
+      servers = [
+        "ntp.nml.csiro.au"
+        "ntp.ise.canberra.edu.au"
+      ];
     };
 
     ###### TODO ######
