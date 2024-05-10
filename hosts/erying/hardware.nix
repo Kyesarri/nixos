@@ -27,7 +27,7 @@
       options = ["fmask=0022" "dmask=0022"];
     };
     #
-    "/srv/containers" = {
+    "/etc/containers" = {
       device = "/dev/disk/by-uuid/2c81efe8-b0bc-4942-92c0-beff70cebca2";
       fsType = "ext4";
     };
