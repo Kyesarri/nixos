@@ -29,6 +29,7 @@ in {
       EMQX_NODE_NAME = "${contName}";
     };
     extraOptions = [
+      "--pull=always"
       "--network=macvlan_lan"
       "--ip=${secrets.ip.emqx}"
     ];
