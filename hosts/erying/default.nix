@@ -35,7 +35,9 @@
   users.users.${spaghetti.user}.uid = 1000;
 
   power.ups = {
-    upsmon = ["MINSUPPLIES=1"];
+    upsmon = {
+      MINSUPPLIES = 1;
+    };
     enable = true;
     mode = "netserver";
     ups.ups = {
