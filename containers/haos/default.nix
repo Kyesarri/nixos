@@ -7,7 +7,7 @@
   ...
 }: let
   contName = "haos";
-  dir1 = "/home/${spaghetti.user}/.containers/${hostName}";
+  dir1 = "/home/${spaghetti.user}/.containers/${contName}";
 in {
   virtualisation.oci-containers.containers."${contName}" = {
     hostname = "${contName}";
