@@ -46,7 +46,7 @@
       plymouth = "deus_ex";
       scheme = "horizon-dark";
       scheme1 = "gigavolt";
-      scheme2 = "atelier-cave";
+      scheme2 = "papercolor-dark";
       iconPkg = "pkgs.zafiro-icons";
     };
     secrets = builtins.fromJSON (builtins.readFile "${self}/secrets/secrets.json");

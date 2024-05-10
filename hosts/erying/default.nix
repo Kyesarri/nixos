@@ -54,7 +54,6 @@
     openssh.enable = true;
     xserver.enable = false; # headless
     fstrim.enable = true; # ssd trim in background, not enabled by default :0
-    gvfs.enable = true; # gnome trash support
     printing.enable = false; # cpus printers
     gnome.gnome-keyring.enable = true; # keyboi
 
@@ -66,10 +65,21 @@
     chrony = {
       enable = true;
       enableNTS = true;
-      servers = [
-        "ntp.nml.csiro.au"
-        "ntp.ise.canberra.edu.au"
-      ];
+      servers = ["ntp.nml.csiro.au" "ntp.ise.canberra.edu.au"];
+    };
+
+    zfs = {
+      autoScrub.enable = true;
+      trim.enable = true;
+    };
+
+    smartd = {
+      enable = true;
+      autodetect = true;
+      notifications = {
+        x11.enable = false;
+        wall.enable = true;
+      };
     };
 
     ###### TODO ######

@@ -18,11 +18,10 @@
       allowedUDPPorts = [config.services.tailscale.port];
     };
   };
+
   services.resolved.dnssec = "false";
-  # services.resolved.enable = false;
 
   boot.kernel.sysctl = {
-    # forward network packets that are not destined for the interface on which they were received
     "net.ipv4.conf.all.forwarding" = true;
     "net.ipv6.conf.all.forwarding" = true;
   };
@@ -31,7 +30,7 @@
     enable = true;
     networks."10-lan" = {
       address = ["${toString secrets.ip.erying}/24"];
-      gateway = ["192.168.87.251"];
+      gateway = ["${toString secrets.ip.gateway}"];
       matchConfig.Name = ["enp3s0"];
       networkConfig = {
         IPv6PrivacyExtensions = "yes";
@@ -41,8 +40,6 @@
     };
   };
 
-  # Create a MACVTAP for ourselves too, so that we can communicate with
-  # our guests on the same interface.
   systemd.network.netdevs."10-lan-self" = {
     netdevConfig = {
       Name = "lan-self";
@@ -57,9 +54,6 @@
   systemd.network.networks = {
     "10-lan" = {
       matchConfig.Name = ["enp3s0"];
-      # This interface should only be used from attached macvtaps.
-      # So don't acquire a link local address and only wait for
-      # this interface to gain a carrier.
       networkConfig.LinkLocalAddressing = "no";
       linkConfig.RequiredForOnline = "carrier";
       extraConfig = ''
@@ -69,7 +63,7 @@
     };
     "20-lan-self" = {
       address = ["${toString secrets.ip.erying}/24"];
-      gateway = ["192.168.87.251"];
+      gateway = ["${toString secrets.ip.gateway}"];
       matchConfig.Name = "lan-self";
       networkConfig = {
         IPv6PrivacyExtensions = "yes";
@@ -77,13 +71,5 @@
       };
       linkConfig.RequiredForOnline = "routable";
     };
-    # Remaining macvtap interfaces should not be touched.
-    /*
-    "90-macvtap-ignore" = {
-      matchConfig.Kind = "macvtap";
-      linkConfig.ActivationPolicy = "manual";
-      linkConfig.Unmanaged = "yes";
-    };
-    */
   };
 }
