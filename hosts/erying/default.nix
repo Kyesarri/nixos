@@ -34,7 +34,14 @@
 
   users.users.${spaghetti.user}.uid = 1000;
 
-  power.ups.enable = true; # add ups support
+  power.ups = {
+    enable = true;
+    mode = "netserver";
+    ups.ups = {
+      port = "auto";
+      driver = "usbhid-ups";
+    };
+  };
 
   services = {
     openssh.enable = true;
