@@ -34,15 +34,6 @@
 
   users.users.${spaghetti.user}.uid = 1000;
 
-  power.ups = {
-    enable = true;
-    ups."serverups" = {
-      driver = "usbhid-ups";
-      port = "auto";
-      description = "Server UPS";
-    };
-  };
-
   environment.etc."nut/upsd.conf".source = ./config/upsd.conf;
   environment.etc."nut/upsd.users".source = ./config/upsd.users;
   environment.etc."nut/upsmon.conf".source = ./config/upsmon.conf;
@@ -108,6 +99,7 @@
     };
 
     systemPackages = with pkgs; [
+      nut # network ups
       lm_sensors # sensor monitoring
       lshw # list hardware
       tailscale # lets users control tailscale
