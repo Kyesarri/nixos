@@ -7,7 +7,7 @@
   ...
 }: let
   contName = "haos";
-  dir1 = "/etc/nixos/.containers/${contName}";
+  dir1 = "/srv/containers/${contName}";
 in {
   system.activationScripts."make${contName}Dir" = lib.stringAfter ["var"] ''
     mkdir -v -p ${toString dir1}
