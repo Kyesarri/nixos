@@ -119,7 +119,7 @@ in {
       password: ${secrets.password.frigate-emqx}
       port: 1883
       stats_interval: 60
-      topic_prefix: homeassistant
+      topic_prefix: frigate
       user: ${secrets.user.frigate-emqx}
     #
     objects:
