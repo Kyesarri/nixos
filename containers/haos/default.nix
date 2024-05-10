@@ -1,0 +1,26 @@
+{
+  spaghetti,
+  secrets,
+  config,
+  pkgs,
+  lib,
+  ...
+}: let
+  contName = "haos";
+  dir1 = "/home/${spaghetti.user}/.containers/${hostName}";
+in {
+  virtualisation.oci-containers.containers."${contName}" = {
+    hostname = "${contName}";
+    autoStart = true;
+    image = "ghcr.io/home-assistant/home-assistant:stable";
+    volumes = [
+      "/etc/localtime:/etc/localtime:ro"
+      "${toString dir1}:/config"
+    ];
+    environment = {};
+    extraOptions = [
+      "--network=macvlan_lan"
+      "--ip=${secrets.ip.haos}"
+    ];
+  };
+}

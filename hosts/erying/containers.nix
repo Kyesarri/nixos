@@ -8,6 +8,7 @@
     # ../../containers/authelia
     # ../../containers/uptime-kuma
     # ../../containers/esphome
+    ../../containers/haos
     ../../containers/emqx
     ../../containers/nginx-proxy-manager
     ../../containers/frigate
