@@ -1,29 +1,43 @@
-let
-  hostName = "invidious";
-in
-  {
-    spaghetti,
-    config,
-    pkgs,
-    ...
-  }: {
-    networking.firewall.allowedTCPPorts = [3000];
-    virtualisation.oci-containers.containers.${hostName} = {
-      hostname = "${hostName}";
-      autoStart = true;
-      image = "quay.io/invidious/invidious:latest";
-      ports = ["3000:3000"]; # TODO
-      volumes = [
-        "/etc/localtime:/etc/localtime:ro"
-        "/home/${spaghetti.user}/.docker/${hostName}/data:/data" # TODO
-        "/home/${spaghetti.user}/.docker/${hostName}/letsencrypt:/etc/letsencrypt" # TODO
-      ];
-      extraOptions = [
-        # "--network=host"
-        # "--network=pod-net"
-      ];
-    };
-  }
+{
+  spaghetti,
+  secrets,
+  config,
+  pkgs,
+  lib,
+  ...
+}: let
+  contName = "invidious";
+  # TODO - need to make a pod with invidious and its db -
+  # adding the pod to the network as a macvlan via nginx?
+  # suppose this is something that i wanted to do - but never have done
+in {
+  virtualisation.oci-containers.containers.${contName} = {
+    hostname = "${contName}";
+    autoStart = true;
+    image = "quay.io/invidious/invidious:latest";
+    volumes = [
+      "/etc/localtime:/etc/localtime:ro"
+      "/home/${spaghetti.user}/.containers/${contName}/data:/data" # TODO
+      "/home/${spaghetti.user}/.containers/${contName}/letsencrypt:/etc/letsencrypt" # TODO
+    ];
+    extraOptions = [
+      "--network=macvlan_lan"
+      "--ip=${secrets.ip.res4}" # testing
+    ];
+  };
+  virtualisation.oci-containers.containers."${contName}-db" = {
+      image = "docker.io/library/postgres:14";
+    autoStart = true;
+
+    volumes:
+      - postgresdata:/var/lib/postgresql/data
+      - ./config/sql:/config/sql
+      - ./docker/init-invidious-db.sh:/docker-entrypoint-initdb.d/init-invidious-db.sh
+    environment:
+      POSTGRES_DB: invidious
+      POSTGRES_USER: kemal
+      POSTGRES_PASSWORD: kemal
+}
 /*
 version: "3"
 services:
