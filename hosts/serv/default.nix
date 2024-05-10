@@ -20,8 +20,6 @@
 
     ../../containers
 
-    # ../../hardware/coral
-
     ../../home # home-manaager config for all machines currently
     ../../home/bottom # nice to have terminal task manager / perfmon
     ../../home/git # some baseline git config in there
@@ -59,7 +57,7 @@
     ###### TODO ######
 
     # used for cameras ntp - can i make this host, use this ntp server? :D
-    # sounds like it'l cause issues, lets send
+    # sounds like it'l cause issues
 
     chrony = {
       enable = true;

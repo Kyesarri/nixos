@@ -34,6 +34,7 @@
 
   users.users.${spaghetti.user}.uid = 1000;
 
+  ### nut wip config ###
   environment.etc = {
     "nut/upsd.conf".text = "LISTEN 0.0.0.0";
     "nut/upsd.users".text = ''
@@ -47,6 +48,16 @@
   };
 
   system.activationScripts.var-lib-nut = "mkdir -p /var/lib/nut; chmod o-r /var/lib/nut";
+  ### nut wip config ###
+
+  chrony = {
+    enable = true;
+    enableNTS = true;
+    servers = [
+      "ntp.nml.csiro.au"
+      "ntp.ise.canberra.edu.au"
+    ];
+  };
 
   services = {
     openssh.enable = true;
@@ -112,7 +123,7 @@
       gitAndTools.gitFull
       polkit_gnome
       pciutils
-      age
+      zfs
     ];
   };
 }

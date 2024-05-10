@@ -5,7 +5,7 @@
     zfs.forceImportRoot = false;
     zfs.extraPools = ["hddb" "hddc" "hddd" "hdde"];
     kernelParams = [
-      "i915.enable_fbc=1" # iGPU framebuffer compression, nfi if this works
+      # "i915.enable_fbc=1" # iGPU framebuffer compression, nfi if this works
       "intel_iommu=on" # pci device pass-through
       "nowatchdog" # disables watchdog, was causing shutdown / reboot issues on laptop, left in cos
     ];

@@ -1,8 +1,10 @@
 {pkgs, ...}: {
   boot = {
-    kernelPackages = pkgs.linuxPackages_xanmod; # use mainline xanmod kernel
+    kernelPackages = pkgs.linuxPackages_xanmod_latest; # test latest :D
+    supportedFilesystems = ["zfs"]; # add zfs
+    zfs.forceImportRoot = false;
+    # zfs.extraPools = ["nvmea"]; # add new pools ere'
     kernelParams = [
-      # "i915.enable_fbc=1" # iGPU framebuffer compression, nfi if this works
       "intel_iommu=on" # pci device pass-through
       "nowatchdog" # disables watchdog, was causing shutdown / reboot issues on laptop, left in cos
     ];
