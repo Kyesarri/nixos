@@ -26,6 +26,10 @@
       openRPCPort = true;
       openPeerPorts = true;
       settings = {
+        ratio-limit = 3;
+        ratio-limit-enabled = true;
+        idle-seeding-limit-enabled = true;
+        trash-original-torrent-files = true;
         incomplete-dir-enabled = false;
         dht-enabled = true;
         download-dir = "/hddb/torrents/";
