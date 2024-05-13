@@ -17,7 +17,7 @@
 
   nix = {
     sshServe.enable = true; # enable ssh server
-    package = pkgs.nixVersions.latest; # prefer nixunstable over stable
+    package = pkgs.nixVersions.latest;
     gc = {
       automatic = true; # auto nix garbage collection
       dates = "weekly";

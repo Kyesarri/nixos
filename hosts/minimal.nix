@@ -19,7 +19,7 @@
   };
 
   nix = {
-    package = pkgs.nixUnstable; # prefer nixunstable over stable
+    package = pkgs.nixVersions.latest;
     gc = {
       automatic = true;
       dates = "weekly";

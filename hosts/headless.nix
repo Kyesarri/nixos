@@ -33,7 +33,7 @@
 
   nix = {
     sshServe.enable = true; # enable ssh server
-    package = pkgs.nixUnstable; # prefer nixunstable over stable, hi exploits
+    package = pkgs.nixVersions.latest;
     gc = {
       automatic = true; # auto nix garbage collection
       dates = "weekly";
