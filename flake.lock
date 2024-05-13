@@ -419,38 +419,6 @@
         "type": "github"
       }
     },
-    "nixos": {
-      "locked": {
-        "lastModified": 1713248628,
-        "narHash": "sha256-NLznXB5AOnniUtZsyy/aPWOk8ussTuePp2acb9U+ISA=",
-        "owner": "nixos",
-        "repo": "nixpkgs",
-        "rev": "5672bc9dbf9d88246ddab5ac454e82318d094bb8",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nixos",
-        "ref": "nixos-unstable",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
-    "nixos-unstable": {
-      "locked": {
-        "lastModified": 1711163522,
-        "narHash": "sha256-YN/Ciidm+A0fmJPWlHBGvVkcarYWSC+s3NTPk/P+q3c=",
-        "owner": "nixos",
-        "repo": "nixpkgs",
-        "rev": "44d0940ea560dee511026a53f0e2e2cde489b4d4",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nixos",
-        "ref": "nixos-unstable",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1708475490,
@@ -532,11 +500,11 @@
     },
     "nixpkgs_5": {
       "locked": {
-        "lastModified": 1713399175,
-        "narHash": "sha256-Eu/6TlQJBhYed5kfI6rLkb7zXhaEtiyCKWuFHj4x4m0=",
+        "lastModified": 1715560149,
+        "narHash": "sha256-xtYzRLV0SRSOmwv5aAbJXSfYWELUhR3oVO+3KKij0hY=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "4e3275f6f1873eaa5f05e5ef58f6d68c39bdf3b8",
+        "rev": "a7cdcbc9510061404543da63f05e631db07f1eb3",
         "type": "github"
       },
       "original": {
@@ -608,8 +576,6 @@
         "hyprland": "hyprland",
         "hyprpicker": "hyprpicker",
         "nix-colors": "nix-colors",
-        "nixos": "nixos",
-        "nixos-unstable": "nixos-unstable",
         "nixpkgs": "nixpkgs_5",
         "prism": "prism",
         "wallpaper-generator": "wallpaper-generator"
