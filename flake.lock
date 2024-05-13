@@ -46,11 +46,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1710805067,
-        "narHash": "sha256-FO3IBvgWLkyof98A1ucq45BRfDP+/85QwXoMIxteukA=",
+        "lastModified": 1715523400,
+        "narHash": "sha256-op3d/N6LCjgRpaM5873wEJESUiGICp+oMLadHCNrsUQ=",
         "owner": "AdnanHodzic",
         "repo": "auto-cpufreq",
-        "rev": "215026ad43a5398cbe2b5e485514feafba8aadd7",
+        "rev": "cc6d98d8b1e7525ae50308ef5e0d976c5bf002d1",
         "type": "github"
       },
       "original": {
@@ -203,11 +203,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1711133180,
-        "narHash": "sha256-WJOahf+6115+GMl3wUfURu8fszuNeJLv9qAWFQl3Vmo=",
+        "lastModified": 1715486357,
+        "narHash": "sha256-4pRuzsHZOW5W4CsXI9uhKtiJeQSUoe1d2M9mWU98HC4=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "1c2c5e4cabba4c43504ef0f8cc3f3dfa284e2dbb",
+        "rev": "44677a1c96810a8e8c4ffaeaad10c842402647c1",
         "type": "github"
       },
       "original": {
@@ -298,20 +298,17 @@
         "xdph": "xdph"
       },
       "locked": {
-        "lastModified": 1715380490,
-        "narHash": "sha256-nRnF/DZBA5vrI3Vcr1BHWMV60zNthgT1pZkBgNhPGvU=",
-        "ref": "nix-build-improvements",
-        "rev": "1bbf00451c2a41f917b2e7b5fd36f87600265447",
-        "revCount": 4642,
-        "submodules": true,
-        "type": "git",
-        "url": "https://github.com/andresilva/Hyprland"
+        "lastModified": 1715526061,
+        "narHash": "sha256-zNH5+kWse9JBEvlBoyj8MLlbErAM+z+RoJEbWxK3fSg=",
+        "owner": "hyprwm",
+        "repo": "Hyprland",
+        "rev": "fd35b35000fa11ce540d944966ff17c71c31fd27",
+        "type": "github"
       },
       "original": {
-        "ref": "nix-build-improvements",
-        "submodules": true,
-        "type": "git",
-        "url": "https://github.com/andresilva/Hyprland"
+        "owner": "hyprwm",
+        "repo": "Hyprland",
+        "type": "github"
       }
     },
     "hyprland-protocols": {
@@ -428,22 +425,6 @@
         "type": "github"
       }
     },
-    "nixos": {
-      "locked": {
-        "lastModified": 1715560149,
-        "narHash": "sha256-xtYzRLV0SRSOmwv5aAbJXSfYWELUhR3oVO+3KKij0hY=",
-        "owner": "nixos",
-        "repo": "nixpkgs",
-        "rev": "a7cdcbc9510061404543da63f05e631db07f1eb3",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nixos",
-        "ref": "master",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1708475490,
@@ -525,14 +506,18 @@
     },
     "nixpkgs_5": {
       "locked": {
-        "lastModified": 0,
-        "narHash": "sha256-Eu/6TlQJBhYed5kfI6rLkb7zXhaEtiyCKWuFHj4x4m0=",
-        "path": "/nix/store/i85wsxrrink3wlsvmxaqbcmm6zsfxgb6-source",
-        "type": "path"
+        "lastModified": 1715560149,
+        "narHash": "sha256-xtYzRLV0SRSOmwv5aAbJXSfYWELUhR3oVO+3KKij0hY=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "a7cdcbc9510061404543da63f05e631db07f1eb3",
+        "type": "github"
       },
       "original": {
-        "id": "nixpkgs",
-        "type": "indirect"
+        "owner": "nixos",
+        "ref": "master",
+        "repo": "nixpkgs",
+        "type": "github"
       }
     },
     "nixpkgs_6": {
@@ -597,7 +582,6 @@
         "hyprland": "hyprland",
         "hyprpicker": "hyprpicker",
         "nix-colors": "nix-colors",
-        "nixos": "nixos",
         "nixpkgs": "nixpkgs_5",
         "prism": "prism",
         "wallpaper-generator": "wallpaper-generator"

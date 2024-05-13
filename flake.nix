@@ -2,14 +2,14 @@
   description = "spaghetti nixos";
 
   inputs = {
-    nixos.url = "github:nixos/nixpkgs/master";
-    # nixos-latest.url = "github:nixos/nixpkgs/nixos-unstable";
-    # nixpkgs.url = "github:nixos/nixpkgs/master";
+    # nixos.url = "github:nixos/nixpkgs/nixos-unstable";
+    # nixos-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs/master";
 
     home-manager.url = "github:nix-community/home-manager/master"; # added master branch to follow unstable nixos
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
-    hyprland.url = "git+https://github.com/andresilva/Hyprland?ref=nix-build-improvements&submodules=1"; # workaround for current issue with building
+    hyprland.url = "github:hyprwm/Hyprland";
 
     hyprpicker.url = "github:hyprwm/hyprpicker";
     hy3.url = "github:outfoxxed/hy3"; # dev branch
