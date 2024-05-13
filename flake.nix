@@ -9,7 +9,7 @@
     home-manager.url = "github:nix-community/home-manager/master"; # added master branch to follow unstable nixos
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
-    hyprland.url = "github:hyprwm/Hyprland";
+    hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1;";
 
     hyprpicker.url = "github:hyprwm/hyprpicker";
     hy3.url = "github:outfoxxed/hy3"; # dev branch
