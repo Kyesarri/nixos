@@ -3,7 +3,7 @@
 
   inputs = {
     nixos.url = "github:nixos/nixpkgs/nixos-unstable";
-    nixos-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
+    # nixos-latest.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs.url = "github:nixos/nixpkgs/master";
 
     home-manager.url = "github:nix-community/home-manager/master"; # added master branch to follow unstable nixos
