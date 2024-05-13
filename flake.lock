@@ -441,22 +441,6 @@
         "type": "github"
       }
     },
-    "nixos-unstable": {
-      "locked": {
-        "lastModified": 1715447595,
-        "narHash": "sha256-VsVAUQOj/cS1LCOmMjAGeRksXIAdPnFIjCQ0XLkCsT0=",
-        "owner": "nixos",
-        "repo": "nixpkgs",
-        "rev": "062ca2a9370a27a35c524dc82d540e6e9824b652",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nixos",
-        "ref": "nixos-unstable",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1708475490,
@@ -615,7 +599,6 @@
         "hyprpicker": "hyprpicker",
         "nix-colors": "nix-colors",
         "nixos": "nixos",
-        "nixos-unstable": "nixos-unstable",
         "nixpkgs": "nixpkgs_5",
         "prism": "prism",
         "wallpaper-generator": "wallpaper-generator"

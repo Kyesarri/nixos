@@ -2,7 +2,7 @@
   description = "spaghetti nixos";
 
   inputs = {
-    nixos.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixos.url = "github:nixos/nixpkgs/nixVersions.git";
     # nixos-latest.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs.url = "github:nixos/nixpkgs/master";
 
