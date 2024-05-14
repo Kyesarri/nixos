@@ -16,7 +16,6 @@
       inputs.nix-colors.homeManagerModules.default
       inputs.prism.homeModules.prism
       inputs.hyprland.homeManagerModules.default
-      inputs.schizofox.homeManagerModule
     ];
     programs.home-manager.enable = true; # home manager enables itself, freaky tequila magic
     xdg.enable = true;
