@@ -63,7 +63,7 @@
     prowlarr = {
       enable = true;
       openFirewall = true;
-      user = "media";
+      # user = "media";
     };
     readarr = {
       enable = true;
