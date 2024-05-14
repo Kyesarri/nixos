@@ -39,7 +39,7 @@
         rpc-host-whitelist-enabled = false;
         rpc-whitelist-enabled = false;
         rpc-port = 9091;
-        rpc-bind-address = "${toString secrets.ip.serv_1}";
+        rpc-bind-address = "${toString secrets.ip.serv-1}";
       };
     };
     radarr = {

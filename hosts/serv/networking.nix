@@ -32,8 +32,8 @@ in
 
     systemd.network.networks."50-eno1" = {
       matchConfig.Name = "eno1"; # integrated 1g, primary connection
-      address = ["192.168.87.9/24"];
-      routes = [{routeConfig.Gateway = "192.168.87.251";}];
+      address = ["${toString secrets.ip.serv-1}/24"];
+      routes = [{routeConfig.Gateway = "${toString secrets.ip.gateway}";}];
       linkConfig.RequiredForOnline = "routable";
     };
 
@@ -54,8 +54,8 @@ in
       matchConfig.Name = "mv-enp-host";
       networkConfig.IPForward = "yes";
       dhcpV4Config.ClientIdentifier = "mac";
-      address = lib.mkForce ["192.168.87.99/24"];
-      routes = [{routeConfig.Gateway = "192.168.87.251";}];
+      address = lib.mkForce ["${toString secrets.ip.serv-2}/24"];
+      routes = [{routeConfig.Gateway = "${toString secrets.ip.gateway}";}];
     };
 
     systemd.network.netdevs."20-mv-enp-host" = {
