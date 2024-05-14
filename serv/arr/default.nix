@@ -10,7 +10,6 @@
 
   users.users.media = {
     name = "media";
-    group = "media";
     isNormalUser = false;
     uid = 880;
   };
@@ -18,7 +17,7 @@
   # define a new group "media", add services / users to this group
   users.groups.media = {
     name = "media";
-    members = ["media" "prowlarr" "${spaghetti.user}"];
+    members = ["media" "${spaghetti.user}"];
   };
 
   # add user to groups created by services
