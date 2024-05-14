@@ -49,7 +49,7 @@ in
     };
 
     # The host-side sub-interface of the MACVLAN. This means that the host is reachable
-    # at `192.168.87.99`, both on the physical interface and from the container.
+    # at ip, both on the physical interface and from the container.
     systemd.network.networks."20-mv-enp-host" = {
       matchConfig.Name = "mv-enp-host";
       networkConfig.IPForward = "yes";
