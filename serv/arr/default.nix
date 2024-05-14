@@ -8,27 +8,20 @@
 }: {
   imports = [./flood.nix];
 
-  users.users.media = {
-    name = "media";
-    group = "media";
-    isNormalUser = false;
-    uid = 880;
-  };
-
   # define a new group "media", add services / users to this group
   users.groups.media = {
     name = "media";
-    members = ["media" "${spaghetti.user}"];
+    members = ["transmission" "radarr" "readarr" "sonarr" "prowlarr" "${spaghetti.user}"];
   };
 
   # add user to groups created by services
-  # users.users.${spaghetti.user}.extraGroups = ["radarr" "sonarr" "transmission" "readarr"];
+  users.users.${spaghetti.user}.extraGroups = ["radarr" "sonarr" "transmission" "readarr"];
 
   services = {
     resolved.enable = true;
     transmission = {
       enable = true;
-      user = "media";
+      user = "transmission";
       performanceNetParameters = true;
       openFirewall = true;
       openRPCPort = true;
@@ -53,22 +46,18 @@
     radarr = {
       enable = true;
       openFirewall = true;
-      user = "media";
     };
     sonarr = {
       enable = true;
       openFirewall = true;
-      user = "media";
     };
     prowlarr = {
       enable = true;
       openFirewall = true;
-      # user = "media";
     };
     readarr = {
       enable = true;
       openFirewall = true;
-      user = "media";
     };
   };
 }
