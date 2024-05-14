@@ -50,7 +50,7 @@
     ../../home/vpn
     ../../home/gtk # uhh, nix-colors gtk theme iirc # TODO rename to theme?
     ../../home/prism
-    ../../home/syncthing
+    # ../../home/syncthing # TODO
     ../../home/tailscale
     ../../home/zsh
   ];
