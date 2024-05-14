@@ -10,6 +10,7 @@
 
   users.users.media = {
     name = "media";
+    group = "media";
     isNormalUser = false;
     uid = 880;
   };
