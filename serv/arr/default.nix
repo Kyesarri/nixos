@@ -1,8 +1,9 @@
 {
+  spaghetti,
+  secrets,
   config,
   pkgs,
   lib,
-  spaghetti,
   ...
 }: {
   imports = [./flood.nix];
