@@ -4,6 +4,7 @@ let
   ssh = 22;
 in
   {
+    secrets,
     config,
     pkgs,
     lib,
