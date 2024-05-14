@@ -22,7 +22,7 @@
   };
 
   # add user to groups created by services
-  users.users.${spaghetti.user}.extraGroups = ["radarr" "sonarr" "transmission" "readarr"];
+  # users.users.${spaghetti.user}.extraGroups = ["radarr" "sonarr" "transmission" "readarr"];
 
   services = {
     resolved.enable = true;
