@@ -13,7 +13,7 @@ in {
     coral = {
       enable = mkOption {
         type = types.bool;
-        default = "false";
+        default = false;
         example = "true";
       };
     };
