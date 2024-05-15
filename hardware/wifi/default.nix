@@ -8,18 +8,33 @@
 with lib; let
   cfg = config.gnocchi.wifi;
 in {
-  options.gnocchi.wifi = mkOption {
-    type = with types; uniq string;
-    default = "nwm";
-    example = "iwd, wpa or nwm. defaults to nwm";
-  };
-
-  config = mkMerge [
-    (mkIf (cfg == "nwm") {
-      #
-      networking = {
-        networkmanager.enable = true; # nwm
+  # using a shitty workaround - if use cfg.enable || cfg.backend
+  # in mkMerge causes the whole module to be interpreted which
+  # causes builds to fail due to multiple backends
+  # default to none will allow this to be imported
+  # by all hosts and default to no backend
+  # there -may- be a workaround for this which is more
+  # elegant but for now i'm happy with this module
+  options.gnocchi = {
+    wifi = {
+      backend = mkOption {
+        type = types.str;
+        default = "none";
+        example = "iwd, wpa, nwm or none. defaults to none";
       };
+    };
+  };
+  #
+  config = mkMerge [
+    (mkIf (cfg.backend == "none") {
+      networking.networkmanager.enable = false;
+      networking.wireless.iwd.enable = false;
+      networking.wireless.enable = false;
+    })
+    (mkIf (cfg.backend == "nwm") {
+      #
+      networking.networkmanager.enable = true; # nwm
+
       users.users.${spaghetti.user}.packages = with pkgs; [networkmanagerapplet];
       home-manager.users.${spaghetti.user} = {
         home.file.".config/hypr/per-app/wireless.conf" = {
@@ -27,7 +42,8 @@ in {
         };
       };
     })
-    (mkIf (cfg == "iwd") {
+    #
+    (mkIf (cfg.backend == ["iwd"]) {
       networking.wireless.iwd.enable = true;
       users.users.${spaghetti.user}.packages = with pkgs; [iwd iwgtk];
 
@@ -125,11 +141,9 @@ in {
         };
       };
     })
-
-    (mkIf (cfg == "wpa") {
-      networking = {
-        wireless.enable = true; # wpa
-      };
+    #
+    (mkIf (cfg.backend == "wpa") {
+      networking.wireless.enable = true; # wpa
     })
   ];
 }

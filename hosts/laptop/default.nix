@@ -65,7 +65,7 @@
       # isNvidia = true; # nvidia
       # animations = false;
     };
-    wifi = "nwm";
+    wifi.backend = "nwm";
   };
 
   hardware.nvidia = {
