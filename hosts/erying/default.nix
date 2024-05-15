@@ -19,7 +19,7 @@
     ../headless.nix # base packages and config
 
     ../../hardware # new module configs - will replace importing modules
-    ../../hardware/coral
+    # ../../hardware/coral
 
     ../../home # home-manaager config for all machines
     ../../home/bottom # nice to have terminal task manager / perfmon
@@ -35,7 +35,9 @@
 
   users.users.${spaghetti.user}.uid = 1000;
 
-  gnocchi = {};
+  gnocchi = {
+    coral.enable = true;
+  };
 
   ### nut wip config ###
   environment.etc = {
