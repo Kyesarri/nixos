@@ -73,7 +73,7 @@ in {
           best_image_timeout: 60
           ffmpeg:
             inputs:
-            - path: rtsp://127.0.0.1:8554/driveway?video&audio
+            - path: rtsp://127.0.0.1:8554/driveway
               input_args: preset-rtsp-restream
               roles:
               - record
@@ -86,7 +86,7 @@ in {
                 - 0,0,1125,0,1119,27,460,101,619,1920,0,1920,0,547
           ffmpeg:
             inputs:
-            - path: rtsp://127.0.0.1:8554/entry?video&audio
+            - path: rtsp://127.0.0.1:8554/entry
               input_args: preset-rtsp-restream
               roles:
               - record
