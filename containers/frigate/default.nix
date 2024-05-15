@@ -58,40 +58,6 @@ in {
 
   environment.etc."oci.cont/${contName}/config/config.yml" = {
     text = ''
-      cameras:
-      #
-        driveway:
-          best_image_timeout: 60
-          ffmpeg:
-            inputs:
-            - path: rtsp://127.0.0.1:8554/driveway?video&audio
-              input_args: preset-rtsp-restream
-              roles:
-              - record
-              - detect
-          record:
-            enabled: true
-      #
-        entry:
-          best_image_timeout: 60
-          ffmpeg:
-            inputs:
-            - path: rtsp://127.0.0.1:8554/entry?video&audio
-              input_args: preset-rtsp-restream
-              roles:
-              - record
-              - detect
-          record:
-            enabled: true
-      #
-      database:
-        path: /db/frigate.db
-      #
-      detect:
-        enabled: true
-        fps: 10
-        height: 1920
-        width: 2560
       #
       go2rtc:
         streams:
@@ -102,6 +68,40 @@ in {
             - rtsp://${secrets.user.entrycam}:${secrets.password.entrycam}@${secrets.ip.entrycam}:554/h264Preview_01_main
             - "ffmpeg:entry#audio=opus"
       #
+      cameras:
+        driveway:
+          best_image_timeout: 60
+          ffmpeg:
+            inputs:
+            - path: rtsp://127.0.0.1:8554/driveway?video&audio
+              input_args: preset-rtsp-restream
+              roles:
+              - record
+              - detect
+      #
+        entry:
+          best_image_timeout: 60
+          ffmpeg:
+            inputs:
+            - path: rtsp://127.0.0.1:8554/entry?video&audio
+              input_args: preset-rtsp-restream
+              roles:
+              - record
+              - detect
+      #
+      #
+      ffmpeg:
+        hwaccel_args: preset-vaapi
+      #
+      database:
+        path: /db/frigate.db
+      #
+      detect:
+        enabled: true
+        fps: 5
+        width: 2560
+        height: 1920
+      #
       logger:
         default: info
         logs:
@@ -110,6 +110,7 @@ in {
       #
       motion:
         threshold: 90
+        improve_contrast: true
       #
       mqtt:
         client_id: ${secrets.user.frigate-emqx}
@@ -149,24 +150,22 @@ in {
         retain:
           days: 0
           mode: all
-        sync_recordings: true
+        sync_recordings: false
       #
       rtmp:
         enabled: false
       #
       snapshots:
+        enabled: true
         bounding_box: true
         clean_copy: true
         crop: false
-        enabled: true
         quality: 90
         timestamp: true
       #
       ui:
         time_format: browser
-      #
-      ffmpeg:
-        hwaccel_args: preset-vaapi
+        live_mode: webrtc
       #
       # using onboard coral v
       detectors:
@@ -175,9 +174,9 @@ in {
           device: pci
       #
       birdseye:
-        enabled: true
-        width: 640
-        height: 480
+        enabled: false
+        # width: 640
+        # height: 480
       #
     '';
   };

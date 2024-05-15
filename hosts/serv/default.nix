@@ -14,13 +14,14 @@
     ./boot.nix
     ./hardware.nix # device specific hardware config
     ./networking.nix # systemd networking config
-    ./containers.nix
+    ./containers.nix # per-device container config
 
     ../headless.nix # base packages and config, may need to move some of those values to this config
 
     ../../containers
+    ../../hardware
+    ../../home
 
-    ../../home # home-manaager config for all machines currently
     ../../home/bottom # nice to have terminal task manager / perfmon
     ../../home/git # some baseline git config in there
     ../../home/kitty # yes pls
