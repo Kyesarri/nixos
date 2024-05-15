@@ -81,6 +81,9 @@ in {
       #
         entry:
           best_image_timeout: 60
+          motion:
+              mask:
+                - 0,0,1125,0,1119,27,460,101,619,1920,0,1920,0,547
           ffmpeg:
             inputs:
             - path: rtsp://127.0.0.1:8554/entry?video&audio
