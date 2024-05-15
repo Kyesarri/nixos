@@ -1,4 +1,5 @@
 {
+  secrets,
   config,
   pkgs,
   ...
