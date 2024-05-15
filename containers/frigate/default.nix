@@ -169,7 +169,7 @@ in {
       #
       ui:
         time_format: browser
-        live_mode: webrtc
+        live_mode: mse
       #
       # using onboard coral v
       detectors:
