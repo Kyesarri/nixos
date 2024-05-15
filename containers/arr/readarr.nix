@@ -6,7 +6,7 @@
   lib,
   ...
 }: let
-  contName = "bazarr";
+  contName = "readarr";
   dir1 = "/etc/oci.cont/${contName}";
 in {
   system.activationScripts."make${contName}Dir" = lib.stringAfter ["var"] ''

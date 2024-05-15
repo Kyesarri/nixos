@@ -26,8 +26,8 @@ in {
     environment = {};
 
     extraOptions = [
-      # "--network=macvlan_lan"
-      # "--ip=${secrets.ip.haos}"
+      "--network=macvlan_lan"
+      "--ip=${secrets.ip.haos}"
     ];
   };
 }
