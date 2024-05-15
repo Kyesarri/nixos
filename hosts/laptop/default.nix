@@ -21,14 +21,14 @@
     ../../hardware/battery
     ../../hardware/bluetooth
     ../../hardware/nvidia
-    # ../../hardware/wireless/nwm # networkmanager # TODO this is shit
 
-    # TODO # are completed as to mkoption, are enabled / configured via gnocchi.pkg.enable = true;
+    # TODO # are completed as to mkoption, are enabled / configured via gnocchi
+    ../../hardware/wifi
+
     ../../home/ags # TODO pam / menu
     ../../home/hypr # TODO remove wallpaper hyprwal?
     ../../home/gscreenshot
-    ../../hardware/wifi
-    # TODO # are completed as to mkoption, are enabled / configured via gnocchi.pkg.enable = true;
+    # TODO # are completed as to mkoption, are enabled / configured via gnocchi
     #
     ../../home # set some default values for home-manager
     ../../home/asusctl # TODO look into issues with this further

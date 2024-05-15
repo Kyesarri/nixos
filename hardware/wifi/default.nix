@@ -9,13 +9,13 @@ with lib; let
   cfg = config.gnocchi.wifi;
 in {
   options.gnocchi.wifi = mkOption {
-    type = types.str;
+    type = with types; uniq string;
     default = "nwm";
     example = "iwd, wpa or nwm. defaults to nwm";
   };
 
   config = mkMerge [
-    ((mkIf cfg."nwm") {
+    (mkIf (cfg == "nwm") {
       #
       networking = {
         networkmanager.enable = true; # nwm
@@ -27,7 +27,7 @@ in {
         };
       };
     })
-    (mkIf (cfg."iwd") {
+    (mkIf (cfg == "iwd") {
       networking.wireless.iwd.enable = true;
       users.users.${spaghetti.user}.packages = with pkgs; [iwd iwgtk];
 
@@ -126,7 +126,7 @@ in {
       };
     })
 
-    (mkIf (cfg."wpa") {
+    (mkIf (cfg == "wpa") {
       networking = {
         wireless.enable = true; # wpa
       };
