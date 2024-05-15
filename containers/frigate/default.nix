@@ -63,10 +63,10 @@ in {
         streams:
           driveway:
             - rtsp://${secrets.user.drivecam}:${secrets.password.drivecam}@${secrets.ip.drivecam}:554/h264Preview_01_main
-            - "ffmpeg:driveway#audio=opus"
+            # - "ffmpeg:driveway#audio=opus"
           entry:
             - rtsp://${secrets.user.entrycam}:${secrets.password.entrycam}@${secrets.ip.entrycam}:554/h264Preview_01_main
-            - "ffmpeg:entry#audio=opus"
+            # - "ffmpeg:entry#audio=opus"
       #
       cameras:
         driveway:
