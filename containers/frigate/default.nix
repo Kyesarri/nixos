@@ -94,8 +94,8 @@ in {
       #
       #
       ffmpeg:
-        hwaccel_args: preset-intel-qsv-h264
-        # hwaccel_args: preset-vaapi
+        # hwaccel_args: preset-intel-qsv-h264
+        hwaccel_args: preset-vaapi
       #
       database:
         path: /db/frigate.db
