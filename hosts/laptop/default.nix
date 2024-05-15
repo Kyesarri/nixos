@@ -21,14 +21,13 @@
     ../../hardware/battery
     ../../hardware/bluetooth
     ../../hardware/nvidia
-    ../../hardware/wireless/nwm # networkmanager # TODO this is shit
-
-    #../../home/changedetection # easy fix
+    # ../../hardware/wireless/nwm # networkmanager # TODO this is shit
 
     # TODO # are completed as to mkoption, are enabled / configured via gnocchi.pkg.enable = true;
     ../../home/ags # TODO pam / menu
     ../../home/hypr # TODO remove wallpaper hyprwal?
     ../../home/gscreenshot
+    ../../hardware/wifi
     # TODO # are completed as to mkoption, are enabled / configured via gnocchi.pkg.enable = true;
     #
     ../../home # set some default values for home-manager
@@ -66,10 +65,7 @@
       # isNvidia = true; # nvidia
       # animations = false;
     };
-    # wireless = { /* networking.wireless? */
-    #   enable = true;
-    #   manager = nwm; # nwm, iwd or wpa
-    # };
+    wifi = "nwm";
   };
 
   hardware.nvidia = {
