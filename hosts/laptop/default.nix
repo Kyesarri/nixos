@@ -23,7 +23,7 @@
     ../../hardware/nvidia
 
     # TODO # are completed as to mkoption, are enabled / configured via gnocchi
-    ../../hardware/wifi
+    ../../hardware # testing new module refactor
 
     ../../home/ags # TODO pam / menu
     ../../home/hypr # TODO remove wallpaper hyprwal?
