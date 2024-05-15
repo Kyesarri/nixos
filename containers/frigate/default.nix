@@ -12,7 +12,7 @@
   rtsp = 8554;
   webRTC = 8555;
   dir1 = "/etc/oci.cont/${contName}/db";
-  dir2 = "/etc/oci.cont/${contName}/media/frigate";
+  dir2 = "/etc/oci.cont.scratch/${contName}/media/frigate";
   dir3 = "/etc/oci.cont/${contName}/config";
 in {
   system.activationScripts.makeFrigateDir = lib.stringAfter ["var"] ''
