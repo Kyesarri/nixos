@@ -4,5 +4,6 @@
   # as a module and are not themselves home-manager-modules 🍝
   imports = [
     ./wifi
+    ./coral
   ];
 }
