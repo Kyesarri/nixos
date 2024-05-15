@@ -6,6 +6,7 @@
 }: {
   imports = [
     ../../containers
+    ../../containers/arr # temp
     # ../../containers/authelia
     ../../containers/emqx
     # ../../containers/esphome
