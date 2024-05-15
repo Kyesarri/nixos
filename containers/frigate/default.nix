@@ -103,8 +103,8 @@ in {
       detect:
         enabled: true
         fps: 5
-        width: 2560
-        height: 1920
+        width: 1920
+        height: 1440
       #
       logger:
         default: info
