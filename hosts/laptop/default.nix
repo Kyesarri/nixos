@@ -21,16 +21,13 @@
     ../../hardware/battery
     ../../hardware/bluetooth
     ../../hardware/nvidia
-
-    # TODO # are completed as to mkoption, are enabled / configured via gnocchi
+    #
+    # vvv new module completed vvv
     ../../hardware # testing new module refactor
 
-    ../../home/ags # TODO pam / menu
-    ../../home/hypr # TODO remove wallpaper hyprwal?
-    ../../home/gscreenshot
-    # TODO # are completed as to mkoption, are enabled / configured via gnocchi
-    #
     ../../home # set some default values for home-manager
+    # ^^^ new module completed ^^^
+    #
     ../../home/asusctl # TODO look into issues with this further
     ../../home/bottom # task-manager
     ../../home/codium # TODO build custom theme to use, with nix-colors. # TODO pin versions to avoid compiling
@@ -57,14 +54,15 @@
   boot.supportedFilesystems = ["ntfs"];
 
   gnocchi = {
-    ags.enable = true;
-    gscreenshot.enable = true;
     hypr = {
       enable = true;
-      hyprpaper.enable = false;
-      # isNvidia = true; # nvidia
-      # animations = false;
+      animations = false; # no config here yet - will need refactor
     };
+    hyprpaper.enable = false;
+
+    ags.enable = true;
+    gscreenshot.enable = true;
+
     wifi.backend = "nwm";
   };
 

@@ -8,19 +8,30 @@
   ...
 }:
 with lib; let
-  cfg = config.gnocchi.hypr; # shorthand some lines
+  cfg = config.gnocchi; # shorthand some lines
 in {
   #
   options.gnocchi = {
-    hypr = {
-      enable = mkEnableOption "enable hyprland"; # will be gnocchi.hypr.enable = true; in host.nix
-      hyprpaper.enable = mkEnableOption "enable hyprpaper with config, can do type of, and set source dir?";
-      animations.enable = mkEnableOption "enable hypr animations";
+    #
+    hypr.enable = mkOption {
+      type = types.bool;
+      default = false;
     };
+    hypr.animations = mkOption {
+      type = types.bool;
+      default = false;
+    };
+    #
+    hyprpaper.enable = mkOption {
+      type = types.bool;
+      default = false;
+    };
+    #
   };
+
   #
   config = mkMerge [
-    (mkIf (cfg.enable) {
+    (mkIf (cfg.hypr.enable == true) {
       #
       home-manager.users.${spaghetti.user} = {
         wayland.windowManager.hyprland = {
@@ -82,8 +93,7 @@ in {
       };
     })
     #
-    (mkIf (cfg.enable || cfg.hyprpaper.enable) {
-      # make if (hypr and hyprpaper) enabled
+    (mkIf (cfg.hyprpaper.enable == true) {
       users.users.${spaghetti.user}.packages = [pkgs.hyprpaper];
       home-manager.users.${spaghetti.user} = {
         home.file.".config/hypr/hyprpaper.conf" = {

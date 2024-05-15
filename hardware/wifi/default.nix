@@ -27,7 +27,6 @@ in {
   #
   config = mkMerge [
     (mkIf (cfg.backend == "none") {
-      networking.networkmanager.enable = false;
       networking.wireless.iwd.enable = false;
       networking.wireless.enable = false;
     })

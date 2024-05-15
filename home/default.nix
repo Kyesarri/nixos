@@ -1,8 +1,11 @@
 {spaghetti, ...}: {
   # testing importing new modules with configs
   # not importing via home-manager as these call home-manager
-  # as a module and are not themselves home-manager-modules
+  # as a module and are not themselves home-manager-modules 🍝
   imports = [
+    ./hypr
+    ./ags
+    ./gscreenshot
   ];
   home-manager.users.${spaghetti.user} = {
     pkgs,

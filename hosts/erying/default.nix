@@ -18,6 +18,7 @@
 
     ../headless.nix # base packages and config
 
+    ../../hardware # new module configs - will replace importing modules
     ../../hardware/coral
 
     ../../home # home-manaager config for all machines
@@ -33,6 +34,8 @@
   home-manager.users.${spaghetti.user}.colorscheme = inputs.nix-colors.colorSchemes.${spaghetti.scheme2};
 
   users.users.${spaghetti.user}.uid = 1000;
+
+  gnocchi = {};
 
   ### nut wip config ###
   environment.etc = {
