@@ -27,7 +27,7 @@
       ];
       script = ''
         ${pkgs.podman}/bin/podman network exists arr_net || \
-          ${pkgs.podman}/bin/podman network create --interface-name=arr_net --driver macvlan --opt parent=enp3s0 --subnet 10.1.1.0/24 --ip-range 10.1.1.255/24 --disable-dns=true arr_net
+          ${pkgs.podman}/bin/podman network create --interface-name=arr_net --internal --ignore --driver macvlan --opt parent=enp3s0 --subnet 10.1.1.0/24 --ip-range 10.1.1.255/24 --disable-dns=false arr_net
       '';
     };
     arr_pod = with config.virtualisation.oci-containers; {
