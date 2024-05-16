@@ -5,7 +5,6 @@
     ./radarr.nix
     ./sonarr.nix
     ./bazarr.nix
-    ./proxarr.nix
     ./prowlarr.nix
     ./readarr.nix
   ];

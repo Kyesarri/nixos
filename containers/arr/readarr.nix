@@ -21,6 +21,9 @@ in {
       PGID = "1000";
     };
 
-    extraOptions = [];
+    extraOptions = [
+      "--network=macvlan_lan"
+      "--ip=192.168.87.33"
+    ];
   };
 }

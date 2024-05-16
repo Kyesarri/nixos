@@ -22,6 +22,9 @@ in {
       TZ = "Australia/Melbourne";
     };
 
-    extraOptions = [];
+    extraOptions = [
+      "--network=macvlan_lan"
+      "--ip=192.168.87.31"
+    ];
   };
 }
