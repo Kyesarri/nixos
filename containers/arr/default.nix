@@ -14,19 +14,19 @@
     ./prowlarr.nix
     ./readarr.nix
   ];
-  systemd.services.create-arr-pod = with config.virtualisation.oci-containers; {
+  systemd.services.arr_pod = with config.virtualisation.oci-containers; {
     serviceConfig.Type = "oneshot";
     wantedBy = [
-      "${backend}-radarr.service"
-      "${backend}-sonarr.service"
-      "${backend}-bazarr.service"
-      "${backend}-proxarr.service"
-      "${backend}-prowlarr.service"
-      "${backend}-readarr.service"
+      "podman-radarr.service"
+      "podman-sonarr.service"
+      "podman-bazarr.service"
+      "podman-proxarr.service"
+      "podman-prowlarr.service"
+      "podman-readarr.service"
     ];
     script = ''
-      ${pkgs.podman}/bin/podman pod exists arr || \
-        ${pkgs.podman}/bin/podman pod create -n arr
+      ${pkgs.podman}/bin/podman pod exists arr_pod || \
+        ${pkgs.podman}/bin/podman pod create -n arr_pod -p 127.0.0.1:881:81
     '';
     # podman network exists arr_net || podman network create --interface-name=arr_net --driver macvlan --opt parent=enp3s0 --subnet 10.1.1.0/24 --ip-range 10.1.1.255/24 --disable-dns=true arr_net
 
