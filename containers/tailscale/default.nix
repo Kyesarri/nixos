@@ -1,6 +1,6 @@
 {lib, ...}: let
-  contName = "readarr";
-  dir1 = "/etc/oci.cont/arr/${contName}";
+  contName = "tailscale";
+  dir1 = "/etc/oci.cont/${contName}";
 in {
   system.activationScripts."make${contName}Dir" = lib.stringAfter ["var"] ''
     mkdir -v -p ${toString dir1} & chown 1000:1000 ${toString dir1}
@@ -9,21 +9,25 @@ in {
   virtualisation.oci-containers.containers."${contName}" = {
     hostname = "${contName}";
     autoStart = true;
-    image = "ghcr.io/linuxserver/${toString contName}:develop"; # changed to develop branch, no latest for readarr
+    image = "tailscale/tailscale:stable";
 
     volumes = [
       "/etc/localtime:/etc/localtime:ro"
-      "${toString dir1}:/config"
+      "${toString dir1}/tailscale:/var/lib/tailscale"
     ];
 
     environment = {
       PUID = "1000";
       PGID = "1000";
+      TS_HOSTNAME = "${contName}";
+      TS_STATE_DIR = "/var/lib/tailscale";
     };
 
     extraOptions = [
+      "--cap-add=NET_ADMIN"
+      "--cap-add=NET_RAW"
       "--network=macvlan_lan"
-      "--ip=192.168.87.33"
+      "--ip=192.168.87.40"
     ];
   };
 }

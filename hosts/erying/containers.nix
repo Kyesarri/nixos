@@ -7,6 +7,7 @@
   imports = [
     ../../containers
     ../../containers/arr # temp
+    ../../containers/tailscale
     # ../../containers/authelia
     ../../containers/emqx
     # ../../containers/esphome
