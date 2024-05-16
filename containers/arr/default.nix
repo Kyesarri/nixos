@@ -14,6 +14,7 @@
     ./prowlarr.nix
     ./readarr.nix
   ];
+
   systemd.services = {
     arr_net = with config.virtualisation.oci-containers; {
       serviceConfig.Type = "oneshot";

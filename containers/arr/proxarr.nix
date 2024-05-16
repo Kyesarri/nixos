@@ -28,8 +28,8 @@ in {
     environment = {};
 
     extraOptions = [
-      "--pod=arr_pod"
-      "--ip=10.1.1.10"
+      # "--pod=arr_pod"
+      # "--ip=10.1.1.10"
 
       # "--network=macvlan_lan"
       # "--ip=${secrets.ip.haos}"

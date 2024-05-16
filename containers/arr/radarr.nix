@@ -1,13 +1,6 @@
-{
-  spaghetti,
-  secrets,
-  # config,
-  # pkgs,
-  lib,
-  ...
-}: let
+{lib, ...}: let
   contName = "radarr";
-  dir1 = "/etc/oci.cont/${contName}";
+  dir1 = "/etc/oci.cont/arr/${contName}";
 in {
   system.activationScripts."make${contName}Dir" = lib.stringAfter ["var"] ''
     mkdir -v -p ${toString dir1} & chown 1000:1000 ${toString dir1}
@@ -23,11 +16,13 @@ in {
       "${toString dir1}:/config"
     ];
 
-    environment = {};
-
+    environment = {
+      PUID = "1000";
+      PGID = "1000";
+    };
     extraOptions = [
-      "--pod=arr_pod"
-      "--ip=10.1.1.13"
+      # "--pod=arr_pod"
+      # "--ip=10.1.1.13"
 
       # "--network=macvlan_lan"
       # "--ip=192.168.87.30"

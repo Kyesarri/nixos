@@ -1,13 +1,6 @@
-{
-  spaghetti,
-  secrets,
-  # config,
-  # pkgs,
-  lib,
-  ...
-}: let
+{lib, ...}: let
   contName = "sonarr";
-  dir1 = "/etc/oci.cont/${contName}";
+  dir1 = "/etc/oci.cont/arr/${contName}";
 in {
   system.activationScripts."make${contName}Dir" = lib.stringAfter ["var"] ''
     mkdir -v -p ${toString dir1} & chown 1000:1000 ${toString dir1}
@@ -23,11 +16,14 @@ in {
       "${toString dir1}:/config"
     ];
 
-    environment = {};
+    environment = {
+      PUID = "1000";
+      PGID = "1000";
+    };
 
     extraOptions = [
-      "--pod=arr_pod"
-      "--ip=10.1.1.15"
+      # "--pod=arr_pod"
+      # "--ip=10.1.1.15"
 
       # "--network=macvlan_lan"
       # "--ip=${secrets.ip.haos}"
