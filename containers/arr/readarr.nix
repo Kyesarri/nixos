@@ -9,7 +9,7 @@ in {
   virtualisation.oci-containers.containers."${contName}" = {
     hostname = "${contName}";
     autoStart = true;
-    image = "ghcr.io/linuxserver/${toString contName}:latest";
+    image = "ghcr.io/linuxserver/${toString contName}:develop";
 
     volumes = [
       "/etc/localtime:/etc/localtime:ro"
