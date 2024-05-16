@@ -13,7 +13,7 @@ in {
 
     volumes = [
       "/etc/localtime:/etc/localtime:ro"
-      "${toString dir1}/tailscale:/var/lib/tailscale"
+      "${toString dir1}:/var/lib/tailscale"
     ];
 
     environment = {
