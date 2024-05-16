@@ -1,14 +1,7 @@
-{
-  spaghetti,
-  secrets,
-  # config,
-  # pkgs,
-  lib,
-  ...
-}: let
+{lib, ...}: let
   contName = "proxarr";
-  dir1 = "/etc/oci.cont/${contName}/data";
-  dir2 = "/etc/oci.cont/${contName}/letsencrypt";
+  dir1 = "/etc/oci.cont/arr/${contName}/data";
+  dir2 = "/etc/oci.cont/arr/${contName}/letsencrypt";
 in {
   system.activationScripts."make${contName}Dir" = lib.stringAfter ["var"] ''
     mkdir -v -p ${toString dir1} ${toString dir2} & chown 1000:1000 ${toString dir1} & chown 1000:1000 ${toString dir2}
@@ -27,12 +20,6 @@ in {
 
     environment = {};
 
-    extraOptions = [
-      # "--pod=arr_pod"
-      # "--ip=10.1.1.10"
-
-      # "--network=macvlan_lan"
-      # "--ip=${secrets.ip.haos}"
-    ];
+    extraOptions = [];
   };
 }

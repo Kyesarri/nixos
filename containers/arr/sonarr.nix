@@ -21,12 +21,6 @@ in {
       PGID = "1000";
     };
 
-    extraOptions = [
-      # "--pod=arr_pod"
-      # "--ip=10.1.1.15"
-
-      # "--network=macvlan_lan"
-      # "--ip=${secrets.ip.haos}"
-    ];
+    extraOptions = [];
   };
 }
