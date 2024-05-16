@@ -24,8 +24,8 @@ in {
     ];
 
     environment = {
-      PUID = 1000;
-      PGID = 1000;
+      PUID = "1000";
+      PGID = "1000";
     };
 
     extraOptions = [
