@@ -18,6 +18,12 @@
     arr_net = with config.virtualisation.oci-containers; {
       serviceConfig.Type = "oneshot";
       wantedBy = [
+        "podman-radarr.service"
+        "podman-sonarr.service"
+        "podman-bazarr.service"
+        "podman-proxarr.service"
+        "podman-prowlarr.service"
+        "podman-readarr.service"
       ];
       script = ''
         ${pkgs.podman}/bin/podman network exists arr_net || \
@@ -27,14 +33,12 @@
     arr_pod = with config.virtualisation.oci-containers; {
       serviceConfig.Type = "oneshot";
       wantedBy = [
-        /*
         "podman-radarr.service"
         "podman-sonarr.service"
         "podman-bazarr.service"
         "podman-proxarr.service"
         "podman-prowlarr.service"
         "podman-readarr.service"
-        */
       ];
       script = ''
         ${pkgs.podman}/bin/podman pod exists arr_pod || \
