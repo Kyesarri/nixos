@@ -26,8 +26,7 @@ in {
     environment = {};
 
     extraOptions = [
-      "--network=arr_net"
-      "--ip=10.1.1.11"
+      "--pod=arr_pod"
       # "--network=macvlan_lan"
       # "--ip=${secrets.ip.haos}"
     ];
