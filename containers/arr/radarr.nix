@@ -27,9 +27,10 @@ in {
 
     extraOptions = [
       "--network=arr-net"
+      "--ip=10.1.1.12"
 
-      "--network=macvlan_lan"
-      "--ip=192.168.87.30"
+      # "--network=macvlan_lan"
+      # "--ip=192.168.87.30"
     ];
   };
 }
