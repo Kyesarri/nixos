@@ -1,8 +1,7 @@
 # yoinked from https://github.com/sjcobb2022/nixos-config/blob/main/hosts/common/optional/greetd.nix
 # xoxo love this
-# colours set in ./hosts/console.nix - TODO move to own /home/ config, mainly to keep hosts clean
+# not working anymore with current flake.lock - v0.10?
 {
-  spaghetti,
   inputs,
   pkgs,
   ...
@@ -10,12 +9,13 @@
   tuigreet = "${pkgs.greetd.tuigreet}/bin/tuigreet";
   hyprland-session = "${inputs.hyprland.packages.${pkgs.system}.hyprland}/share/wayland-sessions";
 in {
+  environment.systemPackages = [pkgs.greetd.tuigreet];
+
   services.greetd = {
     enable = true;
     settings = {
       default_session = {
-        command = "${tuigreet} --theme border=magenta;text=cyan;prompt=green;time=red;action=blue;button=yellow;container=black;input=red --time --remember --remember-session --sessions ${hyprland-session}";
-        # user = "${spaghetti.user}";
+        command = "${tuigreet} --time --remember --remember-session --sessions ${hyprland-session}";
         user = "greeter";
       };
     };
@@ -25,8 +25,11 @@ in {
     Type = "idle";
     StandardInput = "tty";
     StandardOutput = "tty";
-    StandardError = "journal"; # Without this errors will spam on screen
-    # Without these bootlogs will spam on screen
+
+    # without this errors will spam on screen
+    StandardError = "journal";
+
+    # without these bootlogs will spam on screen
     TTYReset = true;
     TTYVHangup = true;
     TTYVTDisallocate = true;
