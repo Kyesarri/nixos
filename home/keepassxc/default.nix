@@ -10,11 +10,7 @@
     exec-once = keepassxc
     windowrulev2 = size 700 300, class:^(org.keepassxc.KeePassXC)$
     windowrulev2 = float, class:^(org.keepassxc.KeePassXC)$
-    windowrulev2 = bordercolor $cc, class:^(org.keepassxc.KeePassXC)$
-
-
-    ${config.colorscheme.palette.base0C}
-
+    windowrulev2 = bordercolor $cc, initialClass:^(org.keepassxc.KeePassXC)$
   '';
 
   # enable keepassxc
