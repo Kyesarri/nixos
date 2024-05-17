@@ -9,6 +9,7 @@
   users.users.${spaghetti.user}.packages = [pkgs.keepassxc];
 
   # launch keepassxc with hyprland
+  # add window rules and launch binding
   home-manager.users.${spaghetti.user}.home.file.".config/hypr/per-app/keepassxc.conf".text = ''
     exec-once = keepassxc
     windowrulev2 = size 800 550, class:^(org.keepassxc.KeePassXC)$
