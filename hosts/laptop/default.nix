@@ -35,8 +35,9 @@
     ../../home/dunst # ags has own notification daemon, will require fixing brightness scripts
     ../../home/firefox # why you always need to build from source, check to see if there are nighty / beta precompiled
     ../../home/git
+    ../../home/tmux
     ../../home/gaming
-    # ../../home/greetd # TODO testing without - issues on current flake.lock
+    ../../home/greetd # TODO testing without - issues on current flake.lock
     #
     ../../home/kitty # /home/shell/ under mkOption, have foot / kitty / more? in there
     #

@@ -13,8 +13,6 @@
 
   nixpkgs.config.allowUnfree = true;
 
-  # security.pam.services = {gdm.enableGnomeKeyring = true;};
-
   nix = {
     sshServe.enable = true; # enable ssh server
     package = pkgs.nixVersions.latest;
@@ -70,21 +68,19 @@
       enable = true;
       packages = [pkgs.keepassxc];
     };
-    # gnome.gnome-keyring.enable = true;
   };
 
   fonts = {
     fontconfig.defaultFonts.monospace = ["Hack Nerd Font Mono"];
-    fontDir.enable = true; # lots of fonts here, remove but most often used? not sure what fonts i even use anymore; add to spaghetti
+    fontDir.enable = true;
     packages = with pkgs; [
       material-design-icons
       inter
       material-symbols
       rubik
       ibm-plex
-      nerdfonts
       hack-font
-      # (nerdfonts.override {fonts = ["Iosevka" "CascadiaCode" "JetBrainsMono"];})
+      (nerdfonts.override {fonts = ["Iosevka" "CascadiaCode" "JetBrainsMono"];})
     ];
   };
 
@@ -127,7 +123,6 @@
       gitAndTools.gitFull
       polkit_gnome
       waypipe
-      age # is secret
       keepassxc # another key manager - replace bitwarden and sops-nix?
     ];
   };
@@ -157,7 +152,6 @@
       mate.mate-calc # calc
       p7zip # TODO needs a gui
       udiskie # usb mounting
-      bitwarden # password manager
       sleek-grub-theme # testing grub themes TODO grub
       ntfs3g # ntfs support
       curl
@@ -165,8 +159,6 @@
 
       ## TESTING ##
       xpipe
-      tmux
-      tmuxifier
       inputs.wallpaper-generator.defaultPackage.x86_64-linux
       ## TESTING ##
 

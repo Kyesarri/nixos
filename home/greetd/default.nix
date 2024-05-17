@@ -2,8 +2,9 @@
 # xoxo love this
 # colours set in ./hosts/console.nix - TODO move to own /home/ config, mainly to keep hosts clean
 {
-  pkgs,
+  spaghetti,
   inputs,
+  pkgs,
   ...
 }: let
   tuigreet = "${pkgs.greetd.tuigreet}/bin/tuigreet";
@@ -13,12 +14,13 @@ in {
     enable = true;
     settings = {
       default_session = {
-        command = "${tuigreet} --time --remember --remember-session --sessions ${hyprland-session}";
-        # ^ add time, remember user, remember session, ??set default as hyprland session??
+        command = "${tuigreet} --theme border=magenta;text=cyan;prompt=green;time=red;action=blue;button=yellow;container=black;input=red --time --remember --remember-session --sessions ${hyprland-session}";
+        # user = "${spaghetti.user}";
         user = "greeter";
       };
     };
   };
+
   systemd.services.greetd.serviceConfig = {
     Type = "idle";
     StandardInput = "tty";
