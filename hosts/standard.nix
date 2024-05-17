@@ -62,12 +62,9 @@
   services = {
     openssh.enable = true;
     fstrim.enable = true; # ssd trim in background, not enabled by default :0
-    gvfs.enable = true; # gnome trash support
+    gvfs.enable = true; # trash and mount
+    tumbler.enable = true; # thumbnail support
     printing.enable = true; # need more than this to print afik? http://localhost:631/ for config
-    dbus = {
-      enable = true;
-      packages = [pkgs.keepassxc];
-    };
   };
 
   fonts = {

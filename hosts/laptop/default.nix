@@ -35,6 +35,8 @@
     ../../home/dunst # ags has own notification daemon, will require fixing brightness scripts
     ../../home/firefox # why you always need to build from source, check to see if there are nighty / beta precompiled
     ../../home/git
+    ../../home/keepassxc
+
     ../../home/tmux
     ../../home/gaming
     ../../home/greetd # TODO testing without - issues on current flake.lock
@@ -52,15 +54,12 @@
     ../../home/zsh
   ];
 
-  boot.supportedFilesystems = ["ntfs"];
-
   gnocchi = {
     hypr = {
       enable = true;
       animations = false; # no config here yet - will need refactor
     };
     hyprpaper.enable = true;
-
     ags.enable = true;
     gscreenshot.enable = true;
 
@@ -96,7 +95,6 @@
   };
 
   services = {
-    # xserver.displayManager.startx.enable = true;
     xserver.enable = false;
     udev.extraHwdb = ''
       evdev:name:*:dmi:bvn*:bvr*:bd*:svnASUS*:pn*:*
