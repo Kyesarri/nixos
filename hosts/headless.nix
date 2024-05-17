@@ -16,8 +16,7 @@
   security = {
     pam.services = {gdm.enableGnomeKeyring = true;}; # unlock keyring with gdm / gdm support for keyring
 
-    # forbid programs from turning-off the "laptop"
-    # device is always on, dont want to hibernate
+    # device is always on, don't want to hibernate
     polkit.extraConfig = ''
       polkit.addRule(function(action, subject) {
           if (action.id == "org.freedesktop.login1.suspend" ||

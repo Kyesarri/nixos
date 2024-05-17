@@ -36,7 +36,7 @@
     ../../home/firefox # why you always need to build from source, check to see if there are nighty / beta precompiled
     ../../home/git
     ../../home/gaming
-    ../../home/greetd
+    # ../../home/greetd # TODO testing without - issues on current flake.lock
     #
     ../../home/kitty # /home/shell/ under mkOption, have foot / kitty / more? in there
     #
@@ -58,7 +58,7 @@
       enable = true;
       animations = false; # no config here yet - will need refactor
     };
-    hyprpaper.enable = false;
+    hyprpaper.enable = true;
 
     ags.enable = true;
     gscreenshot.enable = true;
@@ -95,7 +95,8 @@
   };
 
   services = {
-    xserver.enable = true;
+    # xserver.displayManager.startx.enable = true;
+    xserver.enable = false;
     udev.extraHwdb = ''
       evdev:name:*:dmi:bvn*:bvr*:bd*:svnASUS*:pn*:*
       KEYBOARD_KEY_ff31007c=f20    # fixes mic mute button

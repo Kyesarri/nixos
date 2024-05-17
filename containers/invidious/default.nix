@@ -12,6 +12,7 @@
   # suppose this is something that i wanted to do - but never have done
 in {
   virtualisation.oci-containers.containers = {
+    #
     "${contName}" = {
       hostname = "${contName}";
       autoStart = true;
@@ -25,7 +26,7 @@ in {
         "--ip=${secrets.ip.res4}" # testing
       ];
     };
-
+    #
     "${contName}-db" = {
       hostName = "${contName}-db";
       autoStart = true;

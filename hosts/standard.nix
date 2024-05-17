@@ -141,7 +141,6 @@
       ###############
       # KISS PLEASE #
       ###############
-      termius
       graphite-cursors # cursor package, is this handled by /home/gtk/default.nix now? nope manual atm
       gnome-text-editor # still might want something with slightly more features, bit too barebones?
       nix-init # git flake helper
@@ -154,7 +153,6 @@
       hyprpicker # colour picker for wayland TODO fix script
       imagemagick # bitmap editor cli
       libnotify # notifications
-      # gimp-with-plugins # gimp, handy to have, failed to build with 11/03/24 flake update
       wf-recorder # screen recorder
       mate.mate-calc # calc
       p7zip # TODO needs a gui
