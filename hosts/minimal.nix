@@ -32,7 +32,7 @@
   };
 
   hardware = {
-    pulseaudio.enable = false; # ./hardware/audio
+    pulseaudio.enable = false;
     opengl = {
       enable = true;
       driSupport = true;
@@ -40,9 +40,9 @@
   };
 
   services = {
-    gvfs.enable = true; # gnome trash support
+    gvfs.enable = true; # trash / other ting support
     gnome.gnome-keyring.enable = true;
-    printing.enable = false;
+    printing.enable = false; # cpus printing, not required
     dbus = {
       enable = true;
       packages = [pkgs.gnome.seahorse];
@@ -57,12 +57,12 @@
   };
 
   boot = {
-    kernelPackages = pkgs.linuxPackages_xanmod; # not using latest branch
+    kernelPackages = pkgs.linuxPackages_xanmod; # not using latest branch on this low-powered boi
     kernelParams = [];
     loader = {
       efi.efiSysMountPoint = "/boot";
       grub = {
-        enable = true;
+        enable = true; # want to remove - go back to systemd
         efiSupport = true;
         efiInstallAsRemovable = true; # Otherwise /boot/EFI/BOOT/BOOTX64.EFI isn't generated
         devices = ["nodev"];
@@ -86,24 +86,13 @@
   };
 
   networking.firewall.enable = true;
-
   fonts = {
-    # remove from minimal? leave one font used by waybar?
-    packages = with pkgs; [
-      material-design-icons
-      inter
-      material-symbols
-      rubik
-      ibm-plex
-      nerdfonts
-      hack-font
-      # (nerdfonts.override {fonts = ["Iosevka" "CascadiaCode" "JetBrainsMono"];})
-    ];
+    packages = [pkgs.hack-font];
+    fontconfig.defaultFonts.monospace = ["Hack Nerd Font Mono"];
   };
-
   programs = {
     dconf.enable = true;
-    fish.enable = true;
+    fish.enable = true; # fishy shell
     gnupg.agent = {
       enable = true;
       enableSSHSupport = true;
@@ -126,7 +115,6 @@
     };
 
     systemPackages = with pkgs; [
-      lshw # list hardware
       usbutils # usb thing
       busybox # nice-to-have
       curl

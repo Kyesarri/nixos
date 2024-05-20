@@ -75,9 +75,9 @@
   };
 
   users.users.${spaghetti.user} = {
-    shell = pkgs.zsh;
-    isNormalUser = true;
-    description = "${spaghetti.user}";
+    shell = pkgs.zsh; # set our shell pkg
+    isNormalUser = true; # not true
+    description = "${spaghetti.user}"; # required?
     extraGroups = ["networkmanager" "wheel" "apex" "media" "podman"];
     packages = with pkgs; [
       fet-sh # minimal fetch script
