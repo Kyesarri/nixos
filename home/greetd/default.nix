@@ -1,6 +1,6 @@
 # yoinked from https://github.com/sjcobb2022/nixos-config/blob/main/hosts/common/optional/greetd.nix
 # xoxo love this
-# not working anymore with current flake.lock - v0.10?
+# not working anymore with current flake.lock - v0.10? - might be again? requires further testing
 {
   inputs,
   pkgs,
@@ -15,7 +15,7 @@ in {
     enable = true;
     settings = {
       default_session = {
-        command = "${tuigreet} --time --remember --remember-session --sessions ${hyprland-session}";
+        command = "${tuigreet} --time --remember --remember-session --sessions ${hyprland-session} --theme border=magenta;text=cyan;prompt=green;time=red;action=blue;button=yellow;container=black;input=red";
         user = "greeter";
       };
     };

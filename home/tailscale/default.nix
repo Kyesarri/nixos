@@ -5,6 +5,7 @@
   ...
 }: {
   home-manager.users.${spaghetti.user}.home.file.".config/hypr/per-app/tailscale.conf" = {
+    # hyprland run tailscale tray icon when launched
     text = ''
       exec-once = sleep 2 && tailscale-systray
     '';

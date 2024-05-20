@@ -4,8 +4,10 @@
   ...
 }: {
   home-manager.users.${spaghetti.user} = {
+    # enable kitty
     programs.kitty = {
       enable = true;
+      # add nix-colors to kitty
       settings = {
         active_tab_foreground = "#${config.colorScheme.palette.base00}";
         active_tab_background = "#${config.colorScheme.palette.base0D}";
@@ -32,6 +34,7 @@
         color14 = "#${config.colorScheme.palette.base0C}"; # bright cyan
         color15 = "#${config.colorScheme.palette.base07}"; # bright white
 
+        # add some nice default configs
         repaint_delay = "60";
         sync_to_monitor = "yes";
         background_opacity = "1.0";
@@ -47,10 +50,11 @@
         cursor_beam_thickness = "0.5";
         cursor_blink_interval = "0.5";
         strip_trailing_spaces = "always";
-        update_check_interval = "0"; # dont want to check for updates, nix and such
+        update_check_interval = "0";
       };
     };
     home.file.".config/hypr/per-app/kitty.conf" = {
+      # set hyprland window rules / binds
       text = ''
         # windowrulev2 = opacity 0.8 0.8, class:^(kitty)$
         windowrulev2 = size 700 300, class:^(kitty)$

@@ -2,9 +2,10 @@
   config,
   inputs,
   outputs,
-  spaghetti, # TODO move to default.nix, mkOption shiz
+  spaghetti,
   ...
 }: {
+  # write btm config with nix-colors added
   home-manager.users.${spaghetti.user}.home.file.".config/bottom/bottom.toml" = {
     text = ''
       # This is a default config file for bottom.  All of the settings are commented
@@ -100,7 +101,6 @@
       # These are all the components that support custom theming.  Note that colour support
       # will depend on terminal support.
 
-      # TODO nix-colors here
       [colors]
       # Represents the colour of table headers (processes, CPU, disks, temperature).
       table_header_color="#${config.colorscheme.palette.base05}"

@@ -6,6 +6,7 @@
 }: {
   home-manager.users.${spaghetti.user} = {
     home.file.".config/hypr/per-app/syncthing.conf" = {
+      # hyprland binds and window rules
       text = ''
         # exec-once = sleep 10 && syncthing
         exec-once = sleep 10 && syncthingtray
@@ -20,7 +21,7 @@
       enable = true;
       systemService = true;
       user = "${spaghetti.user}";
-      configDir = "/home/${spaghetti.user}/.config/syncthing"; # Folder for Syncthing's settings and keys
+      configDir = "/home/${spaghetti.user}/.config/syncthing"; # folder for Syncthing's settings and keys
     };
   };
 
@@ -28,7 +29,6 @@
   can also enable under ^^ as home-manager.users.${spaghetti.user} = { services.syncthing.enable = true; ...};
   */
 
-  users.users.${spaghetti.user}.packages = with pkgs; [
-    syncthingtray
-  ];
+  # add tray icon
+  users.users.${spaghetti.user}.packages = with pkgs; [syncthingtray];
 }

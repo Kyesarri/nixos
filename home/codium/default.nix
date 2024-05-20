@@ -6,14 +6,6 @@
   home-manager.users.${spaghetti.user} = {
     programs.vscode = {
       enable = true;
-      /*
-        userSettings = {
-        "window.titleBarStyle" = "custom";
-        "terminal.integrated.fontFamily" = "Hack Nerd Font Mono";
-        "editor.fontFamily" = "Hack Nerd Font Mono";
-        "editor.bracketPairColorization.independentColorPoolPerBracketType" = true;
-      };
-      */
       package = pkgs.vscodium;
       extensions = with pkgs.vscode-extensions; [
         yzhang.markdown-all-in-one
@@ -23,7 +15,7 @@
         # schoofskelvin.vscode-sshfs # not packaged, reminder for myself here to install manually
       ];
     };
-
+    # hyprland window rules / binds
     home.file.".config/hypr/per-app/codium.conf" = {
       text = ''
         # windowrule = tile, title:VSCodium # was causing pop-up / prompts to be full-screen

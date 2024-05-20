@@ -15,6 +15,7 @@
   };
   virtualisation.spiceUSBRedirection.enable = true; # usb passthrough to vm
   boot = {
+    # add extra config for intel systems
     extraModprobeConfig = ''
       options kvm_intel nested=1
       options kvm_intel emulate_invalid_guest_state=0

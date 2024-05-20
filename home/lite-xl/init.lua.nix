@@ -7,6 +7,7 @@
   ...
 }: {
   home-manager.users.${spaghetti.user} = {
+    # write config, add font to config
     home.file.".config/lite-xl/init.lua" = {
       text = ''
         -- put user settings here

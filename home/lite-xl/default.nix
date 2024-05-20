@@ -8,12 +8,14 @@
     ./theme.nix
     ./init.lua.nix
   ];
+  # enable litexl
   users.users.${spaghetti.user}.packages = with pkgs; [lite-xl];
-
+  # symlink from this dir to defined dir
   home-manager.users.${spaghetti.user} = {
-    home.file."./.config/lite-xl/plugins/nix.lua".source = ./nix.lua; # symlink from this dir to defined dir
+    home.file."./.config/lite-xl/plugins/nix.lua".source = ./nix.lua;
 
     home.file.".config/hypr/per-app/lite-xl.conf" = {
+      # hyprland binds and window rules
       text = ''
         bind = $mainMod, K, exec, lite-xl
         windowrule = tile, ^(lite-xl)$
@@ -21,7 +23,3 @@
     };
   };
 }
-# need to rename some of the subfiles here, need to define naming scheme.
-# dont mind filename.extension.nix
-# won't happen now, need to add as mkOption config files now :)
-

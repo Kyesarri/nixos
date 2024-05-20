@@ -1,6 +1,6 @@
 {
   pkgs,
-  user,
+  spaghetti,
   ...
 }: {
   imports = [
@@ -8,7 +8,7 @@
     ./style.css.nix
   ];
 
-  home-manager.users.${user} = {
+  home-manager.users.${spaghetti.user} = {
     programs.waybar = {
       enable = true;
       package = pkgs.waybar.override (oldAttrs: {pulseSupport = true;});

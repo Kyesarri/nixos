@@ -8,7 +8,7 @@
   home-manager.users.${spaghetti.user} = {
     prism = {
       enable = true;
-      wallpapers = ./wallpapers; # path from this .nix, inside the nix config could use ../../ to escape into the tree
+      wallpapers = ./wallpapers; # path from this .nix, inside the nix config could use ../../ to escape into homedir if wanted
       outPath = "/wallpapers"; # from root of /users/currentuser/
       colorscheme = [
         "#${config.colorscheme.palette.base00}"
@@ -27,7 +27,7 @@
         "#${config.colorscheme.palette.base0D}"
         "#${config.colorscheme.palette.base0E}"
         "#${config.colorscheme.palette.base0F}"
-      ]; # went nuclear
+      ];
     };
   };
 }

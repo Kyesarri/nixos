@@ -1,16 +1,12 @@
 # fino-time-mod.zsh-theme
-# Otherwise, you can specify the color using the color code that
-# is from 0–255 or use the hex code like %F{#FFBF00}.
 # modded to follow nix-colors themes
-# Borrowing shamelessly from these oh-my-zsh themes:
+# borrowing shamelessly from these oh-my-zsh themes:
 #   bira
 #   robbyrussell
 #
-# Also borrowing from http://stevelosh.com/blog/2010/02/my-extravagant-zsh-prompt/
+# also borrowing from http://stevelosh.com/blog/2010/02/my-extravagant-zsh-prompt/
 {
   config,
-  inputs,
-  outputs,
   spaghetti,
   ...
 }: {

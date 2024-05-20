@@ -6,6 +6,7 @@
   ...
 }: {
   home-manager.users.${spaghetti.user}.home.file.".config/lite-xl/colors/nix.lua" = {
+    # add nix-colors to litexl config
     text = ''
       local style = require "core.style"
       local common = require "core.common"

@@ -16,7 +16,6 @@
 
     home.file.".config/copyq/copyq.conf" = {
       # copyq settings TODO nix-colors
-      # TODO move to copyq.conf.nix
       text = ''
         [General]
         plugin_priority=itemimage, itemencrypted, itemfakevim, itemnotes, itempinned, itemsync, itemtags, itemtext

@@ -19,7 +19,7 @@
     bind = $mainMod, z, exec, keepassxc
   '';
 
-  # make keepass our dbus package
+  # make keepassxc our dbus package
   services.dbus = {
     enable = true;
     packages = [pkgs.keepassxc];

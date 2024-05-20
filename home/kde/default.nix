@@ -23,6 +23,7 @@
     };
   };
 
+  # kdeconnect ports
   networking = {
     firewall = {
       allowedTCPPortRanges = [

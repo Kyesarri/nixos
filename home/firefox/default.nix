@@ -5,6 +5,8 @@
   ...
 }: {
   home-manager.users.${spaghetti.user} = {
+    # add hyprland bindings for firefox
+    # + window rules
     home.file.".config/hypr/per-app/firefox.conf" = {
       text = ''
         bind = $mainMod, F, exec, firefox
@@ -19,8 +21,10 @@
 
   programs.firefox = {
     enable = true;
+    # using bin to speed up flake updates
     package = pkgs.wrapFirefox pkgs.firefox-bin-unwrapped {
       extraPolicies = {
+        # turn off / on some default annoyances
         CaptivePortal = false;
         DisableFirefoxStudies = true;
         DisablePocket = true;

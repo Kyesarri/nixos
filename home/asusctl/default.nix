@@ -8,8 +8,6 @@
   environment.etc."supergfxd.conf" = {
     mode = "0644";
     source = (pkgs.formats.json {}).generate "supergfxd.conf" {
-      # mode = "Integrated";
-      # vfio_enable = true;
       vfio_enable = false;
       vfio_save = false;
       always_reboot = false;
@@ -27,8 +25,6 @@
         wantedBy = ["multi-user.target"];
       };
     };
-    # sleep.extraConfig = "HibernateMode=hybrid-sleep"; # testing workaround for nvidia sleep issues
-    # don't believe ^ is required any longer, may have been fixed by hypr
   };
 
   services = {

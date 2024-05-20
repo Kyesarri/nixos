@@ -37,11 +37,7 @@ in {
           package = inputs.hyprland.packages.${pkgs.system}.hyprland;
           enable = true;
           systemd.enable = true;
-          plugins = [
-            # inputs.hyprland-plugins.packages.${pkgs.system}.hyprtrails # hot, but not used much in current config
-            # inputs.hyprland-plugins.packages.${pkgs.system}.hyprwinwrap # throws errors, might be hy3 or lack of plugin config :)
-            inputs.hy3.packages.x86_64-linux.hy3
-          ];
+          plugins = [inputs.hy3.packages.x86_64-linux.hy3];
           extraConfig = ''
             # ^^ autogen by home-manager ^^
             # this is a hacky workaround, but it works and i don't care

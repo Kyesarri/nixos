@@ -6,11 +6,11 @@
   ...
 }:
 with lib; let
-  cfg = config.gnocchi.gscreenshot; # shorthand some lines
+  cfg = config.gnocchi.gscreenshot;
 in {
   options.gnocchi = {
     gscreenshot = {
-      enable = mkEnableOption "enable gscreenshot"; # will be gnocchi.pkg.enable = true; in host.nix
+      enable = mkEnableOption "enable gscreenshot";
     };
   };
 
@@ -23,7 +23,6 @@ in {
         home-manager.users.${spaghetti.user} = {
           home.file.".config/hypr/per-app/gscreenshot.conf" = {
             text = ''
-              # move to gscreenshot under home, TODO #
               # # take fullscreen screenshot and send to /user/screenshots/
               bind = ,Print, exec, gscreenshot -f '/home/${spaghetti.user}/screenshots/screenshot_$hx$w_%Y-%m-%d%M-%S.png' -n
               # # open screenshot selection tool with overlay, once region selected send to /user/screenshots/

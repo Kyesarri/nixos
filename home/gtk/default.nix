@@ -10,6 +10,7 @@
     gtkThemeFromScheme
     ;
 in rec {
+  #
   users.users.${spaghetti.user}.packages = [pkgs.zafiro-icons];
   qt.platformTheme = "gtk2";
   home-manager.users.${spaghetti.user} = {
@@ -18,6 +19,7 @@ in rec {
       XCURSOR_SIZE = 17;
       XCURSOR_THEME = "graphite-dark";
     };
+    #
     gtk = {
       enable = true;
       theme = {
