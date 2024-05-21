@@ -62,6 +62,7 @@
     hyprpaper.enable = true;
     ags.enable = true;
     gscreenshot.enable = true;
+    freetube.enable = true;
 
     wifi.backend = "nwm";
   };
