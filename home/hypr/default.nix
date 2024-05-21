@@ -1,9 +1,9 @@
 {
-  lib,
-  pkgs,
-  config,
   spaghetti,
+  config,
   inputs,
+  pkgs,
+  lib,
   ...
 }:
 with lib; let

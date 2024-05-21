@@ -3,9 +3,10 @@
   # not importing via home-manager as these call home-manager
   # as a module and are not themselves home-manager-modules 🍝
   imports = [
-    ./hypr
     ./ags
+    ./freetube
     ./gscreenshot
+    ./hypr
   ];
   home-manager.users.${spaghetti.user} = {
     pkgs,
