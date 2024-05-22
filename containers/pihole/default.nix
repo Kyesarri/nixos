@@ -39,6 +39,8 @@ in {
 
     extraOptions = [
       "--network=macvlan_lan"
+      "--ip=${secrets.ip.pihole}"
+
       "--privileged"
       "--restart=unless-stopped"
       "--dns=127.0.0.1"
