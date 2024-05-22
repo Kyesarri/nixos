@@ -1,4 +1,8 @@
-{lib, ...}: let
+{
+  lib,
+  secrets,
+  ...
+}: let
   contName = "double-take";
   dir1 = "/etc/oci.cont/${contName}";
 in {
