@@ -74,10 +74,8 @@
       material-design-icons
       inter
       material-symbols
-      rubik
       ibm-plex
       hack-font
-      (nerdfonts.override {fonts = ["Iosevka" "CascadiaCode" "JetBrainsMono"];})
     ];
   };
 

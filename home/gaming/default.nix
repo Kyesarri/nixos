@@ -21,7 +21,7 @@
   users.users.${spaghetti.user}.packages = with pkgs; [
     shattered-pixel-dungeon
     # pcsx2 # ps2 emulator # TODO 22/01/24 has issues building, hash mismatch
-    piper # frontend for libratbag, which is enabled in services
+    piper # frontend for libratbag
     protonup-qt # proton-ge # TODO get working with steam
     gamescope # wl roots gaming compositor, needs steam config not working currently
   ];

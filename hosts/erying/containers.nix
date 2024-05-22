@@ -7,6 +7,7 @@
   imports = [
     ../../containers
     ../../containers/arr # temp
+    ../../containers/double-take
     ../../containers/tailscale
     # ../../containers/authelia
     ../../containers/emqx
