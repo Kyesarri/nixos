@@ -8,7 +8,7 @@
     ../../containers
     ../../containers/arr # temp
     ../../containers/double-take
-    ../../containers/tailscale
+    # ../../containers/tailscale
     # ../../containers/authelia
     ../../containers/emqx
     # ../../containers/esphome
