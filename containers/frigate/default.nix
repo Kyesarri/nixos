@@ -1,8 +1,5 @@
 {
-  spaghetti,
   secrets,
-  config,
-  pkgs,
   lib,
   ...
 }: let
