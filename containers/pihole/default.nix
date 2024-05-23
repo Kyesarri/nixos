@@ -1,14 +1,13 @@
 {
-  spaghetti, # rm this pls
   secrets,
   lib,
   ...
 }: let
   contName = "pihole";
-  # dir1 = "/etc/oci.cont/${contName}/etc/pihole";
-  # dir2 = "/etc/oci.cont/${contName}/etc/dnsmasq.d";
-  dir1 = "/home/${spaghetti.user}/.containers/${contName}/etc/pihole";
-  dir2 = "/home/${spaghetti.user}/.containers/${contName}/etc/dnsmasq.d";
+  dir1 = "/etc/oci.cont/${contName}/etc/pihole";
+  dir2 = "/etc/oci.cont/${contName}/etc/dnsmasq.d";
+  # dir1 = "/home/${spaghetti.user}/.containers/${contName}/etc/pihole";
+  # dir2 = "/home/${spaghetti.user}/.containers/${contName}/etc/dnsmasq.d";
 in {
   system.activationScripts.makePiHoleDir = lib.stringAfter ["var"] ''
     mkdir -v -m 777 -p ${toString dir1} ${toString dir2}
@@ -40,10 +39,8 @@ in {
     extraOptions = [
       "--network=macvlan_lan"
       "--ip=${secrets.ip.pihole}"
-
-      "--privileged"
       "--restart=unless-stopped"
-      "--dns=127.0.0.1"
+      # "--dns=127.0.0.1"
     ];
   };
 }
