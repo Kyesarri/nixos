@@ -7,6 +7,7 @@
   imports = [
     ../../containers
     ../../containers/arr # temp
+    ../../containers/adguard
     ../../containers/double-take
     # ../../containers/tailscale
     # ../../containers/authelia
@@ -16,7 +17,7 @@
     ../../containers/haos
     ../../containers/frigate
     ../../containers/nginx-proxy-manager
-    ../../containers/pihole
+    # ../../containers/pihole
     # ../../containers/uptime-kuma
   ];
 
