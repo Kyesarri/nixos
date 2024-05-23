@@ -1,17 +1,14 @@
 {
-  spaghetti,
-  config,
-  pkgs,
+  secrets,
   lib,
   ...
 }: let
-  hostName = "codeproject";
-  webPort = 32168;
-  dir1 = "/home/${spaghetti.user}/.containers/${hostName}/etc/codeproject/ai";
-  dir2 = "/home/${spaghetti.user}/.containers/${hostName}/app/modules";
+  hostName = "cpai";
+  dir1 = "/etc/oci.cont/${contName}/work";
+  dir2 = "/etc/oci.cont/${contName}/conf";
 in {
   system.activationScripts.makeCodeProjectDir = lib.stringAfter ["var"] ''
-    mkdir -p ${toString dir1} ${toString dir2}
+    mkdir -v -p ${toString dir1} ${toString dir2} & chown 1000:1000 ${toString dir1} & chown 1000:1000 ${toString dir2}
   '';
 
   networking.firewall.allowedTCPPorts = [32168];
@@ -19,14 +16,22 @@ in {
     hostname = "${hostName}";
     autoStart = true;
     image = "codeproject/ai-server:latest";
-    ports = ["${toString webPort}:${toString webPort}"];
+
     volumes = [
       "/etc/localtime:/etc/localtime:ro"
       "${toString dir1}:/etc/codeproject/ai"
       "${toString dir2}:/app/modules"
     ];
+
+    environment = {
+      PUID = "1000";
+      PGID = "1000";
+    };
+
     extraOptions = [
-      "--device=/dev/apex_0:/dev/apex_0"
+      "--network=macvlan_lan"
+      "--ip=${secrets.ip.cpai}"
+      # "--device=/dev/apex_0:/dev/apex_0"
     ];
   };
 }

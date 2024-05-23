@@ -8,6 +8,7 @@
     ../../containers
     ../../containers/arr # temp
     ../../containers/adguard
+    ../../containers/cpai
     ../../containers/double-take
     # ../../containers/tailscale
     # ../../containers/authelia
