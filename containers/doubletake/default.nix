@@ -27,7 +27,7 @@ in {
 
     extraOptions = [
       "--network=macvlan_lan"
-      "--ip=${secrets.ip.double-take}"
+      "--ip=${secrets.ip.doubletake}"
     ];
   };
 }
