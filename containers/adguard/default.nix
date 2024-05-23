@@ -30,7 +30,7 @@ in {
     extraOptions = [
       "--privileged"
       "--network=macvlan_lan"
-      "--ip=${secrets.ip.pihole}"
+      "--ip=${secrets.ip.adguard}"
     ];
   };
 }

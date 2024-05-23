@@ -15,7 +15,7 @@
     windowrulev2 = size 800 550, class:^(org.keepassxc.KeePassXC)$
     windowrulev2 = float, class:^(org.keepassxc.KeePassXC)$
     windowrulev2 = bordercolor $cc, class:^(org.keepassxc.KeePassXC)$
-    windowrulev2 = dimaround, class:^(org.keepassxc.KeePassXC)$
+    # windowrulev2 = dimaround, class:^(org.keepassxc.KeePassXC)$
     bind = $mainMod, z, exec, keepassxc
   '';
 
