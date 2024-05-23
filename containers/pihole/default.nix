@@ -37,6 +37,7 @@ in {
     ];
 
     extraOptions = [
+      "--pull=always"
       "--network=macvlan_lan"
       "--ip=${secrets.ip.pihole}"
       "--restart=unless-stopped"
