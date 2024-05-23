@@ -23,7 +23,7 @@ in {
       TZ = "Australia/Melbourne";
       DNS1 = "1.1.1.1";
       DNS2 = "1.0.0.1";
-      FTLCONF_LOCAL_IPV4 = "${secrets.ip.pihole}";
+      # FTLCONF_LOCAL_IPV4 = "${secrets.ip.pihole}";
       # DHCP_ACTIVE = "true";
       # DHCP_START = "";
       # DHCP_END = "";
@@ -40,7 +40,7 @@ in {
       "--network=macvlan_lan"
       "--ip=${secrets.ip.pihole}"
       "--restart=unless-stopped"
-      # "--dns=127.0.0.1"
+      "--dns=127.0.0.1"
     ];
   };
 }
