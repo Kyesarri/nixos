@@ -16,7 +16,7 @@ in {
   virtualisation.oci-containers.containers."${contName}" = {
     hostname = "${contName}";
     autoStart = true;
-    image = "ghcr.io/home-assistant/home-assistant:stable";
+    image = "ghcr.io/home-assistant/home-assistant:latest";
 
     volumes = [
       "/etc/localtime:/etc/localtime:ro"

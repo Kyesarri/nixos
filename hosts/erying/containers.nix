@@ -5,12 +5,11 @@
   ...
 }: {
   imports = [
-    ../../containers
+    ../../containers # will  be the only module required once serv is depreciated
     ../../containers/arr # temp
     ../../containers/adguard
     ../../containers/cpai
     ../../containers/doubletake
-    # ../../containers/tailscale
     # ../../containers/authelia
     ../../containers/emqx
     # ../../containers/esphome
@@ -18,7 +17,6 @@
     ../../containers/haos
     ../../containers/frigate
     ../../containers/nginx-proxy-manager
-    # ../../containers/pihole
     # ../../containers/uptime-kuma
   ];
 
@@ -30,7 +28,6 @@
       "podman-haos.service"
       "podman-frigate.service"
       "podman-nginx-proxy-manager.service"
-      "podman-pihole.service"
     ];
     serviceConfig = {
       Type = "oneshot";

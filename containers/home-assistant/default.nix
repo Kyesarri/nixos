@@ -15,7 +15,7 @@ in
       home-assistant = {
         hostname = "${hostName}-serv";
         autoStart = true;
-        image = "ghcr.io/home-assistant/home-assistant:stable";
+        image = "ghcr.io/home-assistant/home-assistant:latest";
         ports = ["8123:8123/tcp"];
         volumes = [
           "/etc/localtime:/etc/localtime:ro"
