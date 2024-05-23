@@ -12,8 +12,8 @@ in {
   '';
 
   networking.firewall.allowedTCPPorts = [32168];
-  virtualisation.oci-containers.containers.${hostName} = {
-    hostname = "${hostName}";
+  virtualisation.oci-containers.containers.${contName} = {
+    hostname = "${contName}";
     autoStart = true;
     image = "codeproject/ai-server:latest";
 
