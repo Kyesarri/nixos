@@ -9,7 +9,7 @@
     ../../containers/arr # temp
     ../../containers/adguard
     ../../containers/cpai
-    ../../containers/double-take
+    ../../containers/doubletake
     # ../../containers/tailscale
     # ../../containers/authelia
     ../../containers/emqx
