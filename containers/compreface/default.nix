@@ -26,9 +26,11 @@ in {
       }; # TODO FIXME
 
       extraOptions = [
-        "--network=macvlan_lan"
-        "--ip=${secrets.ip.cpai}"
+        # "--network=macvlan_lan"
+        # "--ip=${secrets.ip.cpai}"
       ];
+      volumes = ["/etc/localtime:/etc/localtime:ro"];
+
       /*
       healthcheck:
       test: curl --fail http://localhost:3000/healthcheck || exit 1
@@ -53,9 +55,10 @@ in {
     }; # TODO FIXME
 
     extraOptions = [
-      "--network=macvlan_lan"
-      "--ip=${secrets.ip.cpai}"
+      # "--network=macvlan_lan"
+      # "--ip=${secrets.ip.cpai}"
     ];
+    volumes = ["/etc/localtime:/etc/localtime:ro"];
   };
   #
   # compreface-api
@@ -78,9 +81,10 @@ in {
     }; # TODO FIXME
 
     extraOptions = [
-      "--network=macvlan_lan"
-      "--ip=${secrets.ip.cpai}"
+      # "--network=macvlan_lan"
+      # "--ip=${secrets.ip.cpai}"
     ];
+    volumes = ["/etc/localtime:/etc/localtime:ro"];
   };
   #
   # compreface-admin
@@ -105,9 +109,10 @@ in {
     }; # TODO FIXME
 
     extraOptions = [
-      "--network=macvlan_lan"
-      "--ip=${secrets.ip.cpai}"
+      # "--network=macvlan_lan"
+      # "--ip=${secrets.ip.cpai}"
     ];
+    volumes = ["/etc/localtime:/etc/localtime:ro"];
   };
   #
   # compreface-db (postgres-db)
@@ -123,8 +128,8 @@ in {
     }; # TODO FIXME
 
     extraOptions = [
-      "--network=macvlan_lan"
-      "--ip=${secrets.ip.cpai}"
+      # "--network=macvlan_lan"
+      # "--ip=${secrets.ip.cpai}"
     ];
 
     volumes = [
