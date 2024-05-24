@@ -16,7 +16,7 @@ in {
     mkdir -v -p ${toString dir1} ${toString dir2} ${toString dir3}
   '';
 
-  # make tmpdir for frigate to use, ssd wear bla bla, probs isnt even working :)
+  # tempdir for frigate
   fileSystems."/tmp/cache" = {
     device = "none";
     fsType = "tmpfs";
