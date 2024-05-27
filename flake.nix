@@ -9,19 +9,27 @@
     home-manager.url = "github:nix-community/home-manager/master"; # added master branch to follow unstable nixos
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
-    hyprland.url = "github:hyprwm/Hyprland";
+    # hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1&rev=cba1ade848feac44b2eda677503900639581c3f4"; # v0.40.0
+    hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1"; # latest git
 
     hyprpicker.url = "github:hyprwm/hyprpicker";
-    hy3.url = "github:outfoxxed/hy3"; # dev branch
-    hy3.inputs.hyprland.follows = "hyprland";
 
-    nix-colors.url = "github:kyesarri/nix-colors"; # colour themes
+    # hy3.url = "github:outfoxxed/hy3";
+    # hy3.inputs.hyprland.follows = "hyprland";
+
+    # hycov.url = "github:DreamMaoMao/hycov";
+    # hycov.inputs.hyprland.follows = "hyprland";
+
+    # Hyprspace.url = "github:KZDKM/Hyprspace";
+    # Hyprspace.inputs.hyprland.follows = "hyprland";
+
+    nix-colors.url = "github:kyesarri/nix-colors"; # colour themes, my fork
     prism.url = "github:IogaMaster/prism"; # wallpaper gen
     wallpaper-generator.url = "github:kyesarri/wallpaper-generator"; # another one
 
     alejandra.url = "github:kamadorueda/alejandra/3.0.0"; # codeium nix
 
-    ags.url = "github:Aylur/ags";
+    ags.url = "github:Aylur/ags"; # shell
 
     auto-cpufreq.url = "github:AdnanHodzic/auto-cpufreq";
     auto-cpufreq.inputs.nixpkgs.follows = "nixpkgs";
@@ -33,7 +41,9 @@
     home-manager,
     hyprland,
     hyprpicker,
-    hy3,
+    # Hyprspace,
+    # hy3,
+    # hycov,
     alejandra,
     nix-colors,
     auto-cpufreq,
@@ -67,7 +77,7 @@
             home-manager = {
               useGlobalPkgs = true;
               useUserPackages = true;
-              extraSpecialArgs = {inherit nix-colors inputs hy3 hyprland;};
+              extraSpecialArgs = {inherit nix-colors inputs hyprland;};
             };
           }
         ];

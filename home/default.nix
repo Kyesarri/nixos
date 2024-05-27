@@ -7,6 +7,7 @@
     ./freetube
     ./gscreenshot
     ./hypr
+    ./nemo
   ];
   home-manager.users.${spaghetti.user} = {
     pkgs,

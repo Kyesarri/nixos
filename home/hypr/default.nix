@@ -37,7 +37,15 @@ in {
           package = inputs.hyprland.packages.${pkgs.system}.hyprland;
           enable = true;
           systemd.enable = true;
-          plugins = [inputs.hy3.packages.x86_64-linux.hy3];
+          plugins = [
+            # inputs.hy3.packages.x86_64-linux.hy3
+            # inputs.hycov.packages.x86_64-linux.hycov
+            /*
+               (inputs.Hyprspace.packages.${pkgs.system}.Hyprspace.overrideAttrs {
+              dontUseCmakeConfigure = true;
+            })
+            */
+          ];
           extraConfig = ''
             # ^^ autogen by home-manager ^^
             # this is a hacky workaround, but it works and i don't care
