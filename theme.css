@@ -45,20 +45,20 @@ may need to have in each /host/hostame/ for now this works
   --base0F: #E4A382; /* PURPLE? Deprecated, Opening/Closing Embedded Language Tags, e.g. <?php ?> */
 }
 .Catppuccin-Latte {
-  --base00: #eff1f5; 
-  --base01: #e6e9ef;
-  --base02: #ccd0da;
-  --base03: #bcc0cc; 
-  --base04: #acb0be; 
-  --base05: #4c4f69; 
-  --base06: #dc8a78; 
-  --base07: #7287fd; 
-  --base08: #d20f39;
-  --base09: #fe640b; 
-  --base0A: #df8e1d; 
-  --base0B: #40a02b; 
-  --base0C: #179299;
-  --base0D: #1e66f5;
-  --base0E: #8839ef;
+  --base00: #eff1f5; /*base*/
+  --base01: #e6e9ef; /*mantle*/
+  --base02: #ccd0da; /*surface0*/
+  --base03: #bcc0cc; /*surface1*/
+  --base04: #acb0be; /*surface2*/
+  --base05: #4c4f69; /*text*/
+  --base06: #dc8a78; /*rosewater*/
+  --base07: #7287fd; /*lavender*/
+  --base08: #d20f39; /*red*/
+  --base09: #fe640b; /*peach*/
+  --base0A: #df8e1d; /*yellow*/
+  --base0B: #40a02b; /*green*/
+  --base0C: #179299; /*teal*/
+  --base0D: #1e66f5; /*blue*/
+  --base0E: #8839ef; /*mauve*/
   --base0F: #dd7878; /*flamingo*/
 }
