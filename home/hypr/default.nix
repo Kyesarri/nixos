@@ -37,6 +37,7 @@ in {
           package = inputs.hyprland.packages.${pkgs.system}.hyprland;
           enable = true;
           systemd.enable = true;
+          systemd.variables = ["--all"];
           plugins = [
             # inputs.hy3.packages.x86_64-linux.hy3
             # inputs.hycov.packages.x86_64-linux.hycov
