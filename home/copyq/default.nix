@@ -1,6 +1,7 @@
 {
-  pkgs,
   spaghetti,
+  config,
+  pkgs,
   ...
 }: {
   users.users.${spaghetti.user}.packages = with pkgs; [copyq];
@@ -9,7 +10,7 @@
     # hypr copyq settings
     home.file.".config/hypr/per-app/copyq.conf" = {
       text = ''
-        exec-once = sleep 2 && copyq --start-server
+        exec-once = sleep 3 && copyq --start-server
         windowrule = float, title:CopyQ
       '';
     };
@@ -55,7 +56,7 @@
         max_process_manager_rows=1000
         maxitems=200
         move=true
-        native_menu_bar=true
+        native_menu_bar=false
         native_notifications=true
         native_tray_menu=false
         notification_horizontal_offset=10
@@ -174,24 +175,44 @@
         size=1
 
         [Theme]
-        alt_bg=#383838
+        sel_bg=#${config.colorscheme.palette.base0D}
+        sel_fg=#${config.colorscheme.palette.base0E}
+
+        bg=#${config.colorscheme.palette.base00}
+        alt_bg=#${config.colorscheme.palette.base02}
+
+        edit_bg=#${config.colorscheme.palette.base01}
+        edit_fg=#${config.colorscheme.palette.base06}
+
+        fg=#${config.colorscheme.palette.base05}
+        find_bg=#${config.colorscheme.palette.base00}
+        find_fg=#ffffff
+
+        notes_bg=#${config.colorscheme.palette.base04}
+        notes_fg=#232323
+
+        num_fg=#7f7f7f
+
+
+        notification_bg=#333
+        notification_fg=#ddd
+
+        font_antialiasing=true
+        notification_font=
+        num_font="Sans,7,-1,5,25,0,0,0,0,0"
+        edit_font="Sans,11,-1,5,50,0,0,0,0,0"
+        find_font="Sans,10,-1,5,50,0,0,0,0,0"
+        font="Sans,10,-1,5,50,0,0,0,0,0"
+        notes_font="Sans,11,-1,5,50,0,0,0,0,0"
+
         alt_item_css=
-        bg=#4b4b4b
         css=
         css_template_items=items
         css_template_main_window=main_window
         css_template_menu=menu
         css_template_notification=notification
+
         cur_item_css="\n    ;border: 0.1em solid \$\{sel_bg}"
-        edit_bg=#ffffff
-        edit_fg=#1a1a1a
-        edit_font="Sans,11,-1,5,50,0,0,0,0,0"
-        fg=#dfdfdf
-        find_bg=#00689c
-        find_fg=#ffffff
-        find_font="Sans,10,-1,5,50,0,0,0,0,0"
-        font="Sans,10,-1,5,50,0,0,0,0,0"
-        font_antialiasing=true
         hover_item_css=
         icon_size=16
         item_css=
@@ -200,20 +221,12 @@
         menu_bar_disabled_css="\n    ;color: \$\{bg - #666}"
         menu_bar_selected_css="\n    ;background: \$\{sel_bg}\n    ;color: \$\{sel_fg}"
         menu_css="\n    ;border: 1px solid \$\{sel_bg}\n    ;background: \$\{bg}\n    ;color: \$\{fg}"
-        notes_bg=#ffffff
         notes_css=
-        notes_fg=#232323
-        notes_font="Sans,11,-1,5,50,0,0,0,0,0"
-        notification_bg=#333
-        notification_fg=#ddd
-        notification_font=
-        num_fg=#7f7f7f
-        num_font="Sans,7,-1,5,25,0,0,0,0,0"
+
+
         num_margin=2
         search_bar="\n    ;background: \$\{edit_bg}\n    ;color: \$\{edit_fg}\n    ;border: 1px solid \$\{alt_bg}\n    ;margin: 2px"
         search_bar_focused="\n    ;border: 1px solid \$\{sel_bg}"
-        sel_bg=#61819c
-        sel_fg=#ffffff
         sel_item_css=
         show_number=true
         show_scrollbars=false

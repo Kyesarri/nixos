@@ -4,9 +4,14 @@
   ...
 }: {
   users.users.${spaghetti.user}.packages = [
-    pkgs.kdePackages.qt6gtk2
-    pkgs.kdePackages.qt6ct
+    # qt6
+    # pkgs.kdePackages.qt6gtk2
+    # pkgs.kdePackages.qt6ct
     # pkgs.kdePackages.qtstyleplugin-kvantum
+
+    # qt5
+    pkgs.libsForQt5.qt5ct
+    pkgs.libsForQt5.qtstyleplugins
   ];
   home-manager.users.${spaghetti.user} = {
     services.kdeconnect = {
