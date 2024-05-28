@@ -175,27 +175,27 @@
         size=1
 
         [Theme]
-        sel_bg=#${config.colorscheme.palette.base0D}
-        sel_fg=#${config.colorscheme.palette.base0E}
-
         bg=#${config.colorscheme.palette.base00}
-        alt_bg=#${config.colorscheme.palette.base02}
+        alt_bg=#${config.colorscheme.palette.base01}
+        fg=#${config.colorscheme.palette.base05}
+
+        sel_bg=#${config.colorscheme.palette.base0D}
+        sel_fg=#${config.colorscheme.palette.base00}
 
         edit_bg=#${config.colorscheme.palette.base01}
         edit_fg=#${config.colorscheme.palette.base06}
 
-        fg=#${config.colorscheme.palette.base05}
+
         find_bg=#${config.colorscheme.palette.base00}
-        find_fg=#ffffff
+        find_fg=#${config.colorscheme.palette.base05}
 
-        notes_bg=#${config.colorscheme.palette.base04}
-        notes_fg=#232323
+        notes_bg=#${config.colorscheme.palette.base01}
+        notes_fg=#${config.colorscheme.palette.base04}
 
-        num_fg=#7f7f7f
+        num_fg=#${config.colorscheme.palette.base05}
 
-
-        notification_bg=#333
-        notification_fg=#ddd
+        notification_bg=#${config.colorscheme.palette.base00}
+        notification_fg=#${config.colorscheme.palette.base05}
 
         font_antialiasing=true
         notification_font=

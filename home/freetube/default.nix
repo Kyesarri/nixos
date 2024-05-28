@@ -24,6 +24,12 @@ in {
     (mkIf (cfg.freetube.enable == true) {
       #
       users.users.${spaghetti.user}.packages = [pkgs.freetube]; # enable freetube
+      home-manager.users.${spaghetti.user}.home.file.".config/hypr/per-app/freetube.conf" = {
+        # add aspect ratio rule to picture-in-picture popup
+        text = ''
+          windowrule = keepaspectratio, title:Picture-in-picture
+        '';
+      };
     })
     (mkIf (cfg.config.enable == true) {
       #
