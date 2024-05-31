@@ -47,6 +47,7 @@
     ../../home/ulauncher # TODO rename built theme, add credits to og author
     ../../home/virt
     ../../home/vpn
+    ../../home/wl-screenrec
     ../../home/gtk # uhh, nix-colors gtk theme iirc # TODO rename to theme?
     ../../home/prism
     # ../../home/syncthing # TODO
