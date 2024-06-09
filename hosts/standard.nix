@@ -139,7 +139,6 @@
       brightnessctl # brightness control, used in waybar TODO laptop / notebook specific not needed as no worky on desktop :)
       qview # image viewer
       gscreenshot # image capture
-      hyprpicker # colour picker
       imagemagick # bitmap editor cli
       libnotify # notifications
       wf-recorder # screen recorder
@@ -149,9 +148,7 @@
       ntfs3g # ntfs support
       curl # into the fetal position
       wl-clipboard # wl-copy and wl-paste for copy/paste from stdin / stdout
-
       vlc # play me some vids
-      kooha # not working under hypr for me :(
 
       ## TESTING ##
       inputs.wallpaper-generator.defaultPackage.x86_64-linux

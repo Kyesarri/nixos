@@ -32,7 +32,10 @@ in {
   config = mkMerge [
     (mkIf (cfg.hypr.enable == true) {
       #
-      users.users.${spaghetti.user}.packages = [pkgs.xdg-desktop-portal-hyprland];
+      users.users.${spaghetti.user}.packages = [
+        pkgs.xdg-desktop-portal-hyprland
+        hyprpicker # colour picker
+      ];
       home-manager.users.${spaghetti.user} = {
         wayland.windowManager.hyprland = {
           package = inputs.hyprland.packages.${pkgs.system}.hyprland;

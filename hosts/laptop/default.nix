@@ -28,6 +28,7 @@
     ../../home # set some default values for home-manager
     # ^^^ new module completed ^^^
     #
+    ../../home/cosmic
     ../../home/asusctl # TODO look into issues with this further
     ../../home/bottom # task-manager
     ../../home/codium # TODO build custom theme to use, with nix-colors. # TODO pin versions to avoid compiling
@@ -47,7 +48,7 @@
     ../../home/ulauncher # TODO rename built theme, add credits to og author
     ../../home/virt
     ../../home/vpn
-    ../../home/wl-screenrec
+    ../../home/wl-screenrec # testing for laptop - amd / nvidia config
     ../../home/gtk # uhh, nix-colors gtk theme iirc # TODO rename to theme?
     ../../home/prism
     # ../../home/syncthing # TODO
