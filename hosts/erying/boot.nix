@@ -9,7 +9,7 @@
       "nowatchdog" # disables watchdog, was causing shutdown / reboot issues on laptop, left in cos
     ];
     loader = {
-      systemd-boot.enable = true;
+      # systemd-boot.enable = true;
       efi.canTouchEfiVariables = true;
     };
   };
