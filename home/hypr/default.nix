@@ -34,7 +34,7 @@ in {
       #
       users.users.${spaghetti.user}.packages = [
         pkgs.xdg-desktop-portal-hyprland
-        hyprpicker # colour picker
+        # hyprpicker # colour picker 09.06.24 throwing build errors
       ];
       home-manager.users.${spaghetti.user} = {
         wayland.windowManager.hyprland = {
