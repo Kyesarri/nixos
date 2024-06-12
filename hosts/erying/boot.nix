@@ -1,5 +1,6 @@
 {pkgs, ...}: {
   boot = {
+    initrd.systemd.enable = true;
     kernelPackages = pkgs.linuxPackages_xanmod; # backto mainline
     supportedFilesystems = ["zfs"]; # add zfs
     zfs.forceImportRoot = false;
