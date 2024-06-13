@@ -131,6 +131,7 @@
       ###############
       # KISS PLEASE #
       ###############
+      gimp-with-plugins # image boi
       graphite-cursors # cursor package, is this handled by /home/gtk/default.nix now? nope manual atm
       gnome-text-editor # still might want something with slightly more features, bit too barebones?
       nix-init # git flake helper
@@ -138,7 +139,6 @@
       fet-sh # minimalistic fetch script
       brightnessctl # brightness control, used in waybar TODO laptop / notebook specific not needed as no worky on desktop :)
       qview # image viewer
-      gscreenshot # image capture
       imagemagick # bitmap editor cli
       libnotify # notifications
       wf-recorder # screen recorder
