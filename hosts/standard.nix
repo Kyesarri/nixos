@@ -151,6 +151,7 @@
       vlc # play me some vids
 
       ## TESTING ##
+      gnome.gnome-disk-utility
       inputs.wallpaper-generator.defaultPackage.x86_64-linux
       ## TESTING ##
 
