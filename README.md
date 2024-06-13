@@ -26,7 +26,7 @@ programs under [home](home/) come with nix-colors themes, change theme in [hosts
 ## use:
 clone this repository to your /home/username/
 
- ```git clone https://codeberg.org/kye/nixos```
+ ```cd ~ && git clone https://codeberg.org/kye/nixos```
 
 copy contents of your /etc/nixos/hardware-configuration.nix into a[hardware.nix](hosts/laptop/hardware.nix) of which host you plan to use
 
