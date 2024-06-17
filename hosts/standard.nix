@@ -131,7 +131,7 @@
       ###############
       # KISS PLEASE #
       ###############
-      gimp-with-plugins # image boi
+      # gimp-with-plugins # image boi
       graphite-cursors # cursor package, is this handled by /home/gtk/default.nix now? nope manual atm
       gnome-text-editor # still might want something with slightly more features, bit too barebones?
       nix-init # git flake helper
@@ -149,6 +149,7 @@
       curl # into the fetal position
       wl-clipboard # wl-copy and wl-paste for copy/paste from stdin / stdout
       vlc # play me some vids
+      # floorp # to replace firefox eventually # doesn't want to build :)
 
       ## TESTING ##
       gnome.gnome-disk-utility

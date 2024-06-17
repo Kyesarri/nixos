@@ -1,51 +1,61 @@
-let
-  scheme = "material-darker";
-in
-  {
-    config,
-    pkgs,
-    lib,
-    inputs,
-    outputs,
-    nix-colors,
-    spaghetti,
-    ...
-  }: {
-    imports = [
-      nix-colors.homeManagerModules.default
-      ./per-device.nix
+{
+  config,
+  pkgs,
+  lib,
+  inputs,
+  outputs,
+  nix-colors,
+  spaghetti,
+  ...
+}: {
+  imports = [
+    nix-colors.homeManagerModules.default
 
-      ../minimal.nix
-      ./hardware.nix
+    ./per-device.nix
+    ./hardware.nix
 
-      ../../hardware/battery
-      ../../hardware/bluetooth
-      ../../hardware/wireless/iwd
-      ../../hardware/audio
+    ../minimal.nix
 
-      ../../home
-      ../../home/bottom
-      ../../home/foot
-      ../../home/dunst
-      ../../home/copyq
-      ../../home/firefox
-      ../../home/git
-      ../../home/hypr
-      ../../home/lite-xl
-      ../../home/waybar
-      ../../home/gtk
-      ../../home/ulauncher
-    ];
+    ../../hardware/battery
+    ../../hardware/bluetooth
+    ../../hardware/wifi
+    ../../hardware/audio
 
-    colorscheme = inputs.nix-colors.colorSchemes.${scheme};
-    home-manager.users.${spaghetti.user}.colorscheme = inputs.nix-colors.colorSchemes.${scheme};
+    ../../home
+    ../../home/bottom
+    ../../home/copyq
+    ../../home/dunst
+    ../../home/firefox
+    ../../home/foot
+    ../../home/git
+    ../../home/gtk
+    ../../home/hypr
+    ../../home/lite-xl
+    ../../home/waybar
+    ../../home/ulauncher
+  ];
 
-    networking.hostName = "nix-notebook";
-
-    services.xserver.enable = true;
-
-    environment = {
-      systemPackages = with pkgs; [pciutils];
-      shellAliases.rebuild = "sudo nixos-rebuild switch --flake /home/${spaghetti.user}/nixos#nix-notebook --show-trace";
+  gnocchi = {
+    hypr = {
+      enable = true;
+      animations = false; # no config here yet - will need refactor
     };
-  }
+    hyprpaper.enable = true;
+    ags.enable = false;
+    gscreenshot.enable = true;
+    freetube.enable = true;
+
+    wifi.backend = "iwd";
+  };
+
+  colorscheme = inputs.nix-colors.colorSchemes.${spaghetti.scheme};
+
+  networking.hostName = "nix-notebook";
+
+  services.xserver.enable = true;
+
+  environment = {
+    systemPackages = with pkgs; [pciutils];
+    shellAliases.rebuild = "sudo nixos-rebuild switch --flake /home/${spaghetti.user}/nixos#nix-notebook --show-trace";
+  };
+}

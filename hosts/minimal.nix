@@ -4,10 +4,11 @@
   lib,
   outputs,
   inputs,
-  user,
+  spaghetti,
   ...
 }: {
   # low memory / resource usage config, runs around 500mb ram used idle at desktop
+  imports = [./console.nix];
   system.stateVersion = "23.11";
   time.timeZone = "Australia/Melbourne";
 
@@ -111,7 +112,7 @@
       XDG_CONFIG_HOME = "$HOME/.config";
       XDG_DATA_HOME = "$HOME/.local/share";
       XDG_STATE_HOME = "$HOME/.local/state";
-      NIXOS_OZONE_WL = "1"; # fixes electron apps in wayland, wasn't working for me :)
+      NIXOS_OZONE_WL = "1";
     };
 
     systemPackages = with pkgs; [
@@ -125,9 +126,9 @@
     ];
   };
 
-  users.users.${user} = {
+  users.users.${spaghetti.user} = {
     isNormalUser = true;
-    description = "${user}";
+    description = "${spaghetti.user}";
     extraGroups = ["networkmanager" "wheel"];
     packages = with pkgs; [
       brightnessctl # brightness control, used in waybar config for laptops only

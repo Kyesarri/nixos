@@ -40,7 +40,7 @@
 
     ../../home/tmux
     ../../home/gaming
-    ../../home/greetd # TODO testing without - issues on current flake.lock
+    ../../home/greetd
     #
     ../../home/kitty # /home/shell/ under mkOption, have foot / kitty / more? in there
     #
