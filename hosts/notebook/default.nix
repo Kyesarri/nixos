@@ -30,6 +30,7 @@
     ../../home/git
     ../../home/gtk
     ../../home/hypr
+    ../../keepassxc
     ../../home/lite-xl
     ../../home/waybar
     ../../home/ulauncher

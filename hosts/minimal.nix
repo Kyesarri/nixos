@@ -133,6 +133,8 @@
     packages = with pkgs; [
       brightnessctl # brightness control, used in waybar config for laptops only
       cinnamon.nemo-with-extensions # file manager
+      graphite-cursors # cursor package, is this handled by /home/gtk/default.nix now? nope manual atm
+
       qview # image viewer
       gnome.seahorse # key management
       shotman # image capture
@@ -141,7 +143,7 @@
       mate.mate-calc # calc
       p7zip # TODO needs a gui
       udiskie # usb mounting
-      bitwarden # password manager
+      inputs.wallpaper-generator.defaultPackage.x86_64-linux
     ];
   };
 }
