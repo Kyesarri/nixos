@@ -2,10 +2,10 @@
   config,
   inputs,
   outputs,
-  user,
+  spaghetti,
   ...
 }: {
-  home-manager.users.${user}.home.file.".config/waybar/config.jsonc" = {
+  home-manager.users.${spaghetti.user}.home.file.".config/waybar/config.jsonc" = {
     text = ''
       {
         "layer": "top",

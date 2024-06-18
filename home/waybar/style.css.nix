@@ -2,10 +2,10 @@
   config,
   inputs,
   outputs,
-  user,
+  spaghetti,
   ...
 }: {
-  home-manager.users.${user}.home.file.".config/waybar/style.css" = {
+  home-manager.users.${spaghetti.user}.home.file.".config/waybar/style.css" = {
     text = ''
       * {
           font-size: 14px;
