@@ -24,11 +24,13 @@ in
         "/etc/localtime:/etc/localtime:ro"
         "/dev/dri:/dev/dri"
 
+        "/hdda/movies:/movies/hdda"
         "/hddb/movies:/movies/hddb"
         "/hddc/movies:/movies/hddc"
         "/hddd/movies:/movies/hddd"
         "/hdde/movies:/movies/hdde"
 
+        "/hdda/tv_shows:/tv_shows/hdda"
         "/hddb/tv_shows:/tv_shows/hddb"
         "/hddc/tv_shows:/tv_shows/hddc"
         "/hddd/tv_shows:/tv_shows/hddd"
