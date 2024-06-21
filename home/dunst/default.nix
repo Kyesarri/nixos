@@ -1,8 +1,4 @@
-{
-  pkgs,
-  spaghetti,
-  ...
-}: {
+{spaghetti, ...}: {
   imports = [./config.nix];
 
   home-manager.users.${spaghetti.user} = {

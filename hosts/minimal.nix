@@ -1,8 +1,6 @@
 {
   config,
   pkgs,
-  lib,
-  outputs,
   inputs,
   spaghetti,
   ...

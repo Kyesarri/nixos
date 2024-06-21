@@ -1,8 +1,4 @@
-{
-  pkgs,
-  spaghetti,
-  ...
-}: {
+{spaghetti, ...}: {
   imports = [./theme.nix];
   programs.zsh = {
     enable = true;

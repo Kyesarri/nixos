@@ -1,9 +1,6 @@
 {
   spaghetti,
   secrets,
-  config,
-  pkgs,
-  lib,
   ...
 }: let
   contName = "invidious";

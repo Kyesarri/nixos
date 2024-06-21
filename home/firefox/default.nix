@@ -1,5 +1,4 @@
 {
-  config,
   pkgs,
   spaghetti,
   ...
@@ -17,7 +16,7 @@
     };
   };
 
-  environment.sessionVariables = rec {MOZ_ENABLE_WAYLAND = "1";}; # is this required anymore?
+  environment.sessionVariables = {MOZ_ENABLE_WAYLAND = "1";}; # is this required anymore?
 
   programs.firefox = {
     enable = true;

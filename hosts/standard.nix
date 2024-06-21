@@ -152,6 +152,7 @@
       # floorp # to replace firefox eventually # doesn't want to build :)
 
       ## TESTING ##
+      nixd
       gnome.gnome-disk-utility
       inputs.wallpaper-generator.defaultPackage.x86_64-linux
       ## TESTING ##

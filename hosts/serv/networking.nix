@@ -1,7 +1,5 @@
 {
   secrets,
-  config,
-  pkgs,
   lib,
   ...
 }: let

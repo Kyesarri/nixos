@@ -4,8 +4,6 @@ let
 in
   {
     spaghetti,
-    config,
-    pkgs,
     lib,
     ...
   }: {

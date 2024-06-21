@@ -2,7 +2,6 @@
 # original theme by SirHades696 with nix-colors added by dai
 {
   spaghetti,
-  inputs,
   config,
   ...
 }: {

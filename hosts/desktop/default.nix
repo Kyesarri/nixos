@@ -2,11 +2,8 @@ let
   scheme = "tokyo-night-dark";
 in
   {
-    config,
     pkgs,
-    lib,
     inputs,
-    outputs,
     nix-colors,
     spaghetti,
     ...

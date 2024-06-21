@@ -9,6 +9,10 @@
       "hddc" # hgst 4tb
       "hddd" # hgst 4tb
       "hdde" # hgst 4tb
+      "hddf" # wdc 1tb
+      "hddg" # wdc 1tb
+      "hddh" # wdc 1tb
+      "hddi" # st 2tb
     ];
     kernelParams = [
       # "i915.enable_fbc=1" # iGPU framebuffer compression, nfi if this works

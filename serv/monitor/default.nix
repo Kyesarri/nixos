@@ -11,11 +11,7 @@ let
     };
   };
 in
-  {
-    config,
-    pkgs,
-    ...
-  }: {
+  {config, ...}: {
     # grafana configuration
     networking.firewall.allowedTCPPorts = [serv.grafana.webPort serv.prometheus.port];
 

@@ -1,10 +1,4 @@
-{
-  config,
-  lib,
-  pkgs,
-  spaghetti,
-  ...
-}: {
+{...}: {
   users.groups.nginx = {}; # create group nginx
 
   users.extraUsers.nginx = {

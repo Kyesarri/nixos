@@ -2,13 +2,7 @@ let
   hostName = "home-assistant";
   webPort = 8123;
 in
-  {
-    spaghetti,
-    config,
-    pkgs,
-    lib,
-    ...
-  }: {
+  {spaghetti, ...}: {
     networking.firewall.allowedTCPPorts = [webPort];
 
     virtualisation.oci-containers.containers = {

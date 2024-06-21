@@ -9,15 +9,7 @@
     ./hypr
     ./nemo
   ];
-  home-manager.users.${spaghetti.user} = {
-    pkgs,
-    lib,
-    config,
-    inputs,
-    outputs,
-    nix-colors,
-    ...
-  }: {
+  home-manager.users.${spaghetti.user} = {inputs, ...}: {
     colorscheme = inputs.nix-colors.colorSchemes.${spaghetti.scheme};
 
     # import flake home-manager modules here
