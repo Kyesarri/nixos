@@ -65,6 +65,9 @@ in {
           entry:
             - rtsp://${secrets.user.entrycam}:${secrets.password.entrycam}@${secrets.ip.entrycam}:554/h264Preview_01_main
             # - "ffmpeg:entry#audio=opus"
+          front:
+            - rtsp://${secrets.user.frontcam}:${secrets.password.frontcam}@${secrets.ip.frontcam}:554/h264Preview_01_main
+            # - "ffmpeg:entry#audio=opus"
       #
       cameras:
         driveway:
@@ -85,6 +88,16 @@ in {
           ffmpeg:
             inputs:
             - path: rtsp://127.0.0.1:8554/entry
+              input_args: preset-rtsp-restream
+              roles:
+              - record
+              - detect
+      cameras:
+        front:
+          best_image_timeout: 60
+          ffmpeg:
+            inputs:
+            - path: rtsp://127.0.0.1:8554/front
               input_args: preset-rtsp-restream
               roles:
               - record
