@@ -60,13 +60,12 @@ in {
         streams:
           driveway:
             - ffmpeg:rtsp://${secrets.user.drivecam}:${secrets.password.drivecam}@${secrets.ip.drivecam}:554/h264Preview_01_main
-            # - "ffmpeg:http://${secrets.ip.drivecam}/flv?port=1935&app=bcs&stream=channel0_main.bcs&user=${secrets.user.drivecam}&password=${secrets.password.drivecam}"
             # - "ffmpeg:driveway#audio=opus"
           entry:
-            - rtsp://${secrets.user.entrycam}:${secrets.password.entrycam}@${secrets.ip.entrycam}:554/h264Preview_01_main
+            - ffmpeg:rtsp://${secrets.user.entrycam}:${secrets.password.entrycam}@${secrets.ip.entrycam}:554/h264Preview_01_main
             # - "ffmpeg:entry#audio=opus"
           front:
-            - rtsp://${secrets.user.frontcam}:${secrets.password.frontcam}@${secrets.ip.frontcam}:554/h264Preview_01_main
+            - ffmpeg:rtsp://${secrets.user.frontcam}:${secrets.password.frontcam}@${secrets.ip.frontcam}:554/h264Preview_01_main
             # - "ffmpeg:entry#audio=opus"
       #
       cameras:
@@ -92,7 +91,7 @@ in {
               roles:
               - record
               - detect
-      cameras:
+      #
         front:
           best_image_timeout: 60
           ffmpeg:
