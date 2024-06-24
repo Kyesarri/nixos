@@ -16,6 +16,8 @@
     ../../containers/haos
     ../../containers/frigate
     ../../containers/nginx-proxy-manager
+    ../../containers/zigbee2mqtt
+
     # ../../containers/uptime-kuma
   ];
 
