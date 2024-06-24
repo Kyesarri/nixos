@@ -4,23 +4,21 @@
   config,
   spaghetti,
   ...
-}:
-with lib; let
-  cfg = config.gnocchi.gscreenshot;
-in {
+}: {
   options.gnocchi = {
     gscreenshot = {
-      enable = mkEnableOption "enable gscreenshot";
+      enable = lib.mkEnableOption "enable gscreenshot";
     };
   };
 
-  config = mkMerge [
+  config = lib.mkMerge [
     (
-      mkIf (cfg.enable) {
+      lib.mkIf (config.gnocchi.gscreensho.enable) {
         #
         users.users.${spaghetti.user}.packages = [pkgs.gscreenshot];
-
+        #
         home-manager.users.${spaghetti.user} = {
+          #
           home.file.".config/hypr/per-app/gscreenshot.conf" = {
             text = ''
               # # take fullscreen screenshot and send to /user/screenshots/

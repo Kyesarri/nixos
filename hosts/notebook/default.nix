@@ -10,6 +10,7 @@
 
     ./per-device.nix
     ./hardware.nix
+    ./boot.nix
 
     ../minimal.nix
 
@@ -29,7 +30,7 @@
     ../../home/hypr
     ../../home/keepassxc
     ../../home/lite-xl
-    ../../home/waybar
+    # ../../home/waybar
     ../../home/ulauncher
   ];
 
@@ -39,11 +40,11 @@
       animations = false; # no config here yet - will need refactor
     };
     hyprpaper.enable = true;
-    ags.enable = false;
+    ags.enable = true;
     gscreenshot.enable = true;
     freetube.enable = true;
 
-    wifi.backend = "iwd";
+    wifi.backend = "nwm";
   };
 
   colorscheme = inputs.nix-colors.colorSchemes.${spaghetti.scheme};
