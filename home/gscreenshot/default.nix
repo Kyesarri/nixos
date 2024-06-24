@@ -13,7 +13,7 @@
 
   config = lib.mkMerge [
     (
-      lib.mkIf (config.gnocchi.gscreensho.enable) {
+      lib.mkIf (config.gnocchi.gscreenshot.enable) {
         #
         users.users.${spaghetti.user}.packages = [pkgs.gscreenshot];
         #
