@@ -1,9 +1,10 @@
 {...}: {
   imports = [
     ./arr
-    ./monitor
     #./caddy
     #./changedetection
+    ./monitor # renamee
     #./nginx
+    ./nut
   ];
 }
