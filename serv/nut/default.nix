@@ -2,32 +2,40 @@
 {...}: let
   vid = "047c";
   pid = "ffff";
-  upsName = "1920R";
+  upsname = "1920R";
   pass-master = "masterMonitorPassword"; # master password for nut
   pass-local = "localMonitorPassword"; # slave/local password for nut
 in {
+  # at some point something will make a /var/state/ups directory,
+  # chown that to nut:
+  # $ sudo chown nut:nut /var/state/ups
   power.ups = {
     enable = true;
     mode = "standalone";
-    maxStartDelay = 30;
-    ups."${upsName}" = {
-      description = "Dell UPS 1920R with EBM";
+    schedulerRules = "/etc/nixos/.config/nut/upssched.conf";
+    # debug by calling the driver:
+    # $ sudo NUT_CONFPATH=/etc/nut/ usbhid-ups -u nut -D -a apcsmx1500-a
+    ups."${upsname}" = {
+      # find your driver here:
+      # https://networkupstools.org/docs/man/usbhid-ups.html
       driver = "usbhid-ups";
+      description = "Trust UPS";
       port = "auto";
-      maxStartDelay = null;
       directives = [
         "vendorid = ${vid}"
         "productid = ${pid}"
         "user = nut"
         "group = nut"
         "explore"
+        # "ignorelb"
+        # "override.battery.charge.low = 50"
+        # "override.battery.runtime.low = 1200"
       ];
+      # this option is not valid for usbhid-ups
+      maxStartDelay = null;
     };
+    maxStartDelay = 30;
   };
-
-  services.udev.extraRules = ''
-    SUBSYSTEM=="usb", ATTRS{idVendor}=="${vid}", ATTRS{idProduct}=="${pid}", MODE="664", GROUP="nut", OWNER="nut" SYMLINK+="usb/ups"
-  '';
 
   users = {
     users.nut = {
@@ -40,7 +48,20 @@ in {
     };
     groups.nut = {};
   };
-  # reference: https://github.com/networkupstools/nut/tree/master/conf
+
+  services.udev.extraRules = ''
+    SUBSYSTEM=="usb", ATTRS{idVendor}=="${vid}", ATTRS{idProduct}=="${pid}", MODE="664", GROUP="nut", OWNER="nut" SYMLINK+="usb/ups"
+  '';
+
+  systemd.services.upsd.serviceConfig = {
+    User = "nut";
+    Group = "nut";
+  };
+
+  systemd.services.upsdrv.serviceConfig = {
+    User = "nut";
+    Group = "nut";
+  };
 
   # reference: https://github.com/networkupstools/nut/tree/master/conf
   environment.etc = {
@@ -75,7 +96,7 @@ in {
     # grep -v '#' /nix/store/8nciysgqi7kmbibd8v31jrdk93qdan3a-nut-2.7.4/etc/upsmon.conf.sample
     upsmonConf = {
       text = ''
-        MONITOR ${upsName}@127.0.0.1 1 monmaster "${pass-master}" master
+        MONITOR ${upsname}@127.0.0.1 1 monmaster "${pass-master}" master
 
         RUN_AS_USER nut
 
@@ -123,7 +144,3 @@ in {
     };
   };
 }
-/*
-Bus 001 Device 004: ID 047c:ffff Dell Computer Corp. UPS Tower 500W LV
-*/
-
