@@ -71,7 +71,7 @@ in {
   };
   upsmonConf = {
     text = ''
-      MONITOR ${upsname}@127.0.0.1 1 monmaster "${pass-master}" master
+      MONITOR ${upsName}@127.0.0.1 1 monmaster "${pass-master}" master
 
       RUN_AS_USER nut
 
