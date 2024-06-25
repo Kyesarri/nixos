@@ -1,4 +1,5 @@
-# taken config from https://github.com/miniBill/machines-config/blob/b5d88bff6cb72dd95842504152f761239a11dd10/uriel/ups.nix
+## taken config from https://github.com/miniBill/machines-config/blob/b5d88bff6cb72dd95842504152f761239a11dd10/uriel/ups.nix
+## from what I'm seeing with these errors, MINSUPPLIES needs to be set to 1, not via symlink at EOF
 {...}: let
   vid = "047c";
   pid = "ffff";
@@ -9,6 +10,8 @@ in {
   # at some point something will make a /var/state/ups directory,
   # chown that to nut:
   # $ sudo chown nut:nut /var/state/ups
+  #
+  ## this can be handled by scripts from my containers add a # TODO here
   power.ups = {
     enable = true;
     mode = "standalone";
@@ -38,15 +41,13 @@ in {
   };
 
   users = {
+    groups.nut = {};
     users.nut = {
       isSystemUser = true;
       group = "nut";
-      # it does not seem to do anything with this directory
-      # but something errored without it, so whatever
       home = "/var/lib/nut";
       createHome = true;
     };
-    groups.nut = {};
   };
 
   services.udev.extraRules = ''

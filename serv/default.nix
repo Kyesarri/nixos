@@ -3,7 +3,7 @@
     ./arr
     #./caddy
     #./changedetection
-    ./monitor # renamee
+    ./monitor
     #./nginx
     ./nut
   ];
