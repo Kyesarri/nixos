@@ -55,7 +55,7 @@ in {
 
   environment.etc."oci.cont/${contName}/config/config.yml" = {
     text = ''
-      #
+      ##
       go2rtc:
         streams:
           driveway:
