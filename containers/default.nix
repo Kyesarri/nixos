@@ -13,6 +13,6 @@
     podman
     podman-tui
     intel-gpu-tools # intel igpu monitor
-    intel-compute-runtime # openCL filter support (hardware tonemapping and subtitle burn-in)
+    intel-compute-runtime # openCL filter support (hardware tonemapping and subtitle burn-in) for another #TODO jellyfin
   ];
 }

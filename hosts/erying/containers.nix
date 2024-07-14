@@ -4,16 +4,17 @@
   ...
 }: {
   imports = [
-    ../../containers # will  be the only module required once serv is depreciated
+    ../../containers # will be the only module required once serv is depreciated, not sure this will go to plan yet
     # ../../containers/arr # temp
     ../../containers/adguard
     ../../containers/cpai
     ../../containers/doubletake
     ../../containers/emqx
     ../../containers/esphome
+    ../../containers/frigate
     ../../containers/homer
     ../../containers/haos
-    ../../containers/frigate
+    ../../containers/matter
     ../../containers/nginx-proxy-manager
     ../../containers/zigbee2mqtt
 
@@ -23,11 +24,18 @@
   systemd.services."podman-network-macvlan_lan" = {
     path = [pkgs.podman];
     wantedBy = [
+      "podman-adguard.service"
+      "podman-cpai.service"
+      "podman-doubletake.service"
       "podman-emqx.service"
+      "podman-emqx.service"
+      "podman-esphome.service"
+      "podman-frigate.service"
       "podman-homer.service"
       "podman-haos.service"
-      "podman-frigate.service"
+      "podman-matter.service"
       "podman-nginx-proxy-manager.service"
+      "podman-zigbee2mqtt.service"
     ];
     serviceConfig = {
       Type = "oneshot";
