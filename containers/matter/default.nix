@@ -11,7 +11,7 @@ in {
   virtualisation.oci-containers.containers.${contName} = {
     hostname = "${contName}";
     autoStart = true;
-    image = "ghcr.io/home-assistant-libs/python-matter-server:stable";
+    image = "ghcr.io/home-assistant-libs/python-matter-server:latest";
 
     volumes = [
       "/run/dbus:/run/dbus:ro"
