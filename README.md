@@ -1,4 +1,7 @@
 # 🍝 nixos
+
+[<img src="screenshots/1.jpg" width="90%" />](screenshots/1.jpg) 
+
 my public nixos configuration, system specific configs for:
 
 ### desktop
@@ -23,9 +26,8 @@ pixel 7 pro - toying with the idea, lots to mess with - not in-tree
 
 ## screenshots
 
- [<img src="screenshots/1.jpg" width="45%" />](screenshots/1.jpg) 
  [<img src="screenshots/2.jpg" width="45%" />](screenshots/2.jpg) 
- [<img src="screenshots/3.jpg" width="90%" />](screenshots/3.jpg) 
+ [<img src="screenshots/3.jpg" width="45%" />](screenshots/3.jpg) 
 
 current wip using ags, not complete by any standard
 
