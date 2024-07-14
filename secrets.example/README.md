@@ -1,5 +1,5 @@
 # ssssh it's a secret
-please see [example.secrets.json](/secrets/example.secrets.json) - many of my configs require secrets for ip / email addresses / passwords and so on
+please see [example.secrets.json](/secrets.example/example.secrets.json) - many of my configs require secrets for ip / email addresses / passwords and so on
 
 ## warning
 if using my configs / pushing to your own public git you will need to use git-crypt on your own secrets.json
