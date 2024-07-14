@@ -1,36 +1,57 @@
-# 🍝 nixos
+<p align="center"> <font size="10">🍝 nixos</font></p>
 
-[<img src="screenshots/1.jpg" />](screenshots/1.jpg) 
+[<img src="screenshots/header.readme.jpg" />](screenshots/header.readme.jpg)
 
-my public nixos configuration, system specific configs for:
+<details>
+    <summary> <p align="center"> <font size="4"> my public nixos configuration, system specific configs for...
+</font></p> </summary>
 
-### desktop
-13900kf - rtx 3070 - mostly un-used configs not up-to-date
+<p align="center">
+<table>
+  <tr>
+    <th>machine</th>
+    <th>cpu</th>
+    <th>gpu</th>
+    <th>use case</th>
+  </tr>
+  <tr>
+    <td>serv</td>
+    <td>9900k</td>
+    <td>igpu</td>
+    <td>file server & container host</td>
+  </tr>
+  <tr>
+    <td>erying</td>
+    <td>1370p es</td>
+    <td>igpu</td>
+    <td>container host</td>
+  </tr>
+  <tr>
+    <td>laptop</td>
+    <td>4800hs</td>
+    <td>gtx1650 | igpu</td>
+    <td>gaming / writing nix configs</td>
+  </tr>
+  <tr>
+    <td>notebook</td>
+    <td>n3700</td>
+    <td>igpu</td>
+    <td>meme</td>
+  </tr>
+  <tr>
+    <td>desktop</td>
+    <td>13900kf</td>
+    <td>rtx3070</td>
+    <td>gaming</td>
+  </tr>
+</table>
 
-### serv
-9900k - file server, plex & misc services
-
-### laptop
-ga401ih - 4800hs - gtx 1650 - main pc
-
-### notebook
-cl10w-c - celeron? 4gb? 64gb? fun thing to toy with, reasonably capable considering it's age
-
-### erying
-erying Q1J2 - intel 1370p~ engineering sample - hosts many containers, sips power
-
-### todo - nix-on-droid
-pixel 7 pro - toying with the idea, lots to mess with - not in-tree
-
-###  (づ ￣ ³￣)づ
+</details>
+</p>
 
 ## screenshots
 
- [<img src="screenshots/2.jpg" width="45%" />](screenshots/2.jpg) 
- [<img src="screenshots/3.jpg" width="45%" />](screenshots/3.jpg) 
-
-current wip using ags, not complete by any standard
-
+[link](/screenshots/)
 
 ## included
 see [standard.nix](hosts/standard.nix), [minimal.nix](hosts/minimal.nix) or [headless.nix](hosts/headless.nix) for base packages
