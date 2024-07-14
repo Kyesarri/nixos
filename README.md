@@ -1,11 +1,13 @@
-<p align="center"> <font size="16">🍝 nixos</font></p>
+<p align="center"> <font size="16">
+🍝 nixos
+</font>
+</p>
 
 [<img src="screenshots/header.readme.jpg" />](screenshots/header.readme.jpg)
 
 <details>
     <summary> <p align="center"> <font size="4"> my public nixos configuration, system specific configs for...
-</font></p> </summary>
-
+</font></p></summary>
 <p align="center">
 <table>
   <tr>
@@ -51,7 +53,7 @@
 
 ## screenshots
 
-[link](/screenshots/)
+[link](screenshots/README.md)
 
 ## included
 see [standard.nix](hosts/standard.nix), [minimal.nix](hosts/minimal.nix) or [headless.nix](hosts/headless.nix) for base packages
