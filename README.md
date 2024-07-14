@@ -1,4 +1,4 @@
-<p align="center"> <font size="10">🍝 nixos</font></p>
+<p align="center"> <font size="16">🍝 nixos</font></p>
 
 [<img src="screenshots/header.readme.jpg" />](screenshots/header.readme.jpg)
 
