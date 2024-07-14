@@ -1,6 +1,6 @@
 # 🍝 nixos
 
-[<img src="screenshots/1.jpg" width="90%" />](screenshots/1.jpg) 
+[<img src="screenshots/1.jpg" />](screenshots/1.jpg) 
 
 my public nixos configuration, system specific configs for:
 
