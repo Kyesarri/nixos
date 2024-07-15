@@ -20,6 +20,7 @@ in {
 
       extraOptions = [
         "--device=/dev/ttyUSB0"
+        "--network=macvlan_lan"
         "--ip=${secrets.ip.haos}"
         "--privileged"
       ];
