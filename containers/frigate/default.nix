@@ -136,6 +136,15 @@ in {
         topic_prefix: frigate
         user: ${secrets.user.frigate-emqx}
       #
+      timestamp_style:
+        position: "tl"
+        format: "%d/%m/%Y %H:%M:%S"
+        effect: shadow
+        color:
+          red: 255
+          green: 255
+          blue: 255
+      #
       objects:
         track:
         - cat

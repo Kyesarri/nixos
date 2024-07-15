@@ -30,15 +30,3 @@ in {
     ];
   };
 }
-/*
-mkdir data
-docker run -d \
---name matter-server \
---restart=unless-stopped \
---security-opt apparmor=unconfined \
--v $(pwd)/data:/data \
--v /run/dbus:/run/dbus:ro \
---network=host \
-ghcr.io/home-assistant-libs/python-matter-server:stable
-*/
-
