@@ -95,7 +95,7 @@
   hardware = {
     pulseaudio.enable = false;
     # enableRedistributableFirmware = lib.mkDefault true;
-    opengl = {
+    graphics = {
       enable = true;
       extraPackages = with pkgs; [
         vaapiIntel
