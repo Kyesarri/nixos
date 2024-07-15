@@ -86,7 +86,6 @@
     enableRedistributableFirmware = lib.mkDefault true;
     opengl = {
       enable = true;
-      driSupport = true;
       extraPackages = with pkgs; [
         vaapiIntel
         libvdpau-va-gl
