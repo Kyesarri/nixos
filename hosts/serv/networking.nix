@@ -31,7 +31,7 @@
     networks."10-lan" = {
       address = ["${toString secrets.ip.serv-1}/24"];
       gateway = ["${toString secrets.ip.gateway}"];
-      matchConfig.Name = ["enp3s0"];
+      matchConfig.Name = ["eno1"];
       networkConfig = {
         IPv6PrivacyExtensions = "yes";
         MulticastDNS = true;
