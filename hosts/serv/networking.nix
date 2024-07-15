@@ -53,7 +53,7 @@
 
   systemd.network.networks = {
     "10-lan" = {
-      matchConfig.Name = ["enp3s0"];
+      matchConfig.Name = ["eno1"];
       networkConfig.LinkLocalAddressing = "no";
       linkConfig.RequiredForOnline = "carrier";
       extraConfig = ''
