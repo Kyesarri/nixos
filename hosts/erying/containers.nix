@@ -13,7 +13,7 @@
     ../../containers/esphome
     ../../containers/frigate
     ../../containers/homer
-    ../../containers/haos
+    # ../../containers/haos # needs configs, complete barebones
     ../../containers/matter
     ../../containers/nginx-proxy-manager
     ../../containers/zigbee2mqtt
@@ -32,7 +32,7 @@
       "podman-esphome.service"
       "podman-frigate.service"
       "podman-homer.service"
-      "podman-haos.service"
+      # "podman-haos.service"
       "podman-matter.service"
       "podman-nginx-proxy-manager.service"
       "podman-zigbee2mqtt.service"

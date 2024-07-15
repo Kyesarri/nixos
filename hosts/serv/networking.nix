@@ -1,12 +1,9 @@
 {
   secrets,
+  config,
   lib,
   ...
-}: let
-  chrony = 123;
-  tailscale = 41641;
-  ssh = 22;
-in {
+}: {
   networking = {
     hostName = "nix-serv";
     hostId = "bed5b7cd"; # required for lvm disks
@@ -14,56 +11,65 @@ in {
     useNetworkd = true;
     usePredictableInterfaceNames = lib.mkDefault true;
 
-    nat = {
-      enable = true;
-      internalInterfaces = ["veth+"];
-      externalInterface = "enp3s0";
-    };
-
     firewall = {
       enable = true;
       checkReversePath = "loose"; # fixes connection issues with tailscale
-      allowedTCPPorts = [ssh chrony 22];
-      allowedUDPPorts = [tailscale chrony 53];
+      allowedTCPPorts = [22 123];
+      allowedUDPPorts = [config.services.tailscale.port 123];
     };
   };
 
-  systemd.network.networks."50-eno1" = {
-    matchConfig.Name = "eno1"; # integrated 1g, primary connection
-    address = ["${toString secrets.ip.serv-1}/24"];
-    routes = [{routeConfig.Gateway = "${toString secrets.ip.gateway}";}];
-    linkConfig.RequiredForOnline = "routable";
+  services.resolved.dnssec = "false";
+
+  boot.kernel.sysctl = {
+    "net.ipv4.conf.all.forwarding" = true;
+    "net.ipv6.conf.all.forwarding" = true;
   };
 
-  # Config for the physical interface itself with DHCP enabled and associated to a MACVLAN.
-  systemd.network.networks."40-enp" = {
-    matchConfig.Name = "enp3s0";
-    networkConfig.DHCP = "yes";
-    dhcpConfig.UseDNS = "no";
-    networkConfig.MACVLAN = "mv-enp-host";
-    linkConfig.RequiredForOnline = "no";
-    address = lib.mkForce [];
-    addresses = lib.mkForce [];
+  boot.initrd.systemd.network = {
+    enable = true;
+    networks."10-lan" = {
+      address = ["${toString secrets.ip.serv-1}/24"];
+      gateway = ["${toString secrets.ip.gateway}"];
+      matchConfig.Name = ["enp3s0"];
+      networkConfig = {
+        IPv6PrivacyExtensions = "yes";
+        MulticastDNS = true;
+      };
+      linkConfig.RequiredForOnline = "routable";
+    };
   };
 
-  # The host-side sub-interface of the MACVLAN. This means that the host is reachable
-  # at ip, both on the physical interface and from the container.
-  systemd.network.networks."20-mv-enp-host" = {
-    matchConfig.Name = "mv-enp-host";
-    networkConfig.IPForward = "yes";
-    dhcpV4Config.ClientIdentifier = "mac";
-    address = lib.mkForce ["${toString secrets.ip.serv-2}/24"];
-    routes = [{routeConfig.Gateway = "${toString secrets.ip.gateway}";}];
-  };
-
-  systemd.network.netdevs."20-mv-enp-host" = {
+  systemd.network.netdevs."10-lan-self" = {
     netdevConfig = {
-      Name = "mv-enp-host";
+      Name = "lan-self";
       Kind = "macvlan";
     };
     extraConfig = ''
       [MACVLAN]
       Mode=bridge
     '';
+  };
+
+  systemd.network.networks = {
+    "10-lan" = {
+      matchConfig.Name = ["enp3s0"];
+      networkConfig.LinkLocalAddressing = "no";
+      linkConfig.RequiredForOnline = "carrier";
+      extraConfig = ''
+        [Network]
+        MACVLAN=lan-self
+      '';
+    };
+    "20-lan-self" = {
+      address = ["${toString secrets.ip.serv-1}/24"];
+      gateway = ["${toString secrets.ip.gateway}"];
+      matchConfig.Name = "lan-self";
+      networkConfig = {
+        IPv6PrivacyExtensions = "yes";
+        MulticastDNS = true;
+      };
+      linkConfig.RequiredForOnline = "routable";
+    };
   };
 }

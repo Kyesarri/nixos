@@ -11,11 +11,12 @@
     useNetworkd = true;
     usePredictableInterfaceNames = lib.mkDefault true;
     resolvconf.dnsExtensionMechanism = false;
+
     firewall = {
       enable = true;
       checkReversePath = "loose"; # fixes connection issues with tailscale
-      allowedTCPPorts = [22];
-      allowedUDPPorts = [config.services.tailscale.port];
+      allowedTCPPorts = [22 123];
+      allowedUDPPorts = [config.services.tailscale.port 123];
     };
   };
 
