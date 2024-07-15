@@ -11,7 +11,7 @@ in {
   virtualisation.oci-containers.containers.${contName} = {
     hostname = "${contName}";
     autoStart = true;
-    image = "homeassistant/amd64-addon-matter-server:latest";
+    image = "home-assistant-libs/python-matter-server:6.2.2";
 
     volumes = [
       "/run/dbus:/run/dbus:ro"
