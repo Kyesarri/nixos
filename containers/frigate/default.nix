@@ -140,6 +140,7 @@ in {
         position: "tl"
         format: "%d/%m/%Y %H:%M:%S"
         effect: shadow
+        thickness: 3
         color:
           red: 255
           green: 255
