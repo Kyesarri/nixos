@@ -32,7 +32,7 @@
     <td>laptop</td>
     <td>4800hs</td>
     <td>gtx1650 | igpu</td>
-    <td>gaming / writing nix configs</td>
+    <td>main machine, general purpose</td>
   </tr>
   <tr>
     <td>notebook</td>
@@ -51,6 +51,13 @@
 </details>
 </p>
 
+## what and why?
+these configs are both practical and a learning experience for me, most are in use currently (desktop needs ram, erying stole it).
+
+i've taken snippits of code from all over the web (added links where i remembered to... sorry!), written much of my own and want to contribute my configs hoping they will help others.
+
+comments are included in many modules, some simple, some chicken-scratch from me figuring things out.
+
 ## screenshots
 
 [link](screenshots/README.md)
@@ -62,7 +69,6 @@ in addition any of the hosts [default.nix](hosts/laptop/default.nix) for additio
 modules are having options (slowly) added, see [/home/hypr/default.nix](home/hypr/default.nix)
 
 ### containers
-
 please see [readme](containers/README.md)
 
 ## about
@@ -86,6 +92,7 @@ open the root [flake.nix](flake.nix), change the ```user = "kel";``` line to you
 run ```sudo nixos-rebuild switch --flake /home/username/nixos#hostname --show-trace``` while changing username and hostname to what you have configured
 
 things may / will fail, happy to helpout when my time permits
+
 ## issues
 
 ### ags

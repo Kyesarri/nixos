@@ -7,7 +7,7 @@ secrets / ip managed by gitcrypt
 
 storage in /etc/oci.cont/contName for erying / new containers
 
-each container *should* generate directories with correct perms
+each container ***should*** generate directories with correct perms
 
 ## adguard
 barebones without any defined configs
