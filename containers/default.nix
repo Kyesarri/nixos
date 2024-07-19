@@ -16,3 +16,6 @@
     intel-compute-runtime # openCL filter support (hardware tonemapping and subtitle burn-in) for another #TODO jellyfin
   ];
 }
+# currently handles packages required / nice-to-have for containers,
+# will eventually import all containers much like ~/home/default.nix is transitioning to
+

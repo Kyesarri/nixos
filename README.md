@@ -61,6 +61,10 @@ see [standard.nix](hosts/standard.nix), [minimal.nix](hosts/minimal.nix) or [hea
 in addition any of the hosts [default.nix](hosts/laptop/default.nix) for additional packages with configuration.
 modules are having options (slowly) added, see [/home/hypr/default.nix](home/hypr/default.nix)
 
+### containers
+
+please see [readme](containers/README.md)
+
 ## about
 programs in /home [home/pkgname](home/kitty/default.nix) have bindings, themes and exec at boot where applicable. add / remove in [hosts/hostname/default.nix](hosts/laptop/default.nix) FIXME these are changing as per above
 
