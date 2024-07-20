@@ -1,7 +1,6 @@
 {
   config,
   pkgs,
-  spaghetti,
   ...
 }: {
   hardware = {

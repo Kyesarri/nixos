@@ -113,9 +113,9 @@ in {
             preload = /home/${spaghetti.user}/wallpapers/5.png
             # ^ images must be preloaded to display
             wallpaper = , /home/${spaghetti.user}/wallpapers/1.jpg
-            # ^ any display, directory/name.ext
+            # ^ any display, directory/file.ext
             splash = false
-            # ^ adds splash text to wallpaper when true
+            # ^ adds splash text to wallpaper
           '';
         };
         home.file.".config/hypr/per-app/hyprpaper.conf" = {

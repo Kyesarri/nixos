@@ -1,7 +1,7 @@
 {
   pkgs,
-  spaghetti,
   secrets,
+  spaghetti,
   ...
 }: {
   users.users.${spaghetti.user}.packages = [pkgs.git-crypt];

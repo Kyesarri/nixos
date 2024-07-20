@@ -25,7 +25,7 @@ in {
       #
       users.users.${spaghetti.user}.packages = [pkgs.freetube]; # enable freetube
       home-manager.users.${spaghetti.user}.home.file.".config/hypr/per-app/freetube.conf" = {
-        # add aspect ratio rule to picture-in-picture popup
+        # add aspect ratio rule to picture-in-picture popup for hyprland
         text = ''
           windowrule = keepaspectratio, title:Picture-in-picture
         '';

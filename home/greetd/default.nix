@@ -1,6 +1,5 @@
 # yoinked from https://github.com/sjcobb2022/nixos-config/blob/main/hosts/common/optional/greetd.nix
 # xoxo love this
-# not working anymore with current flake.lock - v0.10? - might be again? requires further testing
 {
   inputs,
   pkgs,

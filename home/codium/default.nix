@@ -26,7 +26,6 @@
         windowrulev2 = bordercolor $cd99, initialClass:^(codium-url-handler)$
       '';
     };
-    # TODO needs nix-colors added rather than hard-coded
     home.file.".config/VSCodium/User/settings.json" = {
       text = ''
         {

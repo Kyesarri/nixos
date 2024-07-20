@@ -14,6 +14,7 @@
     pkgs.libsForQt5.qt5ct
     pkgs.libsForQt5.qtstyleplugins
   ];
+
   home-manager.users.${spaghetti.user} = {
     services.kdeconnect = {
       enable = true;

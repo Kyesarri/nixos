@@ -4,7 +4,7 @@
     kernelParams = [
       "nowatchdog" # disables watchdog, was causing shutdown / reboot issues with wifi
       "quiet" # removes boot messages, testing for plymouth themes, TODO move to plymouth /service/ ?
-    ]; # TODO tsc and cache laptop only?
+    ];
 
     loader = {
       systemd-boot.enable = true;

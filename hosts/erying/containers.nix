@@ -1,3 +1,5 @@
+# this module configures which containers our host will be running
+# along with our macvlan (containers get their own ip address vs using ports from the host)
 {
   secrets,
   pkgs,

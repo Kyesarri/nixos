@@ -1,3 +1,6 @@
+# heaps going on here, some fairly straightforward like host-name
+# others like hostid (for zfs) are not so intuitive
+# macvlan config is further down in this file
 {
   secrets,
   config,

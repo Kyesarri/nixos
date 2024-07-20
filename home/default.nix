@@ -9,8 +9,9 @@
     ./hypr
     ./nemo
   ];
+
   home-manager.users.${spaghetti.user} = {inputs, ...}: {
-    colorscheme = inputs.nix-colors.colorSchemes.${spaghetti.scheme};
+    colorscheme = inputs.nix-colors.colorSchemes.${spaghetti.scheme}; # set nix-colors theme in home-manager
 
     # import flake home-manager modules here
     imports = [
@@ -19,7 +20,8 @@
       inputs.prism.homeModules.prism
       inputs.hyprland.homeManagerModules.default
     ];
-    programs.home-manager.enable = true; # home manager enables itself, freaky tequila magic
+
+    programs.home-manager.enable = true; # enable home-manager
     xdg.enable = true;
     home.username = "${spaghetti.user}";
     home.homeDirectory = "/home/${spaghetti.user}";

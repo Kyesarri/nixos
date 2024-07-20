@@ -16,7 +16,7 @@ in {
     volumes = [
       "/run/dbus:/run/dbus:ro"
       "/etc/localtime:/etc/localtime:ro"
-      "${toString dir1}:/etc/codeproject/ai"
+      "${toString dir1}:/data"
     ];
 
     environment = {
