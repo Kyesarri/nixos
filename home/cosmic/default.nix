@@ -9,5 +9,8 @@
     cosmic-files
     cosmic-settings
     cosmic-screenshot
+    cosmic-edit
+    cosmic-panel
+    cosmic-osd
   ];
 }

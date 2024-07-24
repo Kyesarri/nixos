@@ -31,8 +31,8 @@
 
     ags.url = "github:Aylur/ags"; # shell
 
-    auto-cpufreq.url = "github:AdnanHodzic/auto-cpufreq";
-    auto-cpufreq.inputs.nixpkgs.follows = "nixpkgs";
+    # auto-cpufreq.url = "github:AdnanHodzic/auto-cpufreq";
+    # auto-cpufreq.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs = {
@@ -46,7 +46,7 @@
     # hycov,
     alejandra,
     nix-colors,
-    auto-cpufreq,
+    # auto-cpufreq,
     prism,
     wallpaper-generator,
     ...
@@ -61,13 +61,13 @@
     };
     secrets = builtins.fromJSON (builtins.readFile "${self}/secrets/secrets.json");
     system = "x86_64-linux";
-    specialArgs = {inherit nix-colors secrets auto-cpufreq inputs prism spaghetti wallpaper-generator;};
+    specialArgs = {inherit nix-colors secrets inputs prism spaghetti wallpaper-generator;}; # auto-cpufreq
   in {
     nixosConfigurations = {
       "nix-laptop" = nixpkgs.lib.nixosSystem {
         inherit system specialArgs;
         modules = [
-          auto-cpufreq.nixosModules.default
+          # auto-cpufreq.nixosModules.default
           home-manager.nixosModules.home-manager
           ./hosts/laptop # 4800hs / 1650 / 16gb ddr4 TODO download more ram
           {

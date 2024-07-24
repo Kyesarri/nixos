@@ -78,6 +78,7 @@
   networking.hostName = "nix-laptop";
 
   programs = {
+    /*
     auto-cpufreq = {
       enable = true;
       settings = {
@@ -91,6 +92,7 @@
         };
       };
     };
+    */
   };
 
   services = {
