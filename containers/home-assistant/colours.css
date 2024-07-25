@@ -1,4 +1,4 @@
-.colours {
+.temps {
     --temp0: #72c2d1;
     --temp1: #7293d1;
     --temp2: #8172d1;
@@ -6,4 +6,13 @@
     --temp4: #d17293;
     --temp5: #d18172;
     --temp6: #d1b172;
+}
+
+.hvac {
+    --fan_only: #6F6F70AA;
+    --dry: #E4A382AA;
+    --heat: #DF5273AA;
+    --cool: #24A8B4AA;
+    --auto: #90ffcaAA;
+    --none: #1C1E26;
 }
