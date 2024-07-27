@@ -20,8 +20,10 @@ in {
       "${toString dir1}:/root/.hsd"
     ];
 
-    environment = {};
-
+    environment = {
+      PUID = "1000";
+      PGID = "1000";
+    };
     extraOptions = [
       "--network=macvlan_lan"
       "--ip=${secrets.ip.hsd}"
