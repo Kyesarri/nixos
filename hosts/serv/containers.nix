@@ -7,6 +7,7 @@
     ../../containers
     ../../containers/home-assistant # oci
     ../../containers/plex # oci
+    ../../containers/hsd
   ];
 
   systemd.services."podman-network-macvlan_lan" = {
