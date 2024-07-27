@@ -21,12 +21,12 @@ in {
     environment = {
       PUID = "1000";
       PGID = "1000";
+      api-key = "${toString secrets.hsd.api}";
     };
 
     extraOptions = [
       "--network=macvlan_lan"
       "--ip=${secrets.ip.hsd}"
-      "--api-key=${secrets.hsd.api}"
     ];
   };
 }
