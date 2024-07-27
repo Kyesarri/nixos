@@ -26,6 +26,7 @@ in {
     extraOptions = [
       "--network=macvlan_lan"
       "--ip=${secrets.ip.hsd}"
+      "--api-key=${secrets.hsd.api}"
     ];
   };
 }
