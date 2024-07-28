@@ -12,6 +12,7 @@ in
       ''mkdir -p /home/${spaghetti.user}/.containers/${hostName}'';
 
     networking.firewall.allowedTCPPorts = [32400];
+    networking.firewall.allowedUDPPorts = [32400];
 
     virtualisation.oci-containers.containers.${hostName} = {
       hostname = "${hostName}-nix-serv";
