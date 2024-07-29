@@ -21,12 +21,12 @@ in {
     environment = {
       PUID = "1000";
       PGID = "1000";
-      # ELUA = "TRUE";
       TYPE = "QUILT";
     };
 
+    cmd = ["-e ELUA=TRUE"]; # pass commandline arg to image entrypoint
+
     extraOptions = [
-      "--env ELUA=TRUE"
       "--network=macvlan_lan"
       "--ip=${secrets.ip.minecraft}"
     ];
