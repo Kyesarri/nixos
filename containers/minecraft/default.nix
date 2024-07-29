@@ -21,11 +21,12 @@ in {
     environment = {
       PUID = "1000";
       PGID = "1000";
-      ELUA = "TRUE";
+      # ELUA = "TRUE";
       TYPE = "QUILT";
     };
 
     extraOptions = [
+      "-e ELUA=TRUE"
       "--network=macvlan_lan"
       "--ip=${secrets.ip.minecraft}"
     ];
