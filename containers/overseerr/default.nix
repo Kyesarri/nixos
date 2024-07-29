@@ -4,7 +4,7 @@
   ...
 }: let
   contName = "overseerr";
-  dir1 = "/etc/oci.cont/${contName}/data";
+  dir1 = "/etc/oci.cont/${contName}/config";
 in {
   system.activationScripts.makeCodeProjectDir = lib.stringAfter ["var"] ''mkdir -v -p ${toString dir1} & chown 1000:1000 ${toString dir1}'';
 
