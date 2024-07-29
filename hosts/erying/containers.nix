@@ -18,6 +18,7 @@
     # ../../containers/haos # needs configs, complete barebones
     ../../containers/matter
     ../../containers/nginx-proxy-manager
+    ../../containers/nginx-proxy-manager-2
     ../../containers/zigbee2mqtt
     ../../containers/overseerr
     # ../../containers/uptime-kuma
