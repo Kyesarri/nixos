@@ -11,12 +11,11 @@ in {
   virtualisation.oci-containers.containers.${contName} = {
     hostname = "${contName}";
     autoStart = true;
-    image = " lscr.io/linuxserver/overseerr:latest";
+    image = "sctx/overseerr";
 
     volumes = [
-      "/run/dbus:/run/dbus:ro"
       "/etc/localtime:/etc/localtime:ro"
-      "${toString dir1}:/config"
+      "${toString dir1}:/app/config"
     ];
 
     environment = {
