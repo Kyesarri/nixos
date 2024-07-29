@@ -17,6 +17,7 @@
     ../../containers/homer
     # ../../containers/haos # needs configs, complete barebones
     ../../containers/matter
+    ../../containers/minecraft
     ../../containers/nginx-proxy-manager
     ../../containers/nginx-proxy-manager-2
     ../../containers/zigbee2mqtt
