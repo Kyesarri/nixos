@@ -4,14 +4,14 @@
   ...
 }: let
   contName = "minecraft";
-  dir1 = "/etc/oci.cont/${contName}/data";
+  dir1 = "/etc/oci.cont/${contName}";
 in {
   system.activationScripts.makeCodeProjectDir = lib.stringAfter ["var"] ''mkdir -v -p ${toString dir1} & chown 1000:1000 ${toString dir1}'';
 
   virtualisation.oci-containers.containers."${contName}" = {
     hostname = "${contName}";
     autoStart = true;
-    image = "itzg/minecraft-server";
+    image = "itzg/minecraft-server:latest";
 
     volumes = [
       "/etc/localtime:/etc/localtime:ro"
@@ -26,7 +26,7 @@ in {
     };
 
     extraOptions = [
-      "-e ELUA=TRUE"
+      "--env ELUA=TRUE"
       "--network=macvlan_lan"
       "--ip=${secrets.ip.minecraft}"
     ];
