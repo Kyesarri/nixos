@@ -7,7 +7,7 @@
     ../../containers
     ../../containers/home-assistant # oci
     ../../containers/plex # oci
-    ../../containers/hsd
+    # ../../containers/hsd # ehh keeps crashing
   ];
 
   systemd.services."podman-network-macvlan_lan" = {
