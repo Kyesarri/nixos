@@ -19,12 +19,13 @@ in {
     ];
 
     environment = {
+      ELUA = true;
       PUID = "1000";
       PGID = "1000";
-      TYPE = "QUILT";
+      # TYPE = "QUILT";
     };
 
-    cmd = ["-e ELUA=TRUE"]; # pass commandline arg to image entrypoint
+    # cmd = ["-e ELUA=TRUE"]; # pass commandline arg to image entrypoint
 
     extraOptions = [
       "--network=macvlan_lan"
