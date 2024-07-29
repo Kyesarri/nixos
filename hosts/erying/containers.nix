@@ -19,7 +19,7 @@
     ../../containers/matter
     ../../containers/nginx-proxy-manager
     ../../containers/zigbee2mqtt
-
+    ../../containers/overseerr
     # ../../containers/uptime-kuma
   ];
 
