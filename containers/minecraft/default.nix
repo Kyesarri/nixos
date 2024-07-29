@@ -19,7 +19,7 @@ in {
     ];
 
     environment = {
-      ELUA = true;
+      ELUA = "true";
       PUID = "1000";
       PGID = "1000";
       # TYPE = "QUILT";
