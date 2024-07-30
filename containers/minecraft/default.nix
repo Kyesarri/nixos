@@ -8,6 +8,8 @@
 in {
   system.activationScripts.makeCodeProjectDir = lib.stringAfter ["var"] ''mkdir -v -p ${toString dir1} & chown 1000:1000 ${toString dir1}'';
 
+  environment.etc."oci.cont/${contName}/elua.txt" = {text = ''elua=true'';}; # test elua workaround
+
   virtualisation.oci-containers.containers."${contName}" = {
     hostname = "${contName}";
     autoStart = true;
@@ -21,10 +23,7 @@ in {
     environment = {
       PUID = "1000";
       PGID = "1000";
-      TYPE = "QUILT";
     };
-
-    cmd = ["-e ELUA=true"]; # pass commandline arg to image entrypoint
 
     extraOptions = [
       "--network=macvlan_lan"
