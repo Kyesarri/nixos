@@ -13,7 +13,7 @@ in {
   environment.etc = {
     "oci.cont/${contName}/favicon.png".source = ./favicon.png;
 
-    "oci.cont/${contName}/proxy/proxy.yml".text = ''
+    "oci.cont/${contName}/proxies/proxy.yml".text = ''
       domains:
         - "${toString secrets.domain.minecraft}"
       addresses:
