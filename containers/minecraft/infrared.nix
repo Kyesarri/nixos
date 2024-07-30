@@ -5,8 +5,9 @@
 }: let
   contName = "infrared";
   dir1 = "/etc/oci.cont/${contName}";
+  dir2 = "/etc/oci.cont/${contName}/static";
 in {
-  system.activationScripts."make${contName}Dir" = lib.stringAfter ["var"] ''mkdir -v -p ${toString dir1} & chown 1000:1000 ${toString dir1}'';
+  system.activationScripts."make${contName}Dir" = lib.stringAfter ["var"] ''mkdir -v -p ${toString dir1} ${toString dir2}'';
 
   # create symlinks in /etc - not sure if we can only write to paths relative to /etc
   # symlink file from nix tree to our container dir
