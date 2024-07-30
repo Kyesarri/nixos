@@ -1,6 +1,5 @@
 {
   secrets,
-  self,
   lib,
   ...
 }: let
@@ -25,7 +24,7 @@ in {
 
     volumes = [
       "/etc/localtime:/etc/localtime:ro"
-      "${self}/containers/minecraft/config.yml:/config.yml"
+      "/home/kel/nixos/containers/minecraft/config.yml:/config.yml"
     ];
 
     extraOptions = [
