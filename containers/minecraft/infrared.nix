@@ -10,17 +10,27 @@ in {
 
   # create symlinks in /etc - not sure if we can only write to paths relative to /etc
   # symlink file from nix tree to our container dir
-  environment.etc."oci.cont/${contName}/favicon.png".source = ./favicon.png;
+  environment.etc = {
+    "oci.cont/${contName}/favicon.png".source = ./favicon.png;
+    "oci.cont/${contName}/proxies/proxy.yml".text = ''
+      # This is the domain that players enter in their game client.
+      # You can have multiple domains here or just one.
+      # Currently this holds just a wildcard character as a domain
+      # meaning that is accepts every domain that a player uses.
+      # Supports '*' and '?' wildcards in the pattern string.
+      #
+      domains:
+        - "${toString secrets.domain.minecraft}"
+
+      addresses:
+        - ${toString secrets.ip.minecraft}:25565
+    '';
+  };
 
   virtualisation.oci-containers.containers."${contName}" = {
     hostname = "${contName}";
     autoStart = true;
     image = "haveachin/infrared:latest";
-
-    environment = {
-      domain = "${toString secrets.domain.minecraft}";
-      server1 = "${toString secrets.ip.minecraft}";
-    };
 
     volumes = [
       "/etc/localtime:/etc/localtime:ro"
