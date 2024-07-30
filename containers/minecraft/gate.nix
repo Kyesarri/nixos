@@ -15,6 +15,7 @@ in {
 
     volumes = [
       "/etc/localtime:/etc/localtime:ro"
+      "${toString dir1}:/"
     ];
 
     extraOptions = [
