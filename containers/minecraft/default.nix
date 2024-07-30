@@ -4,7 +4,7 @@
   ...
 }: let
   contName = "minecraft";
-  dir1 = "/etc/oci.cont/${contName}";
+  dir1 = "/etc/oci.cont/${contName}/data";
 in {
   system.activationScripts."make${contName}Dir" = lib.stringAfter ["var"] ''mkdir -v -p ${toString dir1}'';
 
