@@ -32,6 +32,11 @@ in {
     autoStart = true;
     image = "haveachin/infrared:latest";
 
+    environment = {
+      INFRARED_PROXIES_DIR = "proxies.yml";
+      INFRARED_CONFIG = "config.yml";
+    };
+
     volumes = [
       "/etc/localtime:/etc/localtime:ro"
       "${toString dir1}:/etc/infrared"
