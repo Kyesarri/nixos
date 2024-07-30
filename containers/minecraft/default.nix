@@ -6,7 +6,7 @@
   contName = "minecraft";
   dir1 = "/etc/oci.cont/${contName}/data";
 in {
-  system.activationScripts.makeCodeProjectDir = lib.stringAfter ["var"] ''mkdir -v -p ${toString dir1} & chown 1000:1000 ${toString dir1}'';
+  system.activationScripts.makeCodeProjectDir = lib.stringAfter ["var"] ''mkdir -v -p ${toString dir1} & chown 9001:9001 ${toString dir1}'';
 
   virtualisation.oci-containers.containers."${contName}" = {
     hostname = "${contName}";
@@ -19,8 +19,8 @@ in {
     ];
 
     environment = {
-      # PUID = "1000";
-      # PGID = "1000";
+      PUID = "9001";
+      PGID = "9001";
     };
 
     extraOptions = [
