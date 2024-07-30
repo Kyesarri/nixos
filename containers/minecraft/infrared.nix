@@ -15,7 +15,7 @@ in {
   virtualisation.oci-containers.containers."${contName}" = {
     hostname = "${contName}";
     autoStart = true;
-    image = "ghcr.io/minekube/gate:latest";
+    image = "etc/infrared";
 
     environment = {
       domain = "${toString secrets.domain.minecraft}";
@@ -24,12 +24,12 @@ in {
 
     volumes = [
       "/etc/localtime:/etc/localtime:ro"
-      "/home/kel/nixos/containers/minecraft/config.yml:/config.yml"
+      "${toString dir1}:etc/infrared"
     ];
 
     extraOptions = [
       "--network=macvlan_lan"
-      "--ip=${secrets.ip.gate}"
+      "--ip=${secrets.ip.infrared}"
     ];
   };
 }
