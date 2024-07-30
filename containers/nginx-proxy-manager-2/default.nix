@@ -8,7 +8,7 @@
   dir1 = "/home/${spaghetti.user}/.containers/${hostName}/data";
   dir2 = "/home/${spaghetti.user}/.containers/${hostName}/letsencrypt";
 in {
-  system.activationScripts.makeNginxDir = lib.stringAfter ["var"] ''mkdir -v -p ${toString dir1} ${toString dir2} & chown 1000:1000 ${toString dir1} & chown 1000:1000 ${toString dir2}'';
+  system.activationScripts.makeNginx2Dir = lib.stringAfter ["var"] ''mkdir -v -p ${toString dir1} ${toString dir2} & chown 1000:1000 ${toString dir1} & chown 1000:1000 ${toString dir2}'';
 
   virtualisation.oci-containers.containers.${hostName} = {
     hostname = "${hostName}";

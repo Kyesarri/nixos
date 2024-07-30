@@ -4,9 +4,9 @@
   ...
 }: let
   contName = "minecraft";
-  dir1 = "/etc/oci.cont/${contName}/data";
+  dir1 = "/etc/oci.cont/${contName}";
 in {
-  system.activationScripts.makeCodeProjectDir = lib.stringAfter ["var"] ''mkdir -v -p ${toString dir1}''; # & chown 9001:9001 ${toString dir1}
+  system.activationScripts."make${contName}Dir" = lib.stringAfter ["var"] ''mkdir -v -p ${toString dir1}'';
 
   virtualisation.oci-containers.containers."${contName}" = {
     hostname = "${contName}";
@@ -17,11 +17,6 @@ in {
       "/etc/localtime:/etc/localtime:ro"
       "${toString dir1}:/data"
     ];
-
-    # environment = {
-    #   PUID = "9001";
-    #   PGID = "9001";
-    # };
 
     extraOptions = [
       "--network=macvlan_lan"
