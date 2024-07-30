@@ -11,7 +11,7 @@ config:
   onlineMode: true
 
   servers:
-    server1: ${server1}
+    server1: ${server1}:25565
 
   try:
     - server1
