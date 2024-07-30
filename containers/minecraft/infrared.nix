@@ -3,7 +3,7 @@
   lib,
   ...
 }: let
-  contName = "gate";
+  contName = "infrared";
   dir1 = "/etc/oci.cont/${contName}";
 in {
   system.activationScripts."make${contName}Dir" = lib.stringAfter ["var"] ''mkdir -v -p ${toString dir1}'';

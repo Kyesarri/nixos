@@ -1,1 +1,1 @@
-{imports = [./server.nix ./gate.nix];}
+{imports = [./server.nix ./infrared.nix];}
