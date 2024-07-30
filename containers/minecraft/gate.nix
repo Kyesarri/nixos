@@ -108,6 +108,7 @@ in {
 
         lite:
           enabled: false
+
           routes:
             - host: localhost
               backend: localhost:25566
