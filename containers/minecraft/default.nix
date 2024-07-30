@@ -15,7 +15,7 @@ in {
 
     volumes = [
       "/etc/localtime:/etc/localtime:ro"
-      "${toString dir1}/data:/data"
+      "${toString dir1}:/data"
     ];
 
     environment = {
