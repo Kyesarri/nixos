@@ -11,11 +11,11 @@ in {
   virtualisation.oci-containers.containers."${contName}" = {
     hostname = "${contName}";
     autoStart = true;
-    image = "hashicraft/minecraft:latest";
+    image = "marctv/minecraft-papermc-server:latest";
 
     volumes = [
       "/etc/localtime:/etc/localtime:ro"
-      "${toString dir1}:/data"
+      "${toString dir1}/data:/data"
     ];
 
     environment = {
