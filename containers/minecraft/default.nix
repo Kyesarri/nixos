@@ -8,12 +8,10 @@
 in {
   system.activationScripts.makeCodeProjectDir = lib.stringAfter ["var"] ''mkdir -v -p ${toString dir1} & chown 1000:1000 ${toString dir1}'';
 
-  environment.etc."oci.cont/${contName}/elua.txt" = {text = ''elua=true'';}; # test elua workaround
-
   virtualisation.oci-containers.containers."${contName}" = {
     hostname = "${contName}";
     autoStart = true;
-    image = "itzg/minecraft-server:latest";
+    image = "hashicraft/minecraft:latest";
 
     volumes = [
       "/etc/localtime:/etc/localtime:ro"
