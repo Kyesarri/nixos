@@ -12,7 +12,8 @@ in {
   # symlink file from nix tree to our container dir
   environment.etc = {
     "oci.cont/${contName}/favicon.png".source = ./favicon.png;
-    "oci.cont/${contName}/proxies.yml".text = ''
+    /*
+      "oci.cont/${contName}/proxies.yml".text = ''
       # This is the domain that players enter in their game client.
       # You can have multiple domains here or just one.
       # Currently this holds just a wildcard character as a domain
@@ -25,6 +26,7 @@ in {
       addresses:
         - ${toString secrets.ip.minecraft}:25565
     '';
+    */
   };
 
   virtualisation.oci-containers.containers."${contName}" = {
