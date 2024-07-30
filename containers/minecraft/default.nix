@@ -22,10 +22,9 @@ in {
       PUID = "1000";
       PGID = "1000";
       TYPE = "QUILT";
-      # ELUA = "TRUE";
     };
 
-    cmd = ["ELUA=TRUE"]; # pass commandline arg to image entrypoint
+    cmd = ["-e ELUA=true"]; # pass commandline arg to image entrypoint
 
     extraOptions = [
       "--network=macvlan_lan"
