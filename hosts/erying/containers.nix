@@ -19,7 +19,7 @@
     ../../containers/matter
     ../../containers/minecraft
     ../../containers/nginx-proxy-manager
-    ../../containers/nginx-proxy-manager-2
+    ../../containers/nginx-proxy-manager-2 # change to nginx-wan "soon"
     ../../containers/zigbee2mqtt
     ../../containers/overseerr
     # ../../containers/uptime-kuma
@@ -38,7 +38,9 @@
       "podman-homer.service"
       # "podman-haos.service"
       "podman-matter.service"
+      "podman-minecraft.service"
       "podman-nginx-proxy-manager.service"
+      "podman-nginx-proxy-manager-2.service"
       "podman-zigbee2mqtt.service"
     ];
     serviceConfig = {
