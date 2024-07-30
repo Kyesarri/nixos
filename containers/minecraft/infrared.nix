@@ -24,7 +24,7 @@ in {
 
     volumes = [
       "/etc/localtime:/etc/localtime:ro"
-      "${toString dir1}:etc/infrared"
+      "${toString dir1}:/etc/infrared"
     ];
 
     extraOptions = [
