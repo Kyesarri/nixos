@@ -14,15 +14,8 @@ in {
     "oci.cont/${contName}/favicon.png".source = ./favicon.png;
 
     "oci.cont/${contName}/proxy/proxy.yml".text = ''
-      # This is the domain that players enter in their game client.
-      # You can have multiple domains here or just one.
-      # Currently this holds just a wildcard character as a domain
-      # meaning that is accepts every domain that a player uses.
-      # Supports '*' and '?' wildcards in the pattern string.
-      #
       domains:
         - "${toString secrets.domain.minecraft}"
-
       addresses:
         - ${toString secrets.ip.minecraft}:25565
     '';
