@@ -27,7 +27,7 @@ in {
     # create symlinks in /etc - not sure if we can only write to paths relative to /etc
 
     # symlink file from nix tree to our container dir
-    "oci.cont/${contName}/favicon.png".source = [./favicon.png];
+    # "oci.cont/${contName}/favicon.png".source = [./favicon.png];
 
     # write our config to desired location
     "oci.cont/${contName}/config.yml".text = ''
