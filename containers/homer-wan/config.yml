@@ -9,7 +9,7 @@ logo: "logo.png"
 header: true
 footer: '<p> (づ ￣ ³￣)づ </p>'
 
-theme: default
+theme: neon
 colors:
   light:
     highlight-primary: "#3367d6"
@@ -25,9 +25,9 @@ colors:
     link: "#3273dc"
     link-hover: "#363636"
   dark:
-    highlight-primary: "#24A8B4" #
-    highlight-secondary: "#B072D1" #
-    highlight-hover: "#B072D1" #
+    highlight-primary: "#232530" #
+    highlight-secondary: "#E58D7D" #
+    highlight-hover: "#6F6F70" #
     background: "#1C1E26" #
     card-background: "#232530" #
     text: "#CBCED0" #
@@ -38,23 +38,18 @@ colors:
     link: "#DF5273" #
     link-hover: "#E93C58" #
 
-# Services
-# First level array represent a group.
-# Leave only a "items" key if not using group (group name, icon & tagstyle are optional, section separation will not be displayed).
 services:
-  - name: "services"
+  - name: "things"
     items:
       - name: "plex"
         subtitle: "watch things"
-        tag: "arr"
+        tag: "plex"
         url: "https://www.yur.mom/plex"
-
       - name: "overseerr"
-        subtitle: "request things"
-        tag: "arr"
+        subtitle: "now taking requests"
+        tag: "request"
         url: "https://www.yur.mom/request"
-
-      - name: "minecraft"
-        subtitle: "copy link, break blocks"
-        tag: "gam"
-        url: "www.yur.mom"
+      - name: "spaghetti"
+        subtitle: "just like she used to make"
+        tag: "nixos"
+        url: "https://codeberg.org/kye/nixos"
