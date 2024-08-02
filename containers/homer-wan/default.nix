@@ -3,7 +3,7 @@
   lib,
   ...
 }: let
-  contName = "homer";
+  contName = "homer-wan";
   dir1 = "/etc/oci.cont/${contName}";
 in {
   system.activationScripts."make${contName}Dir" = lib.stringAfter ["var"] ''
