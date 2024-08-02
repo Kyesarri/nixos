@@ -15,6 +15,7 @@
     ../../containers/esphome
     ../../containers/frigate
     ../../containers/homer
+    ../../containers/homer-wan
     # ../../containers/haos # needs configs, complete barebones
     ../../containers/matter
     ../../containers/minecraft
@@ -32,16 +33,17 @@
       "podman-cpai.service"
       "podman-doubletake.service"
       "podman-emqx.service"
-      "podman-emqx.service"
       "podman-esphome.service"
       "podman-frigate.service"
       "podman-homer.service"
+      "podman-homer-wan.service"
       # "podman-haos.service"
       "podman-matter.service"
       "podman-minecraft.service"
       "podman-nginx-proxy-manager.service"
       "podman-nginx-proxy-manager-2.service"
       "podman-zigbee2mqtt.service"
+      "podman-overseerr.service"
     ];
     serviceConfig = {
       Type = "oneshot";

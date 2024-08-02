@@ -148,6 +148,7 @@
       wl-clipboard # wl-copy and wl-paste for copy/paste from stdin / stdout
       vlc # play me some vids
       usbimager # says on the tin
+      ventoy-full
       # floorp # to replace firefox eventually # doesn't want to build :)
 
       ## TESTING ##

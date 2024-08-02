@@ -13,7 +13,7 @@ in {
   # symlink file from nix tree to our container dir
   environment.etc = {
     "oci.cont/${contName}/favicon.png".source = ./favicon.png;
-
+    # below might be causing issues, created /etc/infrared/static dir to see if that would get around these issues - it didnt :)
     "oci.cont/${contName}/proxies/proxy.yml".text = ''
       domains:
         - "${toString secrets.domain.minecraft}"
