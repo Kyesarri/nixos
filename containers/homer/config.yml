@@ -68,6 +68,12 @@ services:
         tag: "proxy"
         url: "https://wan.home/"
 
+      - name: "frigate"
+        icon: "fas fa-globe-asia fa-fw"
+        subtitle: "Local NVR"
+        tag: "nvr"
+        url: "https://frigate.home/"
+
   - name: "devices"
     items:
       - name: "ap0"
