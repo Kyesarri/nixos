@@ -69,10 +69,22 @@ services:
         url: "https://wan.home/"
 
       - name: "frigate"
-        icon: "fas fa-globe-asia fa-fw"
-        subtitle: "Local NVR"
+        icon: "fas fa-video fa-fw"
+        subtitle: "NVR"
         tag: "nvr"
         url: "https://frigate.home/"
+
+      - name: "home-assistant"
+        icon: "fas fa-house-user fa-fw"
+        subtitle: "Smart Home Controls"
+        tag: "haos"
+        url: "https://haos.home/"
+
+      - name: "plex"
+        icon: "fas fa-house-user fa-fw"
+        subtitle: "Media Server"
+        tag: "plelx"
+        url: "https://plex.home/"
 
   - name: "devices"
     items:
