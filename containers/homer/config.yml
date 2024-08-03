@@ -46,6 +46,8 @@ colors:
 message:
   url: https://www.yomama-jokes.com/api/v1/jokes/random
   refreshInterval: 10000
+  style: "is-warning"
+  icon: "fa fa-exclamation-triangle"
   mapping:
     title: 'category'
     content: 'joke'
