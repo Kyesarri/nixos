@@ -44,14 +44,14 @@ colors:
     link-hover: "#E93C58" # hover icons
 
 message:
-  url: https://www.yomama-jokes.com/api/v1/jokes/random/
+  url: https://www.yomama-jokes.com/api/v1/jokes/random
   refreshInterval: 10000
   mapping:
     title: 'category'
     content: 'joke'
 
 services:
-  - name: " "
+  - name: "servers"
     icon: "fad fa-server"
     items:
       - name: ""
