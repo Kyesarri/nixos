@@ -11,7 +11,7 @@ in {
   '';
 
   environment.etc."oci.cont/${contName}/config.yml" = {
-    mode = "043";
+    mode = "644";
     uid = 1000;
     text = ''
       ---
