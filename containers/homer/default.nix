@@ -15,6 +15,7 @@ in {
     gid = 1000; # set gid
     source = ./config.yml; # source file
   };
+
   virtualisation.oci-containers.containers."${contName}" = {
     hostname = "${contName}";
     autoStart = true;
