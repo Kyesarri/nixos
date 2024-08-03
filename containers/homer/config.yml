@@ -46,9 +46,9 @@ colors:
 message:
   url: https://www.yomama-jokes.com/api/v1/jokes/random/
   refreshInterval: 10000
-    mapping:
-      title: 'category'
-      content: 'joke'
+  mapping:
+    title: 'category'
+    content: 'joke'
 
 services:
   - name: " "
