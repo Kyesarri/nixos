@@ -13,6 +13,7 @@ in {
   environment.etc."oci.cont/${contName}/config.yml" = {
     mode = "644";
     uid = 1000;
+    gid = 1000;
     text = ''
       ---
       # Homepage configuration
