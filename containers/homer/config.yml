@@ -39,7 +39,7 @@ colors:
     text-header: "#DCDFE4" #
     text-title: "#DCDFE4" #
     text-subtitle: "#DCDFE4" #
-    card-shadow: rgb(228, 163, 130, 0.7) # #24A8B4 also used on footer
+    card-shadow: rgb(228, 163, 130, 0.3) # #24A8B4 also used on footer
     link: "#DF5273" # used for icons
     link-hover: "#E93C58" # hover icons
 
