@@ -10,8 +10,8 @@ footer: '<p> (づ ￣ ³￣)づ </p>'
 
 connectivityCheck: false
 defaults:
-  layout: list # Either 'columns', or 'list'
-  colorTheme: dark # One of 'auto', 'light', or 'dark'
+  layout: list
+  colorTheme: dark
 
 links:
   - name: "homer - this page"
