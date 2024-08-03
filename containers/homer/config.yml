@@ -3,13 +3,13 @@
 # See https://fontawesome.com/v5/search for icons options
 
 title: "homer.home"
-# subtitle: " "
+subtitle: "local services"
 logo: "logo.png"
 
 header: true
 footer: '<p> (づ ￣ ³￣)づ </p>'
 
-connectivityCheck: false
+connectivityCheck: true
 defaults:
   layout: list
   colorTheme: dark
@@ -45,26 +45,57 @@ colors:
 
 message:
   url: https://www.yomama-jokes.com/api/v1/jokes/random
-  refreshInterval: 10000
-  style: "is-warning"
-  icon: "fa fa-exclamation-triangle"
   mapping:
     title: 'category'
     content: 'joke'
+  refreshInterval: 10000
+  style: "is-warning"
+  icon: "fa fa-exclamation-triangle"
+
 
 services:
-  - name: "servers"
-    icon: "fad fa-server"
+  - name: "services"
     items:
-      - name: ""
-        logo: "assets/tools/sample.png"
-        subtitle: "Bookmark example"
-        tag: "app"
-        keywords: "self hosted reddit"
-        url: "https://www.reddit.com/r/selfhosted/"
-        # target: "_blank" # optional html a tag target attribute
-      - name: "UPS"
-        logo: "assets/tools/sample2.png"
-        subtitle: "Dell 1920"
-        tag: "app"
+      - name: "nginx-local"
+        icon: "fas fa-route fa-fw"
+        subtitle: "Internal Reverse Proxy"
+        tag: "proxy"
+        url: "https://nginx.home/"
+
+      - name: "nginx-wan"
+        icon: "fas fa-globe-asia fa-fw"
+        subtitle: "External Reverse Proxy"
+        tag: "proxy"
+        url: "https://wan.home/"
+
+  - name: "devices"
+    items:
+      - name: "ap0"
+        icon: "fas fa-wifi"
+        subtitle: "OpenWRT Google WiFi"
+        tag: "wifi"
+        url: "https://ap0.home/"
+
+      - name: "ap1"
+        icon: "fas fa-wifi"
+        subtitle: "OpenWRT Google WiFi"
+        tag: "wifi"
+        url: "https://ap1.home/"
+
+      - name: "ap2"
+        icon: "fas fa-wifi"
+        subtitle: "OpenWRT Google WiFi"
+        tag: "wifi"
+        url: "https://ap2.home/"
+
+      - name: "gateway"
+        icon: "fas fa-ethernet"
+        subtitle: "OpenWRT Ubiquiti EdgeRouter 4"
+        tag: "gateway"
+        url: "https://edge.home/"
+
+      - name: "ups"
+        icon: "fas fa-battery-empty fa-fw"
+        subtitle: "Dell 1920 Rackmount UPS"
+        tag: "ups"
         url: "https://ups.home/"
