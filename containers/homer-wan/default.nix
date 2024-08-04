@@ -11,7 +11,7 @@ in {
   '';
 
   environment.etc."oci.cont/${contName}/config.yml" = {
-    mode = "644"; # this fixed heaps of my issues <3
+    mode = "644"; # <3
     uid = 1000; # set uid
     gid = 1000; # set gid
     source = ./config.yml; # source file

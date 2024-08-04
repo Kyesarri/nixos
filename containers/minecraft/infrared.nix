@@ -5,21 +5,30 @@
 }: let
   contName = "infrared";
   dir1 = "/etc/oci.cont/${contName}";
-  dir2 = "/etc/oci.cont/${contName}/static";
 in {
-  system.activationScripts."make${contName}Dir" = lib.stringAfter ["var"] ''mkdir -v -p ${toString dir1} ${toString dir2}'';
+  system.activationScripts."make${contName}Dir" = lib.stringAfter ["var"] ''
+    mkdir -v -p ${toString dir1} & chown 1000:1000 ${toString dir1}
+  '';
 
-  # create symlinks in /etc - not sure if we can only write to paths relative to /etc
-  # symlink file from nix tree to our container dir
   environment.etc = {
-    "oci.cont/${contName}/favicon.png".source = ./favicon.png;
-    # below might be causing issues, created /etc/infrared/static dir to see if that would get around these issues - it didnt :)
-    "oci.cont/${contName}/proxies/proxy.yml".text = ''
-      domains:
-        - "${toString secrets.domain.minecraft}"
-      addresses:
-        - ${toString secrets.ip.minecraft}:25565
-    '';
+    "oci.cont/${contName}/favicon.png" = {
+      mode = "644";
+      uid = 1000;
+      gid = 1000;
+      source = ./favicon.png;
+    };
+
+    "oci.cont/${contName}/proxies/proxy.yml" = {
+      mode = "644";
+      uid = 1000;
+      gid = 1000;
+      text = ''
+        domains:
+          - "${toString secrets.domain.minecraft}"
+        addresses:
+          - ${toString secrets.ip.minecraft}:25565
+      '';
+    };
   };
 
   virtualisation.oci-containers.containers."${contName}" = {
@@ -28,8 +37,10 @@ in {
     image = "haveachin/infrared:latest";
 
     environment = {
-      INFRARED_PROXIES_DIR = "./proxies";
-      INFRARED_CONFIG = "config.yml";
+      PUID = "1000";
+      PGID = "1000";
+      # INFRARED_PROXIES_DIR = "./proxies";
+      # INFRARED_CONFIG = "config.yml";
     };
 
     volumes = [
