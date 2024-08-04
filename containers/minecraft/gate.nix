@@ -94,7 +94,7 @@ in {
 
           forwarding:
           # Options: legacy, none, velocity
-            mode: modern
+            mode: velocity
 
           # quota:
           #   connections:
