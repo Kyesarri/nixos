@@ -92,7 +92,9 @@ in {
           onlineModeKickExistingPlayers: false
           debug: true
 
-          # proxyProtocol: false
+          forwarding:
+          # Options: legacy, none, velocity
+            mode: modern
 
           # quota:
           #   connections:
@@ -110,9 +112,6 @@ in {
             enabled: false
             port: 25577
             showPlugins: false
-
-          # auth:
-          #   sessionServerUrl: https://sessionserver.mojang.com/session/minecraft/hasJoined
 
           lite:
             enabled: false
