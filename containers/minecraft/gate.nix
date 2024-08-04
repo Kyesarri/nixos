@@ -22,7 +22,7 @@ in {
 
     volumes = [
       "/etc/localtime:/etc/localtime:ro"
-      "${toString dir1}/config.yml:/config.yml"
+      "${toString dir1}/config.yml:/config.yml" # fun workaround...
       "${toString dir1}/favicon.png:/favicon.png"
     ];
 

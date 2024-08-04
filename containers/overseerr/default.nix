@@ -11,7 +11,7 @@ in {
   virtualisation.oci-containers.containers.${contName} = {
     hostname = "${contName}";
     autoStart = true;
-    image = "sctx/overseerr";
+    image = "sctx/overseerr:latest";
 
     volumes = [
       "/etc/localtime:/etc/localtime:ro"
