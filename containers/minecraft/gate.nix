@@ -63,7 +63,7 @@ in {
 
           status:
             # server image 64x64 base64 nintendo64
-            favicon: ./favicon.png
+            # favicon: ./favicon.png
             showMaxPlayers: 1000
             logPingRequests: true
             announceForge: false
