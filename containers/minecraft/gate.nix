@@ -23,6 +23,7 @@ in {
     volumes = [
       "/etc/localtime:/etc/localtime:ro"
       "${toString dir1}/config.yml:/config.yml"
+      "${toString dir1}/favicon.png:/favicon.png"
     ];
 
     extraOptions = [
@@ -63,7 +64,7 @@ in {
 
           status:
             # server image 64x64 base64 nintendo64
-            # favicon: ./favicon.png
+            favicon: ./favicon.png
             showMaxPlayers: 1000
             logPingRequests: true
             announceForge: false
@@ -90,7 +91,7 @@ in {
           readTimeout: 30s
           failoverOnUnexpectedServerDisconnect: true
           onlineModeKickExistingPlayers: false
-          debug: false
+          debug: true
 
           forwarding:
             mode: legacy
