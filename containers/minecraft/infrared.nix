@@ -39,7 +39,7 @@ in {
     environment = {
       PUID = "1000";
       PGID = "1000";
-      INFRARED_PROXIES_DIR = ".";
+      INFRARED_PROXIES_DIR = "./proxies";
       INFRARED_CONFIG = "config.yml";
     };
 
