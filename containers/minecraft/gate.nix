@@ -63,16 +63,15 @@ in {
             - server1
 
           status:
-            # server image 64x64 base64 nintendo64
             favicon: ./favicon.png
-            showMaxPlayers: 1000
+            showMaxPlayers: 420
             logPingRequests: true
             announceForge: false
             motd: |
               §b LETS VISIT
               §b➞ §f${secrets.domain.minecraft}
 
-          acceptTransfers: false
+          #  acceptTransfers: false
           bungeePluginChannelEnabled: true
           builtinCommands: true
           requireBuiltinCommandPermissions: false
@@ -83,9 +82,9 @@ in {
             §c${secrets.domain.minecraft} is going down...
             ...
 
-          compression:
-            threshold: 256
-            level: -1
+          #  compression:
+          #   threshold: 256
+          #   level: -1
 
           connectionTimeout: 5s
           readTimeout: 30s
@@ -93,31 +92,27 @@ in {
           onlineModeKickExistingPlayers: false
           debug: true
 
-          forwarding:
-            mode: legacy
-            # velocitySecret: secret_here
+          # proxyProtocol: false
 
-          proxyProtocol: false
-
-          quota:
-            connections:
-              enabled: true
-              ops: 5
-              burst: 10
-              maxEntries: 1000
-            logins:
-              enabled: true
-              burst: 3
-              ops: 0.4
-              maxEntries: 1000
+          # quota:
+          #   connections:
+          #     enabled: true
+          #     ops: 5
+          #     burst: 10
+          #     maxEntries: 1000
+          #   logins:
+          #     enabled: true
+          #     burst: 3
+          #     ops: 0.4
+          #    maxEntries: 1000
 
           query:
             enabled: false
             port: 25577
             showPlugins: false
 
-          auth:
-            sessionServerUrl: https://sessionserver.mojang.com/session/minecraft/hasJoined
+          # auth:
+          #   sessionServerUrl: https://sessionserver.mojang.com/session/minecraft/hasJoined
 
           lite:
             enabled: false
