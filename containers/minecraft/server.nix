@@ -8,6 +8,15 @@
 in {
   system.activationScripts."make${contName}Dir" = lib.stringAfter ["var"] ''mkdir -v -p ${toString dir1}'';
 
+  environment.etc = {
+    "oci.cont/${contName}/server.properties" = {
+      mode = "644";
+      uid = 1000;
+      gid = 1000;
+      source = ./server.properties;
+    };
+  };
+
   virtualisation.oci-containers.containers."${contName}" = {
     hostname = "${contName}";
     autoStart = true;

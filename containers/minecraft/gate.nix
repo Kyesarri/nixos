@@ -57,14 +57,14 @@ in {
           onlineMode: true
 
           servers:
-            server1: ${secrets.ip.minecraft}:25565
+            main: ${secrets.ip.minecraft}:25565
 
           try:
-            - server1
+            - main
 
           status:
             favicon: ./favicon.png
-            showMaxPlayers: 420
+            showMaxPlayers: 42069
             logPingRequests: true
             announceForge: false
             motd: |
@@ -95,18 +95,6 @@ in {
           forwarding:
           # Options: legacy, none, velocity
             mode: velocity
-
-          # quota:
-          #   connections:
-          #     enabled: true
-          #     ops: 5
-          #     burst: 10
-          #     maxEntries: 1000
-          #   logins:
-          #     enabled: true
-          #     burst: 3
-          #     ops: 0.4
-          #    maxEntries: 1000
 
           query:
             enabled: false
