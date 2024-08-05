@@ -15,6 +15,12 @@ in {
       gid = 1000;
       source = ./server.properties;
     };
+    "oci.cont/${contName}/config/paper-global.yml" = {
+      mode = "644";
+      uid = 1000;
+      gid = 1000;
+      source = ./paper-global.yml;
+    };
   };
 
   virtualisation.oci-containers.containers."${contName}" = {
