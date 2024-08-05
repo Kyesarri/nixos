@@ -44,10 +44,6 @@ in {
       uid = 1000;
       gid = 1000;
       text = ''
-        # gate proxy config
-
-        # https://connect.minekube.com/
-
         connect:
           enabled: false
           name: yernar
@@ -95,6 +91,7 @@ in {
           forwarding:
           # Options: legacy, none, velocity
             mode: velocity
+            velocitySecret: testys
 
           query:
             enabled: false

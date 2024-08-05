@@ -91,13 +91,13 @@ player-auto-save:
   max-per-tick: -1
   rate: -1
 proxies:
-  proxy-protocol: true
+  proxy-protocol: false
   bungee-cord:
     online-mode: false
   velocity:
     enabled: false
     online-mode: true
-    secret: ''
+    secret: 'testys'
 scoreboards:
   save-empty-scoreboard-teams: true
   track-plugin-scoreboards: false
