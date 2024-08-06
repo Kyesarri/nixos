@@ -37,38 +37,7 @@
     coral.enable = true;
   };
 
-  ### nut wip config ###
-  environment.etc = {
-    "nut/upsd.conf" = {
-      mode = "644";
-      uid = 1000;
-      gid = 1000;
-      text = ''
-        LISTEN 0.0.0.0
-      '';
-    };
-    "nut/upsd.users" = {
-      mode = "644";
-      uid = 1000;
-      gid = 1000;
-      text = ''
-        [monuser]
-        upsmon master
-        password = "monuser"
-      '';
-    };
-    "nut/upsmon.conf" = {
-      mode = "644";
-      uid = 1000;
-      gid = 1000;
-      text = ''
-        MONITOR ups@localhost 1 monuser "monuser" master
-      '';
-    };
-  };
-
-  system.activationScripts.var-lib-nut = "mkdir -p /var/lib/nut; chmod o-r /var/lib/nut";
-  ### nut wip config ###
+  power.ups.upsmon.enable = true;
 
   services = {
     openssh.enable = true;
