@@ -41,7 +41,11 @@
     enable = true;
     mode = "standalone";
     openFirewall = true;
-    upsmon = {enable = true;};
+    upsmon = {
+      enable = true;
+      settings = "{ MINSUPPLIES = 1; RUN_AS_USER = “root”; NOTIFYCMD = “${pkgs.nut}/bin/upssched”; SHUTDOWNCMD = “${pkgs.systemd}/bin/shutdown now”; }";
+    };
+
     upsd = {enable = true;};
   };
 
