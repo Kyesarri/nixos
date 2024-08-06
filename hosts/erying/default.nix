@@ -37,7 +37,11 @@
     coral.enable = true;
   };
 
-  power.ups.upsmon.enable = true;
+  power.ups = {
+    mode = "standalone";
+    upsmon.enable = true;
+    upsd.enable = true;
+  };
 
   services = {
     openssh.enable = true;
