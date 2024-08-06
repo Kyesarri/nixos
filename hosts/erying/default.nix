@@ -38,9 +38,11 @@
   };
 
   power.ups = {
+    enable = true;
     mode = "standalone";
-    upsmon.enable = true;
-    upsd.enable = true;
+    openFirewall = true;
+    upsmon = {enable = true;};
+    upsd = {enable = true;};
   };
 
   services = {
