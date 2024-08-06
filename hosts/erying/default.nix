@@ -1,9 +1,10 @@
 {
-  config,
+  lib,
   pkgs,
   inputs,
-  nix-colors,
+  config,
   spaghetti,
+  nix-colors,
   ...
 }: {
   imports = [
@@ -17,15 +18,14 @@
     ../headless.nix # base packages and config
 
     ../../hardware # new module configs - will replace importing modules
-    # ../../hardware/coral
 
     ../../home # home-manaager config for all machines
     ../../home/bottom # nice to have terminal task manager / perfmon
-    ../../home/git # some baseline git config in there
-    ../../home/kitty # yes pls
+    ../../home/git # basic git configs
+    ../../home/kitty # is this needed on headless? probs not
     ../../home/codium # need to add server into this
-    ../../home/gtk # has some theming bits, might have some requirement still
-    ../../home/zsh # yes pls
+    ../../home/gtk # themes still needed for console
+    ../../home/zsh # nice to have
   ];
 
   colorscheme = inputs.nix-colors.colorSchemes.${spaghetti.scheme2};
@@ -39,15 +39,32 @@
 
   ### nut wip config ###
   environment.etc = {
-    "nut/upsd.conf".text = "LISTEN 0.0.0.0";
-    "nut/upsd.users".text = ''
-      [monuser]
-      upsmon master
-      password = "monuser"
-    '';
-    "nut/upsmon.conf".text = ''
-      MONITOR ups@localhost 1 monuser "monuser" master
-    '';
+    "nut/upsd.conf" = {
+      mode = "644";
+      uid = 1000;
+      gid = 1000;
+      text = ''
+        LISTEN 0.0.0.0
+      '';
+    };
+    "nut/upsd.users" = {
+      mode = "644";
+      uid = 1000;
+      gid = 1000;
+      text = ''
+        [monuser]
+        upsmon master
+        password = "monuser"
+      '';
+    };
+    "nut/upsmon.conf" = {
+      mode = "644";
+      uid = 1000;
+      gid = 1000;
+      text = ''
+        MONITOR ups@localhost 1 monuser "monuser" master
+      '';
+    };
   };
 
   system.activationScripts.var-lib-nut = "mkdir -p /var/lib/nut; chmod o-r /var/lib/nut";
@@ -94,7 +111,6 @@
 
   hardware = {
     pulseaudio.enable = false;
-    # enableRedistributableFirmware = lib.mkDefault true;
     graphics = {
       enable = true;
       extraPackages = with pkgs; [
