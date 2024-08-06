@@ -44,7 +44,7 @@
     upsmon = {
       enable = true;
       settings = {
-        MINSUPPLIES = 1;
+        MINSUPPLIES = 0;
         RUN_AS_USER = "ROOT";
         NOTIFYCMD = "${pkgs.nut}/bin/upssched";
         SHUTDOWNCMD = "${pkgs.systemd}/bin/shutdown now";
