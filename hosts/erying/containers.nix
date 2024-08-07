@@ -21,6 +21,7 @@
     ../../containers/minecraft
     ../../containers/nginx-proxy-manager
     ../../containers/nginx-proxy-manager-2 # change to nginx-wan "soon"
+    ../../containers/octoprint
     ../../containers/zigbee2mqtt
     ../../containers/overseerr
     # ../../containers/uptime-kuma
