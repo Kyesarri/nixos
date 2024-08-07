@@ -38,27 +38,6 @@
     coral.enable = true;
   };
 
-  /*
-  power.ups = {
-    enable = true;
-    mode = "standalone";
-    openFirewall = true;
-    primary = {
-      description = "PowerShield Defender 1200VA";
-      driver = "blazer_usb";
-      port = "auto";
-    };
-    upsmon = {
-      enable = true;
-      settings = {
-        MINSUPPLIES = 0;
-        NOTIFYCMD = "${pkgs.nut}/bin/upssched";
-        SHUTDOWNCMD = "${pkgs.systemd}/bin/shutdown now";
-      };
-    };
-    upsd = {enable = true;};
-  };
-  */
   services = {
     openssh.enable = true;
     xserver.enable = false; # headless
