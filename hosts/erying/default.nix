@@ -18,6 +18,7 @@
     ../headless.nix # base packages and config
 
     ../../hardware # new module configs - will replace importing modules
+    ../../hardware/ups
 
     ../../home # home-manaager config for all machines
     ../../home/bottom # nice to have terminal task manager / perfmon
@@ -41,6 +42,11 @@
     enable = true;
     mode = "standalone";
     openFirewall = true;
+    primary = {
+      description = "PowerShield Defender 1200VA";
+      driver = "blazer_usb";
+      port = "auto";
+    };
     upsmon = {
       enable = true;
       settings = {
