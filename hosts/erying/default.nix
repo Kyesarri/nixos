@@ -38,6 +38,7 @@
     coral.enable = true;
   };
 
+  /*
   power.ups = {
     enable = true;
     mode = "standalone";
@@ -57,7 +58,7 @@
     };
     upsd = {enable = true;};
   };
-
+  */
   services = {
     openssh.enable = true;
     xserver.enable = false; # headless
