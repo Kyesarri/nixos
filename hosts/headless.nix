@@ -73,8 +73,8 @@
   users.users.${spaghetti.user} = {
     shell = pkgs.zsh; # set our shell pkg
     isNormalUser = true; # not true
-    description = "${spaghetti.user}"; # required?
-    extraGroups = ["networkmanager" "wheel" "apex" "media" "podman"];
+    description = "${spaghetti.user}";
+    extraGroups = ["networkmanager" "wheel" "apex" "media" "podman" "dialout"];
     packages = with pkgs; [
       fet-sh # minimal fetch script
       gnome.seahorse # key management
