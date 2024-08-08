@@ -16,7 +16,7 @@ in {
     volumes = [
       # use `python -m serial.tools.miniterm` to see what the name is of the printer, this requires pyserial
       "/dev/ttyUSB0:/dev/ttyUSB0"
-      # "/dev/video0:/dev/video0"
+      "/dev/video0:/dev/video0"
       "/etc/localtime:/etc/localtime:ro"
       "${toString dir1}:/octoprint"
     ];
