@@ -6,8 +6,8 @@
   ...
 }: {
   imports = [
-    ../../containers # will be the only module required once serv is depreciated, not sure this will go to plan yet
-    # ../../containers/arr # temp
+    ../../containers
+    # ../../containers/arr # testing
     ../../containers/adguard
     ../../containers/cpai
     ../../containers/doubletake
@@ -43,6 +43,7 @@
       "podman-minecraft.service"
       "podman-nginx-proxy-manager.service"
       "podman-nginx-proxy-manager-2.service"
+      "podman-octoprint.service"
       "podman-zigbee2mqtt.service"
       "podman-overseerr.service"
     ];
