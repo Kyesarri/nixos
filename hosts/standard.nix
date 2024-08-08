@@ -149,7 +149,7 @@
       vlc # play me some vids
       usbimager # says on the tin
       ventoy-full
-      # floorp # to replace firefox eventually # doesn't want to build :)
+      blender # 3d printing time...
 
       ## TESTING ##
       gnome-disk-utility
