@@ -149,7 +149,7 @@
       vlc # play me some vids
       usbimager # says on the tin
       ventoy-full
-      blender # 3d printing time...
+      blender # for new toy :D
 
       ## TESTING ##
       gnome-disk-utility
