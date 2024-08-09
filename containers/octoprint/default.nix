@@ -22,7 +22,7 @@ in {
     ];
 
     environment = {
-      # qENABLE_MJPG_STREAMER = "true";
+      # ENABLE_MJPG_STREAMER = "true";
       PUID = "1000";
       PGID = "1000";
     };
