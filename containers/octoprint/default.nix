@@ -22,7 +22,7 @@ in {
     ];
 
     environment = {
-      # ENABLE_MJPG_STREAMER = "true";
+      # qENABLE_MJPG_STREAMER = "true";
       PUID = "1000";
       PGID = "1000";
     };
@@ -30,6 +30,7 @@ in {
     extraOptions = [
       "--network=macvlan_lan"
       "--ip=${secrets.ip.octoprint}"
+      "--privileged"
     ];
   };
 }
