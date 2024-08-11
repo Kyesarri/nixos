@@ -192,9 +192,6 @@ in {
           mode: all
         sync_recordings: false
       #
-      # rtmp:
-      #   enabled: false
-      #
       snapshots:
         enabled: true
         bounding_box: true
@@ -205,7 +202,6 @@ in {
       #
       ui:
         time_format: browser
-        # live_mode: mse
       #
       # using onboard coral v
       detectors:
