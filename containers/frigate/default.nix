@@ -38,7 +38,7 @@ in {
     volumes = [
       "${toString dir1}:/db"
       "${toString dir2}:/media/frigate"
-      "${toString dir3}/config.yml:/config/config.yml:ro"
+      "${toString dir3}/:/config"
       "/etc/localtime:/etc/localtime:ro"
     ];
 
