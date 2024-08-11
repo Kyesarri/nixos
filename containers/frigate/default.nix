@@ -74,6 +74,13 @@ in {
       cameras:
         driveway:
           best_image_timeout: 60
+        zones:
+          carpark:
+            coordinates: 0,0.525,0.409,0.144,0.408,0.256,0.598,0.294,0.555,0.697,0.515,1,0,1
+            loitering_time: 0
+          lawn:
+            coordinates: 0.602,0.298,0.558,0.729,0.998,0.798,0.998,0.397
+            loitering_time: 0
           ffmpeg:
             inputs:
             - path: rtsp://127.0.0.1:8554/driveway
@@ -85,8 +92,9 @@ in {
         entry:
           best_image_timeout: 60
           motion:
-              mask:
-                - 0,0,1125,0,1119,27,460,101,619,1920,0,1920,0,547
+            mask:
+              - 0,0,0.586,0,0.583,0.019,0.24,0.07,0,0.38
+              - 0.187,0.132,0.209,0.493,0.224,0.768,0.268,1,0,1,0,0.368
           ffmpeg:
             inputs:
             - path: rtsp://127.0.0.1:8554/entry
@@ -97,6 +105,11 @@ in {
       #
         front:
           best_image_timeout: 60
+          zones:
+            lawn:
+              coordinates:
+                0.088,0.254,0.459,0.224,0.841,0.265,0.98,0.579,0.967,0.78,0.864,1,0,1,0.001,0.332
+              loitering_time: 0
           ffmpeg:
             inputs:
             - path: rtsp://127.0.0.1:8554/front
