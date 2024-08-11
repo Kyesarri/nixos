@@ -74,13 +74,13 @@ in {
       cameras:
         driveway:
           best_image_timeout: 60
-        zones:
-          carpark:
-            coordinates: 0,0.525,0.409,0.144,0.408,0.256,0.598,0.294,0.555,0.697,0.515,1,0,1
-            loitering_time: 0
-          lawn:
-            coordinates: 0.602,0.298,0.558,0.729,0.998,0.798,0.998,0.397
-            loitering_time: 0
+          zones:
+            carpark:
+              coordinates: 0,0.525,0.409,0.144,0.408,0.256,0.598,0.294,0.555,0.697,0.515,1,0,1
+              loitering_time: 0
+            lawn:
+              coordinates: 0.602,0.298,0.558,0.729,0.998,0.798,0.998,0.397
+              loitering_time: 0
           ffmpeg:
             inputs:
             - path: rtsp://127.0.0.1:8554/driveway
