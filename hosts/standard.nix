@@ -150,6 +150,9 @@
       usbimager # says on the tin
       ventoy-full
       blender # for new toy :D
+      slic3r
+      orca-slicer
+      # cura # broken 10.08.24 -- awaiting updates in nixpkgs
 
       ## TESTING ##
       gnome-disk-utility

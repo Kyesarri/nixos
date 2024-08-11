@@ -4,7 +4,7 @@
   ...
 }: {
   users.users.${spaghetti.user}.packages = with pkgs; [
-    cinnamon.nemo-with-extensions
+    nemo-with-extensions
   ];
   home-manager.users.${spaghetti.user} = {
     home.file.".config/hypr/per-app/nemo.conf" = {
