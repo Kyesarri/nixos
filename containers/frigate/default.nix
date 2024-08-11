@@ -54,6 +54,9 @@ in {
   };
 
   environment.etc."oci.cont/${contName}/config/config.yml" = {
+    mode = "644";
+    uid = 1000;
+    gid = 1000;
     text = ''
       ##
       go2rtc:
