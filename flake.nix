@@ -7,7 +7,6 @@
     home-manager.url = "github:nix-community/home-manager/master"; # added master branch to follow unstable nixos
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
-    # hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1&rev=cba1ade848feac44b2eda677503900639581c3f4"; # v0.40.0
     hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1"; # latest git
 
     hyprpicker.url = "github:hyprwm/hyprpicker";
@@ -25,12 +24,12 @@
     prism.url = "github:IogaMaster/prism"; # wallpaper gen
     wallpaper-generator.url = "github:kyesarri/wallpaper-generator"; # another one
 
-    alejandra.url = "github:kamadorueda/alejandra/3.0.0"; # codeium nix
+    alejandra.url = "github:kamadorueda/alejandra/3.0.0"; # codium nix
 
     ags.url = "github:Aylur/ags"; # shell
 
-    # auto-cpufreq.url = "github:AdnanHodzic/auto-cpufreq";
-    # auto-cpufreq.inputs.nixpkgs.follows = "nixpkgs";
+    auto-cpufreq.url = "github:AdnanHodzic/auto-cpufreq";
+    auto-cpufreq.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs = {
@@ -44,7 +43,7 @@
     # hycov,
     alejandra,
     nix-colors,
-    # auto-cpufreq,
+    auto-cpufreq,
     prism,
     wallpaper-generator,
     ...
@@ -59,13 +58,13 @@
     };
     secrets = builtins.fromJSON (builtins.readFile "${self}/secrets/secrets.json");
     system = "x86_64-linux";
-    specialArgs = {inherit nix-colors secrets inputs prism spaghetti wallpaper-generator;}; # auto-cpufreq
+    specialArgs = {inherit nix-colors secrets inputs prism spaghetti wallpaper-generator auto-cpufreq;};
   in {
     nixosConfigurations = {
       "nix-laptop" = nixpkgs.lib.nixosSystem {
         inherit system specialArgs;
         modules = [
-          # auto-cpufreq.nixosModules.default
+          auto-cpufreq.nixosModules.default
           home-manager.nixosModules.home-manager
           ./hosts/laptop # 4800hs / 1650 / 16gb ddr4 TODO download more ram
           {

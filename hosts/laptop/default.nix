@@ -14,16 +14,14 @@
 
     ../standard.nix
 
+    ../../hardware # not all hardware modules are required to be imported
     ../../hardware/audio
     ../../hardware/battery
     ../../hardware/bluetooth
     ../../hardware/nvidia
-    #
-    # vvv new module completed vvv
-    ../../hardware # testing new module refactor
+
     ../../home # set some default values for home-manager
-    # ^^^ new module completed ^^^
-    #
+
     ../../home/cosmic
     ../../home/asusctl # TODO look into issues with this further
     ../../home/bottom # task-manager
@@ -42,51 +40,32 @@
     #
     ../../home/kde # TODO rename kdeconnect - maybe not lol - covers lots
     ../../home/ulauncher # TODO rename built theme, add credits to og author
-    ../../home/virt
+    ../../home/virt # vm / container
     ../../home/vpn
     ../../home/wl-screenrec # testing for laptop - amd / nvidia config
     ../../home/gtk # uhh, nix-colors gtk theme iirc # TODO rename to theme?
-    ../../home/prism
-    # ../../home/syncthing # TODO
+    ../../home/prism # wallpapers
     ../../home/tailscale
     ../../home/zsh
   ];
 
+  networking.hostName = "nix-laptop";
+
+  colorscheme = inputs.nix-colors.colorSchemes.${spaghetti.scheme};
+
   gnocchi = {
     hypr = {
       enable = true;
-      animations = false; # no config here yet - will need refactor
+      animations = false; # no config here yet #TODO - not critical - adding more mess is!
     };
     hyprpaper.enable = true;
     ags.enable = true;
     gscreenshot.enable = true;
     freetube.enable = true;
-
     wifi.backend = "nwm";
   };
 
-  colorscheme = inputs.nix-colors.colorSchemes.${spaghetti.scheme};
-
-  networking.hostName = "nix-laptop";
-
-  programs = {
-    corectrl.enable = true;
-    /*
-    auto-cpufreq = {
-      enable = true;
-      settings = {
-        charger = {
-          governor = "performance";
-          turbo = "auto";
-        };
-        battery = {
-          governor = "powersave";
-          turbo = "auto";
-        };
-      };
-    };
-    */
-  };
+  programs.corectrl.enable = true;
 
   services = {
     xserver.enable = false;

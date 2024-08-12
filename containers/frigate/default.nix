@@ -79,7 +79,12 @@ in {
               coordinates: 0,0.525,0.409,0.144,0.408,0.256,0.598,0.294,0.555,0.697,0.515,1,0,1
               loitering_time: 0
             lawn:
-              coordinates: 0.602,0.298,0.558,0.729,0.998,0.798,0.998,0.397
+              coordinates: 0.602,0.298,0.558,0.729,0.998,0.798,1,0.38
+              loitering_time: 0
+              inertia: 3
+            nature-strip:
+              coordinates: 0.448,0.217,0.412,0.25,1,0.369,1,0.289,0.474,0.191
+              inertia: 3
               loitering_time: 0
           ffmpeg:
             inputs:
@@ -91,6 +96,22 @@ in {
       #
         entry:
           best_image_timeout: 60
+          zones:
+            verandah:
+              coordinates:
+                0.218,0.575,0.419,0.533,0.505,0.682,0.504,0.626,0.516,0.232,0.651,0.331,0.62,0.64,0.844,0.931,0.958,0.59,1,0.633,1,1,0.273,1,0.228,0.766
+              loitering_time: 0
+              inertia: 3
+            door:
+              coordinates: 0.512,0.239,0.44,0.187,0.427,0.526,0.496,0.653
+              loitering_time: 0
+            stairs:
+              coordinates:
+                0.218,0.566,0.203,0.295,0.341,0.289,0.367,0.278,0.428,0.342,0.426,0.406,0.42,0.523
+              loitering_time: 0
+            side:
+              coordinates: 0.203,0.286,0.332,0.284,0.327,0.136,0.195,0.161
+              loitering_time: 0
           motion:
             mask:
               - 0,0,0.586,0,0.583,0.019,0.24,0.07,0,0.38
@@ -108,7 +129,12 @@ in {
           zones:
             lawn:
               coordinates:
-                0.088,0.254,0.459,0.224,0.841,0.265,0.98,0.579,0.967,0.78,0.864,1,0,1,0.001,0.332
+                0.088,0.254,0.463,0.242,0.841,0.265,0.98,0.579,0.967,0.78,0.864,1,0,1,0.001,0.332
+              loitering_time: 0
+              inertia: 3
+            nature-strip:
+              coordinates:
+                0.001,0.227,0.247,0.193,0.521,0.179,0.904,0.23,0.999,0.238,1,0.174,0.731,0.137,0.44,0.113,0.215,0.126,0,0.171
               loitering_time: 0
           ffmpeg:
             inputs:
@@ -129,8 +155,8 @@ in {
       detect:
         enabled: true
         fps: 5
-        width: 1920
-        height: 1440
+        width: 2560
+        height: 1920
       #
       logger:
         default: info
@@ -210,7 +236,7 @@ in {
           device: pci
       #
       birdseye:
-        enabled: false
+        enabled: true
         # width: 640
         # height: 480
       #
