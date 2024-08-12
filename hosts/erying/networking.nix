@@ -18,7 +18,7 @@
     firewall = {
       enable = true;
       checkReversePath = "loose"; # fixes connection issues with tailscale
-      allowedTCPPorts = [22 123];
+      allowedTCPPorts = [22 123 8080];
       allowedUDPPorts = [config.services.tailscale.port 123];
     };
   };
