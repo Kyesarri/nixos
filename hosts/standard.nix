@@ -87,11 +87,27 @@
     seahorse.enable = true;
   };
 
+  systemd = {
+    user.services.polkit-gnome-authentication-agent-1 = {
+      description = "polkit-gnome-authentication-agent-1";
+      wantedBy = ["graphical-session.target"];
+      wants = ["graphical-session.target"];
+      after = ["graphical-session.target"];
+      serviceConfig = {
+        Type = "simple";
+        ExecStart = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
+        Restart = "on-failure";
+        RestartSec = 1;
+        TimeoutStopSec = 10;
+      };
+    };
+  };
+
   environment = {
     sessionVariables = rec
     {
       CLUTTER_BACKEND = "wayland";
-      QT_QPA_PLATFORMTHEME = "qt5ct";
+      QT_QPA_PLATFORMTHEME = "qt5ct;wayland;xcb";
       GTK_THEME = "${config.colorscheme.slug}"; # sets default gtk theme the package built by nix-colors
       XDG_CACHE_HOME = "$HOME/.cache";
       XDG_CONFIG_HOME = "$HOME/.config";
@@ -117,6 +133,32 @@
       polkit_gnome
       waypipe
       keepassxc # another key manager - replace bitwarden and sops-nix?
+
+      (let
+        cura5 = appimageTools.wrapType2 rec {
+          name = "cura5";
+          version = "5.4.0";
+          src = fetchurl {
+            url = "https://github.com/Ultimaker/Cura/releases/download/${version}/UltiMaker-Cura-${version}-linux-modern.AppImage";
+            hash = "sha256-QVv7Wkfo082PH6n6rpsB79st2xK2+Np9ivBg/PYZd74=";
+          };
+          extraPkgs = pkgs: with pkgs; [];
+        };
+      in
+        writeScriptBin "cura" ''
+          #! ${pkgs.bash}/bin/bash
+          # AppImage version of Cura loses current working directory and treats all paths relateive to $HOME.
+          # So we convert each of the files passed as argument to an absolute path.
+          # This fixes use cases like `cd /path/to/my/files; cura mymodel.stl anothermodel.stl`.
+          args=()
+          for a in "$@"; do
+            if [ -e "$a" ]; then
+              a="$(realpath "$a")"
+            fi
+            args+=("$a")
+          done
+          exec "${cura5}/bin/cura5" "''${args[@]}"
+        '')
     ];
   };
 
@@ -151,7 +193,7 @@
       ventoy-full
       blender # for new toy :D
       slic3r
-      orca-slicer
+      # orca-slicer
       # cura # broken 10.08.24 -- awaiting updates in nixpkgs
 
       ## TESTING ##

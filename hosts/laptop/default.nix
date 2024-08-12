@@ -65,19 +65,12 @@
     wifi.backend = "nwm";
   };
 
-  hardware.nvidia = {
-    prime = {
-      amdgpuBusId = "PCI:4:0:0";
-      nvidiaBusId = "PCI:1:0:0";
-      offload.enable = true;
-    };
-  };
-
   colorscheme = inputs.nix-colors.colorSchemes.${spaghetti.scheme};
 
   networking.hostName = "nix-laptop";
 
   programs = {
+    corectrl.enable = true;
     /*
     auto-cpufreq = {
       enable = true;

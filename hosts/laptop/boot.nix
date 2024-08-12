@@ -1,6 +1,13 @@
 {pkgs, ...}: {
   boot = {
+    initrd.availableKernelModules = ["nvme" "xhci_pci" "ahci" "usb_storage" "usbhid" "sd_mod"];
+    initrd.kernelModules = [];
+    kernelModules = ["kvm-amd"];
+    extraModulePackages = [];
+    supportedFilesystems = ["ntfs"];
+
     kernelPackages = pkgs.linuxPackages_xanmod_latest; # use latest xanmod kernel
+
     kernelParams = [
       "nowatchdog" # disables watchdog, was causing shutdown / reboot issues with wifi
       "clocksource=tsc" # now working with tsc nowatchdog & tsc reliable
