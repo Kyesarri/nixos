@@ -80,22 +80,6 @@
     };
   };
 
-  hardware = {
-    pulseaudio.enable = false;
-    enableRedistributableFirmware = lib.mkDefault true;
-    graphics = {
-      enable = true;
-      extraPackages = with pkgs; [
-        vaapiIntel
-        libvdpau-va-gl
-        vaapiVdpau
-        intel-ocl
-        intel-media-driver # LIBVA_DRIVER_NAME=iHD
-        intel-vaapi-driver # LIBVA_DRIVER_NAME=i965 (older but works better for Firefox/Chromium)
-      ];
-    };
-  };
-
   environment = {
     shellAliases.rebuild = "sudo nixos-rebuild switch --flake /home/${spaghetti.user}/nixos#nix-serv --show-trace";
     sessionVariables = {
