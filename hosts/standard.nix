@@ -1,9 +1,7 @@
 {
-  config,
   pkgs,
-  lib,
-  outputs,
   inputs,
+  config,
   spaghetti,
   ...
 }: {
@@ -24,15 +22,6 @@
     settings = {
       auto-optimise-store = true; # runs gc, need to set interval otherwise defaults to 14d from memory
       experimental-features = ["nix-command" "flakes"]; # flakes and nixcommand required for config
-    };
-  };
-
-  hardware = {
-    nvidia.modesetting.enable = true; # TODO should not be in here now, per device
-    pulseaudio.enable = false;
-    graphics = {
-      enable = true;
-      # driSupport32Bit = true; # required for steam
     };
   };
 
@@ -107,7 +96,7 @@
     sessionVariables = rec
     {
       CLUTTER_BACKEND = "wayland";
-      QT_QPA_PLATFORMTHEME = "qt5ct;wayland;xcb";
+      QT_QPA_PLATFORMTHEME = "qt5ct";
       GTK_THEME = "${config.colorscheme.slug}"; # sets default gtk theme the package built by nix-colors
       XDG_CACHE_HOME = "$HOME/.cache";
       XDG_CONFIG_HOME = "$HOME/.config";
@@ -132,33 +121,7 @@
       gitAndTools.gitFull
       polkit_gnome
       waypipe
-      keepassxc # another key manager - replace bitwarden and sops-nix?
-
-      (let
-        cura5 = appimageTools.wrapType2 rec {
-          name = "cura5";
-          version = "5.4.0";
-          src = fetchurl {
-            url = "https://github.com/Ultimaker/Cura/releases/download/${version}/UltiMaker-Cura-${version}-linux-modern.AppImage";
-            hash = "sha256-QVv7Wkfo082PH6n6rpsB79st2xK2+Np9ivBg/PYZd74=";
-          };
-          extraPkgs = pkgs: with pkgs; [];
-        };
-      in
-        writeScriptBin "cura" ''
-          #! ${pkgs.bash}/bin/bash
-          # AppImage version of Cura loses current working directory and treats all paths relateive to $HOME.
-          # So we convert each of the files passed as argument to an absolute path.
-          # This fixes use cases like `cd /path/to/my/files; cura mymodel.stl anothermodel.stl`.
-          args=()
-          for a in "$@"; do
-            if [ -e "$a" ]; then
-              a="$(realpath "$a")"
-            fi
-            args+=("$a")
-          done
-          exec "${cura5}/bin/cura5" "''${args[@]}"
-        '')
+      keepassxc # password manager
     ];
   };
 
@@ -171,8 +134,8 @@
       ###############
       # KISS PLEASE #
       ###############
-      # gimp-with-plugins # image boi
-      ladybird # testing
+      gimp-with-plugins # image boi
+      ladybird # testing, alpha 2026 :D
       graphite-cursors # cursor package, is this handled by /home/gtk/default.nix now? nope manual atm
       gnome-text-editor # still might want something with slightly more features, bit too barebones?
       nix-init # git flake helper
@@ -193,8 +156,8 @@
       ventoy-full
       blender # for new toy :D
       slic3r
-      # orca-slicer
-      # cura # broken 10.08.24 -- awaiting updates in nixpkgs
+      orca-slicer
+      cura # broken 10.08.24 -- awaiting updates in nixpkgs
 
       ## TESTING ##
       gnome-disk-utility

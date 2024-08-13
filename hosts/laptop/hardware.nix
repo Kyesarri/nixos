@@ -19,6 +19,7 @@
   swapDevices = [{device = "/dev/disk/by-uuid/04e81e82-6196-4033-8a41-fe12badd919a";}];
 
   hardware = {
+    pulseaudio.enable = false;
     amdgpu.initrd.enable = true;
     cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
     graphics = {
@@ -26,6 +27,7 @@
       enable32Bit = true;
     };
     nvidia = {
+      modesetting.enable = true;
       prime = {
         amdgpuBusId = "PCI:4:0:0";
         nvidiaBusId = "PCI:1:0:0";
