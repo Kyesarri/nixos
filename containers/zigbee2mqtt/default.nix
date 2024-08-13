@@ -5,7 +5,6 @@
 }: let
   contName = "zigbee2mqtt";
   dir1 = "/etc/oci.cont/${contName}/.data";
-  #dir2 = "/etc/oci.cont/${contName}/rrd"; # not sure what to do with this feller - from source       - /run/udev:/run/udev:ro
 in {
   system.activationScripts."make${contName}Dir" = lib.stringAfter ["var"] ''
     mkdir -v -p ${toString dir1} & chown 1000:1000 ${toString dir1}
@@ -19,7 +18,6 @@ in {
     volumes = [
       "/etc/localtime:/etc/localtime:ro"
       "${toString dir1}:/app/data"
-      #"${toString dir2}:/opt/observium/rrd"       - /run/udev:/run/udev:ro see above dir2
     ];
 
     environment = {
