@@ -106,7 +106,7 @@
       XDG_SESSION_DESKTOP = "Hyprland";
       XDG_SESSION_TYPE = "wayland";
       NIXOS_OZONE_WL = "1"; # fixes electron apps in wayland... why do i use electron? fucking codium
-      XCURSOR_THEME = "graphite-dark";
+      XCURSOR_THEME = "graphite-dark"; # is a user package below
     };
 
     shells = with pkgs; [zsh]; # default shell to zsh
@@ -131,9 +131,6 @@
     description = "${spaghetti.user}";
     extraGroups = ["networkmanager" "wheel"];
     packages = with pkgs; [
-      ###############
-      # KISS PLEASE #
-      ###############
       gimp-with-plugins # image boi
       ladybird # testing, alpha 2026 :D
       graphite-cursors # cursor package, is this handled by /home/gtk/default.nix now? nope manual atm
@@ -157,17 +154,12 @@
       blender # for new toy :D
       slic3r
       orca-slicer
-      cura # broken 10.08.24 -- awaiting updates in nixpkgs
+      # cura # broken 10.08.24 -- awaiting updates in nixpkgs
 
       ## TESTING ##
       gnome-disk-utility
       inputs.wallpaper-generator.defaultPackage.x86_64-linux
       ## TESTING ##
-
-      # (callPackage ../packages/image-colorizer {})
-      # (callPackage ../packages/wcp {}) # IT WORKS! Currently has bugs with RGBA colours, see package notes
-      # (callPackage ../packages/libfprint {}) # builds, need to write to the fprint reader now :)
-      # (callPackage ../packages/sov {}) # sway overview, needs some hyprland config to see if works on hyprland
     ];
   };
 }

@@ -27,9 +27,6 @@
     alejandra.url = "github:kamadorueda/alejandra/3.0.0"; # codium nix
 
     ags.url = "github:Aylur/ags"; # shell
-
-    auto-cpufreq.url = "github:AdnanHodzic/auto-cpufreq";
-    auto-cpufreq.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs = {
@@ -43,7 +40,6 @@
     # hycov,
     alejandra,
     nix-colors,
-    auto-cpufreq,
     prism,
     wallpaper-generator,
     ...
@@ -58,13 +54,12 @@
     };
     secrets = builtins.fromJSON (builtins.readFile "${self}/secrets/secrets.json");
     system = "x86_64-linux";
-    specialArgs = {inherit nix-colors secrets inputs prism spaghetti wallpaper-generator auto-cpufreq;};
+    specialArgs = {inherit nix-colors secrets inputs prism spaghetti wallpaper-generator;};
   in {
     nixosConfigurations = {
       "nix-laptop" = nixpkgs.lib.nixosSystem {
         inherit system specialArgs;
         modules = [
-          auto-cpufreq.nixosModules.default
           home-manager.nixosModules.home-manager
           ./hosts/laptop # 4800hs / 1650 / 16gb ddr4 TODO download more ram
           {
