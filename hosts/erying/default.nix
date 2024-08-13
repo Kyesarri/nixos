@@ -76,21 +76,6 @@
     ###### TODO ######
   };
 
-  hardware = {
-    pulseaudio.enable = false;
-    graphics = {
-      enable = true;
-      extraPackages = with pkgs; [
-        vaapiIntel
-        libvdpau-va-gl
-        vaapiVdpau
-        intel-ocl
-        intel-media-driver # LIBVA_DRIVER_NAME=iHD
-        intel-vaapi-driver # LIBVA_DRIVER_NAME=i965 (older but works better for Firefox/Chromium)
-      ];
-    };
-  };
-
   environment = {
     shells = with pkgs; [zsh]; # default shell to zsh
     shellAliases.rebuild = "sudo nixos-rebuild switch --flake /home/${spaghetti.user}/nixos#nix-erying --show-trace";
