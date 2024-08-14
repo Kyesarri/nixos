@@ -1,5 +1,6 @@
 # taken from https://github.com/accelbread/config-flake/blob/c4acf21d3a34c8bed18e08728d086803fdcd43ea/nix/nixos/solace/ups.nix#L17
 {
+  spaghetti,
   pkgs,
   lib,
   ...
@@ -11,13 +12,13 @@
       ${pkgs.libnotify}/bin/notify-send "$@"
   '';
   notifycmd = pkgs.writeShellScript "nut-notifycmd" ''
-    ${sudo} -u archit ${notify-send} -c critical "$1"
+    ${sudo} -u ${spaghetti.user} ${notify-send} -c critical "$1"
   '';
   passwordFile = "${pkgs.writeText "upspass" "upsmon_pass"}";
 in {
   power.ups = {
     enable = true;
-    ups.desk = {
+    ups.dell = {
       driver = "usbhid-ups";
       port = "auto";
     };
@@ -26,7 +27,7 @@ in {
       inherit passwordFile;
     };
     upsmon = {
-      monitor.desk = {
+      monitor.dell = {
         user = "monuser";
         type = "master";
         inherit passwordFile;

@@ -69,7 +69,7 @@ in {
             - "ffmpeg:entry#audio=opus"
           front:
             - ffmpeg:rtsp://${secrets.user.frontcam}:${secrets.password.frontcam}@${secrets.ip.frontcam}:554/h264Preview_01_main
-            - "ffmpeg:entry#audio=opus"
+            - "ffmpeg:front#audio=opus"
       #
       cameras:
         driveway:
@@ -93,6 +93,7 @@ in {
               roles:
               - record
               - detect
+              - audio
       #
         entry:
           best_image_timeout: 60
@@ -123,6 +124,8 @@ in {
               roles:
               - record
               - detect
+              - audio
+
       #
         front:
           best_image_timeout: 60
@@ -143,6 +146,7 @@ in {
               roles:
               - record
               - detect
+              - audio
       #
       #
       ffmpeg:
