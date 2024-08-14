@@ -153,7 +153,9 @@ in {
       ffmpeg:
         # hwaccel_args: preset-intel-qsv-h264
         hwaccel_args: preset-vaapi
-      #
+      ##
+      ## and the rest of the config lives here
+      ##
       database:
         path: /db/frigate.db
       #
@@ -233,8 +235,9 @@ in {
       #
       ui:
         time_format: browser
-      #
-      # using onboard coral v
+      ##
+      ## using onboard coral as a detector
+      ##
       detectors:
         coral_pci:
           type: edgetpu
@@ -242,8 +245,8 @@ in {
       #
       birdseye:
         enabled: true
-        # width: 640
-        # height: 480
+        width: 640
+        height: 480
       #
     '';
   };
