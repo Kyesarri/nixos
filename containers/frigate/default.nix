@@ -253,8 +253,8 @@ in {
           type: edgetpu
           device: pci
           # testing custom model
-          model:
-            path: "/custom_models/yolov8n_288x288_edgetpu.tflite"
+          # model:
+          #   path: "/custom_models/yolov8n_288x288_edgetpu.tflite"
       #
       birdseye:
         enabled: true
