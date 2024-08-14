@@ -59,6 +59,8 @@ in {
     gid = 1000;
     text = ''
       ##
+      ## lets setup our camera feeds
+      ##
       go2rtc:
         streams:
           driveway:
@@ -70,8 +72,21 @@ in {
           front:
             - ffmpeg:rtsp://${secrets.user.frontcam}:${secrets.password.frontcam}@${secrets.ip.frontcam}:554/h264Preview_01_main
             - "ffmpeg:front#audio=opus"
-      #
+          test:
+            - "ffmpeg:http://${secrets.ip.frontcam}/flv?port=1935&app=bcs&stream=channel0_main.bcs&user=${secrets.user.frontcam}&password=${secrets.password.frontcam}#video=copy#audio=copy#audio=opus"
+      ##
+      ## now to configure the cameras, zones and motion masks
+      ##
       cameras:
+        test:
+          ffmpeg:
+            inputs:
+            - path: rtsp://127.0.0.1:8554/test
+              input_args: preset-rtsp-restream
+              roles:
+              - record
+              - detect
+              - audio
         driveway:
           best_image_timeout: 60
           zones:
@@ -125,7 +140,6 @@ in {
               - record
               - detect
               - audio
-
       #
         front:
           best_image_timeout: 60
@@ -147,8 +161,9 @@ in {
               - record
               - detect
               - audio
-      #
-      #
+      ##
+      ## configure ffmpeg
+      ##
       ffmpeg:
         # hwaccel_args: preset-intel-qsv-h264
         hwaccel_args: preset-vaapi
@@ -227,7 +242,7 @@ in {
         bounding_box: true
         clean_copy: true
         crop: false
-        quality: 90
+        quality: 100
         timestamp: true
       #
       ui:
