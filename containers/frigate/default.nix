@@ -64,29 +64,15 @@ in {
       go2rtc:
         streams:
           driveway:
-            - ffmpeg:rtsp://${secrets.user.drivecam}:${secrets.password.drivecam}@${secrets.ip.drivecam}:554/h264Preview_01_main
-            - "ffmpeg:driveway#audio=opus"
+            - "ffmpeg:http://${secrets.ip.drivecam}/flv?port=1935&app=bcs&stream=channel0_main.bcs&user=${secrets.user.drivecam}&password=${secrets.password.drivecam}#video=copy#audio=copy#audio=opus"
           entry:
-            - ffmpeg:rtsp://${secrets.user.entrycam}:${secrets.password.entrycam}@${secrets.ip.entrycam}:554/h264Preview_01_main
-            - "ffmpeg:entry#audio=opus"
+            - "ffmpeg:http://${secrets.ip.entrycam}/flv?port=1935&app=bcs&stream=channel0_main.bcs&user=${secrets.user.entrycam}&password=${secrets.password.entrycam}#video=copy#audio=copy#audio=opus"
           front:
-            - ffmpeg:rtsp://${secrets.user.frontcam}:${secrets.password.frontcam}@${secrets.ip.frontcam}:554/h264Preview_01_main
-            - "ffmpeg:front#audio=opus"
-          test:
             - "ffmpeg:http://${secrets.ip.frontcam}/flv?port=1935&app=bcs&stream=channel0_main.bcs&user=${secrets.user.frontcam}&password=${secrets.password.frontcam}#video=copy#audio=copy#audio=opus"
       ##
       ## now to configure the cameras, zones and motion masks
       ##
       cameras:
-        test:
-          ffmpeg:
-            inputs:
-            - path: rtsp://127.0.0.1:8554/test
-              input_args: preset-rtsp-restream
-              roles:
-              - record
-              - detect
-              - audio
         driveway:
           best_image_timeout: 60
           zones:
