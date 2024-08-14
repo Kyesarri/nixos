@@ -26,7 +26,7 @@ in {
     mode = "644";
     uid = 1000;
     gid = 1000;
-    source = ./yolov8n_full_integer_quant_edgetpu.tflite;
+    source = ./yolov8n_288x288_edgetpu.tflite;
   };
 
   # container config
