@@ -12,9 +12,7 @@
   dir2 = "/etc/oci.cont.scratch/${contName}/media/frigate";
   dir3 = "/etc/oci.cont/${contName}/config";
 in {
-  system.activationScripts.makeFrigateDir = lib.stringAfter ["var"] ''
-    mkdir -v -p ${toString dir1} ${toString dir2} ${toString dir3}
-  '';
+  system.activationScripts.makeFrigateDir = lib.stringAfter ["var"] ''mkdir -v -p ${toString dir1} ${toString dir2} ${toString dir3}'';
 
   # tempdir for frigate
   fileSystems."/tmp/cache" = {
@@ -23,6 +21,15 @@ in {
     options = ["defaults" "size=1G" "mode=755"];
   };
 
+  # write custom model to container dir
+  environment.etc."oci.cont/${contName}/yolov8n_full_integer_quant_edgetpu.tflite" = {
+    mode = "644";
+    uid = 1000;
+    gid = 1000;
+    source = ./yolov8n_full_integer_quant_edgetpu.tflite;
+  };
+
+  # container config
   virtualisation.oci-containers.containers.${contName} = {
     hostname = "${contName}";
     autoStart = true;
@@ -88,6 +95,8 @@ in {
               inertia: 3
               loitering_time: 0
           ffmpeg:
+            output_args:
+              record: preset-record-generic-audio-copy
             inputs:
             - path: rtsp://127.0.0.1:8554/driveway
               input_args: preset-rtsp-restream
@@ -119,6 +128,8 @@ in {
               - 0,0,0.586,0,0.583,0.019,0.24,0.07,0,0.38
               - 0.187,0.132,0.209,0.493,0.224,0.768,0.268,1,0,1,0,0.368
           ffmpeg:
+            output_args:
+              record: preset-record-generic-audio-copy
             inputs:
             - path: rtsp://127.0.0.1:8554/entry
               input_args: preset-rtsp-restream
@@ -140,6 +151,8 @@ in {
                 0.001,0.227,0.247,0.193,0.521,0.179,0.904,0.23,0.999,0.238,1,0.174,0.731,0.137,0.44,0.113,0.215,0.126,0,0.171
               loitering_time: 0
           ffmpeg:
+            output_args:
+              record: preset-record-generic-audio-copy
             inputs:
             - path: rtsp://127.0.0.1:8554/front
               input_args: preset-rtsp-restream
@@ -148,14 +161,11 @@ in {
               - detect
               - audio
       ##
-      ## configure ffmpeg
-      ##
-      ffmpeg:
-        # hwaccel_args: preset-intel-qsv-h264
-        hwaccel_args: preset-vaapi
-      ##
       ## and the rest of the config lives here
       ##
+      ffmpeg:
+        hwaccel_args: preset-vaapi
+      #
       database:
         path: /db/frigate.db
       #
@@ -242,6 +252,9 @@ in {
         coral_pci:
           type: edgetpu
           device: pci
+          # testing custom model
+          model:
+            path: "/yolov8n_full_integer_quant_edgetpu.tflite"
       #
       birdseye:
         enabled: true
