@@ -23,9 +23,6 @@ in {
 
   # write custom model to container dir
   environment.etc."oci.cont/${contName}/yolov8n_full_integer_quant_edgetpu.tflite" = {
-    mode = "644";
-    uid = 1000;
-    gid = 1000;
     source = ./yolov8n_full_integer_quant_edgetpu.tflite;
   };
 
