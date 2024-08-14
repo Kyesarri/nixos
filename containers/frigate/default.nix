@@ -22,7 +22,7 @@ in {
   };
 
   # write custom model to container dir
-  environment.etc."oci.cont/${contName}/yolov8n_full_integer_quant_edgetpu.tflite" = {
+  environment.etc."oci.cont/${contName}/custom_models/yolov8n_full_integer_quant_edgetpu.tflite" = {
     source = ./yolov8n_full_integer_quant_edgetpu.tflite;
   };
 
@@ -251,7 +251,7 @@ in {
           device: pci
           # testing custom model
           model:
-            path: "/yolov8n_full_integer_quant_edgetpu.tflite"
+            path: "/custom_models/yolov8n_full_integer_quant_edgetpu.tflite"
       #
       birdseye:
         enabled: true
