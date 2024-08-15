@@ -13,7 +13,7 @@ in {
   virtualisation.oci-containers.containers."${contName}" = {
     hostname = "${contName}";
     autoStart = true;
-    image = "skrashevich/double-take";
+    image = "skrashevich/double-take:latest";
 
     volumes = [
       "/etc/localtime:/etc/localtime:ro"
