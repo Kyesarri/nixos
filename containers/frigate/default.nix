@@ -22,12 +22,14 @@ in {
   };
 
   # write custom model to container dir
+  /*
   environment.etc."oci.cont/${contName}/custom_models/yolov8n_288x288_edgetpu.tflite" = {
     mode = "644";
     uid = 1000;
     gid = 1000;
     source = ./yolov8n_288x288_edgetpu.tflite;
   };
+  */
 
   # container config
   virtualisation.oci-containers.containers.${contName} = {
@@ -252,7 +254,7 @@ in {
         coral_pci:
           type: edgetpu
           device: pci
-          # testing custom model
+          # custom model
           # model:
           #   path: "/custom_models/yolov8n_288x288_edgetpu.tflite"
       #
