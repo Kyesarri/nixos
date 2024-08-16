@@ -42,7 +42,7 @@ colors:
     link: "#DF5273" # links color (footer & message), service card icon color
     link-hover: "#E93C58" # links hover color (footer & message), service card icon hover color
   dark:
-    highlight-primary: "#2E303E" # header background, group title icons
+    highlight-primary: "#24A8B4" # header background, group title icons
     highlight-secondary: "#B072D1" # navbar background, default tag color
     highlight-hover: "#1C1E26" # navbar links hover, search input background
     background: "#1C1E26" # page background color
