@@ -23,8 +23,8 @@ in {
       driver = "usbhid-ups";
       port = "auto";
       summary = [
-        "vendorid = \"047C"
-        "productid = \"FFFF"
+        "vendorid = \"047C\""
+        "productid = \"FFFF\""
       ];
     };
     users.monuser = {
