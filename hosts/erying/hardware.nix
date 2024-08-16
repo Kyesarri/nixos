@@ -51,6 +51,10 @@
       device = "/dev/disk/by-uuid/91b3bbfd-69c6-4081-ab4d-c1a9818be9b4";
       fsType = "ext4";
     };
+    "/etc/oci.cont.nvme" = {
+      device = "/dev/disk/by-uuid/49f27562-6797-4094-a12c-60f1e8d2c7f5";
+      fsType = "ext4";
+    };
   };
   #
   swapDevices = [
