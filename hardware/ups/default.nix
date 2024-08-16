@@ -22,7 +22,10 @@ in {
     ups.dellups = {
       driver = "usbhid-ups";
       port = "auto";
-      directives = ["vendorid = 047C" "productid = FFFF"];
+      summary = [
+        "vendorid = \"047C"
+        "productid = \"FFFF"
+      ];
     };
     users.monuser = {
       upsmon = "master";
