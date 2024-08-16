@@ -19,8 +19,10 @@
 in {
   power.ups = {
     enable = true;
-    ups.dell = {
+    ups.dellups = {
       driver = "netxml-ups";
+      vendorid = "047c";
+      productid = "ffff";
       port = "http://${secrets.ip.dellups}:80";
     };
     users.monuser = {
@@ -28,7 +30,7 @@ in {
       inherit passwordFile;
     };
     upsmon = {
-      monitor.dell = {
+      monitor.dellups = {
         user = "monuser";
         type = "master";
         inherit passwordFile;
