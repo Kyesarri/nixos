@@ -20,8 +20,8 @@ in {
   power.ups = {
     enable = true;
     ups.dellups = {
-      driver = "netxml-ups";
-      port = "http://${secrets.ip.dellups}:80";
+      driver = "usbhid-ups";
+      port = "auto";
       directives = ["vendorid = 047c" "productid = ffff"];
     };
     users.monuser = {
