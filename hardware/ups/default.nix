@@ -85,7 +85,7 @@ in {
     }
     {
       users = ["nut"];
-      runAs = "archit";
+      runAs = "${spaghetti.user}";
       commands = [
         {
           command = "${notify-send}";
