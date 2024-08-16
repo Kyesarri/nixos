@@ -56,6 +56,7 @@ colors:
     link-hover: "#24A8B4" # links hover color (footer & message), service card icon hover color
 
 services:
+  - name: "services"
     icon: "fas fa-hand-holding-heart fa-fw"
 
     items:
