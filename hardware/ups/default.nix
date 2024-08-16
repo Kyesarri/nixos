@@ -21,9 +21,8 @@ in {
     enable = true;
     ups.dellups = {
       driver = "netxml-ups";
-      vendorid = "047c";
-      productid = "ffff";
       port = "http://${secrets.ip.dellups}:80";
+      directives = ["vendorid = 047c" "productid = ffff"];
     };
     users.monuser = {
       upsmon = "master";
