@@ -53,7 +53,7 @@ colors:
     text-subtitle: "#DCDFE4" # service card subtitle color
     card-shadow: rgb(228, 163, 130, 0.7) # #24A8B4 service card box-shadow
     link: "#DF5273" # links color (footer & message), service card icon color
-    link-hover: "#E93C58" # links hover color (footer & message), service card icon hover color
+    link-hover: "#24A8B4" # links hover color (footer & message), service card icon hover color
 
 services:
   - name: "her things"
