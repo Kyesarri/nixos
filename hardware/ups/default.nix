@@ -22,7 +22,7 @@ in {
     ups.dellups = {
       driver = "usbhid-ups";
       port = "auto";
-      summary = [
+      directives = [
         "vendorid = \"047C\""
         "productid = \"FFFF\""
       ];
