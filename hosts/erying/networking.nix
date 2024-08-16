@@ -35,7 +35,7 @@
     networks."10-lan" = {
       address = ["${toString secrets.ip.erying}/24"];
       gateway = ["${toString secrets.ip.gateway}"];
-      matchConfig.Name = ["enp3s0"];
+      matchConfig.Name = ["enp4s0"];
       networkConfig = {
         IPv6PrivacyExtensions = "yes";
         MulticastDNS = true;
@@ -57,7 +57,7 @@
 
   systemd.network.networks = {
     "10-lan" = {
-      matchConfig.Name = ["enp3s0"];
+      matchConfig.Name = ["enp4s0"];
       networkConfig.LinkLocalAddressing = "no";
       linkConfig.RequiredForOnline = "carrier";
       extraConfig = ''

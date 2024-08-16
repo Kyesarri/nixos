@@ -44,6 +44,7 @@ may need to have in each /host/hostame/ for now this works
   --base0E: #B072D1; /* MAGENTA Keywords, Storage, Selector, Markup Italic, Diff Changed */
   --base0F: #E4A382; /* PURPLE? Deprecated, Opening/Closing Embedded Language Tags, e.g. <?php ?> */
 }
+
 .Catppuccin-Latte {
   --base00: #eff1f5; /*base*/
   --base01: #e6e9ef; /*mantle*/
