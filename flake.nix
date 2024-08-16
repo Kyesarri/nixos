@@ -65,6 +65,7 @@
           {
             environment.systemPackages = [alejandra.defaultPackage.x86_64-linux];
           }
+
           {
             home-manager = {
               useGlobalPkgs = true;
@@ -74,6 +75,7 @@
           }
         ];
       };
+      #
       "nix-notebook" = nixpkgs.lib.nixosSystem {
         inherit system specialArgs;
         modules = [
@@ -88,6 +90,7 @@
           }
         ];
       };
+      #
       "nix-desktop" = nixpkgs.lib.nixosSystem {
         inherit system specialArgs;
         modules = [
@@ -105,6 +108,7 @@
           }
         ];
       };
+      #
       "nix-serv" = nixpkgs.lib.nixosSystem {
         inherit system specialArgs;
         modules = [
@@ -123,6 +127,7 @@
           }
         ];
       };
+      #
       "nix-erying" = nixpkgs.lib.nixosSystem {
         inherit system specialArgs;
         modules = [
