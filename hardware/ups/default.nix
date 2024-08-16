@@ -25,6 +25,7 @@ in {
       directives = [
         "vendorid = \"047C\""
         "productid = \"FFFF\""
+        "serial = CN-0H928N-75162-3C4-0039-A10"
       ];
     };
     users.monuser = {
