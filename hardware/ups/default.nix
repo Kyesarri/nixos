@@ -1,6 +1,7 @@
 # taken from https://github.com/accelbread/config-flake/blob/c4acf21d3a34c8bed18e08728d086803fdcd43ea/nix/nixos/solace/ups.nix#L17
 {
   spaghetti,
+  secrets,
   pkgs,
   lib,
   ...
@@ -19,8 +20,8 @@ in {
   power.ups = {
     enable = true;
     ups.dell = {
-      driver = "usbhid-ups";
-      port = "auto";
+      driver = "netxml-ups";
+      port = "${secrets.ip.dellups}:80";
     };
     users.monuser = {
       upsmon = "master";
