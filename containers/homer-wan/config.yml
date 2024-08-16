@@ -14,10 +14,10 @@ defaults:
   colorTheme: dark
 
 links:
-  - name: "homer - this page"
+  - name: "homer"
     icon: "fab fa-github"
     url: "https://github.com/bastienwirtz/homer"
-  - name: "my nixos configs"
+  - name: "nixos config"
     icon: "fas fa-book"
     url: "https://codeberg.org/kye/nixos"
   # this will link to a second homer page that will load config from page2.yml and keep default config values as in config.yml file
