@@ -21,8 +21,8 @@ in {
     enable = true;
     ups.dellups = {
       driver = "usbhid-ups";
-      port = "/dev/usb/hiddev0";
-      directives = ["vendorid = 047c" "productid = ffff"];
+      port = "auto";
+      directives = ["vendorid = 047C" "productid = FFFF"];
     };
     users.monuser = {
       upsmon = "master";
