@@ -29,31 +29,31 @@ links:
 theme: neon
 colors:
   light:
-    highlight-primary: "#E3E6EE" #
-    highlight-secondary: "#B072D1" # banner divider, card tags
-    highlight-hover: "#1C1E26" #
-    background: "#E3E6EE" #
-    card-background: "#DCDFE4" #
-    text: "#1C1E26" #
-    text-header: "#1C1E26" #
-    text-title: "#1C1E26" #
-    text-subtitle: "#1C1E26" #
-    card-shadow: rgb(228, 163, 130, 0.7) # #24A8B4 also used on footer
-    link: "#DF5273" # used for icons
-    link-hover: "#E93C58" # hover icons
+    highlight-primary: "#E3E6EE" # header background, group title icons
+    highlight-secondary: "#B072D1" # navbar background, default tag color
+    highlight-hover: "#1C1E26" # navbar links hover, search input background
+    background: "#E3E6EE" # page background color
+    card-background: "#DCDFE4" # service card background color
+    text: "#1C1E26" # main text color
+    text-header: "#1C1E26" # header text color
+    text-title: "#1C1E26" # service card title color
+    text-subtitle: "#1C1E26" # service card subtitle color
+    card-shadow: rgb(228, 163, 130, 0.7) # #24A8B4 service card box-shadow
+    link: "#DF5273" # links color (footer & message), service card icon color
+    link-hover: "#E93C58" # links hover color (footer & message), service card icon hover color
   dark:
-    highlight-primary: "#232530" #
-    highlight-secondary: "#B072D1" # banner divider, card tags
-    highlight-hover: "#1C1E26" #
-    background: "#1C1E26" #
-    card-background: "#232530" #
-    text: "#DCDFE4" #
-    text-header: "#DCDFE4" #
-    text-title: "#DCDFE4" #
-    text-subtitle: "#DCDFE4" #
-    card-shadow: rgb(228, 163, 130, 0.7) # #24A8B4 also used on footer
-    link: "#DF5273" # used for icons
-    link-hover: "#E93C58" # hover icons
+    highlight-primary: "#2E303E" # header background, group title icons
+    highlight-secondary: "#B072D1" # navbar background, default tag color
+    highlight-hover: "#1C1E26" # navbar links hover, search input background
+    background: "#1C1E26" # page background color
+    card-background: "#232530" # service card background color
+    text: "#DCDFE4" # main text color
+    text-header: "#DCDFE4" # header text color
+    text-title: "#DCDFE4" # service card title color
+    text-subtitle: "#DCDFE4" # service card subtitle color
+    card-shadow: rgb(228, 163, 130, 0.7) # #24A8B4 service card box-shadow
+    link: "#DF5273" # links color (footer & message), service card icon color
+    link-hover: "#E93C58" # links hover color (footer & message), service card icon hover color
 
 services:
   - name: "her things"
