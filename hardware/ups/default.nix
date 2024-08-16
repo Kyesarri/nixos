@@ -21,7 +21,7 @@ in {
     enable = true;
     ups.dell = {
       driver = "netxml-ups";
-      port = "${secrets.ip.dellups}:80";
+      port = "${secrets.ip.dellups}";
     };
     users.monuser = {
       upsmon = "master";
