@@ -18,15 +18,10 @@ in {
 
       volumes = ["/etc/localtime:/etc/localtime:ro"];
 
-      # using temp masterkey ;)
-      cmd = [
-        #        "start-from-init --masterkey \"CZOjWCFaxeLUdwb1TjvmMFyS8j9ICQNY\" --tlsMode disabled"
-        "start-from-init"
-        "--masterkeyFromEnv"
-      ];
+      cmd = ["start-from-init" "--masterkeyFromEnv"];
 
       environment = {
-        ZITADEL_MASTERKEY = "CZOjWCFaxeLUdwb1TjvmMFyS8j9ICQNY";
+        ZITADEL_MASTERKEY = "${toString secrets.zitadel.masterkey}";
         TZ = "Australia/Melbourne";
       };
 
