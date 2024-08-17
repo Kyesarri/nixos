@@ -4,7 +4,7 @@
   ...
 }: let
   contName = "zitadel";
-  dir1 = "/etc/oci.cont/${contName}/";
+  dir1 = "/etc/oci.cont/${contName}";
 in {
   system.activationScripts."make${contName}Dir" =
     lib.stringAfter ["var"]
