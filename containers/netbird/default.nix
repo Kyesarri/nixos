@@ -89,7 +89,7 @@ in {
       image = "${netbird.coturn.image}";
       volumes = [
         "${toString netbird.time}"
-        "${toString netbird.coturn.dir}/turnserver.conf:${toString netbird.coturn.volume}:ro"
+        # "${toString netbird.coturn.dir}/turnserver.conf:${toString netbird.coturn.volume}:ro"
       ];
       extraOptions = ["--network=macvlan_lan" "--ip=${netbird.coturn.ip}"];
     };
