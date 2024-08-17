@@ -21,6 +21,7 @@ in {
       # using temp masterkey ;)
       cmd = [
         "start-from-init"
+        "masterkeyFromEnv"
         # "masterkey \"\""
       ]; #   --tlsMode disabled
 
