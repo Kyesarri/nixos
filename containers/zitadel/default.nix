@@ -21,7 +21,7 @@ in {
       # using temp masterkey ;)
       cmd = [
         "start-from-init"
-        # "masterkey \"\""
+        "--masterkey CZOjWCFaxeLUdwb1TjvmMFyS8j9ICQNY"
       ]; #   --tlsMode disabled
 
       environment = {
@@ -32,7 +32,6 @@ in {
       extraOptions = [
         "--network=macvlan_lan"
         "--ip=${secrets.ip.zitadel}"
-        "--masterkeyFromEnv"
       ];
     };
   };
