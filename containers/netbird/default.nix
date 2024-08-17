@@ -44,7 +44,7 @@ in {
   system.activationScripts = {
     "make${netbird.dir}" =
       lib.stringAfter ["var"]
-      ''mkdir -v -p ${toString netbird.dir} & ${toString netbird.dash.dir} & ${toString netbird.signal.dir} & ${toString netbird.manage.dir} & ${toString netbird.coturn.dir}'';
+      ''mkdir -v -p ${toString netbird.dir} ${toString netbird.dash.dir} ${toString netbird.signal.dir} ${toString netbird.manage.dir} ${toString netbird.coturn.dir}'';
   };
 
   virtualisation.oci-containers.containers = {
