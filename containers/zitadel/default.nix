@@ -20,8 +20,10 @@ in {
 
       # using temp masterkey ;)
       cmd = [
-        "start-from-init --masterkey \"CZOjWCFaxeLUdwb1TjvmMFyS8j9ICQNY\""
-      ]; #   --tlsMode disabled
+        #        "start-from-init --masterkey \"CZOjWCFaxeLUdwb1TjvmMFyS8j9ICQNY\" --tlsMode disabled"
+        "start-from-init"
+        "--masterkeyFromEnv"
+      ];
 
       environment = {
         ZITADEL_MASTERKEY = "CZOjWCFaxeLUdwb1TjvmMFyS8j9ICQNY";
