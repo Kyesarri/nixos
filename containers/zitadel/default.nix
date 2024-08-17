@@ -23,6 +23,8 @@ in {
       environment = {
         ZITADEL_MASTERKEY = "${toString secrets.zitadel.masterkey}";
         TZ = "Australia/Melbourne";
+        ZITADEL_DATABASE_COCKROACH_HOST = "${toString secrets.ip.zitadel}";
+        ZITADEL_DATABASE_COCKROACH_PORT = "26257";
       };
 
       extraOptions = [
