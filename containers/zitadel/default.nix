@@ -19,10 +19,12 @@ in {
       volumes = ["/etc/localtime:/etc/localtime:ro"];
 
       # using temp masterkey ;)
-      cmd = ["start-from-init"]; #  --masterkey \"\" --tlsMode disabled
+      cmd = [
+        "start-from-init"
+        "--masterkey \"CZOjWCFaxeLUdwb1TjvmMFyS8j9ICQNY\""
+      ]; #   --tlsMode disabled
 
       environment = {
-        masterkey = "CZOjWCFaxeLUdwb1TjvmMFyS8j9ICQNY";
         TZ = "Australia/Melbourne";
       };
 
