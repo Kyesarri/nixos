@@ -21,7 +21,7 @@ in {
 
     extraOptions = [
       "--network=macvlan_lan"
-      "--ip=${secrets.ip.netbird}"
+      "--ip=${secrets.ip.netbird.dash}"
     ];
   };
 }
