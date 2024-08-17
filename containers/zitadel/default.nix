@@ -20,7 +20,7 @@ in {
 
       # using temp masterkey ;)
       cmd = [
-        "start-from-init -m CZOjWCFaxeLUdwb1TjvmMFyS8j9ICQNY"
+        "start-from-init --masterkey \"CZOjWCFaxeLUdwb1TjvmMFyS8j9ICQNY\""
       ]; #   --tlsMode disabled
 
       environment = {
