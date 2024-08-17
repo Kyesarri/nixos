@@ -24,6 +24,7 @@
     ../../containers/octoprint
     # ../../containers/zigbee2mqtt # should not have been running, don't have a zigbee usb :)
     ../../containers/overseerr
+    ../../containers/netbird # this wont work out the box :D
     # ../../containers/uptime-kuma
   ];
 
