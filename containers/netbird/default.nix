@@ -57,6 +57,10 @@ in {
         "${toString netbird.time}"
         "${toString netbird.dash.dir}:${toString netbird.dash.volume}"
       ];
+      environment = [
+        "NETBIRD_MGMT_API_ENDPOINT=${toString netbird.manage.ip}:443"
+        "NETBIRD_MGMT_GRPC_API_ENDPOINT=${toString netbird.manage.ip}"
+      ];
       extraOptions = ["--network=macvlan_lan" "--ip=${netbird.dash.ip}"];
     };
     # netbird-signal
