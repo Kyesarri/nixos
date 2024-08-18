@@ -34,6 +34,7 @@ in {
       image = "ghcr.io/zitadel/zitadel:latest";
       volumes = ["/etc/localtime:/etc/localtime:ro"];
       cmd = ["start-from-init" "--masterkeyFromEnv"];
+      ports = ["80:8080"];
       environment = {
         ZITADEL_MASTERKEY = "${toString secrets.keys.zitadel}";
         TZ = "Australia/Melbourne";
@@ -44,7 +45,6 @@ in {
       };
       extraOptions = [
         "--network=podman"
-        "-p 8080"
       ];
     };
 
