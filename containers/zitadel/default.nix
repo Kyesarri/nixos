@@ -1,7 +1,6 @@
 {
   lib,
   pkgs,
-  config,
   secrets,
   ...
 }: let
@@ -12,14 +11,14 @@ in {
     lib.stringAfter ["var"]
     ''mkdir -v -p ${toString dir1} & ${toString dir1}-db'';
 
-  systemd.services.create-elk-pod = with config.virtualisation.oci-containers; {
-    serviceConfig.Type = "oneshot";
-    wantedBy = ["podman-zitadel-db.service" "podman-zitadel.service"];
-    script = ''
-      ${pkgs.podman}/bin/podman pod exists zitadel || \
-        ${pkgs.podman}/bin/podman pod create -n zitadel -p '127.0.0.1:8080:8080'
-    '';
+  serviceConfig = {
+    Type = "oneshot";
+    RemainAfterExit = true;
+    ExecStop = "${pkgs.podman}/bin/podman network rm -f zitadel-net";
   };
+  script = ''
+    podman network exists zitadel-net || podman network create zitadel-net
+  '';
 
   virtualisation.oci-containers.containers = {
     # zitadel
