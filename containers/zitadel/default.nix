@@ -42,6 +42,7 @@ in {
         ZITADEL_DATABASE_COCKROACH_PORT = "26257";
         ZITADEL_EXTERNALSECURE = "false";
         ZITADEL_TLS_ENABLED = "false";
+        ZITADEL_DOMAIN = "${toString secrets.ip.erying}";
       };
       extraOptions = [
         "--network=podman"
