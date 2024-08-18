@@ -1,5 +1,7 @@
 {
   lib,
+  pkgs,
+  config,
   secrets,
   ...
 }: let
@@ -10,27 +12,33 @@ in {
     lib.stringAfter ["var"]
     ''mkdir -v -p ${toString dir1} & ${toString dir1}-db'';
 
+  systemd.services.create-elk-pod = with config.virtualisation.oci-containers; {
+    serviceConfig.Type = "oneshot";
+    wantedBy = ["podman-zitadel-db.service" "podman-zitadel.service"];
+    script = ''
+      ${pkgs.podman}/bin/podman pod exists zitadel || \
+        ${pkgs.podman}/bin/podman pod create -n zitadel -p '127.0.0.1:8080:8080'
+    '';
+  };
+
   virtualisation.oci-containers.containers = {
     # zitadel
     "${contName}" = {
       hostname = "${contName}";
       autoStart = true;
       image = "ghcr.io/zitadel/zitadel:latest";
-
       volumes = ["/etc/localtime:/etc/localtime:ro"];
-
       cmd = ["start-from-init" "--masterkeyFromEnv"];
-
       environment = {
         ZITADEL_MASTERKEY = "${toString secrets.keys.zitadel}";
         TZ = "Australia/Melbourne";
         # ZITADEL_DATABASE_COCKROACH_HOST = "";
         # ZITADEL_DATABASE_COCKROACH_PORT = "26257";
       };
-
       extraOptions = [
         "--network=zitadel"
-        "--network=macvlan_lan --ip=${secrets.ip.zitadel}"
+        "--network=macvlan_lan"
+        "--ip=${secrets.ip.zitadel}"
       ];
     };
 
@@ -39,14 +47,11 @@ in {
       hostname = "${contName}-db";
       autoStart = true;
       image = "cockroachdb/cockroach:latest";
-
       volumes = [
         "/etc/localtime:/etc/localtime:ro"
         "${toString dir1}:/cockroach/cockroach-data"
       ];
-
       cmd = ["start-single-node"];
-
       environment = {
         COCKROACH_DATABASE = "${toString secrets.zitadel.dbname}";
         COCKROACH_USER = "${toString secrets.zitadel.dbuser}";
@@ -55,7 +60,6 @@ in {
         PGID = "1000";
         TZ = "Australia/Melbourne";
       };
-
       extraOptions = [
         "--network=zitadel"
       ];
