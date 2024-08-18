@@ -52,7 +52,7 @@ in {
       image = "cockroachdb/cockroach:latest";
       volumes = [
         "/etc/localtime:/etc/localtime:ro"
-        "${toString dir1}:/cockroach/cockroach-data"
+        "${toString dir1}-db:/cockroach/cockroach-data"
       ];
       cmd = ["start-single-node"];
       environment = {
