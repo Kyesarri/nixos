@@ -37,7 +37,7 @@ in {
       environment = {
         ZITADEL_MASTERKEY = "${toString secrets.keys.zitadel}";
         TZ = "Australia/Melbourne";
-        ZITADEL_DATABASE_COCKROACH_HOST = "10.0.0.20";
+        ZITADEL_DATABASE_COCKROACH_HOST = "${contName}-db";
         ZITADEL_DATABASE_COCKROACH_PORT = "26257";
       };
       extraOptions = [
@@ -59,8 +59,6 @@ in {
         COCKROACH_DATABASE = "${toString secrets.zitadel.dbname}";
         COCKROACH_USER = "${toString secrets.zitadel.dbuser}";
         COCKROACH_PASSWORD = "${toString secrets.zitadel.dbpass}";
-        PUID = "1000";
-        PGID = "1000";
         TZ = "Australia/Melbourne";
       };
       extraOptions = [
