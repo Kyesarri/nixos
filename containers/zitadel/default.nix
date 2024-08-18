@@ -13,6 +13,7 @@ in {
     ''mkdir -v -p ${toString dir1} ${toString dir1}-db'';
 
   # check if podman network exists, if it doesn't create it
+  /*
   systemd.services."podman-network-zitadel-net" = {
     path = [pkgs.podman];
     script = ''podman network exists zitadel-net || podman network create --subnet 10.0.0.0/16 --ip-range 10.0.0.200/16 --gateway ${toString secrets.ip.erying} zitadel-net'';
@@ -23,6 +24,7 @@ in {
       ExecStop = "${pkgs.podman}/bin/podman network rm -f zitadel-net";
     };
   };
+  */
 
   virtualisation.oci-containers.containers = {
     # zitadel
@@ -39,8 +41,7 @@ in {
         ZITADEL_DATABASE_COCKROACH_PORT = "26257";
       };
       extraOptions = [
-        "--network=zitadel-net"
-        "--ip=10.0.0.10"
+        "--network=podman"
       ];
     };
 
@@ -63,8 +64,7 @@ in {
         TZ = "Australia/Melbourne";
       };
       extraOptions = [
-        "--network=zitadel-net"
-        "--ip=10.0.0.20"
+        "--network=podman"
       ];
     };
   };
