@@ -54,7 +54,7 @@ in {
         "/etc/localtime:/etc/localtime:ro"
         "${toString dir1}-db:/cockroach/cockroach-data"
       ];
-      cmd = ["start-single-node"];
+      cmd = ["start-single-node" "--insecure"];
       environment = {
         COCKROACH_DATABASE = "${toString secrets.zitadel.dbname}";
         COCKROACH_USER = "${toString secrets.zitadel.dbuser}";
