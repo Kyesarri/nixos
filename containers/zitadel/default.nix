@@ -1,6 +1,6 @@
 {
   lib,
-  pkgs,
+  # pkgs,
   secrets,
   ...
 }: let
@@ -33,12 +33,14 @@ in {
       autoStart = true;
       image = "ghcr.io/zitadel/zitadel:latest";
       volumes = ["/etc/localtime:/etc/localtime:ro"];
-      cmd = ["start-from-init" "--masterkeyFromEnv" "--tlsMode disabled"];
+      cmd = ["start-from-init" "--masterkeyFromEnv"];
       environment = {
         ZITADEL_MASTERKEY = "${toString secrets.keys.zitadel}";
         TZ = "Australia/Melbourne";
         ZITADEL_DATABASE_COCKROACH_HOST = "${contName}-db";
         ZITADEL_DATABASE_COCKROACH_PORT = "26257";
+        ZITADEL_EXTERNALSECURE = "false";
+        ZITADEL_TLS_ENABLED = "false";
       };
       extraOptions = [
         "--network=podman"
