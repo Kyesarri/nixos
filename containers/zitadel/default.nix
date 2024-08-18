@@ -40,7 +40,8 @@ in {
       };
       extraOptions = [
         "--network=zitadel-net"
-        "--network=macvlan_lan ip=${secrets.ip.zitadel}"
+        # "--network=macvlan_lan"
+        # "--ip=${secrets.ip.zitadel}"
       ];
     };
 
