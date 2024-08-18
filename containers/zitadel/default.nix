@@ -14,14 +14,14 @@ in {
 
   # check if podman network exists, if it doesn't create it
   /*
-  systemd.services."podman-network-zitadel-net" = {
+  systemd.services."podman-network-zitadel" = {
     path = [pkgs.podman];
-    script = ''podman network exists zitadel-net || podman network create --subnet 10.0.0.0/16 --ip-range 10.0.0.200/16 --gateway ${toString secrets.ip.erying} zitadel-net'';
+    script = ''podman network exists zitadel || podman network create --subnet 10.0.0.0/16 --ip-range 10.0.0.200/16 --gateway ${toString secrets.ip.erying} zitadel'';
     # wantedBy = ["podman-zitadel-db.service" "podman-zitadel.service"];
     serviceConfig = {
       Type = "oneshot";
       RemainAfterExit = true;
-      ExecStop = "${pkgs.podman}/bin/podman network rm -f zitadel-net";
+      ExecStop = "${pkgs.podman}/bin/podman network rm -f zitadel";
     };
   };
   */
@@ -34,6 +34,7 @@ in {
       image = "ghcr.io/zitadel/zitadel:latest";
       volumes = ["/etc/localtime:/etc/localtime:ro"];
       cmd = ["start-from-init" "--masterkeyFromEnv"];
+      ports = [8080];
       environment = {
         ZITADEL_MASTERKEY = "${toString secrets.keys.zitadel}";
         TZ = "Australia/Melbourne";
