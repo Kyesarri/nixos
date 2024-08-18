@@ -33,7 +33,7 @@ in {
       autoStart = true;
       image = "ghcr.io/zitadel/zitadel:latest";
       volumes = ["/etc/localtime:/etc/localtime:ro"];
-      cmd = ["start-from-init" "--masterkeyFromEnv"];
+      cmd = ["start-from-init" "--masterkeyFromEnv" "--tlsMode disabled"];
       environment = {
         ZITADEL_MASTERKEY = "${toString secrets.keys.zitadel}";
         TZ = "Australia/Melbourne";
