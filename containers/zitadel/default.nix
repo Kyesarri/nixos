@@ -39,7 +39,7 @@ in {
         # ZITADEL_DATABASE_COCKROACH_PORT = "26257";
       };
       extraOptions = [
-        "--network=zitadel"
+        "--network=zitadel-net"
         "--network=macvlan_lan"
         "--ip=${secrets.ip.zitadel}"
       ];
@@ -64,7 +64,7 @@ in {
         TZ = "Australia/Melbourne";
       };
       extraOptions = [
-        "--network=zitadel"
+        "--network=zitadel-net"
       ];
     };
   };
