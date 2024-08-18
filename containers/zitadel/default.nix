@@ -7,18 +7,22 @@
   contName = "zitadel";
   dir1 = "/etc/oci.cont/${contName}";
 in {
+  # create directories for containeers
   system.activationScripts."make${contName}Dir" =
     lib.stringAfter ["var"]
     ''mkdir -v -p ${toString dir1} & ${toString dir1}-db'';
 
-  serviceConfig = {
-    Type = "oneshot";
-    RemainAfterExit = true;
-    ExecStop = "${pkgs.podman}/bin/podman network rm -f zitadel-net";
+  # check if podman network exists, if it doesn't create it
+  systemd.services."podman-network-zitadel-net" = {
+    path = [pkgs.podman];
+    script = ''podman network exists zitadel-net || podman network create zitadel-net'';
+    wantedBy = ["podman-zitadel-db.service" "podman-zitadel.service"];
+    serviceConfig = {
+      Type = "oneshot";
+      RemainAfterExit = true;
+      ExecStop = "${pkgs.podman}/bin/podman network rm -f zitadel-net";
+    };
   };
-  script = ''
-    podman network exists zitadel-net || podman network create zitadel-net
-  '';
 
   virtualisation.oci-containers.containers = {
     # zitadel
