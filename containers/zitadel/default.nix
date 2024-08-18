@@ -15,7 +15,7 @@ in {
   # check if podman network exists, if it doesn't create it
   systemd.services."podman-network-zitadel-net" = {
     path = [pkgs.podman];
-    script = ''podman network exists zitadel-net || podman network create zitadel-net'';
+    script = ''podman network exists zitadel-net || podman network create --subnet 10.0.0/24 --ip-range 10.0.0.255/24 --gateway ${toString secrets.ip.erying} zitadel-net'';
     wantedBy = ["podman-zitadel-db.service" "podman-zitadel.service"];
     serviceConfig = {
       Type = "oneshot";
