@@ -35,13 +35,12 @@ in {
       environment = {
         ZITADEL_MASTERKEY = "${toString secrets.keys.zitadel}";
         TZ = "Australia/Melbourne";
-        ZITADEL_DATABASE_COCKROACH_HOST = "${contName}-db";
+        ZITADEL_DATABASE_COCKROACH_HOST = "10.0.0.20";
         ZITADEL_DATABASE_COCKROACH_PORT = "26257";
       };
       extraOptions = [
         "--network=zitadel-net"
-        # "--network=macvlan_lan"
-        # "--ip=${secrets.ip.zitadel}"
+        "--ip=10.0.0.10"
       ];
     };
 
@@ -65,6 +64,7 @@ in {
       };
       extraOptions = [
         "--network=zitadel-net"
+        "--ip=10.0.0.20"
       ];
     };
   };
