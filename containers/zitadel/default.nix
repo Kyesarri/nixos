@@ -10,7 +10,7 @@ in {
   # create directories for containeers
   system.activationScripts."make${contName}Dir" =
     lib.stringAfter ["var"]
-    ''mkdir -v -p ${toString dir1} & ${toString dir1}-db'';
+    ''mkdir -v -p ${toString dir1} ${toString dir1}-db'';
 
   # check if podman network exists, if it doesn't create it
   systemd.services."podman-network-zitadel-net" = {
