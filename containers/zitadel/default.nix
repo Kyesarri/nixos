@@ -44,7 +44,7 @@ in {
       };
       extraOptions = [
         "--network=podman"
-        "-p 80:8080"
+        "-p 8080"
       ];
     };
 
