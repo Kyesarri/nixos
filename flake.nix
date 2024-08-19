@@ -54,7 +54,7 @@
     };
     secrets = builtins.fromJSON (builtins.readFile "${self}/secrets/secrets.json");
     system = "x86_64-linux";
-    specialArgs = {inherit nix-colors secrets inputs prism spaghetti wallpaper-generator;};
+    specialArgs = {inherit nix-colors hyprpicker secrets inputs prism spaghetti wallpaper-generator;};
   in {
     nixosConfigurations = {
       "nix-laptop" = nixpkgs.lib.nixosSystem {
