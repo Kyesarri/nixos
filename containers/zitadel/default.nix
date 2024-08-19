@@ -37,7 +37,7 @@ in {
         ZITADEL_TELEMETRY_ENABLED = "false";
         ZITADEL_DATABASE_COCKROACH_DATABASE = "${toString secrets.zitadel.dbname}";
         ZITADEL_DATABASE_COCKROACH_USER_USERNAME = "${toString secrets.zitadel.dbuser}";
-        ZITADEL_DATABASE_COCKROACH_USER_PASSWORD = "${toString secrets.zitadel.dbpass}";
+        ZITADEL_DATABASE_COCKROACH_USER_PASSWORD = "";
         ZITADEL_DATABASE_COCKROACH_USER_SSL_MODE = "disable";
       };
       extraOptions = [
@@ -58,7 +58,7 @@ in {
       environment = {
         COCKROACH_DATABASE = "${toString secrets.zitadel.dbname}";
         COCKROACH_USER = "${toString secrets.zitadel.dbuser}";
-        COCKROACH_PASSWORD = "${toString secrets.zitadel.dbpass}";
+        COCKROACH_PASSWORD = "";
         TZ = "Australia/Melbourne";
       };
       extraOptions = [
