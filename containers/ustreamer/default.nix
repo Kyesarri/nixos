@@ -23,12 +23,11 @@ in {
     ];
 
     environment = {
-      # PUID = "1000";
-      # PGID = "1000";
       TZ = "Australia/Melbourne";
     };
 
     extraOptions = [
+      "--privileged"
       "--network=macvlan_lan"
       "--ip=${secrets.ip.ustreamer}"
     ];
