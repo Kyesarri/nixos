@@ -37,7 +37,7 @@ in {
         ZITADEL_TELEMETRY_ENABLED = "false";
         ZITADEL_DATABASE_COCKROACH_DATABASE = "${toString secrets.zitadel.dbname}";
         ZITADEL_DATABASE_COCKROACH_USER_USERNAME = "${toString secrets.zitadel.dbuser}";
-        ZITADEL_DATABASE_COCKROACH_USER_PASSWORD = "";
+        ZITADEL_DATABASE_COCKROACH_USER_PASSWORD = ""; # passwords cannot be set when using insecure mode
         ZITADEL_DATABASE_COCKROACH_USER_SSL_MODE = "disable";
       };
       extraOptions = [
@@ -50,15 +50,14 @@ in {
       hostname = "${contName}-db";
       autoStart = true;
       image = "cockroachdb/cockroach:latest";
-      volumes = [
-        "/etc/localtime:/etc/localtime:ro"
-        "${toString dir1}-db:/cockroach/cockroach-data"
-      ];
+      volumes = ["/etc/localtime:/etc/localtime:ro" "${toString dir1}-db:/cockroach/cockroach-data"];
+      # "hostport:containerport"
+      ports = ["80:8080"];
       cmd = ["start-single-node" "--insecure"];
       environment = {
         COCKROACH_DATABASE = "${toString secrets.zitadel.dbname}";
         COCKROACH_USER = "${toString secrets.zitadel.dbuser}";
-        COCKROACH_PASSWORD = "";
+        COCKROACH_PASSWORD = ""; # passwords cannot be set when using insecure mode
         TZ = "Australia/Melbourne";
       };
       extraOptions = [
