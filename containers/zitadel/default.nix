@@ -11,7 +11,7 @@ in {
   #
   # running on host - need to forward port 8080
 
-  # create directories for containeers
+  # create directories for containers
   system.activationScripts."make${contName}Dir" =
     lib.stringAfter ["var"]
     ''mkdir -v -p ${toString dir1} ${toString dir1}-db'';
@@ -32,7 +32,6 @@ in {
       ports = ["8080:8080"];
       environment = {
         ZITADEL_MASTERKEY = "${toString secrets.keys.zitadel}";
-        TZ = "Australia/Melbourne";
         ZITADEL_DATABASE_COCKROACH_HOST = "${contName}-db";
         ZITADEL_DATABASE_COCKROACH_PORT = "26257";
         ZITADEL_EXTERNALSECURE = "false"; # FIXME
@@ -43,6 +42,7 @@ in {
         ZITADEL_DATABASE_COCKROACH_USER_USERNAME = "${toString secrets.zitadel.dbuser}";
         ZITADEL_DATABASE_COCKROACH_USER_PASSWORD = ""; # passwords cannot be set when using insecure mode
         ZITADEL_DATABASE_COCKROACH_USER_SSL_MODE = "disable";
+        TZ = "Australia/Melbourne";
       };
       extraOptions = [
         "--network=podman"
