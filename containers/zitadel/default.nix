@@ -52,7 +52,7 @@ in {
       image = "cockroachdb/cockroach:latest";
       volumes = ["/etc/localtime:/etc/localtime:ro" "${toString dir1}-db:/cockroach/cockroach-data"];
       # "hostport:containerport"
-      ports = ["80:8080"];
+      # ports = ["80:8080"];
       cmd = ["start-single-node" "--insecure"];
       environment = {
         COCKROACH_DATABASE = "${toString secrets.zitadel.dbname}";
