@@ -37,7 +37,7 @@ in {
         ZITADEL_DATABASE_COCKROACH_PORT = "26257";
         ZITADEL_EXTERNALSECURE = "false"; # FIXME
         ZITADEL_TLS_ENABLED = "false"; # FIXME
-        ZITADEL_EXTERNALDOMAIN = "${toString secrets.ip.erying}";
+        ZITADEL_EXTERNALDOMAIN = "https://zitadel.home";
         ZITADEL_TELEMETRY_ENABLED = "false";
         ZITADEL_DATABASE_COCKROACH_DATABASE = "${toString secrets.zitadel.dbname}";
         ZITADEL_DATABASE_COCKROACH_USER_USERNAME = "${toString secrets.zitadel.dbuser}";
