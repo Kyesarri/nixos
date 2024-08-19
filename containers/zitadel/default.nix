@@ -1,30 +1,20 @@
 {
   lib,
-  # pkgs,
   secrets,
   ...
 }: let
   contName = "zitadel";
   dir1 = "/etc/oci.cont/${contName}";
 in {
+  # containers are both running insecure without https
+  # please don't deploy outside of internal networks, or just dont :D
+  #
+  # running on host - need to forward port 8080
+  #
   # create directories for containeers
   system.activationScripts."make${contName}Dir" =
     lib.stringAfter ["var"]
     ''mkdir -v -p ${toString dir1} ${toString dir1}-db'';
-
-  # check if podman network exists, if it doesn't create it
-  /*
-  systemd.services."podman-network-zitadel" = {
-    path = [pkgs.podman];
-    script = ''podman network exists zitadel || podman network create --subnet 10.0.0.0/16 --ip-range 10.0.0.200/16 --gateway ${toString secrets.ip.erying} zitadel'';
-    # wantedBy = ["podman-zitadel-db.service" "podman-zitadel.service"];
-    serviceConfig = {
-      Type = "oneshot";
-      RemainAfterExit = true;
-      ExecStop = "${pkgs.podman}/bin/podman network rm -f zitadel";
-    };
-  };
-  */
 
   virtualisation.oci-containers.containers = {
     # zitadel
@@ -34,16 +24,21 @@ in {
       image = "ghcr.io/zitadel/zitadel:latest";
       volumes = ["/etc/localtime:/etc/localtime:ro"];
       cmd = ["start-from-init" "--masterkeyFromEnv"];
+      # "hostport:containerport"
       ports = ["8080:8080"];
       environment = {
         ZITADEL_MASTERKEY = "${toString secrets.keys.zitadel}";
         TZ = "Australia/Melbourne";
         ZITADEL_DATABASE_COCKROACH_HOST = "${contName}-db";
         ZITADEL_DATABASE_COCKROACH_PORT = "26257";
-        ZITADEL_EXTERNALSECURE = "false";
-        ZITADEL_TLS_ENABLED = "false";
-        # ZITADEL_DOMAIN = "${toString secrets.ip.erying}";
+        ZITADEL_EXTERNALSECURE = "false"; # FIXME
+        ZITADEL_TLS_ENABLED = "false"; # FIXME
         ZITADEL_EXTERNALDOMAIN = "${toString secrets.ip.erying}";
+        ZITADEL_TELEMETRY_ENABLED = "false";
+        ZITADEL_DATABASE_COCKROACH_DATABASE = "${toString secrets.zitadel.dbname}";
+        ZITADEL_DATABASE_COCKROACH_USER_USERNAME = "${toString secrets.zitadel.dbuser}";
+        ZITADEL_DATABASE_COCKROACH_USER_PASSWORD = "${toString secrets.zitadel.dbpass}";
+        ZITADEL_DATABASE_COCKROACH_USER_SSL_MODE = "disable";
       };
       extraOptions = [
         "--network=podman"
