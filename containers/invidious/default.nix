@@ -1,26 +1,29 @@
 {
-  spaghetti,
   secrets,
+  lib,
   ...
 }: let
   contName = "invidious";
-  # TODO - need to make a pod with invidious and its db -
-  # adding the pod to the network as a macvlan via nginx?
-  # suppose this is something that i wanted to do - but never have done
+  dir1 = "/etc/oci.cont/${contName}";
 in {
+  system.activationScripts = {
+    "make${dir1}" =
+      lib.stringAfter ["var"]
+      ''mkdir -v -p ${toString dir1} ${toString dir1}/letsencrypt ${toString dir1}/postgresdata ${toString dir1}/sql'';
+  };
   virtualisation.oci-containers.containers = {
     #
     "${contName}" = {
       hostname = "${contName}";
       autoStart = true;
       image = "quay.io/invidious/invidious:latest";
+      ports = ["3000:3000"];
       volumes = [
         "/etc/localtime:/etc/localtime:ro"
-        "/home/${spaghetti.user}/.containers/${contName}/letsencrypt:/etc/letsencrypt" # TODO
+        "${dir1}/letsencrypt:/etc/letsencrypt" # TODO
       ];
       extraOptions = [
-        "--network=#TODO"
-        "--ip=${secrets.ip.res4}" # testing
+        "--network=podman"
       ];
     };
     #
@@ -29,15 +32,19 @@ in {
       autoStart = true;
       image = "docker.io/library/postgres:14";
       volumes = [
-        "/home/${spaghetti.user}/.containers/${contName}/postgresdata:/var/lib/postgresql/data"
-        "/home/${spaghetti.user}/.containers/${contName}/sql:/config/sql"
-        "/home/${spaghetti.user}/.containers/${contName}/sh/init-invidious-db.sh:/docker-entrypoint-initdb.d/init-invidious-db.sh"
+        "/etc/localtime:/etc/localtime:ro"
+        "${dir1}/postgresdata:/var/lib/postgresql/data"
+        "${dir1}/sql:/config/sql"
+        "${dir1}:/docker-entrypoint-initdb.d/init-invidious-db.sh" # TODO FIXME
       ];
       environment = {
         POSTGRES_DB = "${contName}";
         POSTGRES_USER = "kemal";
         POSTGRES_PASSWORD = "kemal";
       };
+      extraOptions = [
+        "--network=podman"
+      ];
     };
   };
 }

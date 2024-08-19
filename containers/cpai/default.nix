@@ -31,7 +31,7 @@ in {
     extraOptions = [
       "--network=macvlan_lan"
       "--ip=${secrets.ip.cpai}"
-      # "--device=/dev/apex_0:/dev/apex_0"
+      # "--device=/dev/apex_0:/dev/apex_0" # google coral
     ];
   };
 }

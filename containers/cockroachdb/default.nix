@@ -27,15 +27,13 @@ in {
       COCKROACH_DATABASE = "";
       COCKROACH_USER = "";
       COCKROACH_PASSWORD = "";
-      PUID = "1000";
-      PGID = "1000";
+      # PUID = "1000";
+      # PGID = "1000";
       TZ = "Australia/Melbourne";
     };
 
     extraOptions = [
-      "--network=macvlan_lan"
-      "--network=zitadel"
-      "--ip=${secrets.ip.cockroachdb}"
+      "--network=podman"
     ];
   };
 }

@@ -27,7 +27,6 @@ in {
       image = "ghcr.io/zitadel/zitadel:latest";
       volumes = ["/etc/localtime:/etc/localtime:ro"];
       cmd = ["start-from-init" "--masterkeyFromEnv"];
-
       # "hostport:containerport"
       ports = ["8080:8080"];
       environment = {
@@ -56,10 +55,6 @@ in {
       image = "cockroachdb/cockroach:latest";
       volumes = ["/etc/localtime:/etc/localtime:ro" "${toString dir1}-db:/cockroach/cockroach-data"];
       cmd = ["start-single-node" "--insecure"];
-
-      # don't feel the need to have the db webui exposed
-      # "hostport:containerport"
-      # ports = ["80:8080"];
       environment = {
         COCKROACH_DATABASE = "${toString secrets.zitadel.dbname}";
         COCKROACH_USER = "${toString secrets.zitadel.dbuser}";

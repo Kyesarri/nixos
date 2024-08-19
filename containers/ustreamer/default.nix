@@ -1,8 +1,4 @@
-{
-  lib,
-  secrets,
-  ...
-}: let
+{secrets, ...}: let
   contName = "ustreamer";
   dir1 = "/dev/video0:/dev/video0";
 in {

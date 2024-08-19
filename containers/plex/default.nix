@@ -18,7 +18,7 @@ in
       hostname = "${hostName}-nix-serv";
       autoStart = true;
       image = "lscr.io/linuxserver/plex:latest";
-      ports = ["${toString webPort}:${toString webPort}"]; # toString is hot!
+      ports = ["${toString webPort}:${toString webPort}"];
       volumes = [
         "/etc/localtime:/etc/localtime:ro"
         "/dev/dri:/dev/dri"
@@ -28,12 +28,14 @@ in
         "/hddc/movies:/movies/hddc"
         "/hddd/movies:/movies/hddd"
         "/hdde/movies:/movies/hdde"
+        "/hddf/movies:/movies/hddf"
 
         "/hdda/tv_shows:/tv_shows/hdda"
         "/hddb/tv_shows:/tv_shows/hddb"
         "/hddc/tv_shows:/tv_shows/hddc"
         "/hddd/tv_shows:/tv_shows/hddd"
         "/hdde/tv_shows:/tv_shows/hdde"
+        "/hddf/tv_shows:/tv_shows/hddf"
 
         "/home/${spaghetti.user}/.containers/${hostName}:/config"
       ];
