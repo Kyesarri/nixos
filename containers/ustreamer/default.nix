@@ -13,7 +13,7 @@ in {
 
     cmd = [
       "--host=${toString secrets.ip.ustreamer}"
-      "--port=80"
+      "--port=8080"
       "-f 30"
     ];
 
