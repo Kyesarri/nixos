@@ -6,10 +6,6 @@
   contName = "ustreamer";
   dir1 = "/dev/video0:/dev/video0";
 in {
-  system.activationScripts."make${contName}Dir" = lib.stringAfter ["var"] ''
-    mkdir -v -p ${toString dir1}
-  '';
-
   virtualisation.oci-containers.containers."${contName}" = {
     hostname = "${contName}";
     autoStart = true;
