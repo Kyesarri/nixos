@@ -12,7 +12,7 @@ in {
     image = "mkuf/ustreamer:latest";
 
     cmd = [
-      "--host=0.0.0.0"
+      "--host=${toString secrets.ip.ustreamer}"
       "--port=80"
       "-f 30"
     ];
