@@ -11,8 +11,8 @@
 
     hyprpicker.url = "github:hyprwm/hyprpicker";
 
-    # hy3.url = "github:outfoxxed/hy3";
-    # hy3.inputs.hyprland.follows = "hyprland";
+    hy3.url = "github:outfoxxed/hy3";
+    hy3.inputs.hyprland.follows = "hyprland";
 
     # hycov.url = "github:DreamMaoMao/hycov";
     # hycov.inputs.hyprland.follows = "hyprland";
@@ -36,7 +36,7 @@
     hyprland,
     hyprpicker,
     # Hyprspace,
-    # hy3,
+    hy3,
     # hycov,
     alejandra,
     nix-colors,
@@ -54,7 +54,7 @@
     };
     secrets = builtins.fromJSON (builtins.readFile "${self}/secrets/secrets.json");
     system = "x86_64-linux";
-    specialArgs = {inherit nix-colors hyprpicker secrets inputs prism spaghetti wallpaper-generator;};
+    specialArgs = {inherit nix-colors hyprpicker hy3 secrets inputs prism spaghetti wallpaper-generator;};
   in {
     nixosConfigurations = {
       "nix-laptop" = nixpkgs.lib.nixosSystem {
