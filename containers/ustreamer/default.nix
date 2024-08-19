@@ -1,6 +1,5 @@
 {secrets, ...}: let
   contName = "ustreamer";
-  dir1 = "/dev/video0:/dev/video0";
 in {
   virtualisation.oci-containers.containers."${contName}" = {
     hostname = "${contName}";
@@ -15,7 +14,6 @@ in {
 
     volumes = [
       "/etc/localtime:/etc/localtime:ro"
-      "${toString dir1}"
     ];
 
     environment = {
@@ -26,6 +24,7 @@ in {
       "--privileged"
       "--network=macvlan_lan"
       "--ip=${secrets.ip.ustreamer}"
+      "--device=/dev/video0:/dev/video0"
     ];
   };
 }

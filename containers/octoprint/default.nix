@@ -15,7 +15,6 @@ in {
 
     volumes = [
       # "/dev/ttyUSB0:/dev/ttyUSB0"
-      # "/dev/video0:/dev/video0"
       "/etc/localtime:/etc/localtime:ro"
       "${toString dir1}:/octoprint"
     ];
@@ -28,7 +27,6 @@ in {
     };
 
     extraOptions = [
-      "--device=/dev/video0:/dev/video0"
       "--device=/dev/ttyUSB0:/dev/ttyUSB0"
       "--network=macvlan_lan"
       "--ip=${secrets.ip.octoprint}"
