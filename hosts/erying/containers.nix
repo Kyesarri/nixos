@@ -25,6 +25,7 @@
     # ../../containers/zigbee2mqtt # should not have been running, don't have a zigbee usb :)
     ../../containers/overseerr
     ../../containers/netbird # this wont work out the box :D
+    ../../containers/ustreamer
     ../../containers/zitadel
     # ../../containers/uptime-kuma
   ];
