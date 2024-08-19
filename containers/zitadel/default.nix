@@ -7,16 +7,19 @@
   dir1 = "/etc/oci.cont/${contName}";
 in {
   # containers are both running insecure without https
-  # please don't deploy outside of internal networks, or just dont :D
+  # please don't deploy outside of internal networks, or just dont deploy anywhere :D
   #
   # running on host - need to forward port 8080
-  #
+
   # create directories for containeers
   system.activationScripts."make${contName}Dir" =
     lib.stringAfter ["var"]
     ''mkdir -v -p ${toString dir1} ${toString dir1}-db'';
 
   virtualisation.oci-containers.containers = {
+    # could add nginx here, to rest in-front of the other two containers
+    # https://zitadel.com/docs/self-hosting/manage/reverseproxy/nginx
+
     # zitadel
     "${contName}" = {
       hostname = "${contName}";
@@ -24,6 +27,7 @@ in {
       image = "ghcr.io/zitadel/zitadel:latest";
       volumes = ["/etc/localtime:/etc/localtime:ro"];
       cmd = ["start-from-init" "--masterkeyFromEnv"];
+
       # "hostport:containerport"
       ports = ["8080:8080"];
       environment = {
@@ -51,9 +55,11 @@ in {
       autoStart = true;
       image = "cockroachdb/cockroach:latest";
       volumes = ["/etc/localtime:/etc/localtime:ro" "${toString dir1}-db:/cockroach/cockroach-data"];
+      cmd = ["start-single-node" "--insecure"];
+
+      # don't feel the need to have the db webui exposed
       # "hostport:containerport"
       # ports = ["80:8080"];
-      cmd = ["start-single-node" "--insecure"];
       environment = {
         COCKROACH_DATABASE = "${toString secrets.zitadel.dbname}";
         COCKROACH_USER = "${toString secrets.zitadel.dbuser}";
