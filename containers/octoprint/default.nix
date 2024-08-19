@@ -14,7 +14,6 @@ in {
     image = "octoprint/octoprint:latest";
 
     volumes = [
-      # "/dev/ttyUSB0:/dev/ttyUSB0"
       "/etc/localtime:/etc/localtime:ro"
       "${toString dir1}:/octoprint"
     ];
