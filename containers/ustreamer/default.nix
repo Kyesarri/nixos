@@ -11,7 +11,11 @@ in {
     autoStart = true;
     image = "mkuf/ustreamer:latest";
 
-    cmd = ["--host=0.0.0.0" "--port=80" "-f 30"];
+    cmd = [
+      "--host=0.0.0.0"
+      "--port=80"
+      "-f 30"
+    ];
 
     volumes = [
       "/etc/localtime:/etc/localtime:ro"
@@ -19,8 +23,8 @@ in {
     ];
 
     environment = {
-      PUID = "1000";
-      PGID = "1000";
+      # PUID = "1000";
+      # PGID = "1000";
       TZ = "Australia/Melbourne";
     };
 
