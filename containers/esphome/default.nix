@@ -16,8 +16,6 @@ in {
       "/etc/localtime:/etc/localtime:ro"
     ];
 
-    cmd = ["--gateway=${secrets.ip.gateway}"];
-
     extraOptions = [
       "--network=macvlan_lan"
       "--ip=${secrets.ip.esphome}"
