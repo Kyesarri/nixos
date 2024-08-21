@@ -18,6 +18,7 @@ in {
     extraOptions = [
       "--network=macvlan_lan"
       "--ip=${secrets.ip.esphome}"
+      "--gateway=${secrets.ip.gateway}"
     ];
   };
 }
