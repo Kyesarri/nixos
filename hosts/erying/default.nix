@@ -21,10 +21,11 @@
 
     ../../home # home-manaager config for all machines
     ../../home/bottom # nice to have terminal task manager / perfmon
-    ../../home/git # basic git configs
-    ../../home/kitty # is this needed on headless? probs not
     ../../home/codium # need to add server into this
+    ../../home/git # basic git configs
     ../../home/gtk # themes still needed for console
+    ../../home/kitty # is this needed on headless? probs not
+    ../../home/tmux
     ../../home/zsh # nice to have
   ];
 

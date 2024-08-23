@@ -1,9 +1,5 @@
 # cockroachdb - see container zitadel
-{
-  lib,
-  secrets,
-  ...
-}: let
+{lib, ...}: let
   contName = "cockroachdb";
   dir1 = "/etc/oci.cont/${contName}/.data";
 in {

@@ -1,6 +1,6 @@
 {
-  pkgs,
   lib,
+  pkgs,
   spaghetti,
   ...
 }: {
@@ -88,7 +88,7 @@
       gnome.seahorse # key management
       libnotify # notifications might not be needed on headless lol
       udiskie # usb mounting, probs for the best atm
-      ustreamer
+      ustreamer # smal usb camera streamer
       v4l-utils
     ];
   };

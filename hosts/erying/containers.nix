@@ -47,8 +47,9 @@
       "podman-nginx-proxy-manager.service"
       "podman-nginx-proxy-manager-2.service"
       "podman-octoprint.service"
-      "podman-zigbee2mqtt.service"
       "podman-overseerr.service"
+
+      "podman-zigbee2mqtt.service"
     ];
     serviceConfig = {
       Type = "oneshot";
