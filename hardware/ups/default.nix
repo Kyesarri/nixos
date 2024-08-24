@@ -34,19 +34,16 @@ in {
     };
     users.monuser = {
       upsmon = "master";
+      actions = ["SET"];
+      instcmds = ["ALL"];
       inherit passwordFile;
     };
     upsmon = {
       monitor.dellups = {
         user = "monuser";
         type = "master";
-
         inherit passwordFile;
       };
-      directives = [
-        "instcmds = ALL"
-        "actions = SET"
-      ];
       settings = {
         RUN_AS_USER = lib.mkForce "nut";
         SHUTDOWNCMD = "${sudo} ${poweroff}";
