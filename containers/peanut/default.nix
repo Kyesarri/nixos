@@ -13,10 +13,10 @@ in {
       PGID = "1000";
       NUT_HOST = "${toString secrets.ip.erying}";
       NUT_PORT = "3493";
-      WEB_PORT = "8080";
-      USERNAME = "upsmon";
-      PASSWORD = "upsmon_pass";
       WEB_HOST = "${toString secrets.ip.peanut}";
+      WEB_PORT = "80";
+      # USERNAME = "upsmon";
+      # PASSWORD = "upsmon_pass";
     };
 
     extraOptions = [
