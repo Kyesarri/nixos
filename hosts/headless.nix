@@ -82,6 +82,7 @@
       "podman" # controlling pods
       "dialout" # serial interfaces
       "video" # camera / webcam support
+      "nut" # network ups
     ];
     packages = with pkgs; [
       fet-sh # minimal fetch script
