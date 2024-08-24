@@ -71,6 +71,7 @@ in {
     users.nut = {
       description = "NUT (Network UPS Tools)";
       group = "nut";
+      extraGroups = ["networkmanager"];
       isSystemUser = true;
       createHome = true;
       home = "/var/lib/nut";
