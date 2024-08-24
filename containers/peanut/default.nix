@@ -21,7 +21,7 @@ in {
     environment = {
       PUID = "1000";
       PGID = "1000";
-      NUT_HOST = "localhost";
+      NUT_HOST = "${secrets.ip.erying}";
       NUT_PORT = "3493";
       WEB_PORT = "8080";
       USERNAME = "test";

@@ -19,6 +19,8 @@
 in {
   power.ups = {
     enable = true;
+    upsd.enable = true;
+    openFirewall = true;
     ups.dellups = {
       driver = "snmp-ups";
       port = "${secrets.ip.dellups}:161";
