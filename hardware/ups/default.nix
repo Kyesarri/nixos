@@ -21,7 +21,7 @@ in {
     enable = true;
     ups.dellups = {
       driver = "snmp-ups";
-      port = "${secrets.ip.ups}:161";
+      port = "${secrets.ip.dellups}:161";
       directives = [
         "snmp_version = v3"
         "secLevel = authPriv"
