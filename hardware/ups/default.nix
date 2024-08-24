@@ -40,6 +40,8 @@ in {
       monitor.dellups = {
         user = "monuser";
         type = "master";
+        instcmds = "ALL";
+        actions = "SET";
         inherit passwordFile;
       };
       settings = {
