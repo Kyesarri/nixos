@@ -23,10 +23,9 @@ in {
       driver = "snmp-ups";
       port = "${secrets.ip.dellups}:161";
       directives = [
-        "snmp_version = v3"
-        "secLevel = authPriv"
-        "secName = ${secrets.user.ups-write}"
-        "privePassword = ${secrets.password.ups-write}"
+        "snmp_version = v1"
+        "community = public"
+        "pollfreq = 15"
 
         # "vendorid = \"047C\""
         # "productid = \"FFFF\""
