@@ -24,8 +24,8 @@ in {
       NUT_HOST = "${secrets.ip.erying}";
       NUT_PORT = "3493";
       WEB_PORT = "8080";
-      USERNAME = "test";
-      PASSWORD = "test";
+      USERNAME = "upsmon";
+      PASSWORD = "upsmon_pass";
     };
 
     extraOptions = [
