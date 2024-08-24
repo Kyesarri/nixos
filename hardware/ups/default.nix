@@ -17,6 +17,28 @@
   '';
   passwordFile = "${pkgs.writeText "upspass" "upsmon_pass"}";
 in {
+  /*
+    sudo nut-scanner -C -s ip-start -e ip-end
+    [nutdev1]
+  	driver = "usbhid-ups"
+  	port = "auto"
+  	vendorid = "047C"
+  	productid = "FFFF"
+  	product = "Dell UPS Rack 1920W HV"
+  	serial = "CN-0H928N-75162-3C4-0039-A10"
+  	vendor = "DELL"
+  	bus = "001"
+  [nutdev2]
+  	driver = "snmp-ups"
+  	port = "192.168.87.8"
+  	desc = "DELL"
+  	mibs = "ietf"
+  	community = "public"
+  [nutdev3]
+  	driver = "netxml-ups"
+  	port = "http://192.168.87.8"
+  	desc = "Mosaic 4M 16M"
+  */
   power.ups = {
     enable = true;
     upsd.enable = true;
@@ -71,7 +93,7 @@ in {
     users.nut = {
       description = "NUT (Network UPS Tools)";
       group = "nut";
-      extraGroups = ["networkmanager"];
+      extraGroups = ["networkmanager" "plugdev"];
       isSystemUser = true;
       createHome = true;
       home = "/var/lib/nut";

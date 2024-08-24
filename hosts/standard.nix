@@ -129,7 +129,7 @@
     shell = pkgs.zsh;
     isNormalUser = true;
     description = "${spaghetti.user}";
-    extraGroups = ["networkmanager" "wheel"];
+    extraGroups = ["networkmanager" "wheel" "plugdev"];
     packages = with pkgs; [
       gimp-with-plugins # image boi
       ladybird # testing, alpha 2026 :D
