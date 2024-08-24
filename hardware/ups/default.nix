@@ -40,10 +40,13 @@ in {
       monitor.dellups = {
         user = "monuser";
         type = "master";
-        instcmds = "ALL";
-        actions = "SET";
+
         inherit passwordFile;
       };
+      directives = [
+        "instcmds = ALL"
+        "actions = SET"
+      ];
       settings = {
         RUN_AS_USER = lib.mkForce "nut";
         SHUTDOWNCMD = "${sudo} ${poweroff}";
