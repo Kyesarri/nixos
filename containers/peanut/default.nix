@@ -16,7 +16,7 @@ in {
       WEB_PORT = "8080";
       USERNAME = "upsmon";
       PASSWORD = "upsmon_pass";
-      WEB_HOST = "localhost";
+      WEB_HOST = "${toString secrets.ip.peanut}";
     };
 
     extraOptions = [
