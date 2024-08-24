@@ -20,12 +20,17 @@ in {
   power.ups = {
     enable = true;
     ups.dellups = {
-      driver = "usbhid-ups";
-      port = "auto";
+      driver = "snmp-ups";
+      port = "${secrets.ip.ups}:161";
       directives = [
-        "vendorid = \"047C\""
-        "productid = \"FFFF\""
-        "serial = CN-0H928N-75162-3C4-0039-A10"
+        "snmp_version = v3"
+        "secLevel = authPriv"
+        "secName = ${secrets.user.ups-write}"
+        "privePassword = ${secrets.password.ups-write}"
+
+        # "vendorid = \"047C\""
+        # "productid = \"FFFF\""
+        # "serial = CN-0H928N-75162-3C4-0039-A10"
       ];
     };
     users.monuser = {
@@ -57,7 +62,9 @@ in {
   };
 
   users = {
+    # add nut group
     groups.nut = {};
+    # add nut user
     users.nut = {
       description = "NUT (Network UPS Tools)";
       group = "nut";
