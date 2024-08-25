@@ -16,7 +16,6 @@
     ${sudo} -u ${spaghetti.user} ${notify-send} -c critical "$1"
   '';
   passwordFile = "${pkgs.writeText "upspass" "upsmon_pass"}";
-  HAOSpasswordFile = "${pkgs.writeText "upspass" "test"}";
 in {
   /*
     sudo nut-scanner -C -s ip-start -e ip-end
@@ -57,7 +56,6 @@ in {
       haos = {
         actions = ["SET"];
         instcmds = ["ALL"];
-        inherit HAOSpasswordFile;
       };
       monuser = {
         upsmon = "master";
