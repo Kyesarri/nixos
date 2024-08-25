@@ -52,11 +52,18 @@ in {
         "pollfreq = 15"
       ];
     };
-    users.monuser = {
-      upsmon = "master";
-      actions = ["SET"];
-      instcmds = ["ALL"];
-      inherit passwordFile;
+    users = {
+      haos = {
+        actions = ["SET"];
+        instcmds = ["ALL"];
+        inherit passwordFile;
+      };
+      monuser = {
+        upsmon = "master";
+        actions = ["SET"];
+        instcmds = ["ALL"];
+        inherit passwordFile;
+      };
     };
     upsmon = {
       monitor.dellups = {
