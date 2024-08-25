@@ -57,7 +57,7 @@ in {
       haos = {
         actions = ["SET"];
         instcmds = ["ALL"];
-        password = "";
+        inherit HAOSpasswordFile;
       };
       monuser = {
         upsmon = "master";
@@ -70,7 +70,7 @@ in {
       monitor.dellups = {
         user = "monuser";
         type = "master";
-        inherit HAOSpasswordFile;
+        inherit passwordFile;
       };
       settings = {
         RUN_AS_USER = lib.mkForce "nut";
