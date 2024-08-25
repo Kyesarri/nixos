@@ -53,7 +53,7 @@ in {
       ];
     };
     users.monuser = {
-      upsmon = ["master"];
+      upsmon = "master";
       actions = ["SET"];
       instcmds = ["ALL"];
       inherit passwordFile;
