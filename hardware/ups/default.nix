@@ -50,14 +50,10 @@ in {
         "snmp_version = v1"
         "community = public"
         "pollfreq = 15"
-
-        # "vendorid = \"047C\""
-        # "productid = \"FFFF\""
-        # "serial = CN-0H928N-75162-3C4-0039-A10"
       ];
     };
     users.monuser = {
-      upsmon = "master";
+      upsmon = ["master"];
       actions = ["SET"];
       instcmds = ["ALL"];
       inherit passwordFile;
@@ -93,7 +89,10 @@ in {
     users.nut = {
       description = "NUT (Network UPS Tools)";
       group = "nut";
-      extraGroups = ["networkmanager" "plugdev"];
+      extraGroups = [
+        "networkmanager" # networked ups
+        "plugdev" # usb ups
+      ];
       isSystemUser = true;
       createHome = true;
       home = "/var/lib/nut";
