@@ -39,10 +39,12 @@ in {
   	port = "http://192.168.87.8"
   	desc = "Mosaic 4M 16M"
   */
+
   power.ups = {
     enable = true;
     upsd.enable = true;
     openFirewall = true;
+    /*
     ups.dellups = {
       driver = "snmp-ups";
       port = "${secrets.ip.dellups}:161";
@@ -52,10 +54,17 @@ in {
         "pollfreq = 15"
       ];
     };
+    */
+    ups.dellups = {
+      driver = "netxml-ups";
+      port = "${secrets.ip.dellups}";
+      directives = [];
+    };
     users = {
       haos = {
         actions = ["SET"];
         instcmds = ["ALL"];
+        passwordFile = "";
       };
       monuser = {
         upsmon = "master";
@@ -96,7 +105,7 @@ in {
       description = "NUT (Network UPS Tools)";
       group = "nut";
       extraGroups = [
-        "networkmanager" # networked ups
+        "networkmanager" # networke'd ups
         "plugdev" # usb ups
       ];
       isSystemUser = true;

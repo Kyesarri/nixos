@@ -83,6 +83,7 @@
       "dialout" # serial interfaces
       "video" # camera / webcam support
       "nut" # network ups
+      "plugdev" # usb
     ];
     packages = with pkgs; [
       fet-sh # minimal fetch script

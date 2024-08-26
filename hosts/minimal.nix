@@ -80,8 +80,7 @@
   environment = {
     shells = with pkgs; [zsh]; # default shell
 
-    sessionVariables = rec
-    {
+    sessionVariables = {
       CLUTTER_BACKEND = "wayland";
       QT_QPA_PLATFORMTHEME = "qt5ct";
       GTK_THEME = "${config.colorscheme.slug}"; # sets default gtk theme the package built by nix-colors
