@@ -61,11 +61,6 @@ in {
       directives = [];
     };
     users = {
-      haos = {
-        actions = ["SET"];
-        instcmds = ["ALL"];
-        passwordFile = "";
-      };
       monuser = {
         upsmon = "master";
         actions = ["SET"];
