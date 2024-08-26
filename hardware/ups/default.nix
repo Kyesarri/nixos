@@ -44,7 +44,7 @@ in {
     enable = true;
     upsd.enable = true;
     openFirewall = true;
-    /*
+
     ups.dellups = {
       driver = "snmp-ups";
       port = "${secrets.ip.dellups}:161";
@@ -54,12 +54,7 @@ in {
         "pollfreq = 15"
       ];
     };
-    */
-    ups.dellups = {
-      driver = "netxml-ups";
-      port = "${secrets.ip.dellups}";
-      directives = [];
-    };
+
     users = {
       monuser = {
         upsmon = "master";
