@@ -26,7 +26,7 @@ in {
     };
 
     extraOptions = [
-      "--device=/dev/ttyUSB0:/dev/ttyUSB0"
+      "--device=/dev/serial/by-id/usb-1a86_USB_Serial-if00-port0:/dev/ttyUSB0"
       "--network=macvlan_lan"
       "--ip=${secrets.ip.octoprint}"
       "--privileged"

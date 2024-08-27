@@ -95,8 +95,8 @@ in {
       description = "NUT (Network UPS Tools)";
       group = "nut";
       extraGroups = [
-        "networkmanager" # networke'd ups
-        "plugdev" # usb ups
+        "networkmanager" # network
+        "plugdev" # usb
       ];
       isSystemUser = true;
       createHome = true;

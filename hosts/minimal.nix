@@ -11,10 +11,7 @@
 
   nixpkgs.config.allowUnfree = true;
 
-  security.pam.services = {
-    gdm.enableGnomeKeyring = true; # keyring support for GDM
-    swaylock = {}; # enables pam for swaylock, otherwise cannot unlock system
-  };
+  security.pam.services.gdm.enableGnomeKeyring = true; # keyring support for GDM
 
   nix = {
     package = pkgs.nixVersions.latest;
