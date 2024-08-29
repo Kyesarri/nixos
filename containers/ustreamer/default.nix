@@ -3,7 +3,9 @@
 in {
   virtualisation.oci-containers.containers."${contName}" = {
     hostname = "${contName}";
+
     autoStart = true;
+
     image = "mkuf/ustreamer:latest";
 
     cmd = [

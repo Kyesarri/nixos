@@ -13,8 +13,7 @@ in {
 
   # create directories for containers
   system.activationScripts."make${contName}Dir" =
-    lib.stringAfter ["var"]
-    ''mkdir -v -p ${toString dir1} ${toString dir1}-db'';
+    lib.stringAfter ["var"] ''mkdir -v -p ${toString dir1} ${toString dir1}-db'';
 
   virtualisation.oci-containers.containers = {
     # could add nginx here, to rest in-front of the other two containers
@@ -23,12 +22,18 @@ in {
     # zitadel
     "${contName}" = {
       hostname = "${contName}";
+
       autoStart = true;
+
       image = "ghcr.io/zitadel/zitadel:latest";
+
       volumes = ["/etc/localtime:/etc/localtime:ro"];
+
       cmd = ["start-from-init" "--masterkeyFromEnv"];
+
       # "hostport:containerport"
       ports = ["8080:8080"];
+
       environment = {
         ZITADEL_MASTERKEY = "${toString secrets.keys.zitadel}";
         ZITADEL_DATABASE_COCKROACH_HOST = "${contName}-db";
@@ -43,6 +48,7 @@ in {
         ZITADEL_DATABASE_COCKROACH_USER_SSL_MODE = "disable";
         TZ = "Australia/Melbourne";
       };
+
       extraOptions = [
         "--network=podman"
       ];
@@ -51,16 +57,22 @@ in {
     # zitadel-db
     "${contName}-db" = {
       hostname = "${contName}-db";
+
       autoStart = true;
+
       image = "cockroachdb/cockroach:latest";
+
       volumes = ["/etc/localtime:/etc/localtime:ro" "${toString dir1}-db:/cockroach/cockroach-data"];
+
       cmd = ["start-single-node" "--insecure"];
+
       environment = {
         COCKROACH_DATABASE = "${toString secrets.zitadel.dbname}";
         COCKROACH_USER = "${toString secrets.zitadel.dbuser}";
         COCKROACH_PASSWORD = ""; # passwords cannot be set when using insecure mode
         TZ = "Australia/Melbourne";
       };
+
       extraOptions = [
         "--network=podman"
       ];

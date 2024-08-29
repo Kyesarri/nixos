@@ -12,13 +12,17 @@ in {
 
   virtualisation.oci-containers.containers.${hostName} = {
     hostname = "${hostName}";
+
     autoStart = true;
+
     image = "docker.io/jc21/nginx-proxy-manager:latest";
+
     volumes = [
       "/etc/localtime:/etc/localtime:ro"
       "${toString dir1}:/data"
       "${toString dir2}:/etc/letsencrypt"
     ];
+
     extraOptions = [
       "--network=macvlan_lan"
       "--ip=${secrets.ip.nginx-2}"

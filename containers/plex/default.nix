@@ -16,8 +16,11 @@ in
 
     virtualisation.oci-containers.containers.${hostName} = {
       hostname = "${hostName}-nix-serv";
+
       autoStart = true;
+
       image = "lscr.io/linuxserver/plex:latest";
+
       ports = ["${toString webPort}:${toString webPort}"];
       volumes = [
         "/etc/localtime:/etc/localtime:ro"
@@ -29,6 +32,9 @@ in
         "/hddd/movies:/movies/hddd"
         "/hdde/movies:/movies/hdde"
         "/hddf/movies:/movies/hddf"
+        "/hddg/movies:/movies/hddg"
+        "/hddh/movies:/movies/hddh"
+        "/hddi/movies:/movies/hddi"
 
         "/hdda/tv_shows:/tv_shows/hdda"
         "/hddb/tv_shows:/tv_shows/hddb"
@@ -36,6 +42,9 @@ in
         "/hddd/tv_shows:/tv_shows/hddd"
         "/hdde/tv_shows:/tv_shows/hdde"
         "/hddf/tv_shows:/tv_shows/hddf"
+        "/hddg/tv_shows:/tv_shows/hddg"
+        "/hddh/tv_shows:/tv_shows/hddh"
+        "/hddi/tv_shows:/tv_shows/hddi"
 
         "/home/${spaghetti.user}/.containers/${hostName}:/config"
       ];

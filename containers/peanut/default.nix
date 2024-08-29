@@ -3,7 +3,9 @@
 in {
   virtualisation.oci-containers.containers.${contName} = {
     hostname = "${contName}";
+
     autoStart = true;
+
     image = "brandawg93/peanut:latest";
 
     volumes = ["/etc/localtime:/etc/localtime:ro"];

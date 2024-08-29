@@ -85,6 +85,7 @@
       "nut" # network ups
       "plugdev" # usb
     ];
+
     packages = with pkgs; [
       fet-sh # minimal fetch script
       gnome.seahorse # key management

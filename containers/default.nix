@@ -1,6 +1,7 @@
 {pkgs, ...}: {
   virtualisation = {
     oci-containers.backend = "podman";
+
     podman = {
       enable = true;
       extraPackages = [pkgs.zfs];
@@ -9,6 +10,7 @@
       defaultNetwork.settings.dns_enabled = true;
     };
   };
+
   environment.systemPackages = with pkgs; [
     podman
     podman-tui

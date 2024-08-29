@@ -15,6 +15,7 @@ in {
       gid = 1000;
       source = ./server.properties;
     };
+
     "oci.cont/${contName}/config/paper-global.yml" = {
       mode = "644";
       uid = 1000;
@@ -25,7 +26,9 @@ in {
 
   virtualisation.oci-containers.containers."${contName}" = {
     hostname = "${contName}";
+
     autoStart = true;
+
     image = "marctv/minecraft-papermc-server:latest";
 
     volumes = [

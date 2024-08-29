@@ -13,18 +13,23 @@ in {
 
   virtualisation.oci-containers.containers.${contName} = {
     hostname = "${contName}";
+
     autoStart = true;
+
     image = "emqx/emqx:latest";
+
     volumes = [
       "/etc/localtime:/etc/localtime:ro"
       "${toString dir1}:/opt/emqx/data"
       "${toString dir2}:/opt/emqx/log"
       #"${toString dir3}:/opt/emqx/etc"
     ];
+
     environment = {
       EMQX_HOST = "127.0.0.1";
       EMQX_NAME = "${contName}";
     };
+
     extraOptions = [
       #"--pull=always"
       "--network=macvlan_lan"

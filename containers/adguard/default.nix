@@ -4,16 +4,18 @@
   ...
 }: let
   contName = "adguard";
+
   dir1 = "/etc/oci.cont/${contName}/work";
+
   dir2 = "/etc/oci.cont/${contName}/conf";
 in {
-  system.activationScripts."make${contName}Dir" = lib.stringAfter ["var"] ''
-    mkdir -v -p ${toString dir1} ${toString dir2} & chown 1000:1000 ${toString dir1} & chown 1000:1000 ${toString dir2}
-  '';
+  system.activationScripts."make${contName}Dir" = lib.stringAfter ["var"] ''mkdir -v -p ${toString dir1} ${toString dir2} & chown 1000:1000 ${toString dir1} & chown 1000:1000 ${toString dir2}'';
 
   virtualisation.oci-containers.containers."${contName}" = {
     hostname = "${contName}";
+
     autoStart = true;
+
     image = "adguard/adguardhome:latest";
 
     volumes = [

@@ -4,20 +4,21 @@
   ...
 }: let
   contName = "invidious";
+
   dir1 = "/etc/oci.cont/${contName}";
 in {
-  system.activationScripts = {
-    "make${dir1}" =
-      lib.stringAfter ["var"]
-      ''mkdir -v -p ${toString dir1} ${toString dir1}/letsencrypt ${toString dir1}/postgresdata ${toString dir1}/sql'';
-  };
+  system.activationScripts."make${dir1}" = lib.stringAfter ["var"] ''mkdir -v -p ${toString dir1} ${toString dir1}/letsencrypt ${toString dir1}/postgresdata ${toString dir1}/sql'';
+
   virtualisation.oci-containers.containers = {
-    #
     "${contName}" = {
       hostname = "${contName}";
+
       autoStart = true;
+
       image = "quay.io/invidious/invidious:latest";
+
       ports = ["3000:3000"];
+
       volumes = [
         "/etc/localtime:/etc/localtime:ro"
         "${dir1}/letsencrypt:/etc/letsencrypt" # TODO
@@ -29,19 +30,24 @@ in {
     #
     "${contName}-db" = {
       hostName = "${contName}-db";
+
       autoStart = true;
+
       image = "docker.io/library/postgres:14";
+
       volumes = [
         "/etc/localtime:/etc/localtime:ro"
         "${dir1}/postgresdata:/var/lib/postgresql/data"
         "${dir1}/sql:/config/sql"
         "${dir1}:/docker-entrypoint-initdb.d/init-invidious-db.sh" # TODO FIXME
       ];
+
       environment = {
         POSTGRES_DB = "${contName}";
         POSTGRES_USER = "kemal";
         POSTGRES_PASSWORD = "kemal";
       };
+
       extraOptions = [
         "--network=podman"
       ];

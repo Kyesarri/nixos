@@ -14,28 +14,21 @@
 in {
   system.activationScripts.makeFrigateDir = lib.stringAfter ["var"] ''mkdir -v -p ${toString dir1} ${toString dir2} ${toString dir3}'';
 
-  # tempdir for frigate
+  # tempdir
   fileSystems."/tmp/cache" = {
     device = "none";
     fsType = "tmpfs";
     options = ["defaults" "size=1G" "mode=755"];
   };
 
-  # write custom model to container dir
-  /*
-  environment.etc."oci.cont/${contName}/custom_models/yolov8n_288x288_edgetpu.tflite" = {
-    mode = "644";
-    uid = 1000;
-    gid = 1000;
-    source = ./yolov8n_288x288_edgetpu.tflite;
-  };
-  */
-
-  # container config
+  # container
   virtualisation.oci-containers.containers.${contName} = {
     hostname = "${contName}";
+
     autoStart = true;
+
     image = "ghcr.io/blakeblackshear/frigate:stable";
+
     ports = [
       "${toString rtmp}:${toString rtmp}"
       "${toString web}:${toString web}"
@@ -62,6 +55,7 @@ in {
     ];
   };
 
+  # frigate configuration file
   environment.etc."oci.cont/${contName}/config/config.yml" = {
     mode = "644";
     uid = 1000;

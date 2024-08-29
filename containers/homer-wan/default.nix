@@ -4,11 +4,10 @@
   ...
 }: let
   contName = "homer-wan";
+
   dir1 = "/etc/oci.cont/${contName}";
 in {
-  system.activationScripts."make${contName}Dir" = lib.stringAfter ["var"] ''
-    mkdir -v -p ${toString dir1} & chown 1000 ${toString dir1}
-  '';
+  system.activationScripts."make${contName}Dir" = lib.stringAfter ["var"] ''mkdir -v -p ${toString dir1} & chown 1000 ${toString dir1}'';
 
   environment.etc."oci.cont/${contName}/config.yml" = {
     mode = "644"; # <3
@@ -19,7 +18,9 @@ in {
 
   virtualisation.oci-containers.containers."${contName}" = {
     hostname = "${contName}";
+
     autoStart = true;
+
     image = "b4bz/homer:latest";
 
     volumes = [

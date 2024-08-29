@@ -7,13 +7,13 @@
   dir1 = "/etc/oci.cont/${contName}/logs";
   dir2 = "/etc/oci.cont/${contName}/rrd";
 in {
-  system.activationScripts."make${contName}Dir" = lib.stringAfter ["var"] ''
-    mkdir -v -p ${toString dir1} & chown 1000:1000 ${toString dir1} & chown 1000:1000 ${toString dir2}
-  '';
+  system.activationScripts."make${contName}Dir" = lib.stringAfter ["var"] ''mkdir -v -p ${toString dir1} & chown 1000:1000 ${toString dir1} & chown 1000:1000 ${toString dir2}'';
 
   virtualisation.oci-containers.containers."${contName}" = {
     hostname = "${contName}";
+
     autoStart = true;
+
     image = "mbixtech/observium";
 
     volumes = [

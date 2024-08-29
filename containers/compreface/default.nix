@@ -4,11 +4,10 @@
   ...
 }: let
   contName = "compreface";
+
   dir1 = "/etc/oci.cont/${contName}/data";
 in {
-  system.activationScripts.makeCodeProjectDir = lib.stringAfter ["var"] ''
-    mkdir -v -p ${toString dir1} & chown 1000:1000 ${toString dir1}
-  '';
+  system.activationScripts.makeCodeProjectDir = lib.stringAfter ["var"] ''mkdir -v -p ${toString dir1} & chown 1000:1000 ${toString dir1}'';
 
   virtualisation.oci-containers.containers = {
     #
@@ -20,15 +19,16 @@ in {
 
       environment = {
         ML_PORT = "3000";
-        IMG_LENGTH_LIMIT = "${max_detect_size}";
+        IMG_LENGTH_LIMIT = "max_detect_size"; # TODO FIXME
         UWSGI_PROCESSES = "${uwsgi_processes:-2}";
         UWSGI_THREADS = "${uwsgi_threads:-1}";
-      }; # TODO FIXME
+      };
 
       extraOptions = [
         # "--network=macvlan_lan"
         # "--ip=${secrets.ip.cpai}"
       ];
+
       volumes = ["/etc/localtime:/etc/localtime:ro"];
 
       /*
@@ -45,11 +45,13 @@ in {
   # compreface-ui (fe)
   "${contName}-ui" = {
     hostname = "${contName}-ui";
+
     autoStart = true;
+
     image = "exadel/compreface-fe:latest";
 
     environment = {
-      CLIENT_MAX_BODY_SIZE = "${max_request_size}";
+      CLIENT_MAX_BODY_SIZE = "max_request_size"; # TODO FIXME
       PROXY_READ_TIMEOUT = "${read_timeout:-60000}ms";
       PROXY_CONNECT_TIMEOUT = "${connection_timeout:-10000}ms";
     }; # TODO FIXME
@@ -58,13 +60,16 @@ in {
       # "--network=macvlan_lan"
       # "--ip=${secrets.ip.cpai}"
     ];
+
     volumes = ["/etc/localtime:/etc/localtime:ro"];
   };
   #
   # compreface-api
   "${contName}-api" = {
     hostname = "${contName}-api";
+
     autoStart = true;
+
     image = "exadel/compreface-api:latest";
 
     environment = {
@@ -84,13 +89,16 @@ in {
       # "--network=macvlan_lan"
       # "--ip=${secrets.ip.cpai}"
     ];
+
     volumes = ["/etc/localtime:/etc/localtime:ro"];
   };
   #
   # compreface-admin
   "${contName}-admin" = {
     hostname = "${contName}-admin";
+
     autoStart = true;
+
     image = "exadel/compreface-admin:latest";
 
     environment = {
@@ -112,13 +120,16 @@ in {
       # "--network=macvlan_lan"
       # "--ip=${secrets.ip.cpai}"
     ];
+
     volumes = ["/etc/localtime:/etc/localtime:ro"];
   };
   #
   # compreface-db (postgres-db)
   "${contName}-db" = {
     hostname = "${contName}-db";
+
     autoStart = true;
+
     image = "exadel/compreface-postgres-db:latest";
 
     environment = {

@@ -39,6 +39,7 @@ in {
       gid = 1000;
       source = ./favicon.png;
     };
+
     "oci.cont/${contName}/config.yml" = {
       mode = "644";
       uid = 1000;

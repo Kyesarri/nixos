@@ -2,13 +2,13 @@
   contName = "sonarr";
   dir1 = "/etc/oci.cont/arr/${contName}";
 in {
-  system.activationScripts."make${contName}Dir" = lib.stringAfter ["var"] ''
-    mkdir -v -p ${toString dir1} & chown 1000:1000 ${toString dir1}
-  '';
+  system.activationScripts."make${contName}Dir" = lib.stringAfter ["var"] ''mkdir -v -p ${toString dir1} & chown 1000:1000 ${toString dir1}'';
 
   virtualisation.oci-containers.containers."${contName}" = {
     hostname = "${contName}";
+
     autoStart = true;
+
     image = "ghcr.io/linuxserver/${toString contName}:latest";
 
     volumes = [

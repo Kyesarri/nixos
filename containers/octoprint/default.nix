@@ -10,7 +10,9 @@ in {
 
   virtualisation.oci-containers.containers.${contName} = {
     hostname = "${contName}";
+
     autoStart = true;
+
     image = "octoprint/octoprint:latest";
 
     volumes = [
