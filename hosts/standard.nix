@@ -111,6 +111,7 @@
 
     shells = with pkgs; [zsh]; # default shell to zsh
 
+    # system packages, available for all users, not just spaghetti (su)
     systemPackages = with pkgs; [
       lshw # list hardware
       usbutils # usb thing
@@ -129,7 +130,13 @@
     shell = pkgs.zsh;
     isNormalUser = true;
     description = "${spaghetti.user}";
-    extraGroups = ["networkmanager" "wheel" "plugdev"];
+    extraGroups = [
+      "networkmanager" # network
+      "wheel" # sudo
+      "plugdev" # usb
+    ];
+
+    # packages available for just our spaghetti user
     packages = with pkgs; [
       gimp-with-plugins # image boi
       ladybird # testing, alpha 2026 :D
@@ -151,15 +158,13 @@
       vlc # play me some vids
       usbimager # says on the tin
       ventoy-full
-      blender # for new toy :D
-      slic3r
-      orca-slicer
-      # cura # broken 10.08.24 -- awaiting updates in nixpkgs
 
-      ## TESTING ##
+      blender # for new toy :D
+      slic3r # current working 3d printer package, issues with all others from nixpkgs currently
+
+      # orca-slicer # broken like cura
       gnome-disk-utility
       inputs.wallpaper-generator.defaultPackage.x86_64-linux
-      ## TESTING ##
     ];
   };
 }
