@@ -19,6 +19,7 @@
     transmission = {
       enable = true;
       user = "transmission";
+      group = "media";
       performanceNetParameters = true;
       openFirewall = true;
       openRPCPort = true;
@@ -53,7 +54,7 @@
     prowlarr = {
       enable = true;
       openFirewall = true;
-      # group = "media";
+      # group = "media"; # no worky, option does not exist
     };
     readarr = {
       enable = true;
