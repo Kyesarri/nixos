@@ -48,7 +48,10 @@ in
 
         "/home/${spaghetti.user}/.containers/${hostName}:/config"
       ];
-      environment = {};
+      environment = {
+        PUID = "1000";
+        PGID = "1000";
+      };
       extraOptions = ["--privileged"];
     };
   }
