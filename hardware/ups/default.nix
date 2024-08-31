@@ -57,7 +57,7 @@ in {
 
     users = {
       monuser = {
-        upsmon = "master";
+        upsmon = "primary";
         actions = ["SET"];
         instcmds = ["ALL"];
         inherit passwordFile;
