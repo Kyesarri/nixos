@@ -22,6 +22,8 @@
     settings = {
       auto-optimise-store = true; # runs gc, need to set interval otherwise defaults to 14d from memory
       experimental-features = ["nix-command" "flakes"]; # flakes and nixcommand required for config
+      substituters = ["https://hyprland.cachix.org"]; # hyprland cache, prevents building from source tyty
+      trusted-public-keys = ["hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="];
     };
   };
 
