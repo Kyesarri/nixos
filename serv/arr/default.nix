@@ -8,7 +8,7 @@
   # define a new group "media", add services / users to this group
   users.groups.media = {
     name = "media";
-    members = ["transmission" "radarr" "readarr" "sonarr" "prowlarr" "${spaghetti.user}"];
+    members = ["plex" "transmission" "radarr" "readarr" "sonarr" "prowlarr" "${spaghetti.user}"];
   };
 
   # add user to groups created by services
