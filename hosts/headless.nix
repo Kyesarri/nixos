@@ -88,7 +88,7 @@
 
     packages = with pkgs; [
       fet-sh # minimal fetch script
-      gnome.seahorse # key management
+      seahorse # key management
       libnotify # notifications might not be needed on headless lol
       udiskie # usb mounting, probs for the best atm
       ustreamer # smal usb camera streamer

@@ -103,3 +103,4 @@ secrets won't work out the box, quick workaround would be replacing my ~/nixos/s
 
 ### home-manager
 will complain about files in the way in your ```.config```, delete the files home-manager listed and run another rebuild
+TODO script to delete dirs on first rebuild
