@@ -1,19 +1,10 @@
-{
-  config,
-  pkgs,
-  lib,
-  ...
-}: {
+{lib, ...}: {
   ## currently testing the nextcloud container demo from
   ## https://nixos.wiki/wiki/NixOS_Containers
 
   containers.nextcloud = {
     autoStart = true;
-    config = {
-      config,
-      pkgs,
-      ...
-    }: {
+    config = {pkgs, ...}: {
       system.stateVersion = "23.11";
 
       services = {
