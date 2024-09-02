@@ -12,7 +12,7 @@
     };
     serviceConfig = {
       Type = "oneshot";
-      ExecStart = "-${pkgs.podman}/bin/podman pod create cloud --network=macvlan_lan --ip=192.168.87.252";
+      ExecStart = "-${pkgs.podman}/bin/podman pod create --network=macvlan_lan --ip=192.168.87.252 cloud";
     };
     path = [pkgs.zfs pkgs.podman];
   };
