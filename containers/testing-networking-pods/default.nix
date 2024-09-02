@@ -12,7 +12,7 @@
     };
     serviceConfig = {
       Type = "oneshot";
-      ExecStart = "-${pkgs.podman}/bin/podman pod create --network=macvlan_lan --ip=192.168.87.252 cloud";
+      ExecStart = "-${pkgs.podman}/bin/podman pod create cloud";
     };
     path = [pkgs.zfs pkgs.podman];
   };
@@ -41,6 +41,8 @@
         "--device=/dev/dri"
         "--init=true"
         "--pod=cloud"
+        "--network=macvlan_lan"
+        "--ip=192.168.87.252"
         "--label=traefik.enable=true"
         "--label=traefik.http.routers.nextcloud.rule=Host(`nextcloud.home`)"
         "--label=traefik.http.routers.nextcloud.entrypoints=websecure"
