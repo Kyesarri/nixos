@@ -28,7 +28,7 @@
         REDIS_HOST = "127.0.0.1";
 
         TRUSTED_PROXIES = "10.88.0.1/24";
-        NEXTCLOUD_TRUSTED_DOMAINS = "nextcloud.home";
+        NEXTCLOUD_TRUSTED_DOMAINS = "192.168.87.252";
         MAIL_DOMAIN = "nextcloud.home";
         OVERWRITEHOST = "nextcloud.home";
         OVERWRITEPROTOCOL = "http";
