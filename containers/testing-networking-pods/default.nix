@@ -1,3 +1,4 @@
+# https://discourse.nixos.org/t/podman-containers-dns/26820/3
 {pkgs, ...}: {
   systemd.services.pod-cloud = {
     description = "Start podman 'nextcloud' pod";
@@ -52,7 +53,11 @@
         "--label=traefik.http.services.nextcloud.loadbalancer.server.port=80"
         "--sysctl=net.ipv4.ip_unprivileged_port_start=80"
       ];
-      volumes = ["nextcloud_config:/var/www/html" "/mnt/media:/data"];
+      volumes = [
+        "/etc/localtime:/etc/localtime:ro"
+        "/etc/oci.cont/nextcloud-local/html:/var/www/html"
+        "/etc/oci.cont/nextcloud-local/data:/data"
+      ];
     };
     redis = {
       image = "docker.io/library/redis:latest";
@@ -60,7 +65,9 @@
       user = "1000:100";
       cmd = ["redis-server" "--save" "59" "1" "--loglevel" "warning"];
       extraOptions = ["--pod=cloud"];
-      volumes = ["redis_data:/data"];
+      volumes = [
+        "/etc/oci.cont/redis/data:/data"
+      ];
     };
     mariadb = {
       image = "docker.io/library/mariadb:latest";
@@ -68,7 +75,9 @@
       user = "mysql:mysql";
       cmd = ["--transaction-isolation=READ-COMMITTED" "--log-bin=msqyld-bin" "--binlog-format=ROW"];
       extraOptions = ["--pod=cloud"];
-      volumes = ["mariadb_data:/var/lib/mysql"];
+      volumes = [
+        "/etc/oci.cont/mariadb-nextcloud/mysql:/var/lib/mysql"
+      ];
       environment = {
         MYSQL_DATABASE = "nextcloud";
         MYSQL_USER = "nextcloud";
