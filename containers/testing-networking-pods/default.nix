@@ -1,4 +1,6 @@
 # https://discourse.nixos.org/t/podman-containers-dns/26820/3
+# above example was not working, tweaked some configs, configured macvlan for single container
+# may be a good start for a pod with nginx being the only entry into the pod
 {pkgs, ...}: {
   systemd.services.pod-cloud = {
     description = "Start podman 'nextcloud' pod";
@@ -25,11 +27,11 @@
         MYSQL_HOST = "127.0.0.1";
         REDIS_HOST = "127.0.0.1";
         TRUSTED_PROXIES = "10.88.0.1/24";
-        NEXTCLOUD_TRUSTED_DOMAINS = "my.domain";
-        MAIL_DOMAIN = "my.domain";
-        OVERWRITEHOST = "my.domain";
+        NEXTCLOUD_TRUSTED_DOMAINS = "nextcloud.home";
+        MAIL_DOMAIN = "nextcloud.home";
+        OVERWRITEHOST = "nextcloud.home";
         OVERWRITEPROTOCOL = "https";
-        OVERWRITECLIURL = "my.domain";
+        OVERWRITECLIURL = "nextcloud.home";
         PHP_MEMORY_LIMIT = "2G";
         PHP_UPLOAD_LIMIT = "2G";
       };
@@ -37,10 +39,10 @@
         "--device=/dev/dri"
         "--init=true"
         "--pod=cloud"
-        "--network=macvlan_lan" # temp test
-        "--ip=192.168.87.252" # temp test
+        "--network=macvlan_lan"
+        "--ip=192.168.87.252" # CHANGEME
         "--label=traefik.enable=true"
-        "--label=traefik.http.routers.nextcloud.rule=Host(`my.domain`)"
+        "--label=traefik.http.routers.nextcloud.rule=Host(`nextcloud.home`)"
         "--label=traefik.http.routers.nextcloud.entrypoints=websecure"
         "--label=traefik.http.routers.nextcloud.tls.certResolver=le"
         "--label=traefik.http.routers.nextcloud.middlewares=headers,nextcloud-redirectregex@file"
