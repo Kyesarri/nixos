@@ -25,7 +25,7 @@
   */
   virtualisation.oci-containers.containers = {
     nextcloud = {
-      image = "nextcloud:local";
+      image = "nextcloud:latest";
       autoStart = true;
       user = "1000:1000";
       dependsOn = ["mariadb" "redis"];
