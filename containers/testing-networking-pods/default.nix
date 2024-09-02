@@ -27,7 +27,7 @@
     nextcloud = {
       image = "nextcloud:local";
       autoStart = true;
-      user = "1000:100";
+      user = "1000:1000";
       dependsOn = ["mariadb" "redis"];
       environment = {
         MYSQL_HOST = "127.0.0.1";
@@ -62,7 +62,7 @@
     redis = {
       image = "docker.io/library/redis:latest";
       autoStart = true;
-      user = "1000:100";
+      user = "1000:1000";
       cmd = ["redis-server" "--save" "59" "1" "--loglevel" "warning"];
       extraOptions = ["--pod=cloud"];
       volumes = [
