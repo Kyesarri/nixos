@@ -27,7 +27,7 @@
     nextcloud = {
       image = "nextcloud:latest";
       autoStart = true;
-      user = "1000:1000";
+      user = "1000:100";
       dependsOn = ["mariadb" "redis"];
       environment = {
         PUID = "1000";
@@ -64,7 +64,7 @@
     redis = {
       image = "docker.io/library/redis:latest";
       autoStart = true;
-      user = "1000:1000";
+      user = "1000:100";
       environment = {
         PUID = "1000";
         PGID = "1000";
