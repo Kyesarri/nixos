@@ -27,7 +27,6 @@
     nextcloud = {
       image = "nextcloud:latest";
       autoStart = true;
-      user = "1000:100";
       dependsOn = ["mariadb" "redis"];
       environment = {
         PUID = "1000";
@@ -64,7 +63,6 @@
     redis = {
       image = "docker.io/library/redis:latest";
       autoStart = true;
-      user = "1000:100";
       environment = {
         PUID = "1000";
         PGID = "1000";
@@ -78,7 +76,6 @@
     mariadb = {
       image = "docker.io/library/mariadb:latest";
       autoStart = true;
-      user = "mysql:mysql";
       cmd = ["--transaction-isolation=READ-COMMITTED" "--log-bin=msqyld-bin" "--binlog-format=ROW"];
       extraOptions = ["--pod=cloud"];
       volumes = [
