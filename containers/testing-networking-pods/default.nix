@@ -30,6 +30,8 @@
       user = "1000:1000";
       dependsOn = ["mariadb" "redis"];
       environment = {
+        PUID = "1000";
+        PGID = "1000";
         MYSQL_HOST = "127.0.0.1";
         REDIS_HOST = "127.0.0.1";
         TRUSTED_PROXIES = "10.88.0.1/24";
@@ -63,6 +65,10 @@
       image = "docker.io/library/redis:latest";
       autoStart = true;
       user = "1000:1000";
+      environment = {
+        PUID = "1000";
+        PGID = "1000";
+      };
       cmd = ["redis-server" "--save" "59" "1" "--loglevel" "warning"];
       extraOptions = ["--pod=cloud"];
       volumes = [
@@ -79,6 +85,8 @@
         "/etc/oci.cont/mariadb-nextcloud/mysql:/var/lib/mysql"
       ];
       environment = {
+        PUID = "1000";
+        PGID = "1000";
         MYSQL_DATABASE = "nextcloud";
         MYSQL_USER = "nextcloud";
         MYSQL_PASSWORD = "password";
