@@ -30,7 +30,7 @@
         NEXTCLOUD_TRUSTED_DOMAINS = "nextcloud.home";
         MAIL_DOMAIN = "nextcloud.home";
         OVERWRITEHOST = "nextcloud.home";
-        OVERWRITEPROTOCOL = "https";
+        OVERWRITEPROTOCOL = "http";
         OVERWRITECLIURL = "nextcloud.home";
         PHP_MEMORY_LIMIT = "2G";
         PHP_UPLOAD_LIMIT = "2G";
