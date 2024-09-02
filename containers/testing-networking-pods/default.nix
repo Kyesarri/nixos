@@ -26,12 +26,14 @@
         PGID = "1000";
         MYSQL_HOST = "127.0.0.1";
         REDIS_HOST = "127.0.0.1";
+        /*
         TRUSTED_PROXIES = "10.88.0.1/24";
         NEXTCLOUD_TRUSTED_DOMAINS = "nextcloud.home";
         MAIL_DOMAIN = "nextcloud.home";
         OVERWRITEHOST = "nextcloud.home";
         OVERWRITEPROTOCOL = "http";
         OVERWRITECLIURL = "nextcloud.home";
+        */
         PHP_MEMORY_LIMIT = "2G";
         PHP_UPLOAD_LIMIT = "2G";
       };
@@ -41,12 +43,14 @@
         "--pod=cloud"
         "--network=macvlan_lan"
         "--ip=192.168.87.252" # CHANGEME
+        /*
         "--label=traefik.enable=true"
         "--label=traefik.http.routers.nextcloud.rule=Host(`nextcloud.home`)"
         "--label=traefik.http.routers.nextcloud.entrypoints=websecure"
         "--label=traefik.http.routers.nextcloud.tls.certResolver=le"
         "--label=traefik.http.routers.nextcloud.middlewares=headers,nextcloud-redirectregex@file"
         "--label=traefik.http.services.nextcloud.loadbalancer.server.port=80"
+        */
         "--sysctl=net.ipv4.ip_unprivileged_port_start=80"
       ];
       volumes = [
