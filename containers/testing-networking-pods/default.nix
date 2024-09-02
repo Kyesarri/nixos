@@ -14,15 +14,6 @@
     };
     path = [pkgs.zfs pkgs.podman];
   };
-  /*
-  virtualisation.containers.storage.settings = {
-    storage = {
-      driver = "zfs";
-      graphroot = "/var/lib/containers/storage";
-      runroot = "/run/containers/storage";
-    };
-  };
-  */
   virtualisation.oci-containers.containers = {
     nextcloud = {
       image = "nextcloud:latest";
@@ -46,6 +37,8 @@
         "--device=/dev/dri"
         "--init=true"
         "--pod=cloud"
+        "--network=macvlan_lan" # temp test
+        "--ip=192.168.87.252" # temp test
         "--label=traefik.enable=true"
         "--label=traefik.http.routers.nextcloud.rule=Host(`my.domain`)"
         "--label=traefik.http.routers.nextcloud.entrypoints=websecure"
@@ -60,6 +53,7 @@
         "/etc/oci.cont/nextcloud-local/data:/data"
       ];
     };
+
     redis = {
       image = "docker.io/library/redis:latest";
       autoStart = true;
@@ -73,6 +67,7 @@
         "/etc/oci.cont/redis/data:/data"
       ];
     };
+
     mariadb = {
       image = "docker.io/library/mariadb:latest";
       autoStart = true;
