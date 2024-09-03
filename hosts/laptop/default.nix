@@ -11,6 +11,7 @@
     ./per-device.nix # hyprland per-device config
     ./hardware.nix # machine hardware
     ./boot.nix # per device boot config
+    ./networking.nix # device networking configs
 
     ../standard.nix # template to use
 
@@ -41,15 +42,13 @@
     ../../home/kde # TODO rename kdeconnect - maybe not lol - covers lots
     ../../home/ulauncher # TODO rename built theme, add credits to og author
     ../../home/virt # vm / container
-    ../../home/vpn # netbird  requires more todo on container side
+    ../../home/vpn # netbird requires more #TODO on container side
     ../../home/wl-screenrec # testing for laptop - amd / nvidia config
     ../../home/gtk # uhh, nix-colors gtk theme iirc # TODO rename to theme?
     ../../home/prism # wallpapers
     ../../home/tailscale # not foss, temp - will replace eventually with netbird / self-hosted
     ../../home/zsh # some basic config for terminal, has modified theme for nix-colors
   ];
-
-  networking.hostName = "nix-laptop";
 
   colorscheme = inputs.nix-colors.colorSchemes.${spaghetti.scheme};
 
@@ -82,8 +81,9 @@
       pciutils
       tailscale
     ];
-    shellAliases.rebuild = "sudo nixos-rebuild switch --flake /home/${spaghetti.user}/nixos#nix-laptop --show-trace -j 16 && cd ~ && hyprctl reload && ./ags.sh";
-    shellAliases.rebuildboot = "sudo nixos-rebuild --flake /home/${spaghetti.user}/nixos#nix-laptop --install-bootloader boot";
+
+    shellAliases.rebuild = "sudo nixos-rebuild switch --flake ~/nixos#nix-laptop --show-trace -j 16 && cd ~ && hyprctl reload && ./ags.sh";
+    shellAliases.rebuildboot = "sudo nixos-rebuild --flake ~/nixos#nix-laptop --install-bootloader boot";
     shellAliases.garbage = "sudo nix-collect-garbage && nix-collect-garbage -d";
     shellAliases.s = "kitten ssh";
   };
