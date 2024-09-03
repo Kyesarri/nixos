@@ -11,6 +11,9 @@
   ];
 
   home-manager.users.${spaghetti.user} = {inputs, ...}: {
+    specialisation.theme1.configuration = {
+      colorscheme = inputs.nix-colors.colorSchemes.${spaghetti.scheme1}; # set nix-colors theme in home-manager
+    };
     colorscheme = inputs.nix-colors.colorSchemes.${spaghetti.scheme}; # set nix-colors theme in home-manager
 
     # import flake home-manager modules here

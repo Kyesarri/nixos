@@ -22,8 +22,8 @@
 
   home-manager.users.${spaghetti.user}.home.file.".config/hypr/per-app/bluetooth.conf" = {
     text = ''
-      exec-once = blueman-tray
-      windowrule = float, title:.blueman-manager-wrapped
+      exec-once = sleep 3 && blueman-tray
+      windowrule = float, ^(.blueman-manager-wrapped)$
     '';
   };
 

@@ -30,13 +30,13 @@ in {
   	bus = "001"
   [nutdev2]
   	driver = "snmp-ups"
-  	port = "192.168.87.8"
+  	port = "111.111.111.111"
   	desc = "DELL"
   	mibs = "ietf"
   	community = "public"
   [nutdev3]
   	driver = "netxml-ups"
-  	port = "http://192.168.87.8"
+  	port = "http://111.111.111.111"
   	desc = "Mosaic 4M 16M"
   */
 
