@@ -52,6 +52,7 @@
       scheme2 = "papercolor-dark";
       iconPkg = "pkgs.zafiro-icons";
     };
+    # import our secrets - these are required to be unencrypted when building
     secrets = builtins.fromJSON (builtins.readFile "${self}/secrets/secrets.json");
     system = "x86_64-linux";
     specialArgs = {inherit nix-colors hyprpicker hy3 secrets inputs prism spaghetti wallpaper-generator;};
@@ -68,8 +69,9 @@
 
           {
             home-manager = {
+              imports = [./hosts/home-manager.nix];
               useGlobalPkgs = true;
-              useUserPackages = true;
+              useUserPackages = false; # lets see what breaks :D
               extraSpecialArgs = {inherit nix-colors inputs hyprland;};
             };
           }

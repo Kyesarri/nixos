@@ -1,12 +1,12 @@
 {
   pkgs,
-  inputs,
+  # inputs,
   spaghetti,
-  nix-colors,
+  # nix-colors,
   ...
 }: {
   imports = [
-    nix-colors.homeManagerModules.default
+    # nix-colors.homeManagerModules.default
 
     ./per-device.nix # hyprland per-device config
     ./hardware.nix # machine hardware
@@ -50,7 +50,7 @@
     ../../home/zsh # some basic config for terminal, has modified theme for nix-colors
   ];
 
-  colorscheme = inputs.nix-colors.colorSchemes.${spaghetti.scheme};
+  # colorscheme = inputs.nix-colors.colorSchemes.${spaghetti.scheme};
 
   gnocchi = {
     hypr = {
@@ -80,6 +80,7 @@
     systemPackages = with pkgs; [
       pciutils
       tailscale
+      home-manager
     ];
 
     shellAliases.rebuild = "sudo nixos-rebuild switch --flake ~/nixos#nix-laptop --show-trace -j 16 && cd ~ && hyprctl reload && ./ags.sh";
