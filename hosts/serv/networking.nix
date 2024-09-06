@@ -10,6 +10,7 @@
     networkmanager.enable = false;
     useNetworkd = true;
     usePredictableInterfaceNames = lib.mkDefault true;
+    timeServers = ["ntp.nml.csiro.au" "ntp.ise.canberra.edu.au"];
 
     firewall = {
       enable = true;
@@ -71,6 +72,5 @@
       };
       linkConfig.RequiredForOnline = "routable";
     };
-    timeServers = ["ntp.nml.csiro.au" "ntp.ise.canberra.edu.au"];
   };
 }
