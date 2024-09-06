@@ -79,7 +79,10 @@
 
   environment = {
     shells = with pkgs; [zsh]; # default shell to zsh
-    shellAliases.rebuild = "sudo nixos-rebuild switch --flake /home/${spaghetti.user}/nixos#nix-erying --show-trace";
+    shellAliases = {
+      rebuild = "sudo nixos-rebuild switch --flake ~/nixos#nix-erying --show-trace";
+      webcam = "ustreamer --device=/dev/v4l/by-id/usb-Alpha_Imaging_Tech._Corp._Razer_Kiyo-video-index0 --host=0.0.0.0 --port=80 -f 60 -r 1920x1080 -m MJPEG";
+    };
     sessionVariables = {
       LIBVA_DRIVER_NAME = "iHD"; # Force intel-media-driver
       GTK_THEME = "${config.colorscheme.slug}"; # sets default gtk theme the package built by nix-colors

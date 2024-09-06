@@ -66,13 +66,14 @@
           {
             environment.systemPackages = [alejandra.defaultPackage.x86_64-linux];
           }
-
           {
             home-manager = {
-              imports = [./hosts/home-manager.nix];
               useGlobalPkgs = true;
               useUserPackages = false; # lets see what breaks :D
-              extraSpecialArgs = {inherit nix-colors inputs hyprland;};
+              extraSpecialArgs = {
+                inherit nix-colors inputs hyprland;
+                inherit (inputs.nix-colors.lib-contrib) gtkThemeFromScheme;
+              };
             };
           }
         ];
