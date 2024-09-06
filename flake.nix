@@ -57,7 +57,9 @@
     system = "x86_64-linux";
     specialArgs = {inherit nix-colors hyprpicker hy3 secrets inputs prism spaghetti wallpaper-generator;};
   in {
+    #
     nixosConfigurations = {
+      #
       "nix-laptop" = nixpkgs.lib.nixosSystem {
         inherit system specialArgs;
         modules = [
@@ -116,7 +118,7 @@
         inherit system specialArgs;
         modules = [
           home-manager.nixosModules.home-manager
-          ./hosts/serv # ASUS z390i / 9900k / 32gb ddr5
+          ./hosts/serv # ASUS z390i / 9900k / 32gb ddr4
           # 15s-fq2050TU / i5-1135G7 / iris x / 8gb ddr4 FIXME #RIP
           {
             environment.systemPackages = [alejandra.defaultPackage.x86_64-linux];

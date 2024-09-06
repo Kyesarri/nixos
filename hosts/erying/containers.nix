@@ -7,7 +7,6 @@
 }: {
   imports = [
     ../../containers
-    # ../../containers/arr # testing
     ../../containers/adguard
     ../../containers/cpai
     ../../containers/doubletake
@@ -16,13 +15,11 @@
     ../../containers/frigate
     ../../containers/homer
     ../../containers/homer-wan
-    # ../../containers/haos # needs configs, complete barebones
     ../../containers/matter
     ../../containers/minecraft
     ../../containers/nginx-proxy-manager
     ../../containers/nginx-proxy-manager-2 # change to nginx-wan "soon"
     ../../containers/octoprint
-    # ../../containers/zigbee2mqtt # should not have been running, don't have a zigbee usb :)
     ../../containers/overseerr
     # ../../containers/peanut
     # ../../containers/netbird # this wont work out the box :D
@@ -42,15 +39,12 @@
       "podman-frigate.service"
       "podman-homer.service"
       "podman-homer-wan.service"
-      # "podman-haos.service"
       "podman-matter.service"
       "podman-minecraft.service"
       "podman-nginx-proxy-manager.service"
       "podman-nginx-proxy-manager-2.service"
       "podman-octoprint.service"
       "podman-overseerr.service"
-
-      "podman-zigbee2mqtt.service"
     ];
     serviceConfig = {
       Type = "oneshot";

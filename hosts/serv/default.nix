@@ -1,10 +1,9 @@
 {
-  config,
-  pkgs,
-  lib,
-  inputs,
   nix-colors,
   spaghetti,
+  config,
+  inputs,
+  pkgs,
   ...
 }: {
   imports = [
@@ -33,6 +32,7 @@
   ];
 
   colorscheme = inputs.nix-colors.colorSchemes.${spaghetti.scheme1};
+
   home-manager.users.${spaghetti.user}.colorscheme = inputs.nix-colors.colorSchemes.${spaghetti.scheme1};
 
   users.users.${spaghetti.user}.uid = 1000;
@@ -62,7 +62,7 @@
     chrony = {
       enable = true;
       enableNTS = true;
-      servers = ["ntp.nml.csiro.au" "ntp.ise.canberra.edu.au"];
+      # servers = ["ntp.nml.csiro.au" "ntp.ise.canberra.edu.au"];
     };
 
     zfs = {

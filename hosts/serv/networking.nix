@@ -71,5 +71,6 @@
       };
       linkConfig.RequiredForOnline = "routable";
     };
+    timeServers = ["ntp.nml.csiro.au" "ntp.ise.canberra.edu.au"];
   };
 }

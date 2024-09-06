@@ -25,9 +25,7 @@
   };
 
   fileSystems = {
-    # # # # # # # # # #
-    # 512gb sata ssd  #
-    # v v v v v v v v #
+    # 512gb sata ssd
     "/" = {
       device = "/dev/disk/by-uuid/7f98b95a-b4a3-4a9c-94e8-76d77054fb28";
       fsType = "ext4";
@@ -37,23 +35,17 @@
       fsType = "vfat";
       options = ["fmask=0022" "dmask=0022"];
     };
-    # # # # # # #
-    # 1tb nvme  #
-    # v v v v v #
+    # 1tb nvme
     "/etc/oci.cont" = {
       device = "/dev/disk/by-uuid/2c81efe8-b0bc-4942-92c0-beff70cebca2";
       fsType = "ext4";
     };
-    # # # # # # # # #
-    # 1tb sata ssd  #
-    # v v v v v v v #
+    # 1tb sata ssd
     "/etc/oci.cont.scratch" = {
       device = "/dev/disk/by-uuid/91b3bbfd-69c6-4081-ab4d-c1a9818be9b4";
       fsType = "ext4";
     };
-    # # # # # # # # # #
-    # 128gb nvme ssd  #
-    # v v v v v v v v #
+    # 128gb nvme
     "/etc/oci.cont.nvme" = {
       device = "/dev/disk/by-uuid/49f27562-6797-4094-a12c-60f1e8d2c7f5";
       fsType = "ext4";
