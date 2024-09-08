@@ -8,9 +8,34 @@
   imports = [(modulesPath + "/installer/scan/not-detected.nix")];
 
   hardware = {
+    nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
+
+    powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
+
     pulseaudio.enable = false;
+
     enableRedistributableFirmware = lib.mkDefault true;
+
     cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+
+    sensor.hddtemp = {
+      enable = true;
+      unit = "C";
+      drives = [
+        "/dev/disk/by-path/pci-0000:00:17.0-ata-1"
+        "/dev/disk/by-path/pci-0000:00:17.0-ata-2"
+        "/dev/disk/by-path/pci-0000:00:17.0-ata-3"
+        "/dev/disk/by-path/pci-0000:00:17.0-ata-4"
+
+        "/dev/disk/by-path/pci-0000:01:00.0-ata-2"
+        "/dev/disk/by-path/pci-0000:01:00.0-ata-3"
+        "/dev/disk/by-path/pci-0000:01:00.0-ata-4"
+        "/dev/disk/by-path/pci-0000:01:00.0-ata-5"
+        "/dev/disk/by-path/pci-0000:01:00.0-ata-6"
+
+        "/dev/disk/by-path/pci-0000:05:00.0-nvme-1"
+      ];
+    };
 
     graphics = {
       enable = true;
@@ -30,10 +55,12 @@
       device = "/dev/disk/by-uuid/29b03be4-7107-4825-a062-ae8cedfc3001";
       fsType = "ext4";
     };
+
     "/tmp/cache" = {
       device = "none";
       fsType = "tmpfs";
     };
+
     "/boot" = {
       device = "/dev/disk/by-uuid/84DE-719A";
       fsType = "vfat";
@@ -41,7 +68,4 @@
   };
 
   swapDevices = [{device = "/dev/disk/by-uuid/31007c77-40ea-4c3c-b5a7-08db63f333d8";}];
-
-  nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
-  powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
 }

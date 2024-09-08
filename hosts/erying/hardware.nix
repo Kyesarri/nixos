@@ -13,6 +13,18 @@
     cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
     enableRedistributableFirmware = lib.mkDefault true;
     pulseaudio.enable = false;
+
+    sensor.hddtemp = {
+      enable = true;
+      unit = "C";
+      drives = [
+        "/dev/disk/by-path/pci-0000:00:17.0-ata-1"
+        "/dev/disk/by-uuid/pci-0000:00:17.0-ata-2"
+        "/dev/disk/by-uuid/pci-0000:02:00.0-nvme-1"
+        "/dev/disk/by-uuid/pci-0000:03:00.0-nvme-1"
+      ];
+    };
+
     graphics = {
       enable = true;
       extraPackages = with pkgs; [
