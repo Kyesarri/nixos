@@ -23,7 +23,7 @@
     ../../containers/overseerr
     # ../../containers/peanut
     # ../../containers/netbird # this wont work out the box :D
-    # ../../containers/ustreamer
+    ../../containers/ustreamer
     # ../../containers/zitadel
     # ../../containers/uptime-kuma
   ];

@@ -22,6 +22,7 @@
       enable = true;
       unit = "C";
       drives = [
+        # use by uuid lol
         "/dev/disk/by-path/pci-0000:00:17.0-ata-1"
         "/dev/disk/by-path/pci-0000:00:17.0-ata-2"
         "/dev/disk/by-path/pci-0000:00:17.0-ata-3"

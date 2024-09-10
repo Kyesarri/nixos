@@ -14,9 +14,7 @@ in {
       "-f 30"
     ];
 
-    volumes = [
-      "/etc/localtime:/etc/localtime:ro"
-    ];
+    volumes = ["/etc/localtime:/etc/localtime:ro"];
 
     environment = {
       TZ = "Australia/Melbourne";
@@ -28,7 +26,7 @@ in {
       "--privileged"
       "--network=macvlan_lan"
       "--ip=${secrets.ip.ustreamer}"
-      "--device=/dev/video0:/dev/video0"
+      "--device=/dev/v4l/by-id/usb-Alpha_Imaging_Tech._Corp._Razer_Kiyo-video-index0:/dev/video0"
     ];
   };
 }
