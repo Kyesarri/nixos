@@ -20,6 +20,7 @@
     ../../containers/nginx-proxy-manager
     ../../containers/nginx-proxy-manager-2 # change to nginx-wan "soon"
     ../../containers/octoprint
+    ../../containers/orcaslicer
     ../../containers/overseerr
     # ../../containers/peanut
     # ../../containers/netbird # this wont work out the box :D
