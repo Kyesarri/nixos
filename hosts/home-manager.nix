@@ -18,7 +18,7 @@
     xdg.enable = true;
     home.username = "${spaghetti.user}";
     home.homeDirectory = "/home/${spaghetti.user}";
-    home.stateVersion = "23.11";
+    home.stateVersion = "23.11"; # don't changeme
 
     colorscheme = {
       slug = "horizon-dark";

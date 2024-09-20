@@ -1,6 +1,12 @@
-{secrets, ...}: {
+{
+  secrets,
+  lib,
+  ...
+}: {
   networking = {
     hostName = "nix-desktop";
+    useDHCP = lib.mkDefault true;
+
     defaultGateway = {
       address = "${secrets.ip.gateway}";
       interface = "enp3s0";

@@ -6,16 +6,18 @@
   ...
 }: {
   imports = [./console.nix];
-  system.stateVersion = "23.11";
+  system.stateVersion = "23.11"; # don't change this value pls
   time.timeZone = "Australia/Melbourne";
 
   nixpkgs.config.allowUnfree = true;
 
+  # nix
   nix = {
     sshServe.enable = true; # enable ssh server
-    package = pkgs.nixVersions.latest;
+    package = pkgs.nixVersions.latest; # "unstable"
+    # nix garbage collection
     gc = {
-      automatic = true; # auto nix garbage collection
+      automatic = true;
       dates = "weekly";
       options = "--delete-older-than 5d";
     };
@@ -27,6 +29,7 @@
     };
   };
 
+  # language
   i18n = {
     defaultLocale = "en_AU.UTF-8";
     extraLocaleSettings = {
@@ -42,6 +45,7 @@
     };
   };
 
+  # eeeeh don't like this being here #TODO
   networking = {
     firewall = {
       enable = true;
@@ -111,7 +115,7 @@
       XCURSOR_THEME = "graphite-dark"; # is a user package below
     };
 
-    shells = with pkgs; [zsh]; # default shell to zsh
+    shells = [pkgs.zsh]; # default shell to zsh
 
     # system packages, available for all users, not just spaghetti (su)
     systemPackages = with pkgs; [
@@ -160,11 +164,8 @@
       vlc # play me some vids
       usbimager # says on the tin
       ventoy-full
-
       blender # for new toy :D
       slic3r # current working 3d printer package, issues with all others from nixpkgs currently
-
-      # orca-slicer # broken like cura
       gnome-disk-utility
       inputs.wallpaper-generator.defaultPackage.x86_64-linux
     ];

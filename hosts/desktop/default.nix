@@ -8,7 +8,7 @@
   imports = [
     nix-colors.homeManagerModules.default
 
-    # per-device configs
+    # host specific
     ./boot.nix
     ./hardware.nix
     ./networking.nix
@@ -50,7 +50,7 @@
   gnocchi = {
     hypr = {
       enable = true;
-      animations = false; # no config here yet #TODO - not critical - adding more mess is!
+      animations = false; # TODO
     };
     hyprpaper.enable = true;
     ags.enable = true;
@@ -66,7 +66,7 @@
   environment = {
     systemPackages = with pkgs; [
       pciutils
-      tailscale # lets users control tailscale
+      tailscale
     ];
     shellAliases.rebuild = "sudo nixos-rebuild switch --flake ~/nixos#nix-desktop --show-trace -j 16 && cd ~ && hyprctl reload && ./ags.sh";
   };
