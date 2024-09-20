@@ -30,6 +30,7 @@
   boot.initrd.systemd.network = {
     enable = true;
     networks = {
+      # main lan
       "10-lan" = {
         address = ["${toString secrets.ip.serv-1}/24"];
         gateway = ["${toString secrets.ip.gateway}"];
@@ -40,7 +41,7 @@
           MulticastDNS = true;
         };
       };
-      # wait for this to break the internet
+      # testing vlan
       "30-vlan" = {
         address = ["${toString secrets.ip.serv-2}/24"];
         gateway = ["${toString secrets.ip.gateway}"];
@@ -55,6 +56,7 @@
   };
 
   systemd.network.netdevs = {
+    # main lan
     "10-lan-self" = {
       netdevConfig = {
         Name = "lan-self";
@@ -66,6 +68,7 @@
       '';
     };
 
+    # testing vlan
     "30-vlan-self" = {
       netdevConfig = {
         Name = "vlan-self";
@@ -79,6 +82,7 @@
   };
 
   systemd.network.networks = {
+    # main lan macvlan for containers
     "10-lan" = {
       matchConfig.Name = ["eno1"];
       networkConfig.LinkLocalAddressing = "no";
@@ -88,15 +92,7 @@
         MACVLAN=lan-self
       '';
     };
-    "30-vlan" = {
-      matchConfig.Name = ["enp4s0"];
-      networkConfig.LinkLocalAddressing = "no";
-      linkConfig.RequiredForOnline = "carrier";
-      extraConfig = ''
-        [Network]
-        MACVLAN=vlan-self
-      '';
-    };
+    # main lan config
     "20-lan-self" = {
       address = ["${toString secrets.ip.serv-1}/24"];
       gateway = ["${toString secrets.ip.gateway}"];
@@ -107,9 +103,22 @@
         MulticastDNS = true;
       };
     };
-    "30-vlan-self" = {
-      address = ["${toString secrets.ip.serv-2}/24"];
-      gateway = ["${toString secrets.ip.gateway}"];
+
+    # testing vlan macvlan for containers
+    "30-vlan" = {
+      matchConfig.Name = ["enp4s0"];
+      networkConfig.LinkLocalAddressing = "no";
+      linkConfig.RequiredForOnline = "carrier";
+      extraConfig = ''
+        [Network]
+        MACVLAN=vlan-self
+      '';
+    };
+
+    # vlan config
+    "40-vlan-self" = {
+      address = ["${toString secrets.vlan.serv}/24"];
+      gateway = ["${toString secrets.vlan.gateway}"];
       matchConfig.Name = "vlan-self";
       linkConfig.RequiredForOnline = "routable";
       networkConfig = {

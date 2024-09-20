@@ -56,9 +56,9 @@
     secrets = builtins.fromJSON (builtins.readFile "${self}/secrets/secrets.json");
     system = "x86_64-linux";
     specialArgs = {inherit nix-colors hyprpicker hy3 secrets inputs prism spaghetti wallpaper-generator;};
-    # maybe don't pass nix-colors to special args, but only to extra special args
-    # to fix the theming issue i'm currently facing
-    #
+    # TODO maybe don't pass nix-colors to special args, but only to extra special args
+    # TODO to fix the theming issue i'm currently facing
+    # FIXME
   in {
     #
     nixosConfigurations = {

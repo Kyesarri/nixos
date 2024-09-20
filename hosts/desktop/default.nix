@@ -1,24 +1,30 @@
 {
   pkgs,
   inputs,
-  secrets,
   spaghetti,
   nix-colors,
   ...
 }: {
   imports = [
     nix-colors.homeManagerModules.default
-    ./per-device.nix # per device hypr configuration
 
-    ./hardware.nix # machine hardware config
-    ../standard.nix # standard or minimal configs
+    # per-device configs
+    ./boot.nix
+    ./hardware.nix
+    ./networking.nix
+    ./per-device.nix
 
-    ../../hardware/audio # change to pipewire, move to home or change to av, prefer the latter
+    # minimal / headless / standard
+    ../standard.nix
+
+    # hardware
+    ../../hardware/audio
     ../../hardware/bluetooth
     ../../hardware/nvidia
     ../../hardware/rgb
-    ../../hardware/wireless/wpa # TODO please eventually fix this POS
+    ../../hardware/wifi
 
+    # packages with configs
     ../../home
     ../../home/ags
     ../../home/bottom
@@ -40,34 +46,21 @@
   ];
 
   colorscheme = inputs.nix-colors.colorSchemes.${spaghetti.scheme};
-  home-manager.users.${spaghetti.user}.colorscheme = inputs.nix-colors.colorSchemes.${spaghetti.scheme};
 
-  networking = {
-    defaultGateway = {
-      address = "${secrets.ip.gateway}";
-      interface = "enp3s0";
+  gnocchi = {
+    hypr = {
+      enable = true;
+      animations = false; # no config here yet #TODO - not critical - adding more mess is!
     };
-    hostName = "nix-desktop";
-
-    wireless.iwd.settings = {
-      General = {EnableNetworkConfiguration = true;};
-      Network = {EnableIPv6 = false;};
-    };
-
-    interfaces.enp3s0.ipv4 = {
-      addresses = [
-        {
-          address = "${secrets.ip.desktop}";
-          prefixLength = 24;
-        }
-      ];
-    };
+    hyprpaper.enable = true;
+    ags.enable = true;
+    gscreenshot.enable = true;
+    freetube.enable = true;
+    wifi.backend = "nwm";
   };
 
   services = {
-    xserver = {
-      enable = true;
-    };
+    xserver.enable = false;
   };
 
   environment = {
@@ -75,6 +68,6 @@
       pciutils
       tailscale # lets users control tailscale
     ];
-    shellAliases.rebuild = "sudo nixos-rebuild switch --flake /home/${spaghetti.user}/nixos#nix-desktop --show-trace";
+    shellAliases.rebuild = "sudo nixos-rebuild switch --flake ~/nixos#nix-desktop --show-trace -j 16 && cd ~ && hyprctl reload && ./ags.sh";
   };
 }
