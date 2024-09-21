@@ -11,6 +11,8 @@
 
   nixpkgs.config.allowUnfree = true;
 
+  colorscheme = inputs.nix-colors.colorSchemes.${spaghetti.scheme};
+
   # nix
   nix = {
     sshServe.enable = true; # enable ssh server
@@ -46,14 +48,13 @@
   };
 
   # eeeeh don't like this being here #TODO
-  networking = {
-    firewall = {
-      enable = true;
-      allowedTCPPorts = [3389]; # rdp
-    };
+  networking.firewall = {
+    enable = true;
+    allowedTCPPorts = [3389]; # rdp
   };
 
   services = {
+    xserver.enable = false;
     openssh.enable = true;
     fstrim.enable = true; # ssd trim in background, not enabled by default :0
     gvfs.enable = true; # trash and mount
@@ -74,6 +75,7 @@
   };
 
   programs = {
+    corectrl.enable = true;
     dconf.enable = true;
     gnupg.agent = {
       enable = true;
@@ -100,7 +102,6 @@
 
   environment = {
     sessionVariables = {
-      __GLX_VENDOR_LIBRARY_NAME = "null"; # orcaslicer workaround?
       CLUTTER_BACKEND = "wayland";
       QT_QPA_PLATFORMTHEME = "qt5ct";
       GTK_THEME = "${config.colorscheme.slug}"; # sets default gtk theme the package built by nix-colors
@@ -119,6 +120,8 @@
 
     # system packages, available for all users, not just spaghetti (su)
     systemPackages = with pkgs; [
+      pciutils
+      tailscale
       lshw # list hardware
       usbutils # usb thing
       busybox # nice-to-have
@@ -129,6 +132,7 @@
       polkit_gnome
       waypipe
       keepassxc # password manager
+      home-manager
     ];
   };
 

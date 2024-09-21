@@ -1,10 +1,4 @@
-{
-  pkgs,
-  inputs,
-  spaghetti,
-  nix-colors,
-  ...
-}: {
+{nix-colors, ...}: {
   imports = [
     nix-colors.homeManagerModules.default
 
@@ -33,6 +27,8 @@
     ../../home/dunst
     ../../home/firefox
     ../../home/git
+    ../../home/greetd
+    ../../home/keepassxc
     ../../home/gaming
     ../../home/hypr
     ../../home/kde
@@ -40,12 +36,10 @@
     ../../home/ulauncher
     ../../home/virt
     ../../home/gtk
-    ../../home/syncthing
+    ../../home/prism
     ../../home/tailscale
     ../../home/zsh
   ];
-
-  colorscheme = inputs.nix-colors.colorSchemes.${spaghetti.scheme};
 
   gnocchi = {
     hypr = {
@@ -59,15 +53,10 @@
     wifi.backend = "nwm";
   };
 
-  services = {
-    xserver.enable = false;
-  };
-
-  environment = {
-    systemPackages = with pkgs; [
-      pciutils
-      tailscale
-    ];
-    shellAliases.rebuild = "sudo nixos-rebuild switch --flake ~/nixos#nix-desktop --show-trace -j 16 && cd ~ && hyprctl reload && ./ags.sh";
+  environment.shellAliases = {
+    rebuild = "sudo nixos-rebuild switch --flake ~/nixos#nix-desktop --show-trace -j 16 && cd ~ && hyprctl reload && ./ags.sh";
+    rebuildboot = "sudo nixos-rebuild --flake ~/nixos#nix-desktop --install-bootloader boot";
+    garbage = "sudo nix-collect-garbage && nix-collect-garbage -d";
+    s = "kitten ssh";
   };
 }

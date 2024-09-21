@@ -1,10 +1,4 @@
-{
-  pkgs,
-  inputs,
-  spaghetti,
-  nix-colors,
-  ...
-}: {
+{nix-colors, ...}: {
   imports = [
     nix-colors.homeManagerModules.default
 
@@ -50,8 +44,6 @@
     ../../home/zsh # some basic config for terminal, has modified theme for nix-colors
   ];
 
-  colorscheme = inputs.nix-colors.colorSchemes.${spaghetti.scheme};
-
   gnocchi = {
     hypr = {
       enable = true;
@@ -64,10 +56,8 @@
     wifi.backend = "nwm";
   };
 
-  programs.corectrl.enable = true;
-
   services = {
-    xserver.enable = false;
+    # map laptop keys
     udev.extraHwdb = ''
       evdev:name:*:dmi:bvn*:bvr*:bd*:svnASUS*:pn*:*
       KEYBOARD_KEY_ff31007c=f20    # fixes mic mute button
@@ -76,16 +66,10 @@
     '';
   };
 
-  environment = {
-    systemPackages = with pkgs; [
-      pciutils
-      tailscale
-      home-manager
-    ];
-
-    shellAliases.rebuild = "sudo nixos-rebuild switch --flake ~/nixos#nix-laptop --show-trace -j 16 && cd ~ && hyprctl reload && ./ags.sh";
-    shellAliases.rebuildboot = "sudo nixos-rebuild --flake ~/nixos#nix-laptop --install-bootloader boot";
-    shellAliases.garbage = "sudo nix-collect-garbage && nix-collect-garbage -d";
-    shellAliases.s = "kitten ssh";
+  environment.shellAliases = {
+    rebuild = "sudo nixos-rebuild switch --flake ~/nixos#nix-laptop --show-trace -j 16 && cd ~ && hyprctl reload && ./ags.sh";
+    rebuildboot = "sudo nixos-rebuild --flake ~/nixos#nix-laptop --install-bootloader boot";
+    garbage = "sudo nix-collect-garbage && nix-collect-garbage -d";
+    s = "kitten ssh";
   };
 }
