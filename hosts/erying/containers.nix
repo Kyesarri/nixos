@@ -24,6 +24,7 @@
     ../../containers/overseerr
     # ../../containers/peanut
     # ../../containers/netbird # this wont work out the box :D
+    ../../containers/syncthing # testing 25.09.24
     ../../containers/ustreamer
     # ../../containers/zitadel
     # ../../containers/uptime-kuma
