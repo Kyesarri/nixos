@@ -11,16 +11,17 @@
 
     hyprpicker.url = "github:hyprwm/hyprpicker";
 
-    hy3.url = "github:outfoxxed/hy3";
-    hy3.inputs.hyprland.follows = "hyprland";
-
+    hy3 = {
+      url = "github:outfoxxed/hy3";
+      inputs.hyprland.follows = "hyprland";
+    };
     # hycov.url = "github:DreamMaoMao/hycov";
     # hycov.inputs.hyprland.follows = "hyprland";
 
     # Hyprspace.url = "github:KZDKM/Hyprspace";
     # Hyprspace.inputs.hyprland.follows = "hyprland";
 
-    nix-colors.url = "github:kyesarri/nix-colors"; # colour themes, my fork
+    nix-colors.url = "github:kyesarri/nix-colors"; # colour themes, fork
     prism.url = "github:IogaMaster/prism"; # wallpaper gen
     wallpaper-generator.url = "github:kyesarri/wallpaper-generator"; # another one
 
