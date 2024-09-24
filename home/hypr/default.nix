@@ -34,7 +34,7 @@ in {
       #
       users.users.${spaghetti.user}.packages = [
         pkgs.xdg-desktop-portal-hyprland
-        # hyprpicker # colour picker 09.06.24 throwing build errors
+        pkgs.hyprpicker # colour picker 09.06.24 throwing build errors
       ];
       home-manager.users.${spaghetti.user} = {
         wayland.windowManager.hyprland = {
@@ -43,7 +43,7 @@ in {
           systemd.enable = true;
           systemd.variables = ["--all"];
           plugins = [
-            # inputs.hy3.packages.x86_64-linux.hy3
+            inputs.hy3.packages.x86_64-linux.hy3
             # inputs.hycov.packages.x86_64-linux.hycov
             /*
                (inputs.Hyprspace.packages.${pkgs.system}.Hyprspace.overrideAttrs {
