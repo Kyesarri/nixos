@@ -24,9 +24,7 @@
     };
   };
 
-  /*
-  can also enable under ^^ as home-manager.users.${spaghetti.user} = { services.syncthing.enable = true; ...};
-  */
+  # can also enable under ^^ as home-manager.users.${spaghetti.user}.services.syncthing.enable = true;
 
   # add tray icon
   users.users.${spaghetti.user}.packages = with pkgs; [syncthingtray];

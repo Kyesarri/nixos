@@ -16,7 +16,6 @@
     ../../hardware/bluetooth
     ../../hardware/nvidia
     ../../hardware/rgb
-    ../../hardware/wifi
 
     # packages with configs
     ../../home

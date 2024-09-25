@@ -9,7 +9,7 @@
 
     ../standard.nix # template to use
 
-    ../../hardware # not all hardware modules are required to be imported
+    ../../hardware # not all hardware modules are required to be imported directly
     ../../hardware/audio
     ../../hardware/battery
     ../../hardware/bluetooth
@@ -40,6 +40,7 @@
     ../../home/wl-screenrec # testing for laptop - amd / nvidia config
     ../../home/gtk # uhh, nix-colors gtk theme iirc # TODO rename to theme?
     ../../home/prism # wallpapers
+    ../../home/syncthing
     ../../home/tailscale # not foss, temp - will replace eventually with netbird / self-hosted
     ../../home/zsh # some basic config for terminal, has modified theme for nix-colors
   ];

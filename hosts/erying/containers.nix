@@ -47,6 +47,7 @@
       "podman-nginx-proxy-manager-2.service"
       "podman-octoprint.service"
       "podman-overseerr.service"
+      "podman-syncthing.service"
     ];
     serviceConfig = {
       Type = "oneshot";

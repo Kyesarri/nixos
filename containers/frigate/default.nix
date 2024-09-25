@@ -4,10 +4,6 @@
   ...
 }: let
   contName = "frigate";
-  rtmp = 1935;
-  web = 5000;
-  rtsp = 8554;
-  webRTC = 8555;
   dir1 = "/etc/oci.cont/${contName}/db";
   dir2 = "/etc/oci.cont.scratch/${contName}/media/frigate";
   dir3 = "/etc/oci.cont/${contName}/config";
@@ -29,13 +25,7 @@ in {
 
     image = "ghcr.io/blakeblackshear/frigate:stable";
 
-    ports = [
-      "${toString rtmp}:${toString rtmp}"
-      "${toString web}:${toString web}"
-      "${toString rtsp}:${toString rtsp}"
-      "${toString webRTC}:${toString webRTC}/tcp"
-      "${toString webRTC}:${toString webRTC}/udp"
-    ];
+    ports = [];
 
     volumes = [
       "${toString dir1}:/db"
