@@ -12,6 +12,7 @@
     ../standard.nix
 
     # hardware
+    ../../hardware
     ../../hardware/audio
     ../../hardware/bluetooth
     ../../hardware/nvidia

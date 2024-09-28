@@ -13,8 +13,8 @@
     };
 
     loader = {
+      efi.canTouchEfiVariables = true;
       systemd-boot = {
-        efi.canTouchEfiVariables = true;
         enable = true;
         editor = false;
         memtest86.enable = true;

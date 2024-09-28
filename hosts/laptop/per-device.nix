@@ -1,7 +1,7 @@
 {spaghetti, ...}: {
   home-manager.users.${spaghetti.user}.home.file.".config/hypr/per-device.conf" = {
     text = ''
-      # monitor = name, resolution(+@hz), position, scale
+      # monitor = name, resolution(@hz *optional*), position, scale
       monitor = eDP-1, 1920x1080@120, auto, 1
       # monitor = HDMI-A-1, 3840x1600, 0x0, 1 # comment out - possibly causing issues with build from 02.09.24 NOPE!
 

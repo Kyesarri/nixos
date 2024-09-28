@@ -1,7 +1,7 @@
 {
-  config,
   pkgs,
   inputs,
+  config,
   spaghetti,
   ...
 }: let
@@ -13,7 +13,7 @@ in {
   #
   users.users.${spaghetti.user}.packages = [pkgs.zafiro-icons];
 
-  qt.platformTheme = "gtk2";
+  qt.platformTheme = "qt5ct";
 
   home-manager.users.${spaghetti.user} = {
     home.sessionVariables = {
