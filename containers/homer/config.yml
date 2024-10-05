@@ -43,16 +43,6 @@ colors:
     link: "#DF5273" # links color (footer & message), service card icon color
     link-hover: "#24A8B4" # links hover color (footer & message), service card icon hover color
 
-message:
-  url: https://www.yomama-jokes.com/api/v1/jokes/random
-  mapping:
-    title: 'category'
-    content: 'joke'
-  refreshInterval: 10000
-  style: "is-warning"
-  icon: "fa fa-exclamation-triangle"
-
-
 services:
   - name: "services"
     items:
@@ -65,7 +55,7 @@ services:
       - name: "nginx-wan"
         icon: "fas fa-globe-asia fa-fw"
         subtitle: "External Reverse Proxy"
-        tag: "proxy"
+        tag: "wan"
         url: "https://wan.home/"
 
       - name: "frigate"
@@ -83,8 +73,20 @@ services:
       - name: "plex"
         icon: "fas fa-house-user fa-fw"
         subtitle: "Media Server"
-        tag: "plelx"
+        tag: "plex"
         url: "https://plex.home/"
+
+      - name: "orca-slicer"
+        icon: "fas fa-cube fa-fw"
+        subtitle: "3D Printer Slicer"
+        tag: "slice"
+        url: "https://orca.home/"
+
+      - name: "octoprint"
+        icon: "fas fa-cubes fa-fw"
+        subtitle: "3D Printer Web-interface"
+        tag: "print"
+        url: "http://octoprint.home"
 
   - name: "devices"
     items:
