@@ -31,7 +31,7 @@ in {
     ];
   };
 
-  virtualisation.oci-containers.containers."${contName}".db = {
+  virtualisation.oci-containers.containers."${contName}.db" = {
     hostname = "${contName}-db";
     autoStart = true;
     image = "mysql:8";
@@ -40,7 +40,7 @@ in {
       "${toString dir1}/db:/var/lib/mysql"
     ];
     environment = {
-      MYSQL_ROOT_PASSWORD = "${toString secrets.password.ghost-root}";
+      MYSQL_ROOT_PASSWORD = "${toString secrets.password.ghost-db-root}";
       MYSQL_DATABASE = "ghost";
       MYSQL_USER = "${toString secrets.user.ghost-db}";
       MYSQL_PASSWORD = "${toString secrets.password.ghost-db}";
