@@ -1,4 +1,8 @@
-{lib, ...}: let
+{
+  lib,
+  secrets,
+  ...
+}: let
   contName = "sonarr";
   dir1 = "/etc/oci.cont/arr/${contName}";
 in {
@@ -23,7 +27,7 @@ in {
 
     extraOptions = [
       "--network=macvlan_lan"
-      "--ip=192.168.87.34"
+      "--ip=${secrets.ip.sonarr}"
     ];
   };
 }

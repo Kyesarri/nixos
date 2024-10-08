@@ -133,6 +133,7 @@
       waypipe
       keepassxc # password manager
       home-manager
+      inkscape-with-extensions
     ];
   };
 

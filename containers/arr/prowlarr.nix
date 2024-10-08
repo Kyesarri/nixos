@@ -1,4 +1,8 @@
-{lib, ...}: let
+{
+  lib,
+  secrets,
+  ...
+}: let
   contName = "prowlarr";
 
   dir1 = "/etc/oci.cont/arr/${contName}";
@@ -25,7 +29,7 @@ in {
 
     extraOptions = [
       "--network=macvlan_lan"
-      "--ip=192.168.87.31"
+      "--ip=${secrets.ip.prowlarr}"
     ];
   };
 }
