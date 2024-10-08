@@ -117,8 +117,8 @@
 
     # vlan config
     "40-vlan-self" = {
-      address = ["${toString secrets.vlan.serv}/24"];
-      gateway = ["${toString secrets.vlan.gateway}"];
+      address = ["${toString secrets.ip.vlan.serv}/24"];
+      gateway = ["${toString secrets.ip.vlan.gateway}"];
       matchConfig.Name = "vlan-self";
       linkConfig.RequiredForOnline = "routable";
       networkConfig = {
