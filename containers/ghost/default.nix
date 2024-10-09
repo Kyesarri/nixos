@@ -23,7 +23,7 @@ in {
       database__connection__user = "${toString secrets.user.ghost-db}";
       database__connection__password = "${toString secrets.password.ghost-db}";
       database__connection__database = "ghost";
-      url = "${secrets.domain.main}";
+      url = "http://${secrets.ip.ghost}:2368";
     };
     extraOptions = [
       "--network=macvlan_lan"
