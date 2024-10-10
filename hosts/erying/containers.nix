@@ -43,10 +43,10 @@
       "podman-homer.service"
       "podman-homer-wan.service"
       "podman-matter.service"
-      "podman-minecraft.service"
       "podman-nginx-proxy-manager.service"
       "podman-nginx-proxy-manager-2.service"
       "podman-octoprint.service"
+      "podman-orcaslicer.service"
       "podman-overseerr.service"
       "podman-syncthing.service"
     ];
