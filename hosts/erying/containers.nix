@@ -17,7 +17,7 @@
     ../../containers/homer
     ../../containers/homer-wan
     ../../containers/matter
-    ../../containers/minecraft
+    # ../../containers/minecraft eeeh resources needed
     ../../containers/nginx-proxy-manager
     ../../containers/nginx-proxy-manager-2 # change to nginx-wan "soon"
     ../../containers/octoprint
