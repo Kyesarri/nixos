@@ -21,17 +21,13 @@ in {
       "${dir1}:/home/.i2pd/data/"
     ];
 
-    /*
-      environment = {
-      PUID = "1000";
-      PGID = "1000";
+    environment = {
+      http.address = "0.0.0.0";
     };
-    */
 
     extraOptions = [
       "--network=macvlan_lan"
       "--ip=${secrets.ip.i2pd}"
-      "--http.address 0.0.0.0"
     ];
   };
 }
