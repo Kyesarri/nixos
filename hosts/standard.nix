@@ -172,6 +172,10 @@
       blender # for new toy :D
       slic3r # current working 3d printer package, issues with all others from nixpkgs currently
       gnome-disk-utility
+      libimobiledevice
+      usbmuxd2
+      libirecovery
+      ifuse
       inputs.wallpaper-generator.defaultPackage.x86_64-linux
     ];
   };
