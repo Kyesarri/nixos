@@ -21,9 +21,7 @@ in {
       "${dir1}:/home/.i2pd/data/"
     ];
 
-    cmd = {
-      http.address = "0.0.0.0";
-    };
+    cmd = ["--http.address 0.0.0.0"];
 
     extraOptions = [
       "--network=macvlan_lan"
