@@ -9,7 +9,7 @@ in {
   system.activationScripts."make${contName}Dir" =
     lib.stringAfter ["var"]
     ''
-      mkdir -v -p ${toString dir1} {certificates,destinations}
+      mkdir -v -p ${toString dir1} certificates destinations &&
       chown -R 1000:1000 ${toString dir1}
     '';
 
