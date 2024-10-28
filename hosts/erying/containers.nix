@@ -16,6 +16,7 @@
     ../../containers/ghost
     ../../containers/homer
     ../../containers/homer-wan
+    ../../containers/i2dp
     ../../containers/matter
     # ../../containers/minecraft eeeh resources needed
     ../../containers/nginx-proxy-manager
