@@ -19,7 +19,7 @@ in {
 
     volumes = [
       "/etc/localtime:/etc/localtime:ro"
-      "${dir1}:/home/i2pd/data/"
+      "${dir1}:/home/.i2pd/data/"
     ];
 
     /*
