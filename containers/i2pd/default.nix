@@ -4,13 +4,11 @@
   ...
 }: let
   contName = "i2pd";
-  dir1 = "/etc/oci.cont/${contName}/data";
+  dir1 = "/etc/oci.cont/${contName}";
 in {
-  system.activationScripts."make${contName}Dir" =
-    lib.stringAfter ["var"]
-    ''
-      mkdir -v -p ${toString dir1} certificates destinations && chown -R 1000:1000 ${toString dir1}
-    '';
+  system.activationScripts."make${contName}Dir" = lib.stringAfter ["var"] ''mkdir -v -p ${toString dir1}'';
+
+  #  && chown -R 1000:1000 ${toString dir1}
 
   virtualisation.oci-containers.containers."${contName}" = {
     hostname = "${contName}";
@@ -24,10 +22,12 @@ in {
       "${dir1}:/home/i2pd/data/"
     ];
 
-    environment = {
+    /*
+      environment = {
       PUID = "1000";
       PGID = "1000";
     };
+    */
 
     extraOptions = [
       "--network=macvlan_lan"
