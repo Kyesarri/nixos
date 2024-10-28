@@ -21,7 +21,7 @@ in {
       "${dir1}:/home/.i2pd/data/"
     ];
 
-    environment = {
+    cmd = {
       http.address = "0.0.0.0";
     };
 
