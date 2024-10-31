@@ -40,7 +40,7 @@
 
     colorscheme = {
       slug = "horizon-dark";
-      colors = {
+      palette = {
         base00 = "1C1E26";
         base01 = "232530";
         base02 = "2E303E";
@@ -64,7 +64,7 @@
       # We have to force the values below to override the ones defined above
       colorScheme = lib.mkForce {
         slug = "catppuccinLatte";
-        colors = {
+        palette = {
           base00 = "#eff1f5";
           base01 = "#e6e9ef";
           base02 = "#ccd0da";

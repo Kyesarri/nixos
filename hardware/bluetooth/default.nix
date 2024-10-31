@@ -28,6 +28,6 @@
   };
 
   users.users.${spaghetti.user} = {
-    packages = with pkgs; [gnome.gnome-bluetooth];
+    packages = with pkgs; [gnome-bluetooth];
   };
 }
