@@ -18,7 +18,8 @@ in {
 
     volumes = [
       "/etc/localtime:/etc/localtime:ro"
-      "${dir1}:/home/i2pd/data/"
+      "${dir1}/.i2pd:/home/.i2pd/"
+      "${dir1}/i2pd:/home/i2pd/"
     ];
 
     cmd = ["--http.address ${toString secrets.ip.i2pd}"];
