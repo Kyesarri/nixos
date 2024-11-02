@@ -30,7 +30,7 @@ in {
     volumes = [
       "/etc/localtime:/etc/localtime:ro"
       "${toString dir1}:/opt/printer_data/run/"
-      # "/dev:/dev"
+      "/dev:/dev"
       "${toString dir2}:/opt/printer_data/config/"
     ];
 
@@ -42,7 +42,7 @@ in {
     };
 
     extraOptions = [
-      "--device=/dev/serial/by-id/usb-1a86_USB_Serial-if00-port0:/dev/ttyUSB0"
+      # "--device=/dev/serial/by-id/usb-1a86_USB_Serial-if00-port0:/dev/ttyUSB0"
       "--network=macvlan_lan"
       "--ip=${secrets.ip.klipper}"
       "--privileged"
