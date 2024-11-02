@@ -4,9 +4,21 @@
   ...
 }: let
   contName = "klipper";
-  dir1 = "/etc/oci.cont/${contName}";
+  dir1 = "/etc/oci.cont/${contName}/run";
+  dir2 = "/etc/oci.cont/${contName}/config";
 in {
-  system.activationScripts.makeCodeProjectDir = lib.stringAfter ["var"] ''mkdir -v -p ${toString dir1} & chown 1000:1000 ${toString dir1}'';
+  system.activationScripts.makeCodeProjectDir =
+    lib.stringAfter ["var"]
+    ''mkdir -v -p ${toString dir1} & mkdir -v -p ${toString dir2} & chown -R 1000:1000 ${toString dir1}'';
+
+  environment.etc = {
+    "oci.cont/${contName}/config/printer.cfg" = {
+      mode = "644";
+      uid = 1000;
+      gid = 1000;
+      source = ./printer.cfg;
+    };
+  };
 
   virtualisation.oci-containers.containers.${contName} = {
     hostname = "${contName}";
@@ -18,8 +30,8 @@ in {
     volumes = [
       "/etc/localtime:/etc/localtime:ro"
       "${toString dir1}/run:/opt/printer_data/run/"
-      "/dev:/dev"
-      "./printer.cfg:/opt/printer_data/config/printer.cfg"
+      # "/dev:/dev"
+      "${toString dir2}:/opt/printer_data/config/printer.cfg"
     ];
 
     environment = {
