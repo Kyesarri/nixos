@@ -17,12 +17,12 @@
     ../../containers/homer
     ../../containers/homer-wan
     ../../containers/i2pd
-    ../../containers/klipper
+    # ../../containers/klipper
     ../../containers/matter
     # ../../containers/minecraft eeeh resources needed
     ../../containers/nginx-proxy-manager
     ../../containers/nginx-proxy-manager-2 # change to nginx-wan "soon"
-    # ../../containers/octoprint
+    ../../containers/octoprint
     ../../containers/orcaslicer
     ../../containers/overseerr
     # ../../containers/peanut
