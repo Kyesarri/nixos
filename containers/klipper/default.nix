@@ -29,7 +29,7 @@ in {
 
     volumes = [
       "/etc/localtime:/etc/localtime:ro"
-      "${toString dir1}/run:/opt/printer_data/run/"
+      "${toString dir1}:/opt/printer_data/run/"
       # "/dev:/dev"
       "${toString dir2}:/opt/printer_data/config/printer.cfg"
     ];
