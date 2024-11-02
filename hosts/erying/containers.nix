@@ -17,6 +17,7 @@
     ../../containers/homer
     ../../containers/homer-wan
     ../../containers/i2pd
+    ../../containers/klipper
     ../../containers/matter
     # ../../containers/minecraft eeeh resources needed
     ../../containers/nginx-proxy-manager
