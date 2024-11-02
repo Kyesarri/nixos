@@ -19,7 +19,7 @@ in {
       "/etc/localtime:/etc/localtime:ro"
       "${toString dir1}/run:/opt/printer_data/run/"
       "/dev:/dev"
-      # "/printer.cfg:/opt/printer_data/config/printer.cfg"
+      "./printer.cfg:/opt/printer_data/config/printer.cfg"
     ];
 
     environment = {
