@@ -13,6 +13,7 @@
     ../../containers/emqx
     ../../containers/esphome
     ../../containers/frigate
+    ../../containers/fweedee
     ../../containers/ghost
     ../../containers/homer
     ../../containers/homer-wan

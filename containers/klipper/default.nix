@@ -34,13 +34,6 @@ in {
       "${toString dir2}:/opt/printer_data/config/"
     ];
 
-    environment = {
-      TZ = "Australia/Melbourne";
-      ENABLE_MJPG_STREAMER = "true";
-      PUID = "1000";
-      PGID = "1000";
-    };
-
     extraOptions = [
       "--device=/dev/serial/by-id/usb-1a86_USB_Serial-if00-port0:/dev/ttyUSB0"
       "--network=macvlan_lan"
