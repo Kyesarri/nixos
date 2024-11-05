@@ -1,4 +1,5 @@
 # inspo from https://github.com/mkuf/prind
+# using container images from prind xoxo
 {
   secrets,
   pkgs,
@@ -11,7 +12,7 @@
   prefix = "fweedee";
 
   shared = {
-    logs = "${dir}/shared/log";
+    logs = "${dir}/shared/logs";
     run = "${dir}/shared/run";
     config = "${dir}/shared/config";
     gcodes = "${dir}/shared/gcodes";
@@ -68,6 +69,8 @@ in {
       "podman-${nginx.name}.service"
       "podman-${moonraker.name}.service"
       "podman-${octoprint.name}.service"
+      "podman-${fluidd.name}.service"
+      "podman-${mainsail.name}.service"
     ];
 
     # unsure, might not be required?
@@ -191,16 +194,19 @@ in {
       ];
     };
     ${fluidd.name} = {
-      hostname = "${fluidd.name}";
+      # hostname = "${fluidd.name}";
       autoStart = true;
       image = "${fluidd.image}";
       volumes = ["${time}"];
+      extraOptions = ["--pod=fweedee"];
     };
+    #
     ${mainsail.name} = {
-      hostname = "${mainsail.name}";
+      # hostname = "${mainsail.name}";
       autoStart = true;
       image = "${mainsail.image}";
       volumes = ["${time}"];
+      extraOptions = ["--pod=fweedee"];
     };
   };
 }
