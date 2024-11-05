@@ -156,9 +156,10 @@ in {
 
       cmd = [
         # "-I printer_data/run/klipper.tty"
-        "printer_data/config/printer.cfg"
-        "-a printer_data/run/klipper.sock"
-        "-l printer_data/logs/klippy.log"
+        "-I /opt/printer_data/run/klipper.tty"
+        "-a /opt/printer_data/run/klipper.sock"
+        "/opt/printer_data/config/printer.cfg"
+        "-l /opt/printer_data/logs/klippy.log"
       ];
 
       extraOptions = [
