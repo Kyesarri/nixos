@@ -39,6 +39,7 @@
   };
 
   fluidd = {
+    ip = "${secrets.ip.fweedee}"; # give this boi an ip
     name = "${prefix}-fluidd";
     image = "ghcr.io/fluidd-core/fluidd:latest";
   };
@@ -182,11 +183,14 @@ in {
     };
     #
     ${fluidd.name} = {
-      ip = "${secrets.ip.fweedee}"; # give this boi an ip
       autoStart = true;
       image = "${fluidd.image}";
       volumes = ["${time}"];
-      extraOptions = ["--pod=fweedee"];
+      extraOptions = [
+        "--pod=fweedee"
+        "--network=macvlan_lan"
+        "--ip=${fluidd.ip}"
+      ];
     };
     #
     ${mainsail.name} = {
