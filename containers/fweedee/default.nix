@@ -125,7 +125,6 @@ in {
   virtualisation.oci-containers.containers = {
     #
     ${nginx.name} = {
-      # hostname = "${nginx.name}";
       autoStart = true;
       image = "${nginx.image}";
 
@@ -144,7 +143,6 @@ in {
     };
     #
     ${klipper.name} = {
-      # hostname = "${klipper.name}";
       autoStart = true;
       image = "${klipper.image}";
       volumes = [
@@ -174,7 +172,6 @@ in {
     };
     #
     ${moonraker.name} = {
-      # hostname = "${moonraker.name}";
       autoStart = true;
       image = "${moonraker.image}";
 
@@ -199,8 +196,27 @@ in {
         "--pod=fweedee"
       ];
     };
+    #
+    ${octoprint.name} = {
+      autoStart = true;
+      image = "${octoprint.image}";
+
+      volumes = [
+        "${time}"
+
+        "/dev:/dev"
+
+        "${octoprint.dir}:/octoprint"
+        "${shared.run}:/opt/printer_data/run"
+      ];
+
+      extraOptions = [
+        "--privileged"
+        "--pod=fweedee"
+      ];
+    };
+    #
     ${fluidd.name} = {
-      # hostname = "${fluidd.name}";
       autoStart = true;
       image = "${fluidd.image}";
       volumes = ["${time}"];
@@ -208,7 +224,6 @@ in {
     };
     #
     ${mainsail.name} = {
-      # hostname = "${mainsail.name}";
       autoStart = true;
       image = "${mainsail.image}";
       volumes = ["${time}"];
