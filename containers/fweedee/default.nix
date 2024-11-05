@@ -36,6 +36,7 @@
     dir = "${toString dir}/moonraker";
     name = "${prefix}-moonraker";
     image = "mkuf/moonraker:latest";
+    db = "${moonraker.dir}";
   };
 
   octoprint = {
