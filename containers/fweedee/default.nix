@@ -101,13 +101,13 @@ in {
   };
   # write printer config from tree to dir
   environment.etc = {
-    "${dir}}/shared/config/printer.cfg" = {
+    "${toString dir}/shared/config/printer.cfg" = {
       mode = "644";
       uid = 1000;
       gid = 1000;
       source = ./printer.cfg;
     };
-    "${dir}/shared/config/moonraker.conf" = {
+    "${toString dir}/shared/config/moonraker.conf" = {
       mode = "644";
       uid = 1000;
       gid = 1000;
