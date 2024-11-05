@@ -26,6 +26,7 @@ in {
     extraOptions = [
       "--network=macvlan_lan"
       "--ip=${secrets.ip.nginx}"
+      "--pod=fweedee"
     ];
   };
 }

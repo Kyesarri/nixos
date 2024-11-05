@@ -1,5 +1,6 @@
 # inspo from https://github.com/mkuf/prind
 # using container images from prind xoxo
+# containers all start - now to configure everything ;)
 {
   secrets,
   pkgs,
@@ -103,7 +104,7 @@ in {
     "make${octoprint.name}dir" = lib.stringAfter ["var"] ''mkdir -v -p ${octoprint.dir}'';
 
     # chown dirs
-    "make${dir}owner" = lib.stringAfter ["var"] ''chown -R 1000:1000 ${toString dir}'';
+    "make${dir}owner" = lib.stringAfter ["var"] ''chown -R 1000:1000 ${toString dir} && echo pwnd'';
   };
   # configs, from tree to container dirs
   environment.etc = {
