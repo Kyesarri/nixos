@@ -158,7 +158,7 @@ in {
         # "-I printer_data/run/klipper.tty"
         "-a printer_data/run/klipper.sock"
         "printer_data/config/printer.cfg"
-        "-l printer_data/logs/klippy.log"
+        # "printer_data/logs/klippy.log"
       ];
 
       extraOptions = [
