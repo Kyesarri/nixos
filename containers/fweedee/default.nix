@@ -19,15 +19,6 @@
     gcodes = "${toString dir}/shared/gcodes";
   };
 
-  nginx = {
-    ip = "${secrets.ip.fweedee-nginx}"; # only this container requires an ip
-    dir = "${dir}/nginx"; # container's root directory, volumes stored here per-container
-    name = "${prefix}-nginx"; # container name
-    image = "jc21/nginx-proxy-manager:latest"; # container image
-    v1 = "${nginx.dir}/letsencrypt"; # volumes
-    v2 = "${nginx.dir}/data";
-  };
-
   klipper = {
     dir = "${toString dir}/klipper";
     name = "${prefix}-klipper";
@@ -67,7 +58,6 @@ in {
     # our containers require fweedee pod to be up before they start
     requiredBy = [
       "podman-${klipper.name}.service"
-      "podman-${nginx.name}.service"
       "podman-${moonraker.name}.service"
       "podman-${octoprint.name}.service"
       "podman-${fluidd.name}.service"
@@ -93,9 +83,6 @@ in {
 
     # shared
     "makeshareddir" = lib.stringAfter ["var"] ''mkdir -v -p ${shared.logs} ${shared.run} ${shared.config} ${shared.gcodes}'';
-
-    # nginx
-    "make${nginx.name}dir" = lib.stringAfter ["var"] ''mkdir -v -p ${nginx.v1} ${nginx.v2}'';
 
     # moonraker
     "make${moonraker.name}dir" = lib.stringAfter ["var"] ''mkdir -v -p ${moonraker.dir}'';
@@ -125,30 +112,12 @@ in {
   # containers
   virtualisation.oci-containers.containers = {
     #
-    ${nginx.name} = {
-      autoStart = true;
-      image = "${nginx.image}";
-
-      volumes = [
-        "${time}"
-
-        "${nginx.v1}:/data"
-        "${nginx.v2}:/etc/letsencrypt"
-      ];
-
-      extraOptions = [
-        "--network=macvlan_lan"
-        "--ip=${nginx.ip}" # declared above / in secrets
-        "--pod=fweedee" # add container to pod
-      ];
-    };
-    #
     ${klipper.name} = {
       autoStart = true;
       image = "${klipper.image}";
+
       volumes = [
         "${time}"
-
         "/dev:/dev"
         "${toString shared.config}:/opt/printer_data/config"
         "${toString shared.gcodes}:/opt/printer_data/gcodes"
@@ -178,14 +147,11 @@ in {
 
       volumes = [
         "${time}"
-
         "/dev/null:/opt/klipper/config/null"
         "/dev/null:/opt/klipper/docs/null"
         "/run/dbus:/run/dbus"
         "/run/systemd:/run/systemd"
-
         "${moonraker.db}:/opt/printer_data/database"
-
         "${shared.config}:/opt/printer_data/config"
         "${shared.gcodes}:/opt/printer_data/gcodes"
         "${shared.logs}:/opt/printer_data/logs"
@@ -216,6 +182,7 @@ in {
     };
     #
     ${fluidd.name} = {
+      ip = "${secrets.ip.fweedee}"; # give this boi an ip
       autoStart = true;
       image = "${fluidd.image}";
       volumes = ["${time}"];
