@@ -106,7 +106,7 @@ in {
     gid = 1000;
     source = ./printer.cfg;
   };
-  environment.etc."${shared.config}/moonraker.cfg" = {
+  environment.etc."${shared.config}/moonraker.conf" = {
     mode = "644";
     uid = 1000;
     gid = 1000;
