@@ -12,10 +12,10 @@
   prefix = "fweedee";
 
   shared = {
-    logs = "${dir}/shared/logs";
-    run = "${dir}/shared/run";
-    config = "${dir}/shared/config";
-    gcodes = "${dir}/shared/gcodes";
+    logs = "${toString dir}/shared/logs";
+    run = "${toString dir}/shared/run";
+    config = "${toString dir}/shared/config";
+    gcodes = "${toString dir}/shared/gcodes";
   };
 
   nginx = {
