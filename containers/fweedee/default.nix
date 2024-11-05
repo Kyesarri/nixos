@@ -101,6 +101,9 @@ in {
 
     # octoprint
     "make${octoprint.name}dir" = lib.stringAfter ["var"] ''mkdir -v -p ${octoprint.dir}'';
+
+    # chown dirs
+    "make${dir}owner" = lib.stringAfter ["var"] ''chown -R 1000:1000 ${toString dir}'';
   };
   # configs, from tree to container dirs
   environment.etc = {
