@@ -11,7 +11,7 @@
   prefix = "fweedee";
 
   shared = {
-    log = "${dir}/shared/log";
+    logs = "${dir}/shared/log";
     run = "${dir}/shared/run";
     config = "${dir}/shared/config";
     gcodes = "${dir}/shared/gcodes";
