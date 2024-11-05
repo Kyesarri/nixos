@@ -99,7 +99,7 @@ in {
     # octoprint
     "make${octoprint.name}dir" = lib.stringAfter ["var"] ''mkdir -v -p ${octoprint.dir}'';
   };
-  # write printer config from tree to dir
+  # configs, from tree to container dirs
   environment.etc = {
     "oci.cont/${prefix}/shared/config/printer.cfg" = {
       mode = "644";
@@ -107,6 +107,7 @@ in {
       gid = 1000;
       source = ./printer.cfg;
     };
+
     "oci.cont/${prefix}/shared/config/moonraker.conf" = {
       mode = "644";
       uid = 1000;
@@ -151,7 +152,7 @@ in {
       ];
 
       cmd = [
-        "-I printer_data/run/klipper.tty"
+        # "-I printer_data/run/klipper.tty"
         "-a printer_data/run/klipper.sock"
         "printer_data/config/printer.cfg"
         "-l printer_data/logs/klippy.log"
