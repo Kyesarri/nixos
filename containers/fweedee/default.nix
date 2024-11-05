@@ -43,7 +43,7 @@
   octoprint = {
     dir = "${toString dir}/octoprint";
     name = "${prefix}-octoprint";
-    image = "octoprint/octoprint:minimal";
+    image = "octoprint/octoprint:latest";
   };
 
   fluidd = {
@@ -203,9 +203,7 @@ in {
 
       volumes = [
         "${time}"
-
         "/dev:/dev"
-
         "${octoprint.dir}:/octoprint"
         "${shared.run}:/opt/printer_data/run"
       ];
