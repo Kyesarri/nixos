@@ -100,17 +100,19 @@ in {
     "make${octoprint.name}dir" = lib.stringAfter ["var"] ''mkdir -v -p ${octoprint.dir}'';
   };
   # write printer config from tree to dir
-  environment.etc."${shared.config}/printer.cfg" = {
-    mode = "644";
-    uid = 1000;
-    gid = 1000;
-    source = ./printer.cfg;
-  };
-  environment.etc."${shared.config}/moonraker.conf" = {
-    mode = "644";
-    uid = 1000;
-    gid = 1000;
-    source = ./moonraker.cfg;
+  environment.etc = {
+    "${shared.config}/printer.cfg" = {
+      mode = "644";
+      uid = 1000;
+      gid = 1000;
+      source = ./printer.cfg;
+    };
+    "${shared.config}/moonraker.conf" = {
+      mode = "644";
+      uid = 1000;
+      gid = 1000;
+      source = ./moonraker.conf;
+    };
   };
   # containers
   virtualisation.oci-containers.containers = {
