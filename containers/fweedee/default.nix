@@ -97,101 +97,100 @@ in {
 
     # octoprint
     "make${octoprint.name}dir" = lib.stringAfter ["var"] ''mkdir -v -p ${octoprint.dir}'';
+  };
+  # write printer config from tree to dir
+  environment.etc."${shared.config}/printer.cfg" = {
+    mode = "644";
+    uid = 1000;
+    gid = 1000;
+    source = ./printer.cfg;
+  };
+  # containers
+  virtualisation.oci-containers.containers = {
+    #
+    ${nginx.name} = {
+      hostname = "${nginx.name}";
+      autoStart = true;
+      image = "${nginx.image}";
 
-    # write printer config from tree to dir
-    environment.etc."${shared.config}/printer.cfg" = {
-      mode = "644";
-      uid = 1000;
-      gid = 1000;
-      source = ./printer.cfg;
+      volumes = [
+        "${time}"
+
+        "${nginx.v1}:/data"
+        "${nginx.v2}:/etc/letsencrypt"
+      ];
+
+      extraOptions = [
+        "--network=macvlan_lan"
+        "--ip=${nginx.ip}" # declared above / in secrets
+        "--pod=fweedee" # add container to pod
+      ];
     };
-    # containers
-    virtualisation.oci-containers.containers = {
-      #
-      ${nginx.name} = {
-        hostname = "${nginx.name}";
-        autoStart = true;
-        image = "${nginx.image}";
+    #
+    ${klipper.name} = {
+      hostname = "${klipper.name}";
+      autoStart = true;
+      image = "${klipper.image}";
+      volumes = [
+        "${time}"
 
-        volumes = [
-          "${time}"
+        "/dev:/dev"
+        "${shared.config}:/opt/printer_data/config"
+        "${shared.gcodes}:/opt/printer_data/gcodes"
+        "${shared.logs}:/opt/printer_data/logs"
+        "${shared.run}:/opt/printer_data/run"
+      ];
 
-          "${nginx.v1}:/data"
-          "${nginx.v2}:/etc/letsencrypt"
-        ];
+      cmd = [
+        "-I printer_data/run/klipper.tty"
+        "-a printer_data/run/klipper.sock"
+        "printer_data/config/printer.cfg"
+        "-l printer_data/logs/klippy.log"
+      ];
 
-        extraOptions = [
-          "--network=macvlan_lan"
-          "--ip=${nginx.ip}" # declared above / in secrets
-          "--pod=fweedee" # add container to pod
-        ];
-      };
-      #
-      ${klipper.name} = {
-        hostname = "${klipper.name}";
-        autoStart = true;
-        image = "${klipper.image}";
-        volumes = [
-          "${time}"
+      extraOptions = [
+        "--privileged"
+        "--pod=fweedee"
+      ];
+    };
+    #
+    ${moonraker.name} = {
+      hostname = "${moonraker.name}";
+      autoStart = true;
+      image = "${moonraker.image}";
 
-          "/dev:/dev"
-          "${shared.config}:/opt/printer_data/config"
-          "${shared.gcodes}:/opt/printer_data/gcodes"
-          "${shared.logs}:/opt/printer_data/logs"
-          "${shared.run}:/opt/printer_data/run"
-        ];
+      volumes = [
+        "${time}"
 
-        cmd = [
-          "-I printer_data/run/klipper.tty"
-          "-a printer_data/run/klipper.sock"
-          "printer_data/config/printer.cfg"
-          "-l printer_data/logs/klippy.log"
-        ];
+        "/dev/null:/opt/klipper/config/null"
+        "/dev/null:/opt/klipper/docs/null"
+        "/run/dbus:/run/dbus"
+        "/run/systemd:/run/systemd"
 
-        extraOptions = [
-          "--privileged"
-          "--pod=fweedee"
-        ];
-      };
-      #
-      ${moonraker.name} = {
-        hostname = "${moonraker.name}";
-        autoStart = true;
-        image = "${moonraker.image}";
+        "${moonraker.db}:/opt/printer_data/database"
 
-        volumes = [
-          "${time}"
+        "${shared.config}:/opt/printer_data/config"
+        "${shared.gcodes}:/opt/printer_data/gcodes"
+        "${shared.logs}:/opt/printer_data/logs"
+        "${shared.run}:/opt/printer_data/run"
+      ];
 
-          "/dev/null:/opt/klipper/config/null"
-          "/dev/null:/opt/klipper/docs/null"
-          "/run/dbus:/run/dbus"
-          "/run/systemd:/run/systemd"
-
-          "${moonraker.db}:/opt/printer_data/database"
-
-          "${shared.config}:/opt/printer_data/config"
-          "${shared.gcodes}:/opt/printer_data/gcodes"
-          "${shared.logs}:/opt/printer_data/logs"
-          "${shared.run}:/opt/printer_data/run"
-        ];
-
-        extraOptions = [
-          "--privileged"
-          "--pod=fweedee"
-        ];
-      };
-      ${fluidd.name} = {
-        hostname = "${fluidd.name}";
-        autoStart = true;
-        image = "${fluidd.image}";
-        volumes = ["${time}"];
-      };
-      ${mainsail.name} = {
-        hostname = "${mainsail.name}";
-        autoStart = true;
-        image = "${mainsail.image}";
-        volumes = ["${time}"];
-      };
+      extraOptions = [
+        "--privileged"
+        "--pod=fweedee"
+      ];
+    };
+    ${fluidd.name} = {
+      hostname = "${fluidd.name}";
+      autoStart = true;
+      image = "${fluidd.image}";
+      volumes = ["${time}"];
+    };
+    ${mainsail.name} = {
+      hostname = "${mainsail.name}";
+      autoStart = true;
+      image = "${mainsail.image}";
+      volumes = ["${time}"];
     };
   };
 }
