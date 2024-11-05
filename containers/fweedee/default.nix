@@ -148,17 +148,17 @@ in {
         "${time}"
 
         "/dev:/dev"
-        "${shared.config}:/opt/printer_data/config"
-        "${shared.gcodes}:/opt/printer_data/gcodes"
-        "${shared.logs}:/opt/printer_data/logs"
-        "${shared.run}:/opt/printer_data/run"
+        "${toString shared.config}:/opt/printer_data/config"
+        "${toString shared.gcodes}:/opt/printer_data/gcodes"
+        "${toString shared.logs}:/opt/printer_data/logs"
+        "${toString shared.run}:/opt/printer_data/run"
       ];
 
       cmd = [
         # "-I printer_data/run/klipper.tty"
-        "-a printer_data/run/klipper.sock"
         "printer_data/config/printer.cfg"
-        # "printer_data/logs/klippy.log"
+        "-a printer_data/run/klipper.sock"
+        "-l printer_data/logs/klippy.log"
       ];
 
       extraOptions = [
