@@ -11,6 +11,8 @@
   nixpkgs.config.allowUnfree = lib.mkDefault true;
 
   security = {
+    polkit.enable = true; # pls no break tings
+
     pam.services.gdm.enableGnomeKeyring = true; # unlock keyring with gdm / gdm support for keyring
 
     # device is always on, don't want to hibernate
