@@ -11,7 +11,7 @@
     useNetworkd = true;
     usePredictableInterfaceNames = lib.mkDefault true;
     resolvconf.dnsExtensionMechanism = false;
-    timeServers = ["ntp.nml.csiro.au" "ntp.ise.canberra.edu.au"];
+    timeServers = ["0.au.pool.ntp.org" "1.au.pool.ntp.org"];
 
     firewall = {
       enable = true;
