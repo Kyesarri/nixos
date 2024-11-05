@@ -11,7 +11,7 @@ in {
   system.activationScripts.makeNginxDir = lib.stringAfter ["var"] ''mkdir -v -m 777 -p ${toString dir1} ${toString dir2}''; # shitty perms, "temp" workaround
 
   virtualisation.oci-containers.containers.${hostName} = {
-    hostname = "${hostName}";
+    # hostname = "${hostName}";
 
     autoStart = true;
 
