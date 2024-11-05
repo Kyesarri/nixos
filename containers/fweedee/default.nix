@@ -88,7 +88,7 @@ in {
     "make${dir}dir" = lib.stringAfter ["var"] ''mkdir -v -p ${dir}'';
 
     # shared
-    "makeshareddir" = lib.stringAfter ["var"] ''mkdir -v -p ${shared.log} ${shared.run} ${shared.config} ${shared.gcodes}'';
+    "makeshareddir" = lib.stringAfter ["var"] ''mkdir -v -p ${shared.logs} ${shared.run} ${shared.config} ${shared.gcodes}'';
 
     # nginx
     "make${nginx.name}dir" = lib.stringAfter ["var"] ''mkdir -v -p ${nginx.v1} ${nginx.v2}'';
