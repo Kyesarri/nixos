@@ -94,7 +94,7 @@ in {
     "make${nginx.name}dir" = lib.stringAfter ["var"] ''mkdir -v -p ${nginx.v1} ${nginx.v2}'';
 
     # moonraker
-    "make${moonraker.name}dir" = lib.stringAfter ["var"] ''mkdir -v -p ${moonraker.v1}'';
+    "make${moonraker.name}dir" = lib.stringAfter ["var"] ''mkdir -v -p ${moonraker.dir}'';
 
     # octoprint
     "make${octoprint.name}dir" = lib.stringAfter ["var"] ''mkdir -v -p ${octoprint.dir}'';
