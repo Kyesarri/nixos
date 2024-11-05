@@ -110,7 +110,7 @@ in {
   virtualisation.oci-containers.containers = {
     #
     ${nginx.name} = {
-      hostname = "${nginx.name}";
+      # hostname = "${nginx.name}";
       autoStart = true;
       image = "${nginx.image}";
 
@@ -129,7 +129,7 @@ in {
     };
     #
     ${klipper.name} = {
-      hostname = "${klipper.name}";
+      # hostname = "${klipper.name}";
       autoStart = true;
       image = "${klipper.image}";
       volumes = [
@@ -156,7 +156,7 @@ in {
     };
     #
     ${moonraker.name} = {
-      hostname = "${moonraker.name}";
+      # hostname = "${moonraker.name}";
       autoStart = true;
       image = "${moonraker.image}";
 
