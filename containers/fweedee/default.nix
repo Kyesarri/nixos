@@ -71,7 +71,6 @@ in {
 
     serviceConfig = {
       Type = "oneshot";
-      wantedBy = ["${prefix}.service"];
       script = ''
         ${pkgs.podman}/bin/podman pod exists ${prefix} || \
         ${pkgs.podman}/bin/podman pod create -n ${prefix} -p '127.0.0.1:8086:80'
