@@ -182,7 +182,6 @@ in {
       volumes = ["${time}"];
       extraOptions = [
         "--network=${prefix}"
-        "--network=macvlan_lan"
       ];
     };
     #
