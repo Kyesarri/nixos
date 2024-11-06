@@ -184,7 +184,6 @@ in {
         "--network=${prefix}"
         "--ip=${secrets.ip.fweedee.vlan.fluidd}"
         "--network=macvlan_lan"
-        "--ip=${secrets.ip.fweedee.lan}"
       ];
     };
     #
