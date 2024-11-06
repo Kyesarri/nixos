@@ -61,7 +61,7 @@ in {
       ];
       script = ''
         ${pkgs.podman}/bin/podman network exists ${prefix} || \
-          ${pkgs.podman}/bin/podman network create ${prefix}
+          ${pkgs.podman}/bin/podman network create -d bridge ${prefix}
       '';
     };
   };
