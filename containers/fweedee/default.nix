@@ -104,6 +104,7 @@ in {
   virtualisation.oci-containers.containers = {
     #
     ${klipper.name} = {
+      hostname = "${klipper.name}";
       autoStart = true;
       image = "${klipper.image}";
 
@@ -129,11 +130,11 @@ in {
       extraOptions = [
         "--privileged"
         "--network=${prefix}"
-        "--ip=${secrets.ip.fweedee.vlan.klipper}"
       ];
     };
     #
     ${moonraker.name} = {
+      hostname = "${moonraker.name}";
       autoStart = true;
       image = "${moonraker.image}";
 
@@ -153,11 +154,12 @@ in {
       extraOptions = [
         "--privileged"
         "--network=${prefix}"
-        "--ip=${secrets.ip.fweedee.vlan.moonraker}"
       ];
     };
     #
     ${octoprint.name} = {
+      hostname = "${octoprint.name}";
+
       autoStart = true;
       image = "${octoprint.image}";
 
@@ -171,11 +173,11 @@ in {
       extraOptions = [
         "--privileged"
         "--network=${prefix}"
-        "--ip=${secrets.ip.fweedee.vlan.octoprint}"
       ];
     };
     #
     ${fluidd.name} = {
+      hostname = "${fluidd.name}";
       autoStart = true;
       image = "${fluidd.image}";
       ports = ["80:80"];
@@ -183,17 +185,16 @@ in {
       extraOptions = [
         "--privileged"
         "--network=${prefix}"
-        "--ip=${secrets.ip.fweedee.vlan.fluidd}"
       ];
     };
     #
     ${mainsail.name} = {
+      hostname = "${mainsail.name}";
       autoStart = true;
       image = "${mainsail.image}";
       volumes = ["${time}"];
       extraOptions = [
         "--network=${prefix}"
-        "--ip=${secrets.ip.fweedee.vlan.mainsail}"
       ];
     };
   };
