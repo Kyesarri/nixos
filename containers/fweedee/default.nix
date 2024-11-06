@@ -2,7 +2,6 @@
 # using container images from prind xoxo
 # containers all start - now to configure everything ;)
 {
-  secrets,
   config,
   pkgs,
   lib,
@@ -61,22 +60,8 @@ in {
         "podman-${mainsail.name}.service"
       ];
       script = ''
-        ${pkgs.podman}/bin/podman network exists ${prefix}-backend || \
-          ${pkgs.podman}/bin/podman network create ${prefix}-backend
-      '';
-    };
-    "create-${prefix}-frontend-network" = with config.virtualisation.oci-containers; {
-      serviceConfig.Type = "oneshot";
-      wantedBy = [
-        "podman-${klipper.name}.service"
-        "podman-${moonraker.name}.service"
-        "podman-${octoprint.name}.service"
-        "podman-${fluidd.name}.service"
-        "podman-${mainsail.name}.service"
-      ];
-      script = ''
-        ${pkgs.podman}/bin/podman network exists ${prefix}-frontend || \
-          ${pkgs.podman}/bin/podman network create ${prefix}-frontend
+        ${pkgs.podman}/bin/podman network exists ${prefix} || \
+          ${pkgs.podman}/bin/podman network create ${prefix}
       '';
     };
   };
@@ -173,7 +158,7 @@ in {
 
       extraOptions = [
         "--privileged"
-        "--network=fweedee-backend"
+        "--network=fweedee"
       ];
     };
     #
@@ -197,7 +182,7 @@ in {
 
       extraOptions = [
         "--privileged"
-        "--network=fweedee-backend"
+        "--network=fweedee"
       ];
     };
     #
@@ -215,7 +200,7 @@ in {
 
       extraOptions = [
         "--privileged"
-        "--network=fweedee-backend"
+        "--network=fweedee"
       ];
     };
     #
@@ -226,8 +211,7 @@ in {
       ports = ["80:80"];
       volumes = ["${time}"];
       extraOptions = [
-        "--network=fweedee-frontend"
-        "--network=fweedee-backend"
+        "--network=fweedee"
       ];
     };
     #
@@ -237,7 +221,7 @@ in {
       image = "${mainsail.image}";
       volumes = ["${time}"];
       extraOptions = [
-        "--network=fweedee-backend"
+        "--network=fweedee"
       ];
     };
   };

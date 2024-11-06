@@ -48,7 +48,7 @@
 
     dbus = {
       enable = true;
-      packages = [pkgs.gnome.seahorse];
+      packages = [pkgs.seahorse];
     };
 
     chrony = {
