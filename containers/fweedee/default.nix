@@ -181,6 +181,7 @@ in {
       ports = ["80:80"];
       volumes = ["${time}"];
       extraOptions = [
+        "--privileged"
         "--network=${prefix}"
         "--ip=${secrets.ip.fweedee.vlan.fluidd}"
       ];
