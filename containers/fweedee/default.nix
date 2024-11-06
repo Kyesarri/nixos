@@ -51,7 +51,7 @@ in {
   #
   # create a systemd service to bring up our pod
   systemd.services = {
-    "create-${prefix}-backend-pod" = with config.virtualisation.oci-containers; {
+    "create-${prefix}-backend-netwok" = with config.virtualisation.oci-containers; {
       serviceConfig.Type = "oneshot";
       wantedBy = [
         "podman-${klipper.name}.service"
@@ -61,11 +61,11 @@ in {
         "podman-${mainsail.name}.service"
       ];
       script = ''
-        ${pkgs.podman}/bin/podman pod exists ${prefix}-backend || \
-          ${pkgs.podman}/bin/podman pod create -n ${prefix}-backend
+        ${pkgs.podman}/bin/podman network exists ${prefix}-backend || \
+          ${pkgs.podman}/bin/podman network create -n ${prefix}-backend
       '';
     };
-    "create-${prefix}-frontend-pod" = with config.virtualisation.oci-containers; {
+    "create-${prefix}-frontend-network" = with config.virtualisation.oci-containers; {
       serviceConfig.Type = "oneshot";
       wantedBy = [
         "podman-${klipper.name}.service"
@@ -75,8 +75,8 @@ in {
         "podman-${mainsail.name}.service"
       ];
       script = ''
-        ${pkgs.podman}/bin/podman pod exists ${prefix}-frontend || \
-          ${pkgs.podman}/bin/podman pod create -n ${prefix}-frontend -p '${secrets.ip.erying}:80:80'
+        ${pkgs.podman}/bin/podman network exists ${prefix}-frontend || \
+          ${pkgs.podman}/bin/podman network create -n ${prefix}-frontend -p '${secrets.ip.erying}:80:80'
       '';
     };
   };
@@ -172,7 +172,7 @@ in {
 
       extraOptions = [
         "--privileged"
-        "--pod=fweedee-backend"
+        "--network=fweedee-backend"
       ];
     };
     #
@@ -195,7 +195,7 @@ in {
 
       extraOptions = [
         "--privileged"
-        "--pod=fweedee-backend"
+        "--network=fweedee-backend"
       ];
     };
     #
@@ -221,8 +221,8 @@ in {
       image = "${fluidd.image}";
       volumes = ["${time}"];
       extraOptions = [
-        "--pod=fweedee-backend"
-        "--pod=fweedee-frontend"
+        "--network=fweedee-frontend"
+        "--network=fweedee-backend"
       ];
     };
     #
@@ -231,7 +231,7 @@ in {
       image = "${mainsail.image}";
       volumes = ["${time}"];
       extraOptions = [
-        "--pod=fweedee-backend"
+        "--network=fweedee-backend"
       ];
     };
   };
