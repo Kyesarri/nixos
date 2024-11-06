@@ -129,7 +129,8 @@ in {
 
       extraOptions = [
         "--privileged"
-        "--pod=fweedee"
+        "--network=${prefix}"
+        "--ip=${secrets.ip.fweedee.vlan.klipper}"
       ];
     };
     #
@@ -152,7 +153,8 @@ in {
 
       extraOptions = [
         "--privileged"
-        "--pod=fweedee"
+        "--network=${prefix}"
+        "--ip=${secrets.ip.fweedee.vlan.moonraker}"
       ];
     };
     #
@@ -169,7 +171,8 @@ in {
 
       extraOptions = [
         "--privileged"
-        "--pod=fweedee"
+        "--network=${prefix}"
+        "--ip=${secrets.ip.fweedee.vlan.octoprint}"
       ];
     };
     #
@@ -178,14 +181,22 @@ in {
       image = "${fluidd.image}";
       ports = ["80:80"];
       volumes = ["${time}"];
-      extraOptions = ["--pod=fweedee"];
+      extraOptions = [
+        "--network=${prefix}"
+        "--ip=${secrets.ip.fweedee.vlan.fluidd}"
+        "--network=macvlan_lan"
+        "--ip=${secrets.ip.fweedee.lan}"
+      ];
     };
     #
     ${mainsail.name} = {
       autoStart = true;
       image = "${mainsail.image}";
       volumes = ["${time}"];
-      extraOptions = ["--pod=fweedee"];
+      extraOptions = [
+        "--network=${prefix}"
+        "--ip=${secrets.ip.fweedee.vlan.mainsail}"
+      ];
     };
   };
 }
