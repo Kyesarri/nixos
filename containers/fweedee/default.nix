@@ -75,7 +75,7 @@ in {
         "podman-${mainsail.name}.service"
       ];
       script = ''
-        ${pkgs.podman}/bin/podman pod exists ${prefix}-backend || \
+        ${pkgs.podman}/bin/podman pod exists ${prefix}-frontend || \
           ${pkgs.podman}/bin/podman pod create -n ${prefix}-frontend
       '';
     };
