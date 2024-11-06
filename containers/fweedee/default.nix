@@ -182,6 +182,7 @@ in {
       volumes = ["${time}"];
       extraOptions = [
         "--network=${prefix}"
+        "--ip=${secrets.ip.fweedee.vlan.fluidd}"
       ];
     };
     #
