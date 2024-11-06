@@ -39,6 +39,7 @@
   };
 
   fluidd = {
+    ip = "${secrets.ip.fweedee}"; # give this boi an ip
     name = "${prefix}-fluidd";
     image = "ghcr.io/fluidd-core/fluidd:latest";
   };
@@ -47,8 +48,15 @@
     image = "ghcr.io/mainsail-crew/mainsail:edge";
   };
 in {
-  systemd.services."podman-network-${prefix}" = {
-    path = [pkgs.podman];
+  # create a systemd service to bring up our pod
+  systemd.services."fweedee" = {
+    description = "Start podman 'fweedee' pod";
+
+    # don't start without network-online being up
+    wants = ["network-online.target"];
+    after = ["network-online.target"];
+
+    # our containers require fweedee pod to be up before they start
     requiredBy = [
       "podman-${klipper.name}.service"
       "podman-${moonraker.name}.service"
@@ -56,14 +64,16 @@ in {
       "podman-${fluidd.name}.service"
       "podman-${mainsail.name}.service"
     ];
+
+    # unsure, might not be required?
+    unitConfig.RequiresMountsFor = "/run/containers";
+
+    # script to run (create the pod)
     serviceConfig = {
       Type = "oneshot";
-      RemainAfterExit = true;
-      ExecStop = "${pkgs.podman}/bin/podman network rm -f ${prefix}";
+      ExecStart = "-${pkgs.podman}/bin/podman pod create fweedee -p '127.0.0.1:80:80'";
     };
-    script = ''
-      podman network exists ${prefix} || podman network create --driver macvlan --opt parent=enp4s0 --subnet ${toString secrets.ip.fweedee.vlan.subnet}/24 --ip-range ${toString secrets.ip.fweedee.vlan.range}/24 --gateway ${toString secrets.ip.fweedee.vlan.gateway} --disable-dns=false ${prefix}
-    '';
+    path = [pkgs.zfs pkgs.podman];
   };
 
   # create container dirs
@@ -104,7 +114,6 @@ in {
   virtualisation.oci-containers.containers = {
     #
     ${klipper.name} = {
-      hostname = "${klipper.name}";
       autoStart = true;
       image = "${klipper.image}";
 
@@ -129,12 +138,11 @@ in {
 
       extraOptions = [
         "--privileged"
-        "--network=${prefix}"
+        "--pod=fweedee"
       ];
     };
     #
     ${moonraker.name} = {
-      hostname = "${moonraker.name}";
       autoStart = true;
       image = "${moonraker.image}";
 
@@ -153,13 +161,11 @@ in {
 
       extraOptions = [
         "--privileged"
-        "--network=${prefix}"
+        "--pod=fweedee"
       ];
     };
     #
     ${octoprint.name} = {
-      hostname = "${octoprint.name}";
-
       autoStart = true;
       image = "${octoprint.image}";
 
@@ -172,30 +178,23 @@ in {
 
       extraOptions = [
         "--privileged"
-        "--network=${prefix}"
+        "--pod=fweedee"
       ];
     };
     #
     ${fluidd.name} = {
-      hostname = "${fluidd.name}";
       autoStart = true;
       image = "${fluidd.image}";
       ports = ["80:80"];
       volumes = ["${time}"];
-      extraOptions = [
-        "--privileged"
-        "--network=${prefix}"
-      ];
+      extraOptions = ["--pod=fweedee"];
     };
     #
     ${mainsail.name} = {
-      hostname = "${mainsail.name}";
       autoStart = true;
       image = "${mainsail.image}";
       volumes = ["${time}"];
-      extraOptions = [
-        "--network=${prefix}"
-      ];
+      extraOptions = ["--pod=fweedee"];
     };
   };
 }
