@@ -76,7 +76,7 @@ in {
       ];
       script = ''
         ${pkgs.podman}/bin/podman pod exists ${prefix}-frontend || \
-          ${pkgs.podman}/bin/podman pod create -n ${prefix} -p '${secrets.ip.erying}:80:80'
+          ${pkgs.podman}/bin/podman pod create -n ${prefix}-frontend -p '${secrets.ip.erying}:80:80'
       '';
     };
   };
