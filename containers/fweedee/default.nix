@@ -71,11 +71,7 @@ in {
 
     serviceConfig = {
       Type = "oneshot";
-      script = ''
-        ${pkgs.podman}/bin/podman pod exists ${prefix} || \
-        ${pkgs.podman}/bin/podman pod create -n ${prefix} -p '127.0.0.1:8086:80'
-      '';
-      # ExecStart = "-${pkgs.podman}/bin/podman pod create -n fweedee -p '127.0.0.1:8086:80'";
+      ExecStart = "-${pkgs.podman}/bin/podman pod create -n fweedee -p '127.0.0.1:8086:80'";
     };
     path = [pkgs.zfs pkgs.podman];
   };
