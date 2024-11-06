@@ -50,19 +50,35 @@
 in {
   #
   # create a systemd service to bring up our pod
-  systemd.services."create-${prefix}-pod" = with config.virtualisation.oci-containers; {
-    serviceConfig.Type = "oneshot";
-    wantedBy = [
-      "podman-${klipper.name}.service"
-      "podman-${moonraker.name}.service"
-      "podman-${octoprint.name}.service"
-      "podman-${fluidd.name}.service"
-      "podman-${mainsail.name}.service"
-    ];
-    script = ''
-      ${pkgs.podman}/bin/podman pod exists ${prefix} || \
-        ${pkgs.podman}/bin/podman pod create -n ${prefix} -p '127.0.0.1:80:80'
-    '';
+  systemd.services = {
+    "create-${prefix}-backend-pod" = with config.virtualisation.oci-containers; {
+      serviceConfig.Type = "oneshot";
+      wantedBy = [
+        "podman-${klipper.name}.service"
+        "podman-${moonraker.name}.service"
+        "podman-${octoprint.name}.service"
+        "podman-${fluidd.name}.service"
+        "podman-${mainsail.name}.service"
+      ];
+      script = ''
+        ${pkgs.podman}/bin/podman pod exists ${prefix}-backend || \
+          ${pkgs.podman}/bin/podman pod create -n ${prefix}-backend -p '127.0.0.1:80:80'
+      '';
+    };
+    "create-${prefix}-frontend-pod" = with config.virtualisation.oci-containers; {
+      serviceConfig.Type = "oneshot";
+      wantedBy = [
+        "podman-${klipper.name}.service"
+        "podman-${moonraker.name}.service"
+        "podman-${octoprint.name}.service"
+        "podman-${fluidd.name}.service"
+        "podman-${mainsail.name}.service"
+      ];
+      script = ''
+        ${pkgs.podman}/bin/podman pod exists ${prefix}-backend || \
+          ${pkgs.podman}/bin/podman pod create -n ${prefix}-frontend'
+      '';
+    };
   };
   /*
   systemd.services."fweedee" = {
