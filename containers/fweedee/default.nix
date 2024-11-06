@@ -48,15 +48,8 @@
     image = "ghcr.io/mainsail-crew/mainsail:edge";
   };
 in {
-  # create a systemd service to bring up our pod
-  systemd.services."fweedee" = {
-    description = "Start podman 'fweedee' pod";
-
-    # don't start without network-online being up
-    wants = ["network-online.target"];
-    after = ["network-online.target"];
-
-    # our containers require fweedee pod to be up before they start
+  systemd.services."podman-network-${prefix}" = {
+    path = [pkgs.podman];
     requiredBy = [
       "podman-${klipper.name}.service"
       "podman-${moonraker.name}.service"
@@ -64,16 +57,14 @@ in {
       "podman-${fluidd.name}.service"
       "podman-${mainsail.name}.service"
     ];
-
-    # unsure, might not be required?
-    unitConfig.RequiresMountsFor = "/run/containers";
-
-    # script to run (create the pod)
     serviceConfig = {
       Type = "oneshot";
-      ExecStart = "-${pkgs.podman}/bin/podman pod create fweedee";
+      RemainAfterExit = true;
+      ExecStop = "${pkgs.podman}/bin/podman network rm -f ${prefix}";
     };
-    path = [pkgs.zfs pkgs.podman];
+    script = ''
+      podman network exists ${prefix} || podman network create --driver macvlan --opt parent=enp4s0 --subnet ${toString secrets.ip.fwwedee.vlan.subnet}/24 --ip-range ${toString secrets.ip.fweedee.vlan.subnet}/24 --gateway ${toString secrets.ip.fwedee.ip.gateway} --disable-dns=false ${prefix}
+    '';
   };
 
   # create container dirs
