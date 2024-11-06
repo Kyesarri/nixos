@@ -185,12 +185,9 @@ in {
     ${fluidd.name} = {
       autoStart = true;
       image = "${fluidd.image}";
+      ports = ["80:80"];
       volumes = ["${time}"];
-      extraOptions = [
-        "--pod=fweedee"
-        "--network=macvlan_lan"
-        "--ip=${fluidd.ip}"
-      ];
+      extraOptions = ["--pod=fweedee"];
     };
     #
     ${mainsail.name} = {
