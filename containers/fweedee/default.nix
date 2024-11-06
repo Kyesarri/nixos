@@ -49,7 +49,9 @@
 in {
   # create a systemd service to bring up our pod
   systemd.services."fweedee" = {
-    description = "Start podman 'fweedee' pod";
+    path = [pkgs.zfs pkgs.podman];
+
+    description = "Start podman 'fweedee' pods";
 
     # don't start without network-online being up
     wants = ["network-online.target"];
@@ -71,9 +73,9 @@ in {
 
     serviceConfig = {
       Type = "oneshot";
-      ExecStart = "-${pkgs.podman}/bin/podman pod create -n fweedee -p '127.0.0.1:8086:80'";
+      ExecStart = "${pkgs.podman}/bin/podman pod create -n ${prefix}-frontend -p '127.0.0.1:80:80' \
+      ${pkgs.podman}/bin/podman pod create -n ${prefix}-backend";
     };
-    path = [pkgs.zfs pkgs.podman];
   };
 
   # create container dirs
@@ -138,7 +140,7 @@ in {
 
       extraOptions = [
         "--privileged"
-        "--pod=fweedee"
+        "--pod=fweedee-backend"
       ];
     };
     #
@@ -161,7 +163,7 @@ in {
 
       extraOptions = [
         "--privileged"
-        "--pod=fweedee"
+        "--pod=fweedee-backend"
       ];
     };
     #
@@ -178,7 +180,7 @@ in {
 
       extraOptions = [
         "--privileged"
-        "--pod=fweedee"
+        "--pod=fweedee-backend"
       ];
     };
     #
@@ -186,14 +188,19 @@ in {
       autoStart = true;
       image = "${fluidd.image}";
       volumes = ["${time}"];
-      extraOptions = ["--pod=fweedee"];
+      extraOptions = [
+        "--pod=fweedee-backend"
+        "--pod=fweedee-frontend"
+      ];
     };
     #
     ${mainsail.name} = {
       autoStart = true;
       image = "${mainsail.image}";
       volumes = ["${time}"];
-      extraOptions = ["--pod=fweedee"];
+      extraOptions = [
+        "--pod=fweedee-backend"
+      ];
     };
   };
 }
