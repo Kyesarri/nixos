@@ -62,7 +62,7 @@ in {
       ExecStop = "${pkgs.podman}/bin/podman network rm -f ${prefix}";
     };
     script = ''
-      podman network exists ${prefix} || podman network create --driver macvlan --opt parent=enp4s0 --subnet ${toString secrets.ip.fweedee.vlan.subnet}/24 --ip-range ${toString secrets.ip.fweedee.vlan.subnet}/24 --gateway ${toString secrets.ip.fweedee.ip.gateway} --disable-dns=false ${prefix}
+      podman network exists ${prefix} || podman network create --driver macvlan --opt parent=enp4s0 --subnet ${toString secrets.ip.fweedee.vlan.subnet}/24 --ip-range ${toString secrets.ip.fweedee.vlan.subnet}/24 --gateway ${toString secrets.ip.fweedee.vlan.gateway} --disable-dns=false ${prefix}
     '';
   };
 
