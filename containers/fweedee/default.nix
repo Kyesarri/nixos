@@ -159,6 +159,7 @@ in {
       extraOptions = [
         "--privileged"
         "--network=fweedee"
+        "--network-alias=${klipper.name}"
       ];
     };
     #
@@ -183,6 +184,7 @@ in {
       extraOptions = [
         "--privileged"
         "--network=fweedee"
+        "--network-alias=${moonraker.name}"
       ];
     };
     #
@@ -201,6 +203,7 @@ in {
       extraOptions = [
         "--privileged"
         "--network=fweedee"
+        "--network-alias=${octoprint.name}"
       ];
     };
     #
@@ -213,6 +216,7 @@ in {
       extraOptions = [
         "--privileged"
         "--network=fweedee"
+        "--network-alias=${fluidd.name}"
       ];
     };
     #
@@ -223,6 +227,7 @@ in {
       volumes = ["${time}"];
       extraOptions = [
         "--network=fweedee"
+        "--network-alias=${mainsail.name}"
       ];
     };
   };
