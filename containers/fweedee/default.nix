@@ -68,9 +68,14 @@ in {
     unitConfig.RequiresMountsFor = "/run/containers";
 
     # script to run (create the pod)
+
     serviceConfig = {
       Type = "oneshot";
-      ExecStart = "-${pkgs.podman}/bin/podman pod create -n fweedee -p '127.0.0.1:8086:80'";
+      script = ''
+        ${pkgs.podman}/bin/podman pod exists ${prefix} || \
+        ${pkgs.podman}/bin/podman pod create -n ${prefix} -p '127.0.0.1:8086:80'
+      '';
+      # ExecStart = "-${pkgs.podman}/bin/podman pod create -n fweedee -p '127.0.0.1:8086:80'";
     };
     path = [pkgs.zfs pkgs.podman];
   };
