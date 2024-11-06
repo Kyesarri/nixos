@@ -62,7 +62,7 @@ in {
       ];
       script = ''
         ${pkgs.podman}/bin/podman network exists ${prefix}-backend || \
-          ${pkgs.podman}/bin/podman network create -n ${prefix}-backend
+          ${pkgs.podman}/bin/podman network create ${prefix}-backend
       '';
     };
     "create-${prefix}-frontend-network" = with config.virtualisation.oci-containers; {
@@ -76,7 +76,7 @@ in {
       ];
       script = ''
         ${pkgs.podman}/bin/podman network exists ${prefix}-frontend || \
-          ${pkgs.podman}/bin/podman network create -n ${prefix}-frontend -p '${secrets.ip.erying}:80:80'
+          ${pkgs.podman}/bin/podman network create ${prefix}-frontend
       '';
     };
   };
@@ -212,7 +212,7 @@ in {
 
       extraOptions = [
         "--privileged"
-        "--pod=fweedee-backend"
+        "--network=fweedee-backend"
       ];
     };
     #
