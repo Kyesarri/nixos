@@ -184,7 +184,6 @@ in {
     ${fluidd.name} = {
       autoStart = true;
       image = "${fluidd.image}";
-      ports = ["80:80"];
       volumes = ["${time}"];
       extraOptions = ["--pod=fweedee"];
     };
