@@ -39,7 +39,6 @@
   };
 
   fluidd = {
-    ip = "${secrets.ip.fweedee}"; # give this boi an ip
     name = "${prefix}-fluidd";
     image = "ghcr.io/fluidd-core/fluidd:latest";
   };
