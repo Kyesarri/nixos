@@ -211,6 +211,7 @@ in {
       ports = ["80:80"];
       volumes = ["${time}"];
       extraOptions = [
+        "--privileged"
         "--network=fweedee"
       ];
     };
