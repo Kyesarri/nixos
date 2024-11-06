@@ -3,6 +3,7 @@
 # containers all start - now to configure everything ;)
 {
   secrets,
+  config,
   pkgs,
   lib,
   ...
@@ -47,11 +48,27 @@
     image = "ghcr.io/mainsail-crew/mainsail:edge";
   };
 in {
+  #
   # create a systemd service to bring up our pod
+  systemd.services."create-${prefix}-pod" = with config.virtualisation.oci-containers; {
+    serviceConfig.Type = "oneshot";
+    wantedBy = [
+      "podman-${klipper.name}.service"
+      "podman-${moonraker.name}.service"
+      "podman-${octoprint.name}.service"
+      "podman-${fluidd.name}.service"
+      "podman-${mainsail.name}.service"
+    ];
+    script = ''
+      ${pkgs.podman}/bin/podman pod exists ${prefix} || \
+        ${pkgs.podman}/bin/podman pod create -n ${prefix} -p '127.0.0.1:80:80'
+    '';
+  };
+  /*
   systemd.services."fweedee" = {
     path = [pkgs.zfs pkgs.podman];
 
-    description = "Start podman 'fweedee' pods";
+    description = "Start podman '${prefix}' pod";
 
     # don't start without network-online being up
     wants = ["network-online.target"];
@@ -73,11 +90,10 @@ in {
 
     serviceConfig = {
       Type = "oneshot";
-      ExecStart = "${pkgs.podman}/bin/podman pod create -n ${prefix}-frontend -p '127.0.0.1:80:80' \
-      ${pkgs.podman}/bin/podman pod create -n ${prefix}-backend";
+      ExecStart = "${pkgs.podman}/bin/podman pod create -n ${prefix} -p '127.0.0.1:80:80'";
     };
   };
-
+  */
   # create container dirs
   system.activationScripts = {
     #
