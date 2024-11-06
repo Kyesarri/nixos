@@ -148,6 +148,7 @@ in {
   virtualisation.oci-containers.containers = {
     #
     ${klipper.name} = {
+      hostname = "${klipper.name}";
       autoStart = true;
       image = "${klipper.image}";
 
@@ -177,6 +178,7 @@ in {
     };
     #
     ${moonraker.name} = {
+      hostname = "${moonraker.name}";
       autoStart = true;
       image = "${moonraker.image}";
 
@@ -200,6 +202,7 @@ in {
     };
     #
     ${octoprint.name} = {
+      hostname = "${octoprint.name}";
       autoStart = true;
       image = "${octoprint.image}";
 
@@ -217,6 +220,7 @@ in {
     };
     #
     ${fluidd.name} = {
+      hostname = "${fluidd.name}";
       autoStart = true;
       image = "${fluidd.image}";
       ports = ["80:80"];
@@ -228,6 +232,7 @@ in {
     };
     #
     ${mainsail.name} = {
+      hostname = "${mainsail.name}";
       autoStart = true;
       image = "${mainsail.image}";
       volumes = ["${time}"];
