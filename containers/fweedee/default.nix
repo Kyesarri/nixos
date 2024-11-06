@@ -62,7 +62,7 @@ in {
       ];
       script = ''
         ${pkgs.podman}/bin/podman pod exists ${prefix}-backend || \
-          ${pkgs.podman}/bin/podman pod create -n ${prefix}-backend -p '127.0.0.1:80:80'
+          ${pkgs.podman}/bin/podman pod create -n ${prefix}-backend -p '${secrets.ip.erying}:80:80'
       '';
     };
     "create-${prefix}-frontend-pod" = with config.virtualisation.oci-containers; {
