@@ -20,13 +20,6 @@
     gcodes = "${toString dir}/shared/gcodes";
   };
 
-  nginx = {
-    dir1 = "${toString dir}/nginx/data";
-    dir2 = "${toString dir}/nginx/letsencrypt";
-    name = "${prefix}-nginx";
-    image = "jc21/nginx-proxy-manager:latest";
-  };
-
   klipper = {
     dir = "${toString dir}/klipper";
     name = "${prefix}-klipper";
@@ -76,15 +69,16 @@ in {
 
   # create container dirs
   system.activationScripts = {
+    #
     # probably not required but here for shits n' gigs
     "make${dir}dir" = lib.stringAfter ["var"] ''mkdir -v -p ${dir}'';
 
     # shared
     "makeshareddir" = lib.stringAfter ["var"] ''mkdir -v -p ${shared.logs} ${shared.run} ${shared.config} ${shared.gcodes}'';
-    # nginx
-    "make${nginx.name}dir" = lib.stringAfter ["var"] ''mkdir -v -p ${nginx.dir1} ${nginx.dir2}'';
+
     # moonraker
     "make${moonraker.name}dir" = lib.stringAfter ["var"] ''mkdir -v -p ${moonraker.dir}'';
+
     # octoprint
     "make${octoprint.name}dir" = lib.stringAfter ["var"] ''mkdir -v -p ${octoprint.dir}'';
 
@@ -110,20 +104,6 @@ in {
   # containers
   virtualisation.oci-containers.containers = {
     #
-    ${nginx.name} = {
-      hostname = "${nginx.name}";
-      autoStart = true;
-      ports = ["80:80" "81:81" "443:443"];
-      image = "${nginx.image}";
-      volumes = [
-        "/etc/localtime:/etc/localtime:ro"
-        "${nginx.dir1}:/data"
-        "${nginx.dir2}:/etc/letsencrypt"
-      ];
-      extraOptions = [
-        "--network=fweedee"
-      ];
-    };
     ${klipper.name} = {
       hostname = "${klipper.name}";
       autoStart = true;
@@ -203,6 +183,7 @@ in {
       hostname = "${fluidd.name}";
       autoStart = true;
       image = "${fluidd.image}";
+      ports = ["80:80"];
       volumes = ["${time}"];
       extraOptions = [
         "--privileged"

@@ -24,8 +24,8 @@ in {
     ];
 
     extraOptions = [
-      "--network=macvlan_lan"
-      "--ip=${secrets.ip.nginx}"
+      "--network=fweedee"
+      "--network=macvlan_lan --ip=${secrets.ip.nginx}"
     ];
   };
 }
