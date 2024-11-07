@@ -23,6 +23,8 @@ in {
 
     autoStart = true;
 
+    log-driver = "journald";
+
     image = "ghcr.io/blakeblackshear/frigate:stable";
 
     ports = [];
