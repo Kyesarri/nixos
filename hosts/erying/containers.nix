@@ -1,5 +1,5 @@
 # this module configures which containers our host will be running
-# along with our macvlan (containers get their own ip address vs using ports from the host)
+# along with our macvlan (containers get their own ip / mac on our lan vs using ports on the host)
 {
   secrets,
   pkgs,
@@ -18,23 +18,18 @@
     ../../containers/homer
     ../../containers/homer-wan
     ../../containers/i2pd
-    # ../../containers/klipper
     ../../containers/matter
-    # ../../containers/minecraft eeeh resources needed
     ../../containers/nginx-proxy-manager
     ../../containers/nginx-proxy-manager-2 # change to nginx-wan "soon"
     ../../containers/octoprint
     ../../containers/orcaslicer
     ../../containers/overseerr
-    # ../../containers/peanut
     # ../../containers/netbird # this wont work out the box :D
-    ../../containers/syncthing # testing 25.09.24
-    # ../../containers/ustreamer # not used currently
+    ../../containers/syncthing
     # ../../containers/zitadel
-    # ../../containers/uptime-kuma
   ];
 
-  systemd.services."podman-network-macvlan_lan" = {
+  systemd.services."create-podman-network-macvlan_lan" = {
     path = [pkgs.podman];
     wantedBy = [
       "podman-adguard.service"

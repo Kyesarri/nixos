@@ -62,7 +62,7 @@ in {
       ];
       script = ''
         ${pkgs.podman}/bin/podman network exists ${prefix} || \
-          ${pkgs.podman}/bin/podman network create -d bridge ${prefix}
+          ${pkgs.podman}/bin/podman network create -o vlan -d bridge ${prefix}
       '';
     };
   };
@@ -212,12 +212,12 @@ in {
       hostname = "${fluidd.name}";
       autoStart = true;
       image = "${fluidd.image}";
+      ports = ["80:80"];
       volumes = ["${time}"];
       extraOptions = [
         "--privileged"
         "--network=fweedee"
         "--network-alias=${fluidd.name}"
-        "--network=macvlan_lan:ip4=${secrets.ip.fweedee.lan}"
       ];
     };
     #
