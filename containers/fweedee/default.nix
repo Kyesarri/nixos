@@ -122,7 +122,6 @@ in {
       ];
       extraOptions = [
         "--network=fweedee"
-        "--ip=${secrets.ip.nginx}"
       ];
     };
     ${klipper.name} = {
