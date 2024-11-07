@@ -130,7 +130,7 @@ in {
 
       extraOptions = [
         "--privileged"
-        "--network=fweedee"
+        "--network=fweedee:ip=${secrets.ip.fweedee.vlan.klipper}"
         "--network-alias=${klipper.name}"
       ];
     };
@@ -155,7 +155,7 @@ in {
 
       extraOptions = [
         "--privileged"
-        "--network=fweedee"
+        "--network=fweedee:ip=${secrets.ip.fweedee.vlan.moonraker}"
         "--network-alias=${moonraker.name}"
       ];
     };
@@ -174,7 +174,7 @@ in {
 
       extraOptions = [
         "--privileged"
-        "--network=fweedee"
+        "--network=fweedee:ip=${secrets.ip.fweedee.vlan.octoprint}"
         "--network-alias=${octoprint.name}"
       ];
     };
@@ -186,7 +186,7 @@ in {
       volumes = ["${time}"];
       extraOptions = [
         "--privileged"
-        "--network=fweedee"
+        "--network=fweedee:ip=${secrets.ip.fweedee.vlan.fluidd}"
         "--network-alias=${fluidd.name}"
       ];
     };
@@ -197,7 +197,7 @@ in {
       image = "${mainsail.image}";
       volumes = ["${time}"];
       extraOptions = [
-        "--network=fweedee"
+        "--network=fweedee:ip=${secrets.ip.fweedee.vlan.mainsail}"
         "--network-alias=${mainsail.name}"
       ];
     };
