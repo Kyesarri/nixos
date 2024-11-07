@@ -51,7 +51,7 @@ in {
   #
   # create a systemd service to bring up our pod
   systemd.services = {
-    "create-${prefix}-backend-netwok" = with config.virtualisation.oci-containers; {
+    "create-${prefix}-network" = with config.virtualisation.oci-containers; {
       serviceConfig.Type = "oneshot";
       wantedBy = [
         "podman-${klipper.name}.service"
@@ -62,7 +62,7 @@ in {
       ];
       script = ''
         ${pkgs.podman}/bin/podman network exists ${prefix} || \
-          ${pkgs.podman}/bin/podman network create -o vlan --subnet ${toString secrets.ip.fweedee.vlan.subnet}/24 --ip-range ${toString secrets.ip.fweedee.vlan.range}/24 -d bridge ${prefix}
+          ${pkgs.podman}/bin/podman network create --subnet ${toString secrets.ip.fweedee.vlan.subnet}/24 --ip-range ${toString secrets.ip.fweedee.vlan.range}/24 -d bridge ${prefix}
       '';
     };
   };
@@ -83,7 +83,7 @@ in {
     "make${octoprint.name}dir" = lib.stringAfter ["var"] ''mkdir -v -p ${octoprint.dir}'';
 
     # chown dirs
-    "make${dir}owner" = lib.stringAfter ["var"] ''chown -R 1000:1000 ${toString dir} && echo pwnd'';
+    "make${dir}owner" = lib.stringAfter ["var"] ''chown -R 1000:1000 ${toString dir}'';
   };
   # configs, from tree to container dirs
   environment.etc = {
