@@ -2,6 +2,7 @@
 # using container images from prind xoxo
 # containers all start - now to configure everything ;)
 {
+  secrets,
   config,
   pkgs,
   lib,
@@ -211,12 +212,12 @@ in {
       hostname = "${fluidd.name}";
       autoStart = true;
       image = "${fluidd.image}";
-      ports = ["80:80"];
       volumes = ["${time}"];
       extraOptions = [
         "--privileged"
         "--network=fweedee"
         "--network-alias=${fluidd.name}"
+        "--network=macvlan_lan:ipv4=${secrets.ip.fweedee.lan}"
       ];
     };
     #
