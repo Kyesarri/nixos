@@ -62,10 +62,7 @@ in {
       ];
       script = ''
         ${pkgs.podman}/bin/podman network exists ${prefix} || \
-          ${pkgs.podman}/bin/podman network create -o vlan \
-          --subnet ${toString secrets.ip.fweedee.vlan.subnet}/24 \
-          --ip-range ${toString secrets.ip.fweedee.vlan.range}/24 \
-          -d bridge ${prefix}
+          ${pkgs.podman}/bin/podman network create -o vlan --subnet ${toString secrets.ip.fweedee.vlan.subnet}/24 --ip-range ${toString secrets.ip.fweedee.vlan.range}/24 -d bridge ${prefix}
       '';
     };
   };
