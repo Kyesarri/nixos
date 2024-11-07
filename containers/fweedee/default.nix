@@ -217,7 +217,7 @@ in {
         "--privileged"
         "--network=fweedee"
         "--network-alias=${fluidd.name}"
-        "--network=macvlan_lan:ipv4=${secrets.ip.fweedee.lan}"
+        "--network=macvlan_lan:ip4=${secrets.ip.fweedee.lan}"
       ];
     };
     #
