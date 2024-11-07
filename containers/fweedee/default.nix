@@ -20,6 +20,13 @@
     gcodes = "${toString dir}/shared/gcodes";
   };
 
+  nginx = {
+    dir1 = "${toString dir}/nginx/data";
+    dir2 = "${toString dir}/nginx/letsencrypt";
+    name = "${prefix}-nginx";
+    image = "jc21/nginx-proxy-manager:latest";
+  };
+
   klipper = {
     dir = "${toString dir}/klipper";
     name = "${prefix}-klipper";
@@ -66,36 +73,7 @@ in {
       '';
     };
   };
-  /*
-  systemd.services."fweedee" = {
-    path = [pkgs.zfs pkgs.podman];
 
-    description = "Start podman '${prefix}' pod";
-
-    # don't start without network-online being up
-    wants = ["network-online.target"];
-    after = ["network-online.target"];
-
-    # our containers require fweedee pod to be up before they start
-    requiredBy = [
-      "podman-${klipper.name}.service"
-      "podman-${moonraker.name}.service"
-      "podman-${octoprint.name}.service"
-      "podman-${fluidd.name}.service"
-      "podman-${mainsail.name}.service"
-    ];
-
-    # unsure, might not be required?
-    unitConfig.RequiresMountsFor = "/run/containers";
-
-    # script to run (create the pod)
-
-    serviceConfig = {
-      Type = "oneshot";
-      ExecStart = "${pkgs.podman}/bin/podman pod create -n ${prefix} -p '127.0.0.1:80:80'";
-    };
-  };
-  */
   # create container dirs
   system.activationScripts = {
     #
@@ -133,6 +111,21 @@ in {
   # containers
   virtualisation.oci-containers.containers = {
     #
+    ${nginx.name} = {
+      hostname = "${nginx.name}";
+      autoStart = true;
+      ports = ["80:80" "81:81" "443:443"];
+      image = "${nginx.image}";
+      volumes = [
+        "/etc/localtime:/etc/localtime:ro"
+        "${nginx.dir1}:/data"
+        "${nginx.dir2}:/etc/letsencrypt"
+      ];
+      extraOptions = [
+        "--network=fweedee"
+        "--ip=${secrets.ip.nginx}"
+      ];
+    };
     ${klipper.name} = {
       hostname = "${klipper.name}";
       autoStart = true;
@@ -212,7 +205,6 @@ in {
       hostname = "${fluidd.name}";
       autoStart = true;
       image = "${fluidd.image}";
-      ports = ["80:80"];
       volumes = ["${time}"];
       extraOptions = [
         "--privileged"
