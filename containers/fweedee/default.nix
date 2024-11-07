@@ -82,7 +82,7 @@ in {
     # shared
     "makeshareddir" = lib.stringAfter ["var"] ''mkdir -v -p ${shared.logs} ${shared.run} ${shared.config} ${shared.gcodes}'';
     # nginx
-    "make${moonraker.name}dir" = lib.stringAfter ["var"] ''mkdir -v -p ${nginx.dir1} ${nginx.dir2}'';
+    "make${nginx.name}dir" = lib.stringAfter ["var"] ''mkdir -v -p ${nginx.dir1} ${nginx.dir2}'';
     # moonraker
     "make${moonraker.name}dir" = lib.stringAfter ["var"] ''mkdir -v -p ${moonraker.dir}'';
     # octoprint
