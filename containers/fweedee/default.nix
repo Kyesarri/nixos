@@ -76,16 +76,15 @@ in {
 
   # create container dirs
   system.activationScripts = {
-    #
     # probably not required but here for shits n' gigs
     "make${dir}dir" = lib.stringAfter ["var"] ''mkdir -v -p ${dir}'';
 
     # shared
     "makeshareddir" = lib.stringAfter ["var"] ''mkdir -v -p ${shared.logs} ${shared.run} ${shared.config} ${shared.gcodes}'';
-
+    # nginx
+    "make${moonraker.name}dir" = lib.stringAfter ["var"] ''mkdir -v -p ${nginx.dir1} ${nginx.dir2}'';
     # moonraker
     "make${moonraker.name}dir" = lib.stringAfter ["var"] ''mkdir -v -p ${moonraker.dir}'';
-
     # octoprint
     "make${octoprint.name}dir" = lib.stringAfter ["var"] ''mkdir -v -p ${octoprint.dir}'';
 
