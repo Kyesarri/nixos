@@ -31,7 +31,7 @@
               entryPoint.permanent = true;
             };
             entryPoints.https.address = ":443";
-            entryPoints.traefik.address = "0.0.0.0:8080";
+            entryPoints.traefik.address = ":8081";
           };
         };
       };
