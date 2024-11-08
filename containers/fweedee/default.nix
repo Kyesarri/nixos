@@ -1,208 +1,23 @@
-# inspo from https://github.com/mkuf/prind
-# using container images from prind xoxo
-# containers all start - now to configure everything ;)
-{
-  secrets,
-  config,
-  pkgs,
-  lib,
-  ...
-}: let
-  # config happens here, change values as you desire
-  dir = "/etc/oci.cont/fweedee"; # set our root directory for containers
-  time = "/etc/localtime:/etc/localtime:ro"; # read only our server time to containers
-  prefix = "fweedee";
-
-  shared = {
-    logs = "${toString dir}/shared/logs";
-    run = "${toString dir}/shared/run";
-    config = "${toString dir}/shared/config";
-    gcodes = "${toString dir}/shared/gcodes";
-  };
-
-  klipper = {
-    dir = "${toString dir}/klipper";
-    name = "${prefix}-klipper";
-    image = "mkuf/klipper:latest";
-  };
-
-  moonraker = {
-    dir = "${toString dir}/moonraker";
-    name = "${prefix}-moonraker";
-    image = "mkuf/moonraker:latest";
-    db = "${moonraker.dir}";
-  };
-
-  octoprint = {
-    dir = "${toString dir}/octoprint";
-    name = "${prefix}-octoprint";
-    image = "octoprint/octoprint:latest";
-  };
-
-  fluidd = {
-    name = "${prefix}-fluidd";
-    image = "ghcr.io/fluidd-core/fluidd:latest";
-  };
-  mainsail = {
-    name = "${prefix}-mainsail";
-    image = "ghcr.io/mainsail-crew/mainsail:edge";
-  };
-in {
-  #
-  # create a systemd service to bring up our pod
-  systemd.services = {
-    "create-${prefix}-network" = with config.virtualisation.oci-containers; {
-      serviceConfig.Type = "oneshot";
-      wantedBy = [
-        "podman-${klipper.name}.service"
-        "podman-${moonraker.name}.service"
-        # "podman-${octoprint.name}.service"
-        "podman-${fluidd.name}.service"
-        "podman-${mainsail.name}.service"
-      ];
-      script = ''
-        ${pkgs.podman}/bin/podman network exists ${prefix} || \
-          ${pkgs.podman}/bin/podman network create --subnet ${toString secrets.ip.fweedee.vlan.subnet}/24 --ip-range ${toString secrets.ip.fweedee.vlan.range}/24 ${prefix}
-      '';
-    };
-  };
-
-  # create container dirs
-  system.activationScripts = {
-    #
-    # probably not required but here for shits n' gigs
-    "make${dir}dir" = lib.stringAfter ["var"] ''mkdir -v -p ${dir}'';
-
-    # shared
-    "make${dir}shareddir" = lib.stringAfter ["var"] ''mkdir -v -p ${shared.logs} ${shared.run} ${shared.config} ${shared.gcodes}'';
-
-    # moonraker
-    "make${moonraker.name}dir" = lib.stringAfter ["var"] ''mkdir -v -p ${moonraker.dir}'';
-
-    # octoprint
-    "make${octoprint.name}dir" = lib.stringAfter ["var"] ''mkdir -v -p ${octoprint.dir}'';
-
-    # chown dirs
-    "make${dir}owner" = lib.stringAfter ["var"] ''chown -R 1000:1000 ${toString dir}'';
-  };
-  # configs, from tree to container dirs
-  environment.etc = {
-    "oci.cont/${prefix}/shared/config/printer.cfg" = {
-      mode = "644";
-      uid = 1000;
-      gid = 1000;
-      source = ./printer.cfg;
-    };
-
-    "oci.cont/${prefix}/shared/config/moonraker.conf" = {
-      mode = "644";
-      uid = 1000;
-      gid = 1000;
-      source = ./moonraker.conf;
-    };
-  };
-  # containers
-  virtualisation.oci-containers.containers = {
-    #
-    ${klipper.name} = {
-      hostname = "${klipper.name}";
-      autoStart = true;
-      image = "${klipper.image}";
-
-      volumes = [
-        "${time}"
-        "/dev:/dev"
-        "${shared.config}:/opt/printer_data/config"
-        "${shared.gcodes}:/opt/printer_data/gcodes"
-        "${shared.logs}:/opt/printer_data/logs"
-        "${shared.run}:/opt/printer_data/run"
-      ];
-
-      cmd = [
-        "-I"
-        "printer_data/run/klipper.tty"
-        "-a"
-        "printer_data/run/klipper.sock"
-        "printer_data/config/printer.cfg"
-        "-l"
-        "printer_data/logs/klippy.log"
-      ];
-
-      extraOptions = [
-        "--privileged"
-        "--network=fweedee:ip=${secrets.ip.fweedee.vlan.klipper}"
-        "--network-alias=${klipper.name}"
-      ];
-    };
-    #
-    ${moonraker.name} = {
-      hostname = "${moonraker.name}";
-      autoStart = true;
-      image = "${moonraker.image}";
-
-      volumes = [
-        "${time}"
-        "/dev/null:/opt/klipper/config/null"
-        "/dev/null:/opt/klipper/docs/null"
-        "/run/dbus:/run/dbus"
-        "/run/systemd:/run/systemd"
-        "${moonraker.db}:/opt/printer_data/database"
-        "${shared.config}:/opt/printer_data/config"
-        "${shared.gcodes}:/opt/printer_data/gcodes"
-        "${shared.logs}:/opt/printer_data/logs"
-        "${shared.run}:/opt/printer_data/run"
-      ];
-
-      extraOptions = [
-        "--privileged"
-        "--network=fweedee:ip=${secrets.ip.fweedee.vlan.moonraker}"
-        "--network-alias=${moonraker.name}"
-      ];
-    };
-    #
-    /*
-      ${octoprint.name} = {
-      hostname = "${octoprint.name}";
-      autoStart = true;
-      image = "${octoprint.image}";
-
-      volumes = [
-        "${time}"
-        "/dev:/dev"
-        "${octoprint.dir}:/octoprint"
-        "${shared.run}:/opt/printer_data/run"
-      ];
-
-      extraOptions = [
-        "--privileged"
-        "--network=fweedee:ip=${secrets.ip.fweedee.vlan.octoprint}"
-        "--network-alias=${octoprint.name}"
-      ];
-    };
-    */
-    #
-    ${fluidd.name} = {
-      hostname = "${fluidd.name}";
-      autoStart = true;
-      image = "${fluidd.image}";
-      volumes = ["${time}"];
-      extraOptions = [
-        "--privileged"
-        "--network=fweedee:ip=${secrets.ip.fweedee.vlan.fluidd}"
-        "--network-alias=${fluidd.name}"
-      ];
-    };
-    #
-    ${mainsail.name} = {
-      hostname = "${mainsail.name}";
-      autoStart = true;
-      image = "${mainsail.image}";
-      volumes = ["${time}"];
-      environment = {VUE_APP_HOSTNAME = "${secrets.ip.fweedee.vlan.moonraker}";};
-      extraOptions = [
-        "--network=fweedee:ip=${secrets.ip.fweedee.vlan.mainsail}"
-        "--network-alias=${mainsail.name}"
-      ];
+{secrets, ...}: {
+  containers.moonraker = {
+    autoStart = true;
+    privateNetwork = true;
+    hostAddress = "${secrets.ip.erying}";
+    localAddress = "192.168.87.88/24";
+    config = {lib, ...}: {
+      services.moonraker = {
+        enable = true;
+        address = "0.0.0.0";
+      };
+      system.stateVersion = "23.11";
+      networking = {
+        useHostResolvConf = lib.mkForce false;
+        firewall = {
+          enable = true;
+          allowedTCPPorts = [80 22];
+        };
+      };
+      services.resolved.enable = true;
     };
   };
 }
