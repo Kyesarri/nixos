@@ -56,7 +56,7 @@ in {
       wantedBy = [
         "podman-${klipper.name}.service"
         "podman-${moonraker.name}.service"
-        "podman-${octoprint.name}.service"
+        # "podman-${octoprint.name}.service"
         "podman-${fluidd.name}.service"
         "podman-${mainsail.name}.service"
       ];
@@ -74,7 +74,7 @@ in {
     "make${dir}dir" = lib.stringAfter ["var"] ''mkdir -v -p ${dir}'';
 
     # shared
-    "makeshareddir" = lib.stringAfter ["var"] ''mkdir -v -p ${shared.logs} ${shared.run} ${shared.config} ${shared.gcodes}'';
+    "make${dir}shareddir" = lib.stringAfter ["var"] ''mkdir -v -p ${shared.logs} ${shared.run} ${shared.config} ${shared.gcodes}'';
 
     # moonraker
     "make${moonraker.name}dir" = lib.stringAfter ["var"] ''mkdir -v -p ${moonraker.dir}'';
@@ -112,10 +112,10 @@ in {
       volumes = [
         "${time}"
         "/dev:/dev"
-        "${toString shared.config}:/opt/printer_data/config"
-        "${toString shared.gcodes}:/opt/printer_data/gcodes"
-        "${toString shared.logs}:/opt/printer_data/logs"
-        "${toString shared.run}:/opt/printer_data/run"
+        "${shared.config}:/opt/printer_data/config"
+        "${shared.gcodes}:/opt/printer_data/gcodes"
+        "${shared.logs}:/opt/printer_data/logs"
+        "${shared.run}:/opt/printer_data/run"
       ];
 
       cmd = [
@@ -160,7 +160,8 @@ in {
       ];
     };
     #
-    ${octoprint.name} = {
+    /*
+      ${octoprint.name} = {
       hostname = "${octoprint.name}";
       autoStart = true;
       image = "${octoprint.image}";
@@ -178,6 +179,7 @@ in {
         "--network-alias=${octoprint.name}"
       ];
     };
+    */
     #
     ${fluidd.name} = {
       hostname = "${fluidd.name}";
@@ -196,6 +198,7 @@ in {
       autoStart = true;
       image = "${mainsail.image}";
       volumes = ["${time}"];
+      environment = {VUE_APP_HOSTNAME = "${secrets.ip.fweedee.vlan.moonraker}";};
       extraOptions = [
         "--network=fweedee:ip=${secrets.ip.fweedee.vlan.mainsail}"
         "--network-alias=${mainsail.name}"
