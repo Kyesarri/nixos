@@ -18,7 +18,9 @@
         traefik = {
           enable = true;
           staticConfigOptions = {
-            api = {};
+            api = {
+              entryPoint = "http";
+            };
             entryPoints = {
               http = {
                 address = ":8081";
