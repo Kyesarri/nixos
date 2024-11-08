@@ -20,10 +20,10 @@
             api = {};
             entryPoints = {
               http = {
-                address = ":81";
+                address = ":8081";
               };
               web = {
-                address = ":8080";
+                address = ":81";
               };
             };
           };
