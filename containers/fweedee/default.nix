@@ -20,8 +20,9 @@
           enable = true;
           staticConfigOptions = {
             log.level = "DEBUG";
-            # api.dashboard = true;
-            # api.insecure = true;
+            api = {
+              dashboard = true;
+            };
 
             entryPoints.http.address = ":80";
             entryPoints.http.http.redirections = {
