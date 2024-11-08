@@ -4,6 +4,7 @@
     privateNetwork = false;
     hostAddress = "${secrets.ip.erying}";
     localAddress = "10.231.136.2";
+
     config = {lib, ...}: {
       system.stateVersion = "23.11";
 
@@ -19,6 +20,7 @@
           enable = true;
           staticConfigOptions = {
             api = {
+              insecure = true;
             };
             entryPoints = {
               http = {
@@ -26,7 +28,6 @@
               };
               web = {
                 address = ":80";
-                dashboard = true;
               };
             };
           };
