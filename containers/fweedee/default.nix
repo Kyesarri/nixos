@@ -24,6 +24,12 @@
             api.insecure = true;
 
             entryPoints.http.address = ":80";
+            entryPoints.http.http.redirections = {
+              entryPoint.to = "https";
+              entryPoint.scheme = "https";
+              entryPoint.permanent = true;
+            };
+            entryPoints.https.address = ":443";
           };
         };
       };
@@ -32,7 +38,7 @@
         useHostResolvConf = lib.mkForce false;
         firewall = {
           enable = true;
-          allowedTCPPorts = [80 22];
+          allowedTCPPorts = [80 443];
         };
       };
     };
