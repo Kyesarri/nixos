@@ -19,9 +19,7 @@
         traefik = {
           enable = true;
           staticConfigOptions = {
-            api = {
-              insecure = true;
-            };
+            api = {};
             entryPoints = {
               http = {
                 address = ":80";
