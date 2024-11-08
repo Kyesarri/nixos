@@ -3,7 +3,7 @@
     autoStart = true;
     privateNetwork = true;
     hostAddress = "${secrets.ip.erying}";
-    localAddress = "192.168.87.88/24";
+    localAddress = "192.168.87.88";
     config = {lib, ...}: {
       services.moonraker = {
         enable = true;
