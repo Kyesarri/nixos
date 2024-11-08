@@ -19,7 +19,8 @@
           enable = true;
           staticConfigOptions = {
             api = {
-              entryPoint = "http";
+              entryPoint = "web";
+              dashboard = true;
             };
             entryPoints = {
               http = {
