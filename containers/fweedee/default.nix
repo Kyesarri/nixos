@@ -23,7 +23,7 @@
                 address = ":8081";
               };
               web = {
-                address = ":81";
+                address = ":80";
               };
             };
           };
