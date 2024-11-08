@@ -19,7 +19,11 @@
         traefik = {
           enable = true;
           staticConfigOptions = {
-            api = {};
+            log.level = "DEBUG";
+            api = {
+              dashboard = true;
+              insecure = true;
+            };
             entryPoints = {
               http = {
                 address = ":80";
