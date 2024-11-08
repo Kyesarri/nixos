@@ -3,7 +3,7 @@
     autoStart = true;
     privateNetwork = true;
     hostAddress = "${secrets.ip.erying}";
-
+    localAddress = "10.231.136.2";
     config = {lib, ...}: {
       system.stateVersion = "23.11";
 
