@@ -19,8 +19,6 @@
           enable = true;
           staticConfigOptions = {
             api = {
-              entryPoint = "web";
-              dashboard = true;
             };
             entryPoints = {
               http = {
@@ -28,6 +26,7 @@
               };
               web = {
                 address = ":80";
+                dashboard = true;
               };
             };
           };
