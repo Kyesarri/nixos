@@ -24,10 +24,10 @@
             };
             entryPoints = {
               http = {
-                address = ":8081";
+                address = ":80";
               };
               web = {
-                address = ":80";
+                address = ":8081";
               };
             };
           };
@@ -38,7 +38,7 @@
         useHostResolvConf = lib.mkForce false;
         firewall = {
           enable = true;
-          allowedTCPPorts = [80 81 8081 22];
+          allowedTCPPorts = [80 81 8081 8080 22];
         };
       };
     };
