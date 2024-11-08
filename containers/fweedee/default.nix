@@ -1,7 +1,7 @@
 {secrets, ...}: {
   containers.moonraker = {
     autoStart = true;
-    privateNetwork = true;
+    privateNetwork = false;
     hostAddress = "${secrets.ip.erying}";
     localAddress = "10.231.136.2";
     config = {lib, ...}: {
