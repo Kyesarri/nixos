@@ -5,7 +5,11 @@
     hostAddress = "${secrets.ip.erying}";
     localAddress = "10.231.136.2";
 
-    config = {lib, ...}: {
+    config = {
+      lib,
+      config,
+      ...
+    }: {
       system.stateVersion = "23.11";
 
       services = {
@@ -13,13 +17,23 @@
 
         moonraker = {
           enable = true;
+          port = 7125;
+          allowSystemControl = true;
           address = "0.0.0.0";
+          klipperSocket = config.services.klipper.apiSocket;
         };
 
         klipper = {
           enable = true;
           configFile = ./printer.cfg;
+          mutableConfig = true;
+          mutableConfigFolder = "/var/lib/moonraker/config";
+          logFile = "/var/lib/moonraker/logs/klipper.log";
+          inputTTY = "/run/klipper/tty";
+          apiSocket = "/run/klipper/api";
         };
+        # mainsail and fluidd conflict
+        # error: The option `containers.fweedee.services.nginx.virtualHosts.localhost.root' has conflicting definition values:
         /*
         mainsail = {
           enable = true;
@@ -55,7 +69,7 @@
         useHostResolvConf = lib.mkForce false;
         firewall = {
           enable = true;
-          allowedTCPPorts = [80 443 8080];
+          allowedTCPPorts = [80 443 7125 8080];
         };
       };
     };
