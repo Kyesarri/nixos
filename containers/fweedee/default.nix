@@ -1,5 +1,5 @@
 {secrets, ...}: {
-  containers.moonraker = {
+  containers.fweedee = {
     autoStart = true;
     privateNetwork = false;
     hostAddress = "${secrets.ip.erying}";
@@ -18,11 +18,11 @@
 
         traefik = {
           enable = true;
-          staticConfigFile = "/etc/traf/static_config.toml";
           staticConfigOptions = {
             log.level = "DEBUG";
             api = {
               dashboard = true;
+              insecure = true;
             };
 
             entryPoints.http.address = ":80";
