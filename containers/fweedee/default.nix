@@ -20,19 +20,16 @@
           enable = true;
           staticConfigOptions = {
             log.level = "DEBUG";
-            api = {
-              dashboard = true;
-              insecure = true;
-            };
 
-            entryPoints.http.address = ":80";
-            entryPoints.http.http.redirections = {
-              entryPoint.to = "https";
-              entryPoint.scheme = "https";
-              entryPoint.permanent = true;
+            api = {};
+            entryPoints = {
+              http = {
+                address = ":80";
+              };
+              web = {
+                address = ":8080";
+              };
             };
-            entryPoints.https.address = ":443";
-            entryPoints.api.address = ":8080";
           };
         };
       };
