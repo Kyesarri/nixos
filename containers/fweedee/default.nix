@@ -21,6 +21,21 @@
           allowSystemControl = true;
           address = "0.0.0.0";
           klipperSocket = config.services.klipper.apiSocket;
+          settings = {
+            authorization = {
+              cors_domains = [
+                "https://mainsail.zar.red"
+                "http://192.168.86.200:8001"
+                "http://sankara:8001"
+                "*.home"
+              ];
+              trusted_clients = [
+                "192.168.87.0/24"
+              ];
+            };
+            file_manager.enable_object_processing = true;
+            announcements.subscriptions = ["mainsail"];
+          };
         };
 
         klipper = {
