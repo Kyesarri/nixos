@@ -21,6 +21,7 @@
           staticConfigOptions = {
             log.level = "DEBUG";
             api = {
+              entryPoint = "traefik";
               dashboard = true;
             };
 
