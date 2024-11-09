@@ -16,6 +16,18 @@
           address = "0.0.0.0";
         };
 
+        klipper = {
+          enable = true;
+        };
+
+        mainsail = {
+          enable = true;
+        };
+
+        fluidd = {
+          enable = true;
+        };
+        /*
         traefik = {
           enable = true;
           staticConfigOptions = {
@@ -26,12 +38,16 @@
               http = {
                 address = ":80";
               };
+              https = {
+                address = ":443";
+              };
               web = {
                 address = ":8080";
               };
             };
           };
         };
+        */
       };
 
       networking = {
