@@ -72,6 +72,7 @@
           allowedTCPPorts = [80 443 7125 8080];
         };
       };
+      security.polkit.enable = true;
     };
   };
 }
