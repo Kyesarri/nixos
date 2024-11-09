@@ -31,6 +31,7 @@
               ];
               trusted_clients = [
                 "192.168.87.0/24"
+                "127.0.0.1"
               ];
             };
             file_manager.enable_object_processing = true;
@@ -48,7 +49,7 @@
           configFile = "/var/lib/moonraker/config/printer.cfg";
         };
         # mainsail and fluidd conflict
-        # error: The option `containers.fweedee.services.nginx.virtualHosts.localhost.root' has conflicting definition values:
+        # error: The option `containers.fweedee.services.nginx.virtualHosts.localhost.root' has conflicting definition values
         /*
         mainsail = {
           enable = true;
