@@ -5,6 +5,13 @@
     hostAddress = "${secrets.ip.erying}";
     localAddress = "10.231.136.2";
 
+    bindMounts = {
+      "/dev" = {
+        hostPath = "/dev";
+        isReadOnly = false;
+      };
+    };
+
     config = {
       lib,
       config,
