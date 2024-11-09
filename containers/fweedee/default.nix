@@ -18,6 +18,7 @@
 
         klipper = {
           enable = true;
+          configFile = ./printer.cfg;
         };
 
         mainsail = {
