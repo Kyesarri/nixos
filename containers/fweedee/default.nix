@@ -40,12 +40,12 @@
 
         klipper = {
           enable = true;
-          configFile = ./printer.cfg;
           mutableConfig = true;
           mutableConfigFolder = "/var/lib/moonraker/config";
           logFile = "/var/lib/moonraker/logs/klipper.log";
           inputTTY = "/run/klipper/tty";
           apiSocket = "/run/klipper/api";
+          configFile = "/var/lib/moonraker/config/printer.cfg";
         };
         # mainsail and fluidd conflict
         # error: The option `containers.fweedee.services.nginx.virtualHosts.localhost.root' has conflicting definition values:
