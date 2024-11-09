@@ -20,11 +20,11 @@
           enable = true;
           configFile = ./printer.cfg;
         };
-
+        /*
         mainsail = {
           enable = true;
         };
-
+        */
         fluidd = {
           enable = true;
         };
