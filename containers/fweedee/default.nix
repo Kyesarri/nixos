@@ -18,6 +18,7 @@
 
         traefik = {
           enable = true;
+          staticConfigFile = "/etc/traf/static_config.toml";
           staticConfigOptions = {
             log.level = "DEBUG";
             api = {
