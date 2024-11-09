@@ -31,7 +31,7 @@
               entryPoint.permanent = true;
             };
             entryPoints.https.address = ":443";
-            entryPoints.traefik.address = ":8081";
+            entryPoints.api.address = ":8080";
           };
         };
       };
@@ -40,7 +40,7 @@
         useHostResolvConf = lib.mkForce false;
         firewall = {
           enable = true;
-          allowedTCPPorts = [80 443 8081];
+          allowedTCPPorts = [80 443 8080];
         };
       };
     };
