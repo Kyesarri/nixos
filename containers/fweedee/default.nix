@@ -4,6 +4,12 @@
     privateNetwork = false;
     hostAddress = "${secrets.ip.erying}";
     localAddress = "10.231.136.2";
+    bindMounts = {
+      "/dev/ttyUSB0" = {
+        hostPath = "/dev/serial/by-id/usb-1a86_USB_Serial-if00-port0";
+        isReadOnly = false;
+      };
+    };
 
     config = {
       lib,
