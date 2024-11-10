@@ -23,11 +23,6 @@
 
   services.resolved.dnssec = "false";
 
-  boot.kernel.sysctl = {
-    "net.ipv4.conf.all.forwarding" = true;
-    "net.ipv6.conf.all.forwarding" = true;
-  };
-
   boot.initrd.systemd.network = {
     enable = true;
     networks."10-lan" = {
