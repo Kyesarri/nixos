@@ -30,7 +30,7 @@
     after = ["network.target"];
     serviceConfig = {
       Type = "oneshot";
-      ExecStart = "${pkgs.ethtool}/sbin/ethtool -K lan-self rx-udp-gro-forwarding on rx-gro-list off";
+      ExecStart = "${pkgs.ethtool}/sbin/ethtool -K lan-self@enp4s0 rx-udp-gro-forwarding on rx-gro-list off";
     };
     wantedBy = ["default.target"];
   };
