@@ -6,7 +6,7 @@
     localAddress = "10.231.136.2";
     bindMounts = {
       # pass usb printer by-id to container
-      "/dev/ttyUSB0" = {
+      "/dev/serial/by-id/usb-1a86_USB_Serial-if00-port0" = {
         hostPath = "/dev/serial/by-id/usb-1a86_USB_Serial-if00-port0";
         isReadOnly = false;
       };
