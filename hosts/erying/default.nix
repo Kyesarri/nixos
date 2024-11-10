@@ -94,6 +94,7 @@
     };
 
     systemPackages = with pkgs; [
+      ethtool
       nut # ups monitor
       lm_sensors # sensor monitoring
       lshw # list hardware

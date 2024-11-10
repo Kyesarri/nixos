@@ -1,6 +1,7 @@
 {
   secrets,
   config,
+  pkgs,
   lib,
   ...
 }: {
@@ -22,6 +23,17 @@
   };
 
   services.resolved.dnssec = "false";
+
+  # taken from https://github.com/kivikakk/vyxos/blob/main/modules/net/default.nix
+  systemd.services.tailscale-transport-layer-offloads = {
+    description = "better performance for exit nodes";
+    after = ["network.target"];
+    serviceConfig = {
+      Type = "oneshot";
+      ExecStart = "${pkgs.ethtool}/sbin/ethtool -K enp4s0 rx-udp-gro-forwarding on rx-gro-list off";
+    };
+    wantedBy = ["default.target"];
+  };
 
   boot.initrd.systemd.network = {
     enable = true;
