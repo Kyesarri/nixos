@@ -10,6 +10,11 @@
         hostPath = "/dev/serial/by-id/usb-1a86_USB_Serial-if00-port0";
         isReadOnly = false;
       };
+      # webcam passthrough
+      "/dev/v4l/by-id/usb-Alpha_Imaging_Tech._Corp._Razer_Kiyo-video-index0" = {
+        hostPath = "/dev/v4l/by-id/usb-Alpha_Imaging_Tech._Corp._Razer_Kiyo-video-index0";
+        isReadOnly = false;
+      };
     };
 
     config = {
