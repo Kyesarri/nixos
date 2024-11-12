@@ -21,7 +21,7 @@ in {
       "/dev/net/tun:/dev/net/tun"
     ];
     cmd = [
-      "--advertise-tags=tag:container"
+      # "--advertise-tags=tag:container"
     ];
     environment = {
       TZ = "Australia/Melbourne";
