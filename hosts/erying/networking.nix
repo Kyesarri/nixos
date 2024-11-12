@@ -1,5 +1,6 @@
 {
   secrets,
+  config,
   pkgs,
   lib,
   ...
@@ -15,9 +16,9 @@
 
     firewall = {
       enable = true;
-      # checkReversePath = "loose"; # fixes connection issues with tailscale
+      checkReversePath = "loose"; # fixes connection issues with tailscale
       allowedTCPPorts = [22 123 80 443 7125 8080 8081 3493];
-      allowedUDPPorts = [443 123];
+      allowedUDPPorts = [config.services.tailscale.port 123];
     };
   };
 

@@ -3,17 +3,17 @@
     autoStart = true;
     privateNetwork = false;
     hostAddress = "${secrets.ip.erying}";
-    localAddress = "10.231.136.2";
+    # localAddress = "10.231.136.2";
 
     bindMounts = {
       # usb serial printer passthrough
-      /*
+
       "/dev/ttyUSB0" = {
         hostPath = "/dev/serial/by-id/usb-1a86_USB_Serial-if00-port0";
         isReadOnly = false;
         mountPoint = "/dev/ttyUSB0";
       };
-      */
+
       # webcam passthrough
       "/dev/video1" = {
         hostPath = "/dev/v4l/by-id/usb-Alpha_Imaging_Tech._Corp._Razer_Kiyo-video-index0";
@@ -36,7 +36,7 @@
       system.stateVersion = "23.11";
 
       services = {
-        resolved.enable = true;
+        # resolved.enable = true;
 
         moonraker = {
           enable = true;
