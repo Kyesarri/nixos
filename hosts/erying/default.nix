@@ -109,6 +109,7 @@
       polkit_gnome
       pciutils
       zfs
+      netbird
     ];
   };
 }

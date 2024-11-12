@@ -4,16 +4,27 @@
     privateNetwork = false;
     hostAddress = "${secrets.ip.erying}";
     localAddress = "10.231.136.2";
+
     bindMounts = {
-      # pass usb printer by-id to container
-      "/dev/serial/by-id/usb-1a86_USB_Serial-if00-port0" = {
+      # usb serial printer passthrough
+      /*
+      "/dev/ttyUSB0" = {
         hostPath = "/dev/serial/by-id/usb-1a86_USB_Serial-if00-port0";
         isReadOnly = false;
+        mountPoint = "/dev/ttyUSB0";
       };
+      */
       # webcam passthrough
-      "/dev/v4l/by-id/usb-Alpha_Imaging_Tech._Corp._Razer_Kiyo-video-index0" = {
+      "/dev/video1" = {
         hostPath = "/dev/v4l/by-id/usb-Alpha_Imaging_Tech._Corp._Razer_Kiyo-video-index0";
         isReadOnly = false;
+        mountPoint = "/dev/video1";
+      };
+
+      "/dev/video2" = {
+        hostPath = "/dev/v4l/by-id/usb-Alpha_Imaging_Tech._Corp._Razer_Kiyo-video-index1";
+        isReadOnly = false;
+        mountPoint = "/dev/video2";
       };
     };
 
@@ -36,7 +47,6 @@
           settings = {
             authorization = {
               cors_domains = [
-                "https://mainsail.zar.red"
                 "http://192.168.86.200:8001"
                 "http://sankara:8001"
                 "*.home"
@@ -60,37 +70,24 @@
           apiSocket = "/run/klipper/api";
           configFile = "/var/lib/moonraker/config/printer.cfg";
         };
-        # mainsail and fluidd conflict
-        # error: The option `containers.fweedee.services.nginx.virtualHosts.localhost.root' has conflicting definition values
-        /*
+
         mainsail = {
           enable = true;
+          nginx = {
+            # allow for larger gcode uploads to mainsail
+            clientMaxBodySize = "1000m";
+            listen = [
+              {
+                addr = "127.0.0.1";
+                port = 8080;
+              }
+            ];
+          };
         };
-        */
+
         fluidd = {
           enable = true;
         };
-        /*
-        traefik = {
-          enable = true;
-          staticConfigOptions = {
-            log.level = "DEBUG";
-
-            api = {};
-            entryPoints = {
-              http = {
-                address = ":80";
-              };
-              https = {
-                address = ":443";
-              };
-              web = {
-                address = ":8080";
-              };
-            };
-          };
-        };
-        */
       };
 
       networking = {

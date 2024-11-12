@@ -176,6 +176,7 @@
       usbmuxd2
       libirecovery
       ifuse
+      nebula
       inputs.wallpaper-generator.defaultPackage.x86_64-linux
     ];
   };
