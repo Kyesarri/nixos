@@ -38,7 +38,6 @@
   users.users.${spaghetti.user}.uid = 1000;
 
   services = {
-    netbird.enable = true;
     openssh.enable = true;
     xserver.enable = false; # headless
     fstrim.enable = true; # ssd trim in background, not enabled by default :0
@@ -54,7 +53,6 @@
     chrony = {
       enable = true;
       enableNTS = true;
-      # servers = ["ntp.nml.csiro.au" "ntp.ise.canberra.edu.au"];
     };
 
     zfs = {
@@ -70,6 +68,11 @@
         wall.enable = true;
       };
     };
+    ###### TODO ######
+    tailscale.enable = true;
+    tailscale.useRoutingFeatures = "server"; # main requirement for the # TODO
+    tailscale.openFirewall = true;
+    ###### TODO ######
   };
 
   environment = {

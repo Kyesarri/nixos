@@ -40,7 +40,6 @@
   };
 
   services = {
-    netbird.enable = true;
     openssh.enable = true;
     xserver.enable = false; # headless
     fstrim.enable = true; # ssd trim in background, not enabled by default :0
@@ -55,7 +54,6 @@
     chrony = {
       enable = true;
       enableNTS = true;
-      # servers = ["ntp.nml.csiro.au" "ntp.ise.canberra.edu.au"];
     };
 
     zfs = {

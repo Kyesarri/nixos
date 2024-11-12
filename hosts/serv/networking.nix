@@ -13,7 +13,7 @@
 
     firewall = {
       enable = true;
-      # checkReversePath = "loose"; # fixes connection issues with tailscale
+      checkReversePath = "loose";
       allowedTCPPorts = [22 123 443];
       allowedUDPPorts = [443 123];
     };
