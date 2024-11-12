@@ -70,7 +70,7 @@
           apiSocket = "/run/klipper/api";
           configFile = "/var/lib/moonraker/config/printer.cfg";
         };
-
+        /*
         mainsail = {
           enable = true;
           nginx = {
@@ -84,7 +84,7 @@
             ];
           };
         };
-
+        */
         fluidd = {
           enable = true;
         };
