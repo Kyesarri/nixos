@@ -38,6 +38,7 @@
   users.users.${spaghetti.user}.uid = 1000;
 
   services = {
+    netbird.enable = true;
     openssh.enable = true;
     xserver.enable = false; # headless
     fstrim.enable = true; # ssd trim in background, not enabled by default :0
@@ -51,9 +52,11 @@
     };
 
     ###### TODO ######
+    /*
     tailscale.enable = true;
     tailscale.useRoutingFeatures = "server"; # main requirement for the # TODO
     tailscale.openFirewall = true;
+    */
     ###### TODO ######
 
     # used for cameras ntp - can i make this host, use this ntp server? :D
@@ -95,7 +98,7 @@
     systemPackages = with pkgs; [
       lm_sensors # sensor monitoring
       lshw # list hardware
-      tailscale # lets users control tailscale
+      # tailscale # lets users control tailscale
       usbutils
       busybox
       libva-utils
@@ -107,7 +110,6 @@
       pciutils
       age
       zfs
-      netbird
     ];
   };
 }
