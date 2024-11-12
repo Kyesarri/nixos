@@ -107,6 +107,7 @@
       pciutils
       age
       zfs
+      netbird
     ];
   };
 }
