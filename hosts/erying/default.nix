@@ -40,6 +40,7 @@
   };
 
   services = {
+    netbird.enable = true;
     openssh.enable = true;
     xserver.enable = false; # headless
     fstrim.enable = true; # ssd trim in background, not enabled by default :0
@@ -109,7 +110,6 @@
       polkit_gnome
       pciutils
       zfs
-      netbird
     ];
   };
 }
