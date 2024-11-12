@@ -1,6 +1,5 @@
 {
   secrets,
-  config,
   lib,
   ...
 }: {
@@ -14,9 +13,9 @@
 
     firewall = {
       enable = true;
-      checkReversePath = "loose"; # fixes connection issues with tailscale
+      # checkReversePath = "loose"; # fixes connection issues with tailscale
       allowedTCPPorts = [22 123 443];
-      allowedUDPPorts = [config.services.tailscale.port 123];
+      allowedUDPPorts = [443 123];
     };
   };
 
@@ -38,7 +37,7 @@
         linkConfig.RequiredForOnline = "routable";
         networkConfig = {
           IPv6PrivacyExtensions = "yes";
-          MulticastDNS = true;
+          # MulticastDNS = true;
         };
       };
       # testing vlan
@@ -49,7 +48,7 @@
         linkConfig.RequiredForOnline = "routable";
         networkConfig = {
           IPv6PrivacyExtensions = "yes";
-          MulticastDNS = true;
+          # MulticastDNS = true;
         };
       };
     };
@@ -100,7 +99,7 @@
       linkConfig.RequiredForOnline = "routable";
       networkConfig = {
         IPv6PrivacyExtensions = "yes";
-        MulticastDNS = true;
+        # MulticastDNS = true;
       };
     };
 
@@ -123,7 +122,7 @@
       linkConfig.RequiredForOnline = "routable";
       networkConfig = {
         IPv6PrivacyExtensions = "yes";
-        MulticastDNS = true;
+        # MulticastDNS = true;
       };
     };
   };
