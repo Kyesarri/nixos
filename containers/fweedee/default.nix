@@ -75,7 +75,7 @@
           enable = true;
           nginx = {
             # allow for larger gcode uploads to mainsail
-            clientMaxBodySize = "1000m";
+            # clientMaxBodySize = "1000m";
             listen = [
               {
                 addr = "127.0.0.1";
