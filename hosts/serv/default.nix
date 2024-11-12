@@ -51,17 +51,6 @@
       packages = [pkgs.gnome.seahorse];
     };
 
-    ###### TODO ######
-    /*
-    tailscale.enable = true;
-    tailscale.useRoutingFeatures = "server"; # main requirement for the # TODO
-    tailscale.openFirewall = true;
-    */
-    ###### TODO ######
-
-    # used for cameras ntp - can i make this host, use this ntp server? :D
-    # sounds like it'l cause issues
-
     chrony = {
       enable = true;
       enableNTS = true;
@@ -98,7 +87,6 @@
     systemPackages = with pkgs; [
       lm_sensors # sensor monitoring
       lshw # list hardware
-      # tailscale # lets users control tailscale
       usbutils
       busybox
       libva-utils
