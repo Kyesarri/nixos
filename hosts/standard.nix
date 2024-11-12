@@ -134,6 +134,8 @@
       keepassxc # password manager
       home-manager
       inkscape-with-extensions
+      netbird
+      netbird-ui
     ];
   };
 
