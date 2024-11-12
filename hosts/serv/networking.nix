@@ -15,7 +15,7 @@
       enable = true;
       checkReversePath = "loose";
       allowedTCPPorts = [22 123 443];
-      allowedUDPPorts = [443 123];
+      allowedUDPPorts = [443 123 41641];
     };
   };
 

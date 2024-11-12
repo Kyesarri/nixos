@@ -5,8 +5,9 @@
 }: {
   imports = [
     ../../containers
-    ../../containers/home-assistant # oci
-    ../../containers/plex # oci
+    ../../containers/home-assistant
+    ../../containers/plex
+    ../../containers/tailscale
   ];
 
   systemd.services."podman-network-macvlan_lan" = {
@@ -14,6 +15,7 @@
     wantedBy = [
       "podman-home-assistant.service"
       "podman-plex.service"
+      "podman-tailscale.service"
     ];
     serviceConfig = {
       Type = "oneshot";
