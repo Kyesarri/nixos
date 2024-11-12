@@ -20,7 +20,9 @@ in {
       "${toString dir1}:/var/lib/tailscale"
       "/dev/net/tun:/dev/net/tun"
     ];
-
+    cmd = [
+      "--advertise-tags=tag:container"
+    ];
     environment = {
       TZ = "Australia/Melbourne";
       PUID = "1000";
