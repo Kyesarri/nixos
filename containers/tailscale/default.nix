@@ -29,7 +29,7 @@ in {
       PGID = "1000";
       TS_AUTHKEY = "${secrets.password.tailscale}";
       TS_EXTRA_ARGS = "--advertise-tags=tag:container";
-      # TS_STATE_DIR = "/var/lib/tailscale";
+      TS_STATE_DIR = "/var/lib/tailscale";
       # TS_USERSPACE = false;
     };
 
