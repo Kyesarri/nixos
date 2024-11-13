@@ -25,9 +25,10 @@ in {
     ];
     environment = {
       TZ = "Australia/Melbourne";
+      TS_HOSTNAME = "${contName}-podman";
       PUID = "1000";
       PGID = "1000";
-      TS_AUTHKEY = "${secrets.password.tailscale}";
+      # TS_AUTHKEY = "${secrets.password.tailscale}";
       TS_EXTRA_ARGS = "--advertise-tags=tag:container --advertise-routes=${secrets.ip.subnet}/24";
       TS_STATE_DIR = "/var/lib/tailscale";
       # TS_USERSPACE = false;
