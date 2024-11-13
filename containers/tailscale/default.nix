@@ -27,7 +27,7 @@ in {
       TZ = "Australia/Melbourne";
       PUID = "1000";
       PGID = "1000";
-      TS_ROUTES = "${secrets.ip.subnet}/24";
+      ROUTES = "${secrets.ip.subnet}/24";
       TS_AUTHKEY = "${secrets.password.tailscale}";
       TS_EXTRA_ARGS = "--advertise-tags=tag:container";
       TS_STATE_DIR = "/var/lib/tailscale";
