@@ -12,8 +12,8 @@
   };
 
   environment.systemPackages = with pkgs; [
-    podman
-    podman-tui
+    podman # the boi
+    podman-tui # nice tui interface
     intel-gpu-tools # intel igpu monitor
     intel-compute-runtime # openCL filter support (hardware tonemapping and subtitle burn-in) for another #TODO jellyfin
   ];

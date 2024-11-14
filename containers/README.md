@@ -34,7 +34,13 @@ mqtt container, barebones, legacy config dirs
 un-used but working, barebones
 
 ## frigate
-complete frigate container with coral m.2 and igpu, config complete
+complete frigate container with coral m.2 and igpu, config 
+
+## fweedee
+testing grounds for 3d-printer packages
+
+## ghost
+website / blog
 
 ## haos
 barebones container, pending migration from serv to erying
@@ -45,12 +51,17 @@ legacy home-assistant, may migrate to haos config above eventually
 ## homer
 landing page for home services, barebones container with config.yml in tree
 
-## homer-wan
-for website https://www.yur.mom
-used as a webpage for overseerr & plex users
+## i2pd
+for scary dark interwebs
 
 ## invidious
 not running - another project that needs time
+
+## klipper
+3d printer boi - being replaced "eventually" by fweedee
+
+## mainsail
+same as above
 
 ## matter
 basic home assistant matter container, no configs, unsure if working correctly as i've got no matter devices yet
@@ -73,11 +84,29 @@ not running currently
 ## octoprint
 barebones container
 
+## orcaslicer
+3d printer slicer running in a container! quite a cool docker image
+
 ## overseerr
 barebones overseerr container, simple enough to configure once running
 
+## peanut
+ups monitor container - un-used currently may migrate to nspawn container
+
 ## plex
 my first oci container that was working correctly, legacy, barebones (mostly) with some simple storage defined
+
+## syncthing
+sync things between devices
+
+## tailscale
+tailscale subnet router, simple boi, manual provision to own tailnet
+
+## testing-networking
+testing ground, as networking hurts my smooth brain
+
+## ustreamer
+testing pass-through of host webcam to container - probs not needed anymore
 
 ## zigbee2mqtt
 not using currently to be implemented eventually

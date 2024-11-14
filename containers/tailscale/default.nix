@@ -1,4 +1,5 @@
-# simple tailscale subnet router - allows remote access to tailscale clients
+# simple tailscale subnet router - allows remote access to internal LAN
+# wont work OOB - will need to add this client to your tailnet manually ;)
 {
   secrets,
   lib,
@@ -21,6 +22,7 @@ in {
       "${toString dir1}:/var/lib/tailscale"
       "/dev/net/tun:/dev/net/tun"
     ];
+
     cmd = [];
 
     environment = {
