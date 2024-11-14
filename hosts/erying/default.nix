@@ -5,7 +5,9 @@
   spaghetti,
   nix-colors,
   ...
-}: {
+}: let
+  cockpit-apps = pkgs.callPackage packages/cockpit/default.nix {inherit pkgs;};
+in {
   imports = [
     nix-colors.homeManagerModules.default
 
@@ -109,6 +111,8 @@
       polkit_gnome
       pciutils
       zfs
+      cockpit
+      cockpit-apps.podman-containers
     ];
   };
 }
