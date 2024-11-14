@@ -17,7 +17,7 @@
 
   services = {
     resolved.enable = true;
-    transmission = {
+    transmission_3 = {
       enable = true;
       user = "transmission";
       group = "media";
