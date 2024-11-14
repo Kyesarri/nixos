@@ -1,3 +1,4 @@
+# simple tailscale subnet router - allows remote access to tailscale clients
 {
   secrets,
   lib,
@@ -8,7 +9,7 @@
 in {
   system.activationScripts.makeCodeProjectDir = lib.stringAfter ["var"] ''mkdir -v -p ${toString dir1} & chown 1000:1000 ${toString dir1}'';
 
-  virtualisation.oci-containers.containers.${contName} = {
+  virtualisation.oci-containers.containers."${contName}-subnet" = {
     hostname = "${contName}";
 
     autoStart = true;
@@ -20,18 +21,15 @@ in {
       "${toString dir1}:/var/lib/tailscale"
       "/dev/net/tun:/dev/net/tun"
     ];
-    cmd = [
-      # "--advertise-tags=tag:container"
-    ];
+    cmd = [];
+
     environment = {
       TZ = "Australia/Melbourne";
-      TS_HOSTNAME = "${contName}-podman";
+      TS_HOSTNAME = "${contName}-subnet";
       PUID = "1000";
       PGID = "1000";
-      # TS_AUTHKEY = "${secrets.password.tailscale}";
       TS_EXTRA_ARGS = "--advertise-tags=tag:container --advertise-routes=${secrets.ip.subnet}/24";
       TS_STATE_DIR = "/var/lib/tailscale";
-      # TS_USERSPACE = false;
     };
 
     extraOptions = [

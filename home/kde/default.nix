@@ -17,8 +17,8 @@
 
   home-manager.users.${spaghetti.user} = {
     services.kdeconnect = {
-      enable = false; # changed - testing theme swap boi 04.09.24
-      indicator = false; # as above comment
+      enable = true;
+      indicator = true;
     };
 
     home.file.".config/hypr/per-app/kdeconnect.conf" = {

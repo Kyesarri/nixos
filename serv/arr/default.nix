@@ -1,6 +1,7 @@
 {
   spaghetti,
   secrets,
+  pkgs,
   ...
 }: {
   imports = [./flood.nix];
@@ -20,6 +21,7 @@
       enable = true;
       user = "transmission";
       group = "media";
+      package = [pkgs.transmission];
       performanceNetParameters = true;
       openFirewall = true;
       openRPCPort = true;
