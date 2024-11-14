@@ -21,6 +21,7 @@
     ../../home
 
     ../../home/bottom # nice to have terminal task manager / perfmon
+    ../../home/chrony # local time-server
     ../../home/git # some baseline git config in there
     ../../home/kitty # yes pls
     ../../home/codium # need to add server into this
@@ -47,12 +48,7 @@
 
     dbus = {
       enable = true;
-      packages = [pkgs.gnome.seahorse];
-    };
-
-    chrony = {
-      enable = true;
-      enableNTS = true;
+      packages = [pkgs.seahorse];
     };
 
     zfs = {
@@ -68,6 +64,7 @@
         wall.enable = true;
       };
     };
+
     ###### TODO ######
     tailscale.enable = true;
     tailscale.useRoutingFeatures = "server"; # main requirement for the # TODO

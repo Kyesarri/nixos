@@ -21,6 +21,7 @@
 
     ../../home # home-manaager config for all machines
     ../../home/bottom # nice to have terminal task manager / perfmon
+    ../../home/chrony # local time-server
     ../../home/codium # need to add server into this
     ../../home/git # basic git configs
     ../../home/gtk # themes still needed for console
@@ -49,11 +50,6 @@
     dbus = {
       enable = true;
       packages = [pkgs.seahorse];
-    };
-
-    chrony = {
-      enable = true;
-      enableNTS = true;
     };
 
     zfs = {

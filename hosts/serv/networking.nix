@@ -9,7 +9,6 @@
     networkmanager.enable = false;
     useNetworkd = true;
     usePredictableInterfaceNames = lib.mkDefault true;
-    timeServers = ["0.au.pool.ntp.org" "1.au.pool.ntp.org"];
 
     firewall = {
       enable = true;

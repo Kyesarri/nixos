@@ -1,6 +1,5 @@
 {
   secrets,
-  pkgs,
   lib,
   ...
 }: {
@@ -11,7 +10,6 @@
     useNetworkd = true;
     usePredictableInterfaceNames = lib.mkDefault true;
     resolvconf.dnsExtensionMechanism = false;
-    timeServers = ["0.au.pool.ntp.org" "1.au.pool.ntp.org"];
 
     firewall = {
       enable = true;
@@ -22,17 +20,6 @@
   };
 
   services.resolved.dnssec = "false";
-
-  # taken from https://github.com/kivikakk/vyxos/blob/main/modules/net/default.nix
-  systemd.services.tailscale-transport-layer-offloads = {
-    description = "better performance for exit nodes";
-    after = ["network.target"];
-    serviceConfig = {
-      Type = "oneshot";
-      ExecStart = "${pkgs.ethtool}/sbin/ethtool -K lan-self rx-udp-gro-forwarding on rx-gro-list off";
-    };
-    wantedBy = ["default.target"];
-  };
 
   boot.initrd.systemd.network = {
     enable = true;
