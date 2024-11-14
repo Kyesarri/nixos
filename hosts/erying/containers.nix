@@ -16,7 +16,6 @@
     ../../containers/fweedee
     ../../containers/ghost
     ../../containers/homer
-    ../../containers/homer-wan
     ../../containers/i2pd
     ../../containers/matter
     ../../containers/nginx-proxy-manager
