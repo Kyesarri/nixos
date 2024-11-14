@@ -21,7 +21,7 @@
       enable = true;
       user = "transmission";
       group = "media";
-      package = "pkgs.transmission_3";
+      package = pkgs.transmission_3;
       performanceNetParameters = true;
       openFirewall = true;
       openRPCPort = true;
