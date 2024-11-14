@@ -1,6 +1,7 @@
 {
   spaghetti,
   secrets,
+  pkgs,
   ...
 }: {
   imports = [./flood.nix];
