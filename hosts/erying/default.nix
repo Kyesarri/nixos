@@ -21,7 +21,6 @@
 
     ../../home # home-manaager config for all machines
     ../../home/bottom # nice to have terminal task manager / perfmon
-    ../../home/cockpit # testing cockpit-podman web gui
     ../../home/codium # need to add server into this
     ../../home/git # basic git configs
     ../../home/gtk # themes still needed for console
