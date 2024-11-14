@@ -6,7 +6,7 @@
   nix-colors,
   ...
 }: let
-  cockpit-apps = pkgs.callPackage ../../home/cockpit/default.nix {inherit pkgs;};
+  cockpit-podman = pkgs.callPackage ../../home/cockpit/default.nix {inherit pkgs;};
 in {
   imports = [
     nix-colors.homeManagerModules.default
@@ -112,7 +112,7 @@ in {
       pciutils
       zfs
       cockpit
-      cockpit-apps.podman-containers
+      cockpit-podman.cockpit-podman
     ];
   };
 }
