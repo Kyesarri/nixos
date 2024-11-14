@@ -6,7 +6,7 @@
   nix-colors,
   ...
 }: let
-  cockpit-apps = pkgs.callPackage packages/cockpit/default.nix {inherit pkgs;};
+  cockpit-apps = pkgs.callPackage ../../home/cockpit/default.nix {inherit pkgs;};
 in {
   imports = [
     nix-colors.homeManagerModules.default
