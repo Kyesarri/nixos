@@ -1,5 +1,6 @@
 {secrets, ...}: {
   networking.firewall.allowedTCPPorts = [3001]; # open port on host machine
+  #TODO remove above - add macvlan for nspawn
 
   containers.immich = {
     autoStart = true;
