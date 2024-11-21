@@ -36,7 +36,6 @@
     ../../home/kde # TODO rename kdeconnect - maybe not lol - covers lots
     ../../home/ulauncher # TODO rename built theme, add credits to og author
     ../../home/virt # vm / container
-    ../../home/vpn # netbird requires more #TODO on container side
     ../../home/wl-screenrec # testing for laptop - amd / nvidia config
     ../../home/gtk # uhh, nix-colors gtk theme iirc # TODO rename to theme?
     ../../home/prism # wallpapers

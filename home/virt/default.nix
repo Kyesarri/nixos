@@ -12,7 +12,9 @@
       gnome-boxes
     ];
   };
+
   virtualisation.spiceUSBRedirection.enable = true; # usb passthrough to vm
+
   boot = {
     # add extra config for intel systems
     extraModprobeConfig = ''

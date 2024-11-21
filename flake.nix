@@ -141,7 +141,7 @@
         inherit system specialArgs;
         modules = [
           home-manager.nixosModules.home-manager
-          ./hosts/erying # erying Q1J2 (i7 ES 0000 13650HX) 14C20T / iris xe / 32gb ddr5
+          ./hosts/erying # erying Q1J2 (i7 ES 0000 13650HX or 1360P?) 14C20T / iris xe / 32gb ddr5
           {
             environment.systemPackages = [alejandra.defaultPackage.x86_64-linux];
           }
