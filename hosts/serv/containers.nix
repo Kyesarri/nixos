@@ -8,6 +8,7 @@
     ../../containers/home-assistant
     ../../containers/plex
     ../../containers/tailscale
+    ../../containers/immich
   ];
 
   systemd.services."podman-network-macvlan_lan" = {
