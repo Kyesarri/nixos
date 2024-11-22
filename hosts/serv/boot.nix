@@ -1,6 +1,6 @@
 {pkgs, ...}: {
   boot = {
-    kernelPackages = pkgs.linuxPackages_xanmod_latest; # use mainline xanmod kernel
+    kernelPackages = pkgs.linuxPackages_xanmod; # use mainline xanmod kernel
     kernelModules = ["kvm-intel"];
     kernelParams = [
       "intel_iommu=on" # pci device pass-through
