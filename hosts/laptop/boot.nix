@@ -3,7 +3,7 @@
     extraModulePackages = [];
     supportedFilesystems = ["ntfs"];
 
-    kernelPackages = pkgs.linuxPackages_xanmod_latest; # use latest xanmod kernel
+    kernelPackages = pkgs.linuxPackages_latest; # use latest kernel
     kernelModules = ["kvm-amd"];
     initrd.availableKernelModules = ["nvme" "xhci_pci" "ahci" "usb_storage" "usbhid" "sd_mod"];
     initrd.kernelModules = [];

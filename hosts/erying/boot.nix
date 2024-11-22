@@ -1,6 +1,6 @@
 {pkgs, ...}: {
   boot = {
-    kernelPackages = pkgs.linuxPackages_xanmod; # use mainline xanmod kernel
+    kernelPackages = pkgs.linuxPackages_latest; # use latest kernel
     kernelParams = [
       "intel_iommu=on" # pci device pass-through
       "nowatchdog" # disables watchdog, was causing shutdown / reboot issues on laptop

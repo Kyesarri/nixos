@@ -1,7 +1,8 @@
 # simple tailscale subnet router - allows remote access to internal LAN
-# wont work OOB - will need to add this client to your tailnet manually ;)
+# wont work OOB - need to add your own ts_authkey
 {
   secrets,
+  config,
   lib,
   ...
 }: let
@@ -10,7 +11,7 @@
 in {
   system.activationScripts.makeCodeProjectDir = lib.stringAfter ["var"] ''mkdir -v -p ${toString dir1} & chown 1000:1000 ${toString dir1}'';
 
-  virtualisation.oci-containers.containers."${contName}-subnet" = {
+  virtualisation.oci-containers.containers."${config.networking.hostName}-${contName}-subnet" = {
     hostname = "${contName}";
 
     autoStart = true;
@@ -28,6 +29,7 @@ in {
     environment = {
       TZ = "Australia/Melbourne";
       TS_HOSTNAME = "${contName}-subnet";
+      TS_AUTHKEY = "${secrets.password.tailscale}";
       PUID = "1000";
       PGID = "1000";
       TS_EXTRA_ARGS = "--advertise-tags=tag:container --advertise-routes=${secrets.ip.subnet}/24";
