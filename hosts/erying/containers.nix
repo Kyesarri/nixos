@@ -2,7 +2,6 @@
 # along with our macvlan (containers get their own ip / mac on our lan vs using ports on the host)
 {
   secrets,
-  config,
   pkgs,
   ...
 }: {

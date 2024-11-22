@@ -4,7 +4,7 @@
   ...
 }:
 with lib; let
-  cfg = config.cont;
+  cfg = config.cont.tailscale;
 in {
   #
   # few things assumed here - containers storage is mounted in /etc/oci.cont/contName - dirs will be created
