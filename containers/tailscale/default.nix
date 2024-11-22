@@ -39,18 +39,16 @@ in {
       example = "my-fabulous-subnet-router";
       description = "container name";
     };
-    /*
-    authKey = {
-      type = types.anything;
+    authKey = mkOption {
+      type = types.str;
       default = "yernarnaryer";
       example = "tskey-client-123456789011-121314151617";
       description = "tailscale auth key - used for easier provisioning";
     };
-    */
   };
 
   config = mkMerge [
-    (mkIf (cfg.tailscale.enable == true) {
+    (mkIf (cfg.enable == true) {
       #
       system.activationScripts."make${cfg.contName}Dir" =
         lib.stringAfter ["var"] ''mkdir -v -p /etc/oci.cont/${toString cfg.contName} & chown 1000:1000 /etc/oci.cont/${toString cfg.contName}'';
