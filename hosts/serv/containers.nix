@@ -15,7 +15,7 @@
       enable = true;
       ipAddr = "${secrets.ip.adguard-serv}";
       image = "adguard/adguardhome:latest";
-      contName = "erying-adguard";
+      contName = "serv-adguard";
       timeZone = "Australia/Melbourne";
     };
     tailscale = {
