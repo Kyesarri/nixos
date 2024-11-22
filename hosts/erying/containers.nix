@@ -61,10 +61,10 @@
   cont = {
     tailscale = {
       enable = true;
-      ipAddr = "${secrets.ip.tailscale}";
-      subnet = "${secrets.ip.tailscale}";
+      ipAddr = "${secrets.ip.tailscale-erying}";
+      subnet = "${secrets.ip.subnet}";
       contName = "erying-tailscale-subnet";
-      authKey = "${secrets.password.tailscale-erying}";
+      authKey = "${secrets.password.tailscale}";
     };
   };
 }
