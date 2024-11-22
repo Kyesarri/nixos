@@ -64,7 +64,7 @@
       ipAddr = "${secrets.ip.tailscale-erying}";
       subnet = "${secrets.ip.subnet}";
       contName = "erying-tailscale-subnet";
-      authKey = "${toString secrets.password.tailscale}";
+      authKey = ["${toString secrets.password.tailscale}"];
     };
   };
 }
