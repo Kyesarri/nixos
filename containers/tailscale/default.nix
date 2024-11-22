@@ -33,7 +33,7 @@ in {
       example = "10.10.10.0";
       description = "set containers ip address";
     };
-    contName = {
+    contName = mkOption {
       type = types.str;
       default = "tailscale-${config.networking.hostName}-subnet";
       example = "my-fabulous-subnet-router";
