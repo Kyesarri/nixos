@@ -13,7 +13,7 @@ in {
   # container will receive a tag "containers" in tailscale
   # will by default publish subnets
   #
-  options.tailscale = {
+  options.cont.tailscale = {
     enable = mkOption {
       type = types.bool;
       default = false;
