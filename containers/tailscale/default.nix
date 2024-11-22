@@ -1,4 +1,5 @@
 {
+  secrets,
   config,
   lib,
   ...
@@ -38,12 +39,14 @@ in {
       example = "my-fabulous-subnet-router";
       description = "container name";
     };
+    /*
     authKey = mkOption {
       type = types.str;
       default = "yernarnaryer";
       example = "tskey-client-123456789011-121314151617";
       description = "tailscale auth key - used for easier provisioning";
     };
+    */
   };
 
   config = mkMerge [
@@ -70,8 +73,8 @@ in {
         environment = {
           TZ = "Australia/Melbourne";
           TS_HOSTNAME = "${cfg.contName}";
-          # TS_AUTHKEY = "${secrets.password.tailscale}";
-          TS_AUTHKEY = "${cfg.authKey}";
+          TS_AUTHKEY = "${secrets.password.tailscale}";
+          # TS_AUTHKEY = "${cfg.authKey}";
           PUID = "1000";
           PGID = "1000";
           TS_EXTRA_ARGS = "--advertise-tags=tag:container --advertise-routes=${cfg.subnet}/24";

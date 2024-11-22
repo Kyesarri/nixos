@@ -33,7 +33,7 @@
       ipAddr = "${secrets.ip.tailscale-serv}";
       subnet = "${secrets.ip.subnet}";
       contName = "serv-tailscale-subnet";
-      authKey = "${secrets.password.tailscale}";
+      # authKey = "${secrets.password.tailscale}";
     };
   };
 }
