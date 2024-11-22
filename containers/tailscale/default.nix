@@ -1,44 +1,87 @@
-# simple tailscale subnet router - allows remote access to internal LAN
-# wont work OOB - need to add your own ts_authkey
 {
-  secrets,
   config,
   lib,
   ...
-}: let
-  contName = "tailscale";
-  dir1 = "/etc/oci.cont/${contName}";
+}:
+with lib; let
+  cfg = config.cont;
 in {
-  system.activationScripts.makeCodeProjectDir = lib.stringAfter ["var"] ''mkdir -v -p ${toString dir1} & chown 1000:1000 ${toString dir1}'';
-
-  virtualisation.oci-containers.containers."${contName}-subnet" = {
-    hostname = "${contName}";
-
-    autoStart = true;
-
-    image = "tailscale/tailscale:latest";
-
-    volumes = [
-      "/etc/localtime:/etc/localtime:ro"
-      "${toString dir1}:/var/lib/tailscale"
-      "/dev/net/tun:/dev/net/tun"
-    ];
-
-    cmd = [];
-
-    environment = {
-      TZ = "Australia/Melbourne";
-      TS_HOSTNAME = "${config.networking.hostName}-${contName}-subnet";
-      TS_AUTHKEY = "${secrets.password.tailscale}";
-      PUID = "1000";
-      PGID = "1000";
-      TS_EXTRA_ARGS = "--advertise-tags=tag:container --advertise-routes=${secrets.ip.subnet}/24";
-      TS_STATE_DIR = "/var/lib/tailscale";
+  #
+  # few things assumed here - containers storage is mounted in /etc/oci.cont/contName - dirs will be created
+  # we're using a macvlan configuration with the name macvlan_lan
+  # containers are tested under podman - will probably work fine under docker
+  # container will receive a tag "containers" in tailscale
+  # will by default publish subnets
+  #
+  options.tailscale = {
+    enable = mkOption {
+      type = types.bool;
+      default = false;
+      example = true;
+      description = "enable tailscale subnet container";
     };
-
-    extraOptions = [
-      "--network=macvlan_lan:ip=${secrets.ip.tailscale}" # wont work for multiple machines with this value
-      "--privileged"
-    ];
+    ipAddr = mkOption {
+      type = types.str;
+      default = ["10.10.0.200"];
+      example = ["10.10.10.1"];
+      description = "set containers ip address";
+    };
+    subnet = mkOption {
+      type = types.str;
+      default = ["10.10.0.0"];
+      example = ["10.10.10.0"];
+      description = "set containers ip address";
+    };
+    contName = {
+      type = types.str;
+      default = ["tailscale-${config.networking.hostName}-subnet"];
+      example = ["my-fabulous-subnet-router"];
+      description = "container name";
+    };
+    authKey = {
+      type = types.str;
+      default = [""];
+      example = ["tskey-client-123456789011-121314151617"];
+      description = "tailscale auth key - used for easier provisioning";
+    };
   };
+
+  config = mkMerge [
+    (mkIf (cfg.tailscale.enable == true) {
+      #
+      system.activationScripts."make${cfg.contName}Dir" =
+        lib.stringAfter ["var"] ''mkdir -v -p /etc/oci.cont/${toString cfg.contName} & chown 1000:1000 /etc/oci.cont/${toString cfg.contName}'';
+
+      virtualisation.oci-containers.containers."${cfg.contName}" = {
+        hostname = "${cfg.contName}";
+
+        autoStart = true;
+
+        image = "tailscale/tailscale:latest";
+
+        volumes = [
+          "/etc/localtime:/etc/localtime:ro"
+          "/etc/oci.cont/${toString cfg.contName}:/var/lib/tailscale"
+          "/dev/net/tun:/dev/net/tun"
+        ];
+
+        cmd = [];
+
+        environment = {
+          TZ = "Australia/Melbourne";
+          TS_HOSTNAME = "${cfg.contName}";
+          TS_AUTHKEY = "${cfg.authKey}";
+          PUID = "1000";
+          PGID = "1000";
+          TS_EXTRA_ARGS = "--advertise-tags=tag:container --advertise-routes=${cfg.subnet}/24";
+          TS_STATE_DIR = "/var/lib/tailscale";
+        };
+
+        extraOptions = [
+          "--network=macvlan_lan:ip=${cfg.ipAddr}"
+          "--privileged"
+        ];
+      };
+    })
+  ];
 }

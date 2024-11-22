@@ -26,7 +26,7 @@
     ../../containers/overseerr
     # ../../containers/netbird # this wont work out the box :D
     ../../containers/syncthing
-    ../../containers/tailscale/module.nix #TODO pending ip config
+    ../../containers/tailscale #TODO pending ip config
     # ../../containers/zitadel
   ];
 
