@@ -1,5 +1,4 @@
 {
-  secrets,
   config,
   lib,
   ...
@@ -71,9 +70,8 @@ in {
         environment = {
           TZ = "Australia/Melbourne";
           TS_HOSTNAME = "${cfg.contName}";
-          TS_AUTHKEY = "${secrets.password.tailscale}";
-
-          # TS_AUTHKEY = "${cfg.authKey}";
+          # TS_AUTHKEY = "${secrets.password.tailscale}";
+          TS_AUTHKEY = "${cfg.authKey}";
           PUID = "1000";
           PGID = "1000";
           TS_EXTRA_ARGS = "--advertise-tags=tag:container --advertise-routes=${cfg.subnet}/24";

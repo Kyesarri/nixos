@@ -25,7 +25,6 @@
     ../../containers/overseerr
     # ../../containers/netbird # this wont work out the box :D
     ../../containers/syncthing
-    ../../containers/tailscale #TODO pending ip config
     # ../../containers/zitadel
   ];
 
@@ -47,6 +46,7 @@
       "podman-orcaslicer.service"
       "podman-overseerr.service"
       "podman-syncthing.service"
+      "podman-erying-tailscale-subnet.service"
     ];
     serviceConfig = {
       Type = "oneshot";
@@ -64,7 +64,7 @@
       ipAddr = "${secrets.ip.tailscale-erying}";
       subnet = "${secrets.ip.subnet}";
       contName = "erying-tailscale-subnet";
-      # authKey = "${toString secrets.password.tailscale}";
+      authKey = "${secrets.password.tailscale}";
     };
   };
 }

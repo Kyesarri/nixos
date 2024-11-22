@@ -1,4 +1,8 @@
 {pkgs, ...}: {
+  imports = [
+    ./tailscale
+  ];
+
   virtualisation = {
     oci-containers.backend = "podman";
 
