@@ -11,7 +11,7 @@
 in {
   system.activationScripts.makeCodeProjectDir = lib.stringAfter ["var"] ''mkdir -v -p ${toString dir1} & chown 1000:1000 ${toString dir1}'';
 
-  virtualisation.oci-containers.containers."${config.networking.hostName}-${contName}-subnet" = {
+  virtualisation.oci-containers.containers."${contName}-subnet" = {
     hostname = "${contName}";
 
     autoStart = true;
@@ -28,7 +28,7 @@ in {
 
     environment = {
       TZ = "Australia/Melbourne";
-      TS_HOSTNAME = "${contName}-subnet";
+      TS_HOSTNAME = "${config.networking.hostName}-${contName}-subnet";
       TS_AUTHKEY = "${secrets.password.tailscale}";
       PUID = "1000";
       PGID = "1000";
