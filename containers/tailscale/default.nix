@@ -33,7 +33,7 @@ in {
       description = "container name";
     };
     timeZone = mkOption {
-      type = type.str;
+      type = types.str;
       default = "Australia/Melbourne";
       example = "Australia/Broken_Hill";
       description = "set database timezone";
