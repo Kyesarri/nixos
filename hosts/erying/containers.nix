@@ -25,6 +25,7 @@
     ../../containers/overseerr
     # ../../containers/netbird # this wont work out the box :D
     ../../containers/syncthing
+    ../../containers/tailscale
     # ../../containers/zitadel
   ];
 
