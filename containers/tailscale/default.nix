@@ -37,7 +37,7 @@ in {
     };
 
     extraOptions = [
-      "--network=macvlan_lan:ip=${secrets.ip.tailscale}"
+      "--network=macvlan_lan:ip=${secrets.ip.tailscale}" # wont work for multiple machines with this value
       "--privileged"
     ];
   };
