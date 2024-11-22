@@ -7,7 +7,6 @@
 }: {
   imports = [
     ../../containers
-    ../../containers/adguard
     ../../containers/cpai
     ../../containers/doubletake
     ../../containers/emqx
@@ -28,6 +27,26 @@
     # ../../containers/zitadel
   ];
 
+  # container module config
+  cont = {
+    adguard = {
+      enable = true;
+      ipAddr = "${secrets.ip.adguard-erying}";
+      image = "adguard/adguardhome:latest";
+      contName = "erying-adguard";
+      timeZone = "Australia/Melbourne";
+    };
+    tailscale = {
+      enable = true;
+      ipAddr = "${secrets.ip.tailscale-erying}";
+      # image = "";
+      subnet = "${secrets.ip.subnet}";
+      contName = "erying-tailscale-subnet";
+      timeZone = "Australia/Melbourne";
+    };
+  };
+
+  # macvlan config
   systemd.services."create-podman-network-macvlan_lan" = {
     path = [pkgs.podman];
     wantedBy = [
@@ -56,15 +75,5 @@
     script = ''
       podman network exists macvlan_lan || podman network create --driver macvlan --opt parent=enp4s0 --subnet ${toString secrets.ip.subnet}/24 --ip-range ${toString secrets.ip.range}/24 --gateway ${toString secrets.ip.gateway} --disable-dns=false macvlan_lan
     '';
-  };
-
-  cont = {
-    tailscale = {
-      enable = true;
-      ipAddr = "${secrets.ip.tailscale-erying}";
-      subnet = "${secrets.ip.subnet}";
-      contName = "erying-tailscale-subnet";
-      # authKey = "${secrets.password.tailscale}";
-    };
   };
 }

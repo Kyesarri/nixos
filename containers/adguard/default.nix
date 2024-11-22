@@ -1,38 +1,74 @@
 {
+  config,
   lib,
-  secrets,
   ...
-}: let
-  contName = "adguard";
-
-  dir1 = "/etc/oci.cont/${contName}/work";
-
-  dir2 = "/etc/oci.cont/${contName}/conf";
+}:
+with lib; let
+  cfg = config.cont.adguard;
 in {
-  system.activationScripts."make${contName}Dir" = lib.stringAfter ["var"] ''mkdir -v -p ${toString dir1} ${toString dir2} & chown 1000:1000 ${toString dir1} & chown 1000:1000 ${toString dir2}'';
-
-  virtualisation.oci-containers.containers."${contName}" = {
-    hostname = "${contName}";
-
-    autoStart = true;
-
-    image = "adguard/adguardhome:latest";
-
-    volumes = [
-      "/etc/localtime:/etc/localtime:ro"
-      "${toString dir1}:/opt/adguardhome/work"
-      "${toString dir2}:/opt/adguardhome/conf"
-    ];
-
-    environment = {
-      PUID = "1000";
-      PGID = "1000";
+  options.cont.adguard = {
+    enable = mkOption {
+      type = types.bool;
+      default = false;
+      example = true;
+      description = "enable adguard container";
     };
-
-    extraOptions = [
-      "--privileged"
-      "--network=macvlan_lan"
-      "--ip=${secrets.ip.adguard}"
-    ];
+    ipAddr = mkOption {
+      type = types.str;
+      default = "10.10.0.200";
+      example = "10.10.10.1";
+      description = "set containers ip address";
+    };
+    contName = mkOption {
+      type = types.str;
+      default = "adguard-${config.networking.hostName}";
+      example = "adguard-cool-hostname";
+      description = "container name";
+    };
+    timeZone = mkOption {
+      type = type.str;
+      default = "Australia/Melbourne";
+      example = "Australia/Broken_Hill";
+      description = "set database timezone";
+    };
+    image = mkOption {
+      type = type.str;
+      default = "adguard/adguardhome:latest";
+      example = "adguard/adguardhome:edge";
+      description = "image for container";
+    };
   };
+
+  config = mkMerge [
+    (mkIf (cfg.enable == true) {
+      system.activationScripts."make${cfg.contName}Dir" =
+        lib.stringAfter ["var"]
+        ''mkdir -v -p /etc/oci.cont/${cfg.contName} /etc/oci.cont/${cfg.contName}/work /etc/oci.cont/${cfg.contName}/conf & chown -R 1000:1000 /etc/oci.cont/${cfg.contName}'';
+
+      virtualisation.oci-containers.containers."${cfg.contName}" = {
+        hostname = "${cfg.contName}";
+
+        autoStart = true;
+
+        image = "${cfg.image}";
+
+        volumes = [
+          "/etc/localtime:/etc/localtime:ro"
+          "/etc/oci.cont/${cfg.contName}/work:/opt/adguardhome/work"
+          "/etc/oci.cont/${cfg.contName}/conf:/opt/adguardhome/conf"
+        ];
+
+        environment = {
+          TZ = "${cfg.timeZone}";
+          PUID = "1000";
+          PGID = "1000";
+        };
+
+        extraOptions = [
+          "--privileged"
+          "--network=macvlan_lan:ip=${cfg.ipAddr}"
+        ];
+      };
+    })
+  ];
 }

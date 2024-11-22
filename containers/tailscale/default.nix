@@ -7,13 +7,6 @@
 with lib; let
   cfg = config.cont.tailscale;
 in {
-  #
-  # few things assumed here - containers storage is mounted in /etc/oci.cont/contName - dirs will be created
-  # we're using a macvlan configuration with the name macvlan_lan
-  # containers are tested under podman - will probably work fine under docker
-  # container will receive a tag "containers" in tailscale
-  # will by default publish subnets
-  #
   options.cont.tailscale = {
     enable = mkOption {
       type = types.bool;
@@ -39,14 +32,18 @@ in {
       example = "my-fabulous-subnet-router";
       description = "container name";
     };
-    /*
+    timeZone = mkOption {
+      type = type.str;
+      default = "Australia/Melbourne";
+      example = "Australia/Broken_Hill";
+      description = "set database timezone";
+    };
     authKey = mkOption {
       type = types.str;
-      default = "yernarnaryer";
+      default = "change-me";
       example = "tskey-client-123456789011-121314151617";
-      description = "tailscale auth key - used for easier provisioning";
+      description = "tailscale auth key - used for easier provisioning - not sure if is broken or just my systems playing funny-buggers";
     };
-    */
   };
 
   config = mkMerge [
@@ -60,7 +57,7 @@ in {
 
         autoStart = true;
 
-        image = "tailscale/tailscale:latest";
+        image = "${cfg.image}";
 
         volumes = [
           "/etc/localtime:/etc/localtime:ro"
@@ -71,7 +68,7 @@ in {
         cmd = [];
 
         environment = {
-          TZ = "Australia/Melbourne";
+          TZ = "${cfg.timeZone}";
           TS_HOSTNAME = "${cfg.contName}";
           TS_AUTHKEY = "${secrets.password.tailscale}";
           # TS_AUTHKEY = "${cfg.authKey}";
