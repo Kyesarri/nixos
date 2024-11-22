@@ -44,6 +44,12 @@ in {
       example = "tskey-client-123456789011-121314151617";
       description = "tailscale auth key - used for easier provisioning - not sure if is broken or just my systems playing funny-buggers";
     };
+    image = mkOption {
+      type = types.str;
+      default = "tailscale/tailscale:latest";
+      example = "adguard/adguardhome";
+      description = "image for container";
+    };
   };
 
   config = mkMerge [
