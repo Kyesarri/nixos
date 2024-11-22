@@ -40,7 +40,7 @@ in {
     };
     authKey = {
       type = types.anything;
-      default = "";
+      default = "yernarnaryer";
       example = "tskey-client-123456789011-121314151617";
       description = "tailscale auth key - used for easier provisioning";
     };
