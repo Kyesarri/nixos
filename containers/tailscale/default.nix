@@ -22,26 +22,26 @@ in {
     };
     ipAddr = mkOption {
       type = types.str;
-      default = ["10.10.0.200"];
-      example = ["10.10.10.1"];
+      default = "10.10.0.200";
+      example = "10.10.10.1";
       description = "set containers ip address";
     };
     subnet = mkOption {
       type = types.str;
-      default = ["10.10.0.0"];
-      example = ["10.10.10.0"];
+      default = "10.10.0.0";
+      example = "10.10.10.0";
       description = "set containers ip address";
     };
     contName = {
       type = types.str;
-      default = ["tailscale-${config.networking.hostName}-subnet"];
-      example = ["my-fabulous-subnet-router"];
+      default = "tailscale-${config.networking.hostName}-subnet";
+      example = "my-fabulous-subnet-router";
       description = "container name";
     };
     authKey = {
       type = types.str;
-      default = [""];
-      example = ["tskey-client-123456789011-121314151617"];
+      default = "";
+      example = "tskey-client-123456789011-121314151617";
       description = "tailscale auth key - used for easier provisioning";
     };
   };
