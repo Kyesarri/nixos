@@ -25,7 +25,7 @@
     ../../containers/overseerr
     # ../../containers/netbird # this wont work out the box :D
     ../../containers/syncthing
-    # ../../containers/tailscale #TODO pending ip config
+    ../../containers/tailscale/module.nix #TODO pending ip config
     # ../../containers/zitadel
   ];
 
@@ -56,5 +56,15 @@
     script = ''
       podman network exists macvlan_lan || podman network create --driver macvlan --opt parent=enp4s0 --subnet ${toString secrets.ip.subnet}/24 --ip-range ${toString secrets.ip.range}/24 --gateway ${toString secrets.ip.gateway} --disable-dns=false macvlan_lan
     '';
+  };
+
+  cont = {
+    tailscale = {
+      enable = true;
+      ipAddr = "${secrets.ip.tailscale}";
+      subnet = "${secrets.ip.tailscale}";
+      contName = "erying-tailscale-subnet";
+      authKey = "${secrets.password.tailscale-erying}";
+    };
   };
 }
