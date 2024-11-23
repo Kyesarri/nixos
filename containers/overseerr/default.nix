@@ -27,7 +27,7 @@ in {
 
     extraOptions = [
       "--network=macvlan_lan"
-      "--dns=${secrets.ip.adguard}" # testing - will this fix some issues i've been seeing? probs not...
+      "--dns=${secrets.ip.adguard-erying}" # testing - will this fix some issues i've been seeing? probs not...
       "--ip=${secrets.ip.overseerr}"
     ];
   };
