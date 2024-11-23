@@ -17,7 +17,7 @@ in {
       type = types.str;
       default = "10.10.0.200";
       example = "10.10.10.1";
-      description = "set containers ip address";
+      description = "container macvlan ip address";
     };
     contName = mkOption {
       type = types.str;
@@ -29,13 +29,13 @@ in {
       type = types.str;
       default = "Australia/Melbourne";
       example = "Australia/Broken_Hill";
-      description = "set database timezone";
+      description = "database timezone";
     };
     image = mkOption {
       type = types.str;
       default = "adguard/adguardhome:latest";
       example = "adguard/adguardhome:edge";
-      description = "image for container";
+      description = "container image";
     };
   };
 
