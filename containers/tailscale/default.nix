@@ -85,7 +85,7 @@ in {
         };
 
         extraOptions = [
-          "--network=macvlan_lan:ip=${cfg.ipAddr}:interface_name=eth0"
+          "--network=macvlan_lan:interface_name=eth0:ip=${cfg.ipAddr}"
           "--network=podman-backend:interface_name=eth1"
           "--privileged"
         ];
