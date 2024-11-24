@@ -26,8 +26,6 @@ in {
 
     environment = {
       TZ = "Australia/Melbourne";
-      PUID = "1000";
-      PGID = "1000";
     };
 
     extraOptions = [
