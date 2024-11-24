@@ -40,7 +40,7 @@ in {
         path = [pkgs.podman];
         description = "create and start backend podman network for container comms";
         wantedBy = ["podman-tailscale-${config.networking.hostName}-subnet.service"];
-        script = ''podman network exists podman-backend || podman network create --subnet=${cfg.subnet}/${cfg.mask} --ip-range=${cfg.range}/${cfg.mask} podman-backend'';
+        script = ''podman network exists podman-backend || podman network create --internal --subnet=${cfg.subnet}/${cfg.mask} --ip-range=${cfg.range}/${cfg.mask} podman-backend'';
         serviceConfig = {
           Type = "oneshot";
           RemainAfterExit = true;
