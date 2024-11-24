@@ -42,7 +42,7 @@ in {
         wants = ["network-online.target"];
         after = ["network-online.target"];
         requiredBy = [];
-        script = ''podman network exists podman-backend || podman network create --subnet=${cfg.subnet}/${cfg.mask} --ip-range=${cfg.range} podman-backend'';
+        script = ''podman network exists podman-backend || podman network create --subnet=${cfg.subnet}/${cfg.mask} --ip-range=${cfg.range}/${cfg.mask} podman-backend'';
         serviceConfig = {
           Type = "oneshot";
           RemainAfterExit = true;
