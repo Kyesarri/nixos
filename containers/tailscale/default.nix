@@ -86,9 +86,11 @@ in {
         # needed to add interface names to each interface, tailscale was trying to reach the wwws
         # via the podman-backend network - which is currently isolated
         # podman-backend was receiving eth0 by default
+        #
+        # is not actually the issue I believe testing bringing that network down now :(
         extraOptions = [
           "--network=macvlan_lan:ip=${cfg.ipAddr},interface_name=eth0"
-          "--network=podman-backend:interface_name=eth1"
+          # "--network=podman-backend:interface_name=eth1"
           "--privileged"
         ];
       };
