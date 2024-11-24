@@ -38,7 +38,7 @@ in {
     (mkIf (cfg.enable == true) {
       systemd.services.podman-backend-network = {
         path = [pkgs.podman];
-        description = "create and start backend podman network for container comms";
+        description = "create backend podman network";
         wantedBy = ["podman-tailscale-${config.networking.hostName}-subnet.service"];
         script = ''podman network exists podman-backend || podman network create --internal --subnet=${cfg.subnet}/${cfg.mask} --ip-range=${cfg.range}/${cfg.mask} podman-backend'';
         serviceConfig = {

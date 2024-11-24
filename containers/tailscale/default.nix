@@ -40,8 +40,8 @@ in {
     /*
     authKey = mkOption {
       type = types.str;
-      default = "change-me";
-      example = "tskey-client-123456789011-121314151617";
+      default = "";
+      example = "tskey-client-123-xyz";
       description = "tailscale auth key - used for easier provisioning - not sure if is broken or just my systems playing funny-buggers";
     };
     */
@@ -77,9 +77,11 @@ in {
         environment = {
           TZ = "${cfg.timeZone}";
           TS_HOSTNAME = "${cfg.contName}";
+
           # neither were working all of a sudden, smh
           # TS_AUTHKEY = "${secrets.password.tailscale}";
           # TS_AUTHKEY = "${cfg.authKey}";
+
           PUID = "1000";
           PGID = "1000";
           TS_EXTRA_ARGS = "--advertise-tags=tag:container --advertise-routes=${cfg.subnet}/24";
@@ -87,10 +89,14 @@ in {
         };
 
         # needed to add interface names to each interface, tailscale was trying to reach the wwws
-        # via the podman-backend network - which is currently isolated
+        # via the podman-backend network - which is currently isolated -- nope i was mistaken, wasn't isolated --
         # podman-backend was receiving eth0 by default
         #
-        # is not actually the issue I believe testing bringing that network down now :(
+        # is not actually the issue I believe, bringing that network down now :(
+        #
+        # issue being the internal podman-backend network had a gateway - tailscale does not like
+        # networks with a gateway but no connectivity, fixed by running --internal on the
+        # systemd service bringing up the internal network
         extraOptions = [
           "--network=macvlan_lan:ip=${cfg.ipAddr},interface_name=eth0"
           "--network=podman-backend:interface_name=eth1"

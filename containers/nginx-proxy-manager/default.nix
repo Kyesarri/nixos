@@ -1,17 +1,18 @@
 {
-  spaghetti,
   secrets,
   lib,
   ...
 }: let
-  hostName = "nginx-proxy-manager";
-  dir1 = "/home/${spaghetti.user}/.containers/${hostName}/data";
-  dir2 = "/home/${spaghetti.user}/.containers/${hostName}/letsencrypt";
+  contName = "nginx-proxy-manager";
+  dir1 = "/etc/oci.cont/${contName}/data";
+  dir2 = "/etc/oci.cont/${contName}/letsencrypt";
 in {
-  system.activationScripts.makeNginxDir = lib.stringAfter ["var"] ''mkdir -v -m 777 -p ${toString dir1} ${toString dir2}''; # shitty perms, "temp" workaround
+  system.activationScripts.makeNginxDir =
+    lib.stringAfter
+    ["var"] ''mkdir -v -p ${dir1} ${dir2} & chown -R 1000:1000 ${dir1}'';
 
-  virtualisation.oci-containers.containers.${hostName} = {
-    hostname = "${hostName}";
+  virtualisation.oci-containers.containers.${contName} = {
+    hostname = "${contName}";
 
     autoStart = true;
 
@@ -19,9 +20,15 @@ in {
 
     volumes = [
       "/etc/localtime:/etc/localtime:ro"
-      "${toString dir1}:/data"
-      "${toString dir2}:/etc/letsencrypt"
+      "${dir1}:/data"
+      "${dir2}:/etc/letsencrypt"
     ];
+
+    environment = {
+      TZ = "Australia/Melbourne";
+      PUID = "1000";
+      PGID = "1000";
+    };
 
     extraOptions = [
       "--network=macvlan_lan:ip=${secrets.ip.nginx}"

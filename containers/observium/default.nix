@@ -6,8 +6,10 @@
   contName = "observium";
   dir1 = "/etc/oci.cont/${contName}/logs";
   dir2 = "/etc/oci.cont/${contName}/rrd";
+  dir3 = "/etc/oci.cont/${contName}/data";
 in {
-  system.activationScripts."make${contName}Dir" = lib.stringAfter ["var"] ''mkdir -v -p ${toString dir1} & chown 1000:1000 ${toString dir1} & chown 1000:1000 ${toString dir2}'';
+  system.activationScripts."make${contName}Dir" =
+    lib.stringAfter ["var"] ''mkdir -v -p ${dir1} ${dir2} ${dir3} & chown -R 1000:1000 ${dir1}'';
 
   virtualisation.oci-containers.containers."${contName}" = {
     hostname = "${contName}";
@@ -18,8 +20,8 @@ in {
 
     volumes = [
       "/etc/localtime:/etc/localtime:ro"
-      "${toString dir1}:/opt/observium/logs"
-      "${toString dir2}:/opt/observium/rrd"
+      "${dir1}:/opt/observium/logs"
+      "${dir2}:/opt/observium/rrd"
     ];
 
     environment = {
@@ -31,13 +33,12 @@ in {
       OBSERVIUM_DB_NAME = "observium";
       OBSERVIUM_DB_USER = "observium";
       OBSERVIUM_DB_PASS = "passw0rd";
-      OBSERVIUM_BASE_URL = "http://observium.mbixtech.com:8888";
+      OBSERVIUM_BASE_URL = "http://${secrets.ip.observium}:8888";
       TZ = "Australia/Melbourne";
     };
 
     extraOptions = [
-      "--network=macvlan_lan"
-      "--ip=${secrets.ip.observium}"
+      "--network=macvlan_lan:ip=${secrets.ip.observium}"
     ];
   };
 }
