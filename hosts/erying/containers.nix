@@ -31,8 +31,9 @@
   cont = {
     backend-network = {
       enable = true; # probably want this on
-      subnet = "";
-      ip-range = "";
+      subnet = "${secrets.vlan.erying.subnet}";
+      range = "${secrets.vlan.erying.range}";
+      mask = "${secrets.vlan.erying.mask}";
     };
     adguard = {
       enable = true;

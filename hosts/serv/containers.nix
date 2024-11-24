@@ -11,6 +11,12 @@
   ];
 
   cont = {
+    backend-network = {
+      enable = true; # probably want this on
+      subnet = "${secrets.vlan.serv.subnet}";
+      range = "${secrets.vlan.serv.range}";
+      mask = "${secrets.vlan.serv.mask}";
+    };
     adguard = {
       enable = true;
       ipAddr = "${secrets.ip.adguard-serv}";
