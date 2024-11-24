@@ -32,6 +32,7 @@ in {
 
     extraOptions = [
       "--network=macvlan_lan:ip=${secrets.ip.nginx}"
+      "--privileged"
     ];
   };
 }
