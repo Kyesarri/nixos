@@ -1,5 +1,6 @@
 {
   pkgs,
+  config,
   secrets,
   ...
 }: {
@@ -28,7 +29,7 @@
       enable = true;
       ipAddr = "${secrets.ip.tailscale-serv}";
       subnet = "${secrets.ip.subnet}";
-      contName = "serv-tailscale-subnet";
+      contName = "tailscale-${config.networking.hostName}-subnet";
       # authKey = "${secrets.password.tailscale}";
     };
   };
@@ -38,7 +39,7 @@
     wantedBy = [
       "podman-home-assistant.service"
       "podman-plex.service"
-      "podman-serv-tailscale-subnet.service"
+      "podman-tailscale-${config.networking.hostName}-subnet.service"
     ];
     serviceConfig = {
       Type = "oneshot";

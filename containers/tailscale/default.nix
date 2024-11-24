@@ -1,5 +1,4 @@
 {
-  secrets,
   config,
   lib,
   ...
@@ -76,14 +75,17 @@ in {
         environment = {
           TZ = "${cfg.timeZone}";
           TS_HOSTNAME = "${cfg.contName}";
-          TS_AUTHKEY = "${secrets.password.tailscale}";
-          # TS_AUTHKEY = "${cfg.authKey}";
+          # TS_AUTHKEY = "${secrets.password.tailscale}";
+          TS_AUTHKEY = "${cfg.authKey}";
           PUID = "1000";
           PGID = "1000";
           TS_EXTRA_ARGS = "--advertise-tags=tag:container --advertise-routes=${cfg.subnet}/24";
           TS_STATE_DIR = "/var/lib/tailscale";
         };
 
+        # needed to add interface names to each interface, tailscale was trying to reach the wwws
+        # via the podman-backend network - which is currently isolated
+        # podman-backend was receiving eth0 by default
         extraOptions = [
           "--network=macvlan_lan:ip=${cfg.ipAddr},interface_name=eth0"
           "--network=podman-backend:interface_name=eth1"
