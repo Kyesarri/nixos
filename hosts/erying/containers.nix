@@ -46,7 +46,7 @@
     tailscale = {
       enable = true;
       ipAddr = "${secrets.ip.tailscale-erying}";
-      # image = "";
+      image = "tailscale/tailscale:latest";
       subnet = "${secrets.ip.subnet}";
       contName = "tailscale-${config.networking.hostName}-subnet";
       timeZone = "Australia/Melbourne";
@@ -72,7 +72,7 @@
       "podman-orcaslicer.service"
       "podman-overseerr.service"
       "podman-syncthing.service"
-      "podman-erying-tailscale-subnet.service"
+      "podman-tailscale-${config.networking.hostName}-subnet.service"
     ];
     serviceConfig = {
       Type = "oneshot";

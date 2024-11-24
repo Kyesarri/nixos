@@ -17,13 +17,13 @@ in {
       type = types.str;
       default = "10.10.0.200";
       example = "10.10.10.1";
-      description = "set containers ip address";
+      description = "container ip address";
     };
     subnet = mkOption {
       type = types.str;
       default = "10.10.0.0";
       example = "10.10.10.0";
-      description = "set containers ip address";
+      description = "container subnet";
     };
     contName = mkOption {
       type = types.str;
@@ -37,17 +37,19 @@ in {
       example = "Australia/Broken_Hill";
       description = "set database timezone";
     };
+    /*
     authKey = mkOption {
       type = types.str;
       default = "change-me";
       example = "tskey-client-123456789011-121314151617";
       description = "tailscale auth key - used for easier provisioning - not sure if is broken or just my systems playing funny-buggers";
     };
+    */
     image = mkOption {
       type = types.str;
       default = "tailscale/tailscale:latest";
-      example = "adguard/adguardhome";
-      description = "image for container";
+      example = "tailscale/tailscale:latest";
+      description = "container image";
     };
   };
 
