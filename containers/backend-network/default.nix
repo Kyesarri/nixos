@@ -39,9 +39,7 @@ in {
       systemd.services.podman-backend-network = {
         path = [pkgs.podman];
         description = "create and start backend podman network for container comms";
-        wants = ["network-online.target"];
-        after = ["network-online.target"];
-        requiredBy = ["podman-tailscale-${config.networking.hostName}-subnet.service"]; # not sure how this will go
+        wantedBy = ["podman-tailscale-${config.networking.hostName}-subnet.service"]; # not sure how this will go
         script = ''podman network exists podman-backend || podman network create --subnet=${cfg.subnet}/${cfg.mask} --ip-range=${cfg.range}/${cfg.mask} podman-backend'';
         serviceConfig = {
           Type = "oneshot";
