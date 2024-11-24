@@ -29,6 +29,11 @@
 
   # container module config
   cont = {
+    backend-network = {
+      enable = true; # probably want this on
+      subnet = "";
+      ip-range = "";
+    };
     adguard = {
       enable = true;
       ipAddr = "${secrets.ip.adguard-erying}";

@@ -2,6 +2,7 @@
   imports = [
     ./adguard
     ./tailscale
+    ./backend-network
   ];
 
   virtualisation = {
@@ -19,7 +20,7 @@
   environment.systemPackages = with pkgs; [
     podman # the boi
     podman-tui # nice tui interface
-    intel-gpu-tools # intel igpu monitor
+    intel-gpu-tools # intel igpu monitor - used for plex / frigate igpu use monitoring
     intel-compute-runtime # openCL filter support (hardware tonemapping and subtitle burn-in) for another #TODO jellyfin
   ];
 }
