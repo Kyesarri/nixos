@@ -75,8 +75,9 @@ in {
         environment = {
           TZ = "${cfg.timeZone}";
           TS_HOSTNAME = "${cfg.contName}";
+          # neither were working all of a sudden, smh
           # TS_AUTHKEY = "${secrets.password.tailscale}";
-          TS_AUTHKEY = "${cfg.authKey}";
+          # TS_AUTHKEY = "${cfg.authKey}";
           PUID = "1000";
           PGID = "1000";
           TS_EXTRA_ARGS = "--advertise-tags=tag:container --advertise-routes=${cfg.subnet}/24";
