@@ -2,6 +2,7 @@
 # along with our macvlan (containers get their own ip / mac on our lan vs using ports on the host)
 {
   secrets,
+  config,
   pkgs,
   ...
 }: {
@@ -47,7 +48,7 @@
       ipAddr = "${secrets.ip.tailscale-erying}";
       # image = "";
       subnet = "${secrets.ip.subnet}";
-      contName = "erying-tailscale-subnet";
+      contName = "tailscale-${config.networking.hostName}-subnet";
       timeZone = "Australia/Melbourne";
     };
   };
