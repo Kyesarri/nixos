@@ -30,6 +30,7 @@ in {
 
     extraOptions = [
       "--network=macvlan_lan:ip=${secrets.ip.nginx}"
+      "--network=podman-backend"
       "--privileged"
     ];
   };
