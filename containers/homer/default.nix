@@ -1,5 +1,5 @@
 {
-  # secrets,
+  secrets,
   lib,
   ...
 }: let
@@ -32,7 +32,7 @@ in {
 
     extraOptions = [
       # "--network=macvlan_lan:ip=${secrets.ip.homer}"
-      "--network=podman-backend"
+      "--network=podman-backend:ip=${secrets.vlan.erying.homer}"
     ];
   };
 }
