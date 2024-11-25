@@ -40,5 +40,6 @@ in {
     extraOptions = [
       "--network=macvlan_lan:ip=${secrets.ip.observium}"
     ];
+    #TODO add database container / make a pod
   };
 }

@@ -39,7 +39,10 @@ in {
       systemd.services.podman-backend-network = {
         path = [pkgs.podman];
         description = "create backend podman network";
-        wantedBy = ["podman-tailscale-${config.networking.hostName}-subnet.service"];
+        wantedBy = [
+          "podman-tailscale-${config.networking.hostName}-subnet.service"
+          "podman-adguard-${config.networking.hostName}.service"
+        ];
         script = ''podman network exists podman-backend || podman network create --internal --subnet=${cfg.subnet}/${cfg.mask} --ip-range=${cfg.range}/${cfg.mask} podman-backend'';
         serviceConfig = {
           Type = "oneshot";
