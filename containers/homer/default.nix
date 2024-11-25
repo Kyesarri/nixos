@@ -1,5 +1,5 @@
 {
-  secrets,
+  # secrets,
   lib,
   ...
 }: let
@@ -31,7 +31,7 @@ in {
     environment = {};
 
     extraOptions = [
-      "--network=macvlan_lan:ip=${secrets.ip.homer}"
+      # "--network=macvlan_lan:ip=${secrets.ip.homer}"
       "--network=podman-backend"
     ];
   };
