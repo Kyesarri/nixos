@@ -61,8 +61,8 @@ in {
 
         volumes = [
           "/etc/localtime:/etc/localtime:ro"
-          "/etc/oci.cont/${cfg.contName}:/data"
-          "/etc/oci.cont/${cfg.contName}:/etc/letsencrypt"
+          "/etc/oci.cont/${cfg.contName}/data:/data"
+          "/etc/oci.cont/${cfg.contName}/letsencrypt:/etc/letsencrypt"
         ];
 
         environment = {
