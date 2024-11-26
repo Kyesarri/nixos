@@ -1,8 +1,9 @@
 {pkgs, ...}: {
   imports = [
     ./adguard
-    ./tailscale
     ./backend-network
+    ./nginx-lan
+    ./tailscale
   ];
 
   virtualisation = {
