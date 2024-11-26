@@ -73,7 +73,7 @@ in {
         extraOptions = [
           "--privileged"
           "--network=macvlan_lan:ip=${cfg.macvlanIp}"
-          "--network=podman-backend:op=${cfg.vlanIp}"
+          "--network=podman-backend:ip=${cfg.vlanIp}"
         ];
       };
     })
