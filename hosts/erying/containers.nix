@@ -42,8 +42,8 @@
     #
     adguard = {
       enable = true;
-      ipAddr = "${secrets.ip.adguard-erying}";
-      vlanIp = "${secrets.vlan.erying.nginx-lan}";
+      macvlanIp = "${secrets.ip.adguard-erying}";
+      vlanIp = "${secrets.vlan.erying.adguard}";
       image = "adguard/adguardhome:latest";
       contName = "adguard-${config.networking.hostName}";
       timeZone = "Australia/Melbourne";

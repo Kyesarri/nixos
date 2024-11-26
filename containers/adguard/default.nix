@@ -13,7 +13,13 @@ in {
       example = true;
       description = "enable adguard container";
     };
-    ipAddr = mkOption {
+    macvlanIp = mkOption {
+      type = types.str;
+      default = "10.10.0.200";
+      example = "10.10.10.1";
+      description = "container macvlan ip address";
+    };
+    vlanIp = mkOption {
       type = types.str;
       default = "10.10.0.200";
       example = "10.10.10.1";
@@ -66,8 +72,8 @@ in {
 
         extraOptions = [
           "--privileged"
-          "--network=macvlan_lan:ip=${cfg.ipAddr}"
-          "--network=podman-backend"
+          "--network=macvlan_lan:ip=${cfg.macvlanIp}"
+          "--network=podman-backend:op=${cfg.vlanIp}"
         ];
       };
     })
