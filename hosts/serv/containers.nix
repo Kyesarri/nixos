@@ -22,7 +22,7 @@
     adguard = {
       enable = true;
       macvlanIp = "${secrets.ip.adguard-serv}";
-      vlanIp = "${secrets.vlan.adguard-serv}";
+      vlanIp = "${secrets.vlan.serv.adguard}";
       image = "adguard/adguardhome:latest";
       contName = "serv-adguard";
       timeZone = "Australia/Melbourne";
