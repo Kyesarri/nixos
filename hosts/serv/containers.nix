@@ -30,7 +30,10 @@
 
     tailscale = {
       enable = true;
-      ipAddr = "${secrets.ip.tailscale-serv}";
+      macvlanIp = "${secrets.ip.tailscale-serv}";
+      vlanIp = "${secrets.vlan.serv.tailscale}";
+      vlanSubnet = "${secrets.vlan.serv.subnet}";
+      image = "tailscale/tailscale:latest";
       subnet = "${secrets.ip.subnet}";
       contName = "tailscale-${config.networking.hostName}-subnet";
       # authKey = "${secrets.password.tailscale}";

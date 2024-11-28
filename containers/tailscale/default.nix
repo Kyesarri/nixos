@@ -100,15 +100,6 @@ in {
           TS_STATE_DIR = "/var/lib/tailscale";
         };
 
-        # needed to add interface names to each interface, tailscale was trying to reach the wwws
-        # via the podman-backend network - which is currently isolated -- nope i was mistaken, wasn't isolated --
-        # podman-backend was receiving eth0 by default
-        #
-        # is not actually the issue I believe, bringing that network down now :(
-        #
-        # issue being the internal podman-backend network had a gateway - tailscale does not like
-        # networks with a gateway but no connectivity, fixed by running --internal on the
-        # systemd service bringing up the internal network
         extraOptions = [
           "--network=macvlan_lan:ip=${cfg.macvlanIp},interface_name=eth0"
           "--network=podman-backend:ip=${cfg.vlanIp},interface_name=eth1"
