@@ -39,6 +39,13 @@
       range = "${secrets.vlan.erying.range}"; # range ex - 10.0.0.255
       mask = "${secrets.vlan.erying.mask}"; # mask ex - 24 - don't add /
     };
+    haos = {
+      enable = true;
+      autostart = true;
+      vlanIp = "${secrets.vlan.erying.haos}";
+      image = "ghcr.io/home-assistant/home-assistant:beta";
+      contName = "haos-${config.networking.hostName}";
+    };
     #
     adguard = {
       enable = true;
