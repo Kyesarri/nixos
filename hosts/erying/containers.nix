@@ -5,8 +5,8 @@
   ...
 }: {
   imports = [
-    ../../containers # containers imported here have config defined under cont = {
-    #
+    ../../containers
+
     # all containers below have static configs
     ../../containers/cpai
     ../../containers/doubletake
@@ -27,21 +27,19 @@
     # ../../containers/zitadel
   ];
 
-  # as i stagger through configuring modules this will probably see more changes
-  # options like timezone / image are added here but not required due to defaults being configured
-  #
-  # trying to keep naming to "service-host-name*-feature*" ex - tailscale-nix-erying-subnet
+  # trying to keep naming to "service-host-name*-feature*" ex - tailscale-nix-erying-subnet - haos-nix-erying
 
   cont = {
     backend-network = {
-      enable = true; # want this on as containers are starting to use the backend network - dns not working here yet fml :)
-      subnet = "${secrets.vlan.erying.subnet}"; # subnet ex - 10.0.0.0
-      range = "${secrets.vlan.erying.range}"; # range ex - 10.0.0.255
-      mask = "${secrets.vlan.erying.mask}"; # mask ex - 24 - don't add /
+      enable = true;
+      subnet = "${secrets.vlan.erying.subnet}";
+      range = "${secrets.vlan.erying.range}";
+      mask = "${secrets.vlan.erying.mask}";
     };
     haos = {
       enable = true;
       autoStart = true;
+      macvlanIp = "${secrets.ip.haos-erying}";
       vlanIp = "${secrets.vlan.erying.haos}";
       image = "ghcr.io/home-assistant/home-assistant:beta";
       contName = "haos-${config.networking.hostName}";
@@ -85,6 +83,7 @@
       "podman-emqx.service"
       "podman-esphome.service"
       "podman-frigate.service"
+      "podman-haos-${config.networking.hostName}"
       "podman-homer.service"
       "podman-homer-wan.service"
       "podman-matter.service"

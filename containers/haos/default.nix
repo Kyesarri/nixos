@@ -19,6 +19,12 @@ in {
       example = false;
       description = "toggle automatic starting of container";
     };
+    macvlanIp = mkOption {
+      type = types.str;
+      default = "192.69.4.20";
+      example = "192.168.0.100";
+      description = "container internal vlan ip address";
+    };
     vlanIp = mkOption {
       type = types.str;
       default = "10.10.0.200";
@@ -69,7 +75,7 @@ in {
 
         extraOptions = [
           "--network=podman-backend:ip=${cfg.vlanIp}"
-          # "--network=macvlan_lan:ip=${secrets.ip.haos}"
+          "--network=macvlan_lan:ip=${cfg.macvlanIp}"
         ];
       };
     })
