@@ -111,7 +111,7 @@ in {
         # systemd service bringing up the internal network
         extraOptions = [
           "--network=macvlan_lan:ip=${cfg.macvlanIp},interface_name=eth0"
-          "--network=podman-backend:ip=${cfg.vlanIp}interface_name=eth1"
+          "--network=podman-backend:ip=${cfg.vlanIp},interface_name=eth1"
           "--privileged"
         ];
       };
