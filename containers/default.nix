@@ -2,6 +2,7 @@
   imports = [
     ./adguard
     ./backend-network
+    ./haos
     ./nginx-lan
     ./tailscale
   ];
