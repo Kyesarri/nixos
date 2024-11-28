@@ -65,7 +65,9 @@
     #
     tailscale = {
       enable = true;
-      ipAddr = "${secrets.ip.tailscale-erying}";
+      macvlanIp = "${secrets.ip.tailscale-erying}";
+      vlanIp = "${secrets.vlan.erying.tailscale}";
+      vlanSubnet = "${secrets.vlan.erying.subnet}";
       image = "tailscale/tailscale:latest";
       subnet = "${secrets.ip.subnet}";
       contName = "tailscale-${config.networking.hostName}-subnet";

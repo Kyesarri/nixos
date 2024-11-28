@@ -13,10 +13,22 @@ in {
       example = true;
       description = "enable tailscale subnet container";
     };
-    ipAddr = mkOption {
+    macvlanIp = mkOption {
       type = types.str;
       default = "10.10.0.200";
       example = "10.10.10.1";
+      description = "container ip address";
+    };
+    vlanIp = mkOption {
+      type = types.str;
+      default = "10.10.0.200";
+      example = "10.10.10.1";
+      description = "container ip address";
+    };
+    vlanSubnet = mkOption {
+      type = types.str;
+      default = "10.10.0.0";
+      example = "10.10.10.0";
       description = "container ip address";
     };
     subnet = mkOption {
@@ -84,7 +96,7 @@ in {
 
           PUID = "1000";
           PGID = "1000";
-          TS_EXTRA_ARGS = "--advertise-tags=tag:container --advertise-routes=${cfg.subnet}/24";
+          TS_EXTRA_ARGS = "--advertise-tags=tag:container --advertise-routes=${cfg.subnet}/24,${cfg.vlanSubnet}/24";
           TS_STATE_DIR = "/var/lib/tailscale";
         };
 
@@ -98,8 +110,8 @@ in {
         # networks with a gateway but no connectivity, fixed by running --internal on the
         # systemd service bringing up the internal network
         extraOptions = [
-          "--network=macvlan_lan:ip=${cfg.ipAddr},interface_name=eth0"
-          "--network=podman-backend:interface_name=eth1"
+          "--network=macvlan_lan:ip=${cfg.macvlanIp},interface_name=eth0"
+          "--network=podman-backend:ip=${cfg.vlanIp}interface_name=eth1"
           "--privileged"
         ];
       };
