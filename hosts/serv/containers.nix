@@ -18,13 +18,16 @@
       range = "${secrets.vlan.serv.range}";
       mask = "${secrets.vlan.serv.mask}";
     };
+
     adguard = {
       enable = true;
-      ipAddr = "${secrets.ip.adguard-serv}";
+      macvlanIp = "${secrets.ip.adguard-serv}";
+      vlanIp = "${secrets.vlan.adguard-serv}";
       image = "adguard/adguardhome:latest";
       contName = "serv-adguard";
       timeZone = "Australia/Melbourne";
     };
+
     tailscale = {
       enable = true;
       ipAddr = "${secrets.ip.tailscale-serv}";
