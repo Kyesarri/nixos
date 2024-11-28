@@ -41,7 +41,7 @@
     };
     haos = {
       enable = true;
-      autostart = true;
+      autoStart = true;
       vlanIp = "${secrets.vlan.erying.haos}";
       image = "ghcr.io/home-assistant/home-assistant:beta";
       contName = "haos-${config.networking.hostName}";
