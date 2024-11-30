@@ -1,3 +1,7 @@
-{}: {
-  imports = [./headscale.nix ./derp.nix];
+{...}: {
+  imports = [
+    ./headscale.nix
+    ./derp.nix
+    ./ui.nix
+  ];
 }
