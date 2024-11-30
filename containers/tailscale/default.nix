@@ -69,7 +69,7 @@ in {
     (mkIf (cfg.enable == true) {
       #
       system.activationScripts."make${cfg.contName}Dir" =
-        lib.stringAfter ["var"] ''mkdir -v -p /etc/oci.cont/${toString cfg.contName} & chown 1000:1000 /etc/oci.cont/${toString cfg.contName}'';
+        lib.stringAfter ["var"] ''mkdir -v -p /etc/oci.cont/${cfg.contName} & chown 1000:1000 /etc/oci.cont/${cfg.contName}'';
 
       virtualisation.oci-containers.containers."${cfg.contName}" = {
         hostname = "${cfg.contName}";
@@ -80,7 +80,7 @@ in {
 
         volumes = [
           "/etc/localtime:/etc/localtime:ro"
-          "/etc/oci.cont/${toString cfg.contName}:/var/lib/tailscale"
+          "/etc/oci.cont/${cfg.contName}:/var/lib/tailscale"
           "/dev/net/tun:/dev/net/tun"
         ];
 
@@ -90,10 +90,7 @@ in {
           TZ = "${cfg.timeZone}";
           TS_HOSTNAME = "${cfg.contName}";
 
-          # neither were working all of a sudden, smh
-          # TS_AUTHKEY = "${secrets.password.tailscale}";
-          # TS_AUTHKEY = "${cfg.authKey}";
-
+          TS_AUTHKEY = "${toString cfg.authKey}";
           PUID = "1000";
           PGID = "1000";
           TS_EXTRA_ARGS = "--advertise-tags=tag:container --advertise-routes=${cfg.subnet}/24,${cfg.vlanSubnet}/24";

@@ -18,7 +18,6 @@
     ../../containers/homer
     ../../containers/i2pd
     ../../containers/matter
-    ../../containers/nginx-proxy-manager-2 # change to nginx-wan "soon"
     ../../containers/octoprint
     ../../containers/orcaslicer
     ../../containers/overseerr
@@ -48,6 +47,12 @@
     headscale = {
       enable = true;
       macvlanIp = "${secrets.ip.headscale}";
+      derp = {
+        enable = false;
+      };
+      ui = {
+        enable = false;
+      };
     };
     #
     adguard = {
@@ -61,11 +66,15 @@
     #
     nginx-lan = {
       enable = true;
-      macvlanIp = "${secrets.ip.nginx-lan}"; # rename this to macvlanIp?
+      macvlanIp = "${secrets.ip.nginx-lan}";
       vlanIp = "${secrets.vlan.erying.nginx-lan}";
-      image = "docker.io/jc21/nginx-proxy-manager:latest"; # container image
-      contName = "nginx-lan-${config.networking.hostName}"; # podman-nginx-lan-nix-erying also used for container volume directory names
+      image = "docker.io/jc21/nginx-proxy-manager:latest";
+      contName = "nginx-lan-${config.networking.hostName}";
       timeZone = "Australia/Melbourne";
+    };
+    nginx-wan = {
+      enable = true;
+      macvlanIp = "${secrets.ip.nginx-wan}";
     };
     #
     tailscale = {

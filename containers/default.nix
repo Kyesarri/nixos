@@ -5,6 +5,7 @@
     ./haos
     ./headscale
     ./nginx-lan
+    ./nginx-wan
     ./tailscale
   ];
 
