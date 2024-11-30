@@ -70,8 +70,8 @@ in {
         };
         volumes = [
           "/etc/localtime:/etc/localtime:ro"
-          "${cfg.contName}:/data"
-          "${cfg.contName}:/etc/letsencrypt"
+          "/etc/oci.cont/${cfg.contName}:/data"
+          "/etc/oci.cont/${cfg.contName}:/etc/letsencrypt"
         ];
 
         extraOptions = [
