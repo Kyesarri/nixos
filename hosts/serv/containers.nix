@@ -36,7 +36,7 @@
       image = "tailscale/tailscale:latest";
       subnet = "${secrets.ip.subnet}";
       contName = "tailscale-${config.networking.hostName}-subnet";
-      # authKey = "${secrets.password.tailscale}";
+      authKey = "${secrets.password.tailscale}";
     };
   };
 

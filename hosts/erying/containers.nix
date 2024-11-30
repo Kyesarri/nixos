@@ -86,6 +86,7 @@
       subnet = "${secrets.ip.subnet}";
       contName = "tailscale-${config.networking.hostName}-subnet";
       timeZone = "Australia/Melbourne";
+      authKey = "${secrets.password.tailscale}";
     };
   };
 
