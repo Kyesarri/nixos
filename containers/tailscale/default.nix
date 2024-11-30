@@ -49,14 +49,12 @@ in {
       example = "Australia/Broken_Hill";
       description = "set database timezone";
     };
-    /*
     authKey = mkOption {
       type = types.str;
       default = "";
       example = "tskey-client-123-xyz";
       description = "tailscale auth key - used for easier provisioning - not sure if is broken or just my systems playing funny-buggers";
     };
-    */
     image = mkOption {
       type = types.str;
       default = "tailscale/tailscale:latest";
