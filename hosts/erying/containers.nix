@@ -105,7 +105,7 @@
       "podman-homer-wan.service"
       "podman-matter.service"
       "podman-nginx-lan-${config.networking.hostName}.service"
-      "podman-nginx-proxy-manager-2.service"
+      "podman-nginx-wan-${config.networking.hostName}.service"
       "podman-octoprint.service"
       "podman-orcaslicer.service"
       "podman-overseerr.service"
