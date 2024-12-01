@@ -1,0 +1,182 @@
+# ##################### horizon-dark ######################
+# ######### lifted layout from catppuccin themes ##########
+# ########################## wip ##########################
+
+horizon-dark:
+  # colours
+  text: "#CBCED0" # base05
+
+  subtext1: "#9DA0A2" # base04
+  subtext0: "#DCDFE4" # base06
+
+  overlay2: "#6F6F70" # base03
+  overlay1: "#8c8fa1"
+  overlay0: "#9ca0b0"
+
+  surface2: "#acb0be"
+  surface1: "#bcc0cc"
+  surface0: "#1C1E26" # base00
+
+  base: "#232530" # base01
+  mantle: "#1C1E26" # base00
+  crust: "#2E303E" # base02
+
+  rosewater: "#dc8a78"
+  flamingo: "#dd7878"
+  pink: "#ea76cb"
+  mauve: "#8839ef"
+  red: "#E93C58" # base08
+  maroon: "#e64553"
+  peach: "#fe640b"
+  yellow: "#EFB993" # base0a
+  green: "#EFAF8E" # base0b
+  teal: "#24A8B4" # base0c
+  sky: "#04a5e5"
+  sapphire: "#209fb5"
+  blue: "#DF5273" # base0d
+  lavender: "#B072D1" # base0e
+
+  # temp graphs 0 cold 6 hot
+  temp0: "#72c2d1"
+  temp1: "#7293d1"
+  temp2: "#8172d1"
+  temp3: "#d172c2"
+  temp4: "#d17293"
+  temp5: "#d18172"
+  temp6: "#d1b172"
+
+  # hvac modes
+  fan_only: "#6F6F70"
+  dry: "#E4A382"
+  heat: "#DF5273"
+  cool: "#24A8B4"
+  auto: "#90ffca"
+  none: "#1C1E26"
+
+  ###########################
+
+  # Header
+  app-header-background-color: var(--mantle)
+  app-header-text-color: var(--text)
+
+  # Main Interface colors
+  primary-color: var(--blue)
+  light-primary-color: var(--blue)
+
+  primary-background-color: var(--mantle)
+  secondary-background-color: var(--mantle)
+  accent-color: var(--yellow)
+
+
+  # Text
+  primary-text-color: var(--text)
+  secondary-text-color: var(--subtext1)
+  text-primary-color: var(--text)
+  divider-color: var(--base)
+  disabled-text-color: var(--overlay0)
+  text-accent-color: var(--text)
+
+  # Sidebar
+  sidebar-background-color: var(--crust)
+  sidebar-selected-background-color: var(--mantle)
+
+  sidebar-icon-color: var(--subtext1)
+  sidebar-text-color: var(--subtext1)
+  sidebar-selected-icon-color: var(--subtext0)
+  sidebar-selected-text-color: var(--subtext0)
+
+  # Buttons
+  paper-item-icon-color: var(--subtext0)
+  paper-item-icon-active-color: var(--primary-color)
+
+  # States and Badges
+  state-icon-color: var(--lavender)
+  state-icon-active-color: var(--primary-color)
+
+  state-icon-unavailable-color: var(--disabled-text-color)
+
+  # Sliders
+  paper-slider-knob-color: var(--blue)
+  paper-slider-knob-start-color: var(--paper-slider-knob-color)
+  paper-slider-pin-color: var(--paper-slider-knob-color)
+  paper-slider-active-color: var(--paper-slider-knob-color)
+  paper-slider-secondary-color: var(--blue)
+
+  # Labels
+  label-badge-background-color: var(--surface0)
+  label-badge-text-color: var(--text)
+  label-badge-red: var(--red)
+  label-badge-green: var(--green)
+  label-badge-blue: var(--blue)
+  label-badge-yellow: var(--yellow)
+  label-badge-gray: var(--overlay0)
+
+  # Cards
+  card-background-color: var(--base)
+  ha-card-background: var(--card-background-color)
+
+  ha-card-border-radius: "20px"
+  ha-card-box-shadow: none
+  paper-dialog-background-color: var(--overlay0)
+  paper-listbox-background-color: var(--overlay0)
+  paper-card-background-color: var(--card-background-color)
+
+  # Switches
+  switch-checked-button-color: var(--green)
+  switch-checked-track-color: var(--surface0)
+  switch-unchecked-button-color: rgb(--overlay0)
+  switch-unchecked-track-color: rgb(--surface0)
+
+  # Toggles
+  paper-toggle-button-checked-button-color: var(--switch-checked-button-color)
+  paper-toggle-button-checked-bar-color: var(--switch-checked-track-color)
+  paper-toggle-button-unchecked-button-color: var(--switch-unchecked-button-color)
+  paper-toggle-button-unchecked-bar-color: var(--switch-unchecked-track-color)
+
+  # Table
+  table-row-background-color: var(--primary-background-color)
+  table-row-alternative-background-color: var(--secondary-background-color)
+  data-table-background-color: var(--primary-background-color)
+  mdc-checkbox-unchecked-color: var(--overlay0)
+
+  # Dropdowns
+  material-background-color: var(--primary-background-color)
+  material-secondary-background-color: var(--primary-background-color)
+  mdc-theme-surface: var(--primary-background-color)
+
+  # Pre/Code
+  markdown-code-background-color: var(--surface0)
+
+  # Checkboxes
+  mdc-select-fill-color: var(--surface0)
+  mdc-select-ink-color: var(--primary-text-color)
+  mdc-select-label-ink-color: var(--subtext1)
+  mdc-select-idle-line-color: var(--primary-text-color)
+  mdc-select-dropdown-icon-color: var(--secondary-text-color)
+  mdc-select-hover-line-color: var(--accent-color)
+
+  # Input
+  input-fill-color: var(--secondary-background-color)
+  input-dropdown-icon-color: var(--secondary-text-color)
+  input-ink-color: var(--primary-text-color)
+  input-label-ink-color: var(--secondary-text-color)
+  input-idle-line-color: var(--primary-text-color)
+  input-hover-line-color: var(--accent-color)
+  input-disabled-ink-color: var(--disabled-text-color)
+  input-disabled-line-color: var(--disabled-text-color)
+  input-outlined-idle-border-color: var(--disabled-text-color)
+  input-outlined-hover-border-color: var(--disabled-text-color)
+  input-outlined-disabled-border-color: var(--disabled-text-color)
+  input-disabled-fill-color: rgba(0, 0, 0, 0)
+
+  # Toast
+  paper-toast-background-color: var(--overlay0)
+
+  # Colors
+  error-color: var(--red)
+  warning-color: var(--yellow)
+  success-color: var(--green)
+  info-color: var(--blue)
+
+  state-on-color: var(--green)
+  state-off-color: var(--red)
