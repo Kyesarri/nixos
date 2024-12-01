@@ -101,6 +101,7 @@
       "podman-esphome.service"
       "podman-frigate.service"
       "podman-haos-${config.networking.hostName}.service"
+      "podman-headscale-${config.networking.hostName}.service"
       "podman-homer.service"
       "podman-homer-wan.service"
       "podman-matter.service"
