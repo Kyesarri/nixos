@@ -100,6 +100,8 @@
       "podman-emqx.service"
       "podman-esphome.service"
       "podman-frigate.service"
+      "podman-ghost.service"
+      "podman-ghost-db.service"
       "podman-haos-${config.networking.hostName}.service"
       "podman-headscale-${config.networking.hostName}.service"
       "podman-homer.service"
