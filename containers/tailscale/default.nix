@@ -88,7 +88,7 @@ in {
           TZ = "${cfg.timeZone}";
           TS_HOSTNAME = "${cfg.contName}";
 
-          TS_AUTHKEY = "${toString cfg.authKey}";
+          # TS_AUTHKEY = "${toString cfg.authKey}"; # still not working, disabled
           PUID = "1000";
           PGID = "1000";
           TS_EXTRA_ARGS = "--advertise-tags=tag:container --advertise-routes=${cfg.subnet}/24,${cfg.vlanSubnet}/24";
