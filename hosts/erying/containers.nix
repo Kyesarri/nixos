@@ -18,7 +18,7 @@
     ../../containers/homer
     ../../containers/i2pd
     ../../containers/matter
-    ../../containers/octoprint
+    # ../../containers/octoprint # running on pi 3a+ now
     ../../containers/orcaslicer
     ../../containers/overseerr
     # ../../containers/netbird # this wont work out the box :D
