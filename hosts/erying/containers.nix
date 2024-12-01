@@ -13,7 +13,7 @@
     ../../containers/emqx
     ../../containers/esphome
     ../../containers/frigate
-    ../../containers/fweedee
+    # ../../containers/fweedee # running on pi 3a+ now
     ../../containers/ghost
     ../../containers/homer
     ../../containers/i2pd
