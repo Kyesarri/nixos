@@ -84,6 +84,7 @@ in {
           permit_join: true
           homeassistant: true
           frontend: true
+          availability: true
           force_disable_retain: false
           mqtt:
             server: ${cfg.mqtt.server}
@@ -96,6 +97,12 @@ in {
             version: 4
           serial:
             port: ${cfg.mqtt.serial}
+            adapter: auto
+          advanced:
+            transmit_power: 20
+          devices:
+            '0x30fb10fffee3f490':
+              friendly_name: Bedroom Lamp
         '';
       };
 
