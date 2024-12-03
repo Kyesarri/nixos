@@ -84,6 +84,7 @@ in {
           permit_join: true
           homeassistant: true
           frontend: true
+          force_disable_retain: false
           mqtt:
             server: ${cfg.mqtt.server}
             user: ${cfg.mqtt.user}
@@ -93,12 +94,8 @@ in {
             include_device_information: true
             keepalive: 60
             version: 4
-          force_disable_retain: false
           serial:
             port: ${cfg.mqtt.serial}
-            adapter: auto
-          advanced:
-            transmit_power: 20
         '';
       };
 
