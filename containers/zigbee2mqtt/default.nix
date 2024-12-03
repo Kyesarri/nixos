@@ -81,7 +81,6 @@ in {
         uid = 1000;
         gid = 1000;
         text = ''
-          permit_join: true
           homeassistant: true
           frontend: true
           availability: true
@@ -101,8 +100,17 @@ in {
           advanced:
             transmit_power: 20
           devices:
-            '0x30fb10fffee3f490':
-              friendly_name: Bedroom Lamp
+            '0x8c65a3fffe6ee490':
+              friendly_name: Unused Motion Sensor
+            '0x001788010cd6eff8':
+              friendly_name: Hallway Motion Sensor
+            '0xd44867fffe48afd8':
+              friendly_name: Toilet Motion Sensor
+            '0x048727fffe7a0408':
+              friendly_name: Entry Door Sensor
+            '0x048727fffea31907':
+              friendly_name: Back Door Sensor
+
         '';
       };
 
