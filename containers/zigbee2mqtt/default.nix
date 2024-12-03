@@ -93,7 +93,6 @@ in {
             keepalive: 60
             version: 4
           force_disable_retain: false
-          # TODO CHANGEME - issues with ip <> serial connections
           serial:
             port: ${cfg.mqtt.serial}
             baudrate: 115200
