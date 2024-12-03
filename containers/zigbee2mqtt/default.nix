@@ -96,9 +96,7 @@ in {
           force_disable_retain: false
           serial:
             port: ${cfg.mqtt.serial}
-            baudrate: 115200
             adapter: auto
-            disable_led: false
           advanced:
             transmit_power: 20
         '';
