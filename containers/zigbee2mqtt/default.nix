@@ -110,7 +110,6 @@ in {
               friendly_name: Entry Door Sensor
             '0x048727fffea31907':
               friendly_name: Back Door Sensor
-
         '';
       };
 
