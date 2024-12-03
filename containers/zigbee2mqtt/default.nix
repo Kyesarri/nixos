@@ -87,23 +87,17 @@ in {
             server: ${cfg.mqtt.server}
             user: ${cfg.mqtt.user}
             password: ${cfg.mqtt.password}
-            # Optional: MQTT client ID (default: nothing)
             client_id: ${cfg.mqtt.user}
-            # Optional: disable self-signed SSL certificates (default: true)
             reject_unauthorized: false
-            # Optional: Include device information to mqtt messages (default: false)
             include_device_information: true
-            # Optional: MQTT keepalive in seconds (default: 60)
             keepalive: 60
-            # Optional: MQTT protocol version (default: 4), set this to 5 if you
-            # use the 'retention' device specific configuration
             version: 4
-            # Optional: Disable retain for all send messages. ONLY enable if you MQTT broker doesn't
-            # support retained message (e.g. AWS IoT core, Azure IoT Hub, Google Cloud IoT core, IBM Watson IoT Platform).
-            # Enabling will break the Home Assistant integration. (default: false)
           force_disable_retain: false
+          # TODO CHANGEME - issues with ip <> serial connections
           serial:
             port: ${cfg.mqtt.serial}
+            baudrate: 115200
+            adapter: zstack
           frontend: true
         '';
       };
