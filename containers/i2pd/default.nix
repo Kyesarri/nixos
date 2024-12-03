@@ -7,7 +7,7 @@
 
   dir1 = "/etc/oci.cont/${contName}";
 in {
-  system.activationScripts."make${contName}Dir" = lib.stringAfter ["var"] ''mkdir -v -p ${toString dir1}'';
+  system.activationScripts."make${contName}Dir" = lib.stringAfter ["var"] ''mkdir -v -p ${dir1}'';
 
   virtualisation.oci-containers.containers."${contName}" = {
     hostname = "${contName}";
@@ -22,11 +22,10 @@ in {
       "${dir1}/i2pd:/home/i2pd/"
     ];
 
-    cmd = ["--http.address ${toString secrets.ip.i2pd}"];
+    cmd = ["--http.address ${secrets.ip.i2pd}" "--port=${secrets.port.i2pd}"];
 
     extraOptions = [
-      "--network=macvlan_lan"
-      "--ip=${secrets.ip.i2pd}"
+      "--network=macvlan_lan:ip=${secrets.ip.i2pd}"
     ];
   };
 }

@@ -7,6 +7,7 @@
     ./nginx-lan
     ./nginx-wan
     ./tailscale
+    ./zigbee2mqtt
   ];
 
   virtualisation = {
