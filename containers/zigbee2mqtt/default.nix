@@ -97,7 +97,7 @@ in {
           serial:
             port: ${cfg.mqtt.serial}
             baudrate: 115200
-            adapter: zstack
+            adapter: auto
             disable_led: false
           advanced:
             transmit_power: 20
