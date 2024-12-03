@@ -120,6 +120,7 @@
       "podman-overseerr.service"
       "podman-syncthing.service"
       "podman-tailscale-${config.networking.hostName}-subnet.service"
+      "podman-zigbee2mqtt-${config.networking.hostName}.service"
     ];
     serviceConfig = {
       Type = "oneshot";
