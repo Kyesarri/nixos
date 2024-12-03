@@ -94,7 +94,7 @@
       # vlanIp = "${secrets.vlan.erying.zigbee2mqtt}";
       mqtt = {
         serial = "tcp://${secrets.ip.SLZB-06P7}:6638";
-        server = "mqtt://${secrets.ip.emqx}:1183";
+        server = "mqtt://${secrets.ip.emqx}:1883";
         user = "${secrets.user.zigbee2mqtt-emqx}";
         password = "${secrets.password.zigbee2mqtt-emqx}";
       };
