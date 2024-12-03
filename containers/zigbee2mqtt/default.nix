@@ -83,6 +83,7 @@ in {
         text = ''
           permit_join: true
           homeassistant: true
+          frontend: true
           mqtt:
             server: ${cfg.mqtt.server}
             user: ${cfg.mqtt.user}
@@ -97,7 +98,9 @@ in {
             port: ${cfg.mqtt.serial}
             baudrate: 115200
             adapter: zstack
-          frontend: true
+            disable_led: false
+          advanced:
+            transmit_power: 20
         '';
       };
 
