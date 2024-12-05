@@ -5,5 +5,6 @@
   imports = [
     ./wifi
     ./coral
+    # ./fancontrol #TODO heaps more
   ];
 }

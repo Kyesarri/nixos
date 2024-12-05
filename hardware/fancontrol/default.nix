@@ -1,0 +1,5 @@
+{...}: {
+  hardware.fancontrol = {
+    enable = true;
+  };
+}
