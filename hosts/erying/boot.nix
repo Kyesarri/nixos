@@ -4,7 +4,7 @@
     kernelPackages = pkgs.linuxPackagesFor (pkgs.linux_xanmod.override {
       argsOverride = rec {
         suffix = "xanmod1";
-        version = "6.6.63";
+        version = "6.6.59";
         modDirVersion = "${version}-${suffix}";
 
         src = pkgs.fetchFromGitLab {
