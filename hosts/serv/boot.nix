@@ -4,17 +4,18 @@
     kernelPackages = pkgs.linuxPackagesFor (pkgs.linux_xanmod.override {
       argsOverride = rec {
         suffix = "xanmod1";
-        version = "6.6.59";
+        version = "6.6.63";
         modDirVersion = "${version}-${suffix}";
 
         src = pkgs.fetchFromGitLab {
           owner = "xanmod";
           repo = "linux";
           rev = "${version}-${suffix}";
-          hash = "sha256-VImhbdU+WAP0QRnYjHBNKYw5NlMDCBy8HJyP2NQBNHY=";
+          hash = "sha256-P4B6r3p+Buu1Hf+RQsw5h2oUANVvQvQ4e/2gQcZ0vKw=";
         };
       };
     });
+
     kernelModules = ["kvm-intel"];
     kernelParams = [
       "intel_iommu=on" # pci device pass-through
@@ -23,10 +24,11 @@
 
     initrd.availableKernelModules = ["xhci_pci" "ahci" "nvme" "usb_storage" "usbhid" "sd_mod"];
     initrd.kernelModules = ["dm-snapshot"];
+    initrd.systemd.enable = true;
+
     extraModulePackages = [];
 
     supportedFilesystems = ["zfs" "ntfs"];
-    initrd.systemd.enable = true;
 
     zfs.forceImportRoot = false;
     zfs.extraPools = [
