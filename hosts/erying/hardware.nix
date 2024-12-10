@@ -41,7 +41,7 @@
   fileSystems = {
     # 512gb sata ssd
     "/" = {
-      device = "/dev/disk/by-uuid/7f98b95a-b4a3-4a9c-94e8-76d77054fb28";
+      device = lib.mkDefault "/dev/disk/by-uuid/7f98b95a-b4a3-4a9c-94e8-76d77054fb28";
       fsType = "ext4";
       label = "root";
     };
