@@ -1,13 +1,14 @@
 {pkgs, ...}: {
   boot = {
     # kernelPackages = pkgs.linuxPackages_xanmod; # use mainline xanmod kernel
+    # pinning kernel version due to
     kernelPackages = pkgs.linuxPackagesFor (pkgs.linux_xanmod.override {
       argsOverride = rec {
         modDirVersion = "${version}-${suffix}";
         suffix = "xanmod1";
         version = "6.6.59";
 
-        src = pkgs.fetchFromGitHub {
+        src = pkgs.fetchFromGitLab {
           owner = "xanmod";
           repo = "linux";
           rev = "${version}-${suffix}";
