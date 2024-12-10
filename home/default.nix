@@ -4,7 +4,6 @@
   # as a module and are not themselves home-manager-modules 🍝
 
   imports = [
-    ./ags
     ./freetube
     ./gscreenshot
     ./hypr
@@ -110,7 +109,6 @@
 
     # import flake home-manager modules
     imports = [
-      inputs.ags.homeManagerModules.default
       inputs.nix-colors.homeManagerModules.default
       inputs.prism.homeModules.prism
       inputs.hyprland.homeManagerModules.default

@@ -36,6 +36,7 @@
     ../../home/kde # TODO rename kdeconnect - maybe not lol - covers lots
     ../../home/ulauncher # TODO rename built theme, add credits to og author
     ../../home/virt # vm / container
+    ../../home/waybar
     ../../home/wl-screenrec # testing for laptop - amd / nvidia config
     ../../home/gtk # uhh, nix-colors gtk theme iirc # TODO rename to theme?
     ../../home/prism # wallpapers
@@ -50,7 +51,6 @@
       animations = false; # no config here yet #TODO - not critical - adding more mess is!
     };
     hyprpaper.enable = true;
-    ags.enable = true;
     gscreenshot.enable = true;
     freetube.enable = true;
     wifi.backend = "nwm";
@@ -67,7 +67,7 @@
   };
 
   environment.shellAliases = {
-    rebuild = "sudo nixos-rebuild switch --flake ~/nixos#nix-laptop --show-trace -j 16 && cd ~ && hyprctl reload && ./ags.sh";
+    rebuild = "sudo nixos-rebuild switch --flake ~/nixos#nix-laptop --show-trace -j 16 && cd ~ && hyprctl reload";
     rebuildboot = "sudo nixos-rebuild --flake ~/nixos#nix-laptop --install-bootloader boot";
     garbage = "sudo nix-collect-garbage && nix-collect-garbage -d";
     s = "kitten ssh";

@@ -15,6 +15,12 @@
       url = "github:outfoxxed/hy3";
       inputs.hyprland.follows = "hyprland";
     };
+
+    quickshell = {
+      url = "git+https://git.outfoxxed.me/outfoxxed/quickshell";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     # hycov.url = "github:DreamMaoMao/hycov";
     # hycov.inputs.hyprland.follows = "hyprland";
 
@@ -26,8 +32,6 @@
     wallpaper-generator.url = "github:kyesarri/wallpaper-generator"; # another one
 
     alejandra.url = "github:kamadorueda/alejandra/3.0.0"; # codium nix
-
-    ags.url = "github:Aylur/ags"; # shell
   };
 
   outputs = {
@@ -42,6 +46,7 @@
     alejandra,
     nix-colors,
     prism,
+    quickshell,
     wallpaper-generator,
     ...
   } @ inputs: let
@@ -56,7 +61,7 @@
     # import our secrets - these are required to be unencrypted when building
     secrets = builtins.fromJSON (builtins.readFile "${self}/secrets/secrets.json");
     system = "x86_64-linux";
-    specialArgs = {inherit nix-colors hyprpicker hy3 secrets inputs prism spaghetti wallpaper-generator;};
+    specialArgs = {inherit nix-colors quickshell hyprpicker hy3 secrets inputs prism spaghetti wallpaper-generator;};
     # TODO maybe don't pass nix-colors to special args, but only to extra special args
     # TODO to fix the theming issue i'm currently facing
     # FIXME

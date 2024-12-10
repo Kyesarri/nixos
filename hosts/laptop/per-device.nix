@@ -14,7 +14,6 @@
       env = __GLX_VENDOR_LIBRARY_NAME,nvidia
       # hypr specific laptop things that will break tings
       # tings were ok... what a mad world
-
     '';
   };
 }

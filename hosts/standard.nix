@@ -172,7 +172,6 @@
       usbimager # says on the tin
       ventoy-full
       blender # for new toy :D
-      slic3r # current working 3d printer package, issues with all others from nixpkgs currently
       gnome-disk-utility
       libimobiledevice
       usbmuxd2
@@ -180,6 +179,7 @@
       ifuse
       nebula
       inputs.wallpaper-generator.defaultPackage.x86_64-linux
+      inputs.quickshell.packages.x86_64-linux.default
     ];
   };
 }
