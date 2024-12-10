@@ -6,9 +6,6 @@
 }: {
   imports = [./flood.nix];
 
-  # issues with sonarr - 11.12.24
-  nixpkgs.config.permittedInsecurePackages = ["aspnetcore-runtime-wrapped-6.0.36"];
-
   # define a new group "media", add services / users to this group
   users.groups.media = {
     name = "media";

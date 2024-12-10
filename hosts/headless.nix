@@ -9,6 +9,8 @@
   time.timeZone = "Australia/Melbourne";
 
   nixpkgs.config.allowUnfree = lib.mkDefault true;
+  # issues with sonarr - 11.12.24
+  nixpkgs.config.permittedInsecurePackages = ["aspnetcore-runtime-wrapped-6.0.36" "aspnetcore-runtime-6.0.36"];
 
   security = {
     polkit.enable = true; # pls no break tings
