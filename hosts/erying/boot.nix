@@ -11,7 +11,7 @@
           owner = "xanmod";
           repo = "linux";
           rev = "${version}-${suffix}";
-          hash = "sha256-820f238f7e643bd7ee5ea07aecb1e04e6a063c31";
+          hash = "sha256-03c0q4rjdj95hii257q6k9rajj555axyphh8n6was9c36a3xibqn";
         };
       };
     });
