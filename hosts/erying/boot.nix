@@ -1,12 +1,11 @@
 {pkgs, ...}: {
   boot = {
-    # kernelPackages = pkgs.linuxPackages_xanmod; # use mainline xanmod kernel
     # pinning kernel version due to zfs being out of tree & not supporting latest kernel
     kernelPackages = pkgs.linuxPackagesFor (pkgs.linux_xanmod.override {
       argsOverride = rec {
-        modDirVersion = "${version}-${suffix}";
         suffix = "xanmod1";
-        version = "6.6.59";
+        version = "6.6.63";
+        modDirVersion = "${version}-${suffix}";
 
         src = pkgs.fetchFromGitLab {
           owner = "xanmod";
