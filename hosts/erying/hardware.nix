@@ -41,31 +41,31 @@
   fileSystems = {
     # 512gb sata ssd
     "/" = {
-      device = lib.mkDefault "/dev/disk/by-uuid/7f98b95a-b4a3-4a9c-94e8-76d77054fb28";
+      device = "/dev/disk/by-partuuid/2d3e834f-563d-453e-a77a-f34a9a3a4e49";
       fsType = "ext4";
       label = "root";
     };
     "/boot" = {
-      device = lib.mkDefault "/dev/disk/by-uuid/3847-FA30";
+      device = "/dev/disk/by-partuuid/81cf5d25-8a4e-4823-a1fe-197d1eb36493";
       fsType = "vfat";
       options = ["fmask=0022" "dmask=0022"];
       label = "boot";
     };
     # 1tb nvme
     "/etc/oci.cont" = {
-      device = lib.mkDefault "/dev/disk/by-uuid/2c81efe8-b0bc-4942-92c0-beff70cebca2";
+      device = "/dev/disk/by-uuid/2c81efe8-b0bc-4942-92c0-beff70cebca2";
       fsType = "ext4";
       label = "containers";
     };
     # 1tb sata ssd
     "/etc/oci.cont.scratch" = {
-      device = lib.mkDefault "/dev/disk/by-uuid/91b3bbfd-69c6-4081-ab4d-c1a9818be9b4";
+      device = "/dev/disk/by-uuid/91b3bbfd-69c6-4081-ab4d-c1a9818be9b4";
       fsType = "ext4";
       label = "scratch";
     };
     # 128gb nvme
     "/etc/oci.cont.nvme" = {
-      device = lib.mkDefault "/dev/disk/by-uuid/49f27562-6797-4094-a12c-60f1e8d2c7f5";
+      device = "/dev/disk/by-uuid/49f27562-6797-4094-a12c-60f1e8d2c7f5";
       fsType = "ext4";
       label = "nvmecontainers";
     };
