@@ -11,7 +11,7 @@ in {
 
       autoStart = true;
 
-      image = "docker.io/home-assistant/home-assistant:latest";
+      image = "home-assistant/home-assistant:latest";
 
       volumes = [
         "/etc/localtime:/etc/localtime:ro"

@@ -12,6 +12,7 @@
     members = ["plex" "transmission" "radarr" "readarr" "sonarr" "prowlarr" "${spaghetti.user}"];
   };
 
+  #TODO #FIXME
   # issues with sonarr - 11.12.24
   nixpkgs.config.permittedInsecurePackages = [
     "dotnet-runtime-wrapped-6.0.36"
