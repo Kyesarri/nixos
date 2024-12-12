@@ -11,6 +11,11 @@
 
   powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
 
+  zramSwap = {
+    enable = true;
+    memoryPercent = 25;
+  };
+
   hardware = {
     pulseaudio.enable = false;
 

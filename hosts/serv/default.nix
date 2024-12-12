@@ -27,6 +27,7 @@
     ../../home/codium # need to add server into this
     ../../home/virt # ehhhhh not sure if wanted / needed whatsoever
     ../../home/gtk # has some theming bits, might have some requirement still
+    ../../home/tmux # terminal multiplexer'
     ../../home/zsh # yes pls
 
     ../../serv # import all serv...ices
