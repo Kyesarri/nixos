@@ -13,7 +13,7 @@
 
   zramSwap = {
     enable = true;
-    memoryPercent = 25;
+    memoryPercent = 5; # 1.6GB
   };
 
   hardware = {
