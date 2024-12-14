@@ -50,7 +50,7 @@ in {
       ##
       system.activationScripts."makeRadicaleDir" =
         lib.stringAfter ["var"]
-        ''mkdir -v -p /etc/oci.cont/${cfg.contName}/data & chown -R 1000:1000 /etc/oci.cont/${cfg.contName}'';
+        ''mkdir -v -p /etc/oci.cont/${cfg.contName}/data /etc/oci.cont/${cfg.contName}/config & chown -R 1000:1000 /etc/oci.cont/${cfg.contName}'';
 
       virtualisation.oci-containers.containers.${cfg.contName} = {
         hostname = "${cfg.contName}";
@@ -62,6 +62,7 @@ in {
         volumes = [
           "/etc/localtime:/etc/localtime:ro"
           "/etc/oci.cont/${cfg.contName}/data:/data"
+          "/etc/oci.cont/${cfg.contName}/config:/config:ro"
         ];
 
         environment = {
