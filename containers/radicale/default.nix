@@ -51,7 +51,35 @@ in {
       system.activationScripts."makeRadicaleDir" =
         lib.stringAfter ["var"]
         ''mkdir -v -p /etc/oci.cont/${cfg.contName}/data /etc/oci.cont/${cfg.contName}/config & chown -R 1000:1000 /etc/oci.cont/${cfg.contName}'';
+      environment.etc = {
+        #
+        "oci.cont/${cfg.contName}/config/config" = {
+          mode = "644";
+          uid = 1000;
+          gid = 1000;
+          text = ''
+            [server]
+            hosts = 0.0.0.0:5232
 
+            [auth]
+            type = htpasswd
+            htpasswd_filename = /config/users
+            htpasswd_encryption = bcrypt
+
+            [storage]
+            filesystem_folder = /data/collections
+          '';
+        };
+        #
+        "oci.cont/${cfg.contName}/config/users" = {
+          mode = "644";
+          uid = 1000;
+          gid = 1000;
+          text = ''
+            kel:${secrets.password.radicale}
+          '';
+        };
+      };
       virtualisation.oci-containers.containers.${cfg.contName} = {
         hostname = "${cfg.contName}";
 
