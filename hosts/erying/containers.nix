@@ -38,7 +38,6 @@
     #
     radicale = {
       enable = true;
-      autoStart = true;
       macvlanIp = "${secrets.ip.radicale}";
       vlanIp = "${secrets.vlan.erying.radicale}";
     };
