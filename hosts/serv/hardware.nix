@@ -13,7 +13,8 @@
 
   zramSwap = {
     enable = true;
-    memoryPercent = 5; # 1.6GB
+    memoryPercent = 5; # 1.6GB~
+    algorithm = "zstd";
   };
 
   hardware = {

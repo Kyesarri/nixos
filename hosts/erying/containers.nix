@@ -36,6 +36,12 @@
       mask = "${secrets.vlan.erying.mask}";
     };
     #
+    radicale = {
+      enable = true;
+      autoStart = true;
+      macvlanIp = "${secrets.ip.radicale}";
+      vlanIp = "${secrets.vlan.erying.radicale}";
+    };
     haos = {
       enable = true;
       autoStart = true;

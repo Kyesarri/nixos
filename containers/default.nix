@@ -6,6 +6,7 @@
     ./headscale
     ./nginx-lan
     ./nginx-wan
+    ./radicale
     ./tailscale
     ./zigbee2mqtt
   ];
