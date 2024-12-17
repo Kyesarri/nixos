@@ -14,8 +14,8 @@
 
   environment.systemPackages = with pkgs; [
     clinfo
-    gwe # gpu overclocking
     nvtopPackages.full
+    tuxclocker-plugins
   ];
 
   services.xserver.videoDrivers = ["nvidia"];

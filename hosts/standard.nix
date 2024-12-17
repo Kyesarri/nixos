@@ -171,6 +171,7 @@
       vlc # play me some vids
       usbimager # says on the tin
       ventoy-full
+      evolutionWithPlugins
       blender # for new toy :D
       gnome-disk-utility
       libimobiledevice
