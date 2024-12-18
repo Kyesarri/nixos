@@ -15,7 +15,8 @@
   environment.systemPackages = with pkgs; [
     clinfo
     nvtopPackages.full
-    tuxclocker-plugins
+    tuxclocker-without-unfree
+    tuxclocker-plugins-with-unfree
   ];
 
   services.xserver.videoDrivers = ["nvidia"];

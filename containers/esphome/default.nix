@@ -10,7 +10,7 @@ in {
   system.activationScripts.makeESPHomeDir = lib.stringAfter ["var"] ''mkdir -v -p ${toString dir1} & chown 1000:1000 ${toString dir1}'';
 
   virtualisation.oci-containers.containers.${contName} = {
-    image = "ghcr.io/esphome/esphome:stable";
+    image = "ghcr.io/esphome/esphome:latest";
 
     autoStart = true;
 
