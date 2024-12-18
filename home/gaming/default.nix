@@ -21,10 +21,12 @@
   users.users.${spaghetti.user}.packages = with pkgs; [
     prismlauncher # minecraft launcher
     shattered-pixel-dungeon
-    # pcsx2 # ps2 emulator # TODO 22/01/24 has issues building, hash mismatch
+    pcsx2 # ps2 emulator # TODO 22/01/24 has issues building, hash mismatch
     piper # frontend for libratbag
     protonup-qt # proton-ge # TODO get working with steam
     gamescope # wl roots gaming compositor, needs steam config not working currently
+    ryujinx # nintendo switch emulator
+    # ryujinx-greemdev # nintendo switch emulator fork #TODO 19.12.24 no worky - package not in store?
   ];
 
   nixpkgs.config.packageOverrides = pkgs: {
