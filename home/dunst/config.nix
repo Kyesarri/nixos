@@ -20,7 +20,7 @@
       transparency=10
       width=300
       corner_radius=10
-      frame_width=5
+      frame_width=3
       timeout=3
 
       [urgency_normal]
