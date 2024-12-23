@@ -243,11 +243,11 @@ in {
       #
       snapshots:
         enabled: true
-        bounding_box: true
+        bounding_box: false
         clean_copy: true
-        crop: false
+        crop: true
         quality: 100
-        timestamp: true
+        timestamp: false
       #
       ui:
         time_format: browser
