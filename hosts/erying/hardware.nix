@@ -29,6 +29,7 @@
       enable = true;
       extraPackages = with pkgs; [
         vaapiIntel
+        vpl-gpu-rt
         libvdpau-va-gl
         vaapiVdpau
         intel-ocl
