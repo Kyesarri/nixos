@@ -70,6 +70,12 @@ in {
       cameras:
         driveway:
           best_image_timeout: 60
+          mqtt:
+            timestamp: false
+            bounding_box: false
+            crop: true
+            quality: 100
+            height: 500
           zones:
             carpark:
               coordinates: 0,0.525,0.409,0.144,0.408,0.256,0.598,0.294,0.555,0.697,0.515,1,0,1
@@ -95,6 +101,12 @@ in {
       #
         entry:
           best_image_timeout: 60
+          mqtt:
+            timestamp: false
+            bounding_box: false
+            crop: true
+            quality: 100
+            height: 500
           zones:
             verandah:
               coordinates:
@@ -128,6 +140,12 @@ in {
       #
         front:
           best_image_timeout: 60
+          mqtt:
+            timestamp: false
+            bounding_box: false
+            crop: true
+            quality: 100
+            height: 500
           zones:
             lawn:
               coordinates:
