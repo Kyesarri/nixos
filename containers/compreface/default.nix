@@ -73,9 +73,9 @@ in {
     image = "exadel/compreface-api:latest";
 
     environment = {
-      POSTGRES_USER = "${postgres_username}";
-      POSTGRES_PASSWORD = "${postgres_password}";
-      POSTGRES_URL = "jdbc:postgresql://${postgres_domain}:${postgres_port}/${postgres_db}";
+      POSTGRES_USER = "${secrets.user.postgres}";
+      POSTGRES_PASSWORD = "${secrets.password.password}";
+      POSTGRES_URL = "jdbc:postgresql://${secrets.postgres_domain}:${secrets.postgres_port}/${secrets.postgres_db}";
       SPRING_PROFILES_ACTIVE = "dev";
       API_JAVA_OPTS = "${compreface_api_java_options}";
       SAVE_IMAGES_TO_DB = "${save_images_to_db}";

@@ -80,6 +80,7 @@
       webcam = "ustreamer --device=/dev/v4l/by-id/usb-Alpha_Imaging_Tech._Corp._Razer_Kiyo-video-index0 --host=0.0.0.0 --port=80 -f 60 -r 1920x1080 -m MJPEG";
     };
     sessionVariables = {
+      VDPAU_DRIVER = "va_gl";
       LIBVA_DRIVER_NAME = "iHD"; # Force intel-media-driver
       GTK_THEME = "${config.colorscheme.slug}"; # sets default gtk theme the package built by nix-colors
       XDG_CACHE_HOME = "$HOME/.cache";

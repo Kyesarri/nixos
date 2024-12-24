@@ -13,6 +13,7 @@
     ../../hardware/audio
     ../../hardware/battery
     ../../hardware/bluetooth
+    ../../hardware/nbfc
     ../../hardware/nvidia
 
     ../../home # set some default values for home-manager

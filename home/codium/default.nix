@@ -199,6 +199,7 @@
             "dropdown.background": "#${config.colorScheme.palette.base00}",
             "textLink.foreground": "#${config.colorScheme.palette.base08}"
           },
+          "editor.minimap.size": "fill",
         }
       '';
     };
