@@ -200,18 +200,8 @@ in {
         width: 2560
         height: 1920
         stationary:
-          interval: 0
+          interval: 50
           threshold: 50
-      #
-      review:
-        alerts:
-        - cat
-        - person
-        - dog
-        - bike
-        - phone
-        - package
-        - backpack
       #
       logger:
         default: info
