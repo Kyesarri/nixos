@@ -205,13 +205,13 @@ in {
       #
       review:
         alerts:
-          - cat
-          - person
-          - dog
-          - bike
-          - phone
-          - package
-          - backpack
+        - cat
+        - person
+        - dog
+        - bike
+        - phone
+        - package
+        - backpack
       #
       logger:
         default: info
