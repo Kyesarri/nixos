@@ -16,7 +16,6 @@ in {
       volumes = [
         "/etc/localtime:/etc/localtime:ro"
         "/home/${spaghetti.user}/.containers/${contName}:/config"
-        "/home/${spaghetti.user}/nixos/.containers/home-assistant/.dockerenv:/.dockerenv"
       ];
       environment = {};
 
