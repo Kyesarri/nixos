@@ -236,12 +236,25 @@ in {
       objects:
         track:
         - cat
+        - car
         - person
         - dog
         - bike
         - phone
         - package
         - backpack
+      #
+      review:
+        alerts:
+          labels:
+            - cat
+            - car
+            - person
+            - dog
+            - bike
+            - phone
+            - package
+            - backpack
       #
       record:
         enabled: true
