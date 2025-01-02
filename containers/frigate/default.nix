@@ -36,6 +36,10 @@ in {
       "/etc/localtime:/etc/localtime:ro"
     ];
 
+    environment = {
+      PLUS_API_KEY = "${secrets.password.frigate-api}";
+    };
+
     extraOptions = [
       "--network=macvlan_lan"
       "--ip=${secrets.ip.frigate}"
@@ -172,9 +176,7 @@ in {
       audio:
         enabled: true
         max_not_heard: 30
-        #  - 200 - high sensitivity
-        #  - 500 - medium sensitivity
-        #  - 1000 - low sensitivity
+        # 200 high, 500 medium, 1000 low
         min_volume: 500
         listen:
           - bark
