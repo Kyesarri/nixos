@@ -238,6 +238,7 @@ in {
         - bike
         - phone
         - package
+        - backpack
       #
       record:
         enabled: true
@@ -249,6 +250,7 @@ in {
           - bike
           - phone
           - package
+          - backpack
           post_capture: 10
           pre_capture: 6
           retain:
