@@ -75,7 +75,7 @@ in {
             bounding_box: false
             crop: true
             quality: 100
-            height: 500
+            height: 1920 # was 500 - testing
           zones:
             carpark:
               coordinates: 0,0.525,0.409,0.144,0.408,0.256,0.598,0.294,0.555,0.697,0.515,1,0,1
@@ -106,7 +106,7 @@ in {
             bounding_box: false
             crop: true
             quality: 100
-            height: 500
+            height: 1920 # was 500 - testing
           zones:
             verandah:
               coordinates:
@@ -145,7 +145,7 @@ in {
             bounding_box: false
             crop: true
             quality: 100
-            height: 500
+            height: 1920 # was 500 - testing
           zones:
             lawn:
               coordinates:
@@ -169,6 +169,23 @@ in {
       ##
       ## and the rest of the config lives here
       ##
+      audio:
+        enabled: true
+        max_not_heard: 30
+        #  - 200 - high sensitivity
+        #  - 500 - medium sensitivity
+        #  - 1000 - low sensitivity
+        min_volume: 500
+        listen:
+          - bark
+          - fire_alarm
+          - scream
+          - speech
+          - yell
+        filters:
+          speech:
+            threshold: 0.8
+      #
       ffmpeg:
         hwaccel_args: preset-vaapi
       #
@@ -233,7 +250,7 @@ in {
           post_capture: 10
           pre_capture: 6
           retain:
-            default: 5
+            default: 45
             mode: motion
         expire_interval: 60
         retain:
@@ -263,9 +280,7 @@ in {
           #   path: "/custom_models/yolov8n_288x288_edgetpu.tflite"
       #
       birdseye:
-        enabled: true
-        width: 640
-        height: 480
+        enabled: false
       #
     '';
   };
