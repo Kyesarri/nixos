@@ -236,7 +236,6 @@ in {
       objects:
         track:
         - cat
-        - car
         - person
         - dog
         - bike
@@ -248,7 +247,6 @@ in {
         alerts:
           labels:
             - cat
-            - car
             - person
             - dog
             - bike
