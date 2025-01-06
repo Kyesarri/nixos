@@ -17,7 +17,7 @@ in {
         "/etc/localtime:/etc/localtime:ro"
         "/home/${spaghetti.user}/.containers/${contName}:/config"
       ];
-      environment = {};
+      environment = {PYTHONPATH = "config/deps";}; # possible fix for issues since last? 24 release
 
       extraOptions = [
         "--network=macvlan_lan"
