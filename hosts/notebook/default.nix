@@ -20,7 +20,6 @@
     ../../hardware/audio
 
     ../../home
-    ../../home/ags
     ../../home/bottom
     ../../home/copyq
     ../../home/dunst
@@ -29,12 +28,12 @@
     ../../home/greetd
     ../../home/gtk
     ../../home/hypr
-    ../../home/kde
     ../../home/kitty
     ../../home/keepassxc
     ../../home/lite-xl
     ../../home/ulauncher
     ../../home/prism
+    ../../home/fwedee
     ../../home/zsh
   ];
 
