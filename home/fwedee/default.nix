@@ -6,6 +6,7 @@
     };
     klipper = {
       enable = true;
+      configFile = ./printer.cfg;
     };
     fluidd = {
       enable = true;
