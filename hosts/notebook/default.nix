@@ -30,11 +30,7 @@
   ];
 
   gnocchi = {
-    hypr = {
-      enable = false;
-      animations = false; # no config here yet #TODO - not critical - adding more mess is!
-    };
-    wifi.backend = "iwd";
+    wifi.backend = "nwm";
   };
 
   colorscheme = inputs.nix-colors.colorSchemes.${spaghetti.scheme};
