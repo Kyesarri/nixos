@@ -24,6 +24,10 @@
       auto-optimise-store = true; # runs gc, need to set interval otherwise defaults to 14d from memory
       experimental-features = ["nix-command" "flakes"]; # flakes and nixcommand required for config
     };
+    extraOptions = ''
+      min-free = ${toString (100 * 1024 * 1024)}
+      max-free = ${toString (1024 * 1024 * 1024)}
+    '';
   };
 
   hardware = {
