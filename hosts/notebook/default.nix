@@ -34,7 +34,7 @@
       enable = true;
       animations = false; # no config here yet #TODO - not critical - adding more mess is!
     };
-    wifi.backend = "nwm";
+    wifi.backend = "wpa";
   };
 
   colorscheme = inputs.nix-colors.colorSchemes.${spaghetti.scheme};
@@ -42,8 +42,6 @@
   networking.hostName = "nix-notebook";
 
   services.xserver.enable = true;
-
-  # no worky # security.polkit.adminIdentities = []; # for passwordless config - will ask for root credentials vs user
 
   environment = {
     systemPackages = with pkgs; [pciutils];
