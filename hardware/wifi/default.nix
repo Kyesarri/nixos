@@ -44,7 +44,7 @@ in {
     #
     (mkIf (cfg.backend == ["iwd"]) {
       networking.wireless.iwd.enable = true;
-      users.users.${spaghetti.user}.packages = with pkgs; [iwd iwgtk];
+      users.users.${spaghetti.user}.packages = with pkgs; [iwd iwgtk impala];
 
       home-manager.users.${spaghetti.user} = {
         home.file.".config/hypr/per-app/wireless.conf" = {

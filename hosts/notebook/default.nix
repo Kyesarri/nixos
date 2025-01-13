@@ -31,7 +31,7 @@
 
   gnocchi = {
     hypr = {
-      enable = true;
+      enable = false;
       animations = false; # no config here yet #TODO - not critical - adding more mess is!
     };
     wifi.backend = "iwd";
