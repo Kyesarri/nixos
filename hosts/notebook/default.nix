@@ -41,7 +41,13 @@
 
   networking.hostName = "nix-notebook";
 
-  services.xserver.enable = true;
+  services = {
+    dbus = {
+      enable = true;
+      packages = [pkgs.seahorse];
+    };
+    xserver.enable = false;
+  };
 
   environment = {
     systemPackages = with pkgs; [pciutils];
