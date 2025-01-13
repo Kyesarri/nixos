@@ -30,7 +30,6 @@
     ../../home/hypr
     ../../home/kitty
     ../../home/keepassxc
-    ../../home/lite-xl
     ../../home/ulauncher
     ../../home/prism
     ../../home/fwedee
@@ -40,13 +39,8 @@
   gnocchi = {
     hypr = {
       enable = true;
-      animations = false; # no config here yet - will need refactor
+      animations = false; # no config here yet #TODO - not critical - adding more mess is!
     };
-    hyprpaper.enable = true;
-    ags.enable = true;
-    gscreenshot.enable = true;
-    freetube.enable = true;
-
     wifi.backend = "nwm";
   };
 
