@@ -111,7 +111,7 @@
     shell = pkgs.zsh;
     isNormalUser = true;
     description = "${spaghetti.user}";
-    extraGroups = ["networkmanager"];
+    extraGroups = ["networkmanager" "wheel"];
     packages = with pkgs; [
       brightnessctl # brightness control, used in waybar config for laptops only
       graphite-cursors # cursor package, is this handled by /home/gtk/default.nix now? nope manual atm
