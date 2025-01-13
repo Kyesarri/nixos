@@ -4,6 +4,15 @@
   ...
 }: {
   # barebones - notebook to replace rasp pi 3a+ "soon"
+
+  # add some basic lad firewall rules
+  networking.firewall = {
+    enable = true;
+    checkReversePath = "loose"; # fixes connection issues with tailscale
+    allowedTCPPorts = [22 80 443];
+    allowedUDPPorts = [];
+  };
+
   services = {
     #
     mainsail = {
