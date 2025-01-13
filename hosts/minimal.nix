@@ -110,16 +110,10 @@
     extraGroups = ["networkmanager"];
     packages = with pkgs; [
       brightnessctl # brightness control, used in waybar config for laptops only
-      cinnamon.nemo-with-extensions # file manager
       graphite-cursors # cursor package, is this handled by /home/gtk/default.nix now? nope manual atm
 
       fet-sh # minimalistic fetch script
-      qview # image viewer
-      shotman # image capture
-      hyprpicker # colour picker for wayland
       libnotify # notifications
-      mate.mate-calc # calc
-      p7zip # TODO needs a gui
       udiskie # usb mounting
       inputs.wallpaper-generator.defaultPackage.x86_64-linux
     ];

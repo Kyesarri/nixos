@@ -31,6 +31,7 @@
     ../../home/kitty
     ../../home/keepassxc
     ../../home/ulauncher
+    ../../home/syncthing
     ../../home/prism
     ../../home/fwedee
     ../../home/zsh
