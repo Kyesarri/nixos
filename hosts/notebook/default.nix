@@ -43,6 +43,8 @@
     xserver.enable = false;
   };
 
+  networking.networkmanager.enable = true; # nwm
+
   environment = {
     systemPackages = with pkgs; [pciutils];
     shellAliases.rebuild = "sudo nixos-rebuild switch --flake /home/${spaghetti.user}/nixos#nix-notebook --show-trace";
