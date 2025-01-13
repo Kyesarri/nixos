@@ -34,7 +34,7 @@
       enable = true;
       animations = false; # no config here yet #TODO - not critical - adding more mess is!
     };
-    wifi.backend = "wpa";
+    wifi.backend = "iwd";
   };
 
   colorscheme = inputs.nix-colors.colorSchemes.${spaghetti.scheme};
