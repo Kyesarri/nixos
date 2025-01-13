@@ -12,7 +12,7 @@
     ./hardware.nix
     ./boot.nix
 
-    ../minimal.nix
+    ../headless.nix
 
     ../../hardware
     ../../hardware/battery
@@ -21,18 +21,10 @@
 
     ../../home
     ../../home/bottom
-    ../../home/copyq
-    ../../home/dunst
-    ../../home/firefox
     ../../home/git
-    ../../home/greetd
     ../../home/gtk
-    ../../home/hypr
     ../../home/kitty
-    ../../home/keepassxc
-    ../../home/ulauncher
     ../../home/syncthing
-    ../../home/prism
     ../../home/fwedee
     ../../home/zsh
   ];
@@ -51,7 +43,7 @@
 
   services.xserver.enable = true;
 
-  security.polkit.adminIdentities = []; # for passwordless config - will ask for root credentials vs user
+  # no worky # security.polkit.adminIdentities = []; # for passwordless config - will ask for root credentials vs user
 
   environment = {
     systemPackages = with pkgs; [pciutils];

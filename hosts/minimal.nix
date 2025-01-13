@@ -115,7 +115,6 @@
     packages = with pkgs; [
       brightnessctl # brightness control, used in waybar config for laptops only
       graphite-cursors # cursor package, is this handled by /home/gtk/default.nix now? nope manual atm
-
       fet-sh # minimalistic fetch script
       libnotify # notifications
       udiskie # usb mounting
