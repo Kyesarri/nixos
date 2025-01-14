@@ -8,9 +8,10 @@
   imports = [
     nix-colors.homeManagerModules.default
 
-    ./per-device.nix
-    ./hardware.nix
     ./boot.nix
+    ./hardware.nix
+    ./networking.nix
+    ./per-device.nix
 
     ../headless.nix
 
