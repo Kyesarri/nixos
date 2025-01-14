@@ -28,13 +28,18 @@
     };
     #
     moonraker = {
+      user = "moonraker";
+      group = "moonraker";
       enable = true;
       allowSystemControl = true;
-      address = "0.0.0.0";
-      settings.authorization = {
-        force_logins = true;
-        trusted_clients = ["${secrets.ip.subnet}/24" "127.0.0.1/32"];
-        cors_domains = ["*.home"];
+      address = "${secrets.ip.notebook}";
+
+      settings = {
+        authorization = {
+          force_logins = true;
+          trusted_clients = ["${secrets.ip.subnet}/24" "127.0.0.1/32"];
+          cors_domains = ["*.home"];
+        };
       };
     };
   };
