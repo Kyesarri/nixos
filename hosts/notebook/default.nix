@@ -26,6 +26,7 @@
     ../../home/gtk
     ../../home/kitty
     ../../home/syncthing
+    ../../home/tmux
     ../../home/fwedee
     ../../home/zsh
   ];
