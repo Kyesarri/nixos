@@ -38,7 +38,7 @@
     <td>notebook</td>
     <td>n3700</td>
     <td>igpu</td>
-    <td>meme</td>
+    <td>3d printer</td>
   </tr>
   <tr>
     <td>desktop</td>
@@ -81,7 +81,7 @@ username & plymouth theme configurable in flake.nix, see spaghetti
 programs under [home](home/) come with nix-colors themes, change theme in [hosts/hostname/default.nix](hosts/laptop/default.nix) per system. TODO update this - not correct now :)
 
 ## use
-clone this repository to your ~/
+clone this repository to your ~/ and not /etc/nixos
 
  ```cd ~ && git clone https://codeberg.org/kye/nixos```
 
@@ -94,9 +94,6 @@ run ```sudo nixos-rebuild switch --flake /home/username/nixos#hostname --show-tr
 things may / will fail, happy to helpout when my time permits
 
 ## issues
-
-### ags
-current configuration requires manual intervention, moving files from ~/nixos/home/ags/config to your ~/.config/ags/ dir
 
 ### secrets
 secrets won't work out the box, quick workaround would be replacing my ~/nixos/secrets.json with ~/secrets.example/example.secrets.json
