@@ -32,9 +32,8 @@
       address = "0.0.0.0";
       #
       settings = {
-        globalSection = {
-          klippy_uds_address = "/var/lib/moonraker/printer_data/comms/klippy.sock";
-        };
+        klippy_uds_address = ["/var/lib/moonraker/printer_data/comms/klippy.sock"];
+
         announcements = {
           subscriptions = ["mainsail"];
         };
@@ -47,10 +46,6 @@
           enable_object_processing = true;
         };
         history = {};
-        update_manager = {
-          refresh_interval = 168;
-          enable_auto_refresh = true;
-        };
 
         octoprint_compat = {};
       };
