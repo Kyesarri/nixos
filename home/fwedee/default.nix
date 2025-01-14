@@ -3,8 +3,7 @@
   secrets,
   ...
 }: {
-  # barebones - notebook to replace rasp pi 3a+ "soon"
-
+  # barebones - needs way more including webcam / other configs
   services = {
     #
     mainsail = {
@@ -24,8 +23,8 @@
       group = "moonraker";
       enable = true;
       allowSystemControl = true;
-      address = "${secrets.ip.notebook}";
-
+      address = "0.0.0.0";
+      #
       settings = {
         authorization = {
           force_logins = true;
