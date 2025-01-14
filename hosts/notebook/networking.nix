@@ -8,6 +8,7 @@
       443 # https
       8080 # ustreamer
       7125 # moonraker
+      4409 # print? port
     ];
 
     allowedUDPPorts = [
