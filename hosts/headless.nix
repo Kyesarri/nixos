@@ -86,6 +86,9 @@
       "video" # camera / webcam support
       "nut" # network ups
       "plugdev" # usb
+      "render" # access to rendering devices
+      "audio"
+      "netdev"
     ];
 
     packages = with pkgs; [

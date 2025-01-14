@@ -43,6 +43,13 @@
     xserver.enable = false;
   };
 
+  systemd.sleep.extraConfig = ''
+    AllowSuspend=no
+    AllowHibernation=no
+    AllowHybridSleep=no
+    AllowSuspendThenHibernate=no
+  '';
+
   networking.networkmanager.enable = true; # nwm
 
   environment = {
