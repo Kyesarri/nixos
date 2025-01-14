@@ -32,7 +32,9 @@
       address = "0.0.0.0";
       #
       settings = {
-        # klippy_uds_address = "/var/lib/moonraker/printer_data/comms/klippy.sock";
+        globalSection = {
+          klippy_uds_address = "/var/lib/moonraker/printer_data/comms/klippy.sock";
+        };
         announcements = {
           subscriptions = ["mainsail"];
         };
