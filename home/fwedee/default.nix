@@ -1,8 +1,14 @@
 {
   config,
   secrets,
+  spaghetti,
   ...
 }: {
+  users.users.${spaghetti.user} = {
+    extraGroups = [
+      "moonraker"
+    ];
+  };
   # barebones - needs way more including webcam / other configs
   services = {
     #
