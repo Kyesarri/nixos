@@ -47,8 +47,8 @@ in {
     };
     image = mkOption {
       type = types.str;
-      default = "docker-mailserver/docker-mailserver:latest";
-      example = "docker-mailserver/docker-mailserver:edge";
+      default = "ghcr.io/docker-mailserver/docker-mailserver:latest";
+      example = "ghcr.io/docker-mailserver/docker-mailserver:edge";
       description = "container image";
     };
   };
