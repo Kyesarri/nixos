@@ -1,5 +1,4 @@
 {
-  secrets,
   config,
   lib,
   ...
@@ -7,6 +6,7 @@
 with lib; let
   cfg = config.cont.dms;
 in {
+  # https://github.com/docker-mailserver/docker-mailserver/blob/master/compose.yaml
   options.cont.dms = {
     #
     enable = mkOption {
@@ -20,6 +20,12 @@ in {
       default = "10.10.0.200";
       example = "10.10.10.1";
       description = "container macvlan ip address";
+    };
+    fqdn = mkOption {
+      type = types.str;
+      default = "mail.example.com";
+      example = "mymail.coolhost.com";
+      description = "your fqdn mailserver";
     };
     vlanIp = mkOption {
       type = types.str;
@@ -50,39 +56,11 @@ in {
   config = mkMerge [
     (mkIf (cfg.enable == true) {
       ##
+      # make dirs via activation script
       system.activationScripts."makeDMSDir" =
         lib.stringAfter ["var"]
-        ''mkdir -v -p /etc/oci.cont/${cfg.contName}/data /etc/oci.cont/${cfg.contName}/config & chown -R 1000:1000 /etc/oci.cont/${cfg.contName}'';
-      environment.etc = {
-        #
-        "oci.cont/${cfg.contName}/config/config" = {
-          mode = "644";
-          uid = 1000;
-          gid = 1000;
-          text = ''
-            [server]
-            hosts = 0.0.0.0:5232
+        ''mkdir -v -p /etc/oci.cont/${cfg.contName}/mail /etc/oci.cont/${cfg.contName}/state /etc/oci.cont/${cfg.contName}/logs /etc/oci.cont/${cfg.contName}/config & chown -R 1000:1000 /etc/oci.cont/${cfg.contName}'';
 
-            [auth]
-            type = htpasswd
-            htpasswd_filename = /config/users
-            htpasswd_encryption = bcrypt
-
-            [storage]
-            filesystem_folder = /data/collections
-          '';
-        };
-        #
-        "oci.cont/${cfg.contName}/config/users" = {
-          mode = "644";
-          uid = 1000;
-          gid = 1000;
-          #FIXME
-          text = ''
-            kel:${secrets.password.radicale}
-          '';
-        };
-      };
       virtualisation.oci-containers.containers.${cfg.contName} = {
         hostname = "${cfg.contName}";
 
@@ -92,8 +70,11 @@ in {
 
         volumes = [
           "/etc/localtime:/etc/localtime:ro"
-          "/etc/oci.cont/${cfg.contName}/data:/data"
-          "/etc/oci.cont/${cfg.contName}/config:/config:ro"
+
+          "/etc/oci.cont/${cfg.contName}/mail:/var/mail/"
+          "/etc/oci.cont/${cfg.contName}/state:/var/mail-state/"
+          "/etc/oci.cont/${cfg.contName}/logs:/var/log/mail/"
+          "/etc/oci.cont/${cfg.contName}/config:/tmp/docker-mailserver/"
         ];
 
         environment = {

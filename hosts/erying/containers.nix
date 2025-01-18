@@ -36,7 +36,8 @@
       mask = "${secrets.vlan.erying.mask}";
     };
     dms = {
-      enable = false; # this one needs lots of work and will probs be forgotten about :)
+      enable = true; # this one needs lots of work and will probs be forgotten about :)
+      fqdn = "${secrets.domain.fqdn}";
       macvlanIp = "${secrets.ip.dms}";
       vlanIp = "${secrets.vlan.erying.dms}";
     };
