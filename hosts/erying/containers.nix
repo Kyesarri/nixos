@@ -36,6 +36,7 @@
       mask = "${secrets.vlan.erying.mask}";
     };
     dms = {
+      # ERROR start-mailserver.sh: Setting hostname/domainname is required
       enable = true; # this one needs lots of work and will probs be forgotten about :)
       fqdn = "${secrets.domain.fqdn}";
       macvlanIp = "${secrets.ip.dms}";

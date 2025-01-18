@@ -62,7 +62,7 @@ in {
         ''mkdir -v -p /etc/oci.cont/${cfg.contName}/mail /etc/oci.cont/${cfg.contName}/state /etc/oci.cont/${cfg.contName}/logs /etc/oci.cont/${cfg.contName}/config & chown -R 1000:1000 /etc/oci.cont/${cfg.contName}'';
 
       virtualisation.oci-containers.containers.${cfg.contName} = {
-        hostname = "${cfg.contName}";
+        hostname = "${cfg.fqdn}";
 
         autoStart = true;
 
