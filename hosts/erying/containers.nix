@@ -35,6 +35,11 @@
       range = "${secrets.vlan.erying.range}";
       mask = "${secrets.vlan.erying.mask}";
     };
+    dms = {
+      enable = false; # this one needs lots of work and will probs be forgotten about :)
+      macvlanIp = "${secrets.ip.dms}";
+      vlanIp = "${secrets.vlan.erying.dms}";
+    };
     #
     radicale = {
       enable = true;
@@ -79,6 +84,7 @@
     };
     nginx-wan = {
       enable = true;
+      autoStart = true; # man i'm an idiot :)
       macvlanIp = "${secrets.ip.nginx-wan}";
     };
     #

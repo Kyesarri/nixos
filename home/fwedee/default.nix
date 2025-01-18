@@ -43,7 +43,7 @@
         server = {
           host = "0.0.0.0";
           port = "7125";
-          max_upload_size = "1024";
+          max_upload_size = "1024"; # in MB
           klippy_uds_address = "/var/lib/moonraker/printer_data/comms/klippy.sock";
         };
         file_manager = {

@@ -7,6 +7,7 @@ with lib; let
   cfg = config.cont.nginx-wan;
 in {
   options.cont.nginx-wan = {
+    #
     enable = mkOption {
       type = types.bool;
       default = false;
