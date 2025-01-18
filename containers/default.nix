@@ -2,6 +2,7 @@
   imports = [
     ./adguard
     ./backend-network
+    ./dms
     ./haos
     ./headscale
     ./nginx-lan
