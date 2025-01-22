@@ -128,7 +128,24 @@
         modules = [
           home-manager.nixosModules.home-manager
           ./hosts/serv # ASUS z390i / 9900k / 32gb ddr4
-          # 15s-fq2050TU / i5-1135G7 / iris x / 8gb ddr4 FIXME #RIP
+          {
+            environment.systemPackages = [alejandra.defaultPackage.x86_64-linux];
+          }
+          {
+            home-manager = {
+              useGlobalPkgs = true;
+              useUserPackages = true;
+              extraSpecialArgs = {inherit inputs;};
+            };
+          }
+        ];
+      };
+      #
+      "nix-ws" = nixpkgs.lib.nixosSystem {
+        inherit system specialArgs;
+        modules = [
+          home-manager.nixosModules.home-manager
+          ./hosts/ws # ASUS x99 ws ipmi / 5960x / 64gb ddr4
           {
             environment.systemPackages = [alejandra.defaultPackage.x86_64-linux];
           }
