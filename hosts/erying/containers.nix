@@ -37,6 +37,7 @@
     };
     dms = {
       # ERROR start-mailserver.sh: Setting hostname/domainname is required
+      # Fatal: Invalid system hostname: 'www.***'
       enable = true; # this one needs lots of work and will probs be forgotten about :)
       fqdn = "${secrets.domain.fqdn}";
       macvlanIp = "${secrets.ip.dms}";

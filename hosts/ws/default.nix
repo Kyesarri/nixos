@@ -9,9 +9,9 @@
     nix-colors.homeManagerModules.default
 
     ./boot.nix
+    ./containers.nix
     ./hardware.nix
     ./networking.nix
-    ./per-device.nix
 
     ../headless.nix
 
@@ -27,32 +27,20 @@
     ../../home/kitty
     ../../home/syncthing
     ../../home/tmux
-    ../../home/fwedee
     ../../home/zsh
   ];
 
-  gnocchi.wifi.backend = "nwm"; # isn't working?
-
   colorscheme = inputs.nix-colors.colorSchemes.${spaghetti.scheme};
 
-  networking.hostName = "nix-notebook";
+  networking.hostName = "nix-ws";
 
   services = {
     dbus = {
       enable = true;
       packages = [pkgs.seahorse];
     };
-    xserver.enable = false; # may re-enable for klipperscreen
+    xserver.enable = false;
   };
-
-  systemd.sleep.extraConfig = ''
-    AllowSuspend=no
-    AllowHibernation=no
-    AllowHybridSleep=no
-    AllowSuspendThenHibernate=no
-  '';
-
-  networking.networkmanager.enable = true; # nwm
 
   environment = {
     systemPackages = with pkgs; [pciutils usbutils];

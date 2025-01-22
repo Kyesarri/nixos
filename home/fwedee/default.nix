@@ -4,11 +4,22 @@
   spaghetti,
   ...
 }: {
-  users.users.${spaghetti.user} = {
-    extraGroups = [
-      "moonraker"
-    ];
+  users.users = {
+    ${spaghetti.user} = {
+      extraGroups = [
+        "moonraker" # add our user to moonraker group
+      ];
+    };
+
+    moonraker = {
+      extraGroups = [
+        "plugdev" # usb
+        "dialout" # serial
+        "video" # video
+      ];
+    };
   };
+
   # barebones - needs way more including webcam / other configs
   services = {
     #
@@ -19,7 +30,7 @@
     klipper = {
       enable = true;
       configFile = ./printer.cfg;
-      inherit (config.services.moonraker) user group;
+      inherit (config.services.moonraker) user group; # same user / group as moonraker
       mutableConfig = true;
       mutableConfigFolder = config.services.moonraker.stateDir + "/config";
     };
