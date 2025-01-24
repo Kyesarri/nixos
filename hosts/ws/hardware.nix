@@ -28,7 +28,7 @@
       enable = true;
       unit = "C";
       drives = [
-        # TODO
+        "/dev/disk/by-by-id/nvme-eui.a428b70111cb004c"
       ];
     };
 

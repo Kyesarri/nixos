@@ -32,7 +32,7 @@
       "10-lan" = {
         address = ["${toString secrets.ip.nix-ws}/24"];
         gateway = ["${toString secrets.ip.gateway}"];
-        matchConfig.Name = ["enp7s0"]; #TODO
+        matchConfig.Name = ["enp7s0"];
         linkConfig.RequiredForOnline = "routable";
         networkConfig = {
           IPv6PrivacyExtensions = "yes";
