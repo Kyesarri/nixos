@@ -5,7 +5,7 @@
 }: {
   networking = {
     hostName = "nix-ws";
-    # hostId = "qyc7w4ei"; # value no worky?
+    hostId = "79f4d885";
     networkmanager.enable = false;
     useNetworkd = true;
     usePredictableInterfaceNames = lib.mkDefault true;
@@ -32,7 +32,7 @@
       "10-lan" = {
         address = ["${toString secrets.ip.nix-ws}/24"];
         gateway = ["${toString secrets.ip.gateway}"];
-        matchConfig.Name = ["eno1"]; #TODO
+        matchConfig.Name = ["enp7s0"]; #TODO
         linkConfig.RequiredForOnline = "routable";
         networkConfig = {
           IPv6PrivacyExtensions = "yes";
@@ -86,7 +86,7 @@
   systemd.network.networks = {
     # main lan macvlan for containers
     "10-lan" = {
-      matchConfig.Name = ["eno1"];
+      matchConfig.Name = ["enp7s0"];
       networkConfig.LinkLocalAddressing = "no";
       linkConfig.RequiredForOnline = "carrier";
       extraConfig = ''
