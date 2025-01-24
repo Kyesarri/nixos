@@ -28,12 +28,17 @@
 
     extraModulePackages = [];
 
-    supportedFilesystems = ["zfs" "ntfs"];
+    supportedFilesystems = [
+      # "zfs"
+      "ntfs"
+    ];
 
+    /*
     zfs.forceImportRoot = false;
     zfs.extraPools = [
       #TODO
     ];
+    */
 
     loader = {
       grub = {

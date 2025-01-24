@@ -5,7 +5,7 @@
 }: {
   networking = {
     hostName = "nix-ws";
-    hostId = "qyc7w4ei"; # required for lvm disks
+    # hostId = "qyc7w4ei"; # value no worky?
     networkmanager.enable = false;
     useNetworkd = true;
     usePredictableInterfaceNames = lib.mkDefault true;
