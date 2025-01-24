@@ -30,7 +30,7 @@
     networks = {
       # main lan
       "10-lan" = {
-        address = ["${toString secrets.ip.fenrir}/24"];
+        address = ["${toString secrets.ip.nix-ws}/24"];
         gateway = ["${toString secrets.ip.gateway}"];
         matchConfig.Name = ["eno1"]; #TODO
         linkConfig.RequiredForOnline = "routable";
@@ -96,7 +96,7 @@
     };
     # main lan config
     "20-lan-self" = {
-      address = ["${toString secrets.ip.serv-1}/24"];
+      address = ["${toString secrets.ip.nix-ws}/24"];
       gateway = ["${toString secrets.ip.gateway}"];
       matchConfig.Name = "lan-self";
       linkConfig.RequiredForOnline = "routable";
