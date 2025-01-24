@@ -16,9 +16,6 @@
     ../headless.nix
 
     ../../hardware
-    ../../hardware/battery
-    ../../hardware/bluetooth
-    ../../hardware/audio
 
     ../../home
     ../../home/bottom

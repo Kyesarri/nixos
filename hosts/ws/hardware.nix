@@ -39,31 +39,15 @@
   };
 
   fileSystems = {
-    #TODO
-    /*
     "/" = {
-      device = "/dev/disk/by-uuid/29b03be4-7107-4825-a062-ae8cedfc3001";
+      device = "/dev/disk/by-uuid/8e085135-84a7-47b5-9ed5-ad036bd33d56";
       fsType = "ext4";
     };
-
-    "/tmp/cache" = {
-      device = "none";
-      fsType = "tmpfs";
-    };
-
-    "/boot" = {
-      device = "/dev/disk/by-uuid/84DE-719A";
-      fsType = "vfat";
-    };
-    */
   };
 
   swapDevices = [
     {
-      device = "";
-      /*
-      "/dev/disk/by-uuid/31007c77-40ea-4c3c-b5a7-08db63f333d8"
-      */
+      device = "/dev/disk/by-uuid/e071a560-b183-4c1e-84df-25dbeafdec48";
     }
   ];
 }
