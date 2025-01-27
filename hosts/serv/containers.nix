@@ -29,10 +29,14 @@
       timeZone = "Australia/Melbourne";
     };
     #
-    subsai = {
+    subgen = {
       enable = true;
-      macvlanIp = "${secrets.ip.subsai}";
-      vlanIp = "${secrets.vlan.serv.subsai}";
+      macvlanIp = "${secrets.ip.subgen}";
+      vlanIp = "${secrets.vlan.serv.subgen}";
+      # plexToken = "${secrets.blabla}";
+      # plexServer = "";
+      # jellyToken = "";
+      # jellyServer = "";
     };
     #
     tailscale = {
