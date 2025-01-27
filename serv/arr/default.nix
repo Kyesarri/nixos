@@ -9,7 +9,7 @@
   # define a new group "media", add services / users to this group
   users.groups.media = {
     name = "media";
-    members = ["plex" "transmission" "radarr" "readarr" "sonarr" "prowlarr" "${spaghetti.user}"];
+    members = ["plex" "bazarr" "transmission" "radarr" "readarr" "sonarr" "prowlarr" "${spaghetti.user}"];
   };
 
   #TODO #FIXME

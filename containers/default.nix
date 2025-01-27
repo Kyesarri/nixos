@@ -8,8 +8,8 @@
     ./nginx-lan # reverse proxy for local services
     ./nginx-wan # reverse proxy for webhosting
     ./radicale # calendar + todo thingy
-    ./subgen
-    ./subsai # ai subtitle thingy
+    ./subgen # ai subtitle generator thingy
+    ./subsai # ai subtitle generator thingy
     ./tailscale # vpn for remote connections to lan
     ./zigbee2mqtt # home automation thingy, lights, sensors, the good stuff
   ];
