@@ -41,6 +41,12 @@ in {
       example = "Australia/Broken_Hill";
       description = "database timezone";
     };
+    plexServer = mkOption {
+      type = types.str;
+      default = "null";
+      example = "10.0.1.2:32400";
+      description = "internal ip of your plex server";
+    };
     plexToken = mkOption {
       type = types.str;
       default = "gudtokenhere";
@@ -75,6 +81,7 @@ in {
         volumes = [
           "/etc/localtime:/etc/localtime:ro"
 
+          /*
           "/hdda/movies:/movies/hdda"
           "/hddb/movies:/movies/hddb"
           "/hddc/movies:/movies/hddc"
@@ -94,6 +101,28 @@ in {
           "/hddg/tv_shows:/tv/hddg"
           "/hddh/tv_shows:/tv/hddh"
           "/hddi/tv_shows:/tv/hddi"
+          */
+
+          # testing same paths as plex sees
+          "/hdda/movies:/movies/hdda"
+          "/hddb/movies:/movies/hddb"
+          "/hddc/movies:/movies/hddc"
+          "/hddd/movies:/movies/hddd"
+          "/hdde/movies:/movies/hdde"
+          "/hddf/movies:/movies/hddf"
+          "/hddg/movies:/movies/hddg"
+          "/hddh/movies:/movies/hddh"
+          "/hddi/movies:/movies/hddi"
+
+          "/hdda/tv_shows:/tv_shows/hdda"
+          "/hddb/tv_shows:/tv_shows/hddb"
+          "/hddc/tv_shows:/tv_shows/hddc"
+          "/hddd/tv_shows:/tv_shows/hddd"
+          "/hdde/tv_shows:/tv_shows/hdde"
+          "/hddf/tv_shows:/tv_shows/hddf"
+          "/hddg/tv_shows:/tv_shows/hddg"
+          "/hddh/tv_shows:/tv_shows/hddh"
+          "/hddi/tv_shows:/tv_shows/hddi"
 
           "/etc/oci.cont/${cfg.contName}/models:/subgen/models"
         ];

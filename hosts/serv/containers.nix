@@ -34,7 +34,7 @@
       macvlanIp = "${secrets.ip.subgen}";
       vlanIp = "${secrets.vlan.serv.subgen}";
       plexToken = "${secrets.password.plexToken}";
-      # plexServer = "";
+      plexServer = "${secrets.ip.plex}:32400";
       # jellyToken = "";
       # jellyServer = "";
     };
