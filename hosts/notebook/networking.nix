@@ -6,7 +6,8 @@
       22 # ssh
       80 # http
       443 # https
-      8080 # ustreamer
+      8080 # ustreamer nozzle-cam
+      8081 # ustreamer bed-cam
       7125 # moonraker
       4409 # print? port
     ];

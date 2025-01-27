@@ -13,12 +13,10 @@
     ../../containers/emqx
     ../../containers/esphome
     ../../containers/frigate
-    # ../../containers/fweedee # running on pi 3a+ now
     ../../containers/ghost
     ../../containers/homer
     ../../containers/i2pd
     ../../containers/matter
-    # ../../containers/octoprint # running on pi 3a+ now
     ../../containers/orcaslicer
     ../../containers/overseerr
     # ../../containers/netbird # this wont work out the box :D
@@ -35,6 +33,7 @@
       range = "${secrets.vlan.erying.range}";
       mask = "${secrets.vlan.erying.mask}";
     };
+    #
     dms = {
       # ERROR start-mailserver.sh: Setting hostname/domainname is required
       # Fatal: Invalid system hostname: 'www.***'
@@ -49,6 +48,7 @@
       macvlanIp = "${secrets.ip.radicale}";
       vlanIp = "${secrets.vlan.erying.radicale}";
     };
+    #
     haos = {
       enable = true;
       autoStart = true;
@@ -57,6 +57,7 @@
       image = "ghcr.io/home-assistant/home-assistant:beta";
       contName = "haos-${config.networking.hostName}";
     };
+    #
     headscale = {
       enable = true;
       macvlanIp = "${secrets.ip.headscale}";
@@ -85,6 +86,7 @@
       contName = "nginx-lan-${config.networking.hostName}";
       timeZone = "Australia/Melbourne";
     };
+    #
     nginx-wan = {
       enable = true;
       autoStart = true; # man i'm an idiot :)
@@ -102,6 +104,7 @@
       timeZone = "Australia/Melbourne";
       authKey = "${secrets.password.tailscale}";
     };
+    #
     zigbee2mqtt = {
       enable = true;
       macvlanIp = "${secrets.ip.zigbee2mqtt}";

@@ -3,7 +3,6 @@ subs ai
 Subtitles generation tool (Web-UI + CLI + Python package) powered by OpenAI's Whisper and its variants
 */
 {
-  secrets,
   config,
   lib,
   ...
@@ -53,21 +52,13 @@ in {
   config = mkMerge [
     (mkIf (cfg.enable == true) {
       ##
+      /*
       system.activationScripts."makeSubsAIDir" =
         lib.stringAfter ["var"]
         ''mkdir -v -p /etc/oci.cont/${cfg.contName}/data /etc/oci.cont/${cfg.contName}/config & chown -R 1000:1000 /etc/oci.cont/${cfg.contName}'';
-      environment.etc = {
-        /*
-        "oci.cont/${cfg.contName}/config/config" = {
-          mode = "644";
-          uid = 1000;
-          gid = 1000;
-          text = ''
-            #TODO
-          '';
-        };
-        */
-      };
+      */
+      environment.etc = {};
+
       virtualisation.oci-containers.containers.${cfg.contName} = {
         hostname = "${cfg.contName}";
 
@@ -77,8 +68,26 @@ in {
 
         volumes = [
           "/etc/localtime:/etc/localtime:ro"
-          "/etc/oci.cont/${cfg.contName}/data:/data"
-          "/etc/oci.cont/${cfg.contName}/config:/config:ro"
+
+          "/hdda/movies:/media_files/movies/hdda"
+          "/hddb/movies:/media_files/movies/hddb"
+          "/hddc/movies:/media_files/movies/hddc"
+          "/hddd/movies:/media_files/movies/hddd"
+          "/hdde/movies:/media_files/movies/hdde"
+          "/hddf/movies:/media_files/movies/hddf"
+          "/hddg/movies:/media_files/movies/hddg"
+          "/hddh/movies:/media_files/movies/hddh"
+          "/hddi/movies:/media_files/movies/hddi"
+
+          "/hdda/tv_shows:/media_files/tv_shows/hdda"
+          "/hddb/tv_shows:/media_files/tv_shows/hddb"
+          "/hddc/tv_shows:/media_files/tv_shows/hddc"
+          "/hddd/tv_shows:/media_files/tv_shows/hddd"
+          "/hdde/tv_shows:/media_files/tv_shows/hdde"
+          "/hddf/tv_shows:/media_files/tv_shows/hddf"
+          "/hddg/tv_shows:/media_files/tv_shows/hddg"
+          "/hddh/tv_shows:/media_files/tv_shows/hddh"
+          "/hddi/tv_shows:/media_files/tv_shows/hddi"
         ];
 
         environment = {

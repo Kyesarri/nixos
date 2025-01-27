@@ -12,13 +12,14 @@
   ];
 
   cont = {
+    #
     backend-network = {
       enable = true; # probably want this on
       subnet = "${secrets.vlan.serv.subnet}";
       range = "${secrets.vlan.serv.range}";
       mask = "${secrets.vlan.serv.mask}";
     };
-
+    #
     adguard = {
       enable = true;
       macvlanIp = "${secrets.ip.adguard-serv}";
@@ -27,7 +28,13 @@
       contName = "serv-adguard";
       timeZone = "Australia/Melbourne";
     };
-
+    #
+    subsai = {
+      enable = true;
+      macvlanIp = "${secrets.ip.subsai}";
+      vlanIp = "${secrets.vlan.serv.subsai}";
+    };
+    #
     tailscale = {
       enable = true;
       macvlanIp = "${secrets.ip.tailscale-serv}";
