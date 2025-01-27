@@ -147,8 +147,8 @@ in {
           WORD_LEVEL_HIGHLIGHT = "False";
           DEBUG = "true";
           USE_PATH_MAPPING = "false";
-          PATH_MAPPING_FROM = "/tv";
-          PATH_MAPPING_TO = "/Volumes/TV";
+          # PATH_MAPPING_FROM = "/tv";
+          # PATH_MAPPING_TO = "/Volumes/TV";
           TRANSCRIBE_DEVICE = "cpu";
           CLEAR_VRAM_ON_COMPLETE = "true";
           MODEL_PATH = "./models";
