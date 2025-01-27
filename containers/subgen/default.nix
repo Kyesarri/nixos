@@ -41,6 +41,12 @@ in {
       example = "Australia/Broken_Hill";
       description = "database timezone";
     };
+    plexToken = mkOption {
+      type = types.str;
+      default = "gudtokenhere";
+      example = "bettertokenhere";
+      description = "see https://support.plex.tv/articles/204059436-finding-an-authentication-token-x-plex-token/";
+    };
     image = mkOption {
       type = types.str;
       default = "mccloud/subgen:latest";
@@ -103,7 +109,7 @@ in {
           PROCMEDIAONPLAY = "false";
           NAMESUBLANG = "aa";
           SKIPIFINTERNALSUBLANG = "eng";
-          # PLEXTOKEN = "${cfg.plexToken}"; #ADDME
+          PLEXTOKEN = "${cfg.plexToken}"; #ADDME
           # PLEXSERVER = "${cfg.plexServer};"; #ADDME
           # JELLYFINTOKEN = "${cfg.jellyToken}"; #ADDME
           # JELLYFINSERVER = "${cfg.jellyServer}"; #ADDME

@@ -33,7 +33,7 @@
       enable = true;
       macvlanIp = "${secrets.ip.subgen}";
       vlanIp = "${secrets.vlan.serv.subgen}";
-      # plexToken = "${secrets.blabla}";
+      plexToken = "${secrets.password.plexToken}";
       # plexServer = "";
       # jellyToken = "";
       # jellyServer = "";
