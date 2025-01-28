@@ -131,7 +131,7 @@ in {
           PATH_MAPPING_TO = "/Volumes/TV";
           TRANSCRIBE_DEVICE = "cpu";
           CLEAR_VRAM_ON_COMPLETE = "true";
-          # MODEL_PATH = "/subgen/models"; #JANKY - testing with manually downloaded model
+          MODEL_PATH = "./subgen"; #JANKY - testing with manually downloaded model
           UPDATE = "false";
           APPEND = "false";
           USE_MODEL_PROMPT = "false";
