@@ -101,13 +101,14 @@ in {
           "/hddh/tv_shows:/tv_shows/hddh"
           "/hddi/tv_shows:/tv_shows/hddi"
 
-          "/etc/oci.cont/${cfg.contName}/models:/subgen/models" #JANKY
+          "/etc/oci.cont/${cfg.contName}/models:/subgen/models" # testing without env var path for cache
         ];
 
         environment = {
           TZ = "${cfg.timeZone}";
           PUID = "1000";
           PGID = "1000";
+
           WHISPER_MODEL = "medium";
           WHISPER_THREADS = "4";
           PROCADDEDMEDIA = "true";
@@ -115,8 +116,8 @@ in {
           NAMESUBLANG = "aa";
           SKIPIFINTERNALSUBLANG = "eng";
           PLEXTOKEN = "${cfg.plexToken}";
-          TRANSCRIBE_FOLDERS = "/tv_shows|/movies";
           PLEXSERVER = "${cfg.plexServer};";
+          TRANSCRIBE_FOLDERS = "/tv_shows|/movies";
           TRANSCRIBE_OR_TRANSLATE = "translate";
           # JELLYFINTOKEN = "${cfg.jellyToken}"; #ADDME
           # JELLYFINSERVER = "${cfg.jellyServer}"; #ADDME
@@ -130,7 +131,7 @@ in {
           PATH_MAPPING_TO = "/Volumes/TV";
           TRANSCRIBE_DEVICE = "cpu";
           CLEAR_VRAM_ON_COMPLETE = "true";
-          MODEL_PATH = "/subgen/models"; #JANKY - testing with manually downloaded model
+          # MODEL_PATH = "/subgen/models"; #JANKY - testing with manually downloaded model
           UPDATE = "false";
           APPEND = "false";
           USE_MODEL_PROMPT = "false";
