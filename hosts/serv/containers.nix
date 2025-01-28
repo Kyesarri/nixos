@@ -30,7 +30,7 @@
     };
     #
     subgen = {
-      enable = true;
+      enable = false;
       macvlanIp = "${secrets.ip.subgen}";
       vlanIp = "${secrets.vlan.serv.subgen}";
       plexToken = "${secrets.password.plexToken}";
