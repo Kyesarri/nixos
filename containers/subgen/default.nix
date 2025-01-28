@@ -153,7 +153,7 @@ in {
           PATH_MAPPING_TO = "/Volumes/TV";
           TRANSCRIBE_DEVICE = "cpu";
           CLEAR_VRAM_ON_COMPLETE = "true";
-          MODEL_PATH = "./models";
+          MODEL_PATH = "/subgen/models";
           UPDATE = "true";
           APPEND = "false";
           USE_MODEL_PROMPT = "false";
