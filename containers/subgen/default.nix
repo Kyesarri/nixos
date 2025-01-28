@@ -131,7 +131,6 @@ in {
           TZ = "${cfg.timeZone}";
           PUID = "1000";
           PGID = "1000";
-          #TODO
           WHISPER_MODEL = "medium";
           WHISPER_THREADS = "4";
           PROCADDEDMEDIA = "true";
@@ -141,6 +140,7 @@ in {
           PLEXTOKEN = "${cfg.plexToken}";
           TRANSCRIBE_FOLDERS = "/tv_shows|/movies";
           PLEXSERVER = "${cfg.plexServer};";
+          TRANSCRIBE_OR_TRANSLATE = "translate";
           # JELLYFINTOKEN = "${cfg.jellyToken}"; #ADDME
           # JELLYFINSERVER = "${cfg.jellyServer}"; #ADDME
           PLEX_QUEUE_SERIES = "true";
@@ -154,13 +154,12 @@ in {
           TRANSCRIBE_DEVICE = "cpu";
           CLEAR_VRAM_ON_COMPLETE = "true";
           MODEL_PATH = "./models";
-          UPDATE = "false";
+          UPDATE = "true";
           APPEND = "false";
           USE_MODEL_PROMPT = "false";
           CUSTOM_MODEL_PROMPT = "";
           LRC_FOR_AUDIO_FILES = "true";
           CUSTOM_REGROUP = "cm_sl=84_sl=42++++++1";
-          #TODO
         };
 
         extraOptions = [
