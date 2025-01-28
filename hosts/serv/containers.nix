@@ -25,7 +25,7 @@
       macvlanIp = "${secrets.ip.adguard-serv}";
       vlanIp = "${secrets.vlan.serv.adguard}";
       image = "adguard/adguardhome:latest";
-      contName = "serv-adguard";
+      contName = "adguard-${config.networking.hostName}";
       timeZone = "Australia/Melbourne";
     };
     #
@@ -56,7 +56,9 @@
     wantedBy = [
       "podman-home-assistant.service"
       "podman-plex.service"
+      "podman-adguard-${config.networking.hostName}.service"
       "podman-tailscale-${config.networking.hostName}-subnet.service"
+      "podman-subgen-${config.networking.hostName}.service"
     ];
     serviceConfig = {
       Type = "oneshot";
