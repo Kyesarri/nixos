@@ -81,29 +81,6 @@ in {
         volumes = [
           "/etc/localtime:/etc/localtime:ro"
 
-          /*
-          "/hdda/movies:/movies/hdda"
-          "/hddb/movies:/movies/hddb"
-          "/hddc/movies:/movies/hddc"
-          "/hddd/movies:/movies/hddd"
-          "/hdde/movies:/movies/hdde"
-          "/hddf/movies:/movies/hddf"
-          "/hddg/movies:/movies/hddg"
-          "/hddh/movies:/movies/hddh"
-          "/hddi/movies:/movies/hddi"
-
-          "/hdda/tv_shows:/tv/hdda"
-          "/hddb/tv_shows:/tv/hddb"
-          "/hddc/tv_shows:/tv/hddc"
-          "/hddd/tv_shows:/tv/hddd"
-          "/hdde/tv_shows:/tv/hdde"
-          "/hddf/tv_shows:/tv/hddf"
-          "/hddg/tv_shows:/tv/hddg"
-          "/hddh/tv_shows:/tv/hddh"
-          "/hddi/tv_shows:/tv/hddi"
-          */
-
-          # testing same paths as plex sees
           "/hdda/movies:/movies/hdda"
           "/hddb/movies:/movies/hddb"
           "/hddc/movies:/movies/hddc"
@@ -124,7 +101,7 @@ in {
           "/hddh/tv_shows:/tv_shows/hddh"
           "/hddi/tv_shows:/tv_shows/hddi"
 
-          "/etc/oci.cont/${cfg.contName}/models:/subgen/models"
+          "/etc/oci.cont/${cfg.contName}/models:/subgen/models" #JANKY
         ];
 
         environment = {
@@ -153,8 +130,8 @@ in {
           PATH_MAPPING_TO = "/Volumes/TV";
           TRANSCRIBE_DEVICE = "cpu";
           CLEAR_VRAM_ON_COMPLETE = "true";
-          MODEL_PATH = "/subgen/models";
-          UPDATE = "true";
+          MODEL_PATH = "/subgen/models"; #JANKY - testing with manually downloaded model
+          UPDATE = "false";
           APPEND = "false";
           USE_MODEL_PROMPT = "false";
           CUSTOM_MODEL_PROMPT = "";
