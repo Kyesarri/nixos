@@ -35,7 +35,7 @@ barebones without any defined configs
 ## arr
 barebones bazarr / prowlarr / radarr / readarr / sonarr
 
-todo add transmission w' flood to stack
+#TODO add transmission w' flood to stack
 
 ## backend-network
 network for inter container comms - leverages tailscale subnet routing for inter host comms
