@@ -4,11 +4,17 @@
   ...
 }: let
   contName = "frigate";
+  # i'm still OK for now with /etc/oci.cont/ as my containers dir
   dir1 = "/etc/oci.cont/${contName}/db";
+  # TODO - each server host has a scratch dir defined, rather than this static config where this module is hard coded for use on erying
   dir2 = "/etc/oci.cont.scratch/${contName}/media/frigate";
   dir3 = "/etc/oci.cont/${contName}/config";
 in {
+  # create container directories in /etc
   system.activationScripts.makeFrigateDir = lib.stringAfter ["var"] ''mkdir -v -p ${toString dir1} ${toString dir2} ${toString dir3}'';
+
+  # add update container shell alias
+  environment.shellAliases = {cont-frigate = "sudo podman pull ghcr.io/blakeblackshear/frigate:stable";};
 
   # tempdir
   fileSystems."/tmp/cache" = {

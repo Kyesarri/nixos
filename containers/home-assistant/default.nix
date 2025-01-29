@@ -5,6 +5,8 @@
 }: let
   contName = "home-assistant";
 in {
+  environment.shellAliases = {cont-haos = "sudo podman pull ghcr.io/home-assistant/home-assistant:latest";};
+
   virtualisation.oci-containers.containers = {
     home-assistant = {
       hostname = "${contName}";

@@ -9,6 +9,8 @@ in {
   system.activationScripts.makePlexDir =
     lib.stringAfter ["var"] ''mkdir -p /home/${spaghetti.user}/.containers/${contName}'';
 
+  environment.shellAliases = {cont-plex = "sudo podman pull lscr.io/linuxserver/plex";};
+
   virtualisation.oci-containers.containers.${contName} = {
     hostname = "${contName}-nix-serv";
 

@@ -1,11 +1,33 @@
 # containers
-podman containers, most are mac-vlan running on internal network on static addresses
+most are podman with some nspawn / nixos containers, many use mac-vlan running on internal network on static addresses
 
 secrets / ip managed by gitcrypt
 
 storage in /etc/oci.cont/contName for erying / new containers, some still in ~/.containers
 
 each container ***should*** generate directories with correct perms
+
+many are being ported over to modules, with their configuration defined in each host's [configuration.nix](../hosts/erying/containers.nix)
+
+example:
+
+    {config, ...}:{
+    # ...
+        imports = [ ../../containers ];
+        cont = {
+            adguard = {
+                enable = true;
+                macvlanIp = "192.168.0.1";
+                vlanIp = "10.10.10.1";
+                image = "adguard/adguardhome:latest"; # not required
+                contName = "adguard-${config.networking.hostName}"; # not required
+                timeZone = "Australia/Melbourne"; # not required
+            };
+        };
+    # ...
+    }
+
+i'm also moving most containers over to the vlan on each host, with comms to the containers via nginx-lan / tailscale
 
 ## adguard
 barebones without any defined configs
@@ -14,6 +36,9 @@ barebones without any defined configs
 barebones bazarr / prowlarr / radarr / readarr / sonarr
 
 todo add transmission w' flood to stack
+
+## backend-network
+network for inter container comms - leverages tailscale subnet routing for inter host comms
 
 ## cockroachdb
 isn't a working container - barebones for use in other containers - see zitadel
@@ -24,6 +49,9 @@ not running - pending config - may implement into doubletake
 ## cpai
 codeproject ai for face recognition - may implement into doubletake
 
+## dms
+docker mail server - is a #TODO atm
+
 ## doubletake
 toying with face recognition, barebones no config
 
@@ -31,10 +59,10 @@ toying with face recognition, barebones no config
 mqtt container, barebones, legacy config dirs
 
 ## esphome
-un-used but working, barebones
+barebones, but working, in service atm
 
 ## frigate
-complete frigate container with coral m.2 and igpu, config 
+complete frigate container with coral m.2, igpu and configuration
 
 ## fweedee
 testing grounds for 3d-printer packages
@@ -45,6 +73,9 @@ website / blog
 ## haos
 barebones container, pending migration from serv to erying
 
+## headscale
+tailscale replacement - needs work
+
 ## home-assistant
 legacy home-assistant, may migrate to haos config above eventually
 
@@ -53,6 +84,9 @@ landing page for home services, barebones container with config.yml in tree
 
 ## i2pd
 for scary dark interwebs
+
+## immich
+nspawn container, local image host - using host ip currently #TODO nspawn macvlan
 
 ## invidious
 not running - another project that needs time
@@ -72,10 +106,10 @@ paper minecraft server with a gate proxy, complete with configs
 ## netbird
 think tailscale but self-hosted, this became a much larger project than i anticipated - zitadel & cockroachdb
 
-## nginx-proxy-manager
+## nginx-lan
 barebones, running, legacy storage dirs
 
-## nginx-proxy-manager-2
+## nginx-wan
 same as above, used for wan connections
 
 ## observium
@@ -95,6 +129,12 @@ ups monitor container - un-used currently may migrate to nspawn container
 
 ## plex
 my first oci container that was working correctly, legacy, barebones (mostly) with some simple storage defined
+
+## radicale
+calendar / todo sync lad
+
+## subgen & subsai
+generate subtitles for local media using "ai"
 
 ## syncthing
 sync things between devices

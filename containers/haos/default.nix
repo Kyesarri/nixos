@@ -57,6 +57,8 @@ in {
         lib.stringAfter ["var"]
         ''mkdir -v -p /etc/oci.cont/${cfg.contName} && chown -R 1000:1000 /etc/oci.cont/${cfg.contName}'';
 
+      environment.shellAliases = {cont-haos = "sudo podman pull ghcr.io/home-assistant/home-assistant:latest";};
+
       virtualisation.oci-containers.containers."${cfg.contName}" = {
         hostname = "${cfg.contName}";
 
