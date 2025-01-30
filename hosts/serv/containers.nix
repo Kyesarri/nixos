@@ -33,8 +33,8 @@
       enable = true;
       macvlanIp = "${secrets.ip.subgen}";
       vlanIp = "${secrets.vlan.serv.subgen}";
-      plexToken = "${secrets.password.plexToken}";
-      plexServer = "${secrets.ip.plex}:32400";
+      # plexToken = "${secrets.password.plexToken}"; #30 01 25 testing with off
+      # plexServer = "${secrets.ip.plex}:32400";
       # jellyToken = "";
       # jellyServer = "";
     };
