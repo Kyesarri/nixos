@@ -41,6 +41,7 @@ in {
       example = "Australia/Broken_Hill";
       description = "database timezone";
     };
+    /*
     plexServer = mkOption {
       type = types.str;
       default = null;
@@ -49,10 +50,11 @@ in {
     };
     plexToken = mkOption {
       type = types.str;
-      default = null;
+      default = "null";
       example = "your plex token ere'";
       description = "see https://support.plex.tv/articles/204059436-finding-an-authentication-token-x-plex-token/";
     };
+    */
     image = mkOption {
       type = types.str;
       default = "mccloud/subgen:latest";
@@ -115,14 +117,14 @@ in {
           PROCMEDIAONPLAY = "false"; # will gen subtitles for all played media regardless of existing external/embedded subtitles (based off of SKIPIFINTERNALSUBLANG)
           NAMESUBLANG = "aa"; # allows you to pick what it will name the subtitle. Instead of using EN, I'm using AA, so it doesn't mix with exiting external EN subs, and AA will populate higher on the list in Plex.
           SKIPIFINTERNALSUBLANG = "eng";
-          PLEXTOKEN = "${cfg.plexToken}"; # probs will disable and leave bazarr handle all
-          PLEXSERVER = "${cfg.plexServer};"; # see above
+          # PLEXTOKEN = "${cfg.plexToken}"; # probs will disable and leave bazarr handle all
+          # PLEXSERVER = "${cfg.plexServer};"; # see above
           TRANSCRIBE_FOLDERS = "/tv_shows|/movies";
           MONITOR = "false"; # Will monitor TRANSCRIBE_FOLDERS for real-time changes to see if we need to generate subtitles
           TRANSCRIBE_OR_TRANSLATE = "translate";
           # JELLYFINTOKEN = "${cfg.jellyToken}"; #ADDME
           # JELLYFINSERVER = "${cfg.jellyServer}"; #ADDME
-          PLEX_QUEUE_SERIES = "true"; # Will queue the whole Plex series for subtitle generation if subgen is triggered
+          # PLEX_QUEUE_SERIES = "false"; # Will queue the whole Plex series for subtitle generation if subgen is triggered
           WEBHOOKPORT = "9000";
           CONCURRENT_TRANSCRIPTIONS = "4"; # Number of files it will transcribe in parallel
           WORD_LEVEL_HIGHLIGHT = "true"; # Highlights each words as it's spoken in the subtitle
