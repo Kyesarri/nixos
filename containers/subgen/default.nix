@@ -134,7 +134,7 @@ in {
           PATH_MAPPING_TO = "/Volumes/TV"; # same as above
           TRANSCRIBE_DEVICE = "cpu"; # Can transcribe via gpu (Cuda only) or cpu. Takes option of "cpu", "gpu", "cuda".
           CLEAR_VRAM_ON_COMPLETE = "true"; # This will delete the model and do garbage collection when queue is empty. Good if you need to use the VRAM for something else.
-          MODEL_PATH = "./models"; #TODO testing yet again...
+          MODEL_PATH = "/subgen/models"; #TODO testing yet again...
           UPDATE = "false";
           APPEND = "false";
           USE_MODEL_PROMPT = "false";
