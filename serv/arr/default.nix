@@ -9,7 +9,7 @@
   # define a new group "media", add services / users to this group
   users.groups.media = {
     name = "media";
-    members = ["plex" "transmission" "radarr" "readarr" "sonarr" "prowlarr" "${spaghetti.user}"];
+    members = ["plex" "transmission" "bazarr" "radarr" "readarr" "sonarr" "prowlarr" "${spaghetti.user}"];
   };
 
   #TODO #FIXME
@@ -77,7 +77,7 @@
     bazarr = {
       enable = true;
       openFirewall = true;
-      user = "transmission";
+      user = "bazarr";
       group = "media";
     };
   };

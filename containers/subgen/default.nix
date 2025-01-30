@@ -19,13 +19,13 @@ in {
     };
     macvlanIp = mkOption {
       type = types.str;
-      default = "10.10.0.200";
+      default = null;
       example = "10.10.10.1";
       description = "container macvlan ip address";
     };
     vlanIp = mkOption {
       type = types.str;
-      default = "12.12.12.1";
+      default = null;
       example = "12.12.12.1";
       description = "backend network ip address";
     };
@@ -43,14 +43,14 @@ in {
     };
     plexServer = mkOption {
       type = types.str;
-      default = "null";
+      default = null;
       example = "10.0.1.2:32400";
       description = "internal ip of your plex server";
     };
     plexToken = mkOption {
       type = types.str;
-      default = "gudtokenhere";
-      example = "bettertokenhere";
+      default = null;
+      example = "your plex token ere'";
       description = "see https://support.plex.tv/articles/204059436-finding-an-authentication-token-x-plex-token/";
     };
     image = mkOption {
@@ -65,7 +65,7 @@ in {
     (mkIf (cfg.enable == true) {
       ##
 
-      system.activationScripts."makeSubGenDir" =
+      system.activationScripts."make${cfg.contName}dir" =
         lib.stringAfter ["var"]
         ''mkdir -v -p /etc/oci.cont/${cfg.contName}/models & chown -R 1000:1000 /etc/oci.cont/${cfg.contName}'';
 
@@ -101,7 +101,7 @@ in {
           "/hddh/tv_shows:/tv_shows/hddh"
           "/hddi/tv_shows:/tv_shows/hddi"
 
-          "/etc/oci.cont/${cfg.contName}/models:/subgen/models" # testing without env var path for cache
+          "/etc/oci.cont/${cfg.contName}/models:/subgen/models"
         ];
 
         environment = {
@@ -115,8 +115,8 @@ in {
           PROCMEDIAONPLAY = "false"; # will gen subtitles for all played media regardless of existing external/embedded subtitles (based off of SKIPIFINTERNALSUBLANG)
           NAMESUBLANG = "aa"; # allows you to pick what it will name the subtitle. Instead of using EN, I'm using AA, so it doesn't mix with exiting external EN subs, and AA will populate higher on the list in Plex.
           SKIPIFINTERNALSUBLANG = "eng";
-          PLEXTOKEN = "${cfg.plexToken}";
-          PLEXSERVER = "${cfg.plexServer};";
+          PLEXTOKEN = "${cfg.plexToken}"; # probs will disable and leave bazarr handle all
+          PLEXSERVER = "${cfg.plexServer};"; # see above
           TRANSCRIBE_FOLDERS = "/tv_shows|/movies";
           MONITOR = "false"; # Will monitor TRANSCRIBE_FOLDERS for real-time changes to see if we need to generate subtitles
           TRANSCRIBE_OR_TRANSLATE = "translate";
@@ -130,7 +130,7 @@ in {
           USE_PATH_MAPPING = "false"; # Similar to sonarr and radarr path mapping, this will attempt to replace paths on file systems that don't have identical paths. Currently only support for one path replacement
           PATH_MAPPING_FROM = "/tv"; # not used atm, above toggled
           PATH_MAPPING_TO = "/Volumes/TV"; # same as above
-          TRANSCRIBE_DEVICE = "cpu";
+          TRANSCRIBE_DEVICE = "cpu"; # Can transcribe via gpu (Cuda only) or cpu. Takes option of "cpu", "gpu", "cuda".
           CLEAR_VRAM_ON_COMPLETE = "true"; # This will delete the model and do garbage collection when queue is empty. Good if you need to use the VRAM for something else.
           MODEL_PATH = "./models"; #TODO testing yet again...
           UPDATE = "false";
