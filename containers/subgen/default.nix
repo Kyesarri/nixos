@@ -28,7 +28,7 @@ in {
     #
     vlanIp = mkOption {
       type = types.nullOr types.str;
-      default = null;
+      default = "";
       example = "12.12.12.1";
       description = "backend network ip address";
     };
@@ -49,14 +49,14 @@ in {
     #
     plexServer = mkOption {
       type = types.nullOr types.str;
-      default = null;
+      default = "";
       example = "10.0.1.2:32400";
       description = "internal ip of your plex server";
     };
     #
     plexToken = mkOption {
       type = types.nullOr types.str;
-      default = null;
+      default = "";
       example = "your plex token ere'";
       description = "see https://support.plex.tv/articles/204059436-finding-an-authentication-token-x-plex-token/";
     };
