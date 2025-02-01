@@ -69,7 +69,7 @@ in {
         volumes = [
           "/etc/localtime:/etc/localtime:ro"
 
-          "/etc/oci.cont/${cfg.contName}:/subsai"
+          # "/etc/oci.cont/${cfg.contName}:/subsai" nup
 
           "/hdda/movies:/media_files/movies/hdda"
           "/hddb/movies:/media_files/movies/hddb"
