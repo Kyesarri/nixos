@@ -38,6 +38,11 @@
       # jellyToken = "";
       # jellyServer = "";
     };
+    subsai = {
+      enable = true;
+      macvlanIp = "${secrets.ip.subsai}";
+      vlanIp = "${secrets.vlan.serv.subsai}";
+    };
     #
     tailscale = {
       enable = true;
