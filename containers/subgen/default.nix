@@ -120,7 +120,7 @@ in {
           WHISPER_THREADS = "4";
           PROCADDEDMEDIA = "true"; # will gen subtitles for all media added regardless of existing external/embedded subtitles (based off of SKIPIFINTERNALSUBLANG)
           PROCMEDIAONPLAY = "false"; # will gen subtitles for all played media regardless of existing external/embedded subtitles (based off of SKIPIFINTERNALSUBLANG)
-          NAMESUBLANG = "aa"; # allows you to pick what it will name the subtitle. Instead of using EN, I'm using AA, so it doesn't mix with exiting external EN subs, and AA will populate higher on the list in Plex.
+          NAMESUBLANG = "EN"; # allows you to pick what it will name the subtitle. Instead of using EN, I'm using AA, so it doesn't mix with exiting external EN subs, and AA will populate higher on the list in Plex.
           SKIPIFINTERNALSUBLANG = "eng";
           PLEXTOKEN = "${cfg.plexToken}"; # probs will disable and leave bazarr handle all
           PLEXSERVER = "${cfg.plexServer};"; # see above
