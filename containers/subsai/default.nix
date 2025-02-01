@@ -69,6 +69,8 @@ in {
         volumes = [
           "/etc/localtime:/etc/localtime:ro"
 
+          "/etc/oci.cont/${cfg.contName}:/subsai"
+
           "/hdda/movies:/media_files/movies/hdda"
           "/hddb/movies:/media_files/movies/hddb"
           "/hddc/movies:/media_files/movies/hddc"
