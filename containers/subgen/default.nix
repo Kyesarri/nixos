@@ -132,7 +132,7 @@ in {
           PLEX_QUEUE_SERIES = "false"; # Will queue the whole Plex series for subtitle generation if subgen is triggered
           WEBHOOKPORT = "9000";
           CONCURRENT_TRANSCRIPTIONS = "4"; # Number of files it will transcribe in parallel
-          WORD_LEVEL_HIGHLIGHT = "true"; # Highlights each words as it's spoken in the subtitle
+          WORD_LEVEL_HIGHLIGHT = "false"; # Highlights each words as it's spoken in the subtitle
           DEBUG = "true";
           USE_PATH_MAPPING = "false"; # Similar to sonarr and radarr path mapping, this will attempt to replace paths on file systems that don't have identical paths. Currently only support for one path replacement
           PATH_MAPPING_FROM = "/tv"; # not used atm, above toggled
