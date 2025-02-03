@@ -21,7 +21,7 @@ in {
     #
     macvlanIp = mkOption {
       type = types.nullOr types.str;
-      default = null;
+      default = "";
       example = "10.10.10.1";
       description = "container macvlan ip address";
     };
@@ -59,6 +59,18 @@ in {
       default = "";
       example = "your plex token ere'";
       description = "see https://support.plex.tv/articles/204059436-finding-an-authentication-token-x-plex-token/";
+    };
+    jellyServer = mkOption {
+      type = types.nullOr types.str;
+      default = "";
+      example = "10.0.1.2";
+      description = "internal ip of your jellyfin server";
+    };
+    jellyToken = mkOption {
+      type = types.nullOr types.str;
+      default = "";
+      example = "yeah not sure eh";
+      description = "it's a #TODO";
     };
     #
     image = mkOption {
@@ -124,15 +136,15 @@ in {
           SKIPIFINTERNALSUBLANG = "eng";
           PLEXTOKEN = "${cfg.plexToken}"; # probs will disable and leave bazarr handle all
           PLEXSERVER = "${cfg.plexServer};"; # see above
+          PLEX_QUEUE_SERIES = "false"; # Will queue the whole Plex series for subtitle generation if subgen is triggered
           TRANSCRIBE_FOLDERS = "/tv_shows|/movies";
           MONITOR = "false"; # Will monitor TRANSCRIBE_FOLDERS for real-time changes to see if we need to generate subtitles
           TRANSCRIBE_OR_TRANSLATE = "translate";
-          # JELLYFINTOKEN = "${cfg.jellyToken}"; #ADDME
-          # JELLYFINSERVER = "${cfg.jellyServer}"; #ADDME
-          PLEX_QUEUE_SERIES = "false"; # Will queue the whole Plex series for subtitle generation if subgen is triggered
+          JELLYFINTOKEN = "${cfg.jellyToken}";
+          JELLYFINSERVER = "${cfg.jellyServer}";
           WEBHOOKPORT = "9000";
           CONCURRENT_TRANSCRIPTIONS = "4"; # Number of files it will transcribe in parallel
-          WORD_LEVEL_HIGHLIGHT = "false"; # Highlights each words as it's spoken in the subtitle
+          WORD_LEVEL_HIGHLIGHT = "false"; # Highlights each words as it's spoken in the subtitle, broken?
           DEBUG = "true";
           USE_PATH_MAPPING = "false"; # Similar to sonarr and radarr path mapping, this will attempt to replace paths on file systems that don't have identical paths. Currently only support for one path replacement
           PATH_MAPPING_FROM = "/tv"; # not used atm, above toggled
