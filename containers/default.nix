@@ -5,9 +5,11 @@
     ./dms # todo
     ./haos # home assistant, cloud free home automation
     ./headscale # testing ground for tailscale replacement - vpn for remote connections to lan
+    ./jellyfin # opensource media server / streamer
     ./nginx-lan # reverse proxy for local services
     ./nginx-wan # reverse proxy for webhosting
     ./radicale # calendar + todo thingy
+    ./restreamer # camera restream utility - use for 3d printer?
     ./subgen # ai subtitle generator thingy
     ./subsai # ai subtitle generator thingy
     ./tailscale # vpn for remote connections to lan
