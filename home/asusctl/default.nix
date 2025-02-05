@@ -33,7 +33,7 @@
     asusd = {
       enable = true;
       enableUserService = false;
-      asusdConfig = builtins.readFile ./asusd.ron;
+      asusdConfig.text = builtins.readFile ./asusd.ron;
     };
   };
   # below not required
