@@ -43,7 +43,7 @@
         idle-seeding-limit-enabled = true;
         trash-original-torrent-files = true;
         incomplete-dir-enabled = true;
-        incomplete-dir = /hddg/incomplete;
+        incomplete-dir = "/hddg/incomplete";
         dht-enabled = true;
         download-dir = "/hddf/torrents/";
         download-queue-enabled = false;
