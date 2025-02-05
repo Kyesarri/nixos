@@ -44,7 +44,7 @@
         trash-original-torrent-files = true;
         incomplete-dir-enabled = false;
         dht-enabled = true;
-        download-dir = "/hddb/torrents/";
+        download-dir = "/hddf/torrents/";
         download-queue-enabled = false;
         peer-port = 51413;
         rpc-authentication-required = false;

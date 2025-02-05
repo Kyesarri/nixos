@@ -200,6 +200,7 @@
             "textLink.foreground": "#${config.colorScheme.palette.base08}"
           },
           "editor.minimap.size": "fill",
+          "chat.commandCenter.enabled": false, // byeeeee
         }
       '';
     };
