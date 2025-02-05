@@ -30,16 +30,12 @@
     };
     #
     subgen = {
-      enable = true;
+      enable = false;
       macvlanIp = "${secrets.ip.subgen}";
       vlanIp = "${secrets.vlan.serv.subgen}";
-      # plexToken = "${secrets.password.plexToken}"; #30 01 25 testing with off
-      # plexServer = "${secrets.ip.plex}:32400";
-      # jellyToken = "";
-      # jellyServer = "";
     };
     subsai = {
-      enable = true;
+      enable = false;
       macvlanIp = "${secrets.ip.subsai}";
       vlanIp = "${secrets.vlan.serv.subsai}";
     };
