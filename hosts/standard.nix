@@ -170,17 +170,17 @@
       wl-clipboard # wl-copy and wl-paste for copy/paste from stdin / stdout
       vlc # play me some vids
       usbimager # says on the tin
-      ventoy-full
-      evolutionWithPlugins
+      ventoy-full # usb image lad
+      evolutionWithPlugins # calendar
       blender # for new toy :D
-      gnome-disk-utility
-      libimobiledevice
+      gnome-disk-utility # disk gui
+      libimobiledevice # fix iphone thing
       usbmuxd2
       libirecovery
-      ifuse
+      ifuse # more iphone thing
       nebula
       orca-slicer
-      handbrake
+      handbrake # convert video files
       inputs.wallpaper-generator.defaultPackage.x86_64-linux
       inputs.quickshell.packages.x86_64-linux.default
     ];
