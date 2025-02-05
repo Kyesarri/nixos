@@ -33,26 +33,7 @@
     asusd = {
       enable = true;
       enableUserService = false;
-      asusdConfig = ''
-        (
-          charge_control_end_threshold: 75,
-          panel_od: false,
-          mini_led_mode: false,
-          disable_nvidia_powerd_on_battery: true,
-          ac_command: "",
-          bat_command: "",
-          platform_policy_linked_epp: false,
-          platform_policy_on_battery: Quiet,
-          platform_policy_on_ac: Performance,
-          ppt_pl1_spl: None,
-          ppt_pl2_sppt: None,
-          ppt_fppt: None,
-          ppt_apu_sppt: None,
-          ppt_platform_sppt: None,
-          nv_dynamic_boost: None,
-          nv_temp_target: None,
-        )
-      '';
+      asusdConfig = builtins.readFile ./asusd.ron;
     };
   };
   # below not required
