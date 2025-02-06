@@ -9,6 +9,7 @@
   # define a new group "media", add services / users to this group
   users.groups.media = {
     name = "media";
+    gid = "989";
     members = ["plex" "transmission" "bazarr" "radarr" "readarr" "sonarr" "prowlarr" "${spaghetti.user}"];
   };
 
@@ -16,14 +17,13 @@
   # issues with sonarr - 11.12.24
   nixpkgs.config.permittedInsecurePackages = [
     "dotnet-runtime-wrapped-6.0.36"
-    "dotnet-runtime-wrapped-6.0.36"
     "aspnetcore-runtime-wrapped-6.0.36"
     "aspnetcore-runtime-6.0.36"
     "dotnet-sdk-wrapped-6.0.428"
     "dotnet-sdk-6.0.428"
   ];
 
-  # add user to groups created by services
+  # add user to groups created by services, is this required anymore?
   users.users.${spaghetti.user}.extraGroups = ["radarr" "sonarr" "transmission" "readarr"];
 
   services = {
@@ -38,7 +38,7 @@
       openRPCPort = true;
       openPeerPorts = true;
       settings = {
-        ratio-limit = 3;
+        ratio-limit = 3; # pls seed
         ratio-limit-enabled = true;
         idle-seeding-limit-enabled = true;
         trash-original-torrent-files = true;
