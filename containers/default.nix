@@ -8,6 +8,7 @@
     ./jellyfin # opensource media server / streamer
     ./nginx-lan # reverse proxy for local services
     ./nginx-wan # reverse proxy for webhosting
+    ./nzbget # nzb client
     ./radicale # calendar + todo thingy
     ./restreamer # camera restream utility - use for 3d printer?
     ./subgen # ai subtitle generator thingy
