@@ -59,7 +59,7 @@ in {
       #
       system.activationScripts."make${cfg.contName}dir" =
         lib.stringAfter ["var"]
-        ''mkdir -v -p /etc/oci.cont/${cfg.contName}/config mkdir -v -p /etc/oci.cont/${cfg.contName}/data & chown -R 1000:1000 /etc/oci.cont/${cfg.contName}'';
+        ''mkdir -v -p /etc/oci.cont/${cfg.contName}/config & chown -R 1000:1000 /etc/oci.cont/${cfg.contName}'';
 
       environment.shellAliases = {cont-nzbget = "sudo podman pull ${cfg.image}";};
 
@@ -74,13 +74,14 @@ in {
           "/etc/localtime:/etc/localtime:ro"
 
           "/etc/oci.cont/${cfg.contName}/config:/config"
+
           "/hddf/nzb:/downloads"
         ];
 
         environment = {
           TZ = "${cfg.timeZone}";
           PUID = "1000";
-          PGID = "1000";
+          PGID = "1000"; # may need to chage this? lets test without first
         };
 
         extraOptions = [
