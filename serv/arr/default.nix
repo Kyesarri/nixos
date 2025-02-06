@@ -9,7 +9,7 @@
   # define a new group "media", add services / users to this group
   users.groups.media = {
     name = "media";
-    gid = "989";
+    gid = 989;
     members = ["plex" "transmission" "bazarr" "radarr" "readarr" "sonarr" "prowlarr" "${spaghetti.user}"];
   };
 
