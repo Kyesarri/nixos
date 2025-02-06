@@ -34,10 +34,16 @@
       macvlanIp = "${secrets.ip.subgen}";
       vlanIp = "${secrets.vlan.serv.subgen}";
     };
+    #
     subsai = {
       enable = false;
       macvlanIp = "${secrets.ip.subsai}";
       vlanIp = "${secrets.vlan.serv.subsai}";
+    };
+    nzbget = {
+      enable = true;
+      macvlanIp = "${secrets.ip.nzbget}";
+      vlanIp = "${secrets.vlan.serv.nzbget}";
     };
     #
     tailscale = {
@@ -59,7 +65,7 @@
       "podman-plex.service"
       "podman-adguard-${config.networking.hostName}.service"
       "podman-tailscale-${config.networking.hostName}-subnet.service"
-      "podman-subgen-${config.networking.hostName}.service"
+      "podman-nzbget-${config.networking.hostName}.service"
     ];
     serviceConfig = {
       Type = "oneshot";
