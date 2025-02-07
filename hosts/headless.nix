@@ -98,6 +98,7 @@
       udiskie # usb mounting, probs for the best atm
       ustreamer # smal usb camera streamer
       v4l-utils
+      asciiquarium-transparent # for notebook, "screensaver"
     ];
   };
 }
