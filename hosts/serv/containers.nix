@@ -40,6 +40,7 @@
       macvlanIp = "${secrets.ip.subsai}";
       vlanIp = "${secrets.vlan.serv.subsai}";
     };
+    #
     nzbget = {
       enable = true;
       macvlanIp = "${secrets.ip.nzbget}";
