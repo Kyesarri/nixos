@@ -9,6 +9,7 @@
       "0.au.pool.ntp.org"
       "1.pool.ntp.org"
       "time2.google.com"
+      "3.oceania.pool.ntp.org"
     ];
     extraConfig = ''allow ${secrets.ip.subnet}/${secrets.ip.mask}'';
   };
