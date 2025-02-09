@@ -8,7 +8,7 @@
     servers = [
       "0.au.pool.ntp.org"
       "1.pool.ntp.org"
-      "ntp.per.nml.csiro.au"
+      "time2.google.com"
     ];
     extraConfig = ''allow ${secrets.ip.subnet}/${secrets.ip.mask}'';
   };
