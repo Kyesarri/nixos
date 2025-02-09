@@ -8,7 +8,7 @@
     servers = [
       "0.au.pool.ntp.org"
       "1.pool.ntp.org"
-      "2.ntp.per.nml.csiro.au"
+      "ntp.per.nml.csiro.au"
     ];
     extraConfig = ''allow ${secrets.ip.subnet}/${secrets.ip.mask}'';
   };
