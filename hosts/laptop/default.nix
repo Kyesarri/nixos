@@ -54,6 +54,7 @@
     gscreenshot.enable = true;
     freetube.enable = true;
     wifi.backend = "nwm";
+    nebula.enable = true;
   };
 
   services = {
