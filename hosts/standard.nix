@@ -175,11 +175,11 @@
       blender # for new toy :D
       gnome-disk-utility # disk gui
       libimobiledevice # fix iphone thing
-      usbmuxd2
-      libirecovery
+      usbmuxd2 # another ios thing
+      libirecovery # more ios?
       ifuse # more iphone thing
-      nebula
-      orca-slicer
+      orca-slicer # still isn't working
+      openscad # 3d cad
       handbrake # convert video files
       inputs.wallpaper-generator.defaultPackage.x86_64-linux
       inputs.quickshell.packages.x86_64-linux.default
