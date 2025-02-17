@@ -4,14 +4,14 @@
     kernelPackages = pkgs.linuxPackagesFor (pkgs.linux_xanmod.override {
       argsOverride = rec {
         suffix = "xanmod1";
-        version = "6.6.63";
+        version = "6.12.14";
         modDirVersion = "${version}-${suffix}";
 
         src = pkgs.fetchFromGitLab {
           owner = "xanmod";
           repo = "linux";
           rev = "${version}-${suffix}";
-          hash = "sha256-P4B6r3p+Buu1Hf+RQsw5h2oUANVvQvQ4e/2gQcZ0vKw=";
+          hash = "sha256-f9eb03a14120f1dda88c4fc2e1cd5d01a15f58dcccad";
         };
       };
     });
