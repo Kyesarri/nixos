@@ -53,6 +53,13 @@ horizon-dark:
   auto: "#90ffca"
   none: "#1C1E26"
 
+  # energy colours
+  energy-grid-consumption-color-0: "#6F6F70"
+  energy-grid-consumption-color-1: "#90ffca"
+  energy-grid-consumption-color-2: "#24A8B4"
+  energy-grid-consumption-color-3: "#DF5273"
+  energy-grid-consumption-color-4: "#E4A382"
+  energy-grid-consumption-color-5: "#EFB993"
   ###########################
 
   # Header
