@@ -3,9 +3,9 @@
 msgId="42069"
 
 if [[ $1 == "up" ]]; then
-brightnessctl set 3%+
+brightnessctl set 2%+
 else
-brightnessctl set 3%-
+brightnessctl set 2%-
 fi
 
 brightness="$(brightnessctl -m | awk -F ',' '{ print $4 }')"
