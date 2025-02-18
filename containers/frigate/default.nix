@@ -50,7 +50,7 @@ in {
       "--network=macvlan_lan"
       "--ip=${secrets.ip.frigate}"
       "--privileged"
-      "--shm-size=512m"
+      "--shm-size=1024m"
       # "--device=/dev/apex_0:/dev/apex_0" # coral
       "--device=/dev/dri/renderD128" # gpu
       "--mount=type=tmpfs,target=/tmp/cache,tmpfs-size=1000000000" # tempfs
