@@ -17,12 +17,12 @@
     ../headless.nix # base packages and config
 
     ../../hardware # new module configs - will replace importing modules
-    ../../hardware/ups
+    # ../../hardware/ups
 
     ../../home # home-manaager config for all machines
     ../../home/bottom # nice to have terminal task manager / perfmon
     ../../home/chrony # local time-server
-    ../../home/codium # need to add server into this
+    # ../../home/codium # need to add server into this
     ../../home/git # basic git configs
     ../../home/gtk # themes still needed for console
     ../../home/kitty # is this needed on headless? probs not
