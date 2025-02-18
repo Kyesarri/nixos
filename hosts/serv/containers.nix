@@ -11,6 +11,17 @@
     ../../containers/immich
   ];
 
+  virtualisation = {
+    oci-containers.backend = "podman";
+    podman = {
+      enable = true;
+      extraPackages = [pkgs.zfs];
+      autoPrune.enable = true;
+      dockerCompat = true;
+      defaultNetwork.settings.dns_enabled = true;
+    };
+  };
+
   cont = {
     #
     backend-network = {

@@ -17,17 +17,6 @@
     ./zigbee2mqtt # home automation thingy, lights, sensors, the good stuff
   ];
 
-  virtualisation = {
-    oci-containers.backend = "podman";
-    podman = {
-      enable = true;
-      extraPackages = [pkgs.zfs];
-      autoPrune.enable = true;
-      dockerCompat = true;
-      defaultNetwork.settings.dns_enabled = true;
-    };
-  };
-
   environment.systemPackages = with pkgs; [
     podman # the boi
     podman-tui # nice tui interface for podman

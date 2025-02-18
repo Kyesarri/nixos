@@ -24,8 +24,18 @@
     # ../../containers/zitadel
   ];
 
-  # trying to keep naming to "service-host-name*-feature*" ex - tailscale-nix-erying-subnet - haos-nix-erying
+  virtualisation = {
+    oci-containers.backend = "podman";
+    podman = {
+      enable = true;
+      # extraPackages = [pkgs.zfs];
+      autoPrune.enable = true;
+      dockerCompat = true;
+      defaultNetwork.settings.dns_enabled = true;
+    };
+  };
 
+  # trying to keep naming to "service-host-name*-feature*" ex - tailscale-nix-erying-subnet - haos-nix-erying
   cont = {
     backend-network = {
       enable = true;
