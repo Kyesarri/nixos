@@ -186,7 +186,6 @@ in {
             crop: true
             quality: 100
             height: 1920 # was 500 - testing
-          zones:
           ffmpeg:
             output_args:
               record: preset-record-generic-audio-copy
