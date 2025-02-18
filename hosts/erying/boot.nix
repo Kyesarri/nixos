@@ -1,20 +1,6 @@
 {pkgs, ...}: {
   boot = {
-    # pinning kernel version due to zfs being out of tree & not supporting latest kernel
-    kernelPackages = pkgs.linuxPackagesFor (pkgs.linux_xanmod.override {
-      argsOverride = rec {
-        suffix = "xanmod1";
-        version = "6.12.14";
-        modDirVersion = "${version}-${suffix}";
-
-        src = pkgs.fetchFromGitLab {
-          owner = "xanmod";
-          repo = "linux";
-          rev = "${version}-${suffix}";
-          hash = "sha256-+lkOWfygGbR3vYfwrUvcHrAq00ReqxNsyD1Ar8D1kag=";
-        };
-      };
-    });
+    kernelPackages = pkgs.linuxPackages_xanmod_latest; # use mainline xanmod kernel
 
     kernelParams = [
       "intel_iommu=on" # pci device pass-through
