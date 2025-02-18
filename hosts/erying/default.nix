@@ -37,7 +37,7 @@
   users.users.${spaghetti.user}.uid = 1000;
 
   gnocchi = {
-    coral.enable = true;
+    coral.enable = false; # sadface
   };
 
   services = {
