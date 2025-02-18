@@ -15,6 +15,7 @@
         };
       };
     });
+
     kernelModules = ["kvm-intel"];
     kernelParams = [
       "intel_iommu=on" # pci device pass-through
