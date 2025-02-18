@@ -52,10 +52,10 @@
       packages = [pkgs.seahorse];
     };
 
-    zfs = {
-      autoScrub.enable = true;
-      trim.enable = true;
-    };
+    # zfs = {
+    #   autoScrub.enable = true;
+    #   trim.enable = true;
+    # };
 
     smartd = {
       enable = true;
