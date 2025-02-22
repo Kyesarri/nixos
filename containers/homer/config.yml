@@ -82,11 +82,11 @@ services:
         tag: "slice"
         url: "https://orca.home/"
 
-      - name: "octoprint"
+      - name: "mainsail"
         icon: "fas fa-cubes fa-fw"
         subtitle: "3D Printer Web-interface"
         tag: "print"
-        url: "http://octoprint.home"
+        url: "http://fwedee.home"
 
   - name: "devices"
     items:
