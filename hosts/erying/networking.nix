@@ -47,7 +47,7 @@
       '';
     };
 
-    network.links."lan0" = {
+    links."lan0" = {
       matchConfig.PermanentMACAddress = "${secrets.mac.erying}";
       linkConfig.Name = "lan0";
     };
