@@ -48,10 +48,12 @@
       '';
     };
     #
+    /*
     links."10-lan" = {
       matchConfig.PermanentMACAddress = "${secrets.mac.erying}";
       linkConfig.Name = "lan0";
     };
+    */
     #
     networks = {
       # #
