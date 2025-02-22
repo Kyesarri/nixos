@@ -11,6 +11,10 @@ in {
       type = types.bool;
       default = false;
     };
+    name = mkOption {
+      type = types.string;
+      default = "";
+    };
     isServer = mkOption {
       #TODO
       type = types.bool;
@@ -20,7 +24,7 @@ in {
 
   config = mkMerge [
     (mkIf (cfg.nebula.enable == true) {
-      services.nebula.networks.test = {
+      services.nebula.networks.${cfg.name} = {
         enable = true;
         ca = "/home/users/kel/.nebula/ca.crt";
         cert = "/home/users/kel/.nebula/laptop.crt";
