@@ -333,20 +333,20 @@ in {
       #
       genai:
         enabled: true
-        use_snapshot: true
+        # use_snapshot: true
         prompt: "Describe the {label} in the sequence of images with as much detail as possible. Do not describe the background."
         # Optional: Object specific prompts to customize description results
         # Format: {label}: {prompt}
         object_prompts:
           person: "My special person prompt."
         # Optional: objects to generate descriptions for (default: all objects that are tracked)
-        objects:
-          - person
-          - dog
+        # objects:
+        #   - person
+        #   - dog
         # Optional: Restrict generation to objects that entered any of the listed zones (default: none, all zones qualify)
-        required_zones: []
+        # required_zones: []
         # Optional: Save thumbnails sent to generative AI for review/debugging purposes (default: shown below)
-        debug_save_thumbnails: False
+        # debug_save_thumbnails: False
     '';
   };
 }
