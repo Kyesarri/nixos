@@ -35,48 +35,36 @@
     };
   };
 
-  systemd.network = {
-    #
-    netdevs."10-lan-self" = {
-      netdevConfig = {
-        Name = "lan-self";
-        Kind = "macvlan";
-      };
+  systemd.network.netdevs."10-lan-self" = {
+    netdevConfig = {
+      Name = "lan-self";
+      Kind = "macvlan";
+    };
+    extraConfig = ''
+      [MACVLAN]
+      Mode=bridge
+    '';
+  };
+
+  systemd.network.networks = {
+    "10-lan" = {
+      matchConfig.Name = ["enp3s0"];
+      networkConfig.LinkLocalAddressing = "no";
+      linkConfig.RequiredForOnline = "carrier";
       extraConfig = ''
-        [MACVLAN]
-        Mode=bridge
+        [Network]
+        MACVLAN=lan-self
       '';
     };
-    #
-    /*
-    links."10-lan" = {
-      matchConfig.PermanentMACAddress = "${secrets.mac.erying}";
-      linkConfig.Name = "lan0";
-    };
-    */
-    #
-    networks = {
-      # #
-      "10-lan" = {
-        matchConfig.Name = ["enp3s0"];
-        networkConfig.LinkLocalAddressing = "no";
-        linkConfig.RequiredForOnline = "carrier";
-        extraConfig = ''
-          [Network]
-          MACVLAN=lan-self
-        '';
+    "20-lan-self" = {
+      address = ["${toString secrets.ip.erying}/24"];
+      gateway = ["${toString secrets.ip.gateway}"];
+      matchConfig.Name = "lan-self";
+      networkConfig = {
+        IPv6PrivacyExtensions = "yes";
+        MulticastDNS = true;
       };
-      # #
-      "20-lan-self" = {
-        address = ["${toString secrets.ip.erying}/24"];
-        gateway = ["${toString secrets.ip.gateway}"];
-        matchConfig.Name = "lan-self";
-        networkConfig = {
-          IPv6PrivacyExtensions = "yes";
-          MulticastDNS = true;
-        };
-        linkConfig.RequiredForOnline = "routable";
-      };
+      linkConfig.RequiredForOnline = "routable";
     };
   };
 }
