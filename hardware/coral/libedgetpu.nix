@@ -8,7 +8,6 @@
   xxd,
   gcc12Stdenv,
 }: let
-  # https://github.com/heitbaum/gasket-driver/ #TODO #FIXME
   flatbuffers_1_12 = flatbuffers.overrideAttrs (oldAttrs: rec {
     version = "1.12.0";
     NIX_CFLAGS_COMPILE = "-Wno-error";

@@ -20,6 +20,7 @@ in {
   #
   config = mkMerge [
     (mkIf (cfg.enable == true) {
+      # https://github.com/heitbaum/gasket-driver/ #TODO #FIXME
       boot.extraModulePackages = [pkgs.linuxKernel.packages.linux_xanmod.gasket];
       services.udev.packages = [libedgetpu];
       users.groups.plugdev = {};
