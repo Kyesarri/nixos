@@ -36,6 +36,7 @@
   };
 
   systemd.network = {
+    #
     netdevs."10-lan-self" = {
       netdevConfig = {
         Name = "lan-self";
@@ -46,13 +47,14 @@
         Mode=bridge
       '';
     };
-
-    links."lan0" = {
+    #
+    links."10-lan" = {
       matchConfig.PermanentMACAddress = "${secrets.mac.erying}";
       linkConfig.Name = "lan0";
     };
-
+    #
     networks = {
+      # #
       "10-lan" = {
         matchConfig.Name = ["lan0"];
         networkConfig.LinkLocalAddressing = "no";
@@ -62,7 +64,7 @@
           MACVLAN=lan-self
         '';
       };
-
+      # #
       "20-lan-self" = {
         address = ["${toString secrets.ip.erying}/24"];
         gateway = ["${toString secrets.ip.gateway}"];
