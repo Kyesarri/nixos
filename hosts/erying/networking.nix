@@ -8,7 +8,7 @@
     hostId = "9f7ea1ec";
     networkmanager.enable = false;
     useNetworkd = true;
-    usePredictableInterfaceNames = lib.mkDefault true;
+    usePredictableInterfaceNames = lib.mkDefault false;
     resolvconf.dnsExtensionMechanism = false;
 
     firewall = {
@@ -26,13 +26,18 @@
     networks."10-lan" = {
       address = ["${toString secrets.ip.erying}/24"];
       gateway = ["${toString secrets.ip.gateway}"];
-      matchConfig.Name = ["enp3s0"];
+      matchConfig.Name = ["lan0"];
       networkConfig = {
         IPv6PrivacyExtensions = "yes";
         MulticastDNS = true;
       };
       linkConfig.RequiredForOnline = "routable";
     };
+  };
+
+  systemd.network.links."lan0" = {
+    matchConfig.PermanentMACAddress = "${secrets.mac.erying}";
+    linkConfig.Name = "lan0";
   };
 
   systemd.network.netdevs."10-lan-self" = {
@@ -48,7 +53,7 @@
 
   systemd.network.networks = {
     "10-lan" = {
-      matchConfig.Name = ["enp3s0"];
+      matchConfig.Name = ["lan0"];
       networkConfig.LinkLocalAddressing = "no";
       linkConfig.RequiredForOnline = "carrier";
       extraConfig = ''
@@ -56,6 +61,7 @@
         MACVLAN=lan-self
       '';
     };
+
     "20-lan-self" = {
       address = ["${toString secrets.ip.erying}/24"];
       gateway = ["${toString secrets.ip.gateway}"];

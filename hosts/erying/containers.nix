@@ -160,7 +160,7 @@
     };
     script = ''
       podman network exists macvlan_lan || \
-        podman network create --driver macvlan --opt parent=enp3s0 --subnet ${toString secrets.ip.subnet}/24 --ip-range ${toString secrets.ip.range}/24 --gateway ${toString secrets.ip.gateway} --disable-dns=false macvlan_lan
+        podman network create --driver macvlan --opt parent=lan0 --subnet ${toString secrets.ip.subnet}/24 --ip-range ${toString secrets.ip.range}/24 --gateway ${toString secrets.ip.gateway} --disable-dns=false macvlan_lan
     '';
   };
 }
