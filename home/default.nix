@@ -9,7 +9,6 @@
     ./hypr
     ./nebula
     ./nemo
-    ./vula
   ];
 
   home-manager.users.${spaghetti.user} = {
