@@ -11,9 +11,9 @@ in {
       type = types.bool;
       default = false;
     };
-    name = mkOption {
+    networkName = mkOption {
       type = types.string;
-      default = "";
+      default = "rather-long-nebula-default-network-name";
     };
     isServer = mkOption {
       #TODO
@@ -24,7 +24,7 @@ in {
 
   config = mkMerge [
     (mkIf (cfg.nebula.enable == true) {
-      services.nebula.networks.${cfg.name} = {
+      services.nebula.networks.${cfg.nebula.networkName} = {
         enable = true;
         ca = "/home/users/kel/.nebula/ca.crt";
         cert = "/home/users/kel/.nebula/laptop.crt";
