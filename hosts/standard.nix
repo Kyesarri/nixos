@@ -8,16 +8,14 @@
   imports = [./console.nix];
   system.stateVersion = "23.11"; # don't change this value pls
   time.timeZone = "Australia/Melbourne";
-
   nixpkgs.config.allowUnfree = true;
 
   colorscheme = inputs.nix-colors.colorSchemes.${spaghetti.scheme};
 
-  # nix
   nix = {
-    sshServe.enable = true; # enable ssh server
+    #
+    sshServe.enable = true;
     package = pkgs.nixVersions.latest; # "unstable"
-    # nix garbage collection
     gc = {
       automatic = true;
       dates = "weekly";
@@ -26,8 +24,14 @@
     settings = {
       auto-optimise-store = true; # runs gc, need to set interval otherwise defaults to 14d from memory
       experimental-features = ["nix-command" "flakes"]; # flakes and nixcommand required for config
-      substituters = ["https://hyprland.cachix.org"]; # hyprland cache, prevents building from source tyty
-      trusted-public-keys = ["hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="];
+      substituters = [
+        "https://hyprland.cachix.org" # hyprland cache, prevents building from source tyty
+        "https://ngi.cachix.org/" # ngi pkgs
+      ];
+      trusted-public-keys = [
+        "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
+        "ngi.cachix.org-1:n+CAL72ROC3qQuLxIHpV+Tw5t42WhXmMhprAGkRSrOw="
+      ];
     };
   };
 
