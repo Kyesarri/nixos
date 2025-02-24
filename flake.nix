@@ -3,7 +3,6 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/master";
-    ngipkgs.url = "github:ngi-nix/ngipkgs";
 
     home-manager.url = "github:nix-community/home-manager/master"; # added master branch to follow unstable nixos
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
@@ -22,12 +21,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # hycov.url = "github:DreamMaoMao/hycov";
-    # hycov.inputs.hyprland.follows = "hyprland";
-
-    # Hyprspace.url = "github:KZDKM/Hyprspace";
-    # Hyprspace.inputs.hyprland.follows = "hyprland";
-
     nix-colors.url = "github:kyesarri/nix-colors"; # colour themes, fork
     prism.url = "github:IogaMaster/prism"; # wallpaper gen
     wallpaper-generator.url = "github:kyesarri/wallpaper-generator"; # another one
@@ -38,7 +31,6 @@
   outputs = {
     self,
     nixpkgs,
-    ngipkgs,
     home-manager,
     hyprland,
     hyprpicker,
@@ -63,10 +55,7 @@
     # import our secrets - these are required to be unencrypted when building
     secrets = builtins.fromJSON (builtins.readFile "${self}/secrets/secrets.json");
     system = "x86_64-linux";
-    specialArgs = {inherit nix-colors ngipkgs quickshell hyprpicker hy3 secrets inputs prism spaghetti wallpaper-generator;};
-    # TODO maybe don't pass nix-colors to special args, but only to extra special args
-    # TODO to fix the theming issue i'm currently facing
-    # FIXME
+    specialArgs = {inherit nix-colors quickshell hyprpicker hy3 secrets inputs prism spaghetti wallpaper-generator;};
   in {
     #
     nixosConfigurations = {
@@ -74,8 +63,6 @@
       "nix-laptop" = nixpkgs.lib.nixosSystem {
         inherit system specialArgs;
         modules = [
-          ngipkgs.nixosModules.default
-          ngipkgs.nixosModules."services.vula"
           home-manager.nixosModules.home-manager
           ./hosts/laptop # 4800hs / 1650 / 16gb ddr4 TODO download more ram
           {
@@ -97,8 +84,6 @@
       "nix-notebook" = nixpkgs.lib.nixosSystem {
         inherit system specialArgs;
         modules = [
-          ngipkgs.nixosModules.default
-          ngipkgs.nixosModules."services.vula"
           home-manager.nixosModules.home-manager
           ./hosts/notebook # celeron N3050 / intel "hd" / 4gb ddr3
           {
@@ -114,8 +99,6 @@
       "nix-desktop" = nixpkgs.lib.nixosSystem {
         inherit system specialArgs;
         modules = [
-          ngipkgs.nixosModules.default
-          ngipkgs.nixosModules."services.vula"
           home-manager.nixosModules.home-manager
           ./hosts/desktop # msi-z790i edge wifi / 13900kf / 3070 / 32gb ddr5
           {
@@ -134,8 +117,6 @@
       "nix-serv" = nixpkgs.lib.nixosSystem {
         inherit system specialArgs;
         modules = [
-          ngipkgs.nixosModules.default
-          ngipkgs.nixosModules."services.vula"
           home-manager.nixosModules.home-manager
           ./hosts/serv # ASUS z390i / 9900k / 32gb ddr4
           {
@@ -154,8 +135,6 @@
       "nix-ws" = nixpkgs.lib.nixosSystem {
         inherit system specialArgs;
         modules = [
-          ngipkgs.nixosModules.default
-          ngipkgs.nixosModules."services.vula"
           home-manager.nixosModules.home-manager
           ./hosts/ws # ASUS x99 ws ipmi / 5960x / 64gb ddr4
           {
@@ -174,8 +153,6 @@
       "nix-erying" = nixpkgs.lib.nixosSystem {
         inherit system specialArgs;
         modules = [
-          ngipkgs.nixosModules.default
-          ngipkgs.nixosModules."services.vula"
           home-manager.nixosModules.home-manager
           ./hosts/erying # erying Q1J2 (i7 ES 0000 13650HX or 1360P?) 14C20T / iris xe / 32gb ddr5
           {

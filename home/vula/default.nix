@@ -3,6 +3,8 @@
 # With zero configuration, vula automatically encrypts IP communication between hosts
 # on a local area network in a forward-secret and transitionally post-quantum manner
 # to protect against passive eavesdropping.
+#
+# not working, removed references to ngipkgs
 {
   spaghetti,
   config,
@@ -24,10 +26,12 @@ in {
   config = mkMerge [
     (mkIf (cfg.vula.enable == true) {
       #
+      /*
       services.vula = {
         enable = true;
         openFirewall = true;
       };
+      */
       #
       users.users.${spaghetti.user}.extraGroups = [
         "vula-ops"
