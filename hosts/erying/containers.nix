@@ -28,7 +28,6 @@
     oci-containers.backend = "podman";
     podman = {
       enable = true;
-      # extraPackages = [pkgs.zfs];
       autoPrune.enable = true;
       dockerCompat = true;
       defaultNetwork.settings.dns_enabled = true;
@@ -37,6 +36,7 @@
 
   # trying to keep naming to "service-host-name*-feature*" ex - tailscale-nix-erying-subnet - haos-nix-erying
   cont = {
+    #
     backend-network = {
       enable = true;
       subnet = "${secrets.vlan.erying.subnet}";
@@ -99,7 +99,7 @@
     #
     nginx-wan = {
       enable = true;
-      autoStart = true; # man i'm an idiot :)
+      autoStart = true;
       macvlanIp = "${secrets.ip.nginx-wan}";
     };
     #
@@ -143,12 +143,12 @@
       "podman-haos-${config.networking.hostName}.service"
       "podman-headscale-${config.networking.hostName}.service"
       "podman-homer.service"
-      "podman-homer-wan.service"
       "podman-matter.service"
       "podman-nginx-lan-${config.networking.hostName}.service"
       "podman-nginx-wan-${config.networking.hostName}.service"
       "podman-orcaslicer.service"
       "podman-overseerr.service"
+      "podman-radicale-${config.networking.hostName}.service"
       "podman-syncthing.service"
       "podman-tailscale-${config.networking.hostName}-subnet.service"
       "podman-zigbee2mqtt-${config.networking.hostName}.service"
