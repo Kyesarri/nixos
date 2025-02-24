@@ -1,4 +1,8 @@
-{nix-colors, ...}: {
+{
+  nix-colors,
+  secrets,
+  ...
+}: {
   imports = [
     nix-colors.homeManagerModules.default
 
@@ -18,11 +22,11 @@
     ../../home # set some default values for home-manager
 
     ../../home/cosmic # testing cosmic package - really fast!
-    ../../home/asusctl # TODO look into issues with this further
+    ../../home/asusctl # #TODO look into issues with this further
     ../../home/bottom # task-manager
-    ../../home/codium # TODO build custom theme to use, with nix-colors. # TODO pin versions to avoid compiling
-    ../../home/copyq # TODO change to an alternative maybe?
-    ../../home/dunst # ags has own notification daemon, will require fixing brightness scripts
+    ../../home/codium # #TODO pin versions to avoid compiling
+    ../../home/copyq # #TODO change to an alternative maybe?
+    ../../home/dunst # notifications
     ../../home/firefox # why you always need to build from source, check to see if there are nighty / beta precompiled
     ../../home/git # add some basic git packages
     ../../home/keepassxc # key / password manager
@@ -36,11 +40,11 @@
     ../../home/kde # TODO rename kdeconnect - maybe not lol - covers lots
     ../../home/ulauncher # TODO rename built theme, add credits to og author
     ../../home/virt # vm / container
-    ../../home/waybar
+    ../../home/waybar # wayland bar boi, needs another go at theming
     ../../home/wl-screenrec # testing for laptop - amd / nvidia config
     ../../home/gtk # uhh, nix-colors gtk theme iirc # TODO rename to theme?
     ../../home/prism # wallpapers
-    ../../home/syncthing
+    ../../home/syncthing # sync the things
     ../../home/tailscale # not foss, temp - will replace eventually with netbird / self-hosted
     ../../home/zsh # some basic config for terminal, has modified theme for nix-colors
   ];
@@ -54,7 +58,10 @@
     gscreenshot.enable = true;
     freetube.enable = true;
     wifi.backend = "nwm";
-    nebula.enable = true;
+    nebula = {
+      enable = true;
+      networkName = "${secrets.nebula.networkName}";
+    };
   };
 
   services = {
