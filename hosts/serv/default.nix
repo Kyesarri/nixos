@@ -39,6 +39,10 @@
 
   users.users.${spaghetti.user}.uid = 1000;
 
+  gnocchi = {
+    vula.enable = true;
+  };
+
   services = {
     openssh.enable = true;
     xserver.enable = false; # headless
