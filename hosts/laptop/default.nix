@@ -59,9 +59,10 @@
     freetube.enable = true;
     wifi.backend = "nwm";
     nebula = {
-      enable = true;
+      enable = false; # more projects, on the #TODO backburner
       networkName = "${secrets.nebula.networkName}";
     };
+    vula.enable = true;
   };
 
   services = {
