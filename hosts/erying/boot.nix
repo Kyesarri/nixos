@@ -12,14 +12,7 @@
       "net.ipv6.conf.all.forwarding" = "1"; # for tailscale exit node
     };
 
-    # supportedFilesystems = ["zfs"];
-
     initrd.systemd.enable = true;
-
-    # zfs = {
-    #   forceImportRoot = false;
-    #   extraPools = [];
-    # };
 
     loader = {
       systemd-boot.enable = true;
