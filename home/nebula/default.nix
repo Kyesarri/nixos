@@ -40,25 +40,32 @@ in {
       type = types.str;
       # type = types.listOf types.str;
       default = "";
-      description = "";
+      description = "currently single lighthouse, want to map this as a list of strings somehow :)";
       example = ''"192.168.1.2"'';
     };
     #
   };
+
   /*
   so a few things here
   nebula module creates both a user and a group nebula-networkName
   added the user option, adds our user to the nebula-networkName group
   */
 
-  #TODO add activationScript to mkdir and chown / chmod dir for nebula group - read perms
   #TODO add encrypted nebula keys to secrets, have nix place those in correct dir
 
   config = mkMerge [
     (mkIf (cfg.nebula.enable == true) {
+      #
       # add our user to nebula group
       users.users.${cfg.nebula.userName}.extraGroups = ["nebula-${cfg.nebula.networkName}"];
 
+      # create nebula dir, chown and chmod perms
+      system.activationScripts."make-nebula-${cfg.nebula.networkName}-dir" = lib.stringAfter ["var"] ''
+        mkdir -v -p /etc/nebula & chown -R 1000:nebula-${cfg.nebula.networkName} /etc/nebula & chmod -R g+r /etc/nebula
+      '';
+
+      # add nebula to systemPackages
       environment.systemPackages = [pkgs.nebula];
 
       # setup nebula service for clients
