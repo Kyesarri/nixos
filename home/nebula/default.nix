@@ -49,9 +49,10 @@ in {
   so a few things here
   nebula module creates both a user and a group nebula-networkName
   added the user option, adds our user to the nebula-networkName group
+  */
+
   #TODO add activationScript to mkdir and chown / chmod dir for nebula group - read perms
   #TODO add encrypted nebula keys to secrets, have nix place those in correct dir
-  */
 
   config = mkMerge [
     (mkIf (cfg.nebula.enable == true) {
@@ -84,13 +85,15 @@ in {
         };
       };
     })
+
     # lighthouse config
     (mkIf (cfg.nebula.isServer == true) {
       services.nebula.networks.${cfg.nebula.networkName} = {
         isLighthouse = true;
       };
     })
-    # add lighthouse to clients, don't want added to lighthouses themselves
+
+    # client lighthouse config
     (mkIf (cfg.nebula.isServer == false) {
       services.nebula.networks.${cfg.nebula.networkName} = {
         lighthouses = ["${cfg.nebula.lighthouses}"];
