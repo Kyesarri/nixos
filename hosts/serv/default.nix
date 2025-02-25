@@ -1,6 +1,7 @@
 {
   nix-colors,
   spaghetti,
+  secrets,
   config,
   inputs,
   pkgs,
@@ -40,6 +41,12 @@
   users.users.${spaghetti.user}.uid = 1000;
 
   gnocchi = {
+    nebula = {
+      enable = true;
+      networkName = "${secrets.nebula.networkName}";
+      hostName = "serv";
+      userName = "${spaghetti.user}";
+    };
   };
 
   services = {
