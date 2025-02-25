@@ -1,5 +1,6 @@
 {
   nix-colors,
+  spaghetti,
   secrets,
   ...
 }: {
@@ -59,8 +60,11 @@
     freetube.enable = true;
     wifi.backend = "nwm";
     nebula = {
-      enable = false; # more projects, on the #TODO backburner
+      enable = true;
       networkName = "${secrets.nebula.networkName}";
+      hostName = "laptop";
+      userName = "${spaghetti.user}";
+      lighthouses = "${secrets.nebula.serv}";
     };
   };
 
