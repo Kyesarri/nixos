@@ -39,9 +39,9 @@ in {
     lighthouses = mkOption {
       type = types.str;
       # type = types.listOf types.str;
-      default = [];
-      description = "list of lighthouses";
-      example = ''[ "192.168.1.2" ]'';
+      default = "";
+      description = "";
+      example = ''"192.168.1.2"'';
     };
     #
   };
