@@ -97,6 +97,11 @@ in {
     (mkIf (cfg.nebula.isServer == true) {
       services.nebula.networks.${cfg.nebula.networkName} = {
         isLighthouse = true;
+        /*
+          staticHostMap = {
+          "192.168.100.1" = ["100.64.22.11:4242"]; # example
+        };
+        */
       };
     })
 

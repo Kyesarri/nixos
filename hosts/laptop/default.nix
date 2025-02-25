@@ -59,13 +59,15 @@
     gscreenshot.enable = true;
     freetube.enable = true;
     wifi.backend = "nwm";
+    /*
     nebula = {
-      enable = true;
+      enable = false;
       networkName = "${secrets.nebula.networkName}";
       hostName = "laptop";
       userName = "${spaghetti.user}";
       lighthouses = "${secrets.nebula.serv}";
     };
+    */
   };
 
   services = {

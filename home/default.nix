@@ -7,7 +7,7 @@
     ./freetube
     ./gscreenshot
     ./hypr
-    ./nebula
+    # ./nebula
     ./nemo
   ];
 
