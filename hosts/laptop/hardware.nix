@@ -20,7 +20,6 @@
   swapDevices = [{device = "/dev/disk/by-uuid/04e81e82-6196-4033-8a41-fe12badd919a";}];
 
   hardware = {
-    pulseaudio.enable = false;
     amdgpu.initrd.enable = true;
     cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
     graphics = {
