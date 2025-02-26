@@ -61,11 +61,10 @@
     wifi.backend = "nwm";
 
     nebula = {
-      enable = false;
+      enable = true;
       networkName = "${secrets.nebula.networkName}";
       hostName = "laptop";
       userName = "${spaghetti.user}";
-      # lighthouses = "${secrets.nebula.serv}";
     };
   };
 

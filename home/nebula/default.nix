@@ -1,3 +1,5 @@
+# https://github.com/diogotcorreia/dotfiles/blob/nixos/modules/services/nebula.nix
+# great config, thanks for posting
 {
   secrets,
   config,
@@ -6,11 +8,12 @@
   ...
 }:
 with lib; let
+  #
   inherit (lib) mkEnableOption mkOption types mkIf;
-  cfg = config.gnocchi;
-  lighthouses = {
-    "${secrets.nebula.serv}" = ["${secrets.ip.serv-1}:4242"];
-  };
+  #
+  cfg = config.gnocchi.nebula;
+  #
+  lighthouses = {"${secrets.nebula.serv}" = ["${secrets.ip.serv-1}:4242"];};
 in {
   options.gnocchi.nebula = {
     #
@@ -38,53 +41,49 @@ in {
       description = "enabling will disable defined lighthouses";
     };
     #
-    /*
-      lighthouses = mkOption {
-      type = types.str;
-      # type = types.listOf types.str;
-      default = "";
-      description = "currently single lighthouse, want to map this as a list of strings somehow :)";
-      example = ''"192.168.1.2"'';
-    };
-    */
-    #
   };
-
-  /*
-  so a few things here
-  nebula module creates both a user and a group nebula-networkName
-  added the user option, adds our user to the nebula-networkName group
-  */
 
   #TODO add encrypted nebula keys to secrets, have nix place those in correct dir
 
   config = mkMerge [
-    (mkIf (cfg.nebula.enable == true) {
+    (mkIf (cfg.enable == true) {
       #
       # add our user to nebula group
-      users.users.${cfg.nebula.userName}.extraGroups = ["nebula-${cfg.nebula.networkName}"];
+      users.users.${cfg.userName}.extraGroups = ["nebula-${cfg.networkName}"];
 
       # create nebula dir, chown and chmod perms
-      system.activationScripts."make-nebula-${cfg.nebula.networkName}-dir" = lib.stringAfter ["var"] ''
-        mkdir -v -p /etc/nebula & chown -R 1000:nebula-${cfg.nebula.networkName} /etc/nebula & chmod -R g+r /etc/nebula
+      system.activationScripts."make-nebula-${cfg.networkName}-dir" = lib.stringAfter ["var"] ''
+        mkdir -v -p /etc/nebula & chown -R 1000:nebula-${cfg.networkName} /etc/nebula & chmod -R g+r /etc/nebula
       '';
 
       # add nebula to systemPackages
       environment.systemPackages = [pkgs.nebula];
 
       # setup nebula service for clients
-      services.nebula.networks.${cfg.nebula.networkName} = {
+      services.nebula.networks.${cfg.networkName} = {
         enable = true;
         ca = "/etc/nebula/ca.crt";
-        cert = "/etc/nebula/${cfg.nebula.hostName}.crt";
-        key = "/etc/nebula/${cfg.nebula.hostName}.key";
-        # uses the let xyz in
-        # not sure about optionals
-        # ! is not
-        # so if the device is not a server do... the things take the atribute names from the value lighthouses
-        # defined above
-        lighthouses = lib.lists.optionals (!cfg.nebula.isServer) (attrNames lighthouses);
+        cert = "/etc/nebula/${cfg.hostName}.crt";
+        key = "/etc/nebula/${cfg.hostName}.key";
+        # optionals, if host is not a server, add lighthouses
+        lighthouses = lib.lists.optionals (!cfg.isServer) (attrNames lighthouses);
         staticHostMap = lighthouses;
+        isLighthouse = cfg.isServer;
+
+        settings = {
+          punchy = {
+            punch = true;
+            respond = true;
+          };
+          static_map = {
+            network = "ip";
+          };
+          relay = {
+            relays = lib.lists.optionals (!cfg.isServer) (builtins.attrNames lighthouses);
+            use_relays = !cfg.isServer;
+          };
+        };
+
         firewall = {
           outbound = [
             {
@@ -103,23 +102,5 @@ in {
         };
       };
     })
-
-    # this is bad, due to one option will always be active despite not wanting to load the module
-    # need a mkif x and y are true not the current true or false for one option
-
-    # lighthouse config
-    (mkIf (cfg.nebula.isServer == true) {
-      services.nebula.networks.${cfg.nebula.networkName} = {
-        isLighthouse = true;
-      };
-    })
-
-    # client lighthouse config
-    /*
-    (mkIf (cfg.nebula.isServer == false) {
-      services.nebula.networks.${cfg.nebula.networkName} = {
-      };
-    })
-    */
   ];
 }
