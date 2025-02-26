@@ -1,18 +1,20 @@
 {
+  secrets,
   config,
   pkgs,
   lib,
   ...
 }:
 with lib; let
+  inherit (lib) mkEnableOption mkOption types mkIf;
   cfg = config.gnocchi;
+  lighthouses = {
+    "${secrets.nebula.serv}" = ["${secrets.ip.serv-1}:4242"];
+  };
 in {
   options.gnocchi.nebula = {
     #
-    enable = mkOption {
-      type = types.bool;
-      default = false;
-    };
+    enable = mkEnableOption "nebula";
     #
     networkName = mkOption {
       type = types.str;
@@ -36,13 +38,15 @@ in {
       description = "enabling will disable defined lighthouses";
     };
     #
-    lighthouses = mkOption {
+    /*
+      lighthouses = mkOption {
       type = types.str;
       # type = types.listOf types.str;
       default = "";
       description = "currently single lighthouse, want to map this as a list of strings somehow :)";
       example = ''"192.168.1.2"'';
     };
+    */
     #
   };
 
@@ -74,6 +78,13 @@ in {
         ca = "/etc/nebula/ca.crt";
         cert = "/etc/nebula/${cfg.nebula.hostName}.crt";
         key = "/etc/nebula/${cfg.nebula.hostName}.key";
+        # uses the let xyz in
+        # not sure about optionals
+        # ! is not
+        # so if the device is not a server do... the things take the atribute names from the value lighthouses
+        # defined above
+        lighthouses = lib.lists.optionals (!cfg.nebula.isServer) (attrNames lighthouses);
+        staticHostMap = lighthouses;
         firewall = {
           outbound = [
             {
@@ -93,23 +104,22 @@ in {
       };
     })
 
+    # this is bad, due to one option will always be active despite not wanting to load the module
+    # need a mkif x and y are true not the current true or false for one option
+
     # lighthouse config
     (mkIf (cfg.nebula.isServer == true) {
       services.nebula.networks.${cfg.nebula.networkName} = {
         isLighthouse = true;
-        /*
-          staticHostMap = {
-          "192.168.100.1" = ["100.64.22.11:4242"]; # example
-        };
-        */
       };
     })
 
     # client lighthouse config
+    /*
     (mkIf (cfg.nebula.isServer == false) {
       services.nebula.networks.${cfg.nebula.networkName} = {
-        lighthouses = ["${cfg.nebula.lighthouses}"];
       };
     })
+    */
   ];
 }
