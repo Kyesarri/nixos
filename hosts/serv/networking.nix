@@ -27,8 +27,9 @@
 
   boot.initrd.systemd.network = {
     enable = true;
+
     networks = {
-      # main lan
+      # builtin lan / main interface
       "10-lan" = {
         address = ["${toString secrets.ip.serv-1}/24"];
         gateway = ["${toString secrets.ip.gateway}"];
@@ -39,7 +40,8 @@
           # MulticastDNS = true;
         };
       };
-      # testing vlan
+
+      # m.2 a+e ethernet / testing vlan
       "30-vlan" = {
         address = ["${toString secrets.ip.serv-2}/24"];
         gateway = ["${toString secrets.ip.gateway}"];
@@ -90,6 +92,7 @@
         MACVLAN=lan-self
       '';
     };
+
     # main lan config
     "20-lan-self" = {
       address = ["${toString secrets.ip.serv-1}/24"];
