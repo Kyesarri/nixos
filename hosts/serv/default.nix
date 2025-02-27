@@ -42,7 +42,7 @@
 
   gnocchi = {
     nebula = {
-      enable = true;
+      enable = false;
       networkName = "${secrets.nebula.networkName}";
       hostName = "serv";
       isServer = true;
