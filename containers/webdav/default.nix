@@ -47,8 +47,8 @@ in {
     };
     image = mkOption {
       type = types.str;
-      default = "djonko/docker-nginx-webdav";
-      example = "djonko/docker-nginx-webdav";
+      default = "djonko/docker-nginx-webdav:latest";
+      example = "djonko/docker-nginx-webdav:latest";
       description = "container image";
     };
   };
