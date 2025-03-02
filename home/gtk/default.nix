@@ -16,6 +16,15 @@ in {
   qt.platformTheme = "qt5ct";
 
   home-manager.users.${spaghetti.user} = {
+    #
+    fonts.fontconfig.enable = true;
+
+    home.pointerCursor = {
+      package = pkgs.graphite-cursors;
+      name = "graphite-dark";
+      size = 17;
+    };
+
     home.sessionVariables = {
       XCURSOR_PATH = "${pkgs.graphite-cursors}/share/icons";
       XCURSOR_SIZE = 17;
