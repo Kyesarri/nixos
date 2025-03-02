@@ -59,6 +59,8 @@ in {
         lib.stringAfter
         ["var"] ''mkdir -v -p /etc/oci.cont/${cfg.contName}/letsencrypt /etc/oci.cont/${cfg.contName}/data & chown -R 1000:1000 /etc/oci.cont/${cfg.contName}'';
 
+      environment.shellAliases = {cont-nginx-wan = "sudo podman pull ${cfg.image}";};
+
       virtualisation.oci-containers.containers.${cfg.contName} = {
         hostname = "${cfg.contName}";
 

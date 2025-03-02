@@ -4,9 +4,7 @@
   ...
 }: let
   contName = "frigate";
-  # i'm still OK for now with /etc/oci.cont/ as my containers dir
   dir1 = "/etc/oci.cont/${contName}/db";
-  # TODO - each server host has a scratch dir defined, rather than this static config where this module is hard coded for use on erying
   dir2 = "/etc/oci.cont.scratch/${contName}/media/frigate";
   dir3 = "/etc/oci.cont/${contName}/config";
 in {

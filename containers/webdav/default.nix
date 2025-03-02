@@ -56,7 +56,7 @@ in {
   config = mkMerge [
     (mkIf (cfg.enable == true) {
       ##
-      system.activationScripts."makeNginxLanDir" =
+      system.activationScripts."make${cfg.contName}Dir" =
         lib.stringAfter
         ["var"] ''mkdir -v -p /etc/oci.cont/${cfg.contName} & chown -R 1000:1000 /etc/oci.cont/${cfg.contName}'';
 
