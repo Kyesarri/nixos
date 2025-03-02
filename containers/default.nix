@@ -14,6 +14,7 @@
     ./subgen # ai subtitle generator thingy
     ./subsai # ai subtitle generator thingy
     ./tailscale # vpn for remote connections to lan
+    ./webdav # basic webdav server, based on nginx
     ./zigbee2mqtt # home automation thingy, lights, sensors, the good stuff
   ];
 
