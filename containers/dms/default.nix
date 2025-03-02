@@ -61,7 +61,7 @@ in {
         lib.stringAfter ["var"]
         ''mkdir -v -p /etc/oci.cont/${cfg.contName}/mail /etc/oci.cont/${cfg.contName}/state /etc/oci.cont/${cfg.contName}/logs /etc/oci.cont/${cfg.contName}/config & chown -R 1000:1000 /etc/oci.cont/${cfg.contName}'';
 
-      shellAliases = {cont-dms = "sudo podman pull ${cfg.image}";};
+      environment.shellAliases = {cont-dms = "sudo podman pull ${cfg.image}";};
 
       virtualisation.oci-containers.containers.${cfg.contName} = {
         hostname = "${cfg.fqdn}";
