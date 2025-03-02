@@ -115,6 +115,13 @@
       authKey = "${secrets.password.tailscale}";
     };
     #
+    webdav = {
+      enable = true;
+      userName = "${secrets.user.webdav}";
+      password = "${secrets.password.webdav}";
+      vlanIp = "${secrets.vlan.erying.webdav}";
+    };
+    #
     zigbee2mqtt = {
       enable = true;
       macvlanIp = "${secrets.ip.zigbee2mqtt}";
@@ -151,6 +158,7 @@
       "podman-radicale-${config.networking.hostName}.service"
       "podman-syncthing.service"
       "podman-tailscale-${config.networking.hostName}-subnet.service"
+      "podman-webdav-${config.networking.hostName}.service"
       "podman-zigbee2mqtt-${config.networking.hostName}.service"
     ];
     serviceConfig = {
