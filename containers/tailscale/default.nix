@@ -69,7 +69,7 @@ in {
       system.activationScripts."make${cfg.contName}Dir" =
         lib.stringAfter ["var"] ''mkdir -v -p /etc/oci.cont/${cfg.contName} & chown 1000:1000 /etc/oci.cont/${cfg.contName}'';
 
-      shellAliases = {cont-tailscale = "sudo podman pull ${cfg.image}";};
+      environment.shellAliases = {cont-tailscale = "sudo podman pull ${cfg.image}";};
 
       virtualisation.oci-containers.containers."${cfg.contName}" = {
         hostname = "${cfg.contName}";
