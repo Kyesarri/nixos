@@ -1,50 +1,82 @@
 {
-  pkgs,
+  # pkgs,
+  config,
   spaghetti,
   ...
 }: {
+  environment.sessionVariables = {MOZ_ENABLE_WAYLAND = "1";};
+
   home-manager.users.${spaghetti.user} = {
-    # add hyprland bindings for firefox
-    # + window rules
+    #
     home.file.".config/hypr/per-app/firefox.conf" = {
       text = ''
-        bind = $mainMod, F, exec, firefox
-        bind = $mainMod, W, exec, firefox -p work --name work
-        windowrulev2 = bordercolor $ce, initialClass:^(work)$
-        windowrulev2 = noshadow, nodim, initialClass:^(work)$
+        bind = $mainMod, F, exec, schizofox
+        # bind = $mainMod, W, exec, firefox -p work --name work
+        windowrulev2 = bordercolor $ce, initialClass:^(firefox)$
+        # windowrulev2 = noshadow, nodim, initialClass:^(work)$
       '';
     };
-  };
 
-  environment.sessionVariables = {MOZ_ENABLE_WAYLAND = "1";}; # is this required anymore?
-
-  programs.firefox = {
-    enable = true;
-    # using bin to speed up flake updates
-    package = pkgs.wrapFirefox pkgs.firefox-bin-unwrapped {
-      extraPolicies = {
-        # turn off / on some default annoyances
-        CaptivePortal = false;
-        DisableFirefoxStudies = true;
-        DisablePocket = true;
-        DisableTelemetry = true;
-        DisableFirefoxAccounts = false;
-        NoDefaultBookmarks = true;
-        OfferToSaveLogins = false;
-        OfferToSaveLoginsDefault = false;
-        PasswordManagerEnabled = false;
-        FirefoxHome = {
-          Search = true;
-          Pocket = false;
-          Snippets = false;
-          TopSites = false;
-          Highlights = false;
+    programs.schizofox = {
+      enable = true;
+      search = {
+        removeEngines = ["Google" "Bing" "Amazon.com" "eBay" "Twitter" "Wikipedia"];
+        searxUrl = "https://searx.be";
+      };
+      misc = {
+        startPageURL = "https://homer.home/";
+      };
+      extensions = {
+        simplefox.enable = false;
+        enableDefaultExtensions = true;
+        darkreader.enable = true;
+      };
+      security = {
+        userAgent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko)";
+        sandbox.enable = false; # workaround for keepass addon in schizofox #TODO not perfect
+      };
+      theme = {
+        colors = {
+          background-darker = "${config.colorScheme.palette.base00}"; # bg1
+          background = "${config.colorScheme.palette.base02}"; # bg2
+          foreground = "${config.colorScheme.palette.base05}"; # text
+          primary = "${config.colorScheme.palette.base07}"; # accent1
+          border = "${config.colorScheme.palette.base0E}"; # accent2
         };
-        UserMessaging = {
-          ExtensionRecommendations = false;
-          SkipOnboarding = true;
+        font = "IBM Plex Sans";
+      };
+    };
+    /*
+    # old firefox configs
+    programs.firefox = {
+      enable = true;
+      # using bin to speed up flake updates
+      package = pkgs.wrapFirefox pkgs.firefox-bin-unwrapped {
+        extraPolicies = {
+          # turn off / on some default annoyances
+          CaptivePortal = false;
+          DisableFirefoxStudies = true;
+          DisablePocket = true;
+          DisableTelemetry = true;
+          DisableFirefoxAccounts = false;
+          NoDefaultBookmarks = true;
+          OfferToSaveLogins = false;
+          OfferToSaveLoginsDefault = false;
+          PasswordManagerEnabled = false;
+          FirefoxHome = {
+            Search = true;
+            Pocket = false;
+            Snippets = false;
+            TopSites = false;
+            Highlights = false;
+          };
+          UserMessaging = {
+            ExtensionRecommendations = false;
+            SkipOnboarding = true;
+          };
         };
       };
     };
+    */
   };
 }
