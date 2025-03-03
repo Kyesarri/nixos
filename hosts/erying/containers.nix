@@ -97,6 +97,11 @@
       timeZone = "Australia/Melbourne";
     };
     #
+    jellyfin = {
+      enable = true;
+      vlanIp = "${secrets.vlan.erying.jellyfin}";
+    };
+    #
     nginx-wan = {
       enable = true;
       autoStart = true;
