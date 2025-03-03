@@ -52,11 +52,13 @@
 </p>
 
 ## what and why?
-these configs are both practical and a learning experience for me, most are in use currently (desktop needs ram, erying stole it).
+these configs are both practical and a learning experience for me, hosting a variaty of services for my local network in addition to web facing services.
 
 i've taken snippits of code from all over the web (added links where i remembered to... sorry!), written much of my own and want to contribute my configs hoping they will help others.
 
 comments are included in many modules, some simple, some chicken-scratch from me figuring things out.
+
+my configs are in flux, readme won't be upto date in places
 
 ## screenshots
 
@@ -91,9 +93,8 @@ open the root [flake.nix](flake.nix), change the ```user = "kel";``` line to you
 
 run ```sudo nixos-rebuild switch --flake /home/username/nixos#hostname --show-trace``` while changing username and hostname to what you have configured
 
-things may / will fail, happy to helpout when my time permits
-
 ## issues
+things may / will fail, i'm happy to helpout when my time permits. raise an issue on codeberg - github is my mirror currently
 
 ### secrets
 secrets won't work out the box, quick workaround would be replacing my ~/nixos/secrets.json with ~/secrets.example/example.secrets.json

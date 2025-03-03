@@ -7,7 +7,7 @@ storage in /etc/oci.cont/contName for erying / new containers, some still in ~/.
 
 each container ***should*** generate directories with correct perms
 
-many are being ported over to modules, with their configuration defined in each host's [configuration.nix](../hosts/erying/containers.nix)
+many are being ported over to modules, with their configuration defined in each host's [containers.nix](../hosts/erying/containers.nix)
 
 example:
 
