@@ -78,13 +78,13 @@ services:
 
       - name: "jellyfin"
         icon: "fas fa-film fa-fw"
-        subtitle: "Media"
+        subtitle: "Media Server"
         tag: "torrent"
         url: "https://jellyfin.home/"
 
       - name: "plex"
         icon: "fas fa-play-circle fa-fw"
-        subtitle: "Media"
+        subtitle: "Media Server"
         tag: "torrent"
         url: "https://plex.home/"
 
@@ -99,12 +99,6 @@ services:
         subtitle: "Smart Home Controls"
         tag: "haos"
         url: "https://haos.home/"
-
-      - name: "plex"
-        icon: "fas fa-house-user fa-fw"
-        subtitle: "Media Server"
-        tag: "plex"
-        url: "https://plex.home/"
 
       - name: "orca-slicer"
         icon: "fas fa-cube fa-fw"
