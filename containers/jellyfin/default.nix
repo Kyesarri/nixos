@@ -18,13 +18,6 @@ in {
       description = "enable container";
     };
     #
-    macvlanIp = mkOption {
-      type = types.nullOr types.str;
-      default = "";
-      example = "10.10.10.1";
-      description = "container macvlan ip address";
-    };
-    #
     vlanIp = mkOption {
       type = types.nullOr types.str;
       default = "";
@@ -87,7 +80,6 @@ in {
 
         extraOptions = [
           "--privileged"
-          "--network=macvlan_lan:ip=${cfg.macvlanIp}"
           "--network=podman-backend:ip=${cfg.vlanIp}"
         ];
       };
