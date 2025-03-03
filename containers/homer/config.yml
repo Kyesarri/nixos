@@ -3,7 +3,7 @@
 # See https://fontawesome.com/v5/search for icons options
 
 title: "homer.home"
-subtitle: "local services"
+subtitle: ""
 logo: "logo.png"
 
 header: true
@@ -46,7 +46,7 @@ colors:
 services:
   - name: "services"
     items:
-      - name: "nginx-local"
+      - name: "nginx-lan"
         icon: "fas fa-route fa-fw"
         subtitle: "Internal Reverse Proxy"
         tag: "proxy"
@@ -57,6 +57,36 @@ services:
         subtitle: "External Reverse Proxy"
         tag: "wan"
         url: "https://wan.home/"
+
+      - name: "transmission"
+        icon: "fas fa-download fa-fw"
+        subtitle: "Linux ISO Downloader"
+        tag: "torrent"
+        url: "https://torrent.home/"
+
+      - name: "adguard-erying"
+        icon: "fas fa-ban fa-fw"
+        subtitle: "DNS + DHCP + Ad Blocker"
+        tag: "torrent"
+        url: "https://adguard.erying.home/"
+
+      - name: "adguard-serv"
+        icon: "fas fa-ban fa-fw"
+        subtitle: "DNS + DHCP + Ad Blocker"
+        tag: "torrent"
+        url: "https://adguard.serv.home/"
+
+      - name: "jellyfin"
+        icon: "fas fa-film fa-fw"
+        subtitle: "Media"
+        tag: "torrent"
+        url: "https://jellyfin.home/"
+
+      - name: "plex"
+        icon: "fas fa-play-circle fa-fw"
+        subtitle: "Media"
+        tag: "torrent"
+        url: "https://plex.home/"
 
       - name: "frigate"
         icon: "fas fa-video fa-fw"
