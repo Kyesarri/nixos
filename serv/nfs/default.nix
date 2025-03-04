@@ -5,7 +5,7 @@
 }: {
   networking.firewall.allowedTCPPorts = [4000 4001];
   networking.firewall.allowedUDPPorts = [4000 4001];
-
+  /*
   services.nfs.server = {
     enable = true;
     # hostName = ""; # defaults to all hostNames?
@@ -22,4 +22,5 @@
       /hddi ${secrets.ip.range}/24(ro,sync,no_subtree_check)
     '';
   };
+  */
 }
