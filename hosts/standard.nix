@@ -184,6 +184,7 @@
       ifuse # more iphone thing
       orca-slicer # still isn't working
       openscad # 3d cad
+      nfs-utils # nfs user utilities
       handbrake # convert video files
       inputs.wallpaper-generator.defaultPackage.x86_64-linux
       inputs.quickshell.packages.x86_64-linux.default
