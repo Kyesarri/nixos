@@ -28,7 +28,7 @@
 
     extraModulePackages = [];
 
-    supportedFilesystems = ["zfs" "ntfs"];
+    supportedFilesystems = ["zfs" "nfs" "ntfs"];
 
     zfs.forceImportRoot = false;
     zfs.extraPools = [

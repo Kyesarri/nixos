@@ -1,9 +1,9 @@
 {pkgs, ...}: {
   boot = {
     extraModulePackages = [];
-    supportedFilesystems = ["ntfs"];
+    supportedFilesystems = ["ntfs" "nfs"];
 
-    kernelPackages = pkgs.linuxPackages_xanmod_latest; # use mainline xanmod kernel
+    kernelPackages = pkgs.linuxPackages_xanmod_latest;
     kernelModules = ["kvm-amd" "coretemp"];
     initrd.availableKernelModules = ["nvme" "xhci_pci" "ahci" "usb_storage" "usbhid" "sd_mod"];
     initrd.kernelModules = [];
