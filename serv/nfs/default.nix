@@ -59,7 +59,7 @@
 
     # setup nfs shares, again there is a more elegant method to achieve this
     exports = ''
-      /exports/hdda ${secrets.ip.range}/24(ro,sync,no_subtree_check)
+      /exports/hdda ${secrets.ip.laptop}/24(ro,sync,no_subtree_check)
       /exports/hddb ${secrets.ip.range}/24(ro,sync,no_subtree_check)
       /exports/hddc ${secrets.ip.range}/24(ro,sync,no_subtree_check)
       /exports/hddd ${secrets.ip.range}/24(ro,sync,no_subtree_check)

@@ -1,6 +1,7 @@
 {
   lib,
   config,
+  secrets,
   modulesPath,
   ...
 }: {
@@ -14,6 +15,11 @@
     "/boot" = {
       device = "/dev/disk/by-uuid/B47E-9213";
       fsType = "vfat";
+    };
+
+    "/mnt/hdda" = {
+      device = "${secrets.ip.serv-1}:/hdda";
+      fsType = "nfs";
     };
   };
 
