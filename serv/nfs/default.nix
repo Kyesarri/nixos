@@ -1,26 +1,73 @@
 {
-  config,
+  lib,
   secrets,
   ...
 }: {
-  networking.firewall.allowedTCPPorts = [4000 4001];
-  networking.firewall.allowedUDPPorts = [4000 4001];
-  /*
+  # open us some ports on host
+  networking.firewall.allowedTCPPorts = [2049 4000 4001 4002];
+  networking.firewall.allowedUDPPorts = [2049 4000 4001 4002];
+
+  # create /export dir, set perms
+  system.activationScripts.makeNFSDir = lib.stringAfter ["var"] ''mkdir -v -p /export & chown nobody:nogroup /export'';
+
+  # create bind-mounts on host, add to /exports/*
+  # brute-force all, there is a more elegant way to do this ;)
+  fileSystems = {
+    "/export/hdda" = {
+      device = "/hdda";
+      options = ["bind"];
+    };
+    "/export/hddb" = {
+      device = "/hddb";
+      options = ["bind"];
+    };
+    "/export/hddc" = {
+      device = "/hddc";
+      options = ["bind"];
+    };
+    "/export/hddd" = {
+      device = "/hddd";
+      options = ["bind"];
+    };
+    "/export/hddee" = {
+      device = "/hdde";
+      options = ["bind"];
+    };
+    "/export/hddf" = {
+      device = "/hddf";
+      options = ["bind"];
+    };
+    "/export/hddg" = {
+      device = "/hddg";
+      options = ["bind"];
+    };
+    "/export/hddh" = {
+      device = "/hddh";
+      options = ["bind"];
+    };
+    "/export/hddi" = {
+      device = "/hddi";
+      options = ["bind"];
+    };
+  };
+
   services.nfs.server = {
     enable = true;
-    # hostName = ""; # defaults to all hostNames?
     statdPort = 4000;
     lockdPort = 4001;
+    mountdPort = 4002;
+
+    # setup nfs shares, again there is a more elegant method to achieve this
     exports = ''
-      /hdda ${secrets.ip.range}/24(ro,sync,no_subtree_check)
-      /hddb ${secrets.ip.range}/24(ro,sync,no_subtree_check)
-      /hddc ${secrets.ip.range}/24(ro,sync,no_subtree_check)
-      /hddd ${secrets.ip.range}/24(ro,sync,no_subtree_check)
-      /hdde ${secrets.ip.range}/24(ro,sync,no_subtree_check)
-      /hddf ${secrets.ip.range}/24(ro,sync,no_subtree_check)
-      /hddh ${secrets.ip.range}/24(ro,sync,no_subtree_check)
-      /hddi ${secrets.ip.range}/24(ro,sync,no_subtree_check)
+      /exports/hdda ${secrets.ip.range}/24(ro,sync,no_subtree_check)
+      /exports/hddb ${secrets.ip.range}/24(ro,sync,no_subtree_check)
+      /exports/hddc ${secrets.ip.range}/24(ro,sync,no_subtree_check)
+      /exports/hddd ${secrets.ip.range}/24(ro,sync,no_subtree_check)
+      /exports/hdde ${secrets.ip.range}/24(ro,sync,no_subtree_check)
+      /exports/hddf ${secrets.ip.range}/24(ro,sync,no_subtree_check)
+      /exports/hddg ${secrets.ip.range}/24(ro,sync,no_subtree_check)
+      /exports/hddh ${secrets.ip.range}/24(ro,sync,no_subtree_check)
+      /exports/hddi ${secrets.ip.range}/24(ro,sync,no_subtree_check)
     '';
   };
-  */
 }
