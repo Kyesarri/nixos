@@ -58,6 +58,7 @@
     mountdPort = 4002;
 
     # setup nfs shares, again there is a more elegant method to achieve this
+    # mounts on other devices cannot open dirs, more #TODO
     exports = ''
       /export/hdda ${secrets.ip.range}/24(ro,sync,no_subtree_check)
       /export/hddb ${secrets.ip.range}/24(ro,sync,no_subtree_check)
