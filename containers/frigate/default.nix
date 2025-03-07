@@ -327,7 +327,7 @@ in {
         width: 300
         height: 300
         input_tensor: nhwc
-        model_type: yolox
+       #  model_type: yolox
         input_pixel_format: bgr
         path: /openvino-model/ssdlite_mobilenet_v2.xml
         labelmap_path: /openvino-model/coco_91cl_bkgr.txt
