@@ -34,11 +34,11 @@ in {
     (mkIf (cfg.enable == true) {
       #
       containers.immich = {
+        networking.firewall.allowedTCPPorts = [3001];
         autoStart = true;
         privateNetwork = cfg.privateNetwork;
         macvlans = ["${cfg.macvlanDev}"]; # list of strings, may cause issues?
         bindMounts = {};
-
         allowedDevices = [
           # {
           #   modifier = "rw";
