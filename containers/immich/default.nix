@@ -1,38 +1,70 @@
-{secrets, ...}: {
-  networking.firewall.allowedTCPPorts = [3001]; # open port on host machine
-  #TODO remove above - add macvlan for nspawn
+{
+  lib,
+  config,
+  ...
+}:
+with lib; let
+  cfg = config.cont.immich;
+in {
+  options.cont.immich = {
+    #
+    enable = mkOption {
+      type = types.bool;
+      default = false;
+      example = true;
+      description = "enable immich container";
+    };
+    #
+    privateNetwork = mkOption {
+      type = types.nullOr types.str;
+      default = "true";
+      example = "false";
+      description = "use host network (false) or private network (true)";
+    };
+    #
+    macvlanDev = mkOption {
+      type = types.nullOr types.str;
+      default = "";
+      example = "eth1";
+      description = "host ethernet device, leave empty for host network";
+    };
+  };
 
-  containers.immich = {
-    autoStart = true;
-    privateNetwork = false;
-    hostAddress = "${secrets.ip.erying}";
+  config = mkMerge [
+    (mkIf (cfg.enable == true) {
+      #
+      containers.immich = {
+        autoStart = true;
+        privateNetwork = "${cfg.privateNetwork}";
+        macvlans = ["${cfg.macvlanDev}"]; # list of strings, may cause issues?
+        bindMounts = {};
 
-    bindMounts = {};
+        allowedDevices = [
+          # {
+          #   modifier = "rw";
+          #   node = "/dev/net/tun";
+          # }
+        ];
 
-    allowedDevices = [
-      # {
-      #   modifier = "rw";
-      #   node = "/dev/net/tun";
-      # }
-    ];
+        config = {pkgs, ...}: {
+          system.stateVersion = "23.11";
 
-    config = {pkgs, ...}: {
-      system.stateVersion = "23.11";
-
-      services = {
-        immich = {
-          enable = true;
-          package = pkgs.immich;
-          openFirewall = true;
-          port = 3001;
-          host = "0.0.0.0";
-          redis = {
-            enable = true;
-            host = "127.0.0.1";
-            port = 6379;
+          services = {
+            immich = {
+              enable = true;
+              package = pkgs.immich;
+              openFirewall = true;
+              port = 3001;
+              host = "0.0.0.0";
+              redis = {
+                enable = true;
+                host = "127.0.0.1";
+                port = 6379;
+              };
+            };
           };
         };
       };
-    };
-  };
+    })
+  ];
 }
