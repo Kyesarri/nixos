@@ -324,8 +324,8 @@ in {
           device: GPU
       #
       model:
-        width: 320
-        height: 320
+        width: 300
+        height: 300
         input_tensor: nhwc
         model_type: yolox
         input_pixel_format: bgr
