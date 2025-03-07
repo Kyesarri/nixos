@@ -59,15 +59,15 @@
 
     # setup nfs shares, again there is a more elegant method to achieve this
     exports = ''
-      /exports/hdda ${secrets.ip.nix-laptop}(ro,sync,no_subtree_check)
-      /exports/hddb ${secrets.ip.range}/24(ro,sync,no_subtree_check)
-      /exports/hddc ${secrets.ip.range}/24(ro,sync,no_subtree_check)
-      /exports/hddd ${secrets.ip.range}/24(ro,sync,no_subtree_check)
-      /exports/hdde ${secrets.ip.range}/24(ro,sync,no_subtree_check)
-      /exports/hddf ${secrets.ip.range}/24(ro,sync,no_subtree_check)
-      /exports/hddg ${secrets.ip.range}/24(ro,sync,no_subtree_check)
-      /exports/hddh ${secrets.ip.range}/24(ro,sync,no_subtree_check)
-      /exports/hddi ${secrets.ip.range}/24(ro,sync,no_subtree_check)
+      /export/hdda ${secrets.ip.nix-laptop}(ro,sync,no_subtree_check)
+      /export/hddb ${secrets.ip.range}/24(ro,sync,no_subtree_check)
+      /export/hddc ${secrets.ip.range}/24(ro,sync,no_subtree_check)
+      /export/hddd ${secrets.ip.range}/24(ro,sync,no_subtree_check)
+      /export/hdde ${secrets.ip.range}/24(ro,sync,no_subtree_check)
+      /export/hddf ${secrets.ip.range}/24(ro,sync,no_subtree_check)
+      /export/hddg ${secrets.ip.range}/24(ro,sync,no_subtree_check)
+      /export/hddh ${secrets.ip.range}/24(ro,sync,no_subtree_check)
+      /export/hddi ${secrets.ip.range}/24(ro,sync,no_subtree_check)
     '';
   };
 }
