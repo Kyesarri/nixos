@@ -17,8 +17,8 @@
       fsType = "vfat";
     };
 
-    "/mnt/hdda" = {
-      device = "${secrets.ip.serv-1}:/hdda";
+    "/mnt" = {
+      device = "${secrets.ip.serv-1}:/export";
       fsType = "nfs";
     };
   };
