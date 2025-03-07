@@ -8,7 +8,6 @@
     ../../containers
     ../../containers/home-assistant
     ../../containers/plex
-    ../../containers/immich
   ];
 
   virtualisation = {
@@ -25,7 +24,7 @@
   cont = {
     #
     backend-network = {
-      enable = true; # probably want this on
+      enable = true;
       subnet = "${secrets.vlan.serv.subnet}";
       range = "${secrets.vlan.serv.range}";
       mask = "${secrets.vlan.serv.mask}";
@@ -40,6 +39,17 @@
       timeZone = "Australia/Melbourne";
     };
     #
+    immich = {
+      enable = true;
+      macvlanDev = "enp4s0";
+    };
+    #
+    nzbget = {
+      enable = true;
+      macvlanIp = "${secrets.ip.nzbget}";
+      vlanIp = "${secrets.vlan.serv.nzbget}";
+    };
+    #
     subgen = {
       enable = false;
       macvlanIp = "${secrets.ip.subgen}";
@@ -50,12 +60,6 @@
       enable = false;
       macvlanIp = "${secrets.ip.subsai}";
       vlanIp = "${secrets.vlan.serv.subsai}";
-    };
-    #
-    nzbget = {
-      enable = true;
-      macvlanIp = "${secrets.ip.nzbget}";
-      vlanIp = "${secrets.vlan.serv.nzbget}";
     };
     #
     tailscale = {
