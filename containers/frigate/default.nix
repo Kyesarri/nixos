@@ -310,10 +310,10 @@ in {
         quality: 100
         timestamp: false
       #
-      # semantic_search:
-      #   enabled: true
-      #   reindex: true
-      #   model_size: "small"
+      semantic_search:
+        enabled: true
+        reindex: true
+        model_size: "small"
       #
       ui:
         time_format: browser
