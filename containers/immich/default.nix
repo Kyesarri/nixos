@@ -33,8 +33,9 @@ in {
   config = mkMerge [
     (mkIf (cfg.enable == true) {
       #
+      networking.firewall.allowedTCPPorts = [3001];
+
       containers.immich = {
-        networking.firewall.allowedTCPPorts = [3001];
         autoStart = true;
         privateNetwork = cfg.privateNetwork;
         macvlans = ["${cfg.macvlanDev}"]; # list of strings, may cause issues?
