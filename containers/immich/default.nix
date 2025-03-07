@@ -35,7 +35,7 @@ in {
       #
       containers.immich = {
         autoStart = true;
-        privateNetwork = "${cfg.privateNetwork}";
+        privateNetwork = cfg.privateNetwork;
         macvlans = ["${cfg.macvlanDev}"]; # list of strings, may cause issues?
         bindMounts = {};
 
