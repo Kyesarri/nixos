@@ -310,6 +310,11 @@ in {
         quality: 100
         timestamp: false
       #
+      semantic_search:
+        enabled: true
+        reindex: true
+        model_size: "small"
+      #
       ui:
         time_format: browser
       #
@@ -319,15 +324,20 @@ in {
           device: GPU
       #
       model:
-        width: 300
-        height: 300
+        width: 320
+        height: 320
         input_tensor: nhwc
+        model_type: yolox
         input_pixel_format: bgr
         path: /openvino-model/ssdlite_mobilenet_v2.xml
         labelmap_path: /openvino-model/coco_91cl_bkgr.txt
       #
       birdseye:
         enabled: false
+      #
+      notifications:
+        enabled: true
+        email: "${secrets.email.main}"
       #
       genai:
         enabled: true
