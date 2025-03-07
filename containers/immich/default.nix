@@ -16,9 +16,9 @@ in {
     };
     #
     privateNetwork = mkOption {
-      type = types.nullOr types.str;
-      default = "true";
-      example = "false";
+      type = types.bool;
+      default = true;
+      example = false;
       description = "use host network (false) or private network (true)";
     };
     #
