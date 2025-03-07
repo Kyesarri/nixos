@@ -41,7 +41,8 @@
     #
     immich = {
       enable = true;
-      macvlanDev = "enp4s0";
+      privateNetwork = false;
+      macvlanDev = "";
     };
     #
     nzbget = {
