@@ -66,7 +66,7 @@ in {
       ##
       auth:
         enabled = true
-        cookie_name: frigate_token
+        # cookie_name: frigate_token
         session_length: 86400
         cookie_secure: false
         refresh_time: 43200
