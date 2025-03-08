@@ -4,8 +4,8 @@
   ...
 }: {
   # open us some ports on host
-  networking.firewall.allowedTCPPorts = [2049 4000 4001 4002];
-  networking.firewall.allowedUDPPorts = [2049 4000 4001 4002];
+  networking.firewall.allowedTCPPorts = [2049 4000 4001 4002 20048];
+  networking.firewall.allowedUDPPorts = [2049 4000 4001 4002 20048];
 
   # create /export dir, set perms
   system.activationScripts.makeNFSDir = lib.stringAfter ["var"] ''mkdir -v -p /export & chown nobody:nogroup /export'';
