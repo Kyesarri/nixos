@@ -110,7 +110,6 @@ in {
 
             serial:
               port: ${cfg.mqtt.serial}
-              adapter: auto
 
             advanced:
               transmit_power: 20
