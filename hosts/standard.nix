@@ -26,11 +26,9 @@
       experimental-features = ["nix-command" "flakes"]; # flakes and nixcommand required for config
       substituters = [
         "https://hyprland.cachix.org" # hyprland cache, prevents building from source tyty
-        "https://ngi.cachix.org/" # ngi pkgs
       ];
       trusted-public-keys = [
         "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
-        "ngi.cachix.org-1:n+CAL72ROC3qQuLxIHpV+Tw5t42WhXmMhprAGkRSrOw="
       ];
     };
   };
