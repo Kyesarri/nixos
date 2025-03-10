@@ -110,7 +110,7 @@ in {
 
             serial:
               port: ${cfg.mqtt.serial}
-              adapter: auto
+              adapter: zstack
 
             advanced:
               transmit_power: 20
