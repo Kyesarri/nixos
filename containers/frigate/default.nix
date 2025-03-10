@@ -62,18 +62,6 @@ in {
     gid = 1000;
     text = ''
       ##
-      ## add auth config
-      ##
-      # auth:
-        # enabled = true
-        # cookie_name: frigate_token
-        # session_length: 86400
-        # cookie_secure: false
-        # refresh_time: 43200
-        # failed_login_rate_limit: none
-        # trusted_proxies: []
-        # hash_iterations: 600000
-      ##
       ## lets setup our camera feeds
       ##
       go2rtc:
