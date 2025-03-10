@@ -347,10 +347,6 @@ in {
       birdseye:
         enabled: false
       #
-      notifications:
-        enabled: true
-        email: "${secrets.email.main}"
-      #
       genai:
         enabled: false
     '';
