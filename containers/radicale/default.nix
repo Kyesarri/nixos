@@ -81,7 +81,6 @@ in {
             mode = "644";
             uid = 1000;
             gid = 1000;
-            #FIXME
             text = ''
               kel:${secrets.password.radicale}
             '';
