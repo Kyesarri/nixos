@@ -52,17 +52,23 @@
 </p>
 
 ## what and why?
-these configs are both practical and a learning experience for me, hosting a variaty of services for my local network in addition to web facing services.
+these configs are both practical and a learning experience
+
+configs assume a single user, home-manager options don't have any applicable configs for multiple users
+
+configurations cover my daily drivers, multiple headless machines and repurposed hardware
+
+there are configurations for multiple lan services (home assistant, adguard and many more) running in podman / nspawn containers along with some internet facing services (ghost, plex, jellyfin and so on)
 
 i've taken snippits of code from all over the web (added links where i remembered to... sorry!), written much of my own and want to contribute my configs hoping they will help others.
 
-comments are included in many modules, some simple, some chicken-scratch from me figuring things out.
+comments are included in many modules, some simple, some chicken-scratch from me figuring things out. configurations may not be optimal in some areas but (most) are working currently
 
-my configs are in flux, readme won't be upto date in places
+my configs are in flux, readme won't be upto date in places, some modules / configurations wont be working
 
 ## screenshots
 
-[link](screenshots/README.md)
+take a [peek](screenshots/README.md)
 
 ## included
 see [standard.nix](hosts/standard.nix) or [headless.nix](hosts/headless.nix) for base packages
@@ -71,25 +77,23 @@ in addition any of the hosts [default.nix](hosts/laptop/default.nix) for additio
 modules are having options (slowly) added, see [/home/hypr/default.nix](home/hypr/default.nix)
 
 ### containers
-please see [readme](containers/README.md)
+take a gander at the [readme](containers/README.md)
 
 ## about
 programs in /home [home/pkgname](home/kitty/default.nix) have bindings, themes and exec at boot where applicable. add / remove in [hosts/hostname/default.nix](hosts/laptop/default.nix) FIXME these are changing as per above
 
 some hypr keybind conflicts will apply if you are using multiple applications for the same purpose (wofi / ulauncher for example) I'll eventually add some options to (hopefully) avoid this.
 
-username & plymouth theme configurable in flake.nix, see spaghetti
-
-programs under [home](home/) come with nix-colors themes, change theme in [hosts/hostname/default.nix](hosts/laptop/default.nix) per system. TODO update this - not correct now :)
-
 ## use
 clone this repository to your ~/ and not /etc/nixos
+
+my configs are be portable to default /etc/nixos configs however some tweaks would be required
 
  ```cd ~ && git clone https://codeberg.org/kye/nixos```
 
 copy contents of your /etc/nixos/hardware-configuration.nix and replace the contents of a hosts [hardware.nix](hosts/laptop/hardware.nix) of which you plan to use
 
-open the root [flake.nix](flake.nix), change the ```user = "kel";``` line to your own username, this will change all home-manager and nixos config files; unless you too are kel
+open the root [flake.nix](flake.nix), change the ```user = "kel";``` line to your own username, this will change all home-manager and nixos config files
 
 run ```sudo nixos-rebuild switch --flake /home/username/nixos#hostname --show-trace``` while changing username and hostname to what you have configured
 
