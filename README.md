@@ -65,7 +65,7 @@ my configs are in flux, readme won't be upto date in places
 [link](screenshots/README.md)
 
 ## included
-see [standard.nix](hosts/standard.nix), [minimal.nix](hosts/minimal.nix) or [headless.nix](hosts/headless.nix) for base packages
+see [standard.nix](hosts/standard.nix) or [headless.nix](hosts/headless.nix) for base packages
 
 in addition any of the hosts [default.nix](hosts/laptop/default.nix) for additional packages with configuration.
 modules are having options (slowly) added, see [/home/hypr/default.nix](home/hypr/default.nix)
