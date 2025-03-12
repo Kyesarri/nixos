@@ -64,7 +64,7 @@ i've taken snippits of code from all over the web (added links where i remembere
 
 comments are included in many modules, some simple, some chicken-scratch from me figuring things out. configurations may not be optimal in some areas but (most) are working currently
 
-my configs are in flux, readme won't be upto date in places, some modules / configurations wont be working
+my configs are in flux, readme won't be upto date in places GLHF!
 
 ## screenshots
 
