@@ -77,7 +77,7 @@ in addition any of the hosts [default.nix](hosts/laptop/default.nix) for additio
 modules are having options (slowly) added, see [/home/hypr/default.nix](home/hypr/default.nix)
 
 ### containers
-take a gander at the [readme](containers/README.md)
+have a gander at the [readme](containers/README.md)
 
 ## about
 programs in /home [home/pkgname](home/kitty/default.nix) have bindings, themes and exec at boot where applicable. add / remove in [hosts/hostname/default.nix](hosts/laptop/default.nix) FIXME these are changing as per above
