@@ -10,6 +10,8 @@
     ./nebula
     ./nemo
   ];
+
+  # set our console theme to match nix-colors
   console = {
     earlySetup = true;
     useXkbConfig = true; # same config for linux console
@@ -34,6 +36,8 @@
       "${config.colorScheme.palette.base07}" # bright white
     ];
   };
+
+  # home-manager config(s)
   home-manager.users.${spaghetti.user} = {inputs, ...}: {
     colorscheme = {
       slug = "horizon-dark";
