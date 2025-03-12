@@ -5,7 +5,6 @@
   spaghetti,
   ...
 }: {
-  imports = [./console.nix];
   system.stateVersion = "23.11"; # don't change this value pls
   time.timeZone = "Australia/Melbourne";
   nixpkgs.config.allowUnfree = true;

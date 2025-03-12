@@ -4,7 +4,6 @@
   spaghetti,
   ...
 }: {
-  imports = [./console.nix]; # console colours
   system.stateVersion = "23.11";
   time.timeZone = "Australia/Melbourne";
 
