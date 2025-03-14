@@ -1,6 +1,7 @@
 {
   lib,
   pkgs,
+  inputs,
   spaghetti,
   ...
 }: {
@@ -70,6 +71,7 @@
       enableSSHSupport = true;
     };
   };
+  environment.systemPackages = [inputs.agenix.packages.x86_64-linux.default];
 
   users.users.${spaghetti.user} = {
     shell = pkgs.zsh; # set our shell pkg

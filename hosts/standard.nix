@@ -137,6 +137,7 @@
       inkscape-with-extensions
       netbird
       netbird-ui
+      inputs.agenix.packages.x86_64-linux.default
     ];
   };
 

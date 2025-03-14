@@ -4,6 +4,8 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/master";
 
+    agenix.url = "github:ryantm/agenix";
+
     home-manager.url = "github:nix-community/home-manager/master"; # added master branch to follow unstable nixos
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
@@ -32,12 +34,11 @@
   outputs = {
     self,
     nixpkgs,
+    agenix,
     home-manager,
     hyprland,
     hyprpicker,
-    # Hyprspace,
     hy3,
-    # hycov,
     alejandra,
     nix-colors,
     prism,
@@ -57,7 +58,7 @@
     # import our secrets - these are required to be unencrypted when building
     secrets = builtins.fromJSON (builtins.readFile "${self}/secrets/secrets.json");
     system = "x86_64-linux";
-    specialArgs = {inherit nix-colors quickshell hyprpicker hy3 secrets inputs prism schizofox spaghetti wallpaper-generator;};
+    specialArgs = {inherit nix-colors quickshell agenix hyprpicker hy3 secrets inputs prism schizofox spaghetti wallpaper-generator;};
   in {
     #
     nixosConfigurations = {
@@ -67,6 +68,7 @@
         modules = [
           home-manager.nixosModules.home-manager
           ./hosts/laptop # 4800hs / 1650 / 16gb ddr4 TODO download more ram
+          agenix.nixosModules.default
           {
             environment.systemPackages = [alejandra.defaultPackage.x86_64-linux];
           }
@@ -88,6 +90,7 @@
         modules = [
           home-manager.nixosModules.home-manager
           ./hosts/notebook # celeron N3050 / intel "hd" / 4gb ddr3
+          agenix.nixosModules.default
           {
             home-manager = {
               useGlobalPkgs = true;
@@ -103,6 +106,7 @@
         modules = [
           home-manager.nixosModules.home-manager
           ./hosts/desktop # msi-z790i edge wifi / 13900kf / 3070 / 32gb ddr5
+          agenix.nixosModules.default
           {
             environment.systemPackages = [alejandra.defaultPackage.x86_64-linux];
           }
@@ -121,6 +125,7 @@
         modules = [
           home-manager.nixosModules.home-manager
           ./hosts/serv # ASUS z390i / 9900k / 32gb ddr4
+          agenix.nixosModules.default
           {
             environment.systemPackages = [alejandra.defaultPackage.x86_64-linux];
           }
@@ -139,6 +144,7 @@
         modules = [
           home-manager.nixosModules.home-manager
           ./hosts/ws # ASUS x99 ws ipmi / 5960x / 64gb ddr4
+          agenix.nixosModules.default
           {
             environment.systemPackages = [alejandra.defaultPackage.x86_64-linux];
           }
@@ -157,6 +163,7 @@
         modules = [
           home-manager.nixosModules.home-manager
           ./hosts/erying # erying Q1J2 (i7 ES 0000 13650HX or 1360P?) 14C20T / iris xe / 32gb ddr5
+          agenix.nixosModules.default
           {
             environment.systemPackages = [alejandra.defaultPackage.x86_64-linux];
           }
