@@ -51,6 +51,12 @@
       vlanIp = "${secrets.vlan.serv.nzbget}";
     };
     #
+    plex = {
+      enable = true;
+      macvlanIp = "${secrets.ip.plex}";
+      vlanIp = "${secrets.vlan.serv.plex}";
+    };
+    #
     subgen = {
       enable = false;
       macvlanIp = "${secrets.ip.subgen}";
