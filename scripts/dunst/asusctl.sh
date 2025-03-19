@@ -19,4 +19,3 @@ dunstify -a "changeKBDBrightness" -r "$msgId" -h value: "KBD - ${brightnesslvl}"
 enabledgpu=$(supergfxctl -g)                                                    # active gpu
 boardmodel=$(asusctl -v | awk '/^Board/ {print$3}')                             # motherboard revision, don't like the white space left of Board
 platformprofile=$(asusctl profile --profile-get | awk '/^Active/ {print$4}')    # current profile, assuming this is power related
-
