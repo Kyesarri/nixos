@@ -57,7 +57,7 @@ in {
 
       environment.shellAliases = {cont-plex = "sudo podman pull ${cfg.image}";};
 
-      virtualisation.oci-containers.containers.${contName} = {
+      virtualisation.oci-containers.containers.${cfg.contName} = {
         hostname = "${cfg.contName}";
 
         autoStart = "${cfg.autoStart}";
