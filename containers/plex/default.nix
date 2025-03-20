@@ -97,6 +97,7 @@ in {
           TZ = "${cfg.timeZone}";
           PUID = "1000";
           PGID = "1000";
+          VERSION = "DOCKER";
         };
 
         extraOptions = [
