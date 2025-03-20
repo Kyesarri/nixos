@@ -7,7 +7,6 @@
   imports = [
     ../../containers
     ../../containers/home-assistant
-    ../../containers/plex
   ];
 
   virtualisation = {
