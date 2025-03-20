@@ -60,7 +60,7 @@ in {
       virtualisation.oci-containers.containers.${cfg.contName} = {
         hostname = "${cfg.contName}";
 
-        autoStart = "${cfg.autoStart}";
+        autoStart = cfg.autoStart;
 
         image = "${cfg.image}";
 
