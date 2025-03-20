@@ -15,13 +15,11 @@
         kamadorueda.alejandra
         bbenoist.nix
         gruntfuggly.todo-tree
-        # schoofskelvin.vscode-sshfs # not packaged, reminder for myself here to install manually
       ];
     };
     # hyprland window rules / binds
     home.file.".config/hypr/per-app/codium.conf" = {
       text = ''
-        # windowrule = tile, title:VSCodium # was causing pop-up / prompts to be full-screen
         bind = $mainMod, K, exec, codium
         windowrulev2 = bordercolor $cd99, initialClass:^(codium-url-handler)$
       '';
