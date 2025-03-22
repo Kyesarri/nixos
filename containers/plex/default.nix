@@ -102,7 +102,7 @@ in {
 
         extraOptions = [
           "--network=macvlan_lan:ip=${cfg.macvlanIp}"
-          "--network=podman-backend:ip=${cfg.vlanIp}"
+          # "--network=podman-backend:ip=${cfg.vlanIp}"
         ];
       };
     })
