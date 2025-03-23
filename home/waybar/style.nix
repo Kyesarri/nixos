@@ -132,7 +132,6 @@
         padding: 15px;
         background-color: #${config.colorScheme.palette.base02};
       }
-
     '';
   };
 }

@@ -8,8 +8,6 @@
     ./style.nix
   ];
 
-  # TODO nix-colors
-
   home-manager.users.${spaghetti.user} = {
     programs.waybar = {
       enable = true;
