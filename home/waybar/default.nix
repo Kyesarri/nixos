@@ -4,9 +4,11 @@
   ...
 }: {
   imports = [
-    ./config.jsonc.nix
-    ./style.css.nix
+    ./config.nix
+    ./style.nix
   ];
+
+  # TODO nix-colors
 
   home-manager.users.${spaghetti.user} = {
     programs.waybar = {
