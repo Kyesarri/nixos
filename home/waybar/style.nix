@@ -6,6 +6,7 @@
   home-manager.users.${spaghetti.user}.home.file.".config/waybar/style.css" = {
     text = ''
       /*
+      modified from
       https://github.com/sameemul-haque/dotfiles
       */
 
@@ -38,24 +39,24 @@
         padding: 6px 18px;
         margin: 6px 3px;
         border-radius: 8px;
-        background-color: #232530;
-        color: #CBCED0;
+        background-color: #${config.colorScheme.palette.base01};
+        color: #${config.colorScheme.palette.base05};
       }
 
       #workspaces button.active {
-        color: #232530;
-        background-color: #CBCED0;
+        color: #${config.colorScheme.palette.base01};
+        background-color: #${config.colorScheme.palette.base05};
       }
 
       #workspaces button:hover {
         box-shadow: inherit;
         text-shadow: inherit;
-        color: #232530;
-        background-color: #CBCED0;
+        color: #${config.colorScheme.palette.base01};
+        background-color: #${config.colorScheme.palette.base05};
       }
 
       #workspaces button.urgent {
-        background-color: #DF5273;
+        background-color: #${config.colorScheme.palette.base0D};
       }
 
       #memory,
@@ -69,8 +70,8 @@
         border-radius: 8px;
         margin: 6px 3px;
         padding: 6px 12px;
-        background-color: #232530;
-        color: #1C1E26;
+        background-color: #${config.colorScheme.palette.base01};
+        color: #${config.colorScheme.palette.base01};
       }
 
       #custom-power {
@@ -78,58 +79,58 @@
       }
 
       #memory {
-        background-color: #24A8B4;
+        background-color: #${config.colorScheme.palette.base0C};
       }
 
       #battery {
         margin-right: 8px;
-        background-color: #24A8B4;
+        background-color: #${config.colorScheme.palette.base0C};
       }
 
       #battery.warning,
       #battery.critical,
       #battery.urgent {
-        background-color: #DF5273;
-        color: #E4A382;
+        background-color: #${config.colorScheme.palette.base0D};
+        color: #${config.colorScheme.palette.base0F};
       }
 
       #battery.charging {
-        background-color: #B072D1;
-        color: #232530;
+        background-color: #${config.colorScheme.palette.base0E};
+        color: #${config.colorScheme.palette.base01};
       }
 
       #backlight {
-        background-color: #24A8B4;
+        background-color: #${config.colorScheme.palette.base0C};
       }
 
       #wireplumber {
-        background-color: #24A8B4;
+        background-color: #${config.colorScheme.palette.base0C};
       }
 
       #network {
-        background-color: #24A8B4;
+        background-color: #${config.colorScheme.palette.base0C};
         padding-right: 17px;
       }
 
       #clock {
         margin-left: 8px;
         font-family: JetBrainsMono Nerd Font;
-        background-color: #B072D1;
+        background-color: #${config.colorScheme.palette.base0E};
       }
 
       #custom-power {
-        background-color: #CBCED0;
+        background-color: #${config.colorScheme.palette.base05};
       }
 
       tooltip {
         border-radius: 8px;
         padding: 45px;
-        background-color: #2E303E;
+        background-color: #${config.colorScheme.palette.base02};
       }
 
       tooltip label {
         padding: 15px;
-        background-color: #2E303E;
+        background-color: #${config.colorScheme.palette.base02};
       }
 
     '';
