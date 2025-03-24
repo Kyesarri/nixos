@@ -50,7 +50,7 @@ in {
       "--privileged"
       "--shm-size=1024m"
       # "--device=/dev/apex_0:/dev/apex_0" # coral
-      "--device=/dev/dri/renderD128" # gpu
+      "--device=/dev/dri/card0" # igpu ? might be nvidia gpu causing issues :)
       "--mount=type=tmpfs,target=/tmp/cache,tmpfs-size=1000000000" # tempfs
     ];
   };
