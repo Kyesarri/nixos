@@ -139,30 +139,11 @@
         ];
       };
       #
-      "nix-ws" = nixpkgs.lib.nixosSystem {
-        inherit system specialArgs;
-        modules = [
-          home-manager.nixosModules.home-manager
-          ./hosts/ws # ASUS x99 ws ipmi / 5960x / 64gb ddr4
-          agenix.nixosModules.default
-          {
-            environment.systemPackages = [alejandra.defaultPackage.x86_64-linux];
-          }
-          {
-            home-manager = {
-              useGlobalPkgs = true;
-              useUserPackages = true;
-              extraSpecialArgs = {inherit inputs;};
-            };
-          }
-        ];
-      };
-      #
       "nix-erying" = nixpkgs.lib.nixosSystem {
         inherit system specialArgs;
         modules = [
           home-manager.nixosModules.home-manager
-          ./hosts/erying # erying Q1J2 (i7 ES 0000 13650HX or 1360P?) 14C20T / iris xe / 32gb ddr5
+          ./hosts/erying # erying Q1J2 (i7 ES 0000 13650HX or 1360P?) 14C20T / iris xe / 32gb ddr5 / 1660 super
           agenix.nixosModules.default
           {
             environment.systemPackages = [alejandra.defaultPackage.x86_64-linux];
