@@ -17,6 +17,7 @@
     ../headless.nix # base packages and config
 
     ../../hardware # new module configs - will replace importing modules
+    ../../hardware/nvidia # added nvidia gpu
     # ../../hardware/ups
 
     ../../home # home-manaager config for all machines
