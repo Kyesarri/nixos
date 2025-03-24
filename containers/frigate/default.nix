@@ -29,7 +29,7 @@ in {
 
     log-driver = "journald";
 
-    image = "ghcr.io/blakeblackshear/frigate:389c707";
+    image = "ghcr.io/blakeblackshear/frigate:stable";
 
     ports = [];
 
