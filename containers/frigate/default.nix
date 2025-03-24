@@ -12,7 +12,7 @@ in {
   system.activationScripts.makeFrigateDir = lib.stringAfter ["var"] ''mkdir -v -p ${toString dir1} ${toString dir2} ${toString dir3}'';
 
   # add update container shell alias
-  environment.shellAliases = {cont-frigate = "sudo podman pull ghcr.io/blakeblackshear/frigate:389c707";};
+  environment.shellAliases = {cont-frigate = "sudo podman pull ghcr.io/blakeblackshear/frigate:stable";};
 
   # tempdir
   fileSystems."/tmp/cache" = {
