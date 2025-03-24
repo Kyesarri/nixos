@@ -43,6 +43,8 @@
     };
   };
 
+  services.pulseaudio.enable = false;
+
   i18n = {
     defaultLocale = "en_AU.UTF-8";
     extraLocaleSettings = {
@@ -71,6 +73,7 @@
       enableSSHSupport = true;
     };
   };
+
   environment.systemPackages = [inputs.agenix.packages.x86_64-linux.default];
 
   users.users.${spaghetti.user} = {

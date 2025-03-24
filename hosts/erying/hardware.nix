@@ -12,7 +12,6 @@
   hardware = {
     cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
     enableRedistributableFirmware = lib.mkDefault true;
-    pulseaudio.enable = false;
 
     sensor.hddtemp = {
       enable = true;
