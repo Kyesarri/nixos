@@ -50,7 +50,7 @@ in {
       "--privileged"
       "--shm-size=1024m"
       # "--device=/dev/apex_0:/dev/apex_0" # coral
-      "--device=/dev/dri/by-path/pci-0000:00:02.0-render" # intel igpu
+      "--device=/dev/dri/renderD128" # igpu
       "--mount=type=tmpfs,target=/tmp/cache,tmpfs-size=1000000000" # tempfs
     ];
   };
