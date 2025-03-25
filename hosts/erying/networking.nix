@@ -92,8 +92,8 @@
       };
       #
       "40-lan2-self" = {
-        address = ["${toString secrets.lan2.erying}/24"];
-        # gateway = ["${toString secrets.lan2.gateway}"];
+        address = ["${toString secrets.ip.lan2.erying}/24"];
+        gateway = ["${toString secrets.ip.lan2.gateway}"];
         matchConfig.Name = "lan2-self";
         linkConfig.RequiredForOnline = "routable";
         networkConfig = {
