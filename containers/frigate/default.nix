@@ -45,13 +45,11 @@ in {
     };
 
     extraOptions = [
-      "--network=macvlan_lan"
-      "--ip=${secrets.ip.frigate}"
       "--privileged"
       "--shm-size=1024m"
-      # "--device=/dev/apex_0:/dev/apex_0" # coral
       "--device=/dev/dri/renderD128" # igpu
       "--mount=type=tmpfs,target=/tmp/cache,tmpfs-size=1000000000" # tempfs
+      "--network=macvlan_lan:ip=${secrets.ip.frigate}"
     ];
   };
 
@@ -327,7 +325,6 @@ in {
         width: 300
         height: 300
         input_tensor: nhwc
-       #  model_type: yolox
         input_pixel_format: bgr
         path: /openvino-model/ssdlite_mobilenet_v2.xml
         labelmap_path: /openvino-model/coco_91cl_bkgr.txt
