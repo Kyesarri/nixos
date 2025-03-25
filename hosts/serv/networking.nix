@@ -27,7 +27,6 @@
 
   boot.initrd.systemd.network = {
     enable = true;
-
     networks = {
       # builtin lan / main interface
       "10-lan" = {
@@ -43,8 +42,8 @@
 
       # m.2 a+e ethernet / testing vlan
       "30-vlan" = {
-        address = ["${toString secrets.ip.vlan.serv}/24"];
-        gateway = ["${toString secrets.ip.vlan.gateway}"];
+        address = ["${toString secrets.ip.lan2.serv}/24"];
+        gateway = ["${toString secrets.ip.lan2.gateway}"];
         matchConfig.Name = ["enp4s0"];
         linkConfig.RequiredForOnline = "routable";
         networkConfig = {
@@ -55,76 +54,74 @@
     };
   };
 
-  systemd.network.netdevs = {
-    # main lan
-    "10-lan-self" = {
-      netdevConfig = {
-        Name = "lan-self";
-        Kind = "macvlan";
+  systemd.network = {
+    netdevs = {
+      # main lan
+      "10-lan-self" = {
+        netdevConfig = {
+          Name = "lan-self";
+          Kind = "macvlan";
+        };
+        extraConfig = ''
+          [MACVLAN]
+          Mode=bridge
+        '';
       };
-      extraConfig = ''
-        [MACVLAN]
-        Mode=bridge
-      '';
-    };
-
-    # testing vlan
-    "30-vlan-self" = {
-      netdevConfig = {
-        Name = "vlan-self";
-        Kind = "macvlan";
-      };
-      extraConfig = ''
-        [MACVLAN]
-        Mode=bridge
-      '';
-    };
-  };
-
-  systemd.network.networks = {
-    # main lan macvlan for containers
-    "10-lan" = {
-      matchConfig.Name = ["eno1"];
-      networkConfig.LinkLocalAddressing = "no";
-      linkConfig.RequiredForOnline = "carrier";
-      extraConfig = ''
-        [Network]
-        MACVLAN=lan-self
-      '';
-    };
-
-    # main lan config
-    "20-lan-self" = {
-      address = ["${toString secrets.ip.serv-1}/24"];
-      gateway = ["${toString secrets.ip.gateway}"];
-      matchConfig.Name = "lan-self";
-      linkConfig.RequiredForOnline = "routable";
-      networkConfig = {
-        IPv6PrivacyExtensions = "yes";
-        # MulticastDNS = true;
+      # rename me pls
+      "30-vlan-self" = {
+        netdevConfig = {
+          Name = "vlan-self";
+          Kind = "macvlan";
+        };
+        extraConfig = ''
+          [MACVLAN]
+          Mode=bridge
+        '';
       };
     };
 
-    # testing vlan macvlan for containers
-    "30-vlan" = {
-      matchConfig.Name = ["enp4s0"];
-      networkConfig.LinkLocalAddressing = "no";
-      linkConfig.RequiredForOnline = "carrier";
-      extraConfig = ''
-        [Network]
-        MACVLAN=vlan-self
-      '';
-    };
-
-    # vlan config
-    "40-vlan-self" = {
-      address = ["${toString secrets.ip.vlan.serv}/24"];
-      gateway = ["${toString secrets.ip.vlan.gateway}"];
-      matchConfig.Name = "vlan-self";
-      linkConfig.RequiredForOnline = "routable";
-      networkConfig = {
-        IPv6PrivacyExtensions = "yes";
-        # MulticastDNS = true;
+    networks = {
+      # main lan macvlan for containers
+      "10-lan" = {
+        matchConfig.Name = ["eno1"];
+        networkConfig.LinkLocalAddressing = "no";
+        linkConfig.RequiredForOnline = "carrier";
+        extraConfig = ''
+          [Network]
+          MACVLAN=lan-self
+        '';
+      };
+      # main lan config
+      "20-lan-self" = {
+        address = ["${toString secrets.ip.serv-1}/24"];
+        gateway = ["${toString secrets.ip.gateway}"];
+        matchConfig.Name = "lan-self";
+        linkConfig.RequiredForOnline = "routable";
+        networkConfig = {
+          IPv6PrivacyExtensions = "yes";
+          # MulticastDNS = true;
+        };
+      };
+      # rename me pls
+      "30-vlan" = {
+        matchConfig.Name = ["enp4s0"];
+        networkConfig.LinkLocalAddressing = "no";
+        linkConfig.RequiredForOnline = "carrier";
+        extraConfig = ''
+          [Network]
+          MACVLAN=vlan-self
+        '';
+      };
+      # rename me pls
+      "40-vlan-self" = {
+        address = ["${toString secrets.ip.lan2.serv}/24"];
+        gateway = ["${toString secrets.ip.lan2.gateway}"];
+        matchConfig.Name = "vlan-self";
+        linkConfig.RequiredForOnline = "routable";
+        networkConfig = {
+          IPv6PrivacyExtensions = "yes";
+          # MulticastDNS = true;
+        };
       };
     };
   };
