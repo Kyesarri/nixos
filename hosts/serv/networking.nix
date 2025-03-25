@@ -40,7 +40,7 @@
           # MulticastDNS = true;
         };
       };
-
+      /*
       # m.2 a+e ethernet / testing vlan
       "30-vlan" = {
         address = ["${toString secrets.ip.serv-2}/24"];
@@ -52,6 +52,7 @@
           # MulticastDNS = true;
         };
       };
+      */
     };
   };
 
@@ -78,7 +79,6 @@
       };
     };
     /*
-    # testing vlan - probs not configured correctly :)
     "30-vlan-self" = {
       netdevConfig = {
         Name = "vlan-self";
@@ -125,18 +125,20 @@
       };
     };
 
-    /*
     # testing vlan macvlan for containers
     "30-vlan" = {
       matchConfig.Name = ["enp4s0"];
+      vlan = ["vlan"];
+      /*
       networkConfig.LinkLocalAddressing = "no";
       linkConfig.RequiredForOnline = "carrier";
       extraConfig = ''
         [Network]
         MACVLAN=vlan-self
       '';
+      */
     };
-
+    /*
     # vlan config
     "40-vlan-self" = {
       address = ["${toString secrets.ip.vlan.serv}/24"];
