@@ -116,7 +116,7 @@
       };
     };
 
-    "100-vlan" = {
+    "69-vlan" = {
       matchConfig.Name = "vlan";
       address = ["169.0.10.10/24"];
       networkConfig = {
@@ -126,7 +126,7 @@
     };
 
     # testing vlan macvlan for containers
-    "30-vlan" = {
+    "100-vlan" = {
       matchConfig.Name = ["enp4s0"];
       vlan = ["vlan"];
       /*
