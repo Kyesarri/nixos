@@ -35,15 +35,27 @@
     };
   };
 
-  systemd.network.netdevs."10-lan-self" = {
-    netdevConfig = {
-      Name = "lan-self";
-      Kind = "macvlan";
+  systemd.network.netdevs = {
+    "10-lan-self" = {
+      netdevConfig = {
+        Name = "lan-self";
+        Kind = "macvlan";
+      };
+      extraConfig = ''
+        [MACVLAN]
+        Mode=bridge
+      '';
     };
-    extraConfig = ''
-      [MACVLAN]
-      Mode=bridge
-    '';
+    # test
+    "100-vlan" = {
+      netdevConfig = {
+        Kind = "vlan";
+        Name = "vlan";
+      };
+      vlanConfig = {
+        Id = 100;
+      };
+    };
   };
 
   systemd.network.networks = {
@@ -65,6 +77,20 @@
         MulticastDNS = true;
       };
       linkConfig.RequiredForOnline = "routable";
+    };
+    "69-vlan" = {
+      matchConfig.Name = "vlan";
+      address = ["169.0.10.9/24"];
+      networkConfig = {
+        IPv6AcceptRA = "no";
+        DHCP = "no";
+      };
+    };
+
+    # testing vlan macvlan for containers
+    "100-vlan" = {
+      matchConfig.Name = ["eth0"];
+      vlan = ["vlan"];
     };
   };
 }
