@@ -27,11 +27,11 @@
       address = ["${toString secrets.ip.erying}/24"];
       gateway = ["${toString secrets.ip.gateway}"];
       matchConfig.Name = ["eth0"];
+      linkConfig.RequiredForOnline = "routable";
       networkConfig = {
         IPv6PrivacyExtensions = "yes";
         MulticastDNS = true;
       };
-      linkConfig.RequiredForOnline = "routable";
     };
   };
 
