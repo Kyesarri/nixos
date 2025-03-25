@@ -67,8 +67,17 @@
         Mode=bridge
       '';
     };
-
-    # testing vlan
+    # test
+    "100-vlan" = {
+      netdevConfig = {
+        Kind = "vlan";
+        Name = "vlan";
+      };
+      vlanConfig = {
+        Id = 100;
+      };
+    };
+    # testing vlan - probs not configured correctly :)
     "30-vlan-self" = {
       netdevConfig = {
         Name = "vlan-self";
@@ -102,6 +111,15 @@
       networkConfig = {
         IPv6PrivacyExtensions = "yes";
         # MulticastDNS = true;
+      };
+    };
+
+    "100-vlan" = {
+      matchConfig.Name = "vlan";
+      address = ["169.0.10.10/24"];
+      networkConfig = {
+        IPv6AcceptRA = "no";
+        DHCP = "no";
       };
     };
 
