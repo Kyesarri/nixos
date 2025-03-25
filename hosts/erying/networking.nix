@@ -89,7 +89,6 @@
 
     # testing vlan macvlan for containers
     "100-vlan" = {
-      matchConfig.Name = ["eth0"];
       vlan = ["vlan"];
     };
   };
