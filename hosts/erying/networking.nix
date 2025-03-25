@@ -21,6 +21,8 @@
 
   services.resolved.dnssec = "false";
 
+  # don't believe i can create multiple macvlan on a single dev, atleast with this adaptor
+
   boot.initrd.systemd.network = {
     enable = true;
     networks."10-lan" = {
@@ -47,6 +49,7 @@
           Mode=bridge
         '';
       };
+      /*
       "30-lan2-self" = {
         netdevConfig = {
           Name = "lan2-self";
@@ -57,6 +60,7 @@
           Mode=bridge
         '';
       };
+      */
     };
     #
     networks = {
@@ -81,6 +85,7 @@
         };
       };
       #
+      /*
       "30-lan2" = {
         matchConfig.Name = ["eth0"];
         networkConfig.LinkLocalAddressing = "no";
@@ -101,6 +106,7 @@
           MulticastDNS = true;
         };
       };
+      */
     };
   };
 }
