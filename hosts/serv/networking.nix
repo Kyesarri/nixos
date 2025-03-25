@@ -40,11 +40,11 @@
           # MulticastDNS = true;
         };
       };
-      /*
+
       # m.2 a+e ethernet / testing vlan
       "30-vlan" = {
-        address = ["${toString secrets.ip.serv-2}/24"];
-        gateway = ["${toString secrets.ip.gateway}"];
+        address = ["${toString secrets.ip.vlan.serv}/24"];
+        gateway = ["${toString secrets.ip.vlan.gateway}"];
         matchConfig.Name = ["enp4s0"];
         linkConfig.RequiredForOnline = "routable";
         networkConfig = {
@@ -52,7 +52,6 @@
           # MulticastDNS = true;
         };
       };
-      */
     };
   };
 
@@ -68,17 +67,8 @@
         Mode=bridge
       '';
     };
-    # test
-    "100-vlan" = {
-      netdevConfig = {
-        Kind = "vlan";
-        Name = "vlan";
-      };
-      vlanConfig = {
-        Id = 100;
-      };
-    };
-    /*
+
+    # testing vlan
     "30-vlan-self" = {
       netdevConfig = {
         Name = "vlan-self";
@@ -89,7 +79,6 @@
         Mode=bridge
       '';
     };
-    */
   };
 
   systemd.network.networks = {
@@ -116,29 +105,17 @@
       };
     };
 
-    "69-vlan" = {
-      matchConfig.Name = "vlan";
-      address = ["169.0.10.10/24"];
-      networkConfig = {
-        IPv6AcceptRA = "no";
-        DHCP = "no";
-      };
-    };
-
     # testing vlan macvlan for containers
-    "100-vlan" = {
+    "30-vlan" = {
       matchConfig.Name = ["enp4s0"];
-      vlan = ["vlan"];
-      /*
       networkConfig.LinkLocalAddressing = "no";
       linkConfig.RequiredForOnline = "carrier";
       extraConfig = ''
         [Network]
         MACVLAN=vlan-self
       '';
-      */
     };
-    /*
+
     # vlan config
     "40-vlan-self" = {
       address = ["${toString secrets.ip.vlan.serv}/24"];
@@ -150,6 +127,5 @@
         # MulticastDNS = true;
       };
     };
-    */
   };
 }

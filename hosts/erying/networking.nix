@@ -35,61 +35,40 @@
     };
   };
 
-  systemd.network.netdevs = {
-    "10-lan-self" = {
-      netdevConfig = {
-        Name = "lan-self";
-        Kind = "macvlan";
-      };
-      extraConfig = ''
-        [MACVLAN]
-        Mode=bridge
-      '';
-    };
-    # test
-    "100-vlan" = {
-      netdevConfig = {
-        Kind = "vlan";
-        Name = "vlan";
-      };
-      vlanConfig = {
-        Id = 100;
+  systemd.network = {
+    netdevs = {
+      "10-lan-self" = {
+        netdevConfig = {
+          Name = "lan-self";
+          Kind = "macvlan";
+        };
+        extraConfig = ''
+          [MACVLAN]
+          Mode=bridge
+        '';
       };
     };
-  };
-
-  systemd.network.networks = {
-    "10-lan" = {
-      matchConfig.Name = ["eth0"];
-      networkConfig.LinkLocalAddressing = "no";
-      linkConfig.RequiredForOnline = "carrier";
-      extraConfig = ''
-        [Network]
-        MACVLAN=lan-self
-      '';
-    };
-    "20-lan-self" = {
-      address = ["${toString secrets.ip.erying}/24"];
-      gateway = ["${toString secrets.ip.gateway}"];
-      matchConfig.Name = "lan-self";
-      networkConfig = {
-        IPv6PrivacyExtensions = "yes";
-        MulticastDNS = true;
+    #
+    networks = {
+      "10-lan" = {
+        matchConfig.Name = ["eth0"];
+        networkConfig.LinkLocalAddressing = "no";
+        linkConfig.RequiredForOnline = "carrier";
+        extraConfig = ''
+          [Network]
+          MACVLAN=lan-self
+        '';
       };
-      linkConfig.RequiredForOnline = "routable";
-    };
-    "69-vlan" = {
-      matchConfig.Name = "vlan";
-      address = ["169.0.10.9/24"];
-      networkConfig = {
-        IPv6AcceptRA = "no";
-        DHCP = "no";
+      "20-lan-self" = {
+        address = ["${toString secrets.ip.erying}/24"];
+        gateway = ["${toString secrets.ip.gateway}"];
+        matchConfig.Name = "lan-self";
+        networkConfig = {
+          IPv6PrivacyExtensions = "yes";
+          MulticastDNS = true;
+        };
+        linkConfig.RequiredForOnline = "routable";
       };
-    };
-
-    # testing vlan macvlan for containers
-    "100-vlan" = {
-      vlan = ["vlan"];
     };
   };
 }
