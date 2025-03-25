@@ -77,6 +77,7 @@
         Id = 100;
       };
     };
+    /*
     # testing vlan - probs not configured correctly :)
     "30-vlan-self" = {
       netdevConfig = {
@@ -88,6 +89,7 @@
         Mode=bridge
       '';
     };
+    */
   };
 
   systemd.network.networks = {
@@ -123,6 +125,7 @@
       };
     };
 
+    /*
     # testing vlan macvlan for containers
     "30-vlan" = {
       matchConfig.Name = ["enp4s0"];
@@ -145,5 +148,6 @@
         # MulticastDNS = true;
       };
     };
+    */
   };
 }
