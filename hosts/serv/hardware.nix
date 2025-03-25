@@ -18,8 +18,6 @@
   };
 
   hardware = {
-    pulseaudio.enable = false;
-
     enableRedistributableFirmware = lib.mkDefault true;
 
     cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
