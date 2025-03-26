@@ -36,7 +36,7 @@
         linkConfig.RequiredForOnline = "routable";
         networkConfig = {
           IPv6PrivacyExtensions = "yes";
-          # MulticastDNS = true;
+          MulticastDNS = true;
         };
       };
 
@@ -48,7 +48,7 @@
         linkConfig.RequiredForOnline = "routable";
         networkConfig = {
           IPv6PrivacyExtensions = "yes";
-          # MulticastDNS = true;
+          MulticastDNS = true;
         };
       };
     };
@@ -99,7 +99,7 @@
         linkConfig.RequiredForOnline = "routable";
         networkConfig = {
           IPv6PrivacyExtensions = "yes";
-          # MulticastDNS = true;
+          MulticastDNS = true;
         };
       };
       # rename me pls
@@ -120,7 +120,7 @@
         linkConfig.RequiredForOnline = "routable";
         networkConfig = {
           IPv6PrivacyExtensions = "yes";
-          # MulticastDNS = true;
+          MulticastDNS = true;
         };
       };
     };
