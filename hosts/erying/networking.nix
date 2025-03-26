@@ -49,27 +49,28 @@
           Mode=bridge
         '';
       };
+    };
+
+    #
+    networks = {
+      "10-lan" = {
+        matchConfig.Name = ["eth0"];
+        networkConfig.LinkLocalAddressing = "no";
+        linkConfig.RequiredForOnline = "carrier";
+        extraConfig = ''
+          [Network]
+          MACVLAN=lan-self
+        '';
+      };
       #
-      networks = {
-        "10-lan" = {
-          matchConfig.Name = ["eth0"];
-          networkConfig.LinkLocalAddressing = "no";
-          linkConfig.RequiredForOnline = "carrier";
-          extraConfig = ''
-            [Network]
-            MACVLAN=lan-self
-          '';
-        };
-        #
-        "20-lan-self" = {
-          address = ["${toString secrets.ip.erying}/24"];
-          gateway = ["${toString secrets.ip.gateway}"];
-          matchConfig.Name = "lan-self";
-          linkConfig.RequiredForOnline = "routable";
-          networkConfig = {
-            IPv6PrivacyExtensions = "yes";
-            MulticastDNS = true;
-          };
+      "20-lan-self" = {
+        address = ["${toString secrets.ip.erying}/24"];
+        gateway = ["${toString secrets.ip.gateway}"];
+        matchConfig.Name = "lan-self";
+        linkConfig.RequiredForOnline = "routable";
+        networkConfig = {
+          IPv6PrivacyExtensions = "yes";
+          MulticastDNS = true;
         };
       };
     };
