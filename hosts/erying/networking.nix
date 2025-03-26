@@ -21,8 +21,6 @@
 
   services.resolved.dnssec = "false";
 
-  # don't believe i can create multiple macvlan on a single dev, atleast with this adaptor
-
   boot.initrd.systemd.network = {
     enable = true;
     networks."10-lan" = {
