@@ -49,64 +49,29 @@
           Mode=bridge
         '';
       };
-      /*
-      "30-lan2-self" = {
-        netdevConfig = {
-          Name = "lan2-self";
-          Kind = "macvlan";
-        };
-        extraConfig = ''
-          [MACVLAN]
-          Mode=bridge
-        '';
-      };
-      */
-    };
-    #
-    networks = {
-      "10-lan" = {
-        matchConfig.Name = ["eth0"];
-        networkConfig.LinkLocalAddressing = "no";
-        linkConfig.RequiredForOnline = "carrier";
-        extraConfig = ''
-          [Network]
-          MACVLAN=lan-self
-        '';
-      };
       #
-      "20-lan-self" = {
-        address = ["${toString secrets.ip.erying}/24"];
-        gateway = ["${toString secrets.ip.gateway}"];
-        matchConfig.Name = "lan-self";
-        linkConfig.RequiredForOnline = "routable";
-        networkConfig = {
-          IPv6PrivacyExtensions = "yes";
-          MulticastDNS = true;
+      networks = {
+        "10-lan" = {
+          matchConfig.Name = ["eth0"];
+          networkConfig.LinkLocalAddressing = "no";
+          linkConfig.RequiredForOnline = "carrier";
+          extraConfig = ''
+            [Network]
+            MACVLAN=lan-self
+          '';
+        };
+        #
+        "20-lan-self" = {
+          address = ["${toString secrets.ip.erying}/24"];
+          gateway = ["${toString secrets.ip.gateway}"];
+          matchConfig.Name = "lan-self";
+          linkConfig.RequiredForOnline = "routable";
+          networkConfig = {
+            IPv6PrivacyExtensions = "yes";
+            MulticastDNS = true;
+          };
         };
       };
-      #
-      /*
-      "30-lan2" = {
-        matchConfig.Name = ["eth0"];
-        networkConfig.LinkLocalAddressing = "no";
-        linkConfig.RequiredForOnline = "carrier";
-        extraConfig = ''
-          [Network]
-          MACVLAN=lan2-self
-        '';
-      };
-      #
-      "40-lan2-self" = {
-        address = ["${toString secrets.ip.lan2.erying}/24"];
-        gateway = ["${toString secrets.ip.lan2.gateway}"];
-        matchConfig.Name = "lan2-self";
-        linkConfig.RequiredForOnline = "routable";
-        networkConfig = {
-          IPv6PrivacyExtensions = "yes";
-          MulticastDNS = true;
-        };
-      };
-      */
     };
   };
 }

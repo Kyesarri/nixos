@@ -41,9 +41,9 @@
       };
 
       # m.2 a+e ethernet / testing vlan
-      "30-vlan" = {
-        address = ["${toString secrets.ip.lan2.serv}/24"];
-        gateway = ["${toString secrets.ip.lan2.gateway}"];
+      "30-lan2" = {
+        address = ["${toString secrets.ip.serv-2}/24"];
+        gateway = ["${toString secrets.ip.gateway}"];
         matchConfig.Name = ["enp4s0"];
         linkConfig.RequiredForOnline = "routable";
         networkConfig = {
@@ -70,7 +70,7 @@
       # rename me pls
       "30-vlan-self" = {
         netdevConfig = {
-          Name = "vlan-self";
+          Name = "lan2-self";
           Kind = "macvlan";
         };
         extraConfig = ''
@@ -103,20 +103,20 @@
         };
       };
       # rename me pls
-      "30-vlan" = {
+      "30-lan2" = {
         matchConfig.Name = ["enp4s0"];
         networkConfig.LinkLocalAddressing = "no";
         linkConfig.RequiredForOnline = "carrier";
         extraConfig = ''
           [Network]
-          MACVLAN=vlan-self
+          MACVLAN=lan2-self
         '';
       };
       # rename me pls
-      "40-vlan-self" = {
-        address = ["${toString secrets.ip.lan2.serv}/24"];
-        gateway = ["${toString secrets.ip.lan2.gateway}"];
-        matchConfig.Name = "vlan-self";
+      "40-lan2-self" = {
+        address = ["${toString secrets.ip.serv-2}/24"];
+        gateway = ["${toString secrets.ip.gateway}"];
+        matchConfig.Name = "lan2-self";
         linkConfig.RequiredForOnline = "routable";
         networkConfig = {
           IPv6PrivacyExtensions = "yes";
