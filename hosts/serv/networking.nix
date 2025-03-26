@@ -40,7 +40,7 @@
         };
       };
 
-      # m.2 a+e ethernet / testing vlan
+      # m.2 a+e ethernet / lan2
       "30-lan2" = {
         address = ["${toString secrets.ip.serv-2}/24"];
         gateway = ["${toString secrets.ip.gateway}"];
@@ -67,8 +67,8 @@
           Mode=bridge
         '';
       };
-      # rename me pls
-      "30-vlan-self" = {
+      # lan2
+      "30-lan2-self" = {
         netdevConfig = {
           Name = "lan2-self";
           Kind = "macvlan";
@@ -91,7 +91,7 @@
           MACVLAN=lan-self
         '';
       };
-      # main lan config
+      # main lan
       "20-lan-self" = {
         address = ["${toString secrets.ip.serv-1}/24"];
         gateway = ["${toString secrets.ip.gateway}"];
@@ -102,7 +102,7 @@
           MulticastDNS = true;
         };
       };
-      # rename me pls
+      # lan2 macvlan
       "30-lan2" = {
         matchConfig.Name = ["enp4s0"];
         networkConfig.LinkLocalAddressing = "no";
@@ -112,7 +112,7 @@
           MACVLAN=lan2-self
         '';
       };
-      # rename me pls
+      # lan2
       "40-lan2-self" = {
         address = ["${toString secrets.ip.serv-2}/24"];
         gateway = ["${toString secrets.ip.gateway}"];
