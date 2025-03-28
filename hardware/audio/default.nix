@@ -22,8 +22,6 @@
 
   # hyprland specific config - for floating window rule
   home-manager.users.${spaghetti.user}.home.file.".config/hypr/per-app/audio.conf" = {
-    text = ''
-      windowrule = float, ^(org.pulseaudio.pavucontrol)$
-    '';
+    text = ''windowrule = float, title:org.pulseaudio.pavucontrol'';
   };
 }
