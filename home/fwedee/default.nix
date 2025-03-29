@@ -6,9 +6,8 @@
 }: {
   users.users = {
     ${spaghetti.user} = {
-      extraGroups = [
-        "moonraker" # add our user to moonraker group
-      ];
+      # add our user to moonraker group
+      extraGroups = ["moonraker"];
     };
 
     moonraker = {
