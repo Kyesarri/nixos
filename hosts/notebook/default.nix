@@ -1,7 +1,6 @@
 {
   pkgs,
   inputs,
-  secrets,
   spaghetti,
   nix-colors,
   ...
@@ -32,7 +31,7 @@
     ../../home/zsh
   ];
 
-  # gnocchi.wifi.backend = "nwm"; # isn't working?
+  gnocchi.wifi.backend = "nwm"; # isn't working?
 
   colorscheme = inputs.nix-colors.colorSchemes.${spaghetti.scheme};
 
@@ -53,18 +52,7 @@
     AllowSuspendThenHibernate=no
   '';
 
-  networking = {
-    # networkmanager.enable = true;
-    # cannot use networkManager with wireless.enable = true;
-    wireless = {
-      enable = true;
-      networks = {
-        "${secrets.wifi.iot}".psk = "${secrets.wifi.iotPw}";
-        "${secrets.wifi.main}".psk = "${secrets.wifi.mainPw}";
-      }; # written to nix-store in plaintext!
-      # extraConfig = "ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=wheel";
-    };
-  };
+  networking.networkmanager.enable = true;
 
   environment = {
     systemPackages = with pkgs; [pciutils usbutils];
