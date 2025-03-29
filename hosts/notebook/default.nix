@@ -32,7 +32,7 @@
     ../../home/zsh
   ];
 
-  gnocchi.wifi.backend = "nwm"; # isn't working?
+  # gnocchi.wifi.backend = "nwm"; # isn't working?
 
   colorscheme = inputs.nix-colors.colorSchemes.${spaghetti.scheme};
 
