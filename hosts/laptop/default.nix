@@ -79,7 +79,7 @@
   };
 
   environment.shellAliases = {
-    rebuild = "sudo nixos-rebuild switch --flake ~/nixos#nix-laptop --show-trace -j 16 && cd ~ && hyprctl reload";
+    rebuild = "sudo nixos-rebuild switch --flake ~/nixos#nix-laptop --show-trace -j 16 && cd ~";
     rebuildboot = "sudo nixos-rebuild --flake ~/nixos#nix-laptop --install-bootloader boot";
     garbage = "sudo nix-collect-garbage && nix-collect-garbage -d";
     s = "kitten ssh";

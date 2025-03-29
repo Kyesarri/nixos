@@ -56,6 +56,6 @@
 
   environment = {
     systemPackages = with pkgs; [pciutils usbutils];
-    shellAliases.rebuild = "sudo nixos-rebuild switch --flake /home/${spaghetti.user}/nixos#nix-notebook --show-trace";
+    shellAliases.rebuild = "sudo nixos-rebuild switch --flake ~/nixos#nix-notebook --show-trace && cd ~";
   };
 }
