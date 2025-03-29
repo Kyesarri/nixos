@@ -54,14 +54,15 @@
   '';
 
   networking = {
-    networkmanager.enable = true;
+    # networkmanager.enable = true;
+    # cannot use networkManager with wireless.enable = true;
     wireless = {
       enable = true;
       networks = {
         "${secrets.wifi.iot}".psk = "${secrets.wifi.iotPw}";
         "${secrets.wifi.main}".psk = "${secrets.wifi.mainPw}";
       }; # written to nix-store in plaintext!
-      #extraConfig = "ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=wheel";
+      # extraConfig = "ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=wheel";
     };
   };
 
