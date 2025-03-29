@@ -12,6 +12,7 @@
     };
 
     moonraker = {
+      # add moonraker to required groups
       extraGroups = [
         "plugdev" # usb
         "dialout" # serial
@@ -32,7 +33,7 @@
       configFile = ./printer.cfg;
       inherit (config.services.moonraker) user group; # same user / group as moonraker
       mutableConfig = true;
-      mutableConfigFolder = config.services.moonraker.stateDir + "/config";
+      configDir = config.services.moonraker.stateDir + "/config";
     };
     #
     moonraker = {
