@@ -47,8 +47,8 @@ in {
     };
     image = mkOption {
       type = types.str;
-      default = "ghcr.io/tvheadend/tvheadend:latest";
-      example = "ghcr.io/tvheadend/tvheadend:latest";
+      default = "tvheadend/tvheadend:latest";
+      example = "tvheadend/tvheadend:latest";
       description = "container image";
     };
   };
