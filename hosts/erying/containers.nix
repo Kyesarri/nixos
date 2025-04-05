@@ -37,6 +37,15 @@
   # trying to keep naming to "service-host-name*-feature*" ex - tailscale-nix-erying-subnet - haos-nix-erying
   cont = {
     #
+    adguard = {
+      enable = true;
+      macvlanIp = "${secrets.ip.adguard-erying}";
+      vlanIp = "${secrets.vlan.erying.adguard}";
+      image = "adguard/adguardhome:latest";
+      contName = "adguard-${config.networking.hostName}";
+      timeZone = "Australia/Melbourne";
+    };
+    #
     backend-network = {
       enable = true;
       subnet = "${secrets.vlan.erying.subnet}";
@@ -79,15 +88,6 @@
       };
     };
     #
-    adguard = {
-      enable = true;
-      macvlanIp = "${secrets.ip.adguard-erying}";
-      vlanIp = "${secrets.vlan.erying.adguard}";
-      image = "adguard/adguardhome:latest";
-      contName = "adguard-${config.networking.hostName}";
-      timeZone = "Australia/Melbourne";
-    };
-    #
     nginx-lan = {
       enable = true;
       macvlanIp = "${secrets.ip.nginx-lan}";
@@ -118,6 +118,10 @@
       contName = "tailscale-${config.networking.hostName}-subnet";
       timeZone = "Australia/Melbourne";
       authKey = "${secrets.password.tailscale}";
+    };
+    tvheadend = {
+      enable = true;
+      vlanIp = "${secrets.vlan.erying.tvheadend}";
     };
     #
     webdav = {
