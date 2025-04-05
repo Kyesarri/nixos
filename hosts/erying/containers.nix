@@ -121,7 +121,7 @@
     };
     tvheadend = {
       enable = true;
-      vlanIp = "${secrets.vlan.erying.tvheadend}";
+      macvlanIp = "${secrets.ip.tvheadend}";
     };
     #
     webdav = {

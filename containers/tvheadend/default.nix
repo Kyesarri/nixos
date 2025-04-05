@@ -19,20 +19,20 @@ in {
       example = true;
       description = "toggle automatic starting of container";
     };
-    /*
     macvlanIp = mkOption {
       type = types.str;
       default = "192.69.4.20";
       example = "192.168.0.100";
       description = "container internal lan ip address";
     };
-    */
+    /*
     vlanIp = mkOption {
       type = types.str;
       default = "10.10.0.200";
       example = "10.10.10.1";
       description = "container internal vlan ip address";
     };
+    */
     contName = mkOption {
       type = types.str;
       default = "tvheadend-${config.networking.hostName}";
@@ -79,8 +79,8 @@ in {
         };
 
         extraOptions = [
-          "--network=podman-backend:ip=${cfg.vlanIp}"
-          # "--network=macvlan_lan:ip=${cfg.macvlanIp}"
+          # "--network=podman-backend:ip=${cfg.vlanIp}"
+          "--network=macvlan_lan:ip=${cfg.macvlanIp}"
         ];
       };
     })
