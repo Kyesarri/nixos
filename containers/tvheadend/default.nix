@@ -47,8 +47,8 @@ in {
     };
     image = mkOption {
       type = types.str;
-      default = "tvheadend/tvheadend:latest";
-      example = "tvheadend/tvheadend:latest";
+      default = "lscr.io/linuxserver/tvheadend:latest";
+      example = "lscr.io/linuxserver/tvheadend:latest";
       description = "container image";
     };
   };
@@ -76,6 +76,8 @@ in {
 
         environment = {
           TZ = "${cfg.timeZone}";
+          PUID = 1000;
+          GUID = 1000;
         };
 
         extraOptions = [
