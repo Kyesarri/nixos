@@ -36,7 +36,6 @@
     quickshell,
     schizofox,
     self,
-    vars,
     wallpaper-generator,
     ...
   } @ inputs: let
@@ -51,7 +50,7 @@
     # import our secrets - these are required to be unencrypted when building
     secrets = builtins.fromJSON (builtins.readFile "${self}/secrets/secrets.json");
     system = "x86_64-linux";
-    specialArgs = {inherit nix-colors quickshell agenix hyprpicker hy3 secrets inputs prism schizofox vars spaghetti wallpaper-generator;};
+    specialArgs = {inherit nix-colors quickshell agenix hyprpicker hy3 secrets inputs prism schizofox spaghetti wallpaper-generator;};
   in {
     #
     nixosConfigurations = {
