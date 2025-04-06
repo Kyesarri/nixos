@@ -3,47 +3,40 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/master";
-
+    alejandra.url = "github:kamadorueda/alejandra/3.0.0"; # codium nix
     agenix.url = "github:ryantm/agenix";
-
     home-manager.url = "github:nix-community/home-manager/master"; # added master branch to follow unstable nixos
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
-
     hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1"; # latest git
-
     hyprpicker.url = "github:hyprwm/hyprpicker";
-
     hy3 = {
       url = "github:outfoxxed/hy3";
       inputs.hyprland.follows = "hyprland";
     };
-
     quickshell = {
       url = "git+https://git.outfoxxed.me/outfoxxed/quickshell";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
     nix-colors.url = "github:kyesarri/nix-colors"; # colour themes, fork
     prism.url = "github:IogaMaster/prism"; # wallpaper gen
-    wallpaper-generator.url = "github:kyesarri/wallpaper-generator"; # another one
     schizofox.url = "github:schizofox/schizofox"; # firefox fork
-
-    alejandra.url = "github:kamadorueda/alejandra/3.0.0"; # codium nix
+    wallpaper-generator.url = "github:kyesarri/wallpaper-generator"; # another one
   };
 
   outputs = {
-    self,
-    nixpkgs,
     agenix,
+    alejandra,
     home-manager,
+    hy3,
     hyprland,
     hyprpicker,
-    hy3,
-    alejandra,
+    nixpkgs,
     nix-colors,
     prism,
     quickshell,
     schizofox,
+    self,
+    vars,
     wallpaper-generator,
     ...
   } @ inputs: let
@@ -58,7 +51,7 @@
     # import our secrets - these are required to be unencrypted when building
     secrets = builtins.fromJSON (builtins.readFile "${self}/secrets/secrets.json");
     system = "x86_64-linux";
-    specialArgs = {inherit nix-colors quickshell agenix hyprpicker hy3 secrets inputs prism schizofox spaghetti wallpaper-generator;};
+    specialArgs = {inherit nix-colors quickshell agenix hyprpicker hy3 secrets inputs prism schizofox vars spaghetti wallpaper-generator;};
   in {
     #
     nixosConfigurations = {

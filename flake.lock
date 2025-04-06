@@ -992,6 +992,22 @@
     },
     "nixpkgs_8": {
       "locked": {
+        "lastModified": 1743583204,
+        "narHash": "sha256-F7n4+KOIfWrwoQjXrL2wD9RhFYLs2/GGe/MQY1sSdlE=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "2c8d3f48d33929642c1c12cd243df4cc7d2ce434",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs_9": {
+      "locked": {
         "lastModified": 1629618782,
         "narHash": "sha256-2K8SSXu3alo/URI3MClGdDSns6Gb4ZaW4LET53UWyKk=",
         "owner": "nixos",
@@ -1082,6 +1098,7 @@
         "prism": "prism",
         "quickshell": "quickshell",
         "schizofox": "schizofox",
+        "vars": "vars",
         "wallpaper-generator": "wallpaper-generator"
       }
     },
@@ -1247,11 +1264,29 @@
         "type": "github"
       }
     },
+    "vars": {
+      "inputs": {
+        "nixpkgs": "nixpkgs_8"
+      },
+      "locked": {
+        "lastModified": 1743825934,
+        "narHash": "sha256-jC8voGUvS4SSuwvV9inOM0+m6H2jD4vuAs6eryijXYQ=",
+        "owner": "Lassulus",
+        "repo": "vars",
+        "rev": "edb187f514d11e004c3a9ec6c13b51e2f70b4eab",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Lassulus",
+        "repo": "vars",
+        "type": "github"
+      }
+    },
     "wallpaper-generator": {
       "inputs": {
         "flake-compat": "flake-compat_4",
         "flake-utils": "flake-utils_2",
-        "nixpkgs": "nixpkgs_8"
+        "nixpkgs": "nixpkgs_9"
       },
       "locked": {
         "lastModified": 1710127540,
