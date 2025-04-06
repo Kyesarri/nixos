@@ -60,8 +60,9 @@
     freetube.enable = true;
     wifi.backend = "nwm";
 
+    # ayy another #TODO
     nebula = {
-      enable = true;
+      enable = false;
       networkName = "${secrets.nebula.networkName}";
       hostName = "laptop";
       userName = "${spaghetti.user}";
