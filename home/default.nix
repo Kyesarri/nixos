@@ -7,7 +7,6 @@
     ./hypr
     ./nebula
     ./nemo
-    ./zerotierone
   ];
 
   # home-manager config(s)

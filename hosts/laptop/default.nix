@@ -48,6 +48,7 @@
     ../../home/syncthing # sync the things
     ../../home/tailscale # not foss, temp - will replace eventually with netbird / self-hosted
     ../../home/zsh # some basic config for terminal, has modified theme for nix-colors
+    ../../home/zerotierone
   ];
 
   gnocchi = {
