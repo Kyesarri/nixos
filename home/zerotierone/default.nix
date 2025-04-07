@@ -1,6 +1,8 @@
-{...}: {
+{secrets, ...}: {
+  # v basic config using zerotier root servers
+  # working on ztnet for local hosting
   services.zerotierone = {
     enable = true;
-    joinNetworks = [];
+    joinNetworks = ["${secrets.zerotier.network1}"];
   };
 }

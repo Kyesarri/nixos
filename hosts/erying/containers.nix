@@ -142,6 +142,7 @@
         password = "${secrets.password.zigbee2mqtt-emqx}";
       };
     };
+    ztnet.enable = true;
   };
 
   # macvlan config

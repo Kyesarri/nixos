@@ -1,0 +1,98 @@
+services:
+  postgres:
+    image: postgres:15.2-alpine
+    container_name: postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: ztnet
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    networks:
+      - app-network
+
+  zerotier:
+    image: zyclonite/zerotier:1.14.2
+    hostname: zerotier
+    container_name: zerotier
+    restart: unless-stopped
+    volumes:
+      - zerotier:/var/lib/zerotier-one
+    cap_add:
+      - NET_ADMIN
+      - SYS_ADMIN
+    devices:
+      - /dev/net/tun:/dev/net/tun
+    networks:
+      - app-network
+    ports:
+      - "9993:9993/udp"
+    environment:
+      - ZT_OVERRIDE_LOCAL_CONF=true
+      - ZT_ALLOW_MANAGEMENT_FROM=172.31.255.0/29
+
+  ztnet:
+    image: sinamics/ztnet:latest
+    container_name: ztnet
+    working_dir: /app
+    volumes:
+      - zerotier:/var/lib/zerotier-one
+    restart: unless-stopped
+    ports:
+      - 3000:3000
+    # - 127.0.0.1:3000:3000  <--- Use / Uncomment this line to restrict access to localhost only
+    environment:
+      POSTGRES_HOST: postgres
+      POSTGRES_PORT: 5432
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: ztnet
+      NEXTAUTH_URL: "http://localhost:3000" # !! Important !! Set the NEXTAUTH_URL environment variable to the canonical URL or IP of your site with port 3000
+      NEXTAUTH_SECRET: "random_secret"
+      NEXTAUTH_URL_INTERNAL: "http://ztnet:3000" # Internal NextAuth URL for 'ztnet' container on port 3000. Do not change unless modifying container name.
+    networks:
+      - app-network
+    depends_on:
+      - postgres
+      - zerotier
+  
+  ############################################################################
+  #                                                                          #
+  # Uncomment the section below to enable HTTPS reverse proxy with Caddy.    #
+  #                                                                          #
+  # Steps:                                                                   #
+  # 1. Replace <YOUR-PUBLIC-HOST-NAME> with your actual public domain name.  #
+  # 2. Uncomment the caddy_data volume definition in the volumes section.    #
+  #                                                                          #
+  ############################################################################
+
+  # https-proxy:
+  #   image: caddy:latest
+  #   container_name: ztnet-https-proxy
+  #   restart: unless-stopped
+  #   depends_on:
+  #     - ztnet
+  #   command: caddy reverse-proxy --from <YOUR-PUBLIC-HOST-NAME> --to ztnet:3000
+  #   volumes:
+  #     - caddy_data:/data
+  #   networks:
+  #     - app-network
+  #   links:
+  #     - ztnet
+  #   ports:
+  #     - "80:80"
+  #     - "443:443"
+
+volumes:
+  zerotier:
+  postgres-data:
+  # caddy_data:
+
+networks:
+  app-network:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.31.255.0/29

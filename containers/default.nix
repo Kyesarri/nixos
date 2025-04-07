@@ -19,7 +19,13 @@
     ./tvheadend # testing - want to try re-streaming via plex
     ./webdav # basic webdav server, based on nginx
     ./zigbee2mqtt # home automation thingy, lights, sensors, the good stuff
+    ./ztnet # testing - ztnet container lots going on here is WIP
   ];
+
+  # from compose2nix:
+  # Enable container name DNS for non-default Podman networks.
+  # https://github.com/NixOS/nixpkgs/issues/226365
+  networking.firewall.interfaces."podman+".allowedUDPPorts = [53];
 
   environment.systemPackages = with pkgs; [
     podman # the boi
