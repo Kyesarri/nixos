@@ -153,6 +153,8 @@ in {
           environment = {
             TZ = "${cfg.timeZone}";
             ZT_OVERRIDE_LOCAL_CONF = "true";
+            ZT_ALLOW_MANAGEMENT_FROM = "172.31.255.0/29";
+
             PUID = "1000";
             PGID = "1000";
           };
@@ -188,12 +190,10 @@ in {
             "/etc/oci.cont/${cfg.contName}/ztnet:/var/lib/zerotier-one:rw"
           ];
           ports = ["3000:3000/tcp"];
-          /*
           dependsOn = [
             "postgres"
             "zerotier"
           ];
-          */
           log-driver = "journald";
           extraOptions = [
             "--network-alias=ztnet"
