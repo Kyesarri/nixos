@@ -149,6 +149,24 @@
           }
         ];
       };
+      "nix-eliteone" = nixpkgs.lib.nixosSystem {
+        inherit system specialArgs;
+        modules = [
+          home-manager.nixosModules.home-manager
+          ./hosts/eliteone # hp eliteone 85a0 / 9700 / 8gb ddr4 / uhd 630
+          agenix.nixosModules.default
+          {
+            environment.systemPackages = [alejandra.defaultPackage.x86_64-linux];
+          }
+          {
+            home-manager = {
+              useGlobalPkgs = true;
+              useUserPackages = true;
+              extraSpecialArgs = {inherit nix-colors inputs;};
+            };
+          }
+        ];
+      };
     };
   };
 }
