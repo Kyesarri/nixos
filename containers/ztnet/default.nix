@@ -148,7 +148,7 @@ in {
           image = "zyclonite/zerotier:1.14.2";
           volumes = [
             "/etc/localtime:/etc/localtime:ro"
-            "/etc/oci.cont/${cfg.contName}/zerotier:var/lib/zerotier-one:rw"
+            "/etc/oci.cont/${cfg.contName}/zerotier:/var/lib/zerotier-one:rw"
           ];
           environment = {
             TZ = "${cfg.timeZone}";
