@@ -40,7 +40,6 @@
     openssh.enable = true;
     xserver.enable = false; # headless
     fstrim.enable = true; # ssd trim in background, not enabled by default :0
-    printing.enable = false; # cpus printers
     gnome.gnome-keyring.enable = true; # keyboi
 
     dbus = {
