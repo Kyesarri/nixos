@@ -52,7 +52,7 @@
 
   gnocchi = {
     hypr = {
-      enable = true;
+      enable = false;
       animations = false;
     };
     hyprpaper.enable = true;
@@ -62,10 +62,11 @@
 
   services = {
     openssh.enable = true;
-    xserver.enable = false;
     fstrim.enable = true;
     gnome.gnome-keyring.enable = true;
-
+    xserver.enable = true;
+    displayManager.sddm.enable = true;
+    desktopManager.plasma6.enable = true;
     dbus = {
       enable = true;
       packages = [pkgs.seahorse];
