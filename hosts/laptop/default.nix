@@ -83,6 +83,7 @@
       KEYBOARD_KEY_ff3100b2=home   # Set fn+LeftArrow as Home
       KEYBOARD_KEY_ff3100b3=end    # Set fn+RightArrow as End
     '';
+    xserver.enable = false;
   };
 
   environment.shellAliases = {

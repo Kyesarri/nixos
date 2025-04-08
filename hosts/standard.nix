@@ -53,7 +53,6 @@
   };
 
   services = {
-    xserver.enable = false;
     openssh.enable = true;
     fstrim.enable = true; # ssd trim in background, not enabled by default :0
     gvfs.enable = true; # trash and mount
