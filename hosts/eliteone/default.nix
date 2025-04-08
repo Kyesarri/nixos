@@ -20,11 +20,26 @@
     ../../hardware # new module configs - will replace importing modules
 
     ../../home # home-manaager config for all machines
-    ../../home/bottom # nice to have terminal task manager / perfmon
-    ../../home/chrony # local time-server
-    ../../home/git # basic git configs
+    ../../home/cosmic # testing cosmic package - really fast!
+    ../../home/bottom # task-manager
+    ../../home/codium # #TODO pin versions to avoid compiling
+    ../../home/copyq # #TODO change to an alternative maybe?
+    ../../home/dunst # notifications
+    ../../home/firefox # why you always need to build from source, check to see if there are nighty / beta precompiled
+    ../../home/git # add some basic git packages
+    ../../home/keepassxc # key / password manager
+
     ../../home/gtk # themes still needed for console
     ../../home/kitty # is this needed on headless? probs not
+    ../../home/kde # TODO rename kdeconnect - maybe not lol - covers lots
+    ../../home/ulauncher # TODO rename built theme, add credits to og author
+    ../../home/virt # vm / container
+    ../../home/waybar # wayland bar boi, needs another go at theming
+    ../../home/wl-screenrec # testing for laptop - amd / nvidia config
+    ../../home/prism # wallpapers
+    ../../home/syncthing # sync the things
+    ../../home/tailscale # not foss, temp - will replace eventually with netbird / self-hosted
+
     ../../home/tmux
     ../../home/zsh # nice to have
   ];
