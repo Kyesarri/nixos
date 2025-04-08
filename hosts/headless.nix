@@ -103,7 +103,6 @@
       ustreamer # smal usb camera streamer
       v4l-utils
       asciiquarium-transparent # for notebook, "screensaver"
-      vbetool # video bios tool - hoping to turn off "headless" systems
     ];
   };
 }
