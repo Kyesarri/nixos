@@ -71,12 +71,6 @@
         wall.enable = false;
       };
     };
-
-    ###### TODO ######
-    tailscale.enable = true;
-    tailscale.useRoutingFeatures = "server"; # main requirement for the # TODO
-    tailscale.openFirewall = true;
-    ###### TODO ######
   };
 
   environment = {
