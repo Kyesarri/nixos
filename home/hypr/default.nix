@@ -32,6 +32,11 @@ in {
   config = mkMerge [
     (mkIf (cfg.hypr.enable == true) {
       #
+      environment.sessionVariables = {
+        QT_QPA_PLATFORMTHEME = "qt5ct";
+        XDG_CURRENT_DESKTOP = "Hyprland";
+        XDG_SESSION_DESKTOP = "Hyprland";
+      };
       users.users.${spaghetti.user}.packages = [
         pkgs.xdg-desktop-portal-hyprland
         pkgs.hyprpicker # colour picker 09.06.24 throwing build errors
