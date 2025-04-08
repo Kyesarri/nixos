@@ -2,6 +2,7 @@
   nix-colors,
   spaghetti,
   secrets,
+  inputs,
   ...
 }: {
   imports = [
@@ -50,6 +51,10 @@
     ../../home/zsh # some basic config for terminal, has modified theme for nix-colors
     ../../home/zerotierone
   ];
+
+  colorscheme = inputs.nix-colors.colorSchemes.${spaghetti.scheme};
+
+  home-manager.users.${spaghetti.user}.colorscheme = inputs.nix-colors.colorSchemes.${spaghetti.scheme};
 
   gnocchi = {
     hypr = {

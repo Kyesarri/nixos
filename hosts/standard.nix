@@ -9,8 +9,6 @@
   time.timeZone = "Australia/Melbourne";
   nixpkgs.config.allowUnfree = true;
 
-  colorscheme = inputs.nix-colors.colorSchemes.${spaghetti.scheme};
-
   nix = {
     #
     sshServe.enable = true;

@@ -1,4 +1,9 @@
-{nix-colors, ...}: {
+{
+  nix-colors,
+  spaghetti,
+  inputs,
+  ...
+}: {
   imports = [
     nix-colors.homeManagerModules.default
 
@@ -39,6 +44,9 @@
     ../../home/tailscale
     ../../home/zsh
   ];
+  colorscheme = inputs.nix-colors.colorSchemes.${spaghetti.scheme2};
+
+  home-manager.users.${spaghetti.user}.colorscheme = inputs.nix-colors.colorSchemes.${spaghetti.scheme2};
 
   gnocchi = {
     hypr = {

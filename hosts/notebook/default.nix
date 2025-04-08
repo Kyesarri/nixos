@@ -33,7 +33,9 @@
 
   gnocchi.wifi.backend = "nwm"; # isn't working?
 
-  colorscheme = inputs.nix-colors.colorSchemes.${spaghetti.scheme};
+  colorscheme = inputs.nix-colors.colorSchemes.${spaghetti.scheme1};
+
+  home-manager.users.${spaghetti.user}.colorscheme = inputs.nix-colors.colorSchemes.${spaghetti.scheme1};
 
   networking.hostName = "nix-notebook";
 
