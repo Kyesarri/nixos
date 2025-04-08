@@ -9,39 +9,39 @@
   imports = [
     nix-colors.homeManagerModules.default
 
-    ./boot.nix # may migrate systems back to systemd boot - testing here
-    ./hardware.nix # device specific hardware config
-    ./networking.nix # systemd networking config
-    ./containers.nix # testing selecting specific containers per-host
-    ./per-device.nix # monitor config more to come
+    ./boot.nix
+    ./hardware.nix
+    ./networking.nix
+    ./containers.nix
+    ./per-device.nix
+    ../standard.nix
 
-    ../standard.nix # base packages and config
+    ../../hardware
 
-    ../../hardware # new module configs - will replace importing modules
+    ../../home
 
-    ../../home # home-manaager config for all machines
-    ../../home/cosmic # testing cosmic package - really fast!
-    ../../home/bottom # task-manager
-    ../../home/codium # #TODO pin versions to avoid compiling
-    ../../home/copyq # #TODO change to an alternative maybe?
-    ../../home/dunst # notifications
-    ../../home/firefox # why you always need to build from source, check to see if there are nighty / beta precompiled
-    ../../home/git # add some basic git packages
-    ../../home/keepassxc # key / password manager
+    ../../home/cosmic
+    ../../home/bottom
+    ../../home/codium
+    ../../home/copyq
+    ../../home/dunst
+    ../../home/firefox
+    ../../home/git
+    ../../home/keepassxc
 
-    ../../home/gtk # themes still needed for console
-    ../../home/kitty # is this needed on headless? probs not
-    ../../home/kde # TODO rename kdeconnect - maybe not lol - covers lots
-    ../../home/ulauncher # TODO rename built theme, add credits to og author
-    ../../home/virt # vm / container
-    ../../home/waybar # wayland bar boi, needs another go at theming
-    ../../home/wl-screenrec # testing for laptop - amd / nvidia config
-    ../../home/prism # wallpapers
-    ../../home/syncthing # sync the things
-    ../../home/tailscale # not foss, temp - will replace eventually with netbird / self-hosted
+    ../../home/gtk
+    ../../home/kitty
+    ../../home/kde
+    ../../home/ulauncher
+    ../../home/virt
+    ../../home/waybar
+    ../../home/wl-screenrec
+    ../../home/prism
+    ../../home/syncthing
+    ../../home/tailscale
 
     ../../home/tmux
-    ../../home/zsh # nice to have
+    ../../home/zsh
   ];
 
   colorscheme = inputs.nix-colors.colorSchemes.${spaghetti.scheme2};
@@ -53,7 +53,7 @@
   gnocchi = {
     hypr = {
       enable = true;
-      animations = false; # no config here yet #TODO - not critical - adding more mess is!
+      animations = false;
     };
     hyprpaper.enable = true;
     gscreenshot.enable = true;
@@ -62,9 +62,9 @@
 
   services = {
     openssh.enable = true;
-    xserver.enable = false; # headless
-    fstrim.enable = true; # ssd trim in background, not enabled by default :0
-    gnome.gnome-keyring.enable = true; # keyboi
+    xserver.enable = false;
+    fstrim.enable = true;
+    gnome.gnome-keyring.enable = true;
 
     dbus = {
       enable = true;
@@ -82,14 +82,14 @@
   };
 
   environment = {
-    shells = with pkgs; [zsh]; # default shell to zsh
+    shells = with pkgs; [zsh];
     shellAliases = {
       rebuild = "sudo nixos-rebuild switch --flake ~/nixos#nix-eliteone --show-trace";
     };
     sessionVariables = {
       VDPAU_DRIVER = "va_gl";
-      LIBVA_DRIVER_NAME = "iHD"; # Force intel-media-driver
-      GTK_THEME = "${config.colorscheme.slug}"; # sets default gtk theme the package built by nix-colors
+      LIBVA_DRIVER_NAME = "iHD";
+      GTK_THEME = "${config.colorscheme.slug}";
       XDG_CACHE_HOME = "$HOME/.cache";
       XDG_CONFIG_HOME = "$HOME/.config";
       XDG_DATA_HOME = "$HOME/.local/share";
@@ -98,7 +98,6 @@
 
     systemPackages = with pkgs; [
       ethtool
-      nut # ups monitor
       lm_sensors # sensor monitoring
       lshw # list hardware
       tailscale # lets users control tailscale
