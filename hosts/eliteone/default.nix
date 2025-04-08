@@ -14,7 +14,7 @@
     ./networking.nix # systemd networking config
     ./containers.nix # testing selecting specific containers per-host
 
-    ../headless.nix # base packages and config
+    ../standard.nix # base packages and config
 
     ../../hardware # new module configs - will replace importing modules
 
