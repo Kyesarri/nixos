@@ -50,7 +50,16 @@
 
   users.users.${spaghetti.user}.uid = 1000;
 
-  gnocchi = {};
+  gnocchi = {
+    hypr = {
+      enable = true;
+      animations = false; # no config here yet #TODO - not critical - adding more mess is!
+    };
+    hyprpaper.enable = true;
+    gscreenshot.enable = true;
+    freetube.enable = true;
+    wifi.backend = "nwm";
+  };
 
   services = {
     openssh.enable = true;
