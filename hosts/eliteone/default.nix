@@ -13,6 +13,7 @@
     ./hardware.nix # device specific hardware config
     ./networking.nix # systemd networking config
     ./containers.nix # testing selecting specific containers per-host
+    ./per-device.nix # monitor config more to come
 
     ../standard.nix # base packages and config
 
