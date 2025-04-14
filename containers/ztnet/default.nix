@@ -175,6 +175,7 @@ in {
         # ztnet
         "ztnet-${cfg.contName}" = {
           image = "sinamics/ztnet:latest";
+          autoStart = true;
           environment = {
             TZ = "${cfg.timeZone}";
             "NEXTAUTH_SECRET" = "random_secret";
