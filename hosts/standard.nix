@@ -143,6 +143,8 @@
       "networkmanager" # network
       "wheel" # sudo
       "plugdev" # usb
+      "audio"
+      "pipewire"
     ];
 
     # packages available for just our spaghetti user
