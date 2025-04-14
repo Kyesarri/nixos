@@ -17,6 +17,7 @@
     ../standard.nix
 
     ../../hardware
+    ../../hardware/audio
 
     ../../home
 
