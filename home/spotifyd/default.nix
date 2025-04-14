@@ -28,7 +28,7 @@
     ];
   };
 
-  environment.systemPackages = [pkgs.spotify-player];
+  environment.systemPackages = [pkgs.spotify-player pkgs.spotifyd];
 
   networking.firewall = {
     allowedTCPPorts = [5353];
