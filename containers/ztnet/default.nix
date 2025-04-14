@@ -38,13 +38,6 @@ in {
 
   config = mkMerge [
     (mkIf (cfg.enable == true) {
-      # if this fails, maybe investigate the podman-method of making volumes...
-      # lets migrage while codeberg is down ;)
-      /*
-      system.activationScripts."make${cfg.contName}dir" =
-        lib.stringAfter ["var"]
-        ''mkdir -v -p /etc/oci.cont/${cfg.contName}/zerotier /etc/oci.cont/${cfg.contName}/postgres & chown -R 1000:1000 /etc/oci.cont/${cfg.contName}'';
-      */
       systemd = {
         # root service
         targets."podman-ztnet-root" = {
