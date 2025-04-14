@@ -95,6 +95,8 @@
       XDG_CONFIG_HOME = "$HOME/.config";
       XDG_DATA_HOME = "$HOME/.local/share";
       XDG_STATE_HOME = "$HOME/.local/state";
+      SDL_VIDEODRIVER = "wayland";
+      QT_QPA_PLATFORM = "wayland";
     };
 
     systemPackages = with pkgs; [
@@ -109,7 +111,7 @@
       wget
       libsecret
       gitAndTools.gitFull
-      polkit_gnome
+      # polkit_gnome
       pciutils
       cockpit
     ];
