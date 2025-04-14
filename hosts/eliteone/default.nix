@@ -17,7 +17,7 @@
     ../standard.nix
 
     ../../hardware
-    ../../hardware/audio
+    # ../../hardware/audio
 
     ../../home
 
@@ -69,6 +69,7 @@
     xserver.enable = true;
     displayManager.sddm.enable = true;
     desktopManager.plasma6.enable = true;
+    pulseaudio.enable = true;
 
     # desktop / plasma6 should set this
     # dbus.enable = true;
