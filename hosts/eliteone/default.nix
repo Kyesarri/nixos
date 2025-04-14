@@ -38,6 +38,7 @@
     ../../home/wl-screenrec
     ../../home/prism
     ../../home/syncthing
+    ../../home/spotifyd
     ../../home/tailscale
 
     ../../home/tmux
