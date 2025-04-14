@@ -173,7 +173,7 @@ in {
           ];
         };
         # ztnet
-        "ztnet-${cfg.contName}" = {
+        "${cfg.contName}" = {
           image = "sinamics/ztnet:latest";
           autoStart = true;
           environment = {
