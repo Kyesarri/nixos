@@ -3,6 +3,10 @@ ZTNET - ZeroTier Controller Web UI is a robust and versatile application designe
 Now featuring organization and multi-user support, it elevates the network management experience, accommodating team-based environments and larger organizations seamlessly.
 # added some c2n configs here, additional systemd units and networking configs
 */
+# TODO
+# remove the systemd configs for starting all containers, perhaps that will give me some further insight
+# as to what's causing the ztnet container to fail
+# currently the error is not helpful
 {
   config,
   pkgs,
