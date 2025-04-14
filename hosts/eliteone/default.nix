@@ -115,7 +115,6 @@
       # polkit_gnome
       pciutils
       cockpit
-      spotifyd
     ];
   };
 }
