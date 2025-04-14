@@ -12,6 +12,7 @@
         backend = "pulseaudio";
         device_name = "spotify-${config.networking.hostName}";
         device_type = "computer";
+        use_mpris = "false";
       };
     };
   };
