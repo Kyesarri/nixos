@@ -173,7 +173,7 @@ in {
           ];
         };
         # ztnet
-        "${cfg.contName}" = {
+        "ztnet-${cfg.contName}" = {
           image = "sinamics/ztnet:latest";
           environment = {
             TZ = "${cfg.timeZone}";
