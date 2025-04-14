@@ -3,10 +3,6 @@ ZTNET - ZeroTier Controller Web UI is a robust and versatile application designe
 Now featuring organization and multi-user support, it elevates the network management experience, accommodating team-based environments and larger organizations seamlessly.
 # added some c2n configs here, additional systemd units and networking configs
 */
-# TODO
-# remove the systemd configs for starting all containers, perhaps that will give me some further insight
-# as to what's causing the ztnet container to fail
-# currently the error is not helpful
 {
   config,
   pkgs,
@@ -43,12 +39,6 @@ in {
   config = mkMerge [
     (mkIf (cfg.enable == true) {
       systemd = {
-        # root service
-        targets."podman-ztnet-root" = {
-          unitConfig = {Description = "root target from c2n";};
-          wantedBy = ["multi-user.target"];
-        };
-
         services = {
           # network
           "podman-ztnetwork" = {
@@ -144,6 +134,7 @@ in {
             "POSTGRES_USER" = "postgres";
           };
           volumes = [
+            "/etc/localtime:/etc/localtime:ro"
             "ztnet-postgres:/var/lib/postgresql/data:rw"
           ];
           log-driver = "journald";
@@ -198,11 +189,13 @@ in {
           ];
           ports = ["3000:3000/tcp"];
           dependsOn = [
-            "postgres"
-            "zerotier"
+            "zerotier-${cfg.contName}"
+            "postgres-${cfg.contName}"
           ];
-          # log-driver = "journald";
+          log-driver = "journald";
           extraOptions = [
+            "--cap-add=NET_ADMIN"
+            "--cap-add=SYS_ADMIN"
             "--network-alias=ztnet"
             "--network=ztnetwork"
           ];
