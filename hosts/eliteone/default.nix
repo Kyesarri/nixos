@@ -64,12 +64,13 @@
   services = {
     openssh.enable = true;
     fstrim.enable = true;
-    gnome.gnome-keyring.enable = true;
+    # gnome.gnome-keyring.enable = true;
     xserver.enable = true;
     displayManager.sddm.enable = true;
     desktopManager.plasma6.enable = true;
 
-    dbus.enable = true;
+    # desktop / plasma6 should set this
+    # dbus.enable = true;
 
     smartd = {
       enable = true;
