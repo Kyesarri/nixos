@@ -10,7 +10,7 @@
     settings.global = {
       username = "${secrets.email.alternate}";
       password_cmd = "${secrets.password.spotify}";
-      backend = "alsa";
+      backend = "pulseaudio";
       bitrate = 320;
       device_name = "spotify-${config.networking.hostName}";
       device_type = "computer";
