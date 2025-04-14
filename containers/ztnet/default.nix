@@ -189,6 +189,7 @@ in {
             "POSTGRES_USER" = "postgres";
           };
           volumes = [
+            "/etc/localtime:/etc/localtime:ro"
             "ztnet-zerotier:/var/lib/zerotier-one:rw"
           ];
           ports = ["3000:3000/tcp"];
