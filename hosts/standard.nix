@@ -75,7 +75,7 @@
   programs = {
     corectrl.enable = true;
     dconf.enable = true;
-    seahorse.enable = false;
+    # uwsm.enable = true; # TODO
     gnupg.agent = {
       enable = true;
       enableSSHSupport = true;
