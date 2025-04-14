@@ -173,6 +173,7 @@ in {
           ];
         };
         # ztnet
+        # Service has no ExecStart=, ExecStop=, or SuccessAction=. Refusing.
         "${cfg.contName}" = {
           image = "sinamics/ztnet:latest";
           autoStart = true;
@@ -195,7 +196,7 @@ in {
             "postgres"
             "zerotier"
           ];
-          log-driver = "journald";
+          # log-driver = "journald";
           extraOptions = [
             "--network-alias=ztnet"
             "--network=ztnetwork"
