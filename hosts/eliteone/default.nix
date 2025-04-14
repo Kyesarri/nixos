@@ -69,10 +69,7 @@
     displayManager.sddm.enable = true;
     desktopManager.plasma6.enable = true;
 
-    dbus = {
-      enable = true;
-      packages = [pkgs.seahorse];
-    };
+    dbus.enable = true;
 
     smartd = {
       enable = true;
