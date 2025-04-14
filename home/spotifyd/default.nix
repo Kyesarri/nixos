@@ -11,6 +11,7 @@
       username = "${secrets.email.alternate}";
       password_cmd = "${secrets.password.spotify}";
       backend = "pulseaudio";
+      no_audio_cache = true;
       bitrate = 320;
       device_name = "spotify-${config.networking.hostName}";
       device_type = "computer";
