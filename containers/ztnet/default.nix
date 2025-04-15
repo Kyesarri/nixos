@@ -156,7 +156,7 @@ in {
           environment = {
             TZ = "${cfg.timeZone}";
             ZT_OVERRIDE_LOCAL_CONF = "true";
-            ZT_ALLOW_MANAGEMENT_FROM = "172.31.255.0/29";
+            ZT_ALLOW_MANAGEMENT_FROM = "172.31.255.0/24";
           };
           ports = ["9993:9993/udp"];
           log-driver = "journald";
