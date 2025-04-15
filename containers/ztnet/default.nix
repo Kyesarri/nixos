@@ -142,7 +142,7 @@ in {
           log-driver = "journald";
           extraOptions = [
             "--network-alias=postgres"
-            "--network=ztnetwork"
+            "--network=ztnetwork:ip=172.31.255.3"
           ];
         };
         # zerotier
@@ -166,7 +166,7 @@ in {
             "--device=/dev/net/tun:/dev/net/tun:rwm"
             "--hostname=zerotier"
             "--network-alias=zerotier"
-            "--network=ztnetwork"
+            "--network=ztnetwork:ip=172.31.255.2"
           ];
         };
         # ztnet
@@ -177,7 +177,7 @@ in {
             TZ = "${cfg.timeZone}";
             "NEXTAUTH_SECRET" = "itsasecret";
             "NEXTAUTH_URL" = "https://ztnet.galing.org";
-            "NEXTAUTH_URL_INTERNAL" = "https://ztnet.home";
+            "NEXTAUTH_URL_INTERNAL" = "http://${cfg.contName}:3000";
             "POSTGRES_DB" = "ztnet";
             "POSTGRES_HOST" = "postgres";
             "POSTGRES_PASSWORD" = "postgres";
@@ -198,7 +198,7 @@ in {
             "--cap-add=NET_ADMIN"
             "--cap-add=SYS_ADMIN"
             "--network-alias=ztnet"
-            "--network=ztnetwork"
+            "--network=ztnetwork:ip=172.31.255.1"
           ];
         };
       };
