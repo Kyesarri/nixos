@@ -3,6 +3,7 @@ ZTNET - ZeroTier Controller Web UI is a robust and versatile application designe
 Now featuring organization and multi-user support, it elevates the network management experience, accommodating team-based environments and larger organizations seamlessly.
 */
 {
+  secrets,
   config,
   pkgs,
   lib,
@@ -141,7 +142,7 @@ in {
           ];
           log-driver = "journald";
           extraOptions = [
-            "--network-alias=postgres"
+            "--network-alias=postgres-${cfg.contName}"
             "--network=ztnetwork"
           ];
         };
@@ -165,7 +166,7 @@ in {
             "--cap-add=SYS_ADMIN"
             "--device=/dev/net/tun:/dev/net/tun:rwm"
             "--hostname=zerotier"
-            "--network-alias=zerotier"
+            "--network-alias=zerotier-${cfg.contName}"
             "--network=ztnetwork"
           ];
         };
@@ -176,10 +177,10 @@ in {
           environment = {
             TZ = "${cfg.timeZone}";
             "NEXTAUTH_SECRET" = "itsasecret";
-            "NEXTAUTH_URL" = "http://localhost:3000";
+            "NEXTAUTH_URL" = "http://${secrets.ip.nix-erying}:3000";
             "NEXTAUTH_URL_INTERNAL" = "http://${cfg.contName}:3000";
             "POSTGRES_DB" = "ztnet";
-            "POSTGRES_HOST" = "postgres";
+            "POSTGRES_HOST" = "postgres-${cfg.contName}";
             "POSTGRES_PASSWORD" = "postgres";
             "POSTGRES_PORT" = "5432";
             "POSTGRES_USER" = "postgres";
@@ -198,7 +199,7 @@ in {
             "--cap-add=NET_ADMIN"
             "--cap-add=SYS_ADMIN"
             "--hostname=ztnet"
-            "--network-alias=ztnet"
+            "--network-alias=${cfg.contName}"
             "--network=ztnetwork"
           ];
         };
