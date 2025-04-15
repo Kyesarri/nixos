@@ -105,7 +105,6 @@
       gitAndTools.gitFull
       polkit_gnome
       pciutils
-      # zfs
       cockpit
     ];
   };
