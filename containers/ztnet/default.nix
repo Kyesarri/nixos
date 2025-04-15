@@ -176,7 +176,7 @@ in {
           environment = {
             TZ = "${cfg.timeZone}";
             "NEXTAUTH_SECRET" = "itsasecret";
-            "NEXTAUTH_URL" = "http://localhost:3000";
+            "NEXTAUTH_URL" = "https://ztnet.galing.org";
             "NEXTAUTH_URL_INTERNAL" = "http://${cfg.contName}:3000";
             "POSTGRES_DB" = "ztnet";
             "POSTGRES_HOST" = "postgres";
