@@ -177,7 +177,7 @@ in {
           environment = {
             TZ = "${cfg.timeZone}";
             "NEXTAUTH_SECRET" = "itsasecret";
-            "NEXTAUTH_URL" = "http://${secrets.ip.nix-erying}:3000";
+            "NEXTAUTH_URL" = "http://${secrets.ip.erying}:3000";
             "NEXTAUTH_URL_INTERNAL" = "http://${cfg.contName}:3000";
             "POSTGRES_DB" = "ztnet";
             "POSTGRES_HOST" = "postgres-${cfg.contName}";
