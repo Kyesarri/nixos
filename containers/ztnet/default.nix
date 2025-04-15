@@ -3,7 +3,6 @@ ZTNET - ZeroTier Controller Web UI is a robust and versatile application designe
 Now featuring organization and multi-user support, it elevates the network management experience, accommodating team-based environments and larger organizations seamlessly.
 */
 {
-  secrets,
   config,
   pkgs,
   lib,
@@ -177,8 +176,8 @@ in {
           environment = {
             TZ = "${cfg.timeZone}";
             "NEXTAUTH_SECRET" = "itsasecret";
-            "NEXTAUTH_URL" = "http://${cfg.contName}:3000";
-            "NEXTAUTH_URL_INTERNAL" = "http://${cfg.contName}:3000";
+            "NEXTAUTH_URL" = "${secrets.ztnet.domain}";
+            "NEXTAUTH_URL_INTERNAL" = "http://${secrets.ip.erying}:3000";
             "POSTGRES_DB" = "ztnet";
             "POSTGRES_HOST" = "postgres-${cfg.contName}";
             "POSTGRES_PASSWORD" = "postgres";
