@@ -1,7 +1,6 @@
 /*
 ZTNET - ZeroTier Controller Web UI is a robust and versatile application designed to transform the management of ZeroTier networks.
 Now featuring organization and multi-user support, it elevates the network management experience, accommodating team-based environments and larger organizations seamlessly.
-# added some c2n configs here, additional systemd units and networking configs
 */
 {
   config,
@@ -17,22 +16,16 @@ in {
     enable = mkOption {
       type = types.bool;
       default = false;
-      example = true;
-      description = "enable container";
     };
-    #
+
     contName = mkOption {
       type = types.str;
       default = "ztnet-${config.networking.hostName}";
-      example = "container-cool-hostname";
-      description = "container name and container volume dirs";
     };
 
     timeZone = mkOption {
       type = types.str;
       default = "Australia/Melbourne";
-      example = "Australia/Broken_Hill";
-      description = "database timezone";
     };
   };
 
@@ -168,15 +161,14 @@ in {
           ];
         };
         # ztnet
-        # Service has no ExecStart=, ExecStop=, or SuccessAction=. Refusing.
         "${cfg.contName}" = {
           image = "sinamics/ztnet:latest";
           autoStart = true;
           environment = {
             TZ = "${cfg.timeZone}";
-            "NEXTAUTH_SECRET" = "random_secret";
+            "NEXTAUTH_SECRET" = "${cfg.secret}";
             "NEXTAUTH_URL" = "http://localhost:3000";
-            "NEXTAUTH_URL_INTERNAL" = "http://ztnet:3000";
+            "NEXTAUTH_URL_INTERNAL" = "http://${cfg.contName}:3000";
             "POSTGRES_DB" = "ztnet";
             "POSTGRES_HOST" = "postgres";
             "POSTGRES_PASSWORD" = "postgres";
