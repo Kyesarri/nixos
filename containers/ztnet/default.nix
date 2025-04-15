@@ -44,7 +44,7 @@ in {
         services = {
           # network
           "podman-ztnetwork" = {
-            script = ''podman network inspect ztnetwork || podman network create ztnetwork --driver=bridge --subnet=172.31.255.0/29'';
+            script = ''podman network inspect ztnetwork || podman network create ztnetwork --driver=bridge --subnet=172.31.255.0/24'';
             partOf = ["podman-ztnet-root.target"];
             wantedBy = ["podman-ztnet-root.target"];
             path = [pkgs.podman];
