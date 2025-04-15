@@ -44,7 +44,7 @@ in {
         services = {
           # network
           "podman-ztnetwork" = {
-            script = ''podman network inspect ztnetwork || podman network create ztnetwork --driver=bridge --subnet=172.31.255.0/24'';
+            script = ''podman network inspect ztnetwork || podman network create ztnetwork --driver=bridge --subnet=172.19.0.0/24'';
             partOf = ["podman-ztnet-root.target"];
             wantedBy = ["podman-ztnet-root.target"];
             path = [pkgs.podman];
@@ -156,7 +156,7 @@ in {
           environment = {
             TZ = "${cfg.timeZone}";
             ZT_OVERRIDE_LOCAL_CONF = "true";
-            ZT_ALLOW_MANAGEMENT_FROM = "172.31.255.0/24";
+            ZT_ALLOW_MANAGEMENT_FROM = "172.19.0.0/24";
           };
           ports = ["9993:9993/udp"];
           log-driver = "journald";
@@ -197,6 +197,7 @@ in {
           extraOptions = [
             "--cap-add=NET_ADMIN"
             "--cap-add=SYS_ADMIN"
+            "--hostname=ztnet"
             "--network-alias=ztnet"
             "--network=ztnetwork"
           ];
