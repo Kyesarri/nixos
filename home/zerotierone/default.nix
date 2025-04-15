@@ -4,5 +4,6 @@
   services.zerotierone = {
     enable = true;
     joinNetworks = ["${secrets.zerotier.network1}"];
+    port = 9993;
   };
 }
