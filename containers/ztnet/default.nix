@@ -179,7 +179,7 @@ in {
             "NEXTAUTH_URL" = "https://ztnet.galing.org";
             "NEXTAUTH_URL_INTERNAL" = "http://${cfg.contName}:3000";
             "POSTGRES_DB" = "ztnet";
-            "POSTGRES_HOST" = "postgres";
+            "POSTGRES_HOST" = "172.31.255.3";
             "POSTGRES_PASSWORD" = "postgres";
             "POSTGRES_PORT" = "5432";
             "POSTGRES_USER" = "postgres";
