@@ -1,9 +1,16 @@
 {secrets, ...}: {
-  # v basic config using zerotier root servers
-  # working on ztnet for local hosting
+  networking.firewall.allowedUDPPorts = [9993];
+
   services.zerotierone = {
     enable = true;
     joinNetworks = ["${secrets.zerotier.network1}"];
-    port = 9993;
+    localConf = {
+      settings = {
+        softwareUpdate = "disable";
+        primaryPort = "9993";
+        portMappingEnabled = "true";
+        allowTcpFallbackRelay = "true";
+      };
+    };
   };
 }
