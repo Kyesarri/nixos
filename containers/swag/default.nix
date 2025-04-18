@@ -72,7 +72,7 @@
       "SWAG_AUTORELOAD" = "";
       "SWAG_AUTORELOAD_WATCHLIST" = "";
       "TZ" = "Australia/Melbourne";
-      "URL" = "example.com";
+      "URL" = "https//swag.${secrets.domain.two}";
       "VALIDATION" = "http";
       DOCKER_MODS = "linuxserver/mods:swag-dashboard";
       # multiple mods seperated by |
