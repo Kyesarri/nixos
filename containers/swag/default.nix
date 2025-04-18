@@ -58,23 +58,25 @@
   virtualisation.oci-containers.containers."swag" = {
     image = "lscr.io/linuxserver/swag:latest";
     environment = {
-      "CERTPROVIDER" = "";
-      "DISABLE_F2B" = "";
-      "DNSPLUGIN" = "cloudflare";
-      "EMAIL" = "";
-      "EXTRA_DOMAINS" = "";
-      "ONLY_SUBDOMAINS" = "false";
-      "PGID" = "1000";
-      "PUID" = "1000";
-      "PROPAGATION" = "";
-      "STAGING" = "false";
-      "SUBDOMAINS" = "www,";
-      "SWAG_AUTORELOAD" = "";
-      "SWAG_AUTORELOAD_WATCHLIST" = "";
-      "TZ" = "Australia/Melbourne";
+      PGID = "1000";
+      PUID = "1000";
+      CERTPROVIDER = "";
+      DISABLE_F2B = "";
+      VALIDATION = "http";
       "URL" = "${secrets.domain.two}";
-      "VALIDATION" = "http";
+      "TZ" = "Australia/Melbourne";
       DOCKER_MODS = "linuxserver/mods:swag-dashboard";
+
+      # "DNSPLUGIN" = "cloudflare";
+      # "EMAIL" = "";
+      # "EXTRA_DOMAINS" = "";
+      # "ONLY_SUBDOMAINS" = "false";
+
+      # "PROPAGATION" = "";
+      # "STAGING" = "false";
+      # "SUBDOMAINS" = "www,";
+      # "SWAG_AUTORELOAD" = "";
+      # "SWAG_AUTORELOAD_WATCHLIST" = "";
       # multiple mods seperated by |
     };
     volumes = [
