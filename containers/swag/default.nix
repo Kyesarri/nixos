@@ -82,8 +82,8 @@
       "swag:/config:rw"
     ];
     ports = [
-      # "443:443/tcp"
-      # "80:80/tcp"
+      "443:443/tcp"
+      "80:80/tcp"
       "81:81/tcp"
     ];
     log-driver = "journald";
