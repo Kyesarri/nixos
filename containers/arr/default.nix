@@ -273,7 +273,7 @@ in {
           ];
         };
         "arr-nginx" = {
-          image = "lscr.io/linuxserver/nginx:latest";
+          image = "docker.io/jc21/nginx-proxy-manager:latest";
           log-driver = "journald";
           environment = {
             TZ = "${cfg.timeZone}";
