@@ -49,8 +49,8 @@
           RemainAfterExit = true;
         };
         script = ''podman volume inspect swag || podman volume create swag'';
-        partOf = ["podman-ztnet-root.target"];
-        wantedBy = ["podman-ztnet-root.target"];
+        partOf = ["podman-compose-swag-root.target"];
+        wantedBy = ["podman-compose-swag-root.target"];
       };
     };
   };
