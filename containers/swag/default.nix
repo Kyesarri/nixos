@@ -74,6 +74,7 @@
       "TZ" = "Australia/Melbourne";
       "URL" = "example.com";
       "VALIDATION" = "http";
+      DOCKER_MODS = "linuxserver/mods:swag-dashboard";
     };
     volumes = [
       "/etc/localtime:/etc/localtime:ro"
