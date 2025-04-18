@@ -20,7 +20,6 @@
     ../../containers/orcaslicer
     ../../containers/overseerr
     # ../../containers/netbird # this wont work out the box :D
-    ../../containers/swag
     ../../containers/syncthing
     # ../../containers/zitadel
   ];
@@ -46,6 +45,8 @@
       contName = "adguard-${config.networking.hostName}";
       timeZone = "Australia/Melbourne";
     };
+    #
+    arr.enable = true;
     #
     backend-network = {
       enable = true;
