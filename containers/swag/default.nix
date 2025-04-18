@@ -75,6 +75,7 @@
       "URL" = "example.com";
       "VALIDATION" = "http";
       DOCKER_MODS = "linuxserver/mods:swag-dashboard";
+      # multiple mods seperated by |
     };
     volumes = [
       "/etc/localtime:/etc/localtime:ro"
@@ -83,6 +84,7 @@
     ports = [
       # "443:443/tcp"
       # "80:80/tcp"
+      "81:81/tcp"
     ];
     log-driver = "journald";
     extraOptions = [
