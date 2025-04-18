@@ -282,8 +282,8 @@ in {
           };
           volumes = [
             "/etc/localtime:/etc/localtime:ro"
-            "arr-nginx:/data:/data:rw"
-            "arr-nginx:/letsencrypt:/etc/letsencrypt:rw"
+            "arr-nginx/data:/data:rw"
+            "arr-nginx/letsencrypt:/etc/letsencrypt:rw"
           ];
           extraOptions = [
             "--network-alias=nginx"
