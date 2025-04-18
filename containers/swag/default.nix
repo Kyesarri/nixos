@@ -77,7 +77,7 @@
     };
     volumes = [
       "/etc/localtime:/etc/localtime:ro"
-      "/swag:/config:rw"
+      "swag:/config:rw"
     ];
     ports = [
       # "443:443/tcp"
