@@ -79,6 +79,7 @@ in {
       virtualisation.oci-containers.containers = {
         "haos" = {
           image = "ghcr.io/home-assistant/home-assistant:latest";
+          log-driver = "journald";
           environment = {
             TZ = "${cfg.timeZone}";
           };
@@ -96,6 +97,7 @@ in {
         };
         "haos-matter" = {
           image = "ghcr.io/home-assistant-libs/python-matter-server:stable";
+          log-driver = "journald";
           environment = {
             TZ = "${cfg.timeZone}";
           };

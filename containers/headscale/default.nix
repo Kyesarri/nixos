@@ -23,6 +23,7 @@ in {
       virtualisation.oci-containers.containers = {
         "headscale" = {
           image = "headscale/headscale:latest";
+          log-driver = "journald";
           volumes = [
             "/etc/localtime:/etc/localtime:ro"
             "headscale:/etc/headscale"
@@ -39,6 +40,7 @@ in {
         };
         "headscale-ui" = {
           image = "ghcr.io/gurucomputing/headscale-ui:latest";
+          log-driver = "journald";
           volumes = [
             "/etc/localtime:/etc/localtime:ro"
           ];
@@ -54,6 +56,7 @@ in {
         };
         "derp" = {
           image = "ghcr.io/tijjjy/tailscale-derp-docker:latest";
+          log-driver = "journald";
           volumes = [
             "/etc/localtime:/etc/localtime:ro"
             "/run/current-system/kernel-modules:/lib/modules:ro" # icky - do we want a VM for this?
