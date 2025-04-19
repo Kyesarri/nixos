@@ -66,7 +66,9 @@ in {
             wantedBy = ["podman-arr-root.target"];
           };
         };
-        # container
+      };
+      # container
+      virtualisation.oci-containers.containers = {
         "cpai" = {
           image = "codeproject/ai-server:latest";
           log-driver = "journald";
