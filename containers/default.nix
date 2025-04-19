@@ -5,7 +5,7 @@
     ./backend-network # backend network - for inter container comms not on main lan
     ./cpai
     ./doubletake
-    ./dms # todo
+    ./dms
     ./haos # home assistant, cloud free home automation
     ./headscale # testing ground for tailscale replacement - vpn for remote connections to lan
     ./immich # self-hosted image server
@@ -41,6 +41,7 @@
       ExecStop = "podman network rm -f internal";
     };
   };
+
   # from compose2nix:
   # Enable container name DNS for non-default Podman networks.
   # https://github.com/NixOS/nixpkgs/issues/226365
