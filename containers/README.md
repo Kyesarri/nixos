@@ -4,11 +4,9 @@ containers are now moving to an internal network titled 'internal' with nginx
 chilling infront of all containers. this leaves way less configuration options
 for each container and simplifies all processes adding more in the future.
 
-what this means is lots of updates to the containers, lots less macvlan configurations as nginx-lan will be handling all
-containers running on erying.
+what this means is lots of updates to the containers, lots less macvlan configurations as nginx-lan will be handling all containers running on erying.
 
-also adding some systemd services per container to manage volumes (removing /etc/oci.cont/contName for most), networking,
-starting and stopping the containers.
+also adding some systemd services per container to manage volumes (removing /etc/oci.cont/contName for most), networking, starting and stopping the containers.
 
 really the configs are changing to how it should have been from the start, rather than the mess it's ended up being :)
 
