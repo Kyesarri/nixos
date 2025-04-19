@@ -3,6 +3,7 @@
     ./adguard # dns + dhcp + adblock
     ./arr # arr stack
     ./backend-network # backend network - for inter container comms not on main lan
+    ./cpai
     ./dms # todo
     ./haos # home assistant, cloud free home automation
     ./headscale # testing ground for tailscale replacement - vpn for remote connections to lan
