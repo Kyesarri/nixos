@@ -12,6 +12,7 @@
   hardware = {
     cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
     enableRedistributableFirmware = lib.mkDefault true;
+    nvidia-container-toolkit.enable = true;
 
     sensor.hddtemp = {
       enable = true;
