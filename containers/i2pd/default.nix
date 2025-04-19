@@ -48,7 +48,7 @@ in {
               RemainAfterExit = true;
             };
             script = ''
-              podman volume inspect .i2pd || podman volume create .i2pd && \
+              podman volume inspect i2pd-2 || podman volume create i2pd-2 && \
               podman volume inspect i2pd || podman volume create i2pd
             '';
             partOf = ["podman-i2pd-root.target"];
@@ -65,7 +65,7 @@ in {
           };
           volumes = [
             "/etc/localtime:/etc/localtime:ro"
-            ".i2pd:/home/.i2pd/"
+            "i2pd-2:/home/.i2pd/"
             "i2pd:/home/i2pd/"
           ];
           # cmd = ["--http.address ${secrets.ip.i2pd}" "--port=${secrets.port.i2pd}"];
