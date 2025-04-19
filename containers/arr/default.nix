@@ -3,7 +3,6 @@ arr - a stack of containers for managing downloads
 radarr, sonarr, bazarr, readarr and pyload-ng
 */
 {
-  secrets, # temp - mkoption for ip on macvlan
   config,
   pkgs,
   lib,
@@ -155,43 +154,6 @@ in {
             partOf = ["podman-arr-root.target"];
             wantedBy = ["podman-arr-root.target"];
           };
-          # nginx container
-          "podman-arr-nginx" = {
-            serviceConfig = {Restart = lib.mkOverride 90 "always";};
-            after = [
-              "podman-network-arr.service"
-              "podman-volume-arr-nginx.service"
-              "podman-volume-arr-nginx-letsencrypt.service"
-            ];
-            requires = [
-              "podman-network-arr.service"
-              "podman-volume-arr-nginx.service"
-              "podman-volume-arr-nginx-letsencrypt.service"
-            ];
-            partOf = ["podman-arr-root.target"];
-            wantedBy = ["podman-arr-root.target"];
-          };
-          # nginx volumes
-          "podman-volume-arr-nginx" = {
-            path = [pkgs.podman];
-            serviceConfig = {
-              Type = "oneshot";
-              RemainAfterExit = true;
-            };
-            script = ''podman volume inspect arr-nginx || podman volume create arr-nginx'';
-            partOf = ["podman-arr-root.target"];
-            wantedBy = ["podman-arr-root.target"];
-          };
-          "podman-volume-arr-nginx-letsencrypt" = {
-            path = [pkgs.podman];
-            serviceConfig = {
-              Type = "oneshot";
-              RemainAfterExit = true;
-            };
-            script = ''podman volume inspect arr-nginx-letsencrypt || podman volume create arr-nginx-letsencrypt'';
-            partOf = ["podman-arr-root.target"];
-            wantedBy = ["podman-arr-root.target"];
-          };
           # download dir shared between all containers - #TODO change where this is stored via script
           "podman-volume-arr-downloads" = {
             path = [pkgs.podman];
@@ -282,25 +244,6 @@ in {
           extraOptions = [
             "--network-alias=pyload"
             "--network=arr"
-          ];
-        };
-        "arr-nginx" = {
-          image = "docker.io/jc21/nginx-proxy-manager:latest";
-          log-driver = "journald";
-          environment = {
-            TZ = "${cfg.timeZone}";
-            # PUID = "1000";
-            # PGID = "1000";
-          };
-          volumes = [
-            "/etc/localtime:/etc/localtime:ro"
-            "arr-nginx:/data:rw"
-            "arr-nginx-letsencrypt:/etc/letsencrypt:rw"
-          ];
-          extraOptions = [
-            "--network-alias=nginx"
-            "--network=macvlan_lan:ip=${secrets.ip.nginx-arr},interface_name=eth0" # temp - mkoption for ip on macvlan
-            "--network=arr:interface_name=eth1"
           ];
         };
       };
