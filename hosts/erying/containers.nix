@@ -8,7 +8,6 @@
     ../../containers
 
     # all containers below have static configs
-    ../../containers/cpai
     ../../containers/doubletake
     ../../containers/emqx
     ../../containers/esphome
@@ -47,6 +46,8 @@
     };
     #
     arr.enable = true;
+    cpai.enable = true;
+
     #
     backend-network = {
       enable = true;
