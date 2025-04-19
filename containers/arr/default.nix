@@ -1,6 +1,7 @@
 /*
 arr - a stack of containers for managing downloads
-radarr, sonarr, bazarr, readarr and pyload-ng
+radarr, sonarr, bazarr and pyload-ng
+#TODO readarr
 */
 {
   config,
