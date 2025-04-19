@@ -1,40 +1,89 @@
+/**/
 {
-  secrets,
+  config,
+  pkgs,
   lib,
   ...
-}: let
-  contName = "cpai";
-
-  dir1 = "/etc/oci.cont/${contName}/etc/codeproject/ai";
-
-  dir2 = "/etc/oci.cont/${contName}/app/modules";
+}:
+with lib; let
+  cfg = config.cont.cpai;
 in {
-  system.activationScripts.makeCodeProjectDir = lib.stringAfter ["var"] ''mkdir -v -p ${toString dir1} ${toString dir2} & chown 1000:1000 ${toString dir1} & chown 1000:1000 ${toString dir2}  '';
-
-  networking.firewall.allowedTCPPorts = [32168];
-
-  virtualisation.oci-containers.containers.${contName} = {
-    hostname = "${contName}";
-
-    autoStart = true;
-
-    image = "codeproject/ai-server:latest";
-
-    volumes = [
-      "/etc/localtime:/etc/localtime:ro"
-      "${toString dir1}:/etc/codeproject/ai"
-      "${toString dir2}:/app/modules"
-    ];
-
-    environment = {
-      PUID = "1000";
-      PGID = "1000";
+  options.cont.cpai = {
+    enable = mkOption {
+      type = types.bool;
+      default = false;
     };
-
-    extraOptions = [
-      "--network=macvlan_lan"
-      "--ip=${secrets.ip.cpai}"
-      # "--device=/dev/apex_0:/dev/apex_0" # google coral
-    ];
+    timeZone = mkOption {
+      type = types.str;
+      default = "Australia/Melbourne";
+    };
   };
+
+  config = mkMerge [
+    (mkIf (cfg.enable == true) {
+      systemd = {
+        targets."podman-cpai-root" = {
+          unitConfig = {Description = "root target";};
+          wantedBy = ["multi-user.target"];
+        };
+        services = {
+          # container
+          "podman-cpai" = {
+            serviceConfig = {Restart = lib.mkOverride 90 "always";};
+            after = [
+              "podman-network-internal.service"
+              "podman-volume-cpai.service"
+              "podman-volume-cpai-modules.service"
+            ];
+            requires = [
+              "podman-network-internal.service"
+              "podman-volume-cpai-data.service"
+              "podman-volume-cpai-modules.service"
+            ];
+            partOf = ["podman-cpai-root.target"];
+            wantedBy = ["podman-cpai-root.target"];
+          };
+          # data volume
+          "podman-volume-cpai-data" = {
+            path = [pkgs.podman];
+            serviceConfig = {
+              Type = "oneshot";
+              RemainAfterExit = true;
+            };
+            script = ''podman volume inspect cpai-data || podman volume create cpai-data'';
+            partOf = ["podman-arr-root.target"];
+            wantedBy = ["podman-arr-root.target"];
+          };
+          # module volume
+          "podman-volume-cpai-modules" = {
+            path = [pkgs.podman];
+            serviceConfig = {
+              Type = "oneshot";
+              RemainAfterExit = true;
+            };
+            script = ''podman volume inspect cpai-modules || podman volume create cpai-modules'';
+            partOf = ["podman-arr-root.target"];
+            wantedBy = ["podman-arr-root.target"];
+          };
+        };
+        # container
+        "cpai" = {
+          image = "codeproject/ai-server:latest";
+          log-driver = "journald";
+          environment = {
+            TZ = "${cfg.timeZone}";
+          };
+          volumes = [
+            "/etc/localtime:/etc/localtime:ro"
+            "cpai-data:/etc/codeproject/ai"
+            "cpai-modules:/app/modules"
+          ];
+          extraOptions = [
+            "--network-alias=cpai"
+            "--network=internal"
+          ];
+        };
+      };
+    })
+  ];
 }
