@@ -161,15 +161,17 @@ in {
             after = [
               "podman-network-arr.service"
               "podman-volume-arr-nginx.service"
+              "podman-volume-arr-letsencrypt.service"
             ];
             requires = [
               "podman-network-arr.service"
               "podman-volume-arr-nginx.service"
+              "podman-volume-arr-letsencrypt.service"
             ];
             partOf = ["podman-arr-root.target"];
             wantedBy = ["podman-arr-root.target"];
           };
-          # nginx volume
+          # nginx volumes
           "podman-volume-arr-nginx" = {
             path = [pkgs.podman];
             serviceConfig = {
@@ -177,6 +179,16 @@ in {
               RemainAfterExit = true;
             };
             script = ''podman volume inspect arr-nginx || podman volume create arr-nginx'';
+            partOf = ["podman-arr-root.target"];
+            wantedBy = ["podman-arr-root.target"];
+          };
+          "podman-volume-arr-letsencrypt" = {
+            path = [pkgs.podman];
+            serviceConfig = {
+              Type = "oneshot";
+              RemainAfterExit = true;
+            };
+            script = ''podman volume inspect arr-nginx-letsencrypt || podman volume create arr-nginx-letsencrypt'';
             partOf = ["podman-arr-root.target"];
             wantedBy = ["podman-arr-root.target"];
           };
@@ -273,7 +285,7 @@ in {
           ];
         };
         "arr-nginx" = {
-          image = "docker.io/jc21/nginx-proxy-manager:latest";
+          image = "docker.io/jc21/nginx-proxy-mletsencryptanager:latest";
           log-driver = "journald";
           environment = {
             TZ = "${cfg.timeZone}";
@@ -282,8 +294,8 @@ in {
           };
           volumes = [
             "/etc/localtime:/etc/localtime:ro"
-            "arr-nginx/data:/data:rw"
-            "arr-nginx/letsencrypt:/etc/letsencrypt:rw"
+            "arr-nginx:/data:rw"
+            "arr-nginx-letsencrypt:/etc/letsencrypt:rw"
           ];
           extraOptions = [
             "--network-alias=nginx"
