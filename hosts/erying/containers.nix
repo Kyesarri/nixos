@@ -60,10 +60,8 @@
     dms = {
       # ERROR start-mailserver.sh: Setting hostname/domainname is required
       # Fatal: Invalid system hostname: 'www.***'
-      enable = false; # this one needs lots of work and will probs be forgotten about :)
+      enable = true; # this one needs lots of work and will probs be forgotten about :)
       fqdn = "${secrets.domain.fqdn}";
-      macvlanIp = "${secrets.ip.dms}";
-      vlanIp = "${secrets.vlan.erying.dms}";
     };
     #
     radicale = {
@@ -154,8 +152,6 @@
     path = [pkgs.podman];
     wantedBy = [
       "podman-adguard-${config.networking.hostName}.service"
-      "podman-cpai.service"
-      "podman-doubletake.service"
       "podman-emqx.service"
       "podman-esphome.service"
       "podman-frigate.service"
