@@ -3,6 +3,7 @@ Jellyfin is a Free Software Media System that puts you in control of managing an
 */
 {
   config,
+  pkgs,
   lib,
   ...
 }:
