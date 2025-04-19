@@ -52,7 +52,7 @@ in {
             wantedBy = ["podman-dms-root.target"];
           };
           # volume
-          "podman-volume-dms-volumes" = {
+          "podman-volumes-dms" = {
             path = [pkgs.podman];
             serviceConfig = {
               Type = "oneshot";
