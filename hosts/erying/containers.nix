@@ -33,7 +33,6 @@
     };
   };
 
-  # trying to keep naming to "service-host-name*-feature*" ex - tailscale-nix-erying-subnet - haos-nix-erying
   cont = {
     #
     adguard = {
@@ -48,7 +47,10 @@
     arr.enable = true;
     cpai.enable = true;
     doubletake.enable = true;
-
+    headscale.enable = false;
+    haos.enable = true;
+    jellyfin.enable = true;
+    ztnet.enable = true;
     #
     backend-network = {
       enable = true;
@@ -58,9 +60,8 @@
     };
     #
     dms = {
-      # ERROR start-mailserver.sh: Setting hostname/domainname is required
-      # Fatal: Invalid system hostname: 'www.***'
-      enable = true; # this one needs lots of work and will probs be forgotten about :)
+      # start-mailserver.sh: You need at least one mail account to start Dovecot (120s left for account creation before shutdown)
+      enable = true;
       fqdn = "${secrets.domain.fqdn}";
     };
     #
@@ -70,26 +71,6 @@
       vlanIp = "${secrets.vlan.erying.radicale}";
     };
     #
-    haos = {
-      enable = true;
-      autoStart = true;
-      macvlanIp = "${secrets.ip.haos-erying}";
-      vlanIp = "${secrets.vlan.erying.haos}";
-      image = "ghcr.io/home-assistant/home-assistant:beta";
-      contName = "haos-${config.networking.hostName}";
-    };
-    #
-    headscale = {
-      enable = false;
-      macvlanIp = "${secrets.ip.headscale}";
-      derp = {
-        enable = false;
-      };
-      ui = {
-        enable = false;
-      };
-    };
-    #
     nginx-lan = {
       enable = true;
       macvlanIp = "${secrets.ip.nginx-lan}";
@@ -97,11 +78,6 @@
       image = "docker.io/jc21/nginx-proxy-manager:latest";
       contName = "nginx-lan-${config.networking.hostName}";
       timeZone = "Australia/Melbourne";
-    };
-    #
-    jellyfin = {
-      enable = true;
-      vlanIp = "${secrets.vlan.erying.jellyfin}";
     };
     #
     nginx-wan = {
@@ -144,7 +120,6 @@
         password = "${secrets.password.zigbee2mqtt-emqx}";
       };
     };
-    ztnet.enable = true;
   };
 
   # macvlan config
@@ -158,7 +133,6 @@
       "podman-ghost.service"
       "podman-ghost-db.service"
       "podman-haos-${config.networking.hostName}.service"
-      "podman-headscale-${config.networking.hostName}.service"
       "podman-homer.service"
       "podman-matter.service"
       "podman-nginx-lan-${config.networking.hostName}.service"
