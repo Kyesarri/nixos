@@ -55,24 +55,24 @@ in {
             wantedBy = ["podman-i2pd-root.target"];
           };
         };
+      };
 
-        virtualisation.oci-containers.containers = {
-          "i2pd" = {
-            image = "purplei2p/i2pd:latest";
-            environment = {
-              TZ = "${cfg.timeZone}";
-            };
-            volumes = [
-              "/etc/localtime:/etc/localtime:ro"
-              ".i2pd:/home/.i2pd/"
-              "i2pd:/home/i2pd/"
-            ];
-            # cmd = ["--http.address ${secrets.ip.i2pd}" "--port=${secrets.port.i2pd}"];
-            extraOptions = [
-              "--network-alias=i2pd"
-              "--network=internal"
-            ];
+      virtualisation.oci-containers.containers = {
+        "i2pd" = {
+          image = "purplei2p/i2pd:latest";
+          environment = {
+            TZ = "${cfg.timeZone}";
           };
+          volumes = [
+            "/etc/localtime:/etc/localtime:ro"
+            ".i2pd:/home/.i2pd/"
+            "i2pd:/home/i2pd/"
+          ];
+          # cmd = ["--http.address ${secrets.ip.i2pd}" "--port=${secrets.port.i2pd}"];
+          extraOptions = [
+            "--network-alias=i2pd"
+            "--network=internal"
+          ];
         };
       };
     })
