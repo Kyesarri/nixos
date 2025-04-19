@@ -289,8 +289,8 @@ in {
           log-driver = "journald";
           environment = {
             TZ = "${cfg.timeZone}";
-            PUID = "1000";
-            PGID = "1000";
+            # PUID = "1000";
+            # PGID = "1000";
           };
           volumes = [
             "/etc/localtime:/etc/localtime:ro"
