@@ -10,75 +10,64 @@ in {
     enable = mkOption {
       type = types.bool;
       default = false;
-      example = true;
-      description = "enable home-assistant container";
-    };
-    autoStart = mkOption {
-      type = types.bool;
-      default = true;
-      example = false;
-      description = "toggle automatic starting of container";
-    };
-    macvlanIp = mkOption {
-      type = types.str;
-      default = "192.69.4.20";
-      example = "192.168.0.100";
-      description = "container internal vlan ip address";
-    };
-    vlanIp = mkOption {
-      type = types.str;
-      default = "10.10.0.200";
-      example = "10.10.10.1";
-      description = "container internal vlan ip address";
-    };
-    contName = mkOption {
-      type = types.str;
-      default = "home-assistant-${config.networking.hostName}";
-      example = "haos-myhouse";
-      description = "container name and mount point name under /etc/oci.cont/";
     };
     timeZone = mkOption {
       type = types.str;
       default = "Australia/Melbourne";
-      example = "Australia/Broken_Hill";
-      description = "database timezone";
-    };
-    image = mkOption {
-      type = types.str;
-      default = "ghcr.io/home-assistant/home-assistant:latest";
-      example = "ghcr.io/home-assistant/home-assistant:beta";
-      description = "container image";
     };
   };
 
   config = mkMerge [
     (mkIf (cfg.enable == true) {
-      system.activationScripts."make${cfg.contName}Dir" =
-        lib.stringAfter ["var"]
-        ''mkdir -v -p /etc/oci.cont/${cfg.contName} && chown -R 1000:1000 /etc/oci.cont/${cfg.contName}'';
-
-      environment.shellAliases = {cont-haos = "sudo podman pull ${cfg.image}";};
-
-      virtualisation.oci-containers.containers."${cfg.contName}" = {
-        hostname = "${cfg.contName}";
-
-        autoStart = cfg.autoStart;
-
-        image = "${cfg.image}";
-
-        volumes = [
-          "/etc/localtime:/etc/localtime:ro"
-          "/etc/oci.cont/${cfg.contName}:/config"
-        ];
-
-        environment = {
-          TZ = "${cfg.timeZone}";
+      systemd = {
+        targets."podman-haos-root" = {
+          unitConfig = {Description = "root target";};
+          wantedBy = ["multi-user.target"];
         };
-
-        extraOptions = [
-          "--network=podman-backend:ip=${cfg.vlanIp}"
-          "--network=macvlan_lan:ip=${cfg.macvlanIp}"
-        ];
+        services = {
+          # container
+          "podman-haos" = {
+            serviceConfig = {Restart = lib.mkOverride 90 "always";};
+            after = [
+              "podman-network-internal.service"
+              "podman-volume-haos.service"
+            ];
+            requires = [
+              "podman-network-internal.service"
+              "podman-volume-haos.service"
+            ];
+            partOf = ["podman-haos-root.target"];
+            wantedBy = ["podman-haos-root.target"];
+          };
+          # volume
+          "podman-volume-haos" = {
+            path = [pkgs.podman];
+            serviceConfig = {
+              Type = "oneshot";
+              RemainAfterExit = true;
+            };
+            script = ''podman volume inspect haos || podman volume create haos'';
+            partOf = ["podman-haos-root.target"];
+            wantedBy = ["podman-haos-root.target"];
+          };
+        };
+      };
+      virtualisation.oci-containers.containers = {
+        "haos" = {
+          image = "ghcr.io/home-assistant/home-assistant:latest";
+          environment = {
+            TZ = "${cfg.timeZone}";
+          };
+          volumes = [
+            "/etc/localtime:/etc/localtime:ro"
+            "haos:/config"
+          ];
+          extraOptions = [
+            "--network-alias=haos"
+            "--privileged"
+            "--network=internal"
+          ];
+        };
       };
     })
   ];
