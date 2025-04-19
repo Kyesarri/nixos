@@ -161,12 +161,12 @@ in {
             after = [
               "podman-network-arr.service"
               "podman-volume-arr-nginx.service"
-              "podman-volume-arr-letsencrypt.service"
+              "podman-volume-arr-nginx-letsencrypt.service"
             ];
             requires = [
               "podman-network-arr.service"
               "podman-volume-arr-nginx.service"
-              "podman-volume-arr-letsencrypt.service"
+              "podman-volume-arr-nginx-letsencrypt.service"
             ];
             partOf = ["podman-arr-root.target"];
             wantedBy = ["podman-arr-root.target"];
