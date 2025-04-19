@@ -17,10 +17,6 @@ in {
       type = types.bool;
       default = false;
     };
-    contName = mkOption {
-      type = types.str;
-      default = "arr-${config.networking.hostName}";
-    };
     timeZone = mkOption {
       type = types.str;
       default = "Australia/Melbourne";
