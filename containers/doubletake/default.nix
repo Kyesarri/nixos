@@ -1,34 +1,77 @@
+/**/
 {
+  config,
+  pkgs,
   lib,
-  secrets,
   ...
-}: let
-  contName = "double-take";
-
-  dir1 = "/etc/oci.cont/${contName}";
+}:
+with lib; let
+  cfg = config.cont.doubletake;
 in {
-  system.activationScripts."make${contName}Dir" = lib.stringAfter ["var"] ''mkdir -v -p ${toString dir1} & chown 1000:1000 ${toString dir1}'';
-
-  virtualisation.oci-containers.containers."${contName}" = {
-    hostname = "${contName}";
-
-    autoStart = true;
-
-    image = "skrashevich/double-take:latest";
-
-    volumes = [
-      "/etc/localtime:/etc/localtime:ro"
-      "${toString dir1}:/.storage"
-    ];
-
-    environment = {
-      PUID = "1000";
-      PGID = "1000";
+  options.cont.doubletake = {
+    enable = mkOption {
+      type = types.bool;
+      default = false;
     };
-
-    extraOptions = [
-      "--network=macvlan_lan"
-      "--ip=${secrets.ip.doubletake}"
-    ];
+    timeZone = mkOption {
+      type = types.str;
+      default = "Australia/Melbourne";
+    };
   };
+
+  config = mkMerge [
+    (mkIf (cfg.enable == true) {
+      systemd = {
+        targets."podman-doubletake-root" = {
+          unitConfig = {Description = "root target";};
+          wantedBy = ["multi-user.target"];
+        };
+        services = {
+          # container
+          "podman-doubletake" = {
+            serviceConfig = {Restart = lib.mkOverride 90 "always";};
+            after = [
+              "podman-network-internal.service"
+              "podman-volume-doubletake.service"
+            ];
+            requires = [
+              "podman-network-internal.service"
+              "podman-volume-doubletake.service"
+            ];
+            partOf = ["podman-doubletake-root.target"];
+            wantedBy = ["podman-doubletake-root.target"];
+          };
+          # volume
+          "podman-volume-doubletake" = {
+            path = [pkgs.podman];
+            serviceConfig = {
+              Type = "oneshot";
+              RemainAfterExit = true;
+            };
+            script = ''podman volume inspect doubletake || podman volume create doubletake'';
+            partOf = ["podman-doubletake-root.target"];
+            wantedBy = ["podman-doubletake-root.target"];
+          };
+        };
+      };
+      # container
+      virtualisation.oci-containers.containers = {
+        "doubletake" = {
+          image = "skrashevich/double-take:latest";
+          log-driver = "journald";
+          environment = {
+            TZ = "${cfg.timeZone}";
+          };
+          volumes = [
+            "/etc/localtime:/etc/localtime:ro"
+            "doubletake:./storage:rw"
+          ];
+          extraOptions = [
+            "--network-alias=doubletake"
+            "--network=internal"
+          ];
+        };
+      };
+    })
+  ];
 }

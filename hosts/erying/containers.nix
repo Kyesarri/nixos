@@ -47,6 +47,7 @@
     #
     arr.enable = true;
     cpai.enable = true;
+    doubletake.enable = true;
 
     #
     backend-network = {
