@@ -9,27 +9,6 @@
 in {
   system.activationScripts.makeCodeProjectDir = lib.stringAfter ["var"] ''mkdir -v -p ${toString dir1} & chown 1000:1000 ${toString dir1}'';
 
-  virtualisation.oci-containers.containers.${contName} = {
-    hostname = "${contName}";
+  virtualisation.oci-containers.containers.
 
-    autoStart = true;
-
-    image = "ghcr.io/home-assistant-libs/python-matter-server:stable";
-
-    volumes = [
-      "/run/dbus:/run/dbus:ro"
-      "/etc/localtime:/etc/localtime:ro"
-      "${toString dir1}:/data"
-    ];
-
-    environment = {
-      PUID = "1000";
-      PGID = "1000";
-    };
-
-    extraOptions = [
-      "--network=macvlan_lan"
-      "--ip=${secrets.ip.matter}"
-    ];
-  };
 }

@@ -69,6 +69,25 @@ in {
             "--network=internal"
           ];
         };
+        "haos-matter" = {
+          image = "ghcr.io/home-assistant-libs/python-matter-server:stable";
+
+          volumes = [
+            "/run/dbus:/run/dbus:ro"
+            "/etc/localtime:/etc/localtime:ro"
+            "${toString dir1}:/data"
+          ];
+
+          environment = {
+            PUID = "1000";
+            PGID = "1000";
+          };
+
+          extraOptions = [
+            "--network=macvlan_lan"
+            "--ip=${secrets.ip.matter}"
+          ];
+        };
       };
     })
   ];
