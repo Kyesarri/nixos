@@ -15,7 +15,6 @@
     ../../containers/ghost
     ../../containers/homer
     ../../containers/i2pd
-    ../../containers/matter
     ../../containers/orcaslicer
     ../../containers/overseerr
     # ../../containers/netbird # this wont work out the box :D
