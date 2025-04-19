@@ -50,32 +50,30 @@ in {
           partOf = ["podman-haos-root.target"];
           wantedBy = ["podman-haos-root.target"];
         };
-        services = {
-          # container
-          "podman-haos-matter" = {
-            serviceConfig = {Restart = lib.mkOverride 90 "always";};
-            after = [
-              "podman-network-internal.service"
-              "podman-volume-haos-matter.service"
-            ];
-            requires = [
-              "podman-network-internal.service"
-              "podman-volume-haos-matter.service"
-            ];
-            partOf = ["podman-haos-root.target"];
-            wantedBy = ["podman-haos-root.target"];
+        # container
+        "podman-haos-matter" = {
+          serviceConfig = {Restart = lib.mkOverride 90 "always";};
+          after = [
+            "podman-network-internal.service"
+            "podman-volume-haos-matter.service"
+          ];
+          requires = [
+            "podman-network-internal.service"
+            "podman-volume-haos-matter.service"
+          ];
+          partOf = ["podman-haos-root.target"];
+          wantedBy = ["podman-haos-root.target"];
+        };
+        # volume
+        "podman-volume-haos-matter" = {
+          path = [pkgs.podman];
+          serviceConfig = {
+            Type = "oneshot";
+            RemainAfterExit = true;
           };
-          # volume
-          "podman-volume-haos" = {
-            path = [pkgs.podman];
-            serviceConfig = {
-              Type = "oneshot";
-              RemainAfterExit = true;
-            };
-            script = ''podman volume inspect haos-matter || podman volume create haos-matter'';
-            partOf = ["podman-haos-root.target"];
-            wantedBy = ["podman-haos-root.target"];
-          };
+          script = ''podman volume inspect haos-matter || podman volume create haos-matter'';
+          partOf = ["podman-haos-root.target"];
+          wantedBy = ["podman-haos-root.target"];
         };
       };
       virtualisation.oci-containers.containers = {
