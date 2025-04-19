@@ -182,7 +182,7 @@ in {
             partOf = ["podman-arr-root.target"];
             wantedBy = ["podman-arr-root.target"];
           };
-          "podman-volume-arr-letsencrypt" = {
+          "podman-volume-arr-nginx-letsencrypt" = {
             path = [pkgs.podman];
             serviceConfig = {
               Type = "oneshot";
@@ -285,7 +285,7 @@ in {
           ];
         };
         "arr-nginx" = {
-          image = "docker.io/jc21/nginx-proxy-mletsencryptanager:latest";
+          image = "docker.io/jc21/nginx-proxy-manager:latest";
           log-driver = "journald";
           environment = {
             TZ = "${cfg.timeZone}";
