@@ -14,7 +14,6 @@
     ../../containers/frigate
     ../../containers/ghost
     ../../containers/homer
-    ../../containers/i2pd
     ../../containers/orcaslicer
     ../../containers/overseerr
     # ../../containers/netbird # this wont work out the box :D
@@ -48,6 +47,7 @@
     doubletake.enable = true;
     headscale.enable = false;
     haos.enable = true;
+    i2pd.enable = true;
     jellyfin.enable = true;
     ztnet.enable = true;
     #

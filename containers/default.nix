@@ -8,6 +8,7 @@
     ./dms
     ./haos # home assistant, cloud free home automation
     ./headscale # testing ground for tailscale replacement - vpn for remote connections to lan
+    ./i2pd
     ./immich # self-hosted image server
     ./jellyfin # opensource media server / streamer
     ./nginx-lan # reverse proxy for local services
