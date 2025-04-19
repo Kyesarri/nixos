@@ -64,7 +64,7 @@ in {
           };
           volumes = [
             "/etc/localtime:/etc/localtime:ro"
-            "doubletake:./storage:rw"
+            "doubletake:/.storage:rw"
           ];
           extraOptions = [
             "--network-alias=doubletake"
