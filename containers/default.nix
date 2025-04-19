@@ -23,6 +23,22 @@
     ./ztnet # testing - ztnet container lots going on here is WIP
   ];
 
+  systemd.targets."podman-internal-root" = {
+    unitConfig = {Description = "internal network root target";};
+    wantedBy = ["multi-user.target"];
+  };
+
+  systemd.services."podman-network-internal" = {
+    script = ''podman network inspect internal || podman network create internal'';
+    partOf = ["podman-internal-root.target"];
+    wantedBy = ["podman-internal-root.target"];
+    path = [pkgs.podman];
+    serviceConfig = {
+      Type = "oneshot";
+      RemainAfterExit = true;
+      ExecStop = "podman network rm -f internal";
+    };
+  };
   # from compose2nix:
   # Enable container name DNS for non-default Podman networks.
   # https://github.com/NixOS/nixpkgs/issues/226365
