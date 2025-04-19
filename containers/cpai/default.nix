@@ -51,8 +51,8 @@ in {
               RemainAfterExit = true;
             };
             script = ''podman volume inspect cpai-data || podman volume create cpai-data'';
-            partOf = ["podman-arr-root.target"];
-            wantedBy = ["podman-arr-root.target"];
+            partOf = ["podman-cpai-root.target"];
+            wantedBy = ["podman-cpai-root.target"];
           };
           # module volume
           "podman-volume-cpai-modules" = {
