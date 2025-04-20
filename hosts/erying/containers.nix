@@ -8,7 +8,6 @@
     ../../containers
 
     # all containers below have static configs
-    ../../containers/doubletake
     ../../containers/emqx
     ../../containers/esphome
     ../../containers/frigate
