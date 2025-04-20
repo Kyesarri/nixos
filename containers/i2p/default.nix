@@ -1,22 +1,13 @@
 /*
-The Invisible Internet Project (I2P) is a fully encrypted private network layer.
-It protects your activity and location. Every day people use the network to connect
-with people without worry of being tracked or their data being collected.
-In some cases people rely on the network when they need to be discrete or are doing sensitive work.
-*/
-/*
-4444 	127.0.0.1 	HTTP Proxy 	TCP
-4445 	127.0.0.1 	HTTPS Proxy 	TCP
-6668 	127.0.0.1 	IRC Proxy 	TCP
-7654 	127.0.0.1 	I2CP Protocol 	TCP
-7656 	127.0.0.1 	SAM Bridge TCP 	TCP
-7657 	127.0.0.1 	Router console 	TCP
-7658 	127.0.0.1 	I2P Site 	TCP
-7659 	127.0.0.1 	SMTP Proxy 	TCP
-7660 	127.0.0.1 	POP3 Proxy 	TCP
-7652 	LAN interface 	UPnP 	TCP
-7653 	LAN interface 	UPnP 	UDP
-12345 	0.0.0.0 	I2NP Protocol 	TCP and UDP
+Enjoy a smooth and private browsing experience on multiple networks
+(like https://diva.exchange or also onion and i2p sites like http://diva.i2p or
+http://kopanyoc2lnsx5qwpslkik4uccej6zqna7qq2igbofhmb2qxwflwfqad.onion).
+Use your favourite browser (like Firefox). Hence it should be suitable for beginners.
+
+Please note: an entry-level setup is only a first - yet necessary - step to protect your privacy.
+You need to change your behaviour to protect your online privacy (like: use NoScript, AdBlock). Also fingerprinting
+(a hash of your online footprint) and obviously login data is threatening your privacy.
+This project helps you to get started with private browsing.
 */
 {
   config,
@@ -76,10 +67,26 @@ in {
           };
         };
       };
+      /*
+      List of Used Environment Variables
+      The following environment variables can be used withinthe I2Pd configuration file:
 
+      Set ENABLE_HTTPPROXY to 1 (true) or 0 (false) to enable the HTTP proxy. Defaults to 0.
+      Use PORT_HTTPPROXY to define the http proxy port. Defaults to 4444.
+      Set ENABLE_SOCKSPROXY to 1 (true) or 0 (false) to enable the SOCKS proxy. Defaults to 0.
+      Use PORT_SOCKSPROXY to define the socks proxy port. Defaults to 4445.
+      Set ENABLE_SAM to 1 (true) or 0 (false) to enable the SAM bridge. Defaults to 0.
+      Use PORT_SAM to define the SAM bridge port. Defaults to 7656.
+      Set ENABLE_FLOODFILL to 1 (true) or 0 (false) to create a floodfill router. Defaults to 0.
+      Set BANDWIDTH to control or limit the bandwidth used by the router. Use "L" (32KBs/sec), "O" (256KBs/sec), "P" (2048KBs/sec) or "X" (unlimited). By default, the bandwidth is set to "L" for non-floodfill routers and to "X" for floodfill routers.
+      Set TRANSIT_SHARE to a value between 0 (zero) and 100 to limit the bandwidth used by the router for transit. Defaults to 100.
+      Set ENABLE_UPNP to 1 (true) or 0 (false) to enable UPNP. Defaults to 0 (false).
+      Set ENABLE_HIDDEN to 1 (true) or 0 (false) to enable hidden mode. Defaults to 0 (false).
+      Set LOGLEVEL to the desired logging level: debug, info, warn, error or none. Defaults to info.
+      */
       virtualisation.oci-containers.containers = {
         "i2p" = {
-          image = "geti2p/i2p:latest";
+          image = "divax/i2p:current";
           log-driver = "journald";
           environment = {
             TZ = "${cfg.timeZone}";
