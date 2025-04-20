@@ -1,7 +1,7 @@
 /*
 Enjoy a smooth and private browsing experience on multiple networks
 (like https://diva.exchange or also onion and i2p sites like http://diva.i2p or
-http://kopanyoc2lnsx5qwpslkik4uccej6zqna7qq2igbofhmb2qxwflwfqad.onion).
+http://kopanyoc2lnsx5qwpslkik4uccej6zqna7qq2igbofhmb2qxwflwfqad.onion)
 Use your favourite browser (like Firefox). Hence it should be suitable for beginners.
 
 Please note: an entry-level setup is only a first - yet necessary - step to protect your privacy.
