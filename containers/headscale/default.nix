@@ -40,6 +40,18 @@ in {
             partOf = ["podman-headscale-root.target"];
             wantedBy = ["podman-headscale-root.target"];
           };
+          "podman-headscale-ui" = {
+            serviceConfig = {Restart = lib.mkOverride 90 "always";};
+            after = [
+              "podman-network-internal.service"
+              "podman-headscale.service"
+            ];
+            requires = [
+              "podman-network-internal.service"
+            ];
+            partOf = ["podman-headscale-root.target"];
+            wantedBy = ["podman-headscale-root.target"];
+          };
           "podman-derp" = {
             serviceConfig = {Restart = lib.mkOverride 90 "always";};
             after = [
@@ -85,7 +97,7 @@ in {
           log-driver = "journald";
           volumes = [
             "/etc/localtime:/etc/localtime:ro"
-            "headscale:/etc/headscale"
+            "headscale:/etc/headscale:rw"
           ];
           environment = {
             TZ = "${cfg.timeZone}";
