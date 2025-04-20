@@ -20,6 +20,65 @@ in {
 
   config = mkMerge [
     (mkIf (cfg.enable == true) {
+      systemd = {
+        targets."podman-headscale-root" = {
+          unitConfig = {Description = "root target";};
+          wantedBy = ["multi-user.target"];
+        };
+        services = {
+          # containers
+          "podman-headscale" = {
+            serviceConfig = {Restart = lib.mkOverride 90 "always";};
+            after = [
+              "podman-network-internal.service"
+              "podman-volume-headscale.service"
+            ];
+            requires = [
+              "podman-network-internal.service"
+              "podman-volume-headscale.service"
+            ];
+            partOf = ["podman-headscale-root.target"];
+            wantedBy = ["podman-headscale-root.target"];
+          };
+          "podman-derp" = {
+            serviceConfig = {Restart = lib.mkOverride 90 "always";};
+            after = [
+              "podman-network-internal.service"
+              "podman-volume-derp.service"
+            ];
+            requires = [
+              "podman-network-internal.service"
+              "podman-volume-derp.service"
+            ];
+            partOf = ["podman-headscale-root.target"];
+            wantedBy = ["podman-headscale-root.target"];
+          };
+          # volumes
+          "podman-volume-headscale" = {
+            path = [pkgs.podman];
+            serviceConfig = {
+              Type = "oneshot";
+              RemainAfterExit = true;
+            };
+            script = ''
+              podman volume inspect headscale || podman volume create headscale'';
+            partOf = ["podman-headscale-root.target"];
+            wantedBy = ["podman-headscale-root.target"];
+          };
+          "podman-volume-headscale-ui" = {
+            path = [pkgs.podman];
+            serviceConfig = {
+              Type = "oneshot";
+              RemainAfterExit = true;
+            };
+            script = ''
+              podman volume inspect derp || podman volume create derp'';
+            partOf = ["podman-headscale-root.target"];
+            wantedBy = ["podman-headscale-root.target"];
+          };
+        };
+      };
+
       virtualisation.oci-containers.containers = {
         "headscale" = {
           image = "headscale/headscale:latest";
@@ -65,10 +124,10 @@ in {
           ];
           environment = {
             TZ = "${cfg.timeZone}";
-            TAILSCALE_DERP_HOSTNAME = "${cfg.hostName}";
-            TAILSCALE_DERP_VERIFY_CLIENTS = "${cfg.verifyClients}";
-            TAILSCALE_DERP_CERTMODE = "${cfg.certMode}";
-            TAILSCALE_AUTH_KEY = "${cfg.authKey}";
+            TAILSCALE_DERP_HOSTNAME = "derp";
+            # TAILSCALE_DERP_VERIFY_CLIENTS = "${cfg.verifyClients}";
+            # TAILSCALE_DERP_CERTMODE = "${cfg.certMode}";
+            # TAILSCALE_AUTH_KEY = "${cfg.authKey}";
           };
           cmd = [];
           extraOptions = [
