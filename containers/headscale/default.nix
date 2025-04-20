@@ -77,7 +77,7 @@ in {
             partOf = ["podman-headscale-root.target"];
             wantedBy = ["podman-headscale-root.target"];
           };
-          "podman-volume-headscale-ui" = {
+          "podman-volume-derp" = {
             path = [pkgs.podman];
             serviceConfig = {
               Type = "oneshot";
