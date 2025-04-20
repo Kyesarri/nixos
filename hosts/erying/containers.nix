@@ -47,7 +47,7 @@
     doubletake.enable = true;
     headscale.enable = false;
     haos.enable = true;
-    i2pd.enable = true;
+    i2p.enable = true;
     jellyfin.enable = true;
     ztnet.enable = true;
     #

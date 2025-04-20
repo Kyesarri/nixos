@@ -63,13 +63,14 @@ in {
           log-driver = "journald";
           environment = {
             TZ = "${cfg.timeZone}";
+            http.strictheaders = "false";
           };
           volumes = [
             "/etc/localtime:/etc/localtime:ro"
             "i2pd-2:/home/.i2pd/"
             "i2pd:/home/i2pd/"
           ];
-          cmd = ["--http.address i2pd" "--port=54369"];
+          # cmd = ["--http.address i2pd" "--port=54369"];
           extraOptions = [
             "--network-alias=i2pd"
             "--network=internal"
