@@ -44,9 +44,9 @@
     ../../home/tailscale
     ../../home/zsh
   ];
-  colorscheme = inputs.nix-colors.colorSchemes.${spaghetti.scheme2};
+  colorscheme = inputs.nix-colors.colorSchemes.${spaghetti.scheme};
 
-  home-manager.users.${spaghetti.user}.colorscheme = inputs.nix-colors.colorSchemes.${spaghetti.scheme2};
+  home-manager.users.${spaghetti.user}.colorscheme = inputs.nix-colors.colorSchemes.${spaghetti.scheme};
 
   gnocchi = {
     hypr = {
