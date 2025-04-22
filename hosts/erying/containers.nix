@@ -29,6 +29,13 @@
   };
 
   cont = {
+    arr.enable = true;
+    cpai.enable = true;
+    doubletake.enable = true;
+    headscale.enable = false;
+    haos.enable = true;
+    i2p.enable = true;
+    ztnet.enable = true;
     #
     adguard = {
       enable = true;
@@ -38,14 +45,6 @@
       contName = "adguard-${config.networking.hostName}";
       timeZone = "Australia/Melbourne";
     };
-    #
-    arr.enable = true;
-    cpai.enable = true;
-    doubletake.enable = true;
-    headscale.enable = false;
-    haos.enable = true;
-    i2p.enable = true;
-    ztnet.enable = true;
     #
     backend-network = {
       enable = true;
@@ -133,7 +132,6 @@
       "podman-nginx-lan-${config.networking.hostName}.service"
       "podman-nginx-wan-${config.networking.hostName}.service"
       "podman-orcaslicer.service"
-      "podman-overseerr.service"
       "podman-radicale-${config.networking.hostName}.service"
       "podman-syncthing.service"
       "podman-tailscale-${config.networking.hostName}-subnet.service"

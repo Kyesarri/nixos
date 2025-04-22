@@ -168,7 +168,7 @@ in {
             wantedBy = ["podman-arr-root.target"];
           };
           # overseerr volume
-          "podman-volume-overseerr" = {
+          "podman-volume-arr-overseerr" = {
             path = [pkgs.podman];
             serviceConfig = {
               Type = "oneshot";
