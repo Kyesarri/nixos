@@ -10,7 +10,6 @@
     ./headscale # testing ground for tailscale replacement - vpn for remote connections to lan
     ./i2p
     ./immich # self-hosted image server
-    ./jellyfin # opensource media server / streamer
     ./nginx-lan # reverse proxy for local services
     ./nginx-wan # reverse proxy for webhosting
     ./nzbget # nzb client
