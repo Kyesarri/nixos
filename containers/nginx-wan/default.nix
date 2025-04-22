@@ -79,6 +79,7 @@ in {
 
         extraOptions = [
           "--network=macvlan_lan:ip=${cfg.macvlanIp}"
+          "--network=internal"
         ];
       };
     })
