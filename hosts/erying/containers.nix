@@ -42,7 +42,7 @@
     arr.enable = true;
     cpai.enable = true;
     doubletake.enable = true;
-    headscale.enable = true;
+    headscale.enable = false;
     haos.enable = true;
     i2p.enable = true;
     jellyfin.enable = true;
