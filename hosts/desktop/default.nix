@@ -39,6 +39,7 @@
     ../../home/kitty
     ../../home/ulauncher
     ../../home/virt
+    ../../home/waybar
     ../../home/gtk
     ../../home/prism
     ../../home/tailscale
@@ -60,7 +61,7 @@
   };
 
   environment.shellAliases = {
-    rebuild = "sudo nixos-rebuild switch --flake ~/nixos#nix-desktop --show-trace -j 16 && cd ~ && hyprctl reload && ./ags.sh";
+    rebuild = "sudo nixos-rebuild switch --flake ~/nixos#nix-desktop --show-trace -j 16 && cd ~ && hyprctl reload";
     rebuildboot = "sudo nixos-rebuild --flake ~/nixos#nix-desktop --install-bootloader boot";
     garbage = "sudo nix-collect-garbage && nix-collect-garbage -d";
     s = "kitten ssh";
