@@ -193,7 +193,7 @@ in {
             wantedBy = ["podman-arr-root.target"];
           };
           # readarr volume
-          "podman-volume-readarr" = {
+          "podman-volume-arr-readarr" = {
             path = [pkgs.podman];
             serviceConfig = {
               Type = "oneshot";
