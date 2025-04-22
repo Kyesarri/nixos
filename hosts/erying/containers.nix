@@ -14,7 +14,7 @@
     ../../containers/ghost
     ../../containers/homer
     ../../containers/orcaslicer
-    ../../containers/overseerr
+    # ../../containers/overseerr
     ../../containers/syncthing
   ];
 
@@ -45,7 +45,6 @@
     headscale.enable = false;
     haos.enable = true;
     i2p.enable = true;
-    jellyfin.enable = true;
     ztnet.enable = true;
     #
     backend-network = {
