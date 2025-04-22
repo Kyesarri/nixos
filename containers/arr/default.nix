@@ -48,7 +48,7 @@ in {
             };
           };
           # radarr container
-          "podman-radarr" = {
+          "podman-arr-radarr" = {
             serviceConfig = {Restart = lib.mkOverride 90 "always";};
             after = [
               "podman-network-arr.service"
@@ -75,7 +75,7 @@ in {
             wantedBy = ["podman-arr-root.target"];
           };
           # sonarr container
-          "podman-sonarr" = {
+          "podman-arr-sonarr" = {
             serviceConfig = {Restart = lib.mkOverride 90 "always";};
             after = [
               "podman-network-arr.service"
