@@ -204,7 +204,7 @@ in {
             wantedBy = ["podman-arr-root.target"];
           };
           # jellyfin container
-          "podman-jellyfin" = {
+          "podman-arr-jellyfin" = {
             serviceConfig = {Restart = lib.mkOverride 90 "always";};
             after = [
               "podman-network-arr.service"
@@ -229,7 +229,7 @@ in {
             wantedBy = ["podman-arr-root.target"];
           };
           # transmission container
-          "podman-transmission" = {
+          "podman-arr-transmission" = {
             serviceConfig = {Restart = lib.mkOverride 90 "always";};
             after = [
               "podman-network-arr.service"
