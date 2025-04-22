@@ -23,6 +23,12 @@
     <td>file server & container host</td>
   </tr>
   <tr>
+    <td>eliteone</td>
+    <td>9700</td>
+    <td>igpu</td>
+    <td>kde desktop</td>
+  </tr>
+  <tr>
     <td>erying</td>
     <td>1370p es</td>
     <td>igpu</td>
