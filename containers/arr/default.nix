@@ -360,7 +360,7 @@ in {
           };
           volumes = [
             "/etc/localtime:/etc/localtime:ro"
-            "arr-overseerr:/app/config"
+            "arr-overseerr:/config:rw"
           ];
           extraOptions = [
             "--network-alias=overseerr"
@@ -378,7 +378,7 @@ in {
           };
           volumes = [
             "/etc/localtime:/etc/localtime:ro"
-            "arr-readarr:/config"
+            "arr-readarr:/config:rw"
             # "/path/to/books:/books" #TODO
             "arr-downloads:/downloads"
           ];
@@ -399,8 +399,8 @@ in {
           };
           volumes = [
             "/etc/localtime:/etc/localtime:ro"
-            "arr-transmission:/config"
-            "arr-downloads:/downloads"
+            "arr-transmission:/config:rw"
+            "arr-downloads:/downloads:rw"
           ];
           extraOptions = [
             "--network-alias=transmission"
@@ -418,7 +418,7 @@ in {
           };
           volumes = [
             "/etc/localtime:/etc/localtime:ro"
-            "arr-jellyfin:/config"
+            "arr-jellyfin:/config:rw"
             # "/path/to/tv_shows:/data/tvshows"
             # "/path/to/movies:/data/movies"
           ];
