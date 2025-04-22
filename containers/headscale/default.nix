@@ -97,12 +97,28 @@ in {
           log-driver = "journald";
           volumes = [
             "/etc/localtime:/etc/localtime:ro"
-            "headscale:/etc/headscale:rw"
+            "/etc/oci.cont/headscale:/etc/headscale:rw" # config
+            "headscale:/var/lib/headscale:rw" # persist
           ];
           environment = {
             TZ = "${cfg.timeZone}";
           };
           cmd = ["serve"];
+          ports = [
+            # "9090:9090/tcp"
+            # "3478:3478/udp"
+          ];
+          labels = {
+            /*
+            "traefik.enable" = "true";
+            "traefik.http.routers.headscale.entrypoints" = "websecure";
+            "traefik.http.routers.headscale.rule" = "Host(`headscale.mydomain.com`)";
+            "traefik.http.routers.headscale.tls.certresolver" = "cloudflare";
+            "traefik.http.routers.headscale.tls.domains[0].main" = "mydomain.com";
+            "traefik.http.routers.headscale.tls.domains[0].sans" = "*.mydomain.com";
+            "traefik.http.services.headscale.loadbalancer.server.port" = "8080";
+            */
+          };
           extraOptions = [
             "--network-alias=headscale"
             "--privileged"
@@ -125,6 +141,7 @@ in {
             "--network=internal"
           ];
         };
+        # un used for now
         "derp" = {
           image = "ghcr.io/tijjjy/tailscale-derp-docker:latest";
           log-driver = "journald";
