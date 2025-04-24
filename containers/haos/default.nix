@@ -55,10 +55,12 @@ in {
           serviceConfig = {Restart = lib.mkOverride 90 "always";};
           after = [
             "podman-network-internal.service"
+            "podman-haos.service"
             "podman-volume-haos-matter.service"
           ];
           requires = [
             "podman-network-internal.service"
+            "podman-haos.service"
             "podman-volume-haos-matter.service"
           ];
           partOf = ["podman-haos-root.target"];
@@ -78,10 +80,13 @@ in {
       };
       virtualisation.oci-containers.containers = {
         "haos" = {
-          image = "ghcr.io/home-assistant/home-assistant:latest";
+          image = "lscr.io/linuxserver/homeassistant:latest";
           log-driver = "journald";
           environment = {
             TZ = "${cfg.timeZone}";
+            DOCKER_MODS = "linuxserver/mods:homeassistant-hacs"; # add hacs
+            PUID = "1000";
+            PGID = "1000";
           };
           volumes = [
             "/etc/localtime:/etc/localtime:ro"
