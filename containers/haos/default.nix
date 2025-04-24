@@ -90,10 +90,7 @@ in {
           };
           volumes = [
             "/etc/localtime:/etc/localtime:ro"
-            "haos:/config"
-            # need to mount a configuration.yaml
-            # and the theme.yaml to this container
-            # currently does not support reverse proxy :)
+            "haos:/config:rw"
           ];
           extraOptions = [
             "--network-alias=haos"
@@ -109,7 +106,7 @@ in {
           volumes = [
             "/run/dbus:/run/dbus:ro"
             "/etc/localtime:/etc/localtime:ro"
-            "haos-matter:/data"
+            "haos-matter:/data:rw"
           ];
           extraOptions = [
             "--network-alias=haos-matter"
