@@ -79,7 +79,6 @@ in {
         };
       };
       virtualisation.oci-containers.containers = {
-        # reverse proxy not working, even with x_forwarded_for true and nginx-lan added to trusted proxies :)
         "haos" = {
           image = "lscr.io/linuxserver/homeassistant:latest";
           log-driver = "journald";
