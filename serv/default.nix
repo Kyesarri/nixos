@@ -4,7 +4,7 @@
     # ./caddy
     # ./changedetection
     # ./monitor
-    ./nfs
+    # ./nfs
     # ./nginx
     # ./nut
   ];
