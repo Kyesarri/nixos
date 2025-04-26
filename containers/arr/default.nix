@@ -79,12 +79,12 @@ in {
             serviceConfig = {Restart = lib.mkOverride 90 "always";};
             after = [
               "podman-network-arr.service"
-              "podman-volume-sonarr.service"
+              "podman-volume-arr-sonarr.service"
               "podman-volume-arr-downloads.service"
             ];
             requires = [
               "podman-network-arr.service"
-              "podman-volume-sonarr.service"
+              "podman-volume-arr-sonarr.service"
               "podman-volume-arr-downloads.service"
             ];
             partOf = ["podman-arr-root.target"];
