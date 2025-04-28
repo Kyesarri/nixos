@@ -15,7 +15,7 @@ in {
   };
   config = mkMerge [
     (mkIf (cfg.lapce.enable == true) {
-      users.users.${spaghetti.user}.programs.lapce = {
+      home-manager.users.users.${spaghetti.user}.programs.lapce = {
         enable = true;
         plugins = [];
       };
