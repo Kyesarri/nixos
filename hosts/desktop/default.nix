@@ -40,6 +40,7 @@
     ../../home/ulauncher
     ../../home/virt
     ../../home/waybar
+    ../../home/syncthing
     ../../home/gtk
     ../../home/prism
     ../../home/tailscale
