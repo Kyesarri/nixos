@@ -181,6 +181,8 @@
       nfs-utils # nfs user utilities
       handbrake # convert video files
       compose2nix # convert dockercompose.yml to .nix
+      lapce # ide
+      nil # nix language server?
       inputs.wallpaper-generator.defaultPackage.x86_64-linux
       inputs.quickshell.packages.x86_64-linux.default
     ];

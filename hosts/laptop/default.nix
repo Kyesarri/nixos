@@ -64,6 +64,7 @@
     hyprpaper.enable = true;
     gscreenshot.enable = true;
     freetube.enable = true;
+    lapce.enable = true;
     wifi.backend = "nwm";
 
     # ayy another #TODO

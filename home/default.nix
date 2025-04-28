@@ -5,6 +5,7 @@
     ./freetube
     ./gscreenshot
     ./hypr
+    ./lapce
     ./nebula
     ./nemo
   ];
