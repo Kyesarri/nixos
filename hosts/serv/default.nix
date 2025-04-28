@@ -21,6 +21,7 @@
     ../../hardware
     ../../home
 
+    ../../home/arr # arr services
     ../../home/bottom # nice to have terminal task manager / perfmon
     ../../home/chrony # local time-server
     ../../home/git # some baseline git config in there
@@ -30,8 +31,6 @@
     ../../home/gtk # has some theming bits, might have some requirement still
     ../../home/tmux # terminal multiplexer'
     ../../home/zsh # yes pls
-
-    ../../serv # import all serv...ices
   ];
 
   colorscheme = inputs.nix-colors.colorSchemes.${spaghetti.scheme1};
