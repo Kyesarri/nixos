@@ -31,18 +31,32 @@ in {
   #
   config = mkMerge [
     (mkIf (cfg.hypr.enable == true) {
+      # 
+      xdg.portal = {
+        enable = true;
+        xdgOpenUsePortal = true;
+        config.common.default = ["gtk"];
+        extraPortals = [
+          pkgs.xdg-desktop-portal-hyprland
+          pkgs.xdg-desktop-portal-gtk
+        ];
+      };
       #
       environment.sessionVariables = {
         QT_QPA_PLATFORMTHEME = "qt5ct";
         XDG_CURRENT_DESKTOP = "Hyprland";
         XDG_SESSION_DESKTOP = "Hyprland";
       };
+      #
       users.users.${spaghetti.user}.packages = [
         pkgs.xdg-desktop-portal-hyprland
-        pkgs.hyprpicker # colour picker 09.06.24 throwing build errors
+        pkgs.xdg-desktop-portal-gtk
+
+        pkgs.hyprpicker
         pkgs.hypridle
         pkgs.hyprlock
       ];
+      #
       home-manager.users.${spaghetti.user} = {
         wayland.windowManager.hyprland = {
           package = inputs.hyprland.packages.${pkgs.system}.hyprland;
@@ -119,7 +133,7 @@ in {
             preload = /home/${spaghetti.user}/wallpapers/4.jpg
             preload = /home/${spaghetti.user}/wallpapers/5.png
             # ^ images must be preloaded to display
-            wallpaper = , /home/${spaghetti.user}/wallpapers/1.jpg
+            wallpaper = , /home/${spaghetti.user}/wallpapers/2.jpg
             # ^ any display, directory/file.ext
             splash = false
             # ^ adds splash text to wallpaper
