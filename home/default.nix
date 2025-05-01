@@ -8,6 +8,7 @@
     ./lapce
     ./nebula
     ./nemo
+    ./neovim
   ];
 
   # home-manager config(s)
