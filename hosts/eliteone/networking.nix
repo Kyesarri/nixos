@@ -6,7 +6,6 @@
   networking = {
     hostName = "nix-eliteone";
     hostId = "621eebd9";
-    networkmanager.enable = false;
     useNetworkd = true;
     usePredictableInterfaceNames = lib.mkDefault false;
     resolvconf.dnsExtensionMechanism = false;
