@@ -36,9 +36,7 @@
   };
 
   # wireless config
-  networking.networkManager = {
-    enable = true; # manages all interfaces minus manually configured below
-  };
+  networking.networkmanager.enable = true; # manages all interfaces minus manually configured below
 
   # wired / container config
   systemd.network = {
