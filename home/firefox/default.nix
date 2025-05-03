@@ -1,49 +1,41 @@
 {
-  # pkgs,
-  config,
   spaghetti,
+  pkgs,
   ...
 }: {
   environment.sessionVariables = {MOZ_ENABLE_WAYLAND = "1";};
 
-  home-manager.users.${spaghetti.user} = {
-    #
-    home.file.".config/hypr/per-app/firefox.conf" = {
-      text = ''
-        bind = $mainMod, F, exec, schizofox
-        # bind = $mainMod, W, exec, firefox -p work --name work
-        windowrulev2 = bordercolor $ce, initialClass:^(firefox)$
-        # windowrulev2 = noshadow, nodim, initialClass:^(work)$
-      '';
-    };
+  home-manager.users.${spaghetti.user}.home.file.".config/hypr/per-app/librewolf.conf" = {
+    text = ''
+      # keybind
+      bind = $mainMod, F, exec, librewolf
+      # change border colour
+      windowrulev2 = bordercolor $ce, initialClass:^(librewolf)$
+    '';
+  };
 
-    programs.schizofox = {
-      enable = true;
-      search = {
-        removeEngines = ["Google" "Bing" "Amazon.com" "eBay" "Twitter" "Wikipedia"];
-        searxUrl = "https://searx.be";
-      };
-      misc = {
-        startPageURL = "https://homer.home/";
-      };
-      extensions = {
-        simplefox.enable = false;
-        enableDefaultExtensions = true;
-        darkreader.enable = true;
-      };
-      security = {
-        userAgent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko)";
-        sandbox.enable = false; # workaround for keepass addon in schizofox #TODO not perfect
-      };
-      theme = {
-        colors = {
-          background-darker = "${config.colorScheme.palette.base00}"; # bg1
-          background = "${config.colorScheme.palette.base02}"; # bg2
-          foreground = "${config.colorScheme.palette.base05}"; # text
-          primary = "${config.colorScheme.palette.base07}"; # accent1
-          border = "${config.colorScheme.palette.base0E}"; # accent2
-        };
-        font = "IBM Plex Sans";
+  programs.firefox = {
+    enable = true;
+
+    package = pkgs.librewolf;
+
+    policies = {
+      DisableTelemetry = true;
+      DisableFirefoxStudies = true;
+
+      Preferences = {
+        "cookiebanners.service.mode.privateBrowsing" = 2;
+        "cookiebanners.service.mode" = 2;
+        "privacy.donottrackheader.enabled" = true;
+
+        # cant have darkmode default theme in browser, causes white loading pages eww...
+        # "privacy.fingerprintingProtection" = true;
+        # "privacy.resistFingerprinting" = true;
+        # "privacy.trackingprotection.fingerprinting.enabled" = true;
+
+        "privacy.trackingprotection.emailtracking.enabled" = true;
+        "privacy.trackingprotection.enabled" = true;
+        "privacy.trackingprotection.socialtracking.enabled" = true;
       };
     };
   };
