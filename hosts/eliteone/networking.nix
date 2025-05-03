@@ -35,7 +35,15 @@
     };
   };
 
+  # wireless config
+  networking.networkManager = {
+    enable = true; # manages all interfaces minus manually configured below
+  };
+
+  # wired / container config
   systemd.network = {
+    wait-online.enable = false;
+
     netdevs = {
       "10-lan-self" = {
         netdevConfig = {

@@ -65,7 +65,6 @@
   services = {
     openssh.enable = true;
     fstrim.enable = true;
-    # gnome.gnome-keyring.enable = true;
     xserver.enable = true;
     displayManager.sddm.enable = true;
     desktopManager.plasma6.enable = true;
@@ -112,7 +111,6 @@
       wget
       libsecret
       gitAndTools.gitFull
-      # polkit_gnome
       pciutils
       cockpit
       spotifyd
