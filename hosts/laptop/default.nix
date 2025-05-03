@@ -26,6 +26,7 @@
     ../../home/cosmic # testing cosmic package - really fast!
     ../../home/asusctl # #TODO look into issues with this further
     ../../home/bottom # task-manager
+    ../../home/codium
     ../../home/copyq # #TODO change to an alternative maybe?
     ../../home/dunst # notifications
     ../../home/firefox # why you always need to build from source, check to see if there are nighty / beta precompiled

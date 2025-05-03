@@ -9,21 +9,15 @@
 
   fileSystems = {
     "/" = {
-      device = "/dev/disk/by-uuid/d584a658-8426-47f9-942a-e1d9dd4a9d48";
+      device = "/dev/disk/by-uuid/490b75f6-8b4a-482e-886e-063f91141e38";
       fsType = "ext4";
     };
     "/boot" = {
-      device = "/dev/disk/by-uuid/B47E-9213";
+      device = "/dev/disk/by-uuid/B149-5578";
       fsType = "vfat";
-    };
-
-    "/mnt" = {
-      device = "${secrets.ip.serv-1}:/export";
-      fsType = "nfs";
+      options = ["fmask=0077" "dmask=0077"];
     };
   };
-
-  swapDevices = [{device = "/dev/disk/by-uuid/04e81e82-6196-4033-8a41-fe12badd919a";}];
 
   hardware = {
     amdgpu.initrd.enable = true;
