@@ -5,15 +5,13 @@
   ...
 }: {
   # hyprland binds and window rules
-  home-manager.users.${spaghetti.user} = {
-    home.file.".config/hypr/per-app/syncthing.conf" = {
-      text = ''
-        # exec-once = sleep 10 && syncthing
-        exec-once = sleep 10 && syncthingtray
-        windowrule = float, title:Syncthing Tray
-        windowrulev2 = size 1000 600, title:Syncthing Tray
-      '';
-    };
+  home-manager.users.${spaghetti.user}.home.file.".config/hypr/per-app/syncthing.conf" = {
+    text = ''
+      # exec-once = sleep 10 && syncthing
+      exec-once = sleep 10 && syncthingtray
+      windowrule = float, title:Syncthing Tray
+      windowrulev2 = size 1000 600, title:Syncthing Tray
+    '';
   };
 
   # add tray icon
@@ -31,14 +29,8 @@
       # testing
       settings = {
         devices = {
-          nix-erying = {
-            addresses = ["tcp://${secrets.ip.erying}:8384"];
-            id = "${secrets.syncthing.id.nix-erying}";
-          };
-          p7p = {
-            addresses = ["tcp://${secrets.ip.p7p}:8384"]; # not sure about this lad
-            id = "${secrets.syncthing.id.p7p}";
-          };
+          nix-erying = {id = "${secrets.syncthing.id.nix-erying}";};
+          p7p = {id = "${secrets.syncthing.id.p7p}";};
         };
       };
     };
