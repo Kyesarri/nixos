@@ -29,14 +29,16 @@
       # folder for Syncthing's settings and keys
       configDir = "/home/${spaghetti.user}/.config/syncthing";
       # testing
-      devices = {
-        nix-erying = {
-          addresses = ["tcp://${secrets.ip.erying}:51820"];
-          id = "${secrets.syncthing.id.nix-erying}";
-        };
-        p7p = {
-          addresses = ["tcp://${secrets.ip.p7p}:51820"];
-          id = "${secrets.syncthing.id.p7p}";
+      settings = {
+        devices = {
+          nix-erying = {
+            addresses = ["tcp://${secrets.ip.erying}:8384"];
+            id = "${secrets.syncthing.id.nix-erying}";
+          };
+          p7p = {
+            addresses = ["tcp://${secrets.ip.p7p}:8384"]; # not sure about this lad
+            id = "${secrets.syncthing.id.p7p}";
+          };
         };
       };
     };
