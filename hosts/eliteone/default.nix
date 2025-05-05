@@ -66,7 +66,7 @@
     openssh.enable = true;
     fstrim.enable = true;
     xserver.enable = true;
-    services.displayManager.cosmic-greeter.enable = true; # lol this won't work
+    displayManager.cosmic-greeter.enable = true; # lol this won't work
     /*
     displayManager.sddm = {
       enable = true;
