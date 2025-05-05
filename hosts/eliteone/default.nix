@@ -66,7 +66,12 @@
     openssh.enable = true;
     fstrim.enable = true;
     xserver.enable = true;
-    displayManager.sddm.enable = true;
+
+    displayManager.sddm = {
+      enable = true;
+      wayland.enable = true;
+    };
+
     desktopManager.plasma6.enable = true;
 
     # desktop / plasma6 should set this
@@ -87,6 +92,7 @@
     shellAliases = {
       rebuild = "sudo nixos-rebuild switch --flake ~/nixos#nix-eliteone --show-trace";
     };
+
     sessionVariables = {
       VDPAU_DRIVER = "va_gl";
       LIBVA_DRIVER_NAME = "iHD";
