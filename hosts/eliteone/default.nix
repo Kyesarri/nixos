@@ -70,6 +70,12 @@
     displayManager.sddm = {
       enable = true;
       wayland.enable = true;
+      wayland.compositor = "weston";
+      settings = {
+        Wayland = {
+          CompositorCommand = "${pkgs.weston}/bin/weston --shell=kiosk -c ~/nixos/hosts/eliteone/weston.ini";
+        };
+      };
     };
 
     desktopManager.plasma6.enable = true;
