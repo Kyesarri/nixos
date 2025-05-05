@@ -73,7 +73,7 @@
       wayland.compositor = "weston";
       settings = {
         Wayland = {
-          CompositorCommand = "${pkgs.weston}/bin/weston --shell=kiosk -c ~/nixos/hosts/eliteone/weston.ini";
+          CompositorCommand = "${pkgs.weston}/bin/weston --shell=kiosk -c /home/${spaghetti.user}/nixos/hosts/eliteone/weston.ini";
         };
       };
     };
