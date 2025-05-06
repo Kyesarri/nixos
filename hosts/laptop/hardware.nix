@@ -18,6 +18,7 @@
       options = ["fmask=0077" "dmask=0077"];
     };
   };
+  swapDevices = [{device = "/dev/disk/by-uuid/ccdf8c15-0d21-4864-97bf-db4843d55ae5";}];
 
   hardware = {
     amdgpu.initrd.enable = true;
