@@ -21,6 +21,7 @@
   };
 
   cont = {
+    nzbget.enable = true;
     #
     backend-network = {
       enable = true;
@@ -42,12 +43,6 @@
       enable = true;
       privateNetwork = false;
       macvlanDev = "";
-    };
-    #
-    nzbget = {
-      enable = true;
-      macvlanIp = "${secrets.ip.nzbget}";
-      vlanIp = "${secrets.vlan.serv.nzbget}";
     };
     #
     plex = {
