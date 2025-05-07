@@ -36,6 +36,7 @@
     haos.enable = true;
     i2p.enable = true;
     ztnet.enable = true;
+    radicale.enable = true;
     #
     adguard = {
       enable = true;
@@ -57,12 +58,6 @@
       # start-mailserver.sh: You need at least one mail account to start Dovecot (120s left for account creation before shutdown)
       enable = false;
       fqdn = "${secrets.domain.fqdn}";
-    };
-    #
-    radicale = {
-      enable = true;
-      macvlanIp = "${secrets.ip.radicale}";
-      vlanIp = "${secrets.vlan.erying.radicale}";
     };
     #
     nginx-lan = {
