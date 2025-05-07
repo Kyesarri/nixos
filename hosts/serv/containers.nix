@@ -83,7 +83,6 @@
       "podman-plex.service"
       "podman-adguard-${config.networking.hostName}.service"
       "podman-tailscale-${config.networking.hostName}-subnet.service"
-      "podman-nzbget-${config.networking.hostName}.service"
     ];
     serviceConfig = {
       Type = "oneshot";
