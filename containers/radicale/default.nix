@@ -1,6 +1,19 @@
 /*
 Radicale is a small but powerful CalDAV (calendars, to-do lists) and CardDAV (contacts) server
 */
+/*
+nginx config:
+location /radicale/ {
+    proxy_pass        http://localhost:5232/;
+    proxy_set_header  X-Script-Name /radicale;
+    proxy_set_header  X-Forwarded-For $proxy_add_x_forwarded_for;
+    proxy_set_header  X-Forwarded-Host $host;
+    proxy_set_header  X-Forwarded-Port $server_port;
+    proxy_set_header  X-Forwarded-Proto $scheme;
+    proxy_set_header  Host $http_host;
+    proxy_pass_header Authorization;
+}
+*/
 {
   secrets,
   config,
