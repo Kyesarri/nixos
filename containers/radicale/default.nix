@@ -116,6 +116,7 @@ in {
         extraOptions = [
           "--network-alias=radicale"
           "--network=internal"
+          "--privileged"
         ];
       };
     })
