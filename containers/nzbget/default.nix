@@ -4,6 +4,7 @@ It is built for high performance and low resource consumption, making it ideal f
 */
 {
   config,
+  pkgs,
   lib,
   ...
 }:
