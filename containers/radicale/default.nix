@@ -44,11 +44,11 @@ in {
 
             [auth]
             type = htpasswd
-            htpasswd_filename = /config/users
+            htpasswd_filename = /etc/radicale/users
             htpasswd_encryption = bcrypt
 
             [storage]
-            filesystem_folder = /data/collections
+            filesystem_folder = /var/lib/radicale
           '';
         };
         #
