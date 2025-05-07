@@ -1,4 +1,17 @@
-# changes 19 apr 25
+# update 07 may 25
+per the previous update containers have started migrating to an internal 'network' on the host machine. they don't expose any ports on the host and are only accessable via nginx.
+
+the way my lan is configured - two adguard containers act as dns & dhcp on seperate hosts, dhcp is turned off in my access points. 
+
+in the adguard interface 'filters > dns rewrites' i have a wildcard *.home pointing to my nginx macvlan ip.
+
+currently i use nginx proxy manager and the configuration of each service / container is a manual process (eww) via the gui (eww)
+
+this makes networking containers a simple process compared to the mess i had running / have running currently.
+
+for example in nginx proxy manager using the domain name 'cpai.home', 'cpai' as the forwarded host-name and using port '5055' is all thats required to access that container on my lan.
+
+# update 19 apr 25
 figured out i was using a backwards method, exposing containers via the internal lan
 containers are now moving to an internal network titled 'internal' with nginx
 chilling infront of all containers. this leaves way less configuration options
@@ -39,15 +52,11 @@ example:
     # ...
     }
 
-i'm also moving most containers over to the vlan on each host, with comms to the containers via nginx-lan / tailscale
-
 ## adguard
 barebones without any defined configs
 
 ## arr
 barebones bazarr / prowlarr / radarr / readarr / sonarr
-
-#TODO add transmission w' flood to stack
 
 ## backend-network
 network for inter container comms - leverages tailscale subnet routing for inter host comms
