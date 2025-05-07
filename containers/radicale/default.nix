@@ -26,6 +26,7 @@ in {
     (mkIf (cfg.enable == true) {
       # this container will use storage on host, so we can write some files to preconfigure.
       # probs is a better way to do this by env vars?
+      /*
       system.activationScripts."makeradicaleDir" =
         lib.stringAfter ["var"]
         ''mkdir -v -p /etc/oci.cont/radicale/data /etc/oci.cont/radicale/config & chown -R 1000:1000 /etc/oci.cont/radicale'';
@@ -59,6 +60,7 @@ in {
           text = ''kel:${secrets.password.radicale}'';
         };
       };
+      */
 
       systemd = {
         # root service
@@ -70,8 +72,28 @@ in {
           # container
           "podman-radicale" = {
             serviceConfig = {Restart = lib.mkOverride 90 "always";};
-            after = ["podman-network-internal.service"];
-            requires = ["podman-network-internal.service"];
+            after = [
+              "podman-network-internal.service"
+              "podman-volume-radicale.service"
+            ];
+            requires = [
+              "podman-network-internal.service"
+              "podman-volume-radicale.service"
+            ];
+            partOf = ["podman-radicale-root.target"];
+            wantedBy = ["podman-radicale-root.target"];
+          };
+          # volume
+          "podman-volume-radicale" = {
+            path = [pkgs.podman];
+            serviceConfig = {
+              Type = "oneshot";
+              RemainAfterExit = true;
+            };
+            script = ''
+              podman volume inspect radicale-config || podman volume create radicale-config && \
+              podman volume inspect radicale-data || podman volume create radicale-data
+            '';
             partOf = ["podman-radicale-root.target"];
             wantedBy = ["podman-radicale-root.target"];
           };
@@ -88,8 +110,8 @@ in {
         };
         volumes = [
           "/etc/localtime:/etc/localtime:ro"
-          "/etc/oci.cont/radicale/data:/data"
-          "/etc/oci.cont/radicale/config:/config:ro"
+          "radicale-config:/etc/radicale:ro"
+          "radicale-data:/var/lib/radicale"
         ];
         extraOptions = [
           "--network-alias=radicale"
