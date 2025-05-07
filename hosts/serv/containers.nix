@@ -21,7 +21,8 @@
   };
 
   cont = {
-    nzbget.enable = true;
+    # nzbget will be a pain as multi machines will cause me greif / podman networking :)
+    nzbget.enable = false;
     #
     backend-network = {
       enable = true;

@@ -62,6 +62,7 @@ in {
         };
       };
       # container
+      # port 6789
       virtualisation.oci-containers.containers."nzbget" = {
         image = "lscr.io/linuxserver/nzbget:latest";
         log-driver = "journald";
@@ -77,7 +78,7 @@ in {
         ];
         extraOptions = [
           "--network-alias=nzbget"
-          "--network=arr"
+          "--network=internal"
         ];
       };
     })
