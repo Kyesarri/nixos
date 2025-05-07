@@ -1,5 +1,6 @@
 /*
-Jellyfin is a Free Software Media System that puts you in control of managing and streaming your media.
+NZBGet is an advanced NZB downloader designed to efficiently retrieve articles from Usenet newsgroups.
+It is built for high performance and low resource consumption, making it ideal for users looking for a fast, automated Usenet experience.
 */
 {
   config,
@@ -10,83 +11,72 @@ with lib; let
   cfg = config.cont.nzbget;
 in {
   options.cont.nzbget = {
-    #
     enable = mkOption {
       type = types.bool;
       default = false;
-      example = true;
-      description = "enable container";
     };
-    #
-    macvlanIp = mkOption {
-      type = types.nullOr types.str;
-      default = "";
-      example = "10.10.10.1";
-      description = "container macvlan ip address";
-    };
-    #
-    vlanIp = mkOption {
-      type = types.nullOr types.str;
-      default = "";
-      example = "12.12.12.1";
-      description = "backend network ip address";
-    };
-    #
-    contName = mkOption {
-      type = types.str;
-      default = "nzbget-${config.networking.hostName}";
-      example = "container-cool-hostname";
-      description = "container name, is also used for container volume dir name and activation script";
-    };
-
     timeZone = mkOption {
       type = types.str;
       default = "Australia/Melbourne";
-      example = "Australia/Broken_Hill";
-      description = "database timezone";
-    };
-    #
-    image = mkOption {
-      type = types.str;
-      default = "linuxserver/nzbget:latest";
-      example = "linuxserver/nzbget:testing";
-      description = "container image";
     };
   };
 
   config = mkMerge [
     (mkIf (cfg.enable == true) {
-      #
-      system.activationScripts."make${cfg.contName}dir" =
-        lib.stringAfter ["var"]
-        ''mkdir -v -p /etc/oci.cont/${cfg.contName}/config & chown -R 1000:1000 /etc/oci.cont/${cfg.contName}'';
+      # add shell alias to update container
+      environment.shellAliases = {cont-nzbget = "sudo podman pull lscr.io/linuxserver/nzbget:latest";};
 
-      environment.shellAliases = {cont-nzbget = "sudo podman pull ${cfg.image}";};
-
-      virtualisation.oci-containers.containers.${cfg.contName} = {
-        hostname = "${cfg.contName}";
-
-        autoStart = true;
-
-        image = "${cfg.image}";
-
-        volumes = [
-          "/etc/localtime:/etc/localtime:ro"
-
-          "/etc/oci.cont/${cfg.contName}/config:/config"
-
-          "/hddf/nzb:/downloads"
-        ];
-
+      systemd = {
+        # root service
+        targets."podman-nzbget-root" = {
+          unitConfig = {Description = "root target";};
+          wantedBy = ["multi-user.target"];
+        };
+        services = {
+          # container
+          "podman-nzbget" = {
+            serviceConfig = {Restart = lib.mkOverride 90 "always";};
+            after = [
+              "podman-network-internal.service"
+              "podman-volume-nzbget.service"
+            ];
+            requires = [
+              "podman-network-internal.service"
+              "podman-volume-nzbget.service"
+            ];
+            partOf = ["podman-nzbget-root.target"];
+            wantedBy = ["podman-nzbget-root.target"];
+          };
+          # volume
+          "podman-volume-nzbget" = {
+            path = [pkgs.podman];
+            serviceConfig = {
+              Type = "oneshot";
+              RemainAfterExit = true;
+            };
+            script = ''podman volume inspect nzbget || podman volume create nzbget'';
+            partOf = ["podman-nzbget-root.target"];
+            wantedBy = ["podman-nzbget-root.target"];
+          };
+        };
+      };
+      # container
+      virtualisation.oci-containers.containers."nzbget" = {
+        image = "lscr.io/linuxserver/nzbget:latest";
+        log-driver = "journald";
         environment = {
           TZ = "${cfg.timeZone}";
           PUID = "1000";
-          PGID = "1000"; # may need to chage this? lets test without first
+          PGID = "1000";
         };
-
+        volumes = [
+          "/etc/localtime:/etc/localtime:ro"
+          "nzbget:/config:rw"
+          "/hddf/nzb:/downloads:rw"
+        ];
         extraOptions = [
-          "--network=macvlan_lan:ip=${cfg.macvlanIp}"
-          "--network=podman-backend:ip=${cfg.vlanIp}"
+          "--network-alias=nzbget"
+          "--network=arr"
         ];
       };
     })
