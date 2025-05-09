@@ -112,6 +112,7 @@
   };
 
   # macvlan config
+  # this shit is yuck
   systemd.services."create-podman-network-macvlan_lan" = {
     path = [pkgs.podman];
     wantedBy = [

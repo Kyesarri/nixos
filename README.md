@@ -58,7 +58,7 @@
 </p>
 
 ## what and why?
-these configs are both practical and a learning experience
+this repo is both practical and a learning experience, lots of moving cogs
 
 configs assume a single user, home-manager options don't have any applicable configs for multiple users
 
