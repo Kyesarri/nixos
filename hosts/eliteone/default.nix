@@ -66,19 +66,27 @@
     openssh.enable = true;
     fstrim.enable = true;
     xserver.enable = true;
-    displayManager.cosmic-greeter.enable = true; # lol this won't work
-    /*
+
+    # displayManager.cosmic-greeter.enable = true; # lol this won't work
+
     displayManager.sddm = {
       enable = true;
       wayland.enable = true;
+      /*
       wayland.compositor = "weston";
       settings = {
         Wayland = {
           CompositorCommand = "${pkgs.weston}/bin/weston --shell=kiosk -c /home/${spaghetti.user}/nixos/hosts/eliteone/weston.ini";
         };
       };
+      */
+      ###### TODO ######
+      tailscale.enable = true;
+      tailscale.useRoutingFeatures = "server";
+      tailscale.openFirewall = true;
+      ###### TODO ######
     };
-    */
+
     desktopManager.plasma6.enable = true;
 
     # desktop / plasma6 should set this

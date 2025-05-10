@@ -16,8 +16,8 @@
     };
   };
 
-  # trying to keep naming to "service-host-name*-feature*" ex - tailscale-nix-erying-subnet - haos-nix-erying
-  cont = {};
+  cont = {
+  };
 
   # macvlan config
   systemd.services."create-podman-network-macvlan_lan" = {
