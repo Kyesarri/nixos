@@ -80,12 +80,13 @@
         };
       };
       */
-      ###### TODO ######
-      tailscale.enable = true;
-      tailscale.useRoutingFeatures = "server";
-      tailscale.openFirewall = true;
-      ###### TODO ######
     };
+
+    ###### TODO ######
+    tailscale.enable = true;
+    tailscale.useRoutingFeatures = "server";
+    tailscale.openFirewall = true;
+    ###### TODO ######
 
     desktopManager.plasma6.enable = true;
 
