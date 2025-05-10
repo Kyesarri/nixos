@@ -70,6 +70,8 @@ in {
           TZ = "${cfg.timeZone}";
           PUID = "1000";
           PGID = "1000";
+          NZBGET_USER = "nzbget"; #optional
+          NZBGET_PASS = "tegbzn6789"; #optional
         };
         volumes = [
           "/etc/localtime:/etc/localtime:ro"
