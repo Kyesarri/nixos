@@ -40,7 +40,7 @@
     ../../home/prism
     ../../home/syncthing
     ../../home/spotifyd
-    ../../home/tailscale
+    # ../../home/tailscale
 
     ../../home/tmux
     ../../home/zsh
