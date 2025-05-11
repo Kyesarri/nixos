@@ -37,6 +37,7 @@
     i2p.enable = true;
     ztnet.enable = true;
     radicale.enable = true;
+    syncthing.enable = true;
     #
     adguard = {
       enable = true;
