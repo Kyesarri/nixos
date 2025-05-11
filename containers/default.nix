@@ -18,7 +18,7 @@
     ./restreamer # camera restream utility - use for 3d printer?
     ./subgen # ai subtitle generator thingy
     ./subsai # ai subtitle generator thingy
-    ./syncthing # file sync service
+    ./syncthing # local / self hosted file sync service
     ./tailscale # vpn for remote connections to lan
     ./tvheadend # testing - want to try re-streaming via plex
     ./webdav # basic webdav server, based on nginx
