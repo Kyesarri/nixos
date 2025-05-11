@@ -15,7 +15,7 @@
     ../../containers/homer
     ../../containers/orcaslicer
     # ../../containers/overseerr
-    ../../containers/syncthing
+    # ../../containers/syncthing
   ];
 
   virtualisation = {
