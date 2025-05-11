@@ -1,41 +1,91 @@
+/*
+Syncthing replaces proprietary sync and cloud services with something open, trustworthy and decentralized.
+Your storage is your storage alone and you deserve to choose where it is stored,
+if it is shared with some third party and how it's transmitted over the Internet.
+*/
 {
-  secrets,
+  config,
+  pkgs,
   lib,
   ...
-}: let
-  contName = "syncthing"; # container name
-  dir1 = "/etc/oci.cont/${contName}"; # root dir
-  dir2 = "/etc/oci.cont/${contName}/config"; # config
-  dir3 = "/etc/oci.cont/${contName}/storage"; # main storage
+}:
+with lib; let
+  cfg = config.cont.syncthing;
 in {
-  # create directories, change owner
-  system.activationScripts.makeCodeProjectDir =
-    lib.stringAfter ["var"] ''
-      mkdir -v -p ${toString dir1} & mkdir -v -p ${toString dir2} & mkdir -v -p ${toString dir3} & chown -R 1000:1000 ${toString dir1}'';
-
-  # container config
-  virtualisation.oci-containers.containers.${contName} = {
-    hostname = "${contName}";
-
-    autoStart = true;
-
-    image = "lscr.io/linuxserver/syncthing:latest";
-
-    volumes = [
-      "/etc/localtime:/etc/localtime:ro"
-      "${toString dir2}:/config"
-      "${toString dir3}:/storage"
-    ];
-
-    environment = {
-      PUID = "1000";
-      PGID = "1000";
-    };
-
-    extraOptions = [
-      "--network=macvlan_lan"
-      "--dns=${secrets.ip.adguard}"
-      "--ip=${secrets.ip.syncthing}"
-    ];
+  options.cont.syncthing = {
+    enable = mkEnableOption "syncthing";
   };
+
+  config = mkMerge [
+    (mkIf (cfg.enable == true) {
+      # root target
+      systemd = {
+        targets."podman-syncthing-root" = {
+          unitConfig = {Description = "root target";};
+          wantedBy = ["multi-user.target"];
+        };
+
+        services = {
+          # container
+          "podman-syncthing" = {
+            serviceConfig = {Restart = lib.mkOverride 90 "always";};
+            after = [
+              "podman-network-internal.service"
+              "podman-volume-syncthing-storage.service"
+              "podman-volume-syncthing-config.service"
+            ];
+            requires = [
+              "podman-network-internal.service"
+              "podman-volume-syncthing-storage.service"
+              "podman-volume-syncthing-config.service"
+            ];
+            partOf = ["podman-syncthing-root.target"];
+            wantedBy = ["podman-syncthing-root.target"];
+          };
+          # storage volume
+          "podman-volume-syncthing-storage" = {
+            path = [pkgs.podman];
+            serviceConfig = {
+              Type = "oneshot";
+              RemainAfterExit = true;
+            };
+            script = ''podman volume inspect syncthing-storage || podman volume create syncthing-storage'';
+            partOf = ["podman-syncthing-root.target"];
+            wantedBy = ["podman-syncthing-root.target"];
+          };
+          # config volume
+          "podman-volume-syncthing-config" = {
+            path = [pkgs.podman];
+            serviceConfig = {
+              Type = "oneshot";
+              RemainAfterExit = true;
+            };
+            script = ''podman volume inspect syncthing-config || podman volume create syncthing-config'';
+            partOf = ["podman-syncthing-root.target"];
+            wantedBy = ["podman-syncthing-root.target"];
+          };
+        };
+      };
+
+      # container
+      virtualisation.oci-containers.containers = {
+        "syncthing" = {
+          image = "lscr.io/linuxserver/syncthing:latest";
+          log-driver = "journald";
+          environment = {
+            TZ = "Australia/Melbourne";
+          };
+          volumes = [
+            "/etc/localtime:/etc/localtime:ro"
+            "syncthing-storage:/storage"
+            "syncthing-config:/config"
+          ];
+          extraOptions = [
+            "--network-alias=syncthing"
+            "--network=internal"
+          ];
+        };
+      };
+    })
+  ];
 }
