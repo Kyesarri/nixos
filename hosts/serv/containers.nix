@@ -23,6 +23,7 @@
   cont = {
     # nzbget will be a pain as multi machines will cause me greif / podman networking :)
     nzbget.enable = false;
+    syncthing.enable = true;
     #
     backend-network = {
       enable = true;
