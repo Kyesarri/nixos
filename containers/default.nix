@@ -16,6 +16,7 @@
     ./plex
     ./radicale # calendar + todo thingy
     ./restreamer # camera restream utility - use for 3d printer?
+    ./rocket-chat
     ./subgen # ai subtitle generator thingy
     ./subsai # ai subtitle generator thingy
     ./syncthing # local / self hosted file sync service
