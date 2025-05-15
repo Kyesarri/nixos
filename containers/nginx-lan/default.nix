@@ -76,6 +76,7 @@ in {
           "--network=podman-backend:ip=${cfg.vlanIp}" #TODO - remove
           "--network=arr"
           "--network=internal"
+          "--network=rocket-chat"
           "--privileged"
         ];
       };
