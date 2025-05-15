@@ -36,6 +36,7 @@
     i2p.enable = true;
     ztnet.enable = true;
     radicale.enable = true;
+    rocket-chat.enable = true;
     syncthing.enable = true;
     #
     adguard = {
