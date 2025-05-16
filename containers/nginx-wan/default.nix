@@ -81,6 +81,7 @@ in {
           "--network=macvlan_lan:ip=${cfg.macvlanIp}"
           "--network=internal"
           "--network=arr"
+          "--network=rocket-chat"
         ];
       };
     })
