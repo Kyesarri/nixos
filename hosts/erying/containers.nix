@@ -11,7 +11,6 @@
     ../../containers/emqx
     ../../containers/esphome
     ../../containers/frigate
-    ../../containers/ghost
     ../../containers/homer
     ../../containers/orcaslicer
     # ../../containers/overseerr
