@@ -1,9 +1,9 @@
 [general]
 
 #### Address & Root dir
-host = "::"
+host = "0.0.0.0"
 port = 80
-root = "./public"
+root = "/etc/public"
 
 #### Logging
 log-level = "error"
