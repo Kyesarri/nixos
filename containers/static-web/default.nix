@@ -60,8 +60,8 @@ in {
           };
           volumes = [
             "/etc/localtime:/etc/localtime:ro"
-            "/etc/oci.cont/static-web/public:/var/public:ro"
-            "/etc/oci.cont/static-web/etc:/etc:ro"
+            "/etc/oci.cont/static-web/public:/var/public"
+            "/etc/oci.cont/static-web/etc:/etc"
           ];
           extraOptions = [
             "--network-alias=static-web"
