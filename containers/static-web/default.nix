@@ -55,6 +55,8 @@ in {
           log-driver = "journald";
           environment = {
             TZ = "Australia/Melbourne";
+            PUID = "1000";
+            PGID = "1000";
             SERVER_ROOT = "/var/public";
             SERVER_CONFIG_FILE = "/etc/config.toml";
           };
