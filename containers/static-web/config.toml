@@ -34,7 +34,7 @@ https-redirect-from-hosts = "localhost"
 # cors-allow-origins = ""
 
 #### Directory listing
-directory-listing = false
+directory-listing = true
 
 #### Directory listing sorting code
 directory-listing-order = 1
