@@ -76,7 +76,7 @@ compression-static = true
 health = false
 
 #### List of index files
-# index-files = "index.html, index.htm"
+index-files = "index.html, index.htm"
 #### Maintenance Mode
 
 maintenance-mode = false
