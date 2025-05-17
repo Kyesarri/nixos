@@ -1,5 +1,9 @@
 {secrets, ...}: {
   networking.firewall.allowedUDPPorts = [9993];
+  /*
+  TODO
+  use age secret to write custom planet to /var/lib/zerotier-one/
+  */
 
   services.zerotierone = {
     enable = true;
