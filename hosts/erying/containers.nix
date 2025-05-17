@@ -37,6 +37,7 @@
     ztnet.enable = true;
     radicale.enable = true;
     rocket-chat.enable = true;
+    static-web.enable = true;
     syncthing.enable = true;
     #
     adguard = {
