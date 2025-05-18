@@ -1,0 +1,12 @@
+{secrets, ...}: {
+  services.ddclient = {
+    enable = true;
+    protocol = "cloudflare";
+    usev4 = "webv4, webv4=ipv4.ident.me/";
+    zone = "galing.org";
+    domains = ["galing.org" "chat.galing.org" "request.galing.org" "ztnet.galing.org"];
+    username = "${secrets.email.main}";
+    passwordFile = "/root/cloudflare"; # manually added
+    interval = "1min";
+  };
+}

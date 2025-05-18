@@ -23,6 +23,7 @@
     ../../home # home-manaager config for all machines
     ../../home/bottom # nice to have terminal task manager / perfmon
     ../../home/chrony # local time-server
+    ../../home/ddclient # domain ddns
     # ../../home/codium # need to add server into this
     ../../home/git # basic git configs
     ../../home/gtk # themes still needed for console
