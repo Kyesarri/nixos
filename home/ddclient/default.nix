@@ -9,5 +9,6 @@
     # username = "${secrets.email.main}";
     passwordFile = "/root/cloudflare"; # manually added
     interval = "5min";
+    verbose = true;
   };
 }
