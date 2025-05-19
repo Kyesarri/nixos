@@ -12,7 +12,7 @@ This is applicable to a wide range of use cases. It’s commonly used when you h
     usev4 = "webv4, webv4=ipv4.ident.me/";
     usev6 = "";
     domains = ["galing.org"];
-    username = "${secrets.email.main}";
+    # username = "${secrets.email.main}";
     passwordFile = "/root/cloudflare"; # manually added
     interval = "5min";
     verbose = true;
