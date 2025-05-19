@@ -28,6 +28,7 @@
 
   cont = {
     arr.enable = true;
+    cloudflared.enable = true;
     cpai.enable = true;
     doubletake.enable = true;
     headscale.enable = false;

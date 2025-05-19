@@ -3,6 +3,7 @@
     ./adguard # dns + dhcp + adblock
     ./arr # arr stack
     ./backend-network # backend network - for inter container comms not on main lan
+    ./cloudflared # cloudflare tunnel
     ./cpai
     ./doubletake
     ./dms
