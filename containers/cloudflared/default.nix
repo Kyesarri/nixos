@@ -1,3 +1,6 @@
+/*
+Client for Cloudflare Tunnel, a daemon that exposes private services through the Cloudflare edge.
+*/
 {
   secrets,
   config,
@@ -35,13 +38,15 @@ in {
       # container
       virtualisation.oci-containers.containers."cloudflared" = {
         log-driver = "journald";
-        image = "cloudflare/cloudflared";
+        image = "cloudflare/cloudflared:latest";
         environment = {
           "TZ" = "Australia/Melbourne";
           "TUNNEL_TOKEN" = "${secrets.cloudflare.token}";
         };
         cmd = ["tunnel" "--no-autoupdate" "run"];
         extraOptions = [
+          # remember to add networks you want to expose via tunnel,
+          # i didnt and wasted two days trying to get this to work :D
           "--network-alias=cloudflared"
           "--network=internal"
           "--network=arr"
