@@ -44,6 +44,8 @@ in {
         extraOptions = [
           "--network-alias=cloudflared"
           "--network=internal"
+          "--network=arr"
+          "--network=rocket-chat"
         ];
       };
     })
