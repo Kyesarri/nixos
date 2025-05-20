@@ -1,6 +1,7 @@
 /*
 ZTNET - ZeroTier Controller Web UI is a robust and versatile application designed to transform the management of ZeroTier networks.
-Now featuring organization and multi-user support, it elevates the network management experience, accommodating team-based environments and larger organizations seamlessly.
+Now featuring organization and multi-user support, it elevates the network management experience,
+accommodating team-based environments and larger organizations seamlessly.
 */
 {
   secrets,
