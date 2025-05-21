@@ -75,11 +75,6 @@
       userName = "${spaghetti.user}";
     };
   };
-  # temp
-  virtualisation = {
-    oci-containers.backend = "docker";
-    docker.enable = true;
-  };
 
   services = {
     # map laptop keys
