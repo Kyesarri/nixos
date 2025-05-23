@@ -4,7 +4,7 @@ mailcow relies on many well known and long used components,
 which in combination result in an all around carefree email server.
 
 not finished yet, plenty more TODO :D
-add docker podman.socket support
+# DONE add docker podman.socket support
 fix volumes - add only podman-volumes
 remove ports
 cleanup ~1200 lines
@@ -18,6 +18,9 @@ sigh
   lib,
   ...
 }: {
+  # requirement?
+  virtualisation.podman.dockerSocket.enable = true;
+
   virtualisation.oci-containers.containers."mailcow-acme-mailcow" = {
     image = "ghcr.io/mailcow/acme:1.92";
     environment = {
