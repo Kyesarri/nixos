@@ -36,9 +36,9 @@
     ../../home/tmux # terminal multiplex'er
     ../../home/gaming # some basic gaming packages - steam and so on
     ../../home/greetd # minimalistic greeter, may not be required once fde is used on laptop
-    #
+
     ../../home/kitty # /home/shell/ under mkOption, have foot / kitty / more? in there
-    #
+
     ../../home/kde # TODO rename kdeconnect - maybe not lol - covers lots
     ../../home/ulauncher # TODO rename built theme, add credits to og author
     ../../home/virt # vm / container
