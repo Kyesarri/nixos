@@ -1,6 +1,9 @@
 {pkgs, ...}: {
   boot = {
     # pinning kernel version due to zfs being out of tree & not supporting latest kernel
+
+    /*
+    # looks to have support for latest kernel now! keeping this as reference for future use
     kernelPackages = pkgs.linuxPackagesFor (pkgs.linux_xanmod.override {
       argsOverride = rec {
         suffix = "xanmod1";
@@ -15,7 +18,8 @@
         };
       };
     });
-
+    */
+    kernelPackages = pkgs.linuxPackages_xanmod_latest;
     kernelModules = ["kvm-intel"];
     kernelParams = [
       "intel_iommu=on" # pci device pass-through
