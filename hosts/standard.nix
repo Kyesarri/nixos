@@ -168,7 +168,6 @@
       wl-clipboard # wl-copy and wl-paste for copy/paste from stdin / stdout
       vlc # play me some vids
       usbimager # says on the tin
-      ventoy-full # usb image lad
       evolutionWithPlugins # calendar
       blender # for new toy :D
       gnome-disk-utility # disk gui
@@ -184,6 +183,7 @@
       inputs.wallpaper-generator.defaultPackage.x86_64-linux
       inputs.quickshell.packages.x86_64-linux.default
       python312Packages.pelican # testing locally on laptop
+      # grayjay "soon"
     ];
   };
 }
