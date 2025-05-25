@@ -427,6 +427,24 @@ in {
             "--network=arr"
           ];
         };
+        #
+        "arr-prowlarr" = {
+          image = "lscr.io/linuxserver/prowlarr:latest";
+          log-driver = "journald";
+          environment = {
+            TZ = "${cfg.timeZone}";
+            PUID = "1000";
+            PGID = "1000";
+          };
+          volumes = [
+            "/etc/localtime:/etc/localtime:ro"
+            "arr-prowlarr:/config:rw"
+          ];
+          extraOptions = [
+            "--network-alias=prowlarr"
+            "--network=arr"
+          ];
+        };
       };
     })
   ];
