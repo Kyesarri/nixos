@@ -255,6 +255,31 @@ in {
             partOf = ["podman-arr-root.target"];
             wantedBy = ["podman-arr-root.target"];
           };
+          # prowlarr container
+          "podman-arr-prowlarr" = {
+            serviceConfig = {Restart = lib.mkOverride 90 "always";};
+            after = [
+              "podman-network-arr.service"
+              "podman-volume-prowlarr.service"
+            ];
+            requires = [
+              "podman-network-arr.service"
+              "podman-volume-arr-prowlarr.service"
+            ];
+            partOf = ["podman-arr-root.target"];
+            wantedBy = ["podman-arr-root.target"];
+          };
+          # prowlarr volume
+          "podman-volume-arr-prowlarr" = {
+            path = [pkgs.podman];
+            serviceConfig = {
+              Type = "oneshot";
+              RemainAfterExit = true;
+            };
+            script = ''podman volume inspect arr-prowlarr || podman volume create arr-prowlarr'';
+            partOf = ["podman-arr-root.target"];
+            wantedBy = ["podman-arr-root.target"];
+          };
           # download dir shared between all containers - #TODO change where this is stored
           "podman-volume-arr-downloads" = {
             path = [pkgs.podman];
@@ -420,7 +445,7 @@ in {
             "/etc/localtime:/etc/localtime:ro"
             "arr-jellyfin:/config:rw"
             # "/path/to/tv_shows:/data/tvshows"
-            # "/path/to/movies:/data/movies"
+            # "/path/to/movies:/datsa/movies"
           ];
           extraOptions = [
             "--network-alias=jellyfin"
