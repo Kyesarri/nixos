@@ -183,6 +183,7 @@
       inputs.wallpaper-generator.defaultPackage.x86_64-linux
       inputs.quickshell.packages.x86_64-linux.default
       python312Packages.pelican # testing locally on laptop
+      koodo-reader # ebook reader
       # grayjay "soon"
     ];
   };
