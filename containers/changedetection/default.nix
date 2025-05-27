@@ -54,7 +54,7 @@
     image = "ghcr.io/dgtlmoon/changedetection.io";
     log-driver = "journald";
     environment = {
-      WEBDRIVER_URL = "http://chrome:4444";
+      WEBDRIVER_URL = "http://chrome/wd/hub:4444";
     };
     volumes = [
       "changedetection_changedetection-data:/datastore:rw"
