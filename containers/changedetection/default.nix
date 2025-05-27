@@ -54,7 +54,7 @@
     image = "ghcr.io/dgtlmoon/changedetection.io";
     log-driver = "journald";
     environment = {
-      WEBDRIVER_URL = "http://chrome/wd/hub:4444";
+      WEBDRIVER_URL = "http://chrome:3000";
     };
     volumes = [
       "changedetection_changedetection-data:/datastore:rw"
@@ -69,7 +69,7 @@
     ];
   };
   virtualisation.oci-containers.containers."chrome" = {
-    image = "selenium/standalone-chrome:latest";
+    image = "dgtlmoon/sockpuppetbrowser:latest";
     log-driver = "journald";
     environment = {};
     volumes = [];
@@ -78,6 +78,7 @@
       # "7900:7900"
     ];
     extraOptions = [
+      "--window-size=1920,1080"
       "--shm-size=2048m"
       "--hostname=chrome"
       "--network-alias=chrome"
