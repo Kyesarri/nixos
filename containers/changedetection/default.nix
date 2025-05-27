@@ -78,7 +78,7 @@
       # "7900:7900"
     ];
     extraOptions = [
-      "--window-size=1920,1080"
+      # "--window-size=1920,1080"
       "--shm-size=2048m"
       "--hostname=chrome"
       "--network-alias=chrome"
