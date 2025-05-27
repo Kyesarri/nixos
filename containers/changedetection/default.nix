@@ -1,5 +1,4 @@
 # Auto-generated using compose2nix v0.3.1.
-# add ghcr.io/browserless/chromium to stack
 {
   pkgs,
   lib,
@@ -44,19 +43,38 @@
     };
     wantedBy = ["multi-user.target"];
   };
-  # Containers
+  # containers
   virtualisation.oci-containers.containers."changedetection" = {
     image = "ghcr.io/dgtlmoon/changedetection.io";
+    log-driver = "journald";
+    environment = {
+      WEBDRIVER_URL = "http://chrome:4444";
+    };
     volumes = [
       "changedetection_changedetection-data:/datastore:rw"
     ];
     ports = [
-      # "127.0.0.1:5000:5000/tcp"
+      # "5000:5000"
     ];
-    log-driver = "journald";
     extraOptions = [
       "--hostname=changedetection"
       "--network-alias=changedetection"
+      "--network=internal"
+    ];
+  };
+  virtualisation.oci-containers.containers."chrome" = {
+    image = "selenium/standalone-chrome:latest";
+    log-driver = "journald";
+    environment = {};
+    volumes = [];
+    ports = [
+      # "4444:4444"
+      # "7900:7900"
+    ];
+    extraOptions = [
+      "--shm-size=2048m"
+      "--hostname=chrome"
+      "--network-alias=chrome"
       "--network=internal"
     ];
   };
