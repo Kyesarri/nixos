@@ -16,12 +16,18 @@
       "podman-network-internal.service"
       "podman-volume-changedetection_changedetection-data.service"
     ];
-    partOf = [
-      "podman-compose-changedetection-root.target"
-    ];
-    wantedBy = [
-      "podman-compose-changedetection-root.target"
-    ];
+    partOf = ["podman-compose-changedetection-root.target"];
+    wantedBy = ["podman-compose-changedetection-root.target"];
+  };
+
+  systemd.services."podman-chrome" = {
+    serviceConfig = {
+      Restart = lib.mkOverride 90 "always";
+    };
+    after = ["podman-network-internal.service"];
+    requires = ["podman-network-internal.service"];
+    partOf = ["podman-compose-changedetection-root.target"];
+    wantedBy = ["podman-compose-changedetection-root.target"];
   };
 
   systemd.services."podman-volume-changedetection_changedetection-data" = {
