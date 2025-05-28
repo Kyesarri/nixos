@@ -13,7 +13,6 @@
     ../../containers/frigate
     ../../containers/homer
     ../../containers/orcaslicer
-    ../../containers/changedetection
     # ../../containers/overseerr
   ];
 
@@ -29,6 +28,7 @@
 
   cont = {
     arr.enable = true;
+    changedetection.enable = true;
     cloudflared.enable = true; # todo mkoption string for multiple hosts
     cpai.enable = true;
     doubletake.enable = true;

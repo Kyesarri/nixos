@@ -4,17 +4,18 @@
     ./arr # arr stack
     ./backend-network # backend network - for inter container comms not on main lan
     ./cloudflared # cloudflare tunnel
-    ./cpai
-    ./doubletake
-    ./dms
+    ./changedetection # webpage monitor
+    ./cpai #
+    ./doubletake #
+    ./dms #
     ./haos # home assistant, cloud free home automation
     ./headscale # testing ground for tailscale replacement - vpn for remote connections to lan
-    ./i2p
+    ./i2p #
     ./immich # self-hosted image server
     ./nginx-lan # reverse proxy for local services
     ./nginx-wan # reverse proxy for webhosting
     ./nzbget # nzb client
-    ./plex
+    ./plex #
     ./radicale # calendar + todo thingy
     ./restreamer # camera restream utility - use for 3d printer?
     ./rocket-chat # self hosted message service
