@@ -3,6 +3,7 @@ The best and simplest free open source web page change detection, website watche
 Restock Monitor, change detection. Designed for simplicity - Simply monitor which websites had a text change for free.
 */
 {
+  config,
   pkgs,
   lib,
   ...
