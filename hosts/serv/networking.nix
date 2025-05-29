@@ -32,7 +32,10 @@
       "10-lan" = {
         address = ["${toString secrets.ip.serv-1}/24"];
         gateway = ["${toString secrets.ip.gateway}"];
-        dns = [${secrets.ip.adguard-serv} ${secrets.ip.adguard-erying}];
+        dns = [
+          secrets.ip.adguard-serv
+          secrets.ip.adguard-erying
+        ];
         matchConfig.Name = ["eno1"];
         linkConfig.RequiredForOnline = "routable";
         networkConfig = {
@@ -45,7 +48,10 @@
       "30-lan2" = {
         address = ["${toString secrets.ip.serv-2}/24"];
         gateway = ["${toString secrets.ip.gateway}"];
-        dns = [${secrets.ip.adguard-serv} ${secrets.ip.adguard-erying}];
+        dns = [
+          secrets.ip.adguard-serv
+          secrets.ip.adguard-erying
+        ];
         matchConfig.Name = ["enp4s0"];
         linkConfig.RequiredForOnline = "routable";
         networkConfig = {
