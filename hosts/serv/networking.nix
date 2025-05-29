@@ -88,7 +88,10 @@
         matchConfig.Name = ["eno1"];
         networkConfig.LinkLocalAddressing = "no";
         linkConfig.RequiredForOnline = "carrier";
-        dns = [${secrets.ip.adguard-serv} ${secrets.ip.adguard-erying}];
+        dns = [
+          secrets.ip.adguard-serv
+          secrets.ip.adguard-erying
+        ];
         extraConfig = ''
           [Network]
           MACVLAN=lan-self
@@ -98,7 +101,10 @@
       "20-lan-self" = {
         address = ["${toString secrets.ip.serv-1}/24"];
         gateway = ["${toString secrets.ip.gateway}"];
-        dns = [${secrets.ip.adguard-serv} ${secrets.ip.adguard-erying}];
+        dns = [
+          secrets.ip.adguard-serv
+          secrets.ip.adguard-erying
+        ];
         matchConfig.Name = "lan-self";
         linkConfig.RequiredForOnline = "routable";
         networkConfig = {
@@ -111,7 +117,10 @@
         matchConfig.Name = ["enp4s0"];
         networkConfig.LinkLocalAddressing = "no";
         linkConfig.RequiredForOnline = "carrier";
-        dns = [${secrets.ip.adguard-serv} ${secrets.ip.adguard-erying}];
+        dns = [
+          secrets.ip.adguard-serv
+          secrets.ip.adguard-erying
+        ];
         extraConfig = ''
           [Network]
           MACVLAN=lan2-self
@@ -121,7 +130,10 @@
       "40-lan2-self" = {
         address = ["${toString secrets.ip.serv-2}/24"];
         gateway = ["${toString secrets.ip.gateway}"];
-        dns = [${secrets.ip.adguard-serv} ${secrets.ip.adguard-erying}];
+        dns = [
+          secrets.ip.adguard-serv
+          secrets.ip.adguard-erying
+        ];
         matchConfig.Name = "lan2-self";
         linkConfig.RequiredForOnline = "routable";
         networkConfig = {
