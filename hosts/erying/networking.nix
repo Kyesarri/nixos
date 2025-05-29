@@ -53,7 +53,7 @@
     networks = {
       "10-lan" = {
         matchConfig.Name = ["eth0"];
-        dns = [${secrets.ip.adguard-serv} ${secrets.ip.adguard-erying}];
+        dns = [secrets.ip.adguard-serv secrets.ip.adguard-erying];
         networkConfig.LinkLocalAddressing = "no";
         linkConfig.RequiredForOnline = "carrier";
         extraConfig = ''
@@ -65,7 +65,7 @@
       "20-lan-self" = {
         address = ["${toString secrets.ip.erying}/24"];
         gateway = ["${toString secrets.ip.gateway}"];
-        dns = [${secrets.ip.adguard-serv} ${secrets.ip.adguard-erying}];
+        dns = [secrets.ip.adguard-serv secrets.ip.adguard-erying];
         matchConfig.Name = "lan-self";
         linkConfig.RequiredForOnline = "routable";
         networkConfig = {
