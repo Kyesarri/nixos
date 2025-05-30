@@ -77,6 +77,7 @@ in {
           "--network=arr"
           "--network=internal"
           "--network=rocket-chat"
+          "--network=mailu_default"
           "--privileged"
         ];
       };
