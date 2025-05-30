@@ -13,7 +13,7 @@
     ../../containers/frigate
     ../../containers/homer
     ../../containers/orcaslicer
-    ../../containers/mailu
+    # ../../containers/mailu # TODO need to fix dirs
     # ../../containers/overseerr
   ];
 
