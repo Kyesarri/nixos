@@ -1,4 +1,5 @@
 {
+  secrets,
   config,
   pkgs,
   lib,
@@ -18,10 +19,6 @@ in {
       type = types.str;
       default = "mail.example.com";
     };
-    timeZone = mkOption {
-      type = types.str;
-      default = "Australia/Melbourne";
-    };
     image = mkOption {
       type = types.str;
       default = "ghcr.io/docker-mailserver/docker-mailserver:latest";
@@ -30,28 +27,62 @@ in {
 
   config = mkMerge [
     (mkIf (cfg.enable == true) {
+      # pull latest image
       environment.shellAliases = {cont-dms = "sudo podman pull ${cfg.image}";};
+
+      # systemd
       systemd = {
+        # root target
         targets."podman-dms-root" = {
           unitConfig = {Description = "root target";};
           wantedBy = ["multi-user.target"];
         };
+
         services = {
-          # container
+          # network
+          "podman-network-dms" = {
+            script = ''podman network inspect dms || podman network create dms'';
+            partOf = ["podman-dms-root.target"];
+            wantedBy = ["podman-dms-root.target"];
+            path = [pkgs.podman];
+            serviceConfig = {
+              Type = "oneshot";
+              RemainAfterExit = true;
+              ExecStop = "podman network rm -f dms";
+            };
+          };
+
+          # dms
           "podman-dms" = {
             serviceConfig = {Restart = lib.mkOverride 90 "always";};
             after = [
-              "podman-network-internal.service"
+              "podman-network-dms.service"
               "podman-volumes-dms.service"
             ];
             requires = [
-              "podman-network-internal.service"
+              "podman-network-dms.service"
               "podman-volumes-dms.service"
             ];
             partOf = ["podman-dms-root.target"];
             wantedBy = ["podman-dms-root.target"];
           };
-          # volume
+
+          # cloudflared
+          "podman-dms-cloudflared" = {
+            serviceConfig = {Restart = lib.mkOverride 90 "always";};
+            after = [
+              "podman-network-dms.service"
+              "podman-dms.service"
+            ];
+            requires = [
+              "podman-network-dms.service"
+              "podman-dms.service"
+            ];
+            partOf = ["podman-dms-root.target"];
+            wantedBy = ["podman-dms-root.target"];
+          };
+
+          # dms volumes
           "podman-volumes-dms" = {
             path = [pkgs.podman];
             serviceConfig = {
@@ -64,31 +95,55 @@ in {
               podman volume inspect dms-logs || podman volume create dms-logs && \
               podman volume inspect dms-config || podman volume create dms-config
             '';
-            partOf = ["podman-doubletake-root.target"];
-            wantedBy = ["podman-doubletake-root.target"];
+            partOf = ["podman-dms-root.target"];
+            wantedBy = ["podman-dms-root.target"];
           };
         };
       };
-      virtualisation.oci-containers.containers = {
-        "dms" = {
-          hostname = "${cfg.fqdn}";
-          image = "${cfg.image}";
-          log-driver = "journald";
-          environment = {
-            TZ = "${cfg.timeZone}";
-          };
-          volumes = [
-            "/etc/localtime:/etc/localtime:ro"
-            "dms-mail:/var/mail/"
-            "dms-state:/var/mail-state/"
-            "dms-logs:/var/log/mail/"
-            "dms-config:/tmp/docker-mailserver/"
-          ];
-          extraOptions = [
-            "--network-alias=dms"
-            "--network=internal"
-          ];
+
+      # cloudflared container
+      virtualisation.oci-containers.containers."dms-cloudflared" = {
+        log-driver = "journald";
+        image = "cloudflare/cloudflared:latest";
+        environment = {
+          "TZ" = "Australia/Melbourne";
+          "TUNNEL_TOKEN" = "${secrets.cloudflare.mail}";
         };
+        cmd = ["tunnel" "--no-autoupdate" "run"];
+        extraOptions = [
+          "--network-alias=dms-cloudflared"
+          "--network=dms"
+        ];
+      };
+
+      # dms container
+      virtualisation.oci-containers.containers."dms" = {
+        hostname = "${cfg.fqdn}";
+        image = "${cfg.image}";
+        log-driver = "journald";
+        environment = {
+          TZ = "Australia/Melbourne";
+        };
+        ports = [
+          /*
+          - "25:25"    # SMTP  (explicit TLS => STARTTLS)
+          - "143:143"  # IMAP4 (explicit TLS => STARTTLS)
+          - "465:465"  # ESMTP (implicit TLS)
+          - "587:587"  # ESMTP (explicit TLS => STARTTLS)
+          - "993:993"  # IMAP4 (implicit TLS)
+          */
+        ];
+        volumes = [
+          "/etc/localtime:/etc/localtime:ro"
+          "dms-mail:/var/mail/"
+          "dms-state:/var/mail-state/"
+          "dms-logs:/var/log/mail/"
+          "dms-config:/tmp/docker-mailserver/"
+        ];
+        extraOptions = [
+          "--network-alias=dms"
+          "--network=dms"
+        ];
       };
     })
   ];
