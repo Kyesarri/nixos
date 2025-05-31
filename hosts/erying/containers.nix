@@ -59,7 +59,7 @@
     #
     dms = {
       # start-mailserver.sh: You need at least one mail account to start Dovecot (120s left for account creation before shutdown)
-      enable = false;
+      enable = true;
       fqdn = "${secrets.domain.fqdn}";
     };
     #
