@@ -10,7 +10,6 @@ with lib; let
 in {
   # https://github.com/docker-mailserver/docker-mailserver/blob/master/compose.yaml
   options.cont.dms = {
-    #
     enable = mkOption {
       type = types.bool;
       default = false;
@@ -24,6 +23,10 @@ in {
       default = "ghcr.io/docker-mailserver/docker-mailserver:latest";
     };
   };
+
+  /*
+  sudo podman exec -t -i <CONTAINER_ID> setup email add user@example.org
+  */
 
   config = mkMerge [
     (mkIf (cfg.enable == true) {
