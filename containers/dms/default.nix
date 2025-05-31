@@ -1,3 +1,7 @@
+/*
+currently this was planned to use cloudflared to hide my ip and leverage cloudflares
+platform, however with some reading this is not a recommended configuration :)
+*/
 {
   secrets,
   config,
