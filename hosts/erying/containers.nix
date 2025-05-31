@@ -13,7 +13,6 @@
     ../../containers/frigate
     ../../containers/homer
     ../../containers/orcaslicer
-    # ../../containers/overseerr
   ];
 
   virtualisation = {
