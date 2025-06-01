@@ -28,7 +28,7 @@
   cont = {
     arr.enable = true;
     changedetection.enable = true;
-    cloudflared.enable = true; # todo mkoption string for multiple hosts
+    cloudflared.enable = true;
     cpai.enable = true;
     doubletake.enable = true;
     headscale.enable = false;
