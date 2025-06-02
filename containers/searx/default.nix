@@ -81,26 +81,74 @@
   environment.etc = {
     "oci.cont/searxng/settings.yml" = {
       mode = "644";
-      # unsure what the uuid / guid is in this container
-      # uid = 1000;
-      # gid = 1000;
       text = ''
-        use_default_settings: true
+        use_default_settings: false
+
+        general:
+          debug: false
+          # displayed name
+          instance_name: "searx.galing.org"
+          # For example: https://example.com/privacy
+          privacypolicy_url: false
+          # use true to use your own donation page written in searx/info/en/donate.md
+          # use false to disable the donation link
+          donation_url: false
+          # mailto:contact@example.com
+          contact_url: false
+          # record stats
+          enable_metrics: true
+
         server:
           secret_key: "${secrets.searxng.key}"
           limiter: false #TODO
           image_proxy: true
+
         ui:
+          static_path: ""
           static_use_hash: true
+          query_in_title: false
+          infinite_scroll: true
+          default_theme: simple
+          theme_args:
+            simple_style: dark
+
         redis:
           url: redis://redis:6379/0
+
+        engines:
+          - name: arch linux wiki
+            engine: archlinux
+            shortcut: al
+
+          - name: duckduckgo
+            engine: duckduckgo
+            shortcut: ddg
+
+          - name: fdroid
+            engine: fdroid
+            shortcut: fd
+            disabled: true
+
+          - name: github
+            engine: github
+            shortcut: gh
+
+          - name: codeberg
+            # https://docs.searxng.org/dev/engines/online/gitea.html
+            engine: gitea
+            base_url: https://codeberg.org
+            shortcut: cb
+            disabled: false
+          - name: google
+            engine: google
+            shortcut: go
+            # additional_tests:
+            #   android: *test_android
       '';
     };
+
     "oci.cont/searxng/limiter.toml" = {
       mode = "644";
-      # unsure what the uuid / guid is in this container
-      # uid = 1000;
-      # gid = 1000;
       text = ''
         # This configuration file updates the default configuration file
         # See https://github.com/searxng/searxng/blob/master/searx/limiter.toml
