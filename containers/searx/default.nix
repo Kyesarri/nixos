@@ -77,24 +77,42 @@
 
   environment.shellAliases = {cont-searxng = "sudo podman pull docker.io/searxng/searxng:latest";};
 
-  # write config to location
-  environment.etc."oci.cont/searxng/settings.yml" = {
-    mode = "644";
-    # unsure what the uuid / guid is in this container
-    # uid = 1000;
-    # gid = 1000;
-    text = ''
-      use_default_settings: true
-      server:
-        secret_key: "${secrets.searxng.key}"
-        limiter: false #TODO
-        image_proxy: true
-      ui:
-        static_use_hash: true
-      redis:
-        url: redis://redis:6379/0
-    '';
+  # write configs to location
+  environment.etc = {
+    "oci.cont/searxng/settings.yml" = {
+      mode = "644";
+      # unsure what the uuid / guid is in this container
+      # uid = 1000;
+      # gid = 1000;
+      text = ''
+        use_default_settings: true
+        server:
+          secret_key: "${secrets.searxng.key}"
+          limiter: false #TODO
+          image_proxy: true
+        ui:
+          static_use_hash: true
+        redis:
+          url: redis://redis:6379/0
+      '';
+    };
+    "oci.cont/searxng/limiter.toml" = {
+      mode = "644";
+      # unsure what the uuid / guid is in this container
+      # uid = 1000;
+      # gid = 1000;
+      text = ''
+        # This configuration file updates the default configuration file
+        # See https://github.com/searxng/searxng/blob/master/searx/limiter.toml
+
+        [botdetection.ip_limit]
+        # activate advanced bot protection
+        # enable this when running the instance for a public usage on the internet
+        link_token = false
+      '';
+    };
   };
+
   # containers
   virtualisation.oci-containers.containers = {
     "searxng-redis" = {
