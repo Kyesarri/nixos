@@ -108,9 +108,9 @@
           static_use_hash: true
           query_in_title: false
           infinite_scroll: true
-          default_theme: simple
-          theme_args:
-            simple_style: dark
+          # default_theme: simple
+          # theme_args:
+          #   simple_style: dark
 
         redis:
           url: redis://redis:6379/0
