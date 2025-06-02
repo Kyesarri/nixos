@@ -87,7 +87,7 @@
       use_default_settings: true
       server:
         secret_key: "${secrets.searxng.key}"
-        limiter: true
+        limiter: false #TODO
         image_proxy: true
       ui:
         static_use_hash: true
