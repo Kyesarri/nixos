@@ -86,16 +86,10 @@
 
         general:
           debug: false
-          # displayed name
-          instance_name: "searx.galing.org"
-          # For example: https://example.com/privacy
+          instance_name: "searx"
           privacypolicy_url: false
-          # use true to use your own donation page written in searx/info/en/donate.md
-          # use false to disable the donation link
           donation_url: false
-          # mailto:contact@example.com
           contact_url: false
-          # record stats
           enable_metrics: true
 
         server:
@@ -108,45 +102,15 @@
           static_use_hash: true
           query_in_title: false
           infinite_scroll: true
-          # default_theme: simple
-          # theme_args:
-          #   simple_style: dark
+          default_theme: simple
+          center_alignment: true
+          default_locale: ""
+          theme_args:
+            simple_style: dark
 
         redis:
           url: redis://redis:6379/0
       '';
-
-      /*
-      engines:
-        - name: arch linux wiki
-          engine: archlinux
-          shortcut: al
-
-        - name: duckduckgo
-          engine: duckduckgo
-          shortcut: ddg
-
-        - name: fdroid
-          engine: fdroid
-          shortcut: fd
-          disabled: true
-
-        - name: github
-          engine: github
-          shortcut: gh
-
-        - name: codeberg
-          # https://docs.searxng.org/dev/engines/online/gitea.html
-          engine: gitea
-          base_url: https://codeberg.org
-          shortcut: cb
-          disabled: false
-        - name: google
-          engine: google
-          shortcut: go
-          # additional_tests:
-          #   android: *test_android
-      */
     };
 
     "oci.cont/searxng/limiter.toml" = {
