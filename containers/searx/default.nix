@@ -82,7 +82,7 @@
     "oci.cont/searxng/settings.yml" = {
       mode = "644";
       text = ''
-        use_default_settings: false
+        use_default_settings: true
 
         general:
           debug: false
@@ -114,37 +114,39 @@
 
         redis:
           url: redis://redis:6379/0
-
-        engines:
-          - name: arch linux wiki
-            engine: archlinux
-            shortcut: al
-
-          - name: duckduckgo
-            engine: duckduckgo
-            shortcut: ddg
-
-          - name: fdroid
-            engine: fdroid
-            shortcut: fd
-            disabled: true
-
-          - name: github
-            engine: github
-            shortcut: gh
-
-          - name: codeberg
-            # https://docs.searxng.org/dev/engines/online/gitea.html
-            engine: gitea
-            base_url: https://codeberg.org
-            shortcut: cb
-            disabled: false
-          - name: google
-            engine: google
-            shortcut: go
-            # additional_tests:
-            #   android: *test_android
       '';
+
+      /*
+      engines:
+        - name: arch linux wiki
+          engine: archlinux
+          shortcut: al
+
+        - name: duckduckgo
+          engine: duckduckgo
+          shortcut: ddg
+
+        - name: fdroid
+          engine: fdroid
+          shortcut: fd
+          disabled: true
+
+        - name: github
+          engine: github
+          shortcut: gh
+
+        - name: codeberg
+          # https://docs.searxng.org/dev/engines/online/gitea.html
+          engine: gitea
+          base_url: https://codeberg.org
+          shortcut: cb
+          disabled: false
+        - name: google
+          engine: google
+          shortcut: go
+          # additional_tests:
+          #   android: *test_android
+      */
     };
 
     "oci.cont/searxng/limiter.toml" = {
