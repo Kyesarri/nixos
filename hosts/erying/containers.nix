@@ -13,6 +13,7 @@
     ../../containers/frigate
     ../../containers/homer
     ../../containers/orcaslicer
+    ../../containers/searx
   ];
 
   virtualisation = {

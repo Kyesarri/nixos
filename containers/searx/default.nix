@@ -1,4 +1,5 @@
 {
+  secrets,
   pkgs,
   lib,
   ...
@@ -72,6 +73,28 @@
     wantedBy = ["podman-searxng-root.target"];
   };
 
+  system.activationScripts.makeSearxNGDir = lib.stringAfter ["var"] ''mkdir -v -p /etc/oci.cont/searxng'';
+
+  environment.shellAliases = {cont-searxng = "sudo podman pull docker.io/searxng/searxng:latest";};
+
+  # write config to location
+  environment.etc."oci.cont/searxng/settings.yml" = {
+    mode = "644";
+    # unsure what the uuid / guid is in this container
+    # uid = 1000;
+    # gid = 1000;
+    text = ''
+      use_default_settings: true
+      server:
+        secret_key: "${secrets.searxng.key}"
+        limiter: true
+        image_proxy: true
+      ui:
+        static_use_hash: true
+      redis:
+        url: redis://redis:6379/0
+    '';
+  };
   # containers
   virtualisation.oci-containers.containers = {
     "redis" = {
@@ -90,14 +113,11 @@
     "searxng" = {
       image = "docker.io/searxng/searxng:latest";
       environment = {
-        "SEARXNG_BASE_URL" = "https://searx.galing.org/";
-        "UWSGI_THREADS" = "4";
-        "UWSGI_WORKERS" = "4";
+        SEARXNG_BASE_URL = "https://searx.galing.org/";
+        UWSGI_THREADS = "4";
+        UWSGI_WORKERS = "4";
       };
       volumes = [
-        # need to re-create this as a local dir
-        # want to configure the .env and other files
-        # the nix way
         "/etc/oci.cont/searxng:/etc/searxng:rw"
       ];
       ports = [
@@ -120,8 +140,6 @@
       };
       cmd = ["tunnel" "--no-autoupdate" "run"];
       extraOptions = [
-        # remember to add networks you want to expose via tunnel,
-        # i didnt and wasted two days trying to get this to work :D
         "--network-alias=searx-cloudflared"
         "--network=searxng"
       ];
