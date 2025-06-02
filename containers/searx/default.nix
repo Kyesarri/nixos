@@ -97,7 +97,7 @@
   };
   # containers
   virtualisation.oci-containers.containers = {
-    "redis" = {
+    "searxng-redis" = {
       image = "docker.io/valkey/valkey:8-alpine";
       volumes = [
         "searxng_valkey-data:/data:rw"
@@ -106,7 +106,7 @@
       log-driver = "journald";
       extraOptions = [
         "--network-alias=redis"
-        "--network=searxng_searxng"
+        "--network=searxng"
       ];
     };
 
