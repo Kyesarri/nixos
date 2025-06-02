@@ -58,7 +58,7 @@
     };
     #
     dms = {
-      enable = true;
+      enable = false;
       fqdn = "${secrets.domain.fqdn}";
     };
     #
