@@ -152,9 +152,9 @@
       volumes = [
         "/etc/oci.cont/searxng:/etc/searxng:rw"
         # write files from our host tree to container
-        "./favicon.svg:/etc/searxng/searx/static/themes/simple/image/favicon.svg"
-        "./searxng.svg:/etc/searxng/searx/static/themes/simple/image/searxng.svg"
-        "./rss.min.css:/etc/searxng/searx/static/themes/simple/css/rss.min.css"
+        "/home/kel/nixos/containers/searx/favicon.svg:/etc/searxng/searx/static/themes/simple/image/favicon.svg"
+        "/home/kel/nixos/containers/searx/searxng.svg:/etc/searxng/searx/static/themes/simple/image/searxng.svg"
+        "/home/kel/nixos/containers/searx/rss.min.css:/etc/searxng/searx/static/themes/simple/css/rss.min.css"
       ];
       ports = [
         # no ports required to be opened on host, we're using cloudflared
