@@ -276,8 +276,8 @@ template {
     --color-toolkit-loader-borderleft: rgba(255, 255, 255, 0);
     --color-doc-code: #003;
     --color-doc-code-background: #ddeaff;
-    --color-bar-chart-primary: #5bc0de;
-    --color-bar-chart-secondary: #deb15b;
+    --color-bar-chart-primary: #E4A382;
+    --color-bar-chart-secondary: #EFB993;
     --color-image-resolution-background: rgba(0, 0, 0, .5);
     --color-image-resolution-font: #fff;
     --color-loading-indicator: rgba(255, 255, 255, .2);
