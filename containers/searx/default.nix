@@ -76,6 +76,8 @@
   system.activationScripts.makeSearxNGDir = lib.stringAfter ["var"] ''mkdir -v -p /etc/oci.cont/searxng'';
 
   environment.shellAliases = {cont-searxng = "sudo podman pull docker.io/searxng/searxng:latest";};
+
+  # TODO - not working currently :)
   # write files from tree to specific directory
   environment.etc = {
     "oci.cont/searxng/static/themes/simple/image/favicon.svg" = {
@@ -90,6 +92,10 @@
     "oci.cont/searxng/static/themes/simple/css/searxng.min.css" = {
       mode = "644";
       source = ./searxng.min.css;
+    };
+    "oci.cont/searxng/static/themes/simple/css/rss.min.css" = {
+      mode = "644";
+      source = ./rss.min.css;
     };
   };
   # write configs to location
