@@ -152,7 +152,7 @@
       volumes = [
         "/etc/oci.cont/searxng:/etc/searxng:rw"
         # write files from our host tree to container
-        "./avicon.svg:/etc/searxng/searx/static/themes/simple/image/favicon.svg"
+        "./favicon.svg:/etc/searxng/searx/static/themes/simple/image/favicon.svg"
         "./searxng.svg:/etc/searxng/searx/static/themes/simple/image/searxng.svg"
         "./rss.min.css:/etc/searxng/searx/static/themes/simple/css/rss.min.css"
       ];
