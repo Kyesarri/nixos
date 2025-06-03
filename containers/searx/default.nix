@@ -77,27 +77,6 @@
 
   environment.shellAliases = {cont-searxng = "sudo podman pull docker.io/searxng/searxng:latest";};
 
-  # TODO - not working currently :)
-  # write files from tree to specific directory
-  environment.etc = {
-    "oci.cont/searxng/static/themes/simple/image/favicon.svg" = {
-      mode = "644";
-      source = ./favicon.svg;
-    };
-
-    "oci.cont/searxng/static/themes/simple/image/searxng.svg" = {
-      mode = "644";
-      source = ./searxng.svg;
-    };
-    "oci.cont/searxng/static/themes/simple/css/searxng.min.css" = {
-      mode = "644";
-      source = ./searxng.min.css;
-    };
-    "oci.cont/searxng/static/themes/simple/css/rss.min.css" = {
-      mode = "644";
-      source = ./rss.min.css;
-    };
-  };
   # write configs to location
   environment.etc = {
     "oci.cont/searxng/settings.yml" = {
@@ -173,6 +152,9 @@
       volumes = [
         "/etc/oci.cont/searxng:/etc/searxng:rw"
         # write files from our host tree to container
+        "/home/kel/nixos/containers/searx/favicon.svg:/usr/local/searxng/searx/static/themes/simple/image/favicon.svg"
+        "/home/kel/nixos/containers/searx/searxng.svg:/usr/local/searxng/searx/static/themes/simple/image/searxng.svg:ro"
+        "/home/kel/nixos/containers/searx/rss.min.css:/usr/local/searxng/searx/static/themes/simple/css/rss.min.css:ro"
       ];
       ports = [
         # no ports required to be opened on host, we're using cloudflared
