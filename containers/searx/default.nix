@@ -83,9 +83,13 @@
       source = ./favicon.svg;
     };
 
-    "oci.contsearxng/searx/static/themes/simple/image/searxng.svg" = {
+    "oci.cont/searxng/searx/static/themes/simple/image/searxng.svg" = {
       mode = "644";
       source = ./searxng.svg;
+    };
+    "oci.cont/searxng/searx/static/themes/simple/css/searxng.min.css" = {
+      mode = "644";
+      source = ./searxng.min.css;
     };
   };
   # write configs to location
