@@ -154,6 +154,7 @@
       ];
       ports = [
         # no ports required to be opened on host, we're using cloudflared
+        # to tunnel the connection
         # "127.0.0.1:8080:8080/tcp"
       ];
       log-driver = "journald";
