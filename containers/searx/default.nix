@@ -78,16 +78,13 @@
   environment.shellAliases = {cont-searxng = "sudo podman pull docker.io/searxng/searxng:latest";};
   # write files from tree to specific directory
   environment.etc = {
-    "oci.cont/searxng/static/themes/simple/image/favicon.svg" = {
+    "oci.cont/searxng/searx/static/themes/simple/image/favicon.svg" = {
       mode = "644";
-      # uid = 1000;
-      # gid = 1000;
       source = ./favicon.svg;
     };
-    "oci.cont/searxng/static/themes/simple/image/searxng.svg" = {
+
+    "oci.contsearxng/searx/static/themes/simple/image/searxng.svg" = {
       mode = "644";
-      # uid = 1000;
-      # gid = 1000;
       source = ./searxng.svg;
     };
   };
