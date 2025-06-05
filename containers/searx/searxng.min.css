@@ -3361,7 +3361,7 @@ failed-test {
 }
 
 .index .title {
-    background: url(../img/searxng.png) no-repeat;
+    background: url(../img/searxng.svg) no-repeat;
     min-height: 4rem;
     margin: 4rem auto;
     background-position: center;
