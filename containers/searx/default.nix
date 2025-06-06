@@ -97,9 +97,9 @@
       mode = "644";
       source = ./custom/wordmark.min.svg;
     };
-    "oci.cont/searxng/custom/wordmark.min.svg" = {
+    "oci.cont/searxng/custom/searxng-wordmark.min.svg" = {
       mode = "644";
-      source = ./custom/searxng-wordmark.min.svg;
+      source = ./custom/wordmark.min.svg;
     };
     "oci.cont/searxng/custom/searxng.min.css" = {
       mode = "644";
