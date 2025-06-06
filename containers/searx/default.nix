@@ -155,6 +155,7 @@
         # images
         "/home/kel/nixos/containers/searx/favicon.svg:/usr/local/searxng/searx/static/themes/simple/img/favicon.svg:ro"
         "/home/kel/nixos/containers/searx/searxng.svg:/usr/local/searxng/searx/static/themes/simple/img/searxng.svg:ro"
+        "/home/kel/nixos/containers/searx/page_with_header.html:/usr/local/searxng/searx/templates/simple/page_with_header.html:ro"
 
         # css
         "/home/kel/nixos/containers/searx/rss.min.css:/usr/local/searxng/searx/static/themes/simple/css/rss.min.css:ro"
