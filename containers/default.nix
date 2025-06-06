@@ -53,6 +53,7 @@
   networking.firewall.interfaces."podman+".allowedUDPPorts = [53];
 
   environment.systemPackages = with pkgs; [
+    dive # look into image layers?
     podman # the boi
     podman-tui # nice tui interface for podman
     intel-gpu-tools # intel igpu monitor - used for plex / frigate igpu use monitoring
