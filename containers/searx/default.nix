@@ -152,14 +152,19 @@
       volumes = [
         "/etc/oci.cont/searxng:/etc/searxng:rw"
 
+        # bit going on here, really just modifying some images / css / html
+        # to change the theme on SearxNG page(s)
+        # want to take files from tree rather than leaving the absolute links here
+
         # images
-        "/home/kel/nixos/containers/searx/favicon.svg:/usr/local/searxng/searx/static/themes/simple/img/favicon.svg:ro"
-        "/home/kel/nixos/containers/searx/searxng.svg:/usr/local/searxng/searx/static/themes/simple/img/searxng.svg:ro"
+        # "/home/kel/nixos/containers/searx/favicon.svg:/usr/local/searxng/searx/static/themes/simple/img/favicon.svg:ro"
+        "./favicon.svg:/usr/local/searxng/searx/static/themes/simple/img/favicon.svg:ro"
+        "./searxng.svg:/usr/local/searxng/searx/static/themes/simple/img/searxng.svg:ro"
 
         "/home/kel/nixos/containers/searx/page_with_header.html:/usr/local/searxng/searx/templates/simple/page_with_header.html:ro"
 
         "/home/kel/nixos/containers/searx/wordmark.min.svg:/usr/local/searxng/searx/templates/simple/wordmark.min.svg:ro"
-        "/home/kel/nixos/containers/searx/wordmark.min.svg:/usr/local/searxng/searx/templates/simple/searxng-wordmark.min.svg:ro"
+        "/home/kel/nixos/containers/searx/wordmark.min.svg:/usr/local/searxng/searx/templates/simple/searxng-zwordmark.min.svg:ro"
         # css
         "/home/kel/nixos/containers/searx/rss.min.css:/usr/local/searxng/searx/static/themes/simple/css/rss.min.css:ro"
         "/home/kel/nixos/containers/searx/searxng.min.css:/usr/local/searxng/searx/static/themes/simple/css/searxng.min.css:ro"
