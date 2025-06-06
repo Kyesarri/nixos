@@ -77,10 +77,14 @@
 
   environment.shellAliases = {cont-searxng = "sudo podman pull docker.io/searxng/searxng:latest";};
 
-  # write files to /etc/
   environment.etc = {
-    # test writing dir and contents
-    # this is yuck, https://github.com/NixOS/nixpkgs/issues/200744
+    # this is yuck
+    # https://github.com/NixOS/nixpkgs/issues/200744
+
+    # would love to symlink whole dir to /etc/...
+    # or be able to use "./custom/file.css:/blabla/file.css" in podman volumes
+
+    # write files in tree to dir
     "oci.cont/searxng/custom/favicon.svg" = {
       mode = "644";
       source = ./custom/favicon.svg;
@@ -110,6 +114,7 @@
       source = ./custom/rss.min.css;
     };
 
+    # write files to /etc/
     "oci.cont/searxng/settings.yml" = {
       mode = "644";
       text = ''
