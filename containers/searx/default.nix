@@ -80,11 +80,34 @@
   # write files to /etc/
   environment.etc = {
     # test writing dir and contents
-    "oci.cont/searxng/custom/" = {
+    # this is yuck, https://github.com/NixOS/nixpkgs/issues/200744
+    "oci.cont/searxng/custom/favicon.svg" = {
       mode = "644";
-      uid = 1000;
-      gid = 1000;
-      source = ./custom;
+      source = ./custom/favicon.svg;
+    };
+    "oci.cont/searxng/custom/page_with_header.html" = {
+      mode = "644";
+      source = ./custom/page_with_header.html;
+    };
+    "oci.cont/searxng/custom/searxng.svg" = {
+      mode = "644";
+      source = ./custom/searxng.svg;
+    };
+    "oci.cont/searxng/custom/wordmark.min.svg" = {
+      mode = "644";
+      source = ./custom/wordmark.min.svg;
+    };
+    "oci.cont/searxng/custom/wordmark.min.svg" = {
+      mode = "644";
+      source = ./custom/searxng-wordmark.min.svg;
+    };
+    "oci.cont/searxng/custom/searxng.min.css" = {
+      mode = "644";
+      source = ./custom/searxng.min.css;
+    };
+    "oci.cont/searxng/custom/rss.min.css" = {
+      mode = "644";
+      source = ./custom/rss.min.css;
     };
 
     "oci.cont/searxng/settings.yml" = {
@@ -163,7 +186,7 @@
         # bit going on here, really just modifying some images / css / html
         # to change the theme on SearxNG page(s)
 
-        # images
+        # svg
         "/etc/oci.cont/searxng/custom/favicon.svg:/usr/local/searxng/searx/static/themes/simple/img/favicon.svg:ro"
         "/etc/oci.cont/searxng/custom/searxng.svg:/usr/local/searxng/searx/static/themes/simple/img/searxng.svg:ro"
 
