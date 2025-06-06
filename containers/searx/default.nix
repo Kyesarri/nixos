@@ -159,6 +159,7 @@
         "/home/kel/nixos/containers/searx/page_with_header.html:/usr/local/searxng/searx/templates/simple/page_with_header.html:ro"
 
         "/home/kel/nixos/containers/searx/wordmark.min.svg:/usr/local/searxng/searx/templates/simple/wordmark.min.svg:ro"
+        "/home/kel/nixos/containers/searx/wordmark.min.svg:/usr/local/searxng/searx/templates/simple/searxng-wordmark.min.svg:ro"
         # css
         "/home/kel/nixos/containers/searx/rss.min.css:/usr/local/searxng/searx/static/themes/simple/css/rss.min.css:ro"
         "/home/kel/nixos/containers/searx/searxng.min.css:/usr/local/searxng/searx/static/themes/simple/css/searxng.min.css:ro"
