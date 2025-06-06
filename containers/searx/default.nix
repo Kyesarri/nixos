@@ -80,7 +80,7 @@
   # write files to /etc/
   environment.etc = {
     # test writing dir and contents
-    "oci.cont/searxng/custom" = {
+    "oci.cont/searxng/custom/*" = {
       mode = "644";
       uid = 1000;
       gid = 1000;
