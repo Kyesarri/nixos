@@ -64,7 +64,7 @@ in {
             wantedBy = ["podman-ghost-root.target"];
           };
 
-          "podman-cloudflared" = {
+          "podman-ghost-cloudflared" = {
             serviceConfig = {Restart = lib.mkOverride 90 "always";};
             after = ["podman-network-ghost.service"];
             requires = ["podman-network-ghost.service"];
