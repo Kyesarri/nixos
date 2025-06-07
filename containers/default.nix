@@ -8,6 +8,7 @@
     ./cpai #
     ./doubletake #
     ./dms #
+    ./ghost #
     ./haos # home assistant, cloud free home automation
     ./headscale # testing ground for tailscale replacement - vpn for remote connections to lan
     ./i2p #
@@ -53,7 +54,6 @@
   networking.firewall.interfaces."podman+".allowedUDPPorts = [53];
 
   environment.systemPackages = with pkgs; [
-    dive # look into image layers?
     podman # the boi
     podman-tui # nice tui interface for podman
     intel-gpu-tools # intel igpu monitor - used for plex / frigate igpu use monitoring

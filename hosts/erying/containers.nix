@@ -61,6 +61,10 @@
       enable = false;
       fqdn = "${secrets.domain.fqdn}";
     };
+    ghost = {
+      enable = true;
+      cloudflared-token = "${secrets.cloudflare.ghost}";
+    };
     #
     nginx-lan = {
       enable = true;
