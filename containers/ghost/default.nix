@@ -5,6 +5,7 @@ It has user signups, gated access and subscription payments built-in (with Strip
 It's fast, user-friendly, and runs on Node.js & MySQL8.
 */
 {
+  config,
   pkgs,
   lib,
   ...
