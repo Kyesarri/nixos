@@ -135,7 +135,7 @@ in {
             "database__connection__host" = "db";
             "database__connection__password" = "example";
             "database__connection__user" = "root";
-            "url" = "http://db:8080"; # unsure if this will work correctly
+            "url" = "https://ghost.galing.org";
             TZ = "Australia/Melbourne";
           };
           volumes = [
