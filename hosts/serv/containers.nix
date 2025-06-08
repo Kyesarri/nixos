@@ -53,18 +53,6 @@
       vlanIp = "${secrets.vlan.serv.plex}";
     };
     #
-    subgen = {
-      enable = false;
-      macvlanIp = "${secrets.ip.subgen}";
-      vlanIp = "${secrets.vlan.serv.subgen}";
-    };
-    #
-    subsai = {
-      enable = false;
-      macvlanIp = "${secrets.ip.subsai}";
-      vlanIp = "${secrets.vlan.serv.subsai}";
-    };
-    #
     tailscale = {
       enable = true;
       macvlanIp = "${secrets.ip.tailscale-serv}";
