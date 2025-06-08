@@ -33,13 +33,6 @@ in {
 
   config = mkMerge [
     (mkIf (cfg.enable == true) {
-      # create container directories in /etc
-      system.activationScripts.makeCryptpadDir = lib.stringAfter ["var"] ''
-        mkdir -v -p /etc/oci.cont/cryptpad /etc/oci.cont/cryptpad/data /etc/oci.cont/cryptpad/blob \
-        /etc/oci.cont/cryptpad/customize /etc/oci.cont/cryptpad/block /etc/oci.cont/cryptpad/datastore \
-        /etc/oci.cont/cryptpad/onlyoffice-conf /etc/oci.cont/cryptpad/onlyoffice-dist \
-        & chown -R 1000:1000 /etc/oci.cont/cryptpad
-      '';
       systemd = {
         targets."podman-cryptpad-root" = {
           wantedBy = ["multi-user.target"];
@@ -79,6 +72,24 @@ in {
             partOf = ["podman-cryptpad-root.target"];
             wantedBy = ["podman-cryptpad-root.target"];
           };
+          "podman-volumes-cryptpad" = {
+            path = [pkgs.podman];
+            serviceConfig = {
+              Type = "oneshot";
+              RemainAfterExit = true;
+            };
+            script = ''
+              podman volume inspect crpd-customize || podman volume create crpd-customize && \
+              podman volume inspect crpt-blob || podman volume create crpd-blob && \
+              podman volume inspect crpd-block || podman volume create crpd-block && \
+              podman volume inspect crpd-data || podman volume create crpd-data && \
+              podman volume inspect crpd-datastore || podman volume create crpd-datastore && \
+              podman volume inspect crpd-ofconf || podman volume create crpd-ofconf && \
+              podman volume inspect crpd-ofdist || podman volume create crpd-ofdist && \
+            '';
+            partOf = ["podman-cryptpad-root.target"];
+            wantedBy = ["podman-cryptpad-root.target"];
+          };
         };
       };
 
@@ -87,18 +98,20 @@ in {
           image = "cryptpad/cryptpad:version-2025.3.1";
           log-driver = "journald";
           environment = {
+            "TZ" = "Australia/Melbourne";
             "CPAD_CONF" = "/cryptpad/config/config.js";
             "CPAD_MAIN_DOMAIN" = "https://cryptpad.galing.org";
             "CPAD_SANDBOX_DOMAIN" = "https://cryptpad-sb.galing.org";
           };
           volumes = [
-            "/etc/oci.cont/cryptpad/customize:/cryptpad/customize:rw"
-            "/etc/oci.cont/cryptpad/blob:/cryptpad/blob:rw"
-            "/etc/oci.cont/cryptpad/block:/cryptpad/block:rw"
-            "/etc/oci.cont/cryptpad/data:/cryptpad/data:rw"
-            "/etc/oci.cont/cryptpad/datastore:/cryptpad/datastore:rw"
-            "/etc/oci.cont/cryptpad/onlyoffice-conf:/cryptpad/onlyoffice-conf:rw"
-            "/etc/oci.cont/cryptpad/onlyoffice-dist:/cryptpad/www/common/onlyoffice/dist:rw"
+            "/etc/localtime:/etc/localtime:ro"
+            "crpd-customize:/cryptpad/customize:rw"
+            "crpd-blob:/cryptpad/blob:rw"
+            "crpd-block:/cryptpad/block:rw"
+            "crpd-data:/cryptpad/data:rw"
+            "crpd-datastore:/cryptpad/datastore:rw"
+            "crpd-ofconf:/cryptpad/onlyoffice-conf:rw"
+            "crpd-ofdist:/cryptpad/www/common/onlyoffice/dist:rw"
           ];
           ports = [
             # "3000:3000/tcp"
