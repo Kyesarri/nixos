@@ -6,6 +6,7 @@
     ./cloudflared # cloudflare tunnel
     ./changedetection # webpage monitor
     ./cpai #
+    ./cryptpad
     ./doubletake #
     ./dms #
     ./ghost #
