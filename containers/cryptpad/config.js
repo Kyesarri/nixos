@@ -36,7 +36,7 @@ module.exports = {
  *
  *  CUSTOMIZE AND UNCOMMENT THIS FOR PRODUCTION INSTALLATIONS.
  */
-    httpSafeOrigin: "https://cryptpad.galing.org",
+    httpSafeOrigin: "https://cryptpad-sb.galing.org",
 
 /*  httpAddress specifies the address on which the nodejs server
  *  should be accessible. By default it will listen on localhost
@@ -60,7 +60,7 @@ module.exports = {
  *  development instance. The default value is your httpPort + 1.
  *
  */
-    //httpSafePort: 3001,
+  httpSafePort: 3001,
 
 /*  Websockets need to be exposed on a separate port from the rest of
  *  the platform's HTTP traffic. Port 3003 is used by default.
