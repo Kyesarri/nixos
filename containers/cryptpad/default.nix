@@ -38,6 +38,7 @@ in {
         mkdir -v -p /etc/oci.cont/cryptpad /etc/oci.cont/cryptpad/data /etc/oci.cont/cryptpad/blob \
         /etc/oci.cont/cryptpad/customize /etc/oci.cont/cryptpad/block /etc/oci.cont/cryptpad/datastore \
         /etc/oci.cont/cryptpad/onlyoffice-conf /etc/oci.cont/cryptpad/onlyoffice-dist \
+        && & chown -R 1000:1000 /etc/oci.cont/cryptpad
       '';
       systemd = {
         targets."podman-cryptpad-root" = {
