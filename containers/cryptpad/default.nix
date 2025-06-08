@@ -12,6 +12,7 @@ script to install openoffice?
 idk see whats broken when running :D
 */
 {
+  config,
   pkgs,
   lib,
   ...
