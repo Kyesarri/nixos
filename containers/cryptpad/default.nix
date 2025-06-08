@@ -9,7 +9,6 @@ TODO
 add volume(s) to container
 test and see what's not working
 script to install openoffice?
-configure cloudflared token / add to secrets
 idk see whats broken when running :D
 */
 {
@@ -33,6 +32,12 @@ in {
 
   config = mkMerge [
     (mkIf (cfg.enable == true) {
+      # create container directories in /etc
+      system.activationScripts.makeCryptpadDir = lib.stringAfter ["var"] ''
+        mkdir -v -p /etc/oci.cont/cryptpad /etc/oci.cont/cryptpad/data /etc/oci.cont/cryptpad/blob \
+        /etc/oci.cont/cryptpad/customize /etc/oci.cont/cryptpad/block /etc/oci.cont/cryptpad/datastore \
+        /etc/oci.cont/cryptpad/onlyoffice-conf /etc/oci.cont/cryptpad/www/common/onlyoffice/dist \
+      '';
       systemd = {
         targets."podman-cryptpad-root" = {
           wantedBy = ["multi-user.target"];
@@ -42,6 +47,7 @@ in {
         services = {
           "podman-network-cryptpad" = {
             path = [pkgs.podman];
+            script = ''podman network inspect cryptpad || podman network create cryptpad'';
             partOf = ["podman-cryptpad-root.target"];
             wantedBy = ["podman-cryptpad-root.target"];
             serviceConfig = {
@@ -49,7 +55,6 @@ in {
               RemainAfterExit = true;
               ExecStop = "podman network rm -f cryptpad";
             };
-            script = ''podman network inspect cryptpad || podman network create cryptpad'';
           };
 
           "podman-cryptpad" = {
@@ -85,19 +90,13 @@ in {
             "CPAD_SANDBOX_DOMAIN" = "https://cryptpad-sb.galing.org";
           };
           volumes = [
-            "customize:/cryptpad/customize:rw"
-
-            "data/blob:/cryptpad/blob:rw"
-
-            "data/block:/cryptpad/block:rw"
-
-            "data/data:/cryptpad/data:rw"
-
-            "data/files:/cryptpad/datastore:rw"
-
-            "onlyoffice-conf:/cryptpad/onlyoffice-conf:rw"
-
-            "onlyoffice-dist:/cryptpad/www/common/onlyoffice/dist:rw"
+            "/etc/oci.cont/cryptpad/customize:/cryptpad/customize:rw"
+            "/etc/oci.cont/cryptpad/blob:/cryptpad/blob:rw"
+            "/etc/oci.cont/cryptpad/block:/cryptpad/block:rw"
+            "/etc/oci.cont/cryptpad/data:/cryptpad/data:rw"
+            "/etc/oci.cont/cryptpad/datastore:/cryptpad/datastore:rw"
+            "/etc/oci.cont/cryptpad/onlyoffice-conf:/cryptpad/onlyoffice-conf:rw"
+            "/etc/oci.cont/cryptpad/onlyoffice-dist:/cryptpad/www/common/onlyoffice/dist:rw"
           ];
           ports = [
             # "3000:3000/tcp"
