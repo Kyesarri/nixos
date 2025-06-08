@@ -106,6 +106,7 @@ in {
           volumes = [
             "/etc/localtime:/etc/localtime:ro"
 
+            "./config.js:/config/config.js:ro" # this wont work...
             "crpd-customize:/cryptpad/customize:rw"
             "crpd-blob:/cryptpad/blob:rw"
             "crpd-block:/cryptpad/block:rw"
