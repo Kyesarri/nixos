@@ -106,7 +106,9 @@ in {
           volumes = [
             "/etc/localtime:/etc/localtime:ro"
 
-            "./config.js:/config/config.js:ro" # this wont work...
+            # relative may be fixed in later release
+            # https://github.com/containers/podman-compose/issues/1109
+            "/home/kel/nixos/containers/cryptpad/config.js:/config/config.js:ro"
             "crpd-customize:/cryptpad/customize:rw"
             "crpd-blob:/cryptpad/blob:rw"
             "crpd-block:/cryptpad/block:rw"
