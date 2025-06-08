@@ -85,7 +85,7 @@ in {
               podman volume inspect crpd-data || podman volume create crpd-data && \
               podman volume inspect crpd-datastore || podman volume create crpd-datastore && \
               podman volume inspect crpd-ofconf || podman volume create crpd-ofconf && \
-              podman volume inspect crpd-ofdist || podman volume create crpd-ofdist && \
+              podman volume inspect crpd-ofdist || podman volume create crpd-ofdist
             '';
             partOf = ["podman-cryptpad-root.target"];
             wantedBy = ["podman-cryptpad-root.target"];
@@ -105,6 +105,7 @@ in {
           };
           volumes = [
             "/etc/localtime:/etc/localtime:ro"
+
             "crpd-customize:/cryptpad/customize:rw"
             "crpd-blob:/cryptpad/blob:rw"
             "crpd-block:/cryptpad/block:rw"
