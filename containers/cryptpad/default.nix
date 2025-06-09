@@ -99,6 +99,7 @@ in {
             "CPAD_CONF" = "/cryptpad/config/config.js";
             "CPAD_MAIN_DOMAIN" = "https://cryptpad.galing.org";
             "CPAD_SANDBOX_DOMAIN" = "https://cryptpad-sb.galing.org";
+            "CPAD_INSTALL_ONLYOFFICE" = "yes";
           };
           volumes = [
             "/etc/localtime:/etc/localtime:ro"
@@ -106,6 +107,7 @@ in {
             # relative may be fixed in later release
             # https://github.com/containers/podman-compose/issues/1109
             "/home/kel/nixos/containers/cryptpad/config.js:/config/config.js:ro"
+            "/home/kel/nixos/containers/cryptpad/application_config.js:/customize/application_config.js:ro"
 
             "crpd-customize:/cryptpad/customize:rw"
             "crpd-blob:/cryptpad/blob:rw"
