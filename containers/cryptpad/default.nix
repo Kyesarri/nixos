@@ -106,7 +106,7 @@ in {
 
             # relative may be fixed in later release
             # https://github.com/containers/podman-compose/issues/1109
-            "/home/kel/nixos/containers/cryptpad/config.js:/cryptpad/config/config.js:ro"
+            # "/home/kel/nixos/containers/cryptpad/config.js:/cryptpad/config/config.js:ro"
             "/home/kel/nixos/containers/cryptpad/application_config.js:/cryptpad/customize/application_config.js:ro"
 
             "crpd-customize:/cryptpad/customize:rw"
