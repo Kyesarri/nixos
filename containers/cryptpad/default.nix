@@ -6,10 +6,7 @@ Furthermore, if the administrators do not modify the code, they and the service 
 */
 /*
 TODO
-add volume(s) to container
-test and see what's not working
-script to install openoffice?
-idk see whats broken when running :D
+try to fix the anon files being added / randos being able to do whatever they want
 */
 {
   config,
