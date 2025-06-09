@@ -79,12 +79,12 @@ in {
               RemainAfterExit = true;
             };
             script = ''
-              podman volume inspect crpd-customize || podman volume create crpd-customize && \
-              podman volume inspect crpt-blob || podman volume create crpd-blob && \
-              podman volume inspect crpd-block || podman volume create crpd-block && \
-              podman volume inspect crpd-data || podman volume create crpd-data && \
-              podman volume inspect crpd-datastore || podman volume create crpd-datastore && \
-              podman volume inspect crpd-ofconf || podman volume create crpd-ofconf && \
+              podman volume inspect crpd-customize || podman volume create crpd-customize & \
+              podman volume inspect crpt-blob || podman volume create crpd-blob & \
+              podman volume inspect crpd-block || podman volume create crpd-block & \
+              podman volume inspect crpd-data || podman volume create crpd-data & \
+              podman volume inspect crpd-datastore || podman volume create crpd-datastore & \
+              podman volume inspect crpd-ofconf || podman volume create crpd-ofconf & \
               podman volume inspect crpd-ofdist || podman volume create crpd-ofdist
             '';
             partOf = ["podman-cryptpad-root.target"];
@@ -109,6 +109,7 @@ in {
             # relative may be fixed in later release
             # https://github.com/containers/podman-compose/issues/1109
             "/home/kel/nixos/containers/cryptpad/config.js:/config/config.js:ro"
+
             "crpd-customize:/cryptpad/customize:rw"
             "crpd-blob:/cryptpad/blob:rw"
             "crpd-block:/cryptpad/block:rw"
