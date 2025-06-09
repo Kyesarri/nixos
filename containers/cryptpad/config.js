@@ -16,7 +16,7 @@ module.exports = {
  *
  */
     // httpUnsafeOrigin: 'http://localhost:3000',
-    httpUnsafeOrigin: 'https://cryptpad.galing.org:3000',
+    httpUnsafeOrigin: 'https://cryptpad.galing.org',
 
 
 /*  httpSafeOrigin is the URL that is used for the 'sandbox' described above.
