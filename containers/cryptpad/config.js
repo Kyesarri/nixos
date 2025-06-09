@@ -154,7 +154,7 @@ module.exports = {
      *
      *  defaults to 90 days if nothing is provided
      */
-    //inactiveTime: 90, // days
+    inactiveTime: 0.1, // days
 
     /*  CryptPad archives some data instead of deleting it outright.
      *  This archived data still takes up space and so you'll probably still want to
