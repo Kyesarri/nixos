@@ -100,7 +100,7 @@ in {
           image = "codeberg.org/forgejo/forgejo:7";
           environment = {
             "FORGEJO__database__DB_TYPE" = "postgres";
-            "FORGEJO__database__HOST" = "db:5432";
+            "FORGEJO__database__HOST" = "forgejo-db:5432";
             "FORGEJO__database__NAME" = "forgejo";
             "FORGEJO__database__PASSWD" = "${cfg.db-pass}";
             "FORGEJO__database__USER" = "forgejo";
@@ -137,7 +137,7 @@ in {
           ];
           log-driver = "journald";
           extraOptions = [
-            "--network-alias=db"
+            "--network-alias=forgejo-db"
             "--network=forgejo"
           ];
         };
