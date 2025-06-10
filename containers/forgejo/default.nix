@@ -31,21 +31,23 @@ in {
     };
   };
 
-  # create dir on host for custom themes
-  system.activationScripts.make-forgejo-theme-dir =
-    lib.stringAfter ["var"]
-    ''mkdir -v -p /etc/oci.cont/forgejo/css & chown -R 1000:1000 /etc/oci.cont/forgejo'';
-
-  # symlink from tree to above dir on host
-  environment.etc."oci.cont/forgejo/css/horizon-dark.css" = {
-    source = ./horizon-dark.css;
-    mode = "644";
-    uid = 1000;
-    gid = 1000;
-  };
-
   config = mkMerge [
     (mkIf (cfg.enable == true) {
+      # create dir on host for custom themes
+      system.activationScripts."make-forgejo-theme-dir" =
+        lib.stringAfter ["var"]
+        ''mkdir -v -p /etc/oci.cont/forgejo/css & chown -R 1000:1000 /etc/oci.cont/forgejo'';
+
+      # symlink from tree to above dir on host
+      environment.etc = {
+        "oci.cont/forgejo/css/horizon-dark.css" = {
+          source = ./horizon-dark.css;
+          mode = "644";
+          uid = 1000;
+          gid = 1000;
+        };
+      };
+
       systemd = {
         targets."podman-forgejo-root" = {
           wantedBy = ["multi-user.target"];
