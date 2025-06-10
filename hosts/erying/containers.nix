@@ -65,6 +65,11 @@
       enable = false;
       fqdn = "${secrets.domain.fqdn}";
     };
+    forgejo = {
+      enable = true;
+      cloudflared-token = "${secrets.cloudflare.ghost}";
+      db-pass = "${secrets.password.forgejo}";
+    };
     ghost = {
       enable = true;
       cloudflared-token = "${secrets.cloudflare.ghost}";
