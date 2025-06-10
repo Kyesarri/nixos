@@ -32,7 +32,7 @@ in {
   };
 
   # create dir on host for custom themes
-  system.activationScripts."make-forgejo-theme-dir" =
+  system.activationScripts.make-forgejo-theme-dir =
     lib.stringAfter ["var"]
     ''mkdir -v -p /etc/oci.cont/forgejo/css & chown -R 1000:1000 /etc/oci.cont/forgejo'';
 
