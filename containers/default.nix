@@ -9,6 +9,7 @@
     ./cryptpad
     ./doubletake #
     ./dms #
+    ./forgejo
     ./ghost #
     ./haos # home assistant, cloud free home automation
     ./headscale # testing ground for tailscale replacement - vpn for remote connections to lan
