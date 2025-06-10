@@ -148,6 +148,7 @@ in {
           environment = {
             "TZ" = "Australia/Melbourne";
             "TUNNEL_TOKEN" = "${cfg.cloudflared-token}";
+            "USER_GID" = "1";
           };
           cmd = ["tunnel" "--no-autoupdate" "run"];
           extraOptions = [

@@ -67,7 +67,7 @@
     };
     forgejo = {
       enable = true;
-      cloudflared-token = "${secrets.cloudflare.ghost}";
+      cloudflared-token = "${secrets.cloudflare.forgejo}";
       db-pass = "${secrets.password.forgejo}";
     };
     ghost = {
