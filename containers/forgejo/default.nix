@@ -2,6 +2,11 @@
 Forgejo is a self-hosted lightweight software forge.
 Easy to install and low maintenance, it just does the job.
 */
+/*
+TODO
+custom themes dir:
+"/public/assets/css"
+*/
 {
   config,
   pkgs,
@@ -24,6 +29,19 @@ in {
       type = types.str;
       default = "";
     };
+  };
+
+  # create dir on host for custom themes
+  system.activationScripts."make-forgejo-theme-dir" =
+    lib.stringAfter ["var"]
+    ''mkdir -v -p /etc/oci.cont/forgejo/css & chown -R 1000:1000 /etc/oci.cont/forgejo'';
+
+  # symlink from tree to above dir on host
+  environment.etc."oci.cont/forgejo/css/horizon-dark.css" = {
+    source = ./horizon-dark.css;
+    mode = "644";
+    uid = 1000;
+    gid = 1000;
   };
 
   config = mkMerge [
@@ -108,12 +126,15 @@ in {
             "FORGEJO__database__NAME" = "forgejo";
             "FORGEJO__database__PASSWD" = "${cfg.db-pass}";
             "FORGEJO__database__USER" = "forgejo";
+            "GITEA_CUSTOM" = "/data/gitea";
             "USER_GID" = "1000";
             "USER_UID" = "1000";
           };
           volumes = [
             "/etc/localtime:/etc/localtime:ro"
             "forgejo:/data:rw"
+            # symlink our custom theme dir into container
+            "/etc/oci.cont/forgejo:/public/assets:ro"
           ];
           ports = [
             # "3000:3000/tcp"
