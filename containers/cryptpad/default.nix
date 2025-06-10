@@ -77,6 +77,7 @@ in {
             };
             script = ''
               podman volume inspect crpd-customize || podman volume create crpd-customize & \
+              podman volume inspect crpd-config || podman volume create crpd-config & \
               podman volume inspect crpt-blob || podman volume create crpd-blob & \
               podman volume inspect crpd-block || podman volume create crpd-block & \
               podman volume inspect crpd-data || podman volume create crpd-data & \
@@ -110,6 +111,7 @@ in {
             "/home/kel/nixos/containers/cryptpad/application_config.js:/cryptpad/customize/application_config.js:ro"
 
             "crpd-customize:/cryptpad/customize:rw"
+            "crpd-config:/cryptpad/config:rw"
             "crpd-blob:/cryptpad/blob:rw"
             "crpd-block:/cryptpad/block:rw"
             "crpd-data:/cryptpad/data:rw"

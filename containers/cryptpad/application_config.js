@@ -10,7 +10,12 @@ const factory = (AppConfig) => {
     AppConfig.registeredOnlyTypes = ['file', 'contacts', 'notifications', 'support', 'teams', 'sheet', 'doc', 
         'presentation', 'pad', 'kanban', 'code', 'form', 'poll', 'whiteboard',
         'file', 'contacts', 'slide', 'convert', 'diagram'];
+
     AppConfig.surveyURL = "";
+
+    AppConfig.defaultDarkTheme = 'true';
+
+    
 
     return AppConfig;
 };
