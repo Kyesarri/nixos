@@ -7,6 +7,8 @@ Furthermore, if the administrators do not modify the code, they and the service 
 /*
 TODO
 try to fix the anon files being added / randos being able to do whatever they want
+add a method for people to access files / share files
+probs more that i'm forgetting
 */
 {
   config,
@@ -69,6 +71,7 @@ in {
             partOf = ["podman-cryptpad-root.target"];
             wantedBy = ["podman-cryptpad-root.target"];
           };
+
           "podman-volumes-cryptpad" = {
             path = [pkgs.podman];
             serviceConfig = {
