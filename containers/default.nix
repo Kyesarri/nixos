@@ -6,14 +6,14 @@
     ./cloudflared # cloudflare tunnel
     ./changedetection # webpage monitor
     ./cpai #
-    ./cryptpad
+    ./cryptpad # docs replacement
     ./doubletake #
-    ./dms #
-    ./forgejo
-    ./ghost #
+    ./dms # docker mail server
+    ./forgejo # self hosted git
+    ./ghost # self hosted blog
     ./haos # home assistant, cloud free home automation
     ./headscale # testing ground for tailscale replacement - vpn for remote connections to lan
-    ./i2p #
+    ./i2p # naughty internet things
     ./immich # self-hosted image server
     ./nginx-lan # reverse proxy for local services
     ./nginx-wan # reverse proxy for webhosting

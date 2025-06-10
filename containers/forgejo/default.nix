@@ -109,7 +109,6 @@ in {
           };
           volumes = [
             "/etc/localtime:/etc/localtime:ro"
-            "/etc/timezone:/etc/timezone:ro"
             "forgejo:/data:rw"
           ];
           ports = [
