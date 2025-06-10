@@ -5,7 +5,9 @@
 (() => {
 const factory = (AppConfig) => {
 
-    AppConfig.availablePadTypes = ['drive'];
+    AppConfig.availablePadTypes = ['drive', 'file', 'contacts', 'notifications', 'support', 'teams', 'sheet', 'doc', 
+        'presentation', 'pad', 'kanban', 'code', 'form', 'poll', 'whiteboard',
+        'file', 'contacts', 'slide', 'convert', 'diagram'];
 
     AppConfig.registeredOnlyTypes = ['file', 'contacts', 'notifications', 'support', 'teams', 'sheet', 'doc', 
         'presentation', 'pad', 'kanban', 'code', 'form', 'poll', 'whiteboard',
@@ -15,7 +17,7 @@ const factory = (AppConfig) => {
 
     AppConfig.defaultDarkTheme = 'true';
 
-    
+
 
     return AppConfig;
 };
