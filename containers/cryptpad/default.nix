@@ -100,7 +100,7 @@ in {
             "CPAD_CONF" = "/cryptpad/config/config.js";
             "CPAD_MAIN_DOMAIN" = "https://cryptpad.galing.org";
             "CPAD_SANDBOX_DOMAIN" = "https://cryptpad-sb.galing.org";
-            # "CPAD_INSTALL_ONLYOFFICE" = "yes";
+            "CPAD_INSTALL_ONLYOFFICE" = "yes";
           };
           volumes = [
             "/etc/localtime:/etc/localtime:ro"
