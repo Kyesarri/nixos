@@ -68,7 +68,7 @@
     forgejo = {
       enable = true;
       cloudflared-token = "${secrets.cloudflare.forgejo}";
-      db-pass = "${secrets.password.forgejo}";
+      db_pass = "${secrets.password.forgejo}";
       lfs_jwt_secret = "${secrets.forgejo.lfs_jwt_secret}";
       internal_token = "${secrets.forgejo.internal_token}";
       jwt_secret = "${secrets.forgejo.jwt_secret}";

@@ -22,7 +22,7 @@ in {
       default = false;
     };
     cloudflared-token = mkOption {type = types.str;};
-    db-pass = mkOption {type = types.str;};
+    db_pass = mkOption {type = types.str;};
     lfs_jwt_secret = mkOption {type = types.str;};
     internal_token = mkOption {type = types.str;};
     jwt_secret = mkOption {type = types.str;};
@@ -228,7 +228,7 @@ in {
             "FORGEJO__database__DB_TYPE" = "postgres";
             "FORGEJO__database__HOST" = "forgejo-db:5432";
             "FORGEJO__database__NAME" = "forgejo";
-            "FORGEJO__database__PASSWD" = "${cfg.db-pass}";
+            "FORGEJO__database__PASSWD" = "${cfg.db_pass}";
             "FORGEJO__database__USER" = "forgejo";
             "FORGEJO_CUSTOM" = "/public/assets";
             "USER_GID" = "1000";
@@ -258,7 +258,7 @@ in {
           image = "postgres:14";
           environment = {
             "POSTGRES_DB" = "forgejo";
-            "POSTGRES_PASSWORD" = "${cfg.db-pass}";
+            "POSTGRES_PASSWORD" = "${cfg.db_pass}";
             "POSTGRES_USER" = "forgejo";
           };
           volumes = [
