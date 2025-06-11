@@ -44,7 +44,7 @@ in {
           gid = 1000;
         };
 
-        "oci.cont/forgejo/custom/app.ini" = {
+        "oci.cont/forgejo/conf/app.ini" = {
           mode = "644";
           uid = 1000;
           gid = 1000;
@@ -238,7 +238,7 @@ in {
           volumes = [
             "/etc/localtime:/etc/localtime:ro"
             "forgejo:/data:rw"
-            # symlink our custom theme dir into container
+            # symlink our custom dir into container
             "/etc/oci.cont/forgejo:/public/assets:rw"
           ];
           ports = [
