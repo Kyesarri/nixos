@@ -239,7 +239,7 @@ in {
             "/etc/localtime:/etc/localtime:ro"
             "forgejo:/data:rw"
             # symlink our custom theme dir into container
-            "/etc/oci.cont/forgejo:/public/assets:ro"
+            "/etc/oci.cont/forgejo:/public/assets:rw"
           ];
           ports = [
             # "3000:3000/tcp"
