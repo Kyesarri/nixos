@@ -43,111 +43,112 @@ in {
           uid = 1000;
           gid = 1000;
         };
-      };
-      "oci.cont/forgejo/custom/app.ini" = {
-        mode = "644";
-        uid = 1000;
-        gid = 1000;
-        text = ''
-          APP_NAME = galing
-          RUN_MODE = prod
-          RUN_USER = git
-          WORK_PATH = /data/gitea
 
-          [repository]
-          ROOT = /data/git/repositories
+        "oci.cont/forgejo/custom/app.ini" = {
+          mode = "644";
+          uid = 1000;
+          gid = 1000;
+          text = ''
+            APP_NAME = galing
+            RUN_MODE = prod
+            RUN_USER = git
+            WORK_PATH = /data/gitea
 
-          [repository.local]
-          LOCAL_COPY_PATH = /data/gitea/tmp/local-repo
+            [repository]
+            ROOT = /data/git/repositories
 
-          [repository.upload]
-          TEMP_PATH = /data/gitea/uploads
+            [repository.local]
+            LOCAL_COPY_PATH = /data/gitea/tmp/local-repo
 
-          [server]
-          APP_DATA_PATH = /data/gitea
-          DOMAIN = git.galing.org
-          SSH_DOMAIN = git.galing.org
-          HTTP_PORT = 3000
-          ROOT_URL = https://git.galing.org/
-          DISABLE_SSH = false
-          SSH_PORT = 22
-          SSH_LISTEN_PORT = 22
-          LFS_START_SERVER = true
-          LFS_JWT_SECRET = ${cfg.lfs_jwt_secret}
-          OFFLINE_MODE = true
+            [repository.upload]
+            TEMP_PATH = /data/gitea/uploads
 
-          [database]
-          PATH = /data/gitea/gitea.db
-          DB_TYPE = postgres
-          HOST = forgejo-db:5432
-          NAME = forgejo
-          USER = forgejo
-          PASSWD = ${cfg.db_pass}
-          LOG_SQL = false
-          SCHEMA = public
-          SSL_MODE = disable
+            [server]
+            APP_DATA_PATH = /data/gitea
+            DOMAIN = git.galing.org
+            SSH_DOMAIN = git.galing.org
+            HTTP_PORT = 3000
+            ROOT_URL = https://git.galing.org/
+            DISABLE_SSH = false
+            SSH_PORT = 22
+            SSH_LISTEN_PORT = 22
+            LFS_START_SERVER = true
+            LFS_JWT_SECRET = ${cfg.lfs_jwt_secret}
+            OFFLINE_MODE = true
 
-          [indexer]
-          ISSUE_INDEXER_PATH = /data/gitea/indexers/issues.bleve
+            [database]
+            PATH = /data/gitea/gitea.db
+            DB_TYPE = postgres
+            HOST = forgejo-db:5432
+            NAME = forgejo
+            USER = forgejo
+            PASSWD = ${cfg.db_pass}
+            LOG_SQL = false
+            SCHEMA = public
+            SSL_MODE = disable
 
-          [session]
-          PROVIDER_CONFIG = /data/gitea/sessions
-          PROVIDER = file
+            [indexer]
+            ISSUE_INDEXER_PATH = /data/gitea/indexers/issues.bleve
 
-          [picture]
-          AVATAR_UPLOAD_PATH = /data/gitea/avatars
-          REPOSITORY_AVATAR_UPLOAD_PATH = /data/gitea/repo-avatars
+            [session]
+            PROVIDER_CONFIG = /data/gitea/sessions
+            PROVIDER = file
 
-          [attachment]
-          PATH = /data/gitea/attachments
+            [picture]
+            AVATAR_UPLOAD_PATH = /data/gitea/avatars
+            REPOSITORY_AVATAR_UPLOAD_PATH = /data/gitea/repo-avatars
 
-          [log]
-          MODE = console
-          LEVEL = info
-          ROOT_PATH = /data/gitea/log
+            [attachment]
+            PATH = /data/gitea/attachments
 
-          [security]
-          INSTALL_LOCK = true
-          SECRET_KEY =
-          REVERSE_PROXY_LIMIT = 1
-          REVERSE_PROXY_TRUSTED_PROXIES = *
-          INTERNAL_TOKEN = ${cfg.internal_token}
-          PASSWORD_HASH_ALGO = pbkdf2_hi
+            [log]
+            MODE = console
+            LEVEL = info
+            ROOT_PATH = /data/gitea/log
 
-          [service]
-          DISABLE_REGISTRATION = true
-          REQUIRE_SIGNIN_VIEW = false
-          REGISTER_EMAIL_CONFIRM = false
-          ENABLE_NOTIFY_MAIL = false
-          ALLOW_ONLY_EXTERNAL_REGISTRATION = false
-          ENABLE_CAPTCHA = false
-          DEFAULT_KEEP_EMAIL_PRIVATE = false
-          DEFAULT_ALLOW_CREATE_ORGANIZATION = true
-          DEFAULT_ENABLE_TIMETRACKING = false
-          NO_REPLY_ADDRESS = noreply.localhost
+            [security]
+            INSTALL_LOCK = true
+            SECRET_KEY =
+            REVERSE_PROXY_LIMIT = 1
+            REVERSE_PROXY_TRUSTED_PROXIES = *
+            INTERNAL_TOKEN = ${cfg.internal_token}
+            PASSWORD_HASH_ALGO = pbkdf2_hi
 
-          [lfs]
-          PATH = /data/git/lfs
+            [service]
+            DISABLE_REGISTRATION = true
+            REQUIRE_SIGNIN_VIEW = false
+            REGISTER_EMAIL_CONFIRM = false
+            ENABLE_NOTIFY_MAIL = false
+            ALLOW_ONLY_EXTERNAL_REGISTRATION = false
+            ENABLE_CAPTCHA = false
+            DEFAULT_KEEP_EMAIL_PRIVATE = false
+            DEFAULT_ALLOW_CREATE_ORGANIZATION = true
+            DEFAULT_ENABLE_TIMETRACKING = false
+            NO_REPLY_ADDRESS = noreply.localhost
 
-          [mailer]
-          ENABLED = false
+            [lfs]
+            PATH = /data/git/lfs
 
-          [openid]
-          ENABLE_OPENID_SIGNIN = true
-          ENABLE_OPENID_SIGNUP = true
+            [mailer]
+            ENABLED = false
 
-          [cron.update_checker]
-          ENABLED = true
+            [openid]
+            ENABLE_OPENID_SIGNIN = true
+            ENABLE_OPENID_SIGNUP = true
 
-          [repository.pull-request]
-          DEFAULT_MERGE_STYLE = merge
+            [cron.update_checker]
+            ENABLED = true
 
-          [repository.signing]
-          DEFAULT_TRUST_MODEL = committer
+            [repository.pull-request]
+            DEFAULT_MERGE_STYLE = merge
 
-          [oauth2]
-          JWT_SECRET = ${cfg.jwt_secret}
-        '';
+            [repository.signing]
+            DEFAULT_TRUST_MODEL = committer
+
+            [oauth2]
+            JWT_SECRET = ${cfg.jwt_secret}
+          '';
+        };
       };
 
       systemd = {
