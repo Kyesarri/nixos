@@ -56,10 +56,6 @@
       range = "${secrets.vlan.erying.range}";
       mask = "${secrets.vlan.erying.mask}";
     };
-    cryptpad = {
-      enable = true;
-      cloudflared-token = "${secrets.cloudflare.cryptpad}";
-    };
     #
     dms = {
       enable = false;
