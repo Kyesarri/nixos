@@ -184,7 +184,8 @@
       inputs.quickshell.packages.x86_64-linux.default
       python312Packages.pelican # testing locally on laptop
       koodo-reader # ebook reader
-      # grayjay "soon"
+      scrcpy
+      grayjay # "soon"
     ];
   };
 }
