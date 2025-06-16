@@ -73,6 +73,7 @@
   };
 
   programs = {
+    adb.enable = true;
     corectrl.enable = true;
     dconf.enable = true;
     # uwsm.enable = true; # TODO
@@ -145,6 +146,7 @@
       "plugdev" # usb
       "audio"
       "pipewire"
+      "adbusers"
     ];
 
     # packages available for just our spaghetti user
@@ -185,7 +187,6 @@
       python312Packages.pelican # testing locally on laptop
       koodo-reader # ebook reader
       scrcpy
-      grayjay # "soon"
     ];
   };
 }
