@@ -8,7 +8,6 @@
 }: let
   sudo = "/run/wrappers/bin/sudo";
   poweroff = "/run/current-system/sw/bin/poweroff";
-  /*
   notify-send = pkgs.writeShellScript "notify-send-wrapper" ''
     DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus \
       ${pkgs.libnotify}/bin/notify-send "$@"
@@ -17,7 +16,6 @@
     ${sudo} -u ${spaghetti.user} ${notify-send} -c critical "$1"
   '';
   passwordFile = "${pkgs.writeText "upspass" "upsmon_pass"}";
-  */
 in {
   /*
     sudo nut-scanner -C -s ip-start -e ip-end
@@ -47,7 +45,6 @@ in {
     upsd.enable = true;
     openFirewall = true;
 
-    # ups.${ups.name}
     ups.dellups = {
       driver = "snmp-ups";
       port = "${secrets.ip.dellups}:161";
