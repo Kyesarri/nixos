@@ -12,7 +12,6 @@ this lad getting messy
 
   services.samba.enable = true;
 
-  /*
   security.wrappers."mount.cifs" = {
     program = "mount.cifs";
     source = "${lib.getBin pkgs.cifs-utils}/bin/mount.cifs";
@@ -20,10 +19,9 @@ this lad getting messy
     group = "root";
     setuid = true;
   };
-  */
 
   fileSystems = {
-    "/storage" = {
+    "/mnt/storage" = {
       device = "//${secrets.ip.serv-1}/storage";
       fsType = "cifs";
       options = let
