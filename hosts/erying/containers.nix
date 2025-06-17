@@ -73,6 +73,12 @@
       enable = true;
       cloudflared-token = "${secrets.cloudflare.ghost}";
     };
+    honeygain = {
+      enable = true;
+      email = "${secrets.honeygain.email}";
+      pass = "${secrets.honeygain.pass}";
+      host = "erying";
+    };
     #
     nginx-lan = {
       enable = true;
