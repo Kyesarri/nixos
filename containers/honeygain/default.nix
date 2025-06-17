@@ -72,9 +72,9 @@ in {
           };
           cmd = [
             "-tou-accept"
-            "-email '${cfg.email}'"
-            "-pass '${cfg.pass}'"
-            "-device '${cfg.host}'"
+            "./honeygain -email '${cfg.email}'"
+            "./honeygain -pass '${cfg.pass}'"
+            "./honeygain -device '${cfg.host}'"
           ];
           extraOptions = [
             "--network-alias=honeygain"
