@@ -116,6 +116,8 @@
 
     # system packages, available for all users, not just spaghetti (su)
     systemPackages = with pkgs; [
+      cifs-utils
+      samba
       pciutils
       tailscale
       lshw # list hardware

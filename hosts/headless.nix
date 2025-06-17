@@ -74,7 +74,11 @@
     };
   };
 
-  environment.systemPackages = [inputs.agenix.packages.x86_64-linux.default];
+  environment.systemPackages = [
+    inputs.agenix.packages.x86_64-linux.default
+    pkgs.cifs-utils
+    pkgs.samba
+  ];
 
   users.users.${spaghetti.user} = {
     shell = pkgs.zsh; # set our shell pkg
