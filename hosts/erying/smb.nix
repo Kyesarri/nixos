@@ -10,15 +10,7 @@ this lad getting messy, need to fix mount as root fml
 }: {
   environment.systemPackages = [pkgs.cifs-utils];
 
-  # services.samba.enable = true;
-
-  security.wrappers."mount.cifs" = {
-    program = "mount.cifs";
-    source = "${lib.getBin pkgs.cifs-utils}/bin/mount.cifs";
-    owner = "${spaghetti.user}";
-    group = "media";
-    # setuid = true;
-  };
+  services.samba.enable = true;
 
   fileSystems = {
     "/mnt/storage" = {
