@@ -23,11 +23,12 @@ in {
     setuid = true;
   };
   */
+
   fileSystems = {
     "/mnt/storage" = {
       device = "//${secrets.ip.serv-1}/storage";
       fsType = "cifs";
-      options = ["username=${spaghetti.user}" "media" "${automount_opts},credentials=/etc/nixos/smb-secrets"];
+      options = ["${automount_opts},credentials=/etc/nixos/smb-secrets"];
     };
   };
 }
