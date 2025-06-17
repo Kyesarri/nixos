@@ -13,6 +13,7 @@
     ./hardware.nix # device specific hardware config
     ./networking.nix # systemd networking config
     ./containers.nix # testing selecting specific containers per-host
+    ./smb.nix # mount network shares / drives from nix-serv
 
     ../headless.nix # base packages and config
 
