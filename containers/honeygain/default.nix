@@ -71,8 +71,7 @@ in {
             "TZ" = "Australia/Melbourne";
           };
           cmd = [
-            "./honeygain -tou-get"
-            "./honeygain -tou-accept -email ${cfg.email} -pass ${cfg.pass} -device ${cfg.host}"
+            "./honeygain -tou-get & ./honeygain -tou-accept -email ${cfg.email} -pass ${cfg.pass} -device ${cfg.host}"
           ];
           extraOptions = [
             "--network-alias=honeygain"
