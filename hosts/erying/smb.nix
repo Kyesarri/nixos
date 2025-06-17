@@ -1,5 +1,5 @@
 /*
-this lad getting messy
+this lad getting messy, need to fix mount as root fml
 */
 {
   spaghetti,
@@ -15,8 +15,8 @@ this lad getting messy
   security.wrappers."mount.cifs" = {
     program = "mount.cifs";
     source = "${lib.getBin pkgs.cifs-utils}/bin/mount.cifs";
-    owner = "root";
-    group = "root";
+    owner = "${spaghetti.user}";
+    group = "media";
     setuid = true;
   };
 
