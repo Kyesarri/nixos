@@ -70,7 +70,13 @@ in {
           environment = {
             "TZ" = "Australia/Melbourne";
           };
-          cmd = ["-tou-accept -email ${cfg.email} -pass ${cfg.pass} -device ${cfg.host}"];
+          cmd = [
+            "-tou-get"
+            "-tou-accept"
+            "-device ${cfg.host}"
+            "-email ${cfg.email}"
+            "-pass ${cfg.pass}"
+          ];
           extraOptions = [
             "--network-alias=honeygain"
             "--network=honeygain"
