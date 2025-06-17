@@ -17,7 +17,7 @@ this lad getting messy, need to fix mount as root fml
     source = "${lib.getBin pkgs.cifs-utils}/bin/mount.cifs";
     owner = "${spaghetti.user}";
     group = "media";
-    setuid = true;
+    # setuid = true;
   };
 
   fileSystems = {
