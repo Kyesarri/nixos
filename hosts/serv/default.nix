@@ -14,6 +14,7 @@
     ./hardware.nix # device specific hardware config
     ./networking.nix # systemd networking config
     ./containers.nix # per-device container config
+    ./smb.nix
 
     ../headless.nix # base packages and config, may need to move some of those values to this config
 
@@ -29,7 +30,6 @@
     ../../home/codium # need to add server into this
     ../../home/virt # ehhhhh not sure if wanted / needed whatsoever
     ../../home/gtk # has some theming bits, might have some requirement still
-    ../../home/samba # testing samba shares 'again'
     ../../home/tmux # terminal multiplexer'
     ../../home/zsh # yes pls
   ];
