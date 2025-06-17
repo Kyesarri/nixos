@@ -47,7 +47,8 @@
 
   services.avahi = {
     enable = true;
-    nssmdns = true;
+    nssmdns4 = true;
+
     publish = {
       enable = true;
       addresses = true;
@@ -56,6 +57,7 @@
       userServices = true;
       workstation = true;
     };
+
     extraServiceFiles = {
       smb = ''
         <?xml version="1.0" standalone='no'?><!--*-nxml-*-->

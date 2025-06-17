@@ -73,8 +73,14 @@
 
     "/storage" = {
       fsType = "fuse.mergerfs";
-      device = "/hdd*";
-      options = ["cache.files=partial" "dropcacheonclose=true" "category.create=mfs"];
+      device = "/hdd*"; # i should move their mount point, but whatever...
+      options = [
+        "cache.files=partial"
+        "dropcacheonclose=true"
+        "category.create=mfs"
+        "minfreespace=30G" # https://trapexit.github.io/mergerfs/latest/config/minfreespace/
+        "moveonenospc=true" # https://trapexit.github.io/mergerfs/latest/config/moveonenospc/
+      ];
     };
   };
 

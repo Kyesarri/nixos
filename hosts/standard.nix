@@ -138,57 +138,64 @@
     ];
   };
 
-  users.users.${spaghetti.user} = {
-    shell = pkgs.zsh;
-    isNormalUser = true;
-    description = "${spaghetti.user}";
-    extraGroups = [
-      "networkmanager" # network
-      "wheel" # sudo
-      "plugdev" # usb
-      "audio"
-      "pipewire"
-      "adbusers"
-    ];
+  users = {
+    groups.media = {
+      name = "media";
+      gid = 989;
+      members = ["${spaghetti.user}"];
+    };
+    users.${spaghetti.user} = {
+      shell = pkgs.zsh;
+      isNormalUser = true;
+      description = "${spaghetti.user}";
+      extraGroups = [
+        "networkmanager" # network
+        "wheel" # sudo
+        "plugdev" # usb
+        "audio"
+        "pipewire"
+        "adbusers"
+      ];
 
-    # packages available for just our spaghetti user
-    packages = with pkgs; [
-      gimp-with-plugins # image boi
-      ladybird # testing, alpha 2026 :D
-      graphite-cursors # cursor package, is this handled by /home/gtk/default.nix now? nope manual atm
-      gnome-text-editor # still might want something with slightly more features, bit too barebones?
-      nix-init # git flake helper
-      remmina # rdp client
-      fet-sh # minimalistic fetch script
-      brightnessctl # brightness control, used in waybar TODO laptop / notebook specific not needed as no worky on desktop :)
-      qview # image viewer
-      imagemagick # bitmap editor cli
-      libnotify # notifications
-      wf-recorder # screen recorder
-      mate.mate-calc # calc
-      p7zip # TODO needs a gui
-      udiskie # usb mounting
-      ntfs3g # ntfs support
-      wl-clipboard # wl-copy and wl-paste for copy/paste from stdin / stdout
-      vlc # play me some vids
-      usbimager # says on the tin
-      evolutionWithPlugins # calendar
-      blender # for new toy :D
-      gnome-disk-utility # disk gui
-      libimobiledevice # fix iphone thing
-      usbmuxd2 # another ios thing
-      libirecovery # more ios?
-      ifuse # more iphone thing
-      orca-slicer # still isn't working
-      openscad # 3d cad
-      nfs-utils # nfs user utilities
-      handbrake # convert video files
-      compose2nix # convert dockercompose.yml to .nix
-      inputs.wallpaper-generator.defaultPackage.x86_64-linux
-      inputs.quickshell.packages.x86_64-linux.default
-      python312Packages.pelican # testing locally on laptop
-      koodo-reader # ebook reader
-      scrcpy
-    ];
+      # packages available for just our spaghetti user
+      packages = with pkgs; [
+        gimp-with-plugins # image boi
+        ladybird # testing, alpha 2026 :D
+        graphite-cursors # cursor package, is this handled by /home/gtk/default.nix now? nope manual atm
+        gnome-text-editor # still might want something with slightly more features, bit too barebones?
+        nix-init # git flake helper
+        remmina # rdp client
+        fet-sh # minimalistic fetch script
+        brightnessctl # brightness control, used in waybar TODO laptop / notebook specific not needed as no worky on desktop :)
+        qview # image viewer
+        imagemagick # bitmap editor cli
+        libnotify # notifications
+        wf-recorder # screen recorder
+        mate.mate-calc # calc
+        p7zip # TODO needs a gui
+        udiskie # usb mounting
+        ntfs3g # ntfs support
+        wl-clipboard # wl-copy and wl-paste for copy/paste from stdin / stdout
+        vlc # play me some vids
+        usbimager # says on the tin
+        evolutionWithPlugins # calendar
+        blender # for new toy :D
+        gnome-disk-utility # disk gui
+        libimobiledevice # fix iphone thing
+        usbmuxd2 # another ios thing
+        libirecovery # more ios?
+        ifuse # more iphone thing
+        orca-slicer # still isn't working
+        openscad # 3d cad
+        nfs-utils # nfs user utilities
+        handbrake # convert video files
+        compose2nix # convert dockercompose.yml to .nix
+        inputs.wallpaper-generator.defaultPackage.x86_64-linux
+        inputs.quickshell.packages.x86_64-linux.default
+        python312Packages.pelican # testing locally on laptop
+        koodo-reader # ebook reader
+        scrcpy
+      ];
+    };
   };
 }
