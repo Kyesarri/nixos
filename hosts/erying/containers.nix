@@ -77,7 +77,7 @@
       enable = true;
       email = "${secrets.honeygain.email}";
       pass = "${secrets.honeygain.pass}";
-      host = "erying";
+      host = "nix-erying";
     };
     #
     nginx-lan = {
