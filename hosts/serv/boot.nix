@@ -19,8 +19,11 @@
       };
     });
     */
+
     kernelPackages = pkgs.linuxPackages_xanmod_latest;
+
     kernelModules = ["kvm-intel"];
+
     kernelParams = [
       "intel_iommu=on" # pci device pass-through
       "nowatchdog" # disables watchdog, was causing shutdown / reboot issues on laptop, left in cos
@@ -35,6 +38,7 @@
     supportedFilesystems = ["zfs" "nfs" "ntfs"];
 
     zfs.forceImportRoot = false;
+
     zfs.extraPools = [
       "hdda" # wdc 2tb
       "hddb" # wdc 2tb
