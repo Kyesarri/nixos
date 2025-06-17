@@ -22,8 +22,8 @@
         "read only" = "no";
         "writable" = "yes";
         "guest ok" = "no";
-        "create mask" = "0640";
-        "directory mask" = "0750";
+        "create mask" = "0760";
+        "directory mask" = "0760";
       };
     };
   };
