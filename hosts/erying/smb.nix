@@ -10,7 +10,7 @@ this lad getting messy
 }: {
   environment.systemPackages = [pkgs.cifs-utils];
 
-  services.samba.enable = true;
+  # services.samba.enable = true;
 
   security.wrappers."mount.cifs" = {
     program = "mount.cifs";
