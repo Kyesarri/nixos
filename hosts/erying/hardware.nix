@@ -12,7 +12,7 @@
 
   environment.systemPackages = [pkgs.cifs-utils];
   fileSystems."/mnt/hdda" = {
-    device = "//${secrets.ip.serv}/hdda";
+    device = "//${secrets.ip.serv-1}/hdda";
     fsType = "cifs";
     options = let
       # this line prevents hanging on network split
