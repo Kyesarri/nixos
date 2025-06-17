@@ -1,4 +1,8 @@
-{secrets, ...}: {
+{
+  secrets,
+  pkgs,
+  ...
+}: {
   environment.systemPackages = [pkgs.cifs-utils];
 
   fileSystems = {
