@@ -23,7 +23,7 @@ this lad getting messy
   */
 
   fileSystems = {
-    "/mnt/storage" = {
+    "/storage" = {
       device = "//${secrets.ip.serv-1}/storage";
       fsType = "cifs";
       options = let
