@@ -110,33 +110,40 @@
     pkgs.mergerfs-tools
   ];
 
-  users.users.${spaghetti.user} = {
-    shell = pkgs.zsh; # set our shell pkg
-    isNormalUser = true; # not true
-    description = "${spaghetti.user}";
-    extraGroups = [
-      "networkmanager" # control network interfaces
-      "wheel" # enables sudo for user
-      "apex" # google coral
-      "media" # arr services
-      "podman" # controlling pods
-      "dialout" # serial interfaces
-      "video" # camera / webcam support
-      "nut" # network ups
-      "plugdev" # usb
-      "render" # access to rendering devices
-      "audio"
-      "netdev"
-    ];
+  users = {
+    groups.media = {
+      name = "media";
+      gid = 989;
+      members = ["${spaghetti.user}"];
+    };
+    users.${spaghetti.user} = {
+      shell = pkgs.zsh; # set our shell pkg
+      isNormalUser = true; # not true
+      description = "${spaghetti.user}";
+      extraGroups = [
+        "networkmanager" # control network interfaces
+        "wheel" # enables sudo for user
+        "apex" # google coral
+        "media" # arr services
+        "podman" # controlling pods
+        "dialout" # serial interfaces
+        "video" # camera / webcam support
+        "nut" # network ups
+        "plugdev" # usb
+        "render" # access to rendering devices
+        "audio"
+        "netdev"
+      ];
 
-    packages = with pkgs; [
-      fet-sh # minimal fetch script
-      seahorse # key management
-      libnotify # notifications might not be needed on headless lol
-      udiskie # usb mounting, probs for the best atm
-      ustreamer # smal usb camera streamer
-      v4l-utils
-      asciiquarium-transparent # for notebook, "screensaver"
-    ];
+      packages = with pkgs; [
+        fet-sh # minimal fetch script
+        seahorse # key management
+        libnotify # notifications might not be needed on headless lol
+        udiskie # usb mounting, probs for the best atm
+        ustreamer # smal usb camera streamer
+        v4l-utils
+        asciiquarium-transparent # for notebook, "screensaver"
+      ];
+    };
   };
 }
