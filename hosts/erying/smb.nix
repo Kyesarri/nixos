@@ -14,6 +14,7 @@ in {
 
   services.samba.enable = true;
 
+  /*
   security.wrappers."mount.cifs" = {
     program = "mount.cifs";
     source = "${lib.getBin pkgs.cifs-utils}/bin/mount.cifs";
@@ -21,7 +22,7 @@ in {
     group = "root";
     setuid = true;
   };
-
+  */
   fileSystems = {
     "/mnt/storage" = {
       device = "//${secrets.ip.serv-1}/storage";
