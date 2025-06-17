@@ -13,7 +13,6 @@
     ./ghost # self hosted blog
     ./haos # home assistant, cloud free home automation
     ./headscale # testing ground for tailscale replacement - vpn for remote connections to lan
-    ./honeygain # use my interwebs for money?
     ./i2p # naughty internet things
     ./immich # self-hosted image server
     ./nginx-lan # reverse proxy for local services
