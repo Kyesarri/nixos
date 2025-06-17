@@ -1,4 +1,6 @@
 {pkgs, ...}: {
+  services.zfs.autoScrub.enable = true;
+
   boot = {
     # pinning kernel version due to zfs being out of tree & not supporting latest kernel
 
@@ -27,6 +29,7 @@
     kernelParams = [
       "intel_iommu=on" # pci device pass-through
       "nowatchdog" # disables watchdog, was causing shutdown / reboot issues on laptop, left in cos
+      "nohibernate" # zfs requirement
     ];
 
     initrd.availableKernelModules = ["xhci_pci" "ahci" "nvme" "usb_storage" "usbhid" "sd_mod"];

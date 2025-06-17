@@ -78,6 +78,8 @@
     inputs.agenix.packages.x86_64-linux.default
     pkgs.cifs-utils
     pkgs.samba
+    pkgs.mergerfs
+    pkgs.mergerfs-tools
   ];
 
   users.users.${spaghetti.user} = {

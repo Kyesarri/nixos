@@ -70,6 +70,12 @@
       device = "/dev/disk/by-uuid/84DE-719A";
       fsType = "vfat";
     };
+
+    "/storage" = {
+      fsType = "fuse.mergerfs";
+      device = "/hdd*";
+      options = ["cache.files=partial" "dropcacheonclose=true" "category.create=mfs"];
+    };
   };
 
   swapDevices = [{device = "/dev/disk/by-uuid/31007c77-40ea-4c3c-b5a7-08db63f333d8";}];
