@@ -2,6 +2,12 @@
   boot = {
     kernelPackages = pkgs.linuxPackages_xanmod_latest; # use mainline xanmod kernel
 
+    supportedFilesystems = {
+      cifs = true;
+      ntfs = true;
+      nfs = true;
+    };
+
     kernelParams = [
       "intel_iommu=on" # pci device pass-through
       "nowatchdog" # disables watchdog, was causing shutdown / reboot issues on laptop
