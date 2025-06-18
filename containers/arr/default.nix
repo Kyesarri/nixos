@@ -53,12 +53,10 @@ in {
             after = [
               "podman-network-arr.service"
               "podman-volume-radarr.service"
-              "podman-volume-arr-downloads.service"
             ];
             requires = [
               "podman-network-arr.service"
               "podman-volume-arr-radarr.service"
-              "podman-volume-arr-downloads.service"
             ];
             partOf = ["podman-arr-root.target"];
             wantedBy = ["podman-arr-root.target"];
@@ -80,12 +78,10 @@ in {
             after = [
               "podman-network-arr.service"
               "podman-volume-arr-sonarr.service"
-              "podman-volume-arr-downloads.service"
             ];
             requires = [
               "podman-network-arr.service"
               "podman-volume-arr-sonarr.service"
-              "podman-volume-arr-downloads.service"
             ];
             partOf = ["podman-arr-root.target"];
             wantedBy = ["podman-arr-root.target"];
@@ -132,12 +128,10 @@ in {
             after = [
               "podman-network-arr.service"
               "podman-volume-arr-pyload.service"
-              "podman-volume-arr-downloads.service"
             ];
             requires = [
               "podman-network-arr.service"
               "podman-volume-arr-pyload.service"
-              "podman-volume-arr-downloads.service"
             ];
             partOf = ["podman-arr-root.target"];
             wantedBy = ["podman-arr-root.target"];
@@ -234,12 +228,10 @@ in {
             after = [
               "podman-network-arr.service"
               "podman-volume-transmission.service"
-              "podman-volume-arr-downloads.service"
             ];
             requires = [
               "podman-network-arr.service"
               "podman-volume-arr-transmission.service"
-              "podman-volume-arr-downloads.service"
             ];
             partOf = ["podman-arr-root.target"];
             wantedBy = ["podman-arr-root.target"];
@@ -323,7 +315,7 @@ in {
             "/etc/localtime:/etc/localtime:ro"
             "arr-radarr:/config:rw"
             "/mnt/storage/movies:/movies"
-            "arr-downloads:/downloads"
+            "/mnt/storage/torrents:/downloads:rw"
           ];
           extraOptions = [
             "--network-alias=radarr"
@@ -343,7 +335,7 @@ in {
             "/etc/localtime:/etc/localtime:ro"
             "arr-sonarr:/config:rw"
             "/mnt/storage/tv_shows:/tv"
-            "arr-downloads:/downloads"
+            "/mnt/storage/torrents:/downloads:rw"
           ];
           extraOptions = [
             "--network-alias=sonarr"
@@ -381,7 +373,7 @@ in {
           volumes = [
             "/etc/localtime:/etc/localtime:ro"
             "arr-pyload:/config:rw"
-            "arr-downloads:/downloads"
+            "/mnt/storage/torrents:/downloads:rw"
           ];
           extraOptions = [
             "--network-alias=pyload"
@@ -419,7 +411,7 @@ in {
             "/etc/localtime:/etc/localtime:ro"
             "arr-readarr:/config:rw"
             "/mnt/storage/books:/books"
-            "arr-downloads:/downloads"
+            "/mnt/storage/torrents:/downloads:rw"
           ];
           extraOptions = [
             "--network-alias=readarr"
