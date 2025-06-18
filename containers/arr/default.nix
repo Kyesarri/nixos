@@ -308,7 +308,7 @@ in {
           volumes = [
             "/etc/localtime:/etc/localtime:ro"
             "arr-radarr:/config:rw"
-            # "/path/to/movies:/movies"
+            "/mnt/storage/movies:/movies"
             "arr-downloads:/downloads"
           ];
           extraOptions = [
@@ -328,7 +328,7 @@ in {
           volumes = [
             "/etc/localtime:/etc/localtime:ro"
             "arr-sonarr:/config:rw"
-            # "/path/to/tv_shows:/tv"
+            "/mnt/storage/tv_shows:/tv"
             "arr-downloads:/downloads"
           ];
           extraOptions = [
@@ -348,8 +348,8 @@ in {
           volumes = [
             "/etc/localtime:/etc/localtime:ro"
             "arr-bazarr:/config:rw"
-            # "/path/to/tv_shows:/tv"
-            # "/path/to/movies:/movies"
+            "/mnt/storage/tv_shows:/tv"
+            "/mnt/storage/movies:/movies"
           ];
           extraOptions = [
             "--network-alias=bazarr"
@@ -404,7 +404,7 @@ in {
           volumes = [
             "/etc/localtime:/etc/localtime:ro"
             "arr-readarr:/config:rw"
-            # "/path/to/books:/books" #TODO
+            "/mnt/storage/books:/books"
             "arr-downloads:/downloads"
           ];
           extraOptions = [
@@ -425,7 +425,7 @@ in {
           volumes = [
             "/etc/localtime:/etc/localtime:ro"
             "arr-transmission:/config:rw"
-            "arr-downloads:/downloads:rw"
+            "/mnt/storage/torrents:/downloads:rw"
           ];
           extraOptions = [
             "--network-alias=transmission"
@@ -444,8 +444,8 @@ in {
           volumes = [
             "/etc/localtime:/etc/localtime:ro"
             "arr-jellyfin:/config:rw"
-            # "/path/to/tv_shows:/data/tvshows"
-            # "/path/to/movies:/datsa/movies"
+            "/mnt/storage/tv_shows:/tv"
+            "/mnt/storage/movies:/movies"
           ];
           extraOptions = [
             "--network-alias=jellyfin"
