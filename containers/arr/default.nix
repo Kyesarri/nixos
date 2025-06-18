@@ -485,6 +485,7 @@ in {
             TZ = "${cfg.timeZone}";
             PUID = "1000";
             PGID = "1000";
+            PLEX_CLAIM = "claim-LGfEtCjP9rKGT1xmdaV2";
           };
           volumes = [
             "/dev/dri:/dev/dri"
