@@ -280,14 +280,28 @@ in {
             partOf = ["podman-arr-root.target"];
             wantedBy = ["podman-arr-root.target"];
           };
-          # download dir shared between all containers - #TODO change where this is stored
-          "podman-volume-arr-downloads" = {
+          # plex container
+          "podman-arr-plex" = {
+            serviceConfig = {Restart = lib.mkOverride 90 "always";};
+            after = [
+              "podman-network-arr.service"
+              "podman-volume-plex.service"
+            ];
+            requires = [
+              "podman-network-arr.service"
+              "podman-volume-arr-plex.service"
+            ];
+            partOf = ["podman-arr-root.target"];
+            wantedBy = ["podman-arr-root.target"];
+          };
+          # plex volume
+          "podman-volume-arr-plex" = {
             path = [pkgs.podman];
             serviceConfig = {
               Type = "oneshot";
               RemainAfterExit = true;
             };
-            script = ''podman volume inspect arr-downloads || podman volume create arr-downloads'';
+            script = ''podman volume inspect arr-plex || podman volume create arr-plex'';
             partOf = ["podman-arr-root.target"];
             wantedBy = ["podman-arr-root.target"];
           };
@@ -442,6 +456,7 @@ in {
             PGID = "1000";
           };
           volumes = [
+            "/dev/dri:/dev/dri"
             "/etc/localtime:/etc/localtime:ro"
             "arr-jellyfin:/config:rw"
             "/mnt/storage/tv_shows:/tv"
@@ -467,6 +482,27 @@ in {
           ];
           extraOptions = [
             "--network-alias=prowlarr"
+            "--network=arr"
+          ];
+        };
+        #
+        "arr-plex" = {
+          image = "lscr.io/linuxserver/plex:latest";
+          log-driver = "journald";
+          environment = {
+            TZ = "${cfg.timeZone}";
+            PUID = "1000";
+            PGID = "1000";
+          };
+          volumes = [
+            "/dev/dri:/dev/dri"
+            "/etc/localtime:/etc/localtime:ro"
+            "arr-plex:/config:rw"
+            "/mnt/storage/tv_shows:/tv"
+            "/mnt/storage/movies:/movies"
+          ];
+          extraOptions = [
+            "--network-alias=plex"
             "--network=arr"
           ];
         };
