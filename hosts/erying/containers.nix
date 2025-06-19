@@ -41,6 +41,11 @@
     static-web.enable = true;
     syncthing.enable = true;
     #
+    adguardhome-sync = {
+      enable = true;
+      macvlanIp = "${secrets.ip.adguard-sync}";
+    };
+
     adguard = {
       enable = true;
       macvlanIp = "${secrets.ip.adguard-erying}";

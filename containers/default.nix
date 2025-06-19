@@ -1,6 +1,7 @@
 {pkgs, ...}: {
   imports = [
     ./adguard # dns + dhcp + adblock
+    ./adguard/sync.nix # testing adguard-sync for multiple host thingos
     ./arr # arr stack
     ./backend-network # backend network - for inter container comms not on main lan
     ./cloudflared # cloudflare tunnel
