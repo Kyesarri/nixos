@@ -43,7 +43,7 @@
     #
     adguardhome-sync = {
       enable = true;
-      macvlanIp = "${secrets.ip.adguard-sync}";
+      macvlanIp = "${secrets.ip.adguardhome-sync}";
     };
 
     adguard = {
