@@ -34,8 +34,8 @@ in {
             serviceConfig = {
               Restart = lib.mkOverride 90 "always";
             };
-            after = ["podman-network-adguardhome-sync.service"];
-            requires = ["podman-network-adguardhome-sync.service"];
+            after = ["podman-volume-adguardhome-sync.service"];
+            requires = ["podman-volume-adguardhome-sync.service"];
             partOf = ["podman-adguardhome-sync-root.target"];
             wantedBy = ["podman-adguardhome-sync-root.target"];
           };
