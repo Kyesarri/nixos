@@ -1,3 +1,6 @@
+/*
+Synchronize AdGuardHome config to replica instances.
+*/
 {
   config,
   pkgs,
