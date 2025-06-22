@@ -4,6 +4,8 @@
 
 # using sudo here as podman containers in my configuration are started with sudo currently
 
+# currently issue with unpause containers with my config :D
+
 # Get a list of all volumes
 volumes=$(sudo podman volume ls -q)
 
