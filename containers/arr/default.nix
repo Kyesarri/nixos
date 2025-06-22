@@ -400,7 +400,7 @@ in {
         };
         #
         "arr-readarr" = {
-          image = "lscr.io/linuxserver/readarr:latest";
+          image = "lscr.io/linuxserver/readarr:develop";
           log-driver = "journald";
           environment = {
             TZ = "${cfg.timeZone}";
