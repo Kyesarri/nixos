@@ -10,7 +10,7 @@
 volumes=$(sudo podman volume ls -q)
 
 #get timestamp for unique filename
-timestamp=$(date +"%Y%m%d%H%M%S")
+timestamp=$(date +"%Y%m%d-%H%M")
 
 # Pause all running containers
 echo "Pausing containers for backup"
@@ -35,7 +35,7 @@ done
 
 # Unpause all paused containers
 echo "Resuming containers"
-sudo podman unpause $(podman ps -aq)
+sudo podman unpause $(sudo podman ps -aq)
 
 # Archive and compress all .tar files that do not match the pattern podmanbackup_*.tar.gz
 echo "Combining volume archives into compressed tar..."
