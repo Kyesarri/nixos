@@ -9,29 +9,40 @@ in
     name = "impurePythonEnv";
     venvDir = "../../.venv";
     buildInputs = [
-      pythonPackages.python
+      # line 1
+      binutils # binutils
+      bzip2 # bzip2
+      diffutils # diff
+      uutils-findutils # find
+      flex_2_5_35 # flex
+      gawkInteractive # gawk
+      libgccjit # gcc-6+
+      getopt # getopt
+      gnugrep # grep
+      toybox # install
 
-      binutils
-      bzip2
-      diffutils
-      uutils-findutils
-      flex_2_5_35
-      gawkInteractive
-      libgccjit
-      getopt
-      gnugrep
-      toybox
+      linuxHeaders # libc-dev
+      util-linux # libc-dev
 
-      linuxHeaders
-      util-linux
+      libz # libz-dev
 
-      libz
-      gnumake
-      perl
-      rsync
-      subversion
-      unzip
-      which
+      # line 2
+      gnumake # make4.1+
+      perl # perl
+      pythonPackages.python # python3.7+
+      rsync # rsync
+      subversion # subversion
+      unzip # unzip
+      which # which
+
+      # additional packages
+      ncurses
+      pkg-config
+
+      libev
+      libpam-wrapper
+      libtirpc
+      elfutils
     ];
 
     # Run this command, only after creating the virtual environment
