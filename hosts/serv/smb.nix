@@ -1,11 +1,11 @@
 {...}: {
   services.samba = {
     enable = true;
-    securityType = "user";
     openFirewall = true;
 
     settings = {
       global = {
+        "security" = "user";
         "workgroup" = "WORKGROUP";
         "server string" = "smb-serv";
         "netbios name" = "smb-serv";
