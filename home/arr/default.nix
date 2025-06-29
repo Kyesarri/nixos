@@ -40,7 +40,7 @@
       settings = {
         ratio-limit = 3; # pls seed
         ratio-limit-enabled = true;
-        idle-seeding-limit-enabled = true;
+        idle-seeding-limit-enabled = false;
         trash-original-torrent-files = true;
         incomplete-dir-enabled = true;
         incomplete-dir = "/hddf/incomplete/";
