@@ -5,7 +5,6 @@
 
     settings = {
       global = {
-        "security" = "user";
         "workgroup" = "WORKGROUP";
         "server string" = "smb-serv";
         "netbios name" = "smb-serv";
