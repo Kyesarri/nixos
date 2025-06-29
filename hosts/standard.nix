@@ -181,10 +181,10 @@
         evolutionWithPlugins # calendar
         blender # for new toy :D
         gnome-disk-utility # disk gui
-        libimobiledevice # fix iphone thing
-        usbmuxd2 # another ios thing
-        libirecovery # more ios?
-        ifuse # more iphone thing
+        # libimobiledevice # fix iphone thing
+        # usbmuxd2 # another ios thing
+        # libirecovery # failed build invalid key / value pair
+        # ifuse # more iphone thing
         orca-slicer # still isn't working
         openscad # 3d cad
         nfs-utils # nfs user utilities
