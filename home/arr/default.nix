@@ -68,7 +68,7 @@
     prowlarr = {
       enable = true;
       openFirewall = true;
-      group = "media"; # no worky, option does not exist
+      # group = "media"; # no worky, option does not exist
     };
     readarr = {
       enable = true;
