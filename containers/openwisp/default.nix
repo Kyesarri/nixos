@@ -441,7 +441,6 @@ in {
             "INFLUXDB_PASS" = "admin";
             "INFLUXDB_USER" = "admin";
             "METRIC_COLLECTION" = "false";
-            "MODULE_NAME" = "celery";
             "SSH_PRIVATE_KEY_PATH" = "/home/openwisp/.ssh/id_ed25519";
             "SSH_PUBLIC_KEY_PATH" = "/home/openwisp/.ssh/id_ed25519.pub";
             "VPN_DOMAIN" = "vpn.openwisp.home";
@@ -464,6 +463,43 @@ in {
           ];
         };
         #
+
+        "openwisp-celery" = {
+          image = "openwisp/openwisp-dashboard:latest";
+          environment = {
+            "API_DOMAIN" = "api.openwisp.home";
+            "COLLECTSTATIC_WHEN_DEPS_CHANGE" = "true";
+            "DASHBOARD_DOMAIN" = "dashboard.openwisp.home";
+            "DB_NAME" = "openwisp";
+            "DB_PASS" = "admin";
+            "DB_USER" = "admin";
+            "EMAIL_DJANGO_DEFAULT" = "example@example.org";
+            "INFLUXDB_NAME" = "openwisp";
+            "INFLUXDB_PASS" = "admin";
+            "INFLUXDB_USER" = "admin";
+            "METRIC_COLLECTION" = "false";
+            "MODULE_NAME" = "celery";
+            "SSH_PRIVATE_KEY_PATH" = "/home/openwisp/.ssh/id_ed25519";
+            "SSH_PUBLIC_KEY_PATH" = "/home/openwisp/.ssh/id_ed25519.pub";
+            "VPN_DOMAIN" = "vpn.openwisp.home";
+          };
+          volumes = [
+            "/etc/oci.cont/openwisp/customization/configuration/django:/opt/openwisp/openwisp/configuration:ro"
+            "openwisp_openwisp_media:/opt/openwisp/media:rw"
+            "openwisp_openwisp_private_storage:/opt/openwisp/private:rw"
+            "openwisp_openwisp_ssh:/home/openwisp/.ssh:rw"
+          ];
+          dependsOn = [
+            "openwisp-dashboard"
+            "openwisp-openvpn"
+            "openwisp-postgres"
+            "openwisp-redis"
+          ];
+          log-driver = "journald";
+          extraOptions = [
+            "--network=container:openwisp-openvpn" # this container joins the openwisp-openvpn container namespace?
+          ];
+        };
         "openwisp-celery_monitoring" = {
           image = "openwisp/openwisp-dashboard:latest";
           environment = {
