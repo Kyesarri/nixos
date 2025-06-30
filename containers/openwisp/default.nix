@@ -1082,7 +1082,7 @@ in {
         "openwisp-postgres" = {
           image = "postgis/postgis:15-3.4-alpine";
           environment = {
-            "POSTGRES_DB" = "admin";
+            "POSTGRES_DB" = "openwisp";
             "POSTGRES_PASSWORD" = "admin";
             "POSTGRES_USER" = "admin";
             "TZ" = "Australia/Melbourne";
