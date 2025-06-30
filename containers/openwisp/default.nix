@@ -46,7 +46,7 @@ in {
               RemainAfterExit = true;
               ExecStop = "podman network rm -f openwisp";
             };
-            script = ''podman network inspect openwisp || podman network create openwisp --subnet=172.18.0.0/16'';
+            script = ''podman network inspect openwisp || podman network create openwisp'';
             partOf = ["podman-openwisp-root.target"];
             wantedBy = ["podman-openwisp-root.target"];
           };
@@ -55,6 +55,8 @@ in {
           TODO:
           add service to clone https://github.com/openwisp/docker-openwisp.git into /etc/oci.cont/openwisp maybe?
           looks like I'm missing the images and or the containers cannot talk to the internet to get the required files
+          for now manually ran git clone into dir and started the podman-build-* services
+          seeing issues with containers falling over almost immediatly after starting 01.07.25
 
           from the autoinstall script
           git clone $GIT_PATH $INSTALL_PATH --depth 1 --branch $GIT_BRANCH &>>$LOG_FILE
