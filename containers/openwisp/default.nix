@@ -454,7 +454,7 @@ in {
             "SSH_PRIVATE_KEY_PATH" = "/home/openwisp/.ssh/id_ed25519";
             "SSH_PUBLIC_KEY_PATH" = "/home/openwisp/.ssh/id_ed25519.pub";
             "SSL_CERT_MODE" = "SelfSigned";
-            "TZ" = "Asia/Kolkata";
+            "TZ" = "Australia/Melbourne";
             "USE_OPENWISP_CELERY_FIRMWARE" = "True";
             "USE_OPENWISP_CELERY_MONITORING" = "True";
             "USE_OPENWISP_CELERY_NETWORK" = "True";
@@ -526,7 +526,7 @@ in {
             "SSH_PRIVATE_KEY_PATH" = "/home/openwisp/.ssh/id_ed25519";
             "SSH_PUBLIC_KEY_PATH" = "/home/openwisp/.ssh/id_ed25519.pub";
             "SSL_CERT_MODE" = "SelfSigned";
-            "TZ" = "Asia/Kolkata";
+            "TZ" = "Australia/Melbourne";
             "USE_OPENWISP_CELERY_FIRMWARE" = "True";
             "USE_OPENWISP_CELERY_MONITORING" = "True";
             "USE_OPENWISP_CELERY_NETWORK" = "True";
@@ -565,7 +565,7 @@ in {
           ];
           log-driver = "journald";
           extraOptions = [
-            "--network=container:openwisp-openvpn"
+            "--network=container:openwisp-openvpn" # this container joins the openwisp-openvpn container namespace?
           ];
         };
         #
@@ -598,7 +598,7 @@ in {
             "SSH_PRIVATE_KEY_PATH" = "/home/openwisp/.ssh/id_ed25519";
             "SSH_PUBLIC_KEY_PATH" = "/home/openwisp/.ssh/id_ed25519.pub";
             "SSL_CERT_MODE" = "SelfSigned";
-            "TZ" = "Asia/Kolkata";
+            "TZ" = "Australia/Melbourne";
             "USE_OPENWISP_CELERY_FIRMWARE" = "True";
             "USE_OPENWISP_CELERY_MONITORING" = "True";
             "USE_OPENWISP_CELERY_NETWORK" = "True";
@@ -636,7 +636,7 @@ in {
           ];
           log-driver = "journald";
           extraOptions = [
-            "--network=container:openwisp-openvpn"
+            "--network=container:openwisp-openvpn" # this container joins the openwisp-openvpn container namespace?
           ];
         };
         #
@@ -669,7 +669,7 @@ in {
             "SSH_PRIVATE_KEY_PATH" = "/home/openwisp/.ssh/id_ed25519";
             "SSH_PUBLIC_KEY_PATH" = "/home/openwisp/.ssh/id_ed25519.pub";
             "SSL_CERT_MODE" = "SelfSigned";
-            "TZ" = "Asia/Kolkata";
+            "TZ" = "Australia/Melbourne";
             "USE_OPENWISP_CELERY_FIRMWARE" = "True";
             "USE_OPENWISP_CELERY_MONITORING" = "True";
             "USE_OPENWISP_CELERY_NETWORK" = "True";
@@ -737,7 +737,7 @@ in {
             "SSH_PRIVATE_KEY_PATH" = "/home/openwisp/.ssh/id_ed25519";
             "SSH_PUBLIC_KEY_PATH" = "/home/openwisp/.ssh/id_ed25519.pub";
             "SSL_CERT_MODE" = "SelfSigned";
-            "TZ" = "Asia/Kolkata";
+            "TZ" = "Australia/Melbourne";
             "USE_OPENWISP_CELERY_FIRMWARE" = "True";
             "USE_OPENWISP_CELERY_MONITORING" = "True";
             "USE_OPENWISP_CELERY_NETWORK" = "True";
@@ -811,7 +811,7 @@ in {
             "SSH_PRIVATE_KEY_PATH" = "/home/openwisp/.ssh/id_ed25519";
             "SSH_PUBLIC_KEY_PATH" = "/home/openwisp/.ssh/id_ed25519.pub";
             "SSL_CERT_MODE" = "SelfSigned";
-            "TZ" = "Asia/Kolkata";
+            "TZ" = "Australia/Melbourne";
             "USE_OPENWISP_CELERY_FIRMWARE" = "True";
             "USE_OPENWISP_CELERY_MONITORING" = "True";
             "USE_OPENWISP_CELERY_NETWORK" = "True";
@@ -897,7 +897,7 @@ in {
             "SSH_PRIVATE_KEY_PATH" = "/home/openwisp/.ssh/id_ed25519";
             "SSH_PUBLIC_KEY_PATH" = "/home/openwisp/.ssh/id_ed25519.pub";
             "SSL_CERT_MODE" = "SelfSigned";
-            "TZ" = "Asia/Kolkata";
+            "TZ" = "Australia/Melbourne";
             "USE_OPENWISP_CELERY_FIRMWARE" = "True";
             "USE_OPENWISP_CELERY_MONITORING" = "True";
             "USE_OPENWISP_CELERY_NETWORK" = "True";
@@ -973,7 +973,7 @@ in {
             "SSH_PRIVATE_KEY_PATH" = "/home/openwisp/.ssh/id_ed25519";
             "SSH_PUBLIC_KEY_PATH" = "/home/openwisp/.ssh/id_ed25519.pub";
             "SSL_CERT_MODE" = "SelfSigned";
-            "TZ" = "Asia/Kolkata";
+            "TZ" = "Australia/Melbourne";
             "USE_OPENWISP_CELERY_FIRMWARE" = "True";
             "USE_OPENWISP_CELERY_MONITORING" = "True";
             "USE_OPENWISP_CELERY_NETWORK" = "True";
@@ -1046,7 +1046,7 @@ in {
             "SSH_PRIVATE_KEY_PATH" = "/home/openwisp/.ssh/id_ed25519";
             "SSH_PUBLIC_KEY_PATH" = "/home/openwisp/.ssh/id_ed25519.pub";
             "SSL_CERT_MODE" = "SelfSigned";
-            "TZ" = "Asia/Kolkata";
+            "TZ" = "Australia/Melbourne";
             "USE_OPENWISP_CELERY_FIRMWARE" = "True";
             "USE_OPENWISP_CELERY_MONITORING" = "True";
             "USE_OPENWISP_CELERY_NETWORK" = "True";
@@ -1139,7 +1139,7 @@ in {
             "SSH_PRIVATE_KEY_PATH" = "/home/openwisp/.ssh/id_ed25519";
             "SSH_PUBLIC_KEY_PATH" = "/home/openwisp/.ssh/id_ed25519.pub";
             "SSL_CERT_MODE" = "SelfSigned";
-            "TZ" = "Asia/Kolkata";
+            "TZ" = "Australia/Melbourne";
             "USE_OPENWISP_CELERY_FIRMWARE" = "True";
             "USE_OPENWISP_CELERY_MONITORING" = "True";
             "USE_OPENWISP_CELERY_NETWORK" = "True";
