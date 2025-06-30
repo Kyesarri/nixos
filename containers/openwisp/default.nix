@@ -459,7 +459,6 @@
         "--network=openwisp"
       ];
     };
-
     #
     "openwisp-celery" = {
       image = "openwisp/openwisp-dashboard:latest";
@@ -532,7 +531,6 @@
         "--network=container:openwisp-openvpn"
       ];
     };
-
     #
     "openwisp-celery_monitoring" = {
       image = "openwisp/openwisp-dashboard:latest";
@@ -604,7 +602,6 @@
         "--network=container:openwisp-openvpn"
       ];
     };
-
     #
     "openwisp-celerybeat" = {
       image = "openwisp/openwisp-dashboard:latest";
@@ -674,7 +671,6 @@
         "--network=openwisp"
       ];
     };
-
     #
     "openwisp-dashboard" = {
       image = "localhost/openwisp/openwisp-dashboard:latest";
@@ -749,7 +745,6 @@
         "--network=openwisp"
       ];
     };
-
     #
     "openwisp-freeradius" = {
       image = "localhost/openwisp/openwisp-freeradius:latest";
@@ -819,7 +814,6 @@
         "--network=openwisp"
       ];
     };
-
     #
     "openwisp-influxdb" = {
       image = "influxdb:1.8-alpine";
@@ -912,7 +906,6 @@
         "--network=openwisp:alias=dashboard.internal,alias=api.internal"
       ];
     };
-
     #
     "openwisp-openvpn" = {
       image = "localhost/openwisp/openwisp-openvpn:latest";
