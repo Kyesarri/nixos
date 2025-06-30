@@ -430,10 +430,10 @@ in {
           # image = "localhost/openwisp/openwisp-api:latest";
           image = "openwisp/openwisp-api:latest";
           environment = {
-            "API_DOMAIN" = "api.openwisp.org";
+            "API_DOMAIN" = "api.openwisp.home";
             "CERT_ADMIN_EMAIL" = "example@example.org";
             "COLLECTSTATIC_WHEN_DEPS_CHANGE" = "true";
-            "DASHBOARD_DOMAIN" = "dashboard.openwisp.org";
+            "DASHBOARD_DOMAIN" = "openwisp.home";
             "DB_NAME" = "openwisp";
             "DB_PASS" = "admin";
             "DB_USER" = "admin";
@@ -454,8 +454,8 @@ in {
             "OPENWISP_GEOCODING_CHECK" = "True";
             "SSH_PRIVATE_KEY_PATH" = "/home/openwisp/.ssh/id_ed25519";
             "SSH_PUBLIC_KEY_PATH" = "/home/openwisp/.ssh/id_ed25519.pub";
-            "SSL_CERT_MODE" = "SelfSigned";
-            "TZ" = "Australia/Melbourne";
+            "SSL_CERT_MODE" = "no";
+            "TZ" = "AEST";
             "USE_OPENWISP_CELERY_FIRMWARE" = "True";
             "USE_OPENWISP_CELERY_MONITORING" = "True";
             "USE_OPENWISP_CELERY_NETWORK" = "True";
@@ -468,7 +468,7 @@ in {
             "UWSGI_PROCESSES" = "2";
             "UWSGI_THREADS" = "2";
             "VPN_CLIENT_NAME" = "default-management-vpn";
-            "VPN_DOMAIN" = "openvpn.openwisp.org";
+            "VPN_DOMAIN" = "vpn.openwisp.home";
             "VPN_NAME" = "default";
             "X509_CITY" = "New Delhi";
             "X509_COMMON_NAME" = "OpenWISP";
@@ -501,21 +501,24 @@ in {
         "openwisp-celery" = {
           image = "openwisp/openwisp-dashboard:latest";
           environment = {
-            "API_DOMAIN" = "api.openwisp.org";
+            "TZ" = "AEST";
+            "API_DOMAIN" = "api.openwisp.home";
             "CERT_ADMIN_EMAIL" = "example@example.org";
             "COLLECTSTATIC_WHEN_DEPS_CHANGE" = "true";
-            "DASHBOARD_DOMAIN" = "dashboard.openwisp.org";
+            "DASHBOARD_DOMAIN" = "openwisp.home";
             "DB_NAME" = "openwisp";
             "DB_PASS" = "admin";
             "DB_USER" = "admin";
+            "INFLUXDB_NAME" = "openwisp";
+            "INFLUXDB_PASS" = "admin";
+            "INFLUXDB_USER" = "admin";
             "DEBUG_MODE" = "False";
+
             "DJANGO_LANGUAGE_CODE" = "en-gb";
             "DJANGO_LOG_LEVEL" = "INFO";
             "DJANGO_SECRET_KEY" = "default_secret_key";
             "EMAIL_DJANGO_DEFAULT" = "example@example.org";
-            "INFLUXDB_NAME" = "openwisp";
-            "INFLUXDB_PASS" = "admin";
-            "INFLUXDB_USER" = "admin";
+
             "METRIC_COLLECTION" = "True";
             "MODULE_NAME" = "celery";
             "OPENWISP_CELERY_COMMAND_FLAGS" = "--concurrency=1";
@@ -526,8 +529,7 @@ in {
             "OPENWISP_GEOCODING_CHECK" = "True";
             "SSH_PRIVATE_KEY_PATH" = "/home/openwisp/.ssh/id_ed25519";
             "SSH_PUBLIC_KEY_PATH" = "/home/openwisp/.ssh/id_ed25519.pub";
-            "SSL_CERT_MODE" = "SelfSigned";
-            "TZ" = "Australia/Melbourne";
+            "SSL_CERT_MODE" = "no";
             "USE_OPENWISP_CELERY_FIRMWARE" = "True";
             "USE_OPENWISP_CELERY_MONITORING" = "True";
             "USE_OPENWISP_CELERY_NETWORK" = "True";
@@ -540,7 +542,7 @@ in {
             "UWSGI_PROCESSES" = "2";
             "UWSGI_THREADS" = "2";
             "VPN_CLIENT_NAME" = "default-management-vpn";
-            "VPN_DOMAIN" = "openvpn.openwisp.org";
+            "VPN_DOMAIN" = "vpn.openwisp.home";
             "VPN_NAME" = "default";
             "X509_CITY" = "New Delhi";
             "X509_COMMON_NAME" = "OpenWISP";
@@ -573,10 +575,10 @@ in {
         "openwisp-celery_monitoring" = {
           image = "openwisp/openwisp-dashboard:latest";
           environment = {
-            "API_DOMAIN" = "api.openwisp.org";
+            "API_DOMAIN" = "api.openwisp.home";
             "CERT_ADMIN_EMAIL" = "example@example.org";
             "COLLECTSTATIC_WHEN_DEPS_CHANGE" = "true";
-            "DASHBOARD_DOMAIN" = "dashboard.openwisp.org";
+            "DASHBOARD_DOMAIN" = "openwisp.home";
             "DB_NAME" = "openwisp";
             "DB_PASS" = "admin";
             "DB_USER" = "admin";
@@ -598,8 +600,8 @@ in {
             "OPENWISP_GEOCODING_CHECK" = "True";
             "SSH_PRIVATE_KEY_PATH" = "/home/openwisp/.ssh/id_ed25519";
             "SSH_PUBLIC_KEY_PATH" = "/home/openwisp/.ssh/id_ed25519.pub";
-            "SSL_CERT_MODE" = "SelfSigned";
-            "TZ" = "Australia/Melbourne";
+            "SSL_CERT_MODE" = "no";
+            "TZ" = "AEST";
             "USE_OPENWISP_CELERY_FIRMWARE" = "True";
             "USE_OPENWISP_CELERY_MONITORING" = "True";
             "USE_OPENWISP_CELERY_NETWORK" = "True";
@@ -612,7 +614,7 @@ in {
             "UWSGI_PROCESSES" = "2";
             "UWSGI_THREADS" = "2";
             "VPN_CLIENT_NAME" = "default-management-vpn";
-            "VPN_DOMAIN" = "openvpn.openwisp.org";
+            "VPN_DOMAIN" = "vpn.openwisp.home";
             "VPN_NAME" = "default";
             "X509_CITY" = "New Delhi";
             "X509_COMMON_NAME" = "OpenWISP";
@@ -644,10 +646,10 @@ in {
         "openwisp-celerybeat" = {
           image = "openwisp/openwisp-dashboard:latest";
           environment = {
-            "API_DOMAIN" = "api.openwisp.org";
+            "API_DOMAIN" = "api.openwisp.home";
             "CERT_ADMIN_EMAIL" = "example@example.org";
             "COLLECTSTATIC_WHEN_DEPS_CHANGE" = "true";
-            "DASHBOARD_DOMAIN" = "dashboard.openwisp.org";
+            "DASHBOARD_DOMAIN" = "openwisp.home";
             "DB_NAME" = "openwisp";
             "DB_PASS" = "admin";
             "DB_USER" = "admin";
@@ -669,8 +671,8 @@ in {
             "OPENWISP_GEOCODING_CHECK" = "True";
             "SSH_PRIVATE_KEY_PATH" = "/home/openwisp/.ssh/id_ed25519";
             "SSH_PUBLIC_KEY_PATH" = "/home/openwisp/.ssh/id_ed25519.pub";
-            "SSL_CERT_MODE" = "SelfSigned";
-            "TZ" = "Australia/Melbourne";
+            "SSL_CERT_MODE" = "no";
+            "TZ" = "AEST";
             "USE_OPENWISP_CELERY_FIRMWARE" = "True";
             "USE_OPENWISP_CELERY_MONITORING" = "True";
             "USE_OPENWISP_CELERY_NETWORK" = "True";
@@ -683,7 +685,7 @@ in {
             "UWSGI_PROCESSES" = "2";
             "UWSGI_THREADS" = "2";
             "VPN_CLIENT_NAME" = "default-management-vpn";
-            "VPN_DOMAIN" = "openvpn.openwisp.org";
+            "VPN_DOMAIN" = "vpn.openwisp.home";
             "VPN_NAME" = "default";
             "X509_CITY" = "New Delhi";
             "X509_COMMON_NAME" = "OpenWISP";
@@ -714,10 +716,10 @@ in {
           # image = "localhost/openwisp/openwisp-dashboard:latest";
           image = "openwisp/openwisp-dashboard:latest";
           environment = {
-            "API_DOMAIN" = "api.openwisp.org";
+            "API_DOMAIN" = "api.openwisp.home";
             "CERT_ADMIN_EMAIL" = "example@example.org";
             "COLLECTSTATIC_WHEN_DEPS_CHANGE" = "true";
-            "DASHBOARD_DOMAIN" = "dashboard.openwisp.org";
+            "DASHBOARD_DOMAIN" = "openwisp.home";
             "DB_NAME" = "openwisp";
             "DB_PASS" = "admin";
             "DB_USER" = "admin";
@@ -738,8 +740,8 @@ in {
             "OPENWISP_GEOCODING_CHECK" = "True";
             "SSH_PRIVATE_KEY_PATH" = "/home/openwisp/.ssh/id_ed25519";
             "SSH_PUBLIC_KEY_PATH" = "/home/openwisp/.ssh/id_ed25519.pub";
-            "SSL_CERT_MODE" = "SelfSigned";
-            "TZ" = "Australia/Melbourne";
+            "SSL_CERT_MODE" = "no";
+            "TZ" = "AEST";
             "USE_OPENWISP_CELERY_FIRMWARE" = "True";
             "USE_OPENWISP_CELERY_MONITORING" = "True";
             "USE_OPENWISP_CELERY_NETWORK" = "True";
@@ -752,7 +754,7 @@ in {
             "UWSGI_PROCESSES" = "2";
             "UWSGI_THREADS" = "2";
             "VPN_CLIENT_NAME" = "default-management-vpn";
-            "VPN_DOMAIN" = "openvpn.openwisp.org";
+            "VPN_DOMAIN" = "vpn.openwisp.home";
             "VPN_NAME" = "default";
             "X509_CITY" = "New Delhi";
             "X509_COMMON_NAME" = "OpenWISP";
@@ -789,10 +791,10 @@ in {
           # image = "localhost/openwisp/openwisp-freeradius:latest";
           image = "openwisp/openwisp-freeradius:latest";
           environment = {
-            "API_DOMAIN" = "api.openwisp.org";
+            "API_DOMAIN" = "api.openwisp.home";
             "CERT_ADMIN_EMAIL" = "example@example.org";
             "COLLECTSTATIC_WHEN_DEPS_CHANGE" = "true";
-            "DASHBOARD_DOMAIN" = "dashboard.openwisp.org";
+            "DASHBOARD_DOMAIN" = "openwisp.home";
             "DB_NAME" = "openwisp";
             "DB_PASS" = "admin";
             "DB_USER" = "admin";
@@ -813,8 +815,8 @@ in {
             "OPENWISP_GEOCODING_CHECK" = "True";
             "SSH_PRIVATE_KEY_PATH" = "/home/openwisp/.ssh/id_ed25519";
             "SSH_PUBLIC_KEY_PATH" = "/home/openwisp/.ssh/id_ed25519.pub";
-            "SSL_CERT_MODE" = "SelfSigned";
-            "TZ" = "Australia/Melbourne";
+            "SSL_CERT_MODE" = "no";
+            "TZ" = "AEST";
             "USE_OPENWISP_CELERY_FIRMWARE" = "True";
             "USE_OPENWISP_CELERY_MONITORING" = "True";
             "USE_OPENWISP_CELERY_NETWORK" = "True";
@@ -827,7 +829,7 @@ in {
             "UWSGI_PROCESSES" = "2";
             "UWSGI_THREADS" = "2";
             "VPN_CLIENT_NAME" = "default-management-vpn";
-            "VPN_DOMAIN" = "openvpn.openwisp.org";
+            "VPN_DOMAIN" = "vpn.openwisp.home";
             "VPN_NAME" = "default";
             "X509_CITY" = "New Delhi";
             "X509_COMMON_NAME" = "OpenWISP";
@@ -876,10 +878,10 @@ in {
           # image = "localhost/openwisp/openwisp-nginx:latest";
           image = "openwisp/openwisp-nginx:latest";
           environment = {
-            "API_DOMAIN" = "api.openwisp.org";
+            "API_DOMAIN" = "api.openwisp.home";
             "CERT_ADMIN_EMAIL" = "example@example.org";
             "COLLECTSTATIC_WHEN_DEPS_CHANGE" = "true";
-            "DASHBOARD_DOMAIN" = "dashboard.openwisp.org";
+            "DASHBOARD_DOMAIN" = "openwisp.home";
             "DB_NAME" = "openwisp";
             "DB_PASS" = "admin";
             "DB_USER" = "admin";
@@ -900,8 +902,8 @@ in {
             "OPENWISP_GEOCODING_CHECK" = "True";
             "SSH_PRIVATE_KEY_PATH" = "/home/openwisp/.ssh/id_ed25519";
             "SSH_PUBLIC_KEY_PATH" = "/home/openwisp/.ssh/id_ed25519.pub";
-            "SSL_CERT_MODE" = "SelfSigned";
-            "TZ" = "Australia/Melbourne";
+            "SSL_CERT_MODE" = "no";
+            "TZ" = "AEST";
             "USE_OPENWISP_CELERY_FIRMWARE" = "True";
             "USE_OPENWISP_CELERY_MONITORING" = "True";
             "USE_OPENWISP_CELERY_NETWORK" = "True";
@@ -914,7 +916,7 @@ in {
             "UWSGI_PROCESSES" = "2";
             "UWSGI_THREADS" = "2";
             "VPN_CLIENT_NAME" = "default-management-vpn";
-            "VPN_DOMAIN" = "openvpn.openwisp.org";
+            "VPN_DOMAIN" = "vpn.openwisp.home";
             "VPN_NAME" = "default";
             "X509_CITY" = "New Delhi";
             "X509_COMMON_NAME" = "OpenWISP";
@@ -953,10 +955,10 @@ in {
           # image = "localhost/openwisp/openwisp-openvpn:latest";
           image = "openwisp/openwisp-openvpn:latest";
           environment = {
-            "API_DOMAIN" = "api.openwisp.org";
+            "API_DOMAIN" = "api.openwisp.home";
             "CERT_ADMIN_EMAIL" = "example@example.org";
             "COLLECTSTATIC_WHEN_DEPS_CHANGE" = "true";
-            "DASHBOARD_DOMAIN" = "dashboard.openwisp.org";
+            "DASHBOARD_DOMAIN" = "openwisp.home";
             "DB_NAME" = "openwisp";
             "DB_PASS" = "admin";
             "DB_USER" = "admin";
@@ -977,8 +979,8 @@ in {
             "OPENWISP_GEOCODING_CHECK" = "True";
             "SSH_PRIVATE_KEY_PATH" = "/home/openwisp/.ssh/id_ed25519";
             "SSH_PUBLIC_KEY_PATH" = "/home/openwisp/.ssh/id_ed25519.pub";
-            "SSL_CERT_MODE" = "SelfSigned";
-            "TZ" = "Australia/Melbourne";
+            "SSL_CERT_MODE" = "no";
+            "TZ" = "AEST";
             "USE_OPENWISP_CELERY_FIRMWARE" = "True";
             "USE_OPENWISP_CELERY_MONITORING" = "True";
             "USE_OPENWISP_CELERY_NETWORK" = "True";
@@ -991,7 +993,7 @@ in {
             "UWSGI_PROCESSES" = "2";
             "UWSGI_THREADS" = "2";
             "VPN_CLIENT_NAME" = "default-management-vpn";
-            "VPN_DOMAIN" = "openvpn.openwisp.org";
+            "VPN_DOMAIN" = "vpn.openwisp.home";
             "VPN_NAME" = "default";
             "X509_CITY" = "New Delhi";
             "X509_COMMON_NAME" = "OpenWISP";
@@ -1027,10 +1029,10 @@ in {
           # image = "localhost/openwisp/openwisp-postfix:latest";
           image = "openwisp/openwisp-postfix:latest";
           environment = {
-            "API_DOMAIN" = "api.openwisp.org";
+            "API_DOMAIN" = "api.openwisp.home";
             "CERT_ADMIN_EMAIL" = "example@example.org";
             "COLLECTSTATIC_WHEN_DEPS_CHANGE" = "true";
-            "DASHBOARD_DOMAIN" = "dashboard.openwisp.org";
+            "DASHBOARD_DOMAIN" = "openwisp.home";
             "DB_NAME" = "openwisp";
             "DB_PASS" = "admin";
             "DB_USER" = "admin";
@@ -1051,8 +1053,8 @@ in {
             "OPENWISP_GEOCODING_CHECK" = "True";
             "SSH_PRIVATE_KEY_PATH" = "/home/openwisp/.ssh/id_ed25519";
             "SSH_PUBLIC_KEY_PATH" = "/home/openwisp/.ssh/id_ed25519.pub";
-            "SSL_CERT_MODE" = "SelfSigned";
-            "TZ" = "Australia/Melbourne";
+            "SSL_CERT_MODE" = "no";
+            "TZ" = "AEST";
             "USE_OPENWISP_CELERY_FIRMWARE" = "True";
             "USE_OPENWISP_CELERY_MONITORING" = "True";
             "USE_OPENWISP_CELERY_NETWORK" = "True";
@@ -1065,7 +1067,7 @@ in {
             "UWSGI_PROCESSES" = "2";
             "UWSGI_THREADS" = "2";
             "VPN_CLIENT_NAME" = "default-management-vpn";
-            "VPN_DOMAIN" = "openvpn.openwisp.org";
+            "VPN_DOMAIN" = "vpn.openwisp.home";
             "VPN_NAME" = "default";
             "X509_CITY" = "New Delhi";
             "X509_COMMON_NAME" = "OpenWISP";
@@ -1093,7 +1095,7 @@ in {
             "POSTGRES_DB" = "openwisp";
             "POSTGRES_PASSWORD" = "admin";
             "POSTGRES_USER" = "admin";
-            "TZ" = "Australia/Melbourne";
+            "TZ" = "AEST";
           };
           volumes = [
             "openwisp_postgres_data:/var/lib/postgresql/data:rw"
@@ -1121,10 +1123,10 @@ in {
           # image = "localhost/openwisp/openwisp-websocket:latest";
           image = "openwisp/openwisp-websocket:latest";
           environment = {
-            "API_DOMAIN" = "api.openwisp.org";
+            "API_DOMAIN" = "api.openwisp.home";
             "CERT_ADMIN_EMAIL" = "example@example.org";
             "COLLECTSTATIC_WHEN_DEPS_CHANGE" = "true";
-            "DASHBOARD_DOMAIN" = "dashboard.openwisp.org";
+            "DASHBOARD_DOMAIN" = "openwisp.home";
             "DB_NAME" = "openwisp";
             "DB_PASS" = "admin";
             "DB_USER" = "admin";
@@ -1145,8 +1147,8 @@ in {
             "OPENWISP_GEOCODING_CHECK" = "True";
             "SSH_PRIVATE_KEY_PATH" = "/home/openwisp/.ssh/id_ed25519";
             "SSH_PUBLIC_KEY_PATH" = "/home/openwisp/.ssh/id_ed25519.pub";
-            "SSL_CERT_MODE" = "SelfSigned";
-            "TZ" = "Australia/Melbourne";
+            "SSL_CERT_MODE" = "no";
+            "TZ" = "AEST";
             "USE_OPENWISP_CELERY_FIRMWARE" = "True";
             "USE_OPENWISP_CELERY_MONITORING" = "True";
             "USE_OPENWISP_CELERY_NETWORK" = "True";
@@ -1159,7 +1161,7 @@ in {
             "UWSGI_PROCESSES" = "2";
             "UWSGI_THREADS" = "2";
             "VPN_CLIENT_NAME" = "default-management-vpn";
-            "VPN_DOMAIN" = "openvpn.openwisp.org";
+            "VPN_DOMAIN" = "vpn.openwisp.home";
             "VPN_NAME" = "default";
             "X509_CITY" = "New Delhi";
             "X509_COMMON_NAME" = "OpenWISP";
