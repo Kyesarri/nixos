@@ -841,9 +841,9 @@ in {
         "openwisp-influxdb" = {
           image = "influxdb:1.8-alpine";
           environment = {
-            "INFLUXDB_DB" = "";
-            "INFLUXDB_USER" = "";
-            "INFLUXDB_USER_PASSWORD" = "";
+            "INFLUXDB_DB" = "admin";
+            "INFLUXDB_USER" = "admin";
+            "INFLUXDB_USER_PASSWORD" = "admin";
           };
           volumes = [
             "openwisp_influxdb_data:/var/lib/influxdb:rw"
@@ -1070,10 +1070,10 @@ in {
         "openwisp-postgres" = {
           image = "postgis/postgis:15-3.4-alpine";
           environment = {
-            "POSTGRES_DB" = "";
-            "POSTGRES_PASSWORD" = "";
-            "POSTGRES_USER" = "";
-            "TZ" = "";
+            "POSTGRES_DB" = "admin";
+            "POSTGRES_PASSWORD" = "admin";
+            "POSTGRES_USER" = "admin";
+            "TZ" = "Australia/Melbourne";
           };
           volumes = [
             "openwisp_postgres_data:/var/lib/postgresql/data:rw"
