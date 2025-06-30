@@ -427,7 +427,8 @@ in {
         # containers
         #
         "openwisp-api" = {
-          image = "localhost/openwisp/openwisp-api:latest";
+          # image = "localhost/openwisp/openwisp-api:latest";
+          image = "openwisp/openwisp-api:latest";
           environment = {
             "API_DOMAIN" = "api.openwisp.org";
             "CERT_ADMIN_EMAIL" = "example@example.org";
@@ -710,7 +711,8 @@ in {
         };
         #
         "openwisp-dashboard" = {
-          image = "localhost/openwisp/openwisp-dashboard:latest";
+          # image = "localhost/openwisp/openwisp-dashboard:latest";
+          image = "openwisp/openwisp-dashboard:latest";
           environment = {
             "API_DOMAIN" = "api.openwisp.org";
             "CERT_ADMIN_EMAIL" = "example@example.org";
@@ -784,7 +786,8 @@ in {
         };
         #
         "openwisp-freeradius" = {
-          image = "localhost/openwisp/openwisp-freeradius:latest";
+          # image = "localhost/openwisp/openwisp-freeradius:latest";
+          image = "openwisp/openwisp-freeradius:latest";
           environment = {
             "API_DOMAIN" = "api.openwisp.org";
             "CERT_ADMIN_EMAIL" = "example@example.org";
@@ -870,7 +873,8 @@ in {
         };
         #
         "openwisp-nginx" = {
-          image = "localhost/openwisp/openwisp-nginx:latest";
+          # image = "localhost/openwisp/openwisp-nginx:latest";
+          image = "openwisp/openwisp-nginx:latest";
           environment = {
             "API_DOMAIN" = "api.openwisp.org";
             "CERT_ADMIN_EMAIL" = "example@example.org";
@@ -946,7 +950,8 @@ in {
         };
         #
         "openwisp-openvpn" = {
-          image = "localhost/openwisp/openwisp-openvpn:latest";
+          # image = "localhost/openwisp/openwisp-openvpn:latest";
+          image = "openwisp/openwisp-openvpn:latest";
           environment = {
             "API_DOMAIN" = "api.openwisp.org";
             "CERT_ADMIN_EMAIL" = "example@example.org";
@@ -1019,7 +1024,8 @@ in {
         };
         #
         "openwisp-postfix" = {
-          image = "localhost/openwisp/openwisp-postfix:latest";
+          # image = "localhost/openwisp/openwisp-postfix:latest";
+          image = "openwisp/openwisp-postfix:latest";
           environment = {
             "API_DOMAIN" = "api.openwisp.org";
             "CERT_ADMIN_EMAIL" = "example@example.org";
@@ -1112,7 +1118,8 @@ in {
         };
         #
         "openwisp-websocket" = {
-          image = "localhost/openwisp/openwisp-websocket:latest";
+          # image = "localhost/openwisp/openwisp-websocket:latest";
+          image = "openwisp/openwisp-websocket:latest";
           environment = {
             "API_DOMAIN" = "api.openwisp.org";
             "CERT_ADMIN_EMAIL" = "example@example.org";
