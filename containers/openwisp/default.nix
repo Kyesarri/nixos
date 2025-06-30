@@ -697,11 +697,11 @@ in {
           extraOptions = [
             "--cap-add=NET_ADMIN"
             "--device=/dev/net/tun:/dev/net/tun:rwm"
-            "--health-cmd=[\"pgrep\", \"-f\", \"openvpn\"]"
-            "--health-interval=30s"
-            "--health-retries=30"
-            "--health-start-period=1m30s"
-            "--health-timeout=10s"
+            # "--health-cmd=[\"pgrep\", \"-f\", \"openvpn\"]"
+            # "--health-interval=30s"
+            # "--health-retries=30"
+            # "--health-start-period=1m30s"
+            # "--health-timeout=10s"
             "--network-alias=openvpn"
             "--network=openwisp"
           ];
