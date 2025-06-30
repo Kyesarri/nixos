@@ -45,7 +45,11 @@
       enable = true;
       macvlanIp = "${secrets.ip.adguardhome-sync}";
     };
-
+    #
+    openwisp = {
+      enable = true;
+    };
+    #
     adguard = {
       enable = true;
       macvlanIp = "${secrets.ip.adguard-erying}";
@@ -66,6 +70,7 @@
       enable = false;
       fqdn = "${secrets.domain.fqdn}";
     };
+    #
     forgejo = {
       enable = true;
       cloudflared-token = "${secrets.cloudflare.forgejo}";
@@ -74,11 +79,12 @@
       internal_token = "${secrets.forgejo.internal_token}";
       jwt_secret = "${secrets.forgejo.jwt_secret}";
     };
+    #
     ghost = {
       enable = true;
       cloudflared-token = "${secrets.cloudflare.ghost}";
     };
-
+    #
     nginx-lan = {
       enable = true;
       macvlanIp = "${secrets.ip.nginx-lan}";
@@ -105,8 +111,9 @@
       timeZone = "Australia/Melbourne";
       authKey = "${secrets.password.tailscale}";
     };
+    #
     tvheadend = {
-      enable = true;
+      enable = false;
       macvlanIp = "${secrets.ip.tvheadend}";
     };
     #
@@ -128,6 +135,7 @@
         password = "${secrets.password.zigbee2mqtt-emqx}";
       };
     };
+    #
   };
 
   # macvlan config
