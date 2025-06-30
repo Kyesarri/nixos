@@ -51,6 +51,18 @@ in {
             wantedBy = ["podman-openwisp-root.target"];
           };
 
+          /*
+          TODO:
+          add service to clone https://github.com/openwisp/docker-openwisp.git into /etc/oci.cont/openwisp maybe?
+          looks like I'm missing the images and or the containers cannot talk to the internet to get the required files
+
+          from the autoinstall script
+          git clone $GIT_PATH $INSTALL_PATH --depth 1 --branch $GIT_BRANCH &>>$LOG_FILE
+
+          export INSTALL_PATH=/opt/openwisp/docker-openwisp
+          export GIT_PATH=${GIT_PATH:-https://github.com/openwisp/docker-openwisp.git}
+          */
+
           # builds
           #
           "podman-build-openwisp-api" = {
@@ -841,7 +853,7 @@ in {
         "openwisp-influxdb" = {
           image = "influxdb:1.8-alpine";
           environment = {
-            "INFLUXDB_DB" = "admin";
+            "INFLUXDB_DB" = "openwisp";
             "INFLUXDB_USER" = "admin";
             "INFLUXDB_USER_PASSWORD" = "admin";
           };
