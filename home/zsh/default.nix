@@ -3,6 +3,7 @@
   programs.zsh = {
     enable = true;
     enableCompletion = true;
+    enableLsColors = true;
     autosuggestions.enable = true;
     syntaxHighlighting.enable = true;
     syntaxHighlighting.highlighters = ["main" "brackets" "pattern" "cursor" "line"];
