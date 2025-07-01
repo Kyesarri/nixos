@@ -441,9 +441,10 @@ in {
             "INFLUXDB_PASS" = "admin";
             "INFLUXDB_USER" = "admin";
             "METRIC_COLLECTION" = "false";
-            # "SSH_PRIVATE_KEY_PATH" = "/home/openwisp/.ssh/id_ed25519";
-            # "SSH_PUBLIC_KEY_PATH" = "/home/openwisp/.ssh/id_ed25519.pub";
+            "SSH_PRIVATE_KEY_PATH" = "/home/openwisp/.ssh/id_ed25519";
+            "SSH_PUBLIC_KEY_PATH" = "/home/openwisp/.ssh/id_ed25519.pub";
             "VPN_DOMAIN" = "vpn.openwisp.home";
+            "SSL_CERT_MODE" = "no";
           };
           volumes = [
             "/etc/oci.cont/openwisp/customization/configuration/django:/opt/openwisp/openwisp/configuration:ro"
@@ -479,9 +480,10 @@ in {
             "INFLUXDB_USER" = "admin";
             "METRIC_COLLECTION" = "false";
             "MODULE_NAME" = "celery";
-            # "SSH_PRIVATE_KEY_PATH" = "/home/openwisp/.ssh/id_ed25519";
-            # "SSH_PUBLIC_KEY_PATH" = "/home/openwisp/.ssh/id_ed25519.pub";
+            "SSH_PRIVATE_KEY_PATH" = "/home/openwisp/.ssh/id_ed25519";
+            "SSH_PUBLIC_KEY_PATH" = "/home/openwisp/.ssh/id_ed25519.pub";
             "VPN_DOMAIN" = "vpn.openwisp.home";
+            "SSL_CERT_MODE" = "no";
           };
           volumes = [
             "/etc/oci.cont/openwisp/customization/configuration/django:/opt/openwisp/openwisp/configuration:ro"
@@ -515,9 +517,10 @@ in {
             "INFLUXDB_USER" = "admin";
             "METRIC_COLLECTION" = "false";
             "MODULE_NAME" = "celery_monitoring";
-            # "SSH_PRIVATE_KEY_PATH" = "/home/openwisp/.ssh/id_ed25519";
-            # "SSH_PUBLIC_KEY_PATH" = "/home/openwisp/.ssh/id_ed25519.pub";
+            "SSH_PRIVATE_KEY_PATH" = "/home/openwisp/.ssh/id_ed25519";
+            "SSH_PUBLIC_KEY_PATH" = "/home/openwisp/.ssh/id_ed25519.pub";
             "VPN_DOMAIN" = "vpn.openwisp.home";
+            "SSL_CERT_MODE" = "no";
           };
           volumes = [
             "/etc/oci.cont/openwisp/customization/configuration/django:/opt/openwisp/openwisp/configuration:ro"
@@ -551,9 +554,10 @@ in {
             "INFLUXDB_USER" = "admin";
             "METRIC_COLLECTION" = "false";
             "MODULE_NAME" = "celerybeat";
-            # "SSH_PRIVATE_KEY_PATH" = "/home/openwisp/.ssh/id_ed25519";
-            # "SSH_PUBLIC_KEY_PATH" = "/home/openwisp/.ssh/id_ed25519.pub";
+            "SSH_PRIVATE_KEY_PATH" = "/home/openwisp/.ssh/id_ed25519";
+            "SSH_PUBLIC_KEY_PATH" = "/home/openwisp/.ssh/id_ed25519.pub";
             "VPN_DOMAIN" = "vpn.openwisp.home";
+            "SSL_CERT_MODE" = "no";
           };
           volumes = [
             "/etc/oci.cont/openwisp/customization/configuration/django:/opt/openwisp/openwisp/configuration:ro"
@@ -585,9 +589,10 @@ in {
             "INFLUXDB_PASS" = "admin";
             "INFLUXDB_USER" = "admin";
             "METRIC_COLLECTION" = "false";
-            # "SSH_PRIVATE_KEY_PATH" = "/home/openwisp/.ssh/id_ed25519";
-            # "SSH_PUBLIC_KEY_PATH" = "/home/openwisp/.ssh/id_ed25519.pub";
+            "SSH_PRIVATE_KEY_PATH" = "/home/openwisp/.ssh/id_ed25519";
+            "SSH_PUBLIC_KEY_PATH" = "/home/openwisp/.ssh/id_ed25519.pub";
             "VPN_DOMAIN" = "vpn.openwisp.home";
+            "SSL_CERT_MODE" = "no";
           };
           volumes = [
             "/etc/oci.cont/openwisp/customization/configuration/django:/opt/openwisp/openwisp/configuration:ro"
@@ -625,9 +630,10 @@ in {
             "INFLUXDB_PASS" = "admin";
             "INFLUXDB_USER" = "admin";
             "METRIC_COLLECTION" = "false";
-            # "SSH_PRIVATE_KEY_PATH" = "/home/openwisp/.ssh/id_ed25519";
-            # "SSH_PUBLIC_KEY_PATH" = "/home/openwisp/.ssh/id_ed25519.pub";
+            "SSH_PRIVATE_KEY_PATH" = "/home/openwisp/.ssh/id_ed25519";
+            "SSH_PUBLIC_KEY_PATH" = "/home/openwisp/.ssh/id_ed25519.pub";
             "VPN_DOMAIN" = "vpn.openwisp.home";
+            "SSL_CERT_MODE" = "no";
           };
           ports = [
             "1812:1812/udp"
@@ -677,9 +683,10 @@ in {
             "INFLUXDB_PASS" = "admin";
             "INFLUXDB_USER" = "admin";
             "METRIC_COLLECTION" = "false";
-            # "SSH_PRIVATE_KEY_PATH" = "/home/openwisp/.ssh/id_ed25519";
-            # "SSH_PUBLIC_KEY_PATH" = "/home/openwisp/.ssh/id_ed25519.pub";
+            "SSH_PRIVATE_KEY_PATH" = "/home/openwisp/.ssh/id_ed25519";
+            "SSH_PUBLIC_KEY_PATH" = "/home/openwisp/.ssh/id_ed25519.pub";
             "VPN_DOMAIN" = "vpn.openwisp.home";
+            "SSL_CERT_MODE" = "no";
           };
           volumes = [
             "/etc/oci.cont/openwisp/customization/theme:/opt/openwisp/public/custom:ro"
@@ -719,9 +726,10 @@ in {
             "INFLUXDB_PASS" = "admin";
             "INFLUXDB_USER" = "admin";
             "METRIC_COLLECTION" = "false";
-            # "SSH_PRIVATE_KEY_PATH" = "/home/openwisp/.ssh/id_ed25519";
-            # "SSH_PUBLIC_KEY_PATH" = "/home/openwisp/.ssh/id_ed25519.pub";
+            "SSH_PRIVATE_KEY_PATH" = "/home/openwisp/.ssh/id_ed25519";
+            "SSH_PUBLIC_KEY_PATH" = "/home/openwisp/.ssh/id_ed25519.pub";
             "VPN_DOMAIN" = "vpn.openwisp.home";
+            "SSL_CERT_MODE" = "no";
           };
           ports = [
             "1194:1194/udp"
@@ -758,9 +766,10 @@ in {
             "INFLUXDB_PASS" = "admin";
             "INFLUXDB_USER" = "admin";
             "METRIC_COLLECTION" = "false";
-            # "SSH_PRIVATE_KEY_PATH" = "/home/openwisp/.ssh/id_ed25519";
-            # "SSH_PUBLIC_KEY_PATH" = "/home/openwisp/.ssh/id_ed25519.pub";
+            "SSH_PRIVATE_KEY_PATH" = "/home/openwisp/.ssh/id_ed25519";
+            "SSH_PUBLIC_KEY_PATH" = "/home/openwisp/.ssh/id_ed25519.pub";
             "VPN_DOMAIN" = "vpn.openwisp.home";
+            "SSL_CERT_MODE" = "no";
           };
           volumes = [
             "openwisp_openwisp_certs:/etc/ssl/mail:rw"
@@ -817,9 +826,10 @@ in {
             "INFLUXDB_PASS" = "admin";
             "INFLUXDB_USER" = "admin";
             "METRIC_COLLECTION" = "false";
-            # "SSH_PRIVATE_KEY_PATH" = "/home/openwisp/.ssh/id_ed25519";
-            # "SSH_PUBLIC_KEY_PATH" = "/home/openwisp/.ssh/id_ed25519.pub";
+            "SSH_PRIVATE_KEY_PATH" = "/home/openwisp/.ssh/id_ed25519";
+            "SSH_PUBLIC_KEY_PATH" = "/home/openwisp/.ssh/id_ed25519.pub";
             "VPN_DOMAIN" = "vpn.openwisp.home";
+            "SSL_CERT_MODE" = "no";
           };
           volumes = [
             "/etc/oci.cont/openwisp/customization/configuration/django:/opt/openwisp/openwisp/configuration:ro"
