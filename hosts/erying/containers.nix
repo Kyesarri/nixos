@@ -47,7 +47,7 @@
     };
     #
     openwisp = {
-      enable = true;
+      enable = false;
     };
     #
     adguard = {
