@@ -19,8 +19,8 @@
         }
 
         function prompt_char {
-            git branch >/dev/null 2>/dev/null && echo '⠠⠵' && return
-            echo '○'
+            git branch >/dev/null 2>/dev/null && echo '╶' && return
+            echo '╶'
         }
 
         function box_name {
@@ -28,12 +28,12 @@
           echo "''${box:gs/%/%%}"
         }
 
-        PROMPT="╭─%F{#${config.colorscheme.palette.base0E}}%n%|%f%F{#${config.colorscheme.palette.base04}}%| on%f%F{#${config.colorscheme.palette.base0A}}%| $(box_name)%f%F{#${config.colorscheme.palette.base04}}%| in%f%F{#${config.colorscheme.palette.base0C}}%| %{$terminfo[bold]%}%~%f\$(git_prompt_info) %D{%d-%m-%y} - %*
-        ╰─\$(virtualenv_info)\$(prompt_char) "
+        PROMPT="%F{#${config.colorscheme.palette.base04}}%|╓─ %f%F{#${config.colorscheme.palette.base0E}}%n%|%f%F{#${config.colorscheme.palette.base04}}%| on%f%F{#${config.colorscheme.palette.base0A}}%| $(box_name)%f%F{#${config.colorscheme.palette.base04}}%| in%f%F{#${config.colorscheme.palette.base0C}}%| %{$terminfo[bold]%}%~%f\$(git_prompt_info) %D{%d-%m-%y} - %*
+        %f%F{#${config.colorscheme.palette.base04}}%|╙─\$(virtualenv_info)\$(prompt_char) "
 
         ZSH_THEME_GIT_PROMPT_PREFIX=" %F{#${config.colorscheme.palette.base09}}%|git %f"
         ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%}"
-        ZSH_THEME_GIT_PROMPT_DIRTY="%F{#${config.colorscheme.palette.base0F}}%| ✘✘✘%f"
+        ZSH_THEME_GIT_PROMPT_DIRTY="%F{#${config.colorscheme.palette.base0F}}%| ✗%f"
         ZSH_THEME_GIT_PROMPT_CLEAN="%F{#${config.colorscheme.palette.base0B}}%| ✔%f"
       '';
     };
