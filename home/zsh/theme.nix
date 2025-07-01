@@ -29,7 +29,7 @@
         }
 
         PROMPT="%F{#${config.colorscheme.palette.base04}}%|╓─ %f%F{#${config.colorscheme.palette.base0E}}%n%|%f%F{#${config.colorscheme.palette.base04}}%| on%f%F{#${config.colorscheme.palette.base0A}}%| $(box_name)%f%F{#${config.colorscheme.palette.base04}}%| in%f%F{#${config.colorscheme.palette.base0C}}%| %{$terminfo[bold]%}%~%f\$(git_prompt_info) %D{%d-%m-%y} - %*
-        %f%F{#${config.colorscheme.palette.base04}}%|╙─\$(virtualenv_info)\$(prompt_char) "
+        %f%F{#${config.colorscheme.palette.base04}}%|╙─\$(virtualenv_info)\$(prompt_char)%f "
 
         ZSH_THEME_GIT_PROMPT_PREFIX=" %F{#${config.colorscheme.palette.base09}}%|git %f"
         ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%}"
