@@ -441,8 +441,8 @@ in {
             "INFLUXDB_PASS" = "admin";
             "INFLUXDB_USER" = "admin";
             "METRIC_COLLECTION" = "false";
-            "SSH_PRIVATE_KEY_PATH" = "/home/openwisp/.ssh/id_ed25519";
-            "SSH_PUBLIC_KEY_PATH" = "/home/openwisp/.ssh/id_ed25519.pub";
+            # "SSH_PRIVATE_KEY_PATH" = "/home/openwisp/.ssh/id_ed25519";
+            # "SSH_PUBLIC_KEY_PATH" = "/home/openwisp/.ssh/id_ed25519.pub";
             "VPN_DOMAIN" = "vpn.openwisp.home";
           };
           volumes = [
@@ -479,8 +479,8 @@ in {
             "INFLUXDB_USER" = "admin";
             "METRIC_COLLECTION" = "false";
             "MODULE_NAME" = "celery";
-            "SSH_PRIVATE_KEY_PATH" = "/home/openwisp/.ssh/id_ed25519";
-            "SSH_PUBLIC_KEY_PATH" = "/home/openwisp/.ssh/id_ed25519.pub";
+            # "SSH_PRIVATE_KEY_PATH" = "/home/openwisp/.ssh/id_ed25519";
+            # "SSH_PUBLIC_KEY_PATH" = "/home/openwisp/.ssh/id_ed25519.pub";
             "VPN_DOMAIN" = "vpn.openwisp.home";
           };
           volumes = [
@@ -515,8 +515,8 @@ in {
             "INFLUXDB_USER" = "admin";
             "METRIC_COLLECTION" = "false";
             "MODULE_NAME" = "celery_monitoring";
-            "SSH_PRIVATE_KEY_PATH" = "/home/openwisp/.ssh/id_ed25519";
-            "SSH_PUBLIC_KEY_PATH" = "/home/openwisp/.ssh/id_ed25519.pub";
+            # "SSH_PRIVATE_KEY_PATH" = "/home/openwisp/.ssh/id_ed25519";
+            # "SSH_PUBLIC_KEY_PATH" = "/home/openwisp/.ssh/id_ed25519.pub";
             "VPN_DOMAIN" = "vpn.openwisp.home";
           };
           volumes = [
@@ -551,8 +551,8 @@ in {
             "INFLUXDB_USER" = "admin";
             "METRIC_COLLECTION" = "false";
             "MODULE_NAME" = "celerybeat";
-            "SSH_PRIVATE_KEY_PATH" = "/home/openwisp/.ssh/id_ed25519";
-            "SSH_PUBLIC_KEY_PATH" = "/home/openwisp/.ssh/id_ed25519.pub";
+            # "SSH_PRIVATE_KEY_PATH" = "/home/openwisp/.ssh/id_ed25519";
+            # "SSH_PUBLIC_KEY_PATH" = "/home/openwisp/.ssh/id_ed25519.pub";
             "VPN_DOMAIN" = "vpn.openwisp.home";
           };
           volumes = [
@@ -585,8 +585,8 @@ in {
             "INFLUXDB_PASS" = "admin";
             "INFLUXDB_USER" = "admin";
             "METRIC_COLLECTION" = "false";
-            "SSH_PRIVATE_KEY_PATH" = "/home/openwisp/.ssh/id_ed25519";
-            "SSH_PUBLIC_KEY_PATH" = "/home/openwisp/.ssh/id_ed25519.pub";
+            # "SSH_PRIVATE_KEY_PATH" = "/home/openwisp/.ssh/id_ed25519";
+            # "SSH_PUBLIC_KEY_PATH" = "/home/openwisp/.ssh/id_ed25519.pub";
             "VPN_DOMAIN" = "vpn.openwisp.home";
           };
           volumes = [
@@ -625,8 +625,8 @@ in {
             "INFLUXDB_PASS" = "admin";
             "INFLUXDB_USER" = "admin";
             "METRIC_COLLECTION" = "false";
-            "SSH_PRIVATE_KEY_PATH" = "/home/openwisp/.ssh/id_ed25519";
-            "SSH_PUBLIC_KEY_PATH" = "/home/openwisp/.ssh/id_ed25519.pub";
+            # "SSH_PRIVATE_KEY_PATH" = "/home/openwisp/.ssh/id_ed25519";
+            # "SSH_PUBLIC_KEY_PATH" = "/home/openwisp/.ssh/id_ed25519.pub";
             "VPN_DOMAIN" = "vpn.openwisp.home";
           };
           ports = [
@@ -677,8 +677,8 @@ in {
             "INFLUXDB_PASS" = "admin";
             "INFLUXDB_USER" = "admin";
             "METRIC_COLLECTION" = "false";
-            "SSH_PRIVATE_KEY_PATH" = "/home/openwisp/.ssh/id_ed25519";
-            "SSH_PUBLIC_KEY_PATH" = "/home/openwisp/.ssh/id_ed25519.pub";
+            # "SSH_PRIVATE_KEY_PATH" = "/home/openwisp/.ssh/id_ed25519";
+            # "SSH_PUBLIC_KEY_PATH" = "/home/openwisp/.ssh/id_ed25519.pub";
             "VPN_DOMAIN" = "vpn.openwisp.home";
           };
           volumes = [
@@ -719,8 +719,8 @@ in {
             "INFLUXDB_PASS" = "admin";
             "INFLUXDB_USER" = "admin";
             "METRIC_COLLECTION" = "false";
-            "SSH_PRIVATE_KEY_PATH" = "/home/openwisp/.ssh/id_ed25519";
-            "SSH_PUBLIC_KEY_PATH" = "/home/openwisp/.ssh/id_ed25519.pub";
+            # "SSH_PRIVATE_KEY_PATH" = "/home/openwisp/.ssh/id_ed25519";
+            # "SSH_PUBLIC_KEY_PATH" = "/home/openwisp/.ssh/id_ed25519.pub";
             "VPN_DOMAIN" = "vpn.openwisp.home";
           };
           ports = [
@@ -758,8 +758,8 @@ in {
             "INFLUXDB_PASS" = "admin";
             "INFLUXDB_USER" = "admin";
             "METRIC_COLLECTION" = "false";
-            "SSH_PRIVATE_KEY_PATH" = "/home/openwisp/.ssh/id_ed25519";
-            "SSH_PUBLIC_KEY_PATH" = "/home/openwisp/.ssh/id_ed25519.pub";
+            # "SSH_PRIVATE_KEY_PATH" = "/home/openwisp/.ssh/id_ed25519";
+            # "SSH_PUBLIC_KEY_PATH" = "/home/openwisp/.ssh/id_ed25519.pub";
             "VPN_DOMAIN" = "vpn.openwisp.home";
           };
           volumes = [
@@ -817,8 +817,8 @@ in {
             "INFLUXDB_PASS" = "admin";
             "INFLUXDB_USER" = "admin";
             "METRIC_COLLECTION" = "false";
-            "SSH_PRIVATE_KEY_PATH" = "/home/openwisp/.ssh/id_ed25519";
-            "SSH_PUBLIC_KEY_PATH" = "/home/openwisp/.ssh/id_ed25519.pub";
+            # "SSH_PRIVATE_KEY_PATH" = "/home/openwisp/.ssh/id_ed25519";
+            # "SSH_PUBLIC_KEY_PATH" = "/home/openwisp/.ssh/id_ed25519.pub";
             "VPN_DOMAIN" = "vpn.openwisp.home";
           };
           volumes = [
