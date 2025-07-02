@@ -812,11 +812,11 @@
         "nixpkgs-lib": "nixpkgs-lib"
       },
       "locked": {
-        "lastModified": 1713398850,
-        "narHash": "sha256-DIJzHbiiMhjfy5Dsuws0/zKcB2L7u2nbO6PAJWgZOaY=",
+        "lastModified": 1751425123,
+        "narHash": "sha256-wZRqvv+QtNq9Pzam/9hnviHQFyQe7TrJakJVUy5fAd8=",
         "owner": "kyesarri",
         "repo": "nix-colors",
-        "rev": "b9c7682b55d1e36efca0321e14875ad740dd2423",
+        "rev": "6a8d1f7ac9c534f33ac39fe1d0e51aa61a2c4ee9",
         "type": "github"
       },
       "original": {
