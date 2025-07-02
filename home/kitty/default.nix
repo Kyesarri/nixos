@@ -57,7 +57,7 @@
       # set hyprland window rules / binds
       text = ''
         # windowrulev2 = opacity 0.8 0.8, class:^(kitty)$
-        windowrulev2 = size 700 300, class:^(kitty)$
+        windowrulev2 = size 800 400, class:^(kitty)$
         windowrulev2 = center, class:^(kitty)$
         bind = $mainMod, Q, exec, kitty
         bind = control, escape, exec, kitty -e btm
