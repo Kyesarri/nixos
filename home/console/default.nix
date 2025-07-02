@@ -15,7 +15,7 @@
       "${config.colorScheme.palette.base05}" # white
       # terminal16
       "${config.colorScheme.palette.base03}" # bright black
-      "${config.colorScheme.palette.base09}" # bright red
+      "${config.colorScheme.palette.base08}" # bright red
       "${config.colorScheme.palette.base0B}" # bright green
       "${config.colorScheme.palette.base0A}" # bright yellow
       "${config.colorScheme.palette.base0D}" # bright blue
