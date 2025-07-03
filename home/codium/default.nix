@@ -199,6 +199,8 @@
           },
           "editor.minimap.size": "fill",
           "chat.commandCenter.enabled": false, // byeeeee
+          "workbench.externalBrowser": "librewolf",
+
         }
       '';
     };
