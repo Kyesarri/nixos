@@ -4,11 +4,12 @@
   config,
   spaghetti,
   ...
-}: {
+}: let
+  # jasper-theme-testy = pkgs.jasper-gtk-theme;
+in {
   system.stateVersion = "23.11"; # don't change this value pls
   time.timeZone = "Australia/Melbourne";
   nixpkgs.config.allowUnfree = true;
-
   nix = {
     #
     sshServe.enable = true;
@@ -102,14 +103,12 @@
   environment = {
     sessionVariables = {
       CLUTTER_BACKEND = "wayland";
-      GTK_THEME = "${config.colorscheme.slug}"; # sets default gtk theme the package built by nix-colors
       XDG_CACHE_HOME = "$HOME/.cache";
       XDG_CONFIG_HOME = "$HOME/.config";
       XDG_DATA_HOME = "$HOME/.local/share";
       XDG_STATE_HOME = "$HOME/.local/state";
       XDG_SESSION_TYPE = "wayland";
       NIXOS_OZONE_WL = "1"; # fixes electron apps in wayland... why do i use electron? fucking codium
-      XCURSOR_THEME = "graphite-dark"; # is a user package below
     };
 
     shells = [pkgs.zsh]; # default shell to zsh
@@ -161,7 +160,6 @@
       packages = with pkgs; [
         gimp-with-plugins # image boi
         ladybird # testing, alpha 2026 :D
-        graphite-cursors # cursor package, is this handled by /home/gtk/default.nix now? nope manual atm
         gnome-text-editor # still might want something with slightly more features, bit too barebones?
         nix-init # git flake helper
         remmina # rdp client
@@ -181,18 +179,11 @@
         evolutionWithPlugins # calendar
         blender # for new toy :D
         gnome-disk-utility # disk gui
-        # libimobiledevice # fix iphone thing
-        # usbmuxd2 # another ios thing
-        # libirecovery # failed build invalid key / value pair
-        # ifuse # more iphone thing
-        orca-slicer # still isn't working
-        openscad # 3d cad
         nfs-utils # nfs user utilities
         handbrake # convert video files
         compose2nix # convert dockercompose.yml to .nix
         inputs.wallpaper-generator.defaultPackage.x86_64-linux
         inputs.quickshell.packages.x86_64-linux.default
-        python312Packages.pelican # testing locally on laptop
         koodo-reader # ebook reader
         scrcpy
       ];

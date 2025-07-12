@@ -5,18 +5,27 @@
   spaghetti,
   ...
 }: let
-  inherit
-    (inputs.nix-colors.lib-contrib {inherit pkgs;})
-    gtkThemeFromScheme
-    ;
+  inherit (inputs.nix-colors.lib-contrib {inherit pkgs;}) gtkThemeFromScheme;
 in {
   #
-  users.users.${spaghetti.user}.packages = [pkgs.zafiro-icons];
+  users.users.${spaghetti.user}.packages = [
+    (pkgs.callPackage ../../package/gtk/default.nix {})
+    pkgs.zafiro-icons
+    pkgs.graphite-cursors
+    pkgs.libsForQt5.qt5ct
+    pkgs.libsForQt5.qtstyleplugins
+  ];
+
+  environment = {
+    # sets default gtk theme the package built by nix-colors
+    # GTK_THEME = "${config.colorscheme.slug}";
+    # is a user package, may move all theme options in here, and rename
+    XCURSOR_THEME = "graphite-dark";
+  };
 
   qt.platformTheme = "qt5ct";
 
   home-manager.users.${spaghetti.user} = {
-    #
     fonts.fontconfig.enable = true;
 
     home.pointerCursor = {
@@ -34,8 +43,11 @@ in {
     gtk = {
       enable = true;
       theme = {
-        name = "${config.colorScheme.slug}";
-        package = gtkThemeFromScheme {scheme = config.colorScheme;};
+        name = "Jasper-Dark-Compact";
+        package = "${(pkgs.callPackage ../../package/gtk/default.nix {})}";
+        # below are for nix-colors themes
+        # name = "${config.colorScheme.slug}";
+        # package = gtkThemeFromScheme {scheme = config.colorScheme;};
       };
 
       iconTheme = {

@@ -31,7 +31,7 @@
         # cant have darkmode default theme in browser, causes white loading pages eww...
         # "privacy.fingerprintingProtection" = true;
         # "privacy.resistFingerprinting" = true;
-        # "privacy.trackingprotection.fingerprinting.enabled" = true;
+        "privacy.trackingprotection.fingerprinting.enabled" = false;
 
         "privacy.trackingprotection.emailtracking.enabled" = true;
         "privacy.trackingprotection.enabled" = true;

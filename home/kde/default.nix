@@ -21,8 +21,6 @@
 
   users.users.${spaghetti.user}.packages = [
     pkgs.kdePackages.qtstyleplugin-kvantum
-    pkgs.libsForQt5.qt5ct
-    pkgs.libsForQt5.qtstyleplugins
     pkgs.kdePackages.kdeconnect-kde
   ];
   programs.kdeconnect.enable = true;

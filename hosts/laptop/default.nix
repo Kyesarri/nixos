@@ -21,8 +21,6 @@
     ../../hardware/bluetooth
     ../../hardware/nvidia
 
-    ../../package/gtk
-
     ../../home # set some default values for home-manager
 
     ../../home/cosmic # testing cosmic package - really fast!
