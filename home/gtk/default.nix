@@ -14,13 +14,22 @@ in {
     pkgs.graphite-cursors
     pkgs.libsForQt5.qt5ct
     pkgs.libsForQt5.qtstyleplugins
+    (pkgs.oreo-cursors-plus.override {
+      cursorsConf = ''
+        spark_black_bordered = color: #1C1E26, stroke: #CBCED0, stroke-width: 2, stroke-opacity: 1
+        sizes = 24
+      '';
+    })
   ];
 
   environment = {
-    # sets default gtk theme the package built by nix-colors
-    # GTK_THEME = "${config.colorscheme.slug}";
-    # is a user package, may move all theme options in here, and rename
-    XCURSOR_THEME = "graphite-dark";
+    sessionVariables = {
+      XCURSOR_THEME = "oreo_spark_black_bordered_cursors";
+      # XCURSOR_THEME = "graphite-dark";
+      GTK_THEME = "Jasper-Dark-Compact";
+      # sets default gtk theme the package built by nix-colors
+      # GTK_THEME = "${config.colorscheme.slug}";
+    };
   };
 
   qt.platformTheme = "qt5ct";
@@ -29,15 +38,19 @@ in {
     fonts.fontconfig.enable = true;
 
     home.pointerCursor = {
-      package = pkgs.graphite-cursors;
-      name = "graphite-dark";
-      size = 17;
+      package = pkgs.oreo-cursors-plus;
+      name = "oreo_spark_black_bordered_cursors";
+      # package = pkgs.graphite-cursors;
+      # name = "graphite-dark";
+      size = 24;
     };
 
     home.sessionVariables = {
-      XCURSOR_PATH = "${pkgs.graphite-cursors}/share/icons";
-      XCURSOR_SIZE = 17;
-      XCURSOR_THEME = "graphite-dark";
+      # XCURSOR_PATH = "${pkgs.graphite-cursors}/share/icons";
+      XCURSOR_PATH = "${pkgs.oreo-cursors-plus}/share/icons";
+      XCURSOR_SIZE = 24;
+      # XCURSOR_THEME = "graphite-dark";
+      XCURSOR_THEME = "oreo_spark_black_bordered_cursors";
     };
 
     gtk = {
@@ -49,16 +62,16 @@ in {
         # name = "${config.colorScheme.slug}";
         # package = gtkThemeFromScheme {scheme = config.colorScheme;};
       };
-
       iconTheme = {
         package = pkgs.zafiro-icons;
         name = "Zafiro-icons-Dark";
       };
-
       cursorTheme = {
-        package = pkgs.graphite-cursors;
-        name = "graphite-dark";
-        size = 17;
+        package = pkgs.oreo-cursors-plus;
+        name = "oreo_spark_black_bordered_cursors";
+        # package = pkgs.graphite-cursors;
+        # name = "graphite-dark";
+        size = 24;
       };
     };
   };
