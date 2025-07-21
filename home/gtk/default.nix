@@ -11,12 +11,11 @@ in {
   users.users.${spaghetti.user}.packages = [
     (pkgs.callPackage ../../package/gtk/default.nix {})
     pkgs.zafiro-icons
-    pkgs.graphite-cursors
     pkgs.libsForQt5.qt5ct
     pkgs.libsForQt5.qtstyleplugins
     (pkgs.oreo-cursors-plus.override {
       cursorsConf = ''
-        spark_black_bordered = color: #1C1E26, stroke: #CBCED0, stroke-width: 2, stroke-opacity: 1
+        spark_black_bordered = color: ${config.colorscheme.palette.base00}, stroke: ${config.colorscheme.palette.base07}, stroke-width: 3, stroke-opacity: 0.5
         sizes = 24
       '';
     })
