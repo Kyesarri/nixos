@@ -22,7 +22,7 @@ in {
     pkgs.libsForQt5.qtstyleplugins
     (pkgs.oreo-cursors-plus.override {
       cursorsConf = ''
-        spark_black_bordered = color: ${config.colorscheme.palette.base00}, stroke: ${config.colorscheme.palette.base07}, stroke-width: 4, stroke-opacity: 1
+        spark_black_bordered = color: ${config.colorscheme.palette.base00}, stroke: ${config.colorscheme.palette.base07}, stroke-width: 3, stroke-opacity: 1
         sizes = 24
       '';
     })
