@@ -25,12 +25,12 @@ in
     nativeBuildInputs = [
       jdupes
       sassc
+      pastel
     ];
 
     buildInputs = [
       gnome-themes-extra
       inkscape
-      pastel
     ];
 
     propagatedUserEnvPkgs = [
@@ -39,7 +39,7 @@ in
 
     /*
     first generate accent colour shades, taking our base0e colour
-    making it darker (a) and lighter (c)
+    making it darker and lighter, saving each to a variable
 
     next we replace colours in specific files with our shades TODO add grey
     script here and sub in for hard-coded values
@@ -66,17 +66,15 @@ in
     pastel can easily convert hex to rgb
     */
     postPatch = ''
-      patchShebangs .
+      darkA=$(pastel darken 0.33 B072D1 | pastel format hex | cut -d"#" -f2)
 
-      pastel darken 0.33 B072D1 | cat > a
-
-      pastel lighten 0.33 B072D1 | cat > c
+      lightA=$(pastel lighten 0.33 B072D1 | pastel format hex | cut -d"#" -f2)
 
       for file in $(find -name gtkrc.sh); do
         substituteInPlace "$file" \
-          --replace-quiet '009688' 'sed -n 1p a' \
+          --replace-quiet '009688' "$lightA" \
           --replace-quiet '4DB6AC' 'B072D1' \
-          --replace-quiet '60D6CB' 'sed -n 1p c)' \
+          --replace-quiet '60D6CB' "$darkA" \
           --replace-quiet '212121' '1c1e26' \
           --replace-quiet '242424' '1d1f27' \
           --replace-quiet '272727' '1e2029' \
@@ -99,9 +97,9 @@ in
 
       for file in $(find -name gtkrc-Dark-default); do
         substituteInPlace "$file" \
-          --replace-quiet '009688' 'sed -n 1p a' \
+          --replace-quiet '009688' "$lightA" \
           --replace-quiet '4DB6AC' 'B072D1' \
-          --replace-quiet '60D6CB' 'sed -n 1p c)' \
+          --replace-quiet '60D6CB' "$darkA" \
           --replace-quiet '212121' '1c1e26' \
           --replace-quiet '242424' '1d1f27' \
           --replace-quiet '272727' '1e2029' \
@@ -124,9 +122,9 @@ in
 
       for file in $(find -name \*.svg); do
         substituteInPlace "$file" \
-          --replace-quiet '009688' 'sed -n 1p a' \
+          --replace-quiet '009688' "$lightA" \
           --replace-quiet '4DB6AC' 'B072D1' \
-          --replace-quiet '60D6CB' 'sed -n 1p c)' \
+          --replace-quiet '60D6CB' "$darkA" \
           --replace-quiet '212121' '1c1e26' \
           --replace-quiet '242424' '1d1f27' \
           --replace-quiet '272727' '1e2029' \
@@ -149,9 +147,9 @@ in
 
       for file in $(find -name _color-palette-default.scss); do
         substituteInPlace "$file" \
-          --replace-quiet '009688' 'sed -n 1p a' \
+          --replace-quiet '009688' "$lightA" \
           --replace-quiet '4DB6AC' 'B072D1' \
-          --replace-quiet '60D6CB' 'sed -n 1p c)' \
+          --replace-quiet '60D6CB' "$darkA" \
           --replace-quiet '212121' '1c1e26' \
           --replace-quiet '242424' '1d1f27' \
           --replace-quiet '272727' '1e2029' \
@@ -187,6 +185,8 @@ in
 
       # render-assets.sh will call make-assets.sh we don't need to execute make-assets.sh directly
 
+      patchShebangs .
+
       cd /build/source/src/assets/gtk
       sed -i -e '7 s/009688/B072D1/' ./make-assets.sh
       sed -i -e '8 s/4DB6AC/B072D1/' ./make-assets.sh
@@ -219,25 +219,25 @@ in
 
       for file in $(find -name \*.css); do
         substituteInPlace "$file" \
-          --replace-quiet '#FAFAFA' "(sed -n 1p grey)" \
-          --replace-quiet '#F2F2F2' "(sed -n 2p grey)" \
-          --replace-quiet '#EEEEEE' "(sed -n 3p grey)" \
-          --replace-quiet '#DDDDDD' "(sed -n 4p grey)" \
-          --replace-quiet '#CCCCCC' "(sed -n 5p grey)" \
-          --replace-quiet '#BFBFBF' "(sed -n 6p grey)" \
-          --replace-quiet '#A0A0A0' "(sed -n 7p grey)" \
-          --replace-quiet '#9E9E9E' "(sed -n 8p grey)" \
-          --replace-quiet '#868686' "(sed -n 9p grey)" \
-          --replace-quiet '#727272' "(sed -n 10p grey)" \
-          --replace-quiet '#555555' "(sed -n 11p grey)" \
-          --replace-quiet '#464646' "(sed -n 12p grey)" \
-          --replace-quiet '#3C3C3C' "(sed -n 13p grey)" \
-          --replace-quiet '#2C2C2C' "(sed -n 14p grey)" \
-          --replace-quiet '#242424' "(sed -n 15p grey)" \
-          --replace-quiet '#212121' "(sed -n 16p grey)" \
-          --replace-quiet '#121212' "(sed -n 17p grey)" \
-          --replace-quiet '#0F0F0F' "(sed -n 18p grey)" \
-          --replace-quiet '#030303' "(sed -n 19p grey)"
+          --replace-quiet '#FAFAFA' "sed -n 1p grey" \
+          --replace-quiet '#F2F2F2' "sed -n 2p grey" \
+          --replace-quiet '#EEEEEE' "sed -n 3p grey" \
+          --replace-quiet '#DDDDDD' "sed -n 4p grey" \
+          --replace-quiet '#CCCCCC' "sed -n 5p grey" \
+          --replace-quiet '#BFBFBF' "sed -n 6p grey" \
+          --replace-quiet '#A0A0A0' "sed -n 7p grey" \
+          --replace-quiet '#9E9E9E' "sed -n 8p grey" \
+          --replace-quiet '#868686' "sed -n 9p grey" \
+          --replace-quiet '#727272' "sed -n 10p grey" \
+          --replace-quiet '#555555' "sed -n 11p grey" \
+          --replace-quiet '#464646' "sed -n 12p grey" \
+          --replace-quiet '#3C3C3C' "sed -n 13p grey" \
+          --replace-quiet '#2C2C2C' "sed -n 14p grey" \
+          --replace-quiet '#242424' "sed -n 15p grey" \
+          --replace-quiet '#212121' "sed -n 16p grey" \
+          --replace-quiet '#121212' "sed -n 17p grey" \
+          --replace-quiet '#0F0F0F' "sed -n 18p grey" \
+          --replace-quiet '#030303' "sed -n 19p grey"
       done
 
       jdupes --quiet --link-soft --recurse $out/share

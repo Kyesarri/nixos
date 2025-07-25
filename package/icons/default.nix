@@ -5,6 +5,7 @@
   jdupes,
   gitUpdater,
   stdenvNoCC,
+  kdePackages,
   breeze-icons,
   fetchFromGitHub,
   gnome-icon-theme,
@@ -23,6 +24,16 @@ stdenvNoCC.mkDerivation rec {
     sha256 = "sha256-IbFnlUOSADYMNMfvRuRPndxcQbnV12BqMDb9bJRjnoU=";
   };
 
+  dontDropIconThemeCache = true;
+
+  dontPatchELF = true;
+
+  dontRewriteSymlinks = true;
+
+  dontWrapQtApps = true;
+
+  buildInputs = [];
+
   nativeBuildInputs = [
     gtk3
     jdupes
@@ -30,25 +41,44 @@ stdenvNoCC.mkDerivation rec {
   ];
 
   propagatedBuildInputs = [
-    breeze-icons
+    kdePackages.breeze-icons
     gnome-icon-theme
     numix-icon-theme
     numix-icon-theme-circle
     hicolor-icon-theme
-    # still missing parent icon themes: Surfn
   ];
 
-  dontDropIconThemeCache = true;
+  # replace basic folder colours with our own
 
-  dontPatchELF = true;
-  dontRewriteSymlinks = true;
+  # base0e as accent colour
+
+  # base0a for some icons, used by symlink and others
+
+  # pastel unused in theme currently
+
+  # need to take a look at some embelems and fixup the faffff / fffffa colours
+
+  postPatch = ''
+    dA=`pastel darken 0.20 B072D1 | pastel format hex | cut -d"#" -f2`
+
+    for file in $(find -name \*.svg); do
+      substituteInPlace "$file" \
+        --replace-quiet 'd8d8d8' '9DA0A2' \
+        --replace-quiet 'ac9d93' '2E303E' \
+        --replace-quiet '4dc7c9' 'DF5273' \
+        --replace-quiet '59b6a4' '24A8B4' \
+        --replace-quiet 'ffffff' 'CBCED0' \
+        --replace-quiet '6f8a91' "6F6F70"
+    done
+  '';
 
   installPhase = ''
     runHook preInstall
 
     mkdir -p $out/share/icons
 
-    for theme in Dark Light; do
+    # remove light theme
+    for theme in Dark; do
       cp -a $theme $out/share/icons/Zafiro-icons-$theme
 
       # remove unneeded files
@@ -58,14 +88,11 @@ stdenvNoCC.mkDerivation rec {
       # https://github.com/zayronxio/Zafiro-icons/issues/111
       rm $out/share/icons/Zafiro-icons-$theme/apps/scalable/βTORRENT.svg
 
+      # remove previews
+      rm $out/share/icons/Zafiro-icons-$theme/previews/*
+
       gtk-update-icon-cache $out/share/icons/Zafiro-icons-$theme
     done
-
-    for file in $(find -name \*.svg); do
-    substituteInPlace "$file" \
-    --replace-quiet 'D8D8D8' 'E3E6EE' \
-    --replace-quiet '9CACB0' 'EFAF8E' \
-    --replace-quiet '6F8A91' 'E58D7D' \
 
     jdupes --link-soft --recurse $out/share
 

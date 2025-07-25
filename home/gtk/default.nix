@@ -62,10 +62,12 @@ in {
         # name = "${config.colorScheme.slug}";
         # package = gtkThemeFromScheme {scheme = config.colorScheme;};
       };
+
       iconTheme = {
-        package = ${(pkgs.callPackage ../../package/icons/default.nix {})};
+        package = "${(pkgs.callPackage ../../package/icons/default.nix {})}";
         name = "Zafiro-icons-Dark";
       };
+
       cursorTheme = {
         package = cursorPkg;
         name = cursorName;
