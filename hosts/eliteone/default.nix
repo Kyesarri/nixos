@@ -52,19 +52,18 @@
       enable = true;
       packages = [pkgs.dbus-broker];
     };
-
+    /*
     displayManager.sddm = {
       enable = true;
       wayland.enable = true;
-      /*
       wayland.compositor = "weston";
       settings = {
         Wayland = {
           CompositorCommand = "${pkgs.weston}/bin/weston --shell=kiosk -c /home/${spaghetti.user}/nixos/hosts/eliteone/weston.ini";
         };
       };
-      */
     };
+    */
 
     ###### TODO ######
     tailscale.enable = true;
