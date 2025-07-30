@@ -14,30 +14,18 @@
     ./networking.nix
     ./containers.nix
     ./per-device.nix
-    ../standard.nix
+    ../headless.nix
 
     ../../hardware
     ../../hardware/audio
 
     ../../home
-
-    ../../home/cosmic
     ../../home/bottom
-    ../../home/codium
-    ../../home/copyq
-    ../../home/dunst
-    ../../home/firefox
+    ../../home/fwedee
     ../../home/git
-    ../../home/keepassxc
-
     ../../home/gtk
     ../../home/kitty
-    ../../home/kde
-    ../../home/ulauncher
     ../../home/virt
-    ../../home/waybar
-    ../../home/wl-screenrec
-    ../../home/prism
     ../../home/syncthing
     ../../home/spotifyd
     # ../../home/tailscale
@@ -53,21 +41,17 @@
   users.users.${spaghetti.user}.uid = 1000;
 
   gnocchi = {
-    hypr = {
-      enable = false;
-      animations = false;
-    };
-    hyprpaper.enable = true;
-    gscreenshot.enable = true;
-    freetube.enable = true;
   };
 
   services = {
     openssh.enable = true;
     fstrim.enable = true;
-    xserver.enable = true;
+    xserver.enable = true; # for something later?
 
-    # displayManager.cosmic-greeter.enable = true; # lol this won't work
+    dbus = {
+      enable = true;
+      packages = [pkgs.dbus-broker];
+    };
 
     displayManager.sddm = {
       enable = true;
@@ -87,8 +71,6 @@
     tailscale.useRoutingFeatures = "server";
     tailscale.openFirewall = true;
     ###### TODO ######
-
-    desktopManager.plasma6.enable = true;
 
     # desktop / plasma6 should set this
     # dbus.enable = true;
@@ -112,12 +94,6 @@
     sessionVariables = {
       VDPAU_DRIVER = "va_gl";
       LIBVA_DRIVER_NAME = "iHD";
-      XDG_CACHE_HOME = "$HOME/.cache";
-      XDG_CONFIG_HOME = "$HOME/.config";
-      XDG_DATA_HOME = "$HOME/.local/share";
-      XDG_STATE_HOME = "$HOME/.local/state";
-      SDL_VIDEODRIVER = "wayland";
-      QT_QPA_PLATFORM = "wayland";
     };
 
     systemPackages = with pkgs; [
