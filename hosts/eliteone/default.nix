@@ -46,7 +46,7 @@
   services = {
     openssh.enable = true;
     fstrim.enable = true;
-    xserver.enable = true; # for something later?
+    xserver.enable = false;
 
     dbus = {
       enable = true;
