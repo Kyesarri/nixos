@@ -10,17 +10,17 @@
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
 
   fileSystems."/" = {
-    device = "/dev/disk/by-uuid/edba1edc-4ee9-4d11-8b2c-40b8b841da92";
+    device = "/dev/disk/by-uuid/69a9e381-82da-4309-ad37-9473767d114e";
     fsType = "ext4";
   };
 
   fileSystems."/boot" = {
-    device = "/dev/disk/by-uuid/7F20-975F";
+    device = "/dev/disk/by-uuid/3299-C59C";
     fsType = "vfat";
     options = ["fmask=0077" "dmask=0077"];
   };
 
-  swapDevices = [{device = "/dev/disk/by-uuid/167eb3b0-f05f-4341-92c1-5ef87bb39fcf";}];
+  swapDevices = [{device = "/dev/disk/by-uuid/a4e7e9c3-45d1-416f-94c4-74acec16a4d5";}];
 
   hardware = {
     cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
