@@ -4,44 +4,29 @@
   spaghetti,
   ...
 }: {
-  users.users = {
-    ${spaghetti.user} = {
-      # add our user to moonraker group
-      extraGroups = ["moonraker"];
-    };
+  users.users.${spaghetti.user} = {
+    # add our user to moonraker group
+    extraGroups = ["moonraker"];
+  };
 
-    moonraker = {
-      # add moonraker to required groups
-      extraGroups = [
-        "plugdev" # usb
-        "dialout" # serial
-        "video" # video
-      ];
-    };
+  # add moonraker to required groups
+  users.users.moonraker = {
+    extraGroups = [
+      "plugdev" # usb
+      "dialout" # serial
+      "video" # video
+    ];
   };
 
   # barebones - needs way more including webcam / other configs
   services = {
-    #
-    mainsail = {
-      enable = true;
-    };
-    #
-    klipper = {
-      enable = true;
-      configFile = ./printer.cfg;
-      inherit (config.services.moonraker) user group; # same user / group as moonraker
-      mutableConfig = true;
-      configDir = config.services.moonraker.stateDir + "/config";
-    };
-    #
     moonraker = {
       user = "moonraker";
       group = "moonraker";
       enable = true;
-      allowSystemControl = true;
       address = "0.0.0.0";
-      #
+      allowSystemControl = true;
+
       settings = {
         announcements = {
           subscriptions = ["mainsail"];
@@ -61,9 +46,21 @@
           enable_object_processing = true;
         };
         history = {};
-
         octoprint_compat = {};
       };
+    };
+
+    mainsail = {
+      enable = true;
+      hostName = "localhost";
+    };
+
+    klipper = {
+      enable = true;
+      configFile = ./printer.cfg;
+      inherit (config.services.moonraker) user group; # same user / group as moonraker
+      mutableConfig = true;
+      configDir = config.services.moonraker.stateDir + "/config";
     };
   };
 }
