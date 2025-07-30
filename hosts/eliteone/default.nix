@@ -112,7 +112,6 @@
     sessionVariables = {
       VDPAU_DRIVER = "va_gl";
       LIBVA_DRIVER_NAME = "iHD";
-      GTK_THEME = "${config.colorscheme.slug}";
       XDG_CACHE_HOME = "$HOME/.cache";
       XDG_CONFIG_HOME = "$HOME/.config";
       XDG_DATA_HOME = "$HOME/.local/share";
