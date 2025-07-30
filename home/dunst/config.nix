@@ -7,14 +7,29 @@
     text = ''
       [global]
       font="Hack Nerd Font Mono" 10
-      frame_color="#${config.colorscheme.palette.base0A}"
+      frame_color="#${config.colorscheme.palette.base0E}"
       background="#${config.colorscheme.palette.base00}"
       foreground="#${config.colorscheme.palette.base05}"
-      highlight="#${config.colorscheme.palette.base05}"
-      progress_bar_corner_radius = 10
+      highlight="#${config.colorscheme.palette.base0E}"
+
+      progress_bar_corner_radius = 6
+      progress_bar_height = 6
+      progress_bar_frame_width = 2
+      progress_bar_corners = all
+
       height=300
-      icon_theme=Qogir-dark
+
+      follow = mouse
+
+      icon_theme=Zafiro-icons-Dark
       enable_recursive_icon_lookup = true
+      min_icon_size = 16
+      max_icon_size = 16
+      icon_position = top
+
+      ellipsize = middle
+
+      alignment = center
       offset="30x50"
       origin="top-center"
       transparency=10
