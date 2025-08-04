@@ -38,7 +38,9 @@
 
   users.users.${spaghetti.user}.uid = 1000;
 
-  gnocchi = {};
+  gnocchi = {
+    vault.enable = true;
+  };
 
   services = {
     openssh.enable = true;
