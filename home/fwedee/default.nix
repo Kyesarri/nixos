@@ -18,6 +18,8 @@
     ];
   };
 
+  # need to copy over macros
+
   # barebones - needs way more including webcam / other configs
   services = {
     moonraker = {
