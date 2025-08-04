@@ -32,9 +32,9 @@
     ../../home/zsh # nice to have
   ];
 
-  colorscheme = inputs.nix-colors.colorSchemes.${spaghetti.scheme2};
+  colorscheme = inputs.nix-colors.colorSchemes.${spaghetti.scheme};
 
-  home-manager.users.${spaghetti.user}.colorscheme = inputs.nix-colors.colorSchemes.${spaghetti.scheme2};
+  home-manager.users.${spaghetti.user}.colorscheme = inputs.nix-colors.colorSchemes.${spaghetti.scheme};
 
   users.users.${spaghetti.user}.uid = 1000;
 
