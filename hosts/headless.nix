@@ -7,7 +7,6 @@
 }: {
   system.stateVersion = "23.11";
   time.timeZone = "Australia/Melbourne";
-
   nixpkgs.config.allowUnfree = lib.mkDefault true;
 
   security = {
@@ -44,6 +43,8 @@
   };
 
   services.pulseaudio.enable = false;
+
+  services.userborn.enable = true;
 
   services.avahi = {
     enable = true;

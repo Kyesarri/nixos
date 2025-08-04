@@ -59,6 +59,7 @@ in {
     gvfs.enable = true; # trash and mount
     tumbler.enable = true; # thumbnail support
     printing.enable = true; # need more than this to print afik? http://localhost:631/ for config
+    userborn.enable = true;
   };
 
   fonts = {
