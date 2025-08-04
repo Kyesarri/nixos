@@ -224,7 +224,7 @@ in {
       # Containers
       virtualisation.oci-containers.containers = {
         "forgejo" = {
-          image = "codeberg.org/forgejo/forgejo:7";
+          image = "codeberg.org/forgejo/forgejo:12";
           environment = {
             "FORGEJO__database__DB_TYPE" = "postgres";
             "FORGEJO__database__HOST" = "forgejo-db:5432";
