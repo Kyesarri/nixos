@@ -7,18 +7,18 @@
 }: {
   imports = [(modulesPath + "/installer/scan/not-detected.nix")];
 
-  fileSystems = {
-    "/" = {
-      device = "/dev/disk/by-uuid/490b75f6-8b4a-482e-886e-063f91141e38";
-      fsType = "ext4";
-    };
-    "/boot" = {
-      device = "/dev/disk/by-uuid/B149-5578";
-      fsType = "vfat";
-      options = ["fmask=0077" "dmask=0077"];
-    };
+  fileSystems."/" = {
+    device = "/dev/disk/by-uuid/f93f9412-52c7-4f05-8f23-438c4044bac6";
+    fsType = "ext4";
   };
-  swapDevices = [{device = "/dev/disk/by-uuid/ccdf8c15-0d21-4864-97bf-db4843d55ae5";}];
+
+  fileSystems."/boot" = {
+    device = "/dev/disk/by-uuid/CFE1-D9F6";
+    fsType = "vfat";
+    options = ["fmask=0077" "dmask=0077"];
+  };
+
+  swapDevices = [{device = "/dev/disk/by-uuid/34dbf4e5-2f1e-4677-b7e5-40b811b64605";}];
 
   hardware = {
     amdgpu.initrd.enable = true;
