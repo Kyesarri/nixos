@@ -9,7 +9,6 @@
     ./nebula
     ./nemo
     ./neovim
-    ./vault
   ];
 
   # home-manager config(s)
