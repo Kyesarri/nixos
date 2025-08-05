@@ -88,7 +88,6 @@
     shellAliases.rebuild = "sudo nixos-rebuild switch --flake /home/${spaghetti.user}/nixos#nix-serv --show-trace";
     sessionVariables = {
       LIBVA_DRIVER_NAME = "iHD"; # Force intel-media-driver
-      GTK_THEME = "${config.colorscheme.slug}"; # sets default gtk theme the package built by nix-colors
       XDG_CACHE_HOME = "$HOME/.cache";
       XDG_CONFIG_HOME = "$HOME/.config";
       XDG_DATA_HOME = "$HOME/.local/share";
