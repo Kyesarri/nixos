@@ -70,25 +70,8 @@ in {
           "/etc/localtime:/etc/localtime:ro"
           "/dev/dri:/dev/dri"
 
-          "/hdda/movies:/movies/hdda"
-          "/hddb/movies:/movies/hddb"
-          "/hddc/movies:/movies/hddc"
-          "/hddd/movies:/movies/hddd"
-          "/hdde/movies:/movies/hdde"
-          "/hddf/movies:/movies/hddf"
-          "/hddg/movies:/movies/hddg"
-          "/hddh/movies:/movies/hddh"
-          "/hddi/movies:/movies/hddi"
-
-          "/hdda/tv_shows:/tv_shows/hdda"
-          "/hddb/tv_shows:/tv_shows/hddb"
-          "/hddc/tv_shows:/tv_shows/hddc"
-          "/hddd/tv_shows:/tv_shows/hddd"
-          "/hdde/tv_shows:/tv_shows/hdde"
-          "/hddf/tv_shows:/tv_shows/hddf"
-          "/hddg/tv_shows:/tv_shows/hddg"
-          "/hddh/tv_shows:/tv_shows/hddh"
-          "/hddi/tv_shows:/tv_shows/hddi"
+          "/storage/movies:/movies"
+          "/storage/tv_shows:/tv_shows"
 
           "/etc/oci.cont/${cfg.contName}:/config"
         ];
