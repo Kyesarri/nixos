@@ -7,7 +7,7 @@
     text = ''
       windowrule = fullscreen, title:Steam Big Picture Mode
       # windowrulev2 = size 1280 720, class:^(steam)$ causing mad dialouge popups
-      windowrulev2 = fullscreen, class:^(steam)$
+      # windowrulev2 = fullscreen, class:^(steam)$
       windowrulev2 = bordercolor $cd, class:^(steam)$
     '';
   };
@@ -27,10 +27,11 @@
     piper # frontend for libratbag
     protonup-qt # proton-ge # TODO get working with steam
     gamescope # wl roots gaming compositor, needs steam config not working currently
-    ryujinx # nintendo switch emulator
+    ryubing # nintendo switch emulator
     lutris-unwrapped
     wineWowPackages.waylandFull
-    # ryujinx-greemdev # nintendo switch emulator fork #TODO 19.12.24 no worky - package not in store?
+    umu-launcher
+    nero-umu # will need to bump flake version
   ];
 
   nixpkgs.config.packageOverrides = pkgs: {
