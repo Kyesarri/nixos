@@ -8,7 +8,7 @@
     packages = with pkgs; [
       virt-manager # TODO might need some nix added to configure using qemu as default for OOBE
       libvirt
-      qemu_full
+      # qemu_full
       gnome-boxes
     ];
   };
