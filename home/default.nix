@@ -18,7 +18,6 @@
       inputs.nix-colors.homeManagerModules.default
       inputs.prism.homeModules.prism
       inputs.hyprland.homeManagerModules.default
-      inputs.schizofox.homeManagerModules.default
     ];
 
     programs.home-manager.enable = true;
