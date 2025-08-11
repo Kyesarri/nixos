@@ -13,13 +13,14 @@
       url = "github:outfoxxed/hy3";
       inputs.hyprland.follows = "hyprland";
     };
-    quickshell = {
-      url = "git+https://git.outfoxxed.me/outfoxxed/quickshell";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # quickshell = {
+    #   url = "git+https://git.outfoxxed.me/outfoxxed/quickshell";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
+    ulauncher.url = "github:ulauncher/ulauncher"; # colour themes, fork
     nix-colors.url = "github:kyesarri/nix-colors"; # colour themes, fork
     prism.url = "github:IogaMaster/prism"; # wallpaper gen
-    schizofox.url = "github:schizofox/schizofox"; # firefox fork
+    # schizofox.url = "github:schizofox/schizofox"; # firefox fork
     wallpaper-generator.url = "github:kyesarri/wallpaper-generator"; # another one
   };
 
@@ -33,8 +34,6 @@
     nixpkgs,
     nix-colors,
     prism,
-    quickshell,
-    schizofox,
     self,
     wallpaper-generator,
     ...
@@ -50,7 +49,7 @@
     # import our secrets - these are required to be unencrypted when building
     secrets = builtins.fromJSON (builtins.readFile "${self}/secrets/secrets.json");
     system = "x86_64-linux";
-    specialArgs = {inherit nix-colors quickshell agenix hyprpicker hy3 secrets inputs prism schizofox spaghetti wallpaper-generator;};
+    specialArgs = {inherit nix-colors agenix hyprpicker hy3 secrets inputs prism spaghetti wallpaper-generator;};
   in {
     #
     nixosConfigurations = {
