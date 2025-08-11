@@ -8,8 +8,15 @@
   # jasper-theme-testy = pkgs.jasper-gtk-theme;
 in {
   system.stateVersion = "23.11"; # don't change this value pls
+
   time.timeZone = "Australia/Melbourne";
-  nixpkgs.config.allowUnfree = true;
+
+  nixpkgs = {
+    overlays = [
+      inputs.ulauncher.overlays.default
+    ];
+    config.allowUnfree = true;
+  };
   nix = {
     #
     sshServe.enable = true;
@@ -184,7 +191,6 @@ in {
         handbrake # convert video files
         compose2nix # convert dockercompose.yml to .nix
         inputs.wallpaper-generator.defaultPackage.x86_64-linux
-        inputs.quickshell.packages.x86_64-linux.default
         koodo-reader # ebook reader
         godot
         scrcpy
