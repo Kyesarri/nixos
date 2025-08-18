@@ -21,6 +21,9 @@ in
       rev = "71cb99a6618d839b1058cb8e6660a3b2f63aca70";
       hash = "sha256-ZWPUyVszDPUdzttAJuIA9caDpP4SQ7mIbCoczxwvsus=";
     };
+    /*
+    gtk.css 3.0 lines 4283 and 4287 were throwing errors in ulauncher 5 debian release
+    */
 
     nativeBuildInputs = [
       jdupes
