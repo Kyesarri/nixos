@@ -17,10 +17,9 @@
     #   url = "git+https://git.outfoxxed.me/outfoxxed/quickshell";
     #   inputs.nixpkgs.follows = "nixpkgs";
     # };
-    ulauncher.url = "github:ulauncher/ulauncher"; # colour themes, fork
+    ulauncher.url = "github:ulauncher/ulauncher"; # using v6 flake
     nix-colors.url = "github:kyesarri/nix-colors"; # colour themes, fork
     prism.url = "github:IogaMaster/prism"; # wallpaper gen
-    # schizofox.url = "github:schizofox/schizofox"; # firefox fork
     wallpaper-generator.url = "github:kyesarri/wallpaper-generator"; # another one
   };
 
