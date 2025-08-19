@@ -204,6 +204,8 @@
         # css
         "/etc/oci.cont/searxng/custom/rss.min.css:/usr/local/searxng/searx/static/themes/simple/css/rss.min.css:ro"
         "/etc/oci.cont/searxng/custom/searxng.min.css:/usr/local/searxng/searx/static/themes/simple/css/searxng.min.css:ro"
+
+        "/etc/oci.cont/searxng/custom/searxng-ltr.min.css:/usr/local/searxng/searx/static/themes/simple/css/searxng-ltr.min.css:ro"
       ];
       ports = [
         # no ports required to be opened on host, we're using cloudflared
