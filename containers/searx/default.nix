@@ -113,6 +113,10 @@
       mode = "644";
       source = ./custom/rss.min.css;
     };
+    "oci.cont/searxng/custom/searxng-ltr.min.css" = {
+      mode = "644";
+      source = ./custom/searxng-ltr.min.css;
+    };
 
     # write files to /etc/
     "oci.cont/searxng/settings.yml" = {
