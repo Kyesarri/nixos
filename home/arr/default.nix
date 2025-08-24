@@ -32,7 +32,7 @@
       enable = true;
       user = "transmission";
       group = "media";
-      package = pkgs.transmission_3;
+      package = pkgs.transmission_4;
       performanceNetParameters = true;
       openFirewall = true;
       openRPCPort = true;
@@ -43,9 +43,9 @@
         idle-seeding-limit-enabled = false;
         trash-original-torrent-files = true;
         incomplete-dir-enabled = true;
-        incomplete-dir = "/hddf/incomplete/";
+        incomplete-dir = "/storage/incomplete/";
         dht-enabled = true;
-        download-dir = "/hddf/torrents/";
+        download-dir = "/storage/torrents/";
         download-queue-enabled = false;
         peer-port = 51413;
         rpc-authentication-required = false;
@@ -53,6 +53,7 @@
         rpc-whitelist-enabled = false;
         rpc-port = 9091;
         rpc-bind-address = "${toString secrets.ip.serv-1}";
+        utp-enabled = true; # test
       };
     };
     radarr = {
@@ -68,7 +69,6 @@
     prowlarr = {
       enable = true;
       openFirewall = true;
-      # group = "media"; # no worky, option does not exist
     };
     readarr = {
       enable = true;
