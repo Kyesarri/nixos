@@ -47,7 +47,11 @@ in {
           # }
         ];
 
-        config = {pkgs, ...}: {
+        config = {
+          pkgs,
+          config,
+          ...
+        }: {
           system.stateVersion = "23.11";
 
           config.services.immich.machine-learning.environment = {
