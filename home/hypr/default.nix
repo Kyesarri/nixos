@@ -31,7 +31,7 @@ in {
   #
   config = mkMerge [
     (mkIf (cfg.hypr.enable == true) {
-      # 
+      #
       xdg.portal = {
         enable = true;
         xdgOpenUsePortal = true;
@@ -127,13 +127,12 @@ in {
       home-manager.users.${spaghetti.user} = {
         home.file.".config/hypr/hyprpaper.conf" = {
           text = ''
-            preload = /home/${spaghetti.user}/wallpapers/1.jpg
-            preload = /home/${spaghetti.user}/wallpapers/2.jpg
-            preload = /home/${spaghetti.user}/wallpapers/3.jpg
-            preload = /home/${spaghetti.user}/wallpapers/4.jpg
-            preload = /home/${spaghetti.user}/wallpapers/5.png
+            preload = /home/${spaghetti.user}/wallpapers/lunar_lake.jpg
+            preload = /home/${spaghetti.user}/wallpapers/searise.png
+            preload = /home/${spaghetti.user}/wallpapers/fluid_windows.jpg
+
             # ^ images must be preloaded to display
-            wallpaper = , /home/${spaghetti.user}/wallpapers/2.jpg
+            wallpaper = , /home/${spaghetti.user}/wallpapers/fluid_windows.jpg
             # ^ any display, directory/file.ext
             splash = false
             # ^ adds splash text to wallpaper
