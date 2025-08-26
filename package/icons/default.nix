@@ -6,7 +6,7 @@
   gitUpdater,
   stdenvNoCC,
   kdePackages,
-  breeze-icons,
+  libsForQt5,
   fetchFromGitHub,
   gnome-icon-theme,
   numix-icon-theme,
