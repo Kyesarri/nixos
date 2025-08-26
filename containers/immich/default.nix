@@ -60,14 +60,16 @@ in {
           };
           */
 
+          /*
           users.users.immich = {
             home = "/var/lib/immich";
             createHome = true;
           };
-
+          */
           services = {
             immich = {
               enable = true;
+              machine-learning.enable = false;
               package = pkgs.immich;
               openFirewall = true;
               port = 3001;
