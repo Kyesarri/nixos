@@ -3,7 +3,7 @@
 {pkgs, ...}: let
   flood = pkgs.fetchzip {
     url = "https://github.com/johman10/flood-for-transmission/releases/download/latest/flood-for-transmission.zip";
-    hash = "sha256-alsHOTF8EEF7iUNHvLC21V3VRVoYQSs78g2r7YGTDeQ=";
+    hash = "sha256-DRWD+0ArfNR1V44DLdnT5sv3+4MftTlvoyzJJ4jdcKI=";
   };
 in {
   nixpkgs.overlays = [
