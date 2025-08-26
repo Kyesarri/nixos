@@ -19,12 +19,6 @@ in {
       example = "10.10.10.1";
       description = "container macvlan ip";
     };
-    vlanIp = mkOption {
-      type = types.str;
-      default = "10.10.0.200";
-      example = "10.10.10.1";
-      description = "container vlan ip";
-    };
     contName = mkOption {
       type = types.str;
       default = "zigbee2mqtt-${config.networking.hostName}";
