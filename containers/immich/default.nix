@@ -54,9 +54,11 @@ in {
         }: {
           system.stateVersion = "23.11";
 
+          /*
           config.services.immich.machine-learning.environment = {
             HF_XET_CACHE = "/var/cache/immich/huggingface-xet";
           };
+          */
 
           users.users.immich = {
             home = "/var/lib/immich";
