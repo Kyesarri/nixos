@@ -127,7 +127,6 @@
     zigbee2mqtt = {
       enable = true;
       macvlanIp = "${secrets.ip.zigbee2mqtt}";
-      # vlanIp = "${secrets.vlan.erying.zigbee2mqtt}";
       mqtt = {
         serial = "tcp://${secrets.ip.SLZB-06P7}:6638";
         server = "mqtt://${secrets.ip.emqx}:1883";
