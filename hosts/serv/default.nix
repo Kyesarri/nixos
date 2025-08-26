@@ -34,6 +34,8 @@
     ../../home/zsh # yes pls
   ];
 
+  nixpkgs.config.cudaSupport = false;
+
   colorscheme = inputs.nix-colors.colorSchemes.${spaghetti.scheme1};
 
   home-manager.users.${spaghetti.user}.colorscheme = inputs.nix-colors.colorSchemes.${spaghetti.scheme1};
