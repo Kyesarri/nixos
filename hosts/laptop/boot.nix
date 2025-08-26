@@ -2,8 +2,10 @@
   boot = {
     extraModulePackages = [];
     supportedFilesystems = ["ntfs" "nfs"];
-    kernelPackages = pkgs.linuxPackages_xanmod_latest;
+    kernelPackages = pkgs.linuxPackages_latest;
+
     kernelModules = ["kvm-amd" "coretemp" "asus-wmi" "asus-armoury"];
+
     initrd = {
       availableKernelModules = ["nvme" "xhci_pci" "ahci" "usb_storage" "usbhid" "sd_mod"];
       kernelModules = [];

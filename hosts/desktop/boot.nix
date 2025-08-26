@@ -2,8 +2,7 @@
   boot = {
     extraModulePackages = [];
     supportedFilesystems = ["ntfs"];
-
-    kernelPackages = pkgs.linuxPackages_xanmod_latest;
+    kernelPackages = pkgs.linuxPackages_latest;
     kernelModules = ["kvm-intel"];
     kernelParams = ["nowatchdog"];
 
