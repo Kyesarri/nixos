@@ -50,6 +50,11 @@ in {
         config = {pkgs, ...}: {
           system.stateVersion = "23.11";
 
+          users.users.immich = {
+            home = "/var/lib/immich";
+            createHome = true;
+          };
+
           services = {
             immich = {
               enable = true;
