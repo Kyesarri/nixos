@@ -10,7 +10,7 @@ EpcotLegacy
 https://www.flickr.com/photos/jlh-omni/
 CC BY-NC-ND 2.0 | https://creativecommons.org/licenses/by-nc-nd/2.0/
 
-ceiling_detail.jpg
+fluid_windows.jpg
 https://flickr.com/
 O Palsson
 https://www.flickr.com/photos/opalsson/
