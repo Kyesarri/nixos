@@ -7,6 +7,11 @@
 }: {
   imports = [(modulesPath + "/installer/scan/not-detected.nix")];
 
+  zramSwap = {
+    enable = true;
+    algorithm = "zstd";
+  };
+
   fileSystems."/" = {
     device = "/dev/disk/by-uuid/f93f9412-52c7-4f05-8f23-438c4044bac6";
     fsType = "ext4";

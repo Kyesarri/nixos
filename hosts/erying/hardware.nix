@@ -10,6 +10,11 @@
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
 
+  zramSwap = {
+    enable = true;
+    algorithm = "zstd";
+  };
+
   hardware = {
     cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
     enableRedistributableFirmware = lib.mkDefault true;
