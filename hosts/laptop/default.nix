@@ -23,6 +23,7 @@
 
     ../../home # set some default values for home-manager
 
+    ../../home/sherlock # testing alt pkg to ulauncher
     ../../home/cosmic # testing cosmic package - really fast!
     ../../home/asusctl # #TODO look into issues with this further
     ../../home/bottom # task-manager
