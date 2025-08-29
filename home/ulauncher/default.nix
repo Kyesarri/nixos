@@ -12,11 +12,11 @@
   home-manager.users.${spaghetti.user}.home.file.".config/hypr/per-app/ulauncher.conf" = {
     text = ''
       exec-once = sleep 1 && ulauncher --hide-window
-      # windowrulev2 = noborder, class:^(ulauncher)$
-      # windowrulev2 = noshadow, class:^(ulauncher)$
-      windowrulev2 = noblur, class:^(ulauncher)$
-      windowrulev2 = center 1, class:^(ulauncher)$
-      bind = $mainMod, R, exec, ulauncher-toggle
+      # windowrulev2 = noborder, class:^(Ulauncher)$
+      # windowrulev2 = noshadow, class:^(Ulauncher)$
+      windowrulev2 = noblur, class:^(Ulauncher)$
+      windowrulev2 = center 1, class:^(Ulauncher)$
+      # bind = $mainMod, R, exec, ulauncher-toggle
     '';
   };
 
