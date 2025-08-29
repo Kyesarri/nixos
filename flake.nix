@@ -21,6 +21,10 @@
     nix-colors.url = "github:kyesarri/nix-colors"; # colour themes, fork
     prism.url = "github:IogaMaster/prism"; # wallpaper gen
     wallpaper-generator.url = "github:kyesarri/wallpaper-generator"; # another one
+    sherlock = {
+      url = "github:Skxxtz/sherlock";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {
@@ -35,6 +39,7 @@
     prism,
     self,
     wallpaper-generator,
+    sherlock,
     ...
   } @ inputs: let
     spaghetti = {
@@ -48,7 +53,7 @@
     # import our secrets - these are required to be unencrypted when building
     secrets = builtins.fromJSON (builtins.readFile "${self}/secrets/secrets.json");
     system = "x86_64-linux";
-    specialArgs = {inherit nix-colors agenix hyprpicker hy3 secrets inputs prism spaghetti wallpaper-generator;};
+    specialArgs = {inherit nix-colors sherlock agenix hyprpicker hy3 secrets inputs prism spaghetti wallpaper-generator;};
   in {
     #
     nixosConfigurations = {
