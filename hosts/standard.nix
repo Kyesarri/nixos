@@ -16,7 +16,6 @@
     config.allowUnfree = true;
   };
   nix = {
-    #
     sshServe.enable = true;
     package = pkgs.nixVersions.latest; # "unstable"
     gc = {
@@ -103,6 +102,32 @@
         RestartSec = 1;
         TimeoutStopSec = 10;
       };
+    };
+  };
+
+  xdg.mime = {
+    enable = true;
+    defaultApplications = {
+      "application/pdf" = "librewolf.desktop";
+
+      "x-scheme-handler/http" = "librewolf.desktop";
+      "x-scheme-handler/https" = "librewolf.desktop";
+      "x-scheme-handler/about" = "librewolf.desktop";
+
+      "application/x-extension-htm" = "librewolf.desktop";
+      "application/x-extension-shtml" = "librewolf.desktop";
+      "application/xhtml+xml" = "librewolf.desktop";
+      "application/x-extension-xhtml" = "librewolf.desktop";
+      "application/x-extension-xht" = "librewolf.desktop";
+
+      "video/x-matroska" = "vlc.desktop";
+      "text/html" = "librewolf.desktop";
+
+      "image/jpeg" = ["qview.desktop"];
+      "image/bmp" = ["qview.desktop"];
+      "image/png" = ["qview.desktop"];
+
+      # add image types "qView.desktop";
     };
   };
 
