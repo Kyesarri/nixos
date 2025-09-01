@@ -7,7 +7,7 @@
   ...
 }: let
   # used in greetd service
-  tuigreet = "${pkgs.greetd.tuigreet}/bin/tuigreet";
+  tuigreet = "${pkgs.tuigreet}/bin/tuigreet";
   hyprland-session = "${inputs.hyprland.packages.${pkgs.system}.hyprland}/share/wayland-sessions";
   hyprland = "${inputs.hyprland.packages.${pkgs.system}.hyprland}/bin/Hyprland";
   username = "${spaghetti.user}";
@@ -28,7 +28,7 @@ in {
     };
   };
 
-  environment.systemPackages = [pkgs.greetd.tuigreet];
+  environment.systemPackages = [pkgs.tuigreet];
 
   systemd.services.greetd.serviceConfig = {
     Type = "idle";
