@@ -9,6 +9,7 @@
     text = ''
       # keybind
       bind = $mainMod, F, exec, librewolf
+      bind = $mainMod, W, exec, librewolf -P work
       # change border colour
       windowrulev2 = bordercolor $ce, initialClass:^(librewolf)$
     '';
@@ -27,11 +28,6 @@
         "cookiebanners.service.mode.privateBrowsing" = 2;
         "cookiebanners.service.mode" = 2;
         "privacy.donottrackheader.enabled" = true;
-
-        # cant have darkmode default theme in browser, causes white loading pages eww...
-        # "privacy.fingerprintingProtection" = true;
-        # "privacy.resistFingerprinting" = true;
-        "privacy.trackingprotection.fingerprinting.enabled" = false;
 
         "privacy.trackingprotection.emailtracking.enabled" = true;
         "privacy.trackingprotection.enabled" = true;
