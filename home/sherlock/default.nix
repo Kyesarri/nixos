@@ -1,6 +1,10 @@
+/*
+  #TODO cleanup comments
+add television / nix-search-tv module
+theme using nix-colors
+*/
 {
   spaghetti,
-  inputs,
   pkgs,
   ...
 }: {
@@ -15,14 +19,12 @@
       # to run sherlock as a daemon
       systemd.enable = true;
 
-      package = inputs.sherlock.packages.${pkgs.system}.default;
-
       # inspo taken from https://github.com/khaneliman/khanelinix/blob/c36a1e77374fe3776c23a2e30758725e18cf63d7/modules/home/programs/graphical/launchers/sherlock/default.nix
       # config.toml
       settings = {
         behavior = {
           use_xdg_data_dir_icons = false; # causes slowdown :(
-          animate = true; # temp disabled in source?
+          animate = false; # temp disabled in source?
         };
 
         default_apps = {
@@ -75,14 +77,15 @@
 
         search_bar_icon = {
           enable = false;
-          icon = "system-search-symbolic";
-          icon_back = "go-previous-symbolic";
+          # icon = "system-search-symbolic";
+          # icon_back = "go-previous-symbolic";
           size = 30;
         };
       };
 
       # sherlock_alias.json
-      aliases = {};
+      aliases = {
+      };
 
       # sherlockignore
       ignore = ''
@@ -162,15 +165,13 @@
             icon = "nix-snowflake";
           };
         }
-        /*
-          #TODO configure nix-search-tv and television
-          "TV" = {
-            icon = "nix-snowflake";
-            exec = "kitty -e nix-search-tv";
-            search_string = "interactive;search;tv";
-          };
-        };
-        */
+
+        #TODO configure nix-search-tv and television
+        #"TV" = {
+        # icon = "nix-snowflake";
+        # exec = "kitty -e nix-search-tv";
+        # search_string = "interactive;search;tv";
+        #};
       ];
 
       # main.css
@@ -239,8 +240,8 @@
             outline-offset: -3px;
             outline-style: dashed;
             line-height: 1;
-            font-family: "Hack-Regular";
-        }
+            font-family: "Cantarell";
+            }
 
         label {
             color: var(--text);
@@ -564,9 +565,6 @@
         #end-time-label {
             color: gray;
         }
-
-
-
 
         /* BULK TEXT TILE */
         .bulk-text {
