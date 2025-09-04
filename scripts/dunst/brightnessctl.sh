@@ -10,4 +10,4 @@ fi
 
 brightness="$(brightnessctl -m | awk -F ',' '{ print $4 }')"
 
-dunstify -a "changeBrightness" -i solaar-indicator -r "$msgId" -h int:value:"$brightness" "Brightness: ${brightness}"
+dunstify -a "changeBrightness" -i redeyes -r "$msgId" -h int:value:"$brightness" "DSP: ${brightness}"

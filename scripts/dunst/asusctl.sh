@@ -11,7 +11,7 @@ fi
 # awk scans output looks for the string after '/^Current/ $ is the column to print $5 being the 5th
 brightnesslvl="$(asusctl -k | awk '/^Current/ {print ($5)}')" # print 5th line
 
-dunstify -a "changeKBDBrightness" -r "$msgId" -h value: "KBD - ${brightnesslvl}"
+dunstify -a "changeKBDBrightness" -i lighttable -r "$msgId" -h value: "KBD - ${brightnesslvl}"
 
 # value:"$kbdbright" "Keyboard: ${kbdbright}%"
 
