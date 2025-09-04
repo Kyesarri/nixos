@@ -21,8 +21,9 @@
 
       follow = mouse
 
-      icon_theme=Zafiro-icons-Dark
+      icon_theme = Zafiro-icons-Dark
       enable_recursive_icon_lookup = true
+
       min_icon_size = 16
       max_icon_size = 16
       icon_position = top
