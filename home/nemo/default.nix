@@ -11,9 +11,8 @@
       # hyprland binds and window rules
       text = ''
         bind = $mainMod, E, exec, nemo
-        windowrule = float, title:nemo
+        windowrule = float, class:nemo
         windowrulev2 = center 1, class:nemo
-
       '';
     };
   };
