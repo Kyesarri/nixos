@@ -5,6 +5,7 @@
 }: {
   users.users.${spaghetti.user}.packages = [pkgs.pciutils pkgs.supergfxctl];
 
+  /*
   environment.etc."supergfxd.conf" = {
     mode = "0644";
     source = (pkgs.formats.json {}).generate "supergfxd.conf" {
@@ -16,7 +17,7 @@
       hotplug_type = "Asus";
     };
   };
-
+  */
   systemd = {
     services = {
       supergfxd.path = [pkgs.pciutils]; # gpu switching
@@ -32,10 +33,11 @@
     supergfxd.enable = true;
     asusd = {
       enable = true;
-      enableUserService = false;
+      enableUserService = true;
       asusdConfig.text = builtins.readFile ./asusd.ron;
     };
   };
+
   # below not required
   home-manager.users.${spaghetti.user}.home.file.".config/hypr/per-app/asusd.conf".text = ''
     exec-once = sleep 3 && rog-control-center
