@@ -154,65 +154,7 @@ in {
 
         home.file.".config/hypr/hyprlock.conf" = {
           text = ''
-            source = ~/.config/hypr/colours.conf
-
-            general {
-            hide_cursor = true
-            }
-
-            animations {
-            enabled = true
-            }
-
-            background {
-                monitor =
-                path = /home/kel/wallpapers/fluid_windows.jpg
-                blur_passes = 1
-                color = $c1
-                brightness = 0.5
-                vibrancy = 0.2
-                vibrancy_darkness = 0.05
-            }
-
-            # time
-            label {
-                monitor =
-                # updates time every 30s
-                text = cmd[update:30000] echo "$(date +"%I:%M %p")"
-                color = $c5
-                font_size = 20
-                font_family = Hack Nerd Font Mono
-                position = 5, -5
-                valign = top
-                halign = left
-                shadow_passes = 0
-            }
-
-            # login
-            input-field {
-                monitor =
-                size = 10000, 40
-                outline_thickness = 3
-                dots_size = 0.1
-                dots_spacing = 0.3
-                dots_center = true
-                outer_color = $ce
-                inner_color = $c2
-                font_color = $c5
-                rounding = 8
-                placeholder_text =
-                hide_input = false
-                check_color = $cc
-                fail_color = $cd
-                fail_text =
-                fade_on_empty = true
-                fade_timeout = 1000
-                capslock_color = $cf
-                position = 0, 0
-                halign = center
-                valign = center
-                shadow_passes = 0
-            }
+            source = /home/${spaghetti.user}/nixos/home/hypr/config/lock.conf
           '';
         };
         home.file.".config/hypr/hypridle.conf" = {
