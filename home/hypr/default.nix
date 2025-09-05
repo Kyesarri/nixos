@@ -78,8 +78,6 @@ in {
             */
           ];
           extraConfig = ''
-            # ^^ autogen by home-manager ^^
-            # this is a hacky workaround, but it works and i don't care
             # pulls config from nix install dir, no symlinks, means faster editing without rebuilds / reloading hypr
             source = /home/${spaghetti.user}/nixos/home/hypr/config/main.conf
           '';
