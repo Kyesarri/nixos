@@ -35,11 +35,12 @@
     headscale.enable = false;
     haos.enable = true;
     i2p.enable = true;
-    ztnet.enable = true;
+    pinchflat.enable = true;
     radicale.enable = true;
     rocket-chat.enable = true;
     static-web.enable = true;
     syncthing.enable = true;
+    ztnet.enable = true;
     #
     adguardhome-sync = {
       enable = true;
