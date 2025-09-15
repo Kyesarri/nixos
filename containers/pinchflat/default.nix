@@ -62,7 +62,7 @@ in {
           volumes = [
             "/etc/localtime:/etc/localtime:ro"
             "i2pd:/config"
-            #TODO "/path/to/downloads:/downloads"
+            "/mnt/storage/incomplete:/downloads"
           ];
           extraOptions = [
             "--network-alias=pinchflat"
