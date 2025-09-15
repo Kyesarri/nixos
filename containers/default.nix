@@ -20,6 +20,7 @@
     ./nginx-wan # reverse proxy for webhosting
     ./nzbget # nzb client
     ./openwisp # openwrt controller & more
+    ./pinchflat # youtube media maanger
     ./plex #
     ./radicale # calendar + todo thingy
     ./restreamer # camera restream utility - use for 3d printer?
