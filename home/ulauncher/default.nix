@@ -4,10 +4,7 @@
   spaghetti,
   ...
 }: {
-  users.users.${spaghetti.user}.packages = with pkgs; [
-    # ulauncher
-    inputs.ulauncher.packages."${pkgs.system}".default
-  ];
+  users.users.${spaghetti.user}.packages = with pkgs; [inputs.ulauncher.packages."${pkgs.system}".default];
 
   home-manager.users.${spaghetti.user}.home.file.".config/hypr/per-app/ulauncher.conf" = {
     text = ''
