@@ -1,31 +1,3 @@
-/*
-taken from:
-https://github.com/chriskempson/base16/blob/main/styling.md
-
-added this as a theme helper, probs need to generate this via nix-colors depending on which scheme
-is currently being used by specific system :)
-
-may need to have in each /host/hostame/ for now this works
-*/
-.tokyo-night-dark {
-  --base00:#1A1B26; /* Default Background */
-  --base01:#16161E; /* Lighter Background (Used for status bars, line number and folding marks) */
-  --base02:#2F3549; /* Selection Background */
-  --base03:#444B6A; /* Comments, Invisibles, Line Highlighting */
-  --base04:#787C99; /* Dark Foreground (Used for status bars) */
-  --base05:#A9B1D6; /* Default Foreground, Caret, Delimiters, Operators */
-  --base06:#CBCCD1; /* Light Foreground (Not often used) */
-  --base07:#D5D6DB; /* Light Background (Not often used) */
-  --base08:#C0CAF5; /* RED Variables, XML Tags, Markup Link Text, Markup Lists, Diff Deleted */
-  --base09:#A9B1D6; /* ORANGE Integers, Boolean, Constants, XML Attributes, Markup Link Url */
-  --base0A:#0DB9D7; /* YELLOW Classes, Markup Bold, Search Text Background */
-  --base0B:#9ECE6A; /* GREEN Strings, Inherited Class, Markup Code, Diff Inserted */
-  --base0C:#B4F9F8; /* CYAN Support, Regular Expressions, Escape Characters, Markup Quotes */
-  --base0D:#2AC3DE; /* BLUE Functions, Methods, Attribute IDs, Headings */
-  --base0E:#BB9AF7; /* MAGENTA Keywords, Storage, Selector, Markup Italic, Diff Changed */
-  --base0F:#F7768E; /* PURPLE? Deprecated, Opening/Closing Embedded Language Tags, e.g. <?php ?> */
-}
-
 .horizon-dark {
   --base00: #1C1E26; /* Default Background // terminal 16 black */
   --base01: #232530; /* Lighter Background (Used for status bars, line number and folding marks) */
@@ -43,29 +15,57 @@ may need to have in each /host/hostame/ for now this works
   --base0D: #DF5273; /* BLUE Functions, Methods, Attribute IDs, Headings */
   --base0E: #B072D1; /* MAGENTA Keywords, Storage, Selector, Markup Italic, Diff Changed */
   --base0F: #E4A382; /* PURPLE? Deprecated, Opening/Closing Embedded Language Tags, e.g. <?php ?> */
-  --base10: #92D071; /* extended green*/
-  --base11: #b6e0a0; /* extended light green*/
-  --base12: #415c32; /* extended dark green*/
-  --base13: #1e9ed4; /* extended blue*/
-  --base14: #9bd4ec; /* extended light blue*/
-  --base15: #0d455d; /* extended dark blue*/
 }
 
-.Catppuccin-Latte {
-  --base00: #eff1f5; /*base*/
-  --base01: #e6e9ef; /*mantle*/
-  --base02: #ccd0da; /*surface0*/
-  --base03: #bcc0cc; /*surface1*/
-  --base04: #acb0be; /*surface2*/
-  --base05: #4c4f69; /*text*/
-  --base06: #dc8a78; /*rosewater*/
-  --base07: #7287fd; /*lavender*/
-  --base08: #d20f39; /*red*/
-  --base09: #fe640b; /*peach*/
-  --base0A: #df8e1d; /*yellow*/
-  --base0B: #40a02b; /*green*/
-  --base0C: #179299; /*teal*/
-  --base0D: #1e66f5; /*blue*/
-  --base0E: #8839ef; /*mauve*/
-  --base0F: #dd7878; /*flamingo*/
+/*split out to 10% lighter / darker per colour*/
+
+.horizon-dark-expanded {
+  --base00D: #060709;
+  --base00L: #323543;
+
+  --base01D: #0e0e13;
+  --base01L: #393c4e;
+
+  --base02D: #181921;
+  --base02L: #44475b;
+
+  --base03D: #565656;
+  --base03L: #888889;
+
+  --base04D: #838789;
+  --base04L: #b7b9bb;
+
+  --base05D: #b0b5b8;
+  --base05L: #e6e7e8;
+
+  --base06D: #bfc4ce;
+  --baseo6L: #f9f9fa;
+
+  --base07D: #dddde3;
+  --base07L: #ffffff;
+
+  --base08D: #da1939;
+  --base08L: #ee6a80;
+
+  --base09D: #dd6752;
+  --base09L: #eeb2a7;
+
+  --base0aD: #e89d67;
+  --base0aL: #f6d6bf;
+
+  --base0bD: #e98e61;
+  --base0bL: #f5cebb;
+
+  --base0cD: #1c818a;
+  --base0cL: #35c9d7;
+
+  --base0dD: #d62850;
+  --base0dL: #e77d96;
+
+  --base0eD: #9a4bc4;
+  --base0eL: #c598de;
+
+  --base0fD: #db8458;
+  --base0Fl: #edc2ac;
+
 }
