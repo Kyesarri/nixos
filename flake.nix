@@ -13,6 +13,17 @@
       url = "github:outfoxxed/hy3";
       inputs.hyprland.follows = "hyprland";
     };
+
+    caelestia-shell = {
+      url = "github:caelestia-dots/shell";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    caelestia-cli = {
+      url = "github:caelestia-dots/cli";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     # quickshell = {
     #   url = "git+https://git.outfoxxed.me/outfoxxed/quickshell";
     #   inputs.nixpkgs.follows = "nixpkgs";
@@ -39,6 +50,8 @@
     prism,
     self,
     wallpaper-generator,
+    caelestia-shell,
+    caelestia-cli,
     # sherlock,
     ...
   } @ inputs: let
@@ -53,7 +66,7 @@
     # import our secrets - these are required to be unencrypted when building
     secrets = builtins.fromJSON (builtins.readFile "${self}/secrets/secrets.json");
     system = "x86_64-linux";
-    specialArgs = {inherit nix-colors agenix hyprpicker hy3 secrets inputs prism spaghetti wallpaper-generator;};
+    specialArgs = {inherit nix-colors agenix hyprpicker caelestia-shell caelestia-cli hy3 secrets inputs prism spaghetti wallpaper-generator;};
   in {
     #
     nixosConfigurations = {
@@ -70,7 +83,7 @@
           {
             home-manager = {
               useGlobalPkgs = true;
-              useUserPackages = false; # lets see what breaks :D
+              useUserPackages = false;
               extraSpecialArgs = {
                 inherit nix-colors inputs hyprland;
                 inherit (inputs.nix-colors.lib-contrib) gtkThemeFromScheme;
