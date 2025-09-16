@@ -5,8 +5,11 @@
     nixpkgs.url = "github:nixos/nixpkgs/master";
     alejandra.url = "github:kamadorueda/alejandra/3.0.0"; # codium nix
     agenix.url = "github:ryantm/agenix";
-    home-manager.url = "github:nix-community/home-manager/master"; # added master branch to follow unstable nixos
-    home-manager.inputs.nixpkgs.follows = "nixpkgs";
+    home-manager = {
+      url = "github:nix-community/home-manager/master"; # added master branch to follow unstable nixos
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1"; # latest git
     hyprpicker.url = "github:hyprwm/hyprpicker";
     hy3 = {
