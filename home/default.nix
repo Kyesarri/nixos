@@ -1,4 +1,8 @@
-{spaghetti, ...}: {
+{
+  spaghetti,
+  inputs,
+  ...
+}: {
   # import modules, most with options some are basic / required for all without options
   imports = [
     ./console
@@ -11,10 +15,13 @@
     ./neovim
   ];
 
+  # home-manager.extraSpecialArgs = {inherit inputs;};
+
   # home-manager config(s)
   home-manager.users.${spaghetti.user} = {inputs, ...}: {
     # import flake home-manager modules
     imports = [
+      inputs.caelestia-shell.homeManagerModules.default
       inputs.nix-colors.homeManagerModules.default
       inputs.prism.homeModules.prism
       inputs.hyprland.homeManagerModules.default
