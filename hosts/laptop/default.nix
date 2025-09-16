@@ -27,10 +27,10 @@
     ../../home/cosmic # testing cosmic package - really fast!
     ../../home/asusctl # #TODO look into issues with this further
     ../../home/bottom # task-manager
+    ../../home/caelestia-shell
     ../../home/codium
     ../../home/copyq # #TODO change to an alternative maybe?
-    ../../home/dunst # notifications
-    ../../home/firefox # why you always need to build from source, check to see if there are nighty / beta precompiled
+    ../../home/firefox
     ../../home/git # add some basic git packages
     ../../home/keepassxc # key / password manager
 
@@ -41,9 +41,7 @@
     ../../home/kitty # /home/shell/ under mkOption, have foot / kitty / more? in there
 
     ../../home/kde # TODO rename kdeconnect - maybe not lol - covers lots
-    ../../home/ulauncher # TODO rename built theme, add credits to og author
     ../../home/virt # vm / container
-    ../../home/waybar # wayland bar boi, needs another go at theming
     ../../home/wl-screenrec # testing for laptop - amd / nvidia config
     ../../home/gtk # uhh, nix-colors gtk theme iirc # TODO rename to theme?
     ../../home/prism # wallpapers
@@ -60,7 +58,7 @@
   gnocchi = {
     hypr = {
       enable = true;
-      animations = false; # no config here yet #TODO - not critical - adding more mess is!
+      animations = false;
     };
     hyprpaper.enable = true;
     gscreenshot.enable = true;
@@ -77,7 +75,15 @@
     };
   };
 
+  # testing some options for power saving
+  # have a stack of packages currently,
+  # corectl, asusd / rog control center, lact
+  hardware.amdgpu.overdrive.enable = true;
+  hardware.cpu.amd.ryzen-smu.enable = true;
+
   services = {
+    lact.enable = true;
+
     # map laptop keys
     udev.extraHwdb = ''
       evdev:name:*:dmi:bvn*:bvr*:bd*:svnASUS*:pn*:*
