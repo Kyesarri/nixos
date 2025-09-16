@@ -24,11 +24,10 @@
     ../../home # set some default values for home-manager
 
     ../../home/sherlock # testing alt pkg to ulauncher
-    ../../home/cosmic # testing cosmic package - really fast!
+    # ../../home/cosmic # testing cosmic package - really fast!
     ../../home/asusctl # #TODO look into issues with this further
     ../../home/bottom # task-manager
     ../../home/codium
-    ../../home/copyq # #TODO change to an alternative maybe?
     ../../home/firefox
     ../../home/git # add some basic git packages
     ../../home/keepassxc # key / password manager
@@ -59,6 +58,7 @@
       enable = true;
       animations = false;
     };
+    clipse.enable = true;
     hyprpaper.enable = true;
     caelestia-shell.enable = true;
     gscreenshot.enable = true;
