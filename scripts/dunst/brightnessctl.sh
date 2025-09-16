@@ -3,11 +3,11 @@
 msgId="42069"
 
 if [[ $1 == "up" ]]; then
-brightnessctl set 2%+
+brightnessctl set 5%+
 else
-brightnessctl set 2%-
+brightnessctl set 5%-
 fi
 
-brightness="$(brightnessctl -m | awk -F ',' '{ print $4 }')"
+# brightness="$(brightnessctl -m | awk -F ',' '{ print $4 }')"
 
-dunstify -a "changeBrightness" -i redeyes -r "$msgId" -h int:value:"$brightness" "DSP: ${brightness}"
+# dunstify -a "changeBrightness" -i redeyes -r "$msgId" -h int:value:"$brightness" "DSP: ${brightness}"

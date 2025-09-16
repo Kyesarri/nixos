@@ -6,22 +6,23 @@ msgId="69420"
 # Change the volume using alsa(might differ if you use pulseaudio)
 #amixer -c 0 set Master "$@" > /dev/null
 if [[ $1 == "up" ]]; then
-        pamixer -i 3
+        pamixer -i 5
 else
-        pamixer -d 3
+        pamixer -d 5
 fi
 
+# old configs related to dunst
 # Query amixer for the current volume and whether or not the speaker is muted
-#volume="$(amixer -c 0 get Master | tail -1 | awk '{print $4}' | sed 's/[^0-9]*//g')"
-#volume="$(pulseaudio-ctl full-status | sed -e 's,^\([0-9][0-9]*\)[^0-9].*,\1,')"
-volume="$(pamixer --get-volume)"
-#mute="$(amixer -c 0 get Master | tail -1 | awk '{print $6}' | sed 's/[^a-z]*//g')"
-mute="$(pamixer --get-mute)"
+# volume="$(amixer -c 0 get Master | tail -1 | awk '{print $4}' | sed 's/[^0-9]*//g')"
+# volume="$(pulseaudio-ctl full-status | sed -e 's,^\([0-9][0-9]*\)[^0-9].*,\1,')"
+# volume="$(pamixer --get-volume)"
+# mute="$(amixer -c 0 get Master | tail -1 | awk '{print $6}' | sed 's/[^a-z]*//g')"
+# mute="$(pamixer --get-mute)"
 
-if [[ $volume == 0 || "$mute" == "true" ]]; then
-    # Show the sound muted notification
-    dunstify -a "changeVolume" -i audio-volume-muted -r "$msgId" "Volume muted"
-else
-    # Show the volume notification
-    dunstify -a "changeVolume" -i audio-volume-high -r "$msgId" -h int:value:"$volume" "Volume: ${volume}%"
-fi
+# if [[ $volume == 0 || "$mute" == "true" ]]; then
+#     # Show the sound muted notification
+#     notify-send -a "changeVolume" -i audio-volume-muted -r "$msgId" "Volume muted"
+# else
+#     # Show the volume notification
+#     notify-send -a "changeVolume" -i audio-volume-high -r "$msgId" -h int:value:"$volume" "Volume: ${volume}%"
+# fi
