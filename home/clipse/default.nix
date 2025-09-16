@@ -15,7 +15,7 @@ in {
 
   #
   config = mkMerge [
-    (mkIf (clipse-shell.enable == true) {
+    (mkIf (clipse.enable == true) {
       users.users.${spaghetti.user}.packages = with pkgs; [clipse];
       # hypr copyq settings
       home.file.".config/hypr/per-app/copyq.conf" = {
