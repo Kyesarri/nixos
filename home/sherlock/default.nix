@@ -9,7 +9,7 @@ theme using nix-colors
   ...
 }: {
   home-manager.users.${spaghetti.user} = {
-    home.file.".config/hypr/per-app/ulauncher.conf" = {
+    home.file.".config/hypr/per-app/sherlock.conf" = {
       text = ''bind = $mainMod, R, exec, sherlock'';
     };
 
