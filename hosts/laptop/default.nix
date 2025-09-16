@@ -27,7 +27,6 @@
     ../../home/cosmic # testing cosmic package - really fast!
     ../../home/asusctl # #TODO look into issues with this further
     ../../home/bottom # task-manager
-    ../../home/caelestia-shell
     ../../home/codium
     ../../home/copyq # #TODO change to an alternative maybe?
     ../../home/firefox
@@ -61,6 +60,7 @@
       animations = false;
     };
     hyprpaper.enable = true;
+    caelestia-shell.enable = true;
     gscreenshot.enable = true;
     lapce.enable = true;
     freetube.enable = true;

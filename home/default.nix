@@ -5,6 +5,7 @@
 }: {
   # import modules, most with options some are basic / required for all without options
   imports = [
+    ./caelestia-shell
     ./console
     ./freetube
     ./gscreenshot
