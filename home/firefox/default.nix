@@ -18,8 +18,8 @@
   programs.firefox = {
     enable = true;
 
-    package = pkgs.librewolf;
-
+    package = pkgs.librewolf-bin; # using precompiled atm, flake update 16.09.25
+    /*
     policies = {
       DisableTelemetry = true;
       DisableFirefoxStudies = true;
@@ -34,5 +34,6 @@
         "privacy.trackingprotection.socialtracking.enabled" = true;
       };
     };
+    */
   };
 }
