@@ -26,7 +26,7 @@
     <td>eliteone</td>
     <td>9700</td>
     <td>igpu</td>
-    <td>kde desktop</td>
+    <td>3d printer</td>
   </tr>
   <tr>
     <td>erying</td>
@@ -44,7 +44,7 @@
     <td>notebook</td>
     <td>n3700</td>
     <td>igpu</td>
-    <td>3d printer</td>
+    <td>out of service</td>
   </tr>
   <tr>
     <td>desktop</td>
