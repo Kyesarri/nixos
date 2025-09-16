@@ -135,7 +135,7 @@ in {
             preload = /home/${spaghetti.user}/wallpapers/fluid_windows.jpg
 
             # ^ images must be preloaded to display
-            wallpaper = , /home/${spaghetti.user}/wallpapers/fluid_windows.jpg
+            wallpaper = , /home/${spaghetti.user}/wallpapers/searise.png
             # ^ any display, directory/file.ext
             splash = false
             # ^ adds splash text to wallpaper
