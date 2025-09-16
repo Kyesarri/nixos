@@ -164,7 +164,9 @@
       inkscape-with-extensions
       netbird
       netbird-ui
+      lm_sensors
       inputs.agenix.packages.x86_64-linux.default
+      inputs.caelestia-cli
     ];
   };
 
@@ -183,8 +185,9 @@
         "wheel" # sudo
         "plugdev" # usb
         "audio"
+        "video"
         "pipewire"
-        "adbusers"
+        "adbusers" # android
       ];
 
       # packages available for just our spaghetti user
