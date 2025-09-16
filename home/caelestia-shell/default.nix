@@ -37,7 +37,6 @@
           showOnHover = true;
           mediaUpdateInterval = 500;
           dragThreshold = 50;
-          # weatherLocation = ; waiting to see this is implemented
           sizes = {
             tabIndicatorHeight = 3;
             tabIndicatorSpacing = 5;
@@ -80,10 +79,6 @@
             {
               id = "workspaces";
               enabled = true;
-            }
-            {
-              id = "activeWindow";
-              enabled = false;
             }
             {
               id = "tray";
@@ -131,7 +126,9 @@
         services = {
           useFahrenheit = false;
           useTwelveHourClock = false;
+          weatherLocation = "Albury";
         };
+
         paths.wallpaperDir = "~/wallpapers";
       };
 
