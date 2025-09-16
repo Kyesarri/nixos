@@ -54,6 +54,10 @@
       "nohz=on" # tickless kernel gosh
       "nohz_full=1-$(nproc)" # tickless mode for all but core 0
 
+      # messing with power savings, unsure if this is the right region to place these configs
+      "CONFIG_NO_HZ_IDLE=y"
+      "CONFIG_HZ_PERIODIC=n"
+
       # for cleaner boot output
       "quiet"
       "splash"
@@ -64,7 +68,14 @@
 
     initrd = {
       verbose = false;
-      availableKernelModules = ["nvme" "xhci_pci" "ahci" "usb_storage" "usbhid" "sd_mod"];
+      availableKernelModules = [
+        "nvme"
+        "xhci_pci"
+        "ahci"
+        "usb_storage"
+        "usbhid"
+        # "sd_mod" # scsi disk support
+      ];
       kernelModules = [];
       systemd.enable = true;
       luks.devices = {
