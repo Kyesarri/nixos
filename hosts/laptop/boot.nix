@@ -62,6 +62,7 @@
       "quiet"
       "splash"
       "boot.shell_on_fail"
+      "rd.udev.log_level=3"
       "udev.log_priority=3"
       "rd.systemd.show_status=false" # hides systemd status at boot
     ];
