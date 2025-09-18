@@ -5,7 +5,7 @@
   ...
 }: {
   system.activationScripts."make-pangolin-dir" = lib.stringAfter ["var"] ''
-    mkdir -v -p /etc/oci.cont/pangolin /etc/oci.cont/pangolin/letsencrypt /etc/oci.cont/pangolin/traefik \
+    mkdir -v -p /etc/oci.cont/pangolin/config /etc/oci.cont/pangolin/config/letsencrypt /etc/oci.cont/config/pangolin/traefik \
       && chown -R 1000:1000 /etc/oci.cont/pangolin
   '';
 
