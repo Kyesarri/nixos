@@ -23,8 +23,6 @@
 
     ../../home # set some default values for home-manager
 
-    ../../home/sherlock # testing alt pkg to ulauncher
-    # ../../home/cosmic # testing cosmic package - really fast!
     ../../home/asusctl # #TODO look into issues with this further
     ../../home/bottom # task-manager
     ../../home/codium
@@ -37,7 +35,7 @@
     ../../home/greetd # minimalistic greeter, may not be required once fde is used on laptop
 
     ../../home/kitty # /home/shell/ under mkOption, have foot / kitty / more? in there
-
+    ../../home/sherlock # launcher
     ../../home/kde # TODO rename kdeconnect - maybe not lol - covers lots
     ../../home/virt # vm / container
     ../../home/wl-screenrec # testing for laptop - amd / nvidia config
