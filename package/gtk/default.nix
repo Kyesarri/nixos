@@ -18,12 +18,9 @@ in
     src = fetchFromGitHub {
       owner = "vinceliuice";
       repo = "Jasper-gtk-theme";
-      rev = "71cb99a6618d839b1058cb8e6660a3b2f63aca70";
-      hash = "sha256-ZWPUyVszDPUdzttAJuIA9caDpP4SQ7mIbCoczxwvsus=";
+      rev = "3f7059d031744bffa39a44c8af795767f59f7c66";
+      hash = "sha256-4AqF8BgAuh6LF0LHDYlubbnq5d3S5tm/7LaGX/h0AJw=";
     };
-    /*
-    gtk.css 3.0 lines 4283 and 4287 were throwing errors in ulauncher 5 debian release
-    */
 
     nativeBuildInputs = [
       jdupes
@@ -216,7 +213,7 @@ in
 
       mkdir -p $out/share/themes/
 
-      name= HOME="$TMPDIR" /build/source/install.sh --color dark --size compact --dest $out/share/themes
+      name= HOME="$TMPDIR" /build/source/install.sh --color dark --size compact --libadwaita --dest $out/share/themes
 
       pastel gradient 2E303E 1C1E26 -n 19 | pastel format hex | cat > grey
 
@@ -255,7 +252,7 @@ in
       homepage = "https://github.com/vinceliuice/Jasper-gtk-theme";
       license = lib.licenses.gpl3Only;
       platforms = lib.platforms.unix;
-      maintainers = [lib.maintainers.romildo];
+      maintainers = [];
     };
   }
 /*
