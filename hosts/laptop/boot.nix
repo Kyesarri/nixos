@@ -52,7 +52,7 @@
       # messing with timers
       "highres=on" # 4k timers wew
       "nohz=on" # tickless kernel gosh
-      "nohz_full=1-$(nproc)" # tickless mode for all but core 0
+      "nohz_full=1-$(nproc)" # tickless mode for all but core 15? 8c16t
 
       # messing with power savings, unsure if this is the right region to place these configs
       "CONFIG_NO_HZ_IDLE=y"
