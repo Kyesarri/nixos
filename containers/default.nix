@@ -56,7 +56,12 @@
   # from compose2nix:
   # Enable container name DNS for non-default Podman networks.
   # https://github.com/NixOS/nixpkgs/issues/226365
-  networking.firewall.interfaces."podman+".allowedUDPPorts = [53];
+  networking.firewall.interfaces = let
+    matchAll =
+      if !config.networking.nftables.enable
+      then "podman+"
+      else "podman*";
+  in {"${matchAll}".allowedUDPPorts = [53];};
 
   environment.systemPackages = with pkgs; [
     podman # the boi
