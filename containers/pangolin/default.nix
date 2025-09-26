@@ -8,6 +8,28 @@
     mkdir -v -p /etc/oci.cont/pangolin/config /etc/oci.cont/pangolin/config/letsencrypt /etc/oci.cont/pangolin/config/traefik \
       && chown -R 1000:1000 /etc/oci.cont/pangolin
   '';
+  /*
+  # config.yml
+  app:
+    dashboard_url: "http://pangolin.example.com"
+    anonymous_usage: false
+
+  domains:
+    domain1:
+      base_domain: "pangolin.example.com"
+      cert_resolver: "letsencrypt"
+
+  server:
+    secret: "your-strong-secret"
+
+  gerbil:
+    base_endpoint: "pangolin.example.com"
+
+  flags:
+    require_email_verification: false
+    disable_signup_without_invite: true
+    disable_user_create_org: true
+  */
 
   systemd.targets."podman-pangolin-root" = {
     unitConfig = {Description = "root target";};
