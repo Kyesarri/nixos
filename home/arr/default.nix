@@ -10,11 +10,12 @@
   users.groups.media = {
     name = "media";
     gid = 989;
-    members = ["plex" "transmission" "bazarr" "radarr" "readarr" "sonarr" "prowlarr" "${spaghetti.user}"];
+    members = ["plex" "transmission" "bazarr" "radarr" "readarr" "sonarr" "prowlarr" "lidarr" "${spaghetti.user}"];
   };
 
   #TODO #FIXME
   # issues with sonarr - 11.12.24
+  /*
   nixpkgs.config.permittedInsecurePackages = [
     "dotnet-runtime-wrapped-6.0.36"
     "aspnetcore-runtime-wrapped-6.0.36"
@@ -22,6 +23,7 @@
     "dotnet-sdk-wrapped-6.0.428"
     "dotnet-sdk-6.0.428"
   ];
+  */
 
   # add user to groups created by services, is this required anymore?
   users.users.${spaghetti.user}.extraGroups = ["radarr" "sonarr" "transmission" "readarr"];
@@ -79,6 +81,12 @@
       enable = true;
       openFirewall = true;
       user = "bazarr";
+      group = "media";
+    };
+    lidarr = {
+      enable = true;
+      openFirewall = true;
+      user = "lidarr";
       group = "media";
     };
   };
