@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  config,
+  pkgs,
+  ...
+}: {
   imports = [
     ./adguard # dns + dhcp + adblock
     ./adguard/sync.nix # testing adguard-sync for multiple host thingos
