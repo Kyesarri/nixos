@@ -10,11 +10,10 @@
   time.timeZone = "Australia/Melbourne";
 
   nixpkgs = {
-    overlays = [
-      inputs.ulauncher.overlays.default
-    ];
+    overlays = [];
     config.allowUnfree = true;
   };
+
   nix = {
     sshServe.enable = true;
     package = pkgs.nixVersions.latest; # "unstable"
@@ -166,7 +165,6 @@
       netbird-ui
       lm_sensors
       inputs.agenix.packages.x86_64-linux.default
-      inputs.caelestia-cli
     ];
   };
 
@@ -220,6 +218,7 @@
         koodo-reader # ebook reader
         godot
         scrcpy
+        # grayjay
       ];
     };
   };
