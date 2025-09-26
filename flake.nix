@@ -12,6 +12,7 @@
 
     hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1"; # latest git
     hyprpicker.url = "github:hyprwm/hyprpicker";
+
     hy3 = {
       url = "github:outfoxxed/hy3";
       inputs.hyprland.follows = "hyprland";
@@ -19,11 +20,6 @@
 
     caelestia-shell = {
       url = "github:caelestia-dots/shell";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    caelestia-cli = {
-      url = "github:caelestia-dots/cli";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -35,10 +31,6 @@
     nix-colors.url = "github:kyesarri/nix-colors"; # colour themes, fork
     prism.url = "github:IogaMaster/prism"; # wallpaper gen
     wallpaper-generator.url = "github:kyesarri/wallpaper-generator"; # another one
-    # sherlock = {
-    #  url = "github:Skxxtz/sherlock";
-    #  inputs.nixpkgs.follows = "nixpkgs";
-    #};
   };
 
   outputs = {
@@ -54,8 +46,6 @@
     self,
     wallpaper-generator,
     caelestia-shell,
-    caelestia-cli,
-    # sherlock,
     ...
   } @ inputs: let
     spaghetti = {
@@ -67,9 +57,10 @@
       iconPkg = "pkgs.zafiro-icons";
     };
     # import our secrets - these are required to be unencrypted when building
+    # this is not secure as secrets are exposed in nix tree
     secrets = builtins.fromJSON (builtins.readFile "${self}/secrets/secrets.json");
     system = "x86_64-linux";
-    specialArgs = {inherit nix-colors agenix hyprpicker caelestia-shell caelestia-cli hy3 secrets inputs prism spaghetti wallpaper-generator;};
+    specialArgs = {inherit nix-colors agenix hyprpicker caelestia-shell hy3 secrets inputs prism spaghetti wallpaper-generator;};
   in {
     #
     nixosConfigurations = {
