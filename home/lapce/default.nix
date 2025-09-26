@@ -16,12 +16,12 @@ in {
   };
   config = mkMerge [
     (
-      mkIf (cfg.lapce.enable == true)
-      {
+      mkIf (cfg.lapce.enable == true) {
         users.users.${spaghetti.user}.packages = [
           pkgs.lapce # lapce
           pkgs.nil # language server, grumble
         ];
+        /*
         home-manager.users.${spaghetti.user}.home.file.".config/lapce-stable/settings.toml" = {
           #
           text = ''
@@ -34,6 +34,7 @@ in {
             icon-theme = "Lapce Codicons"
           '';
         };
+        */
       }
     )
   ];
