@@ -7,7 +7,7 @@
   services.upower = {
     enable = true;
     percentageCritical = 15;
-    percentageLow = 20;
+    percentageLow = 25;
   };
 
   users.users.${spaghetti.user}.packages = with pkgs; [poweralertd];
