@@ -311,7 +311,7 @@ in {
       semantic_search:
         enabled: true
         reindex: false
-        model_size: "small"
+        model_size: large
       #
       ui:
         time_format: browser
