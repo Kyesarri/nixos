@@ -73,6 +73,7 @@ in {
           "/storage/movies:/movies"
           "/storage/tv_shows:/tv_shows"
           "/storage/youtube:/youtube"
+          "/storage/music:/music"
 
           "/etc/oci.cont/${cfg.contName}:/config"
         ];
