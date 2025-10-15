@@ -8,7 +8,7 @@
       modesetting.enable = true;
       open = false;
       nvidiaSettings = true;
-      package = config.boot.kernelPackages.nvidiaPackages.latest;
+      package = config.boot.kernelPackages.nvidiaPackages.beta;
     };
   };
 
@@ -19,5 +19,5 @@
     tuxclocker-plugins-with-unfree
   ];
 
-  services.xserver.videoDrivers = ["nvidia"];
+  # services.xserver.videoDrivers = ["nvidia" "amdgpu"];
 }
