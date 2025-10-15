@@ -1,7 +1,5 @@
 /*
-TODO cleanup options
-cleanup comments / seperators
-just overhaul module :)
+TODO replace with niri
 */
 {
   spaghetti,
