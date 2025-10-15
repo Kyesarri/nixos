@@ -16,42 +16,47 @@
     enable = true;
     remotePlay.openFirewall = true;
     dedicatedServer.openFirewall = false;
+    extest.enable = true;
+    extraPackages = [
+      # pkgs.gamescope
+    ];
   };
 
   services.ratbagd.enable = true; # mouse configuration tool
 
   users.users.${spaghetti.user}.packages = with pkgs; [
     # prismlauncher # minecraft launcher
-    shattered-pixel-dungeon
-    pcsx2 # ps2 emulator # TODO 22/01/24 has issues building, hash mismatch
+    # shattered-pixel-dungeon
+    # pcsx2 # ps2 emulator # TODO 22/01/24 has issues building, hash mismatch
     piper # frontend for libratbag
-    protonup-qt # proton-ge # TODO get working with steam
-    gamescope # wl roots gaming compositor, needs steam config not working currently
-    ryubing # nintendo switch emulator
-    lutris-unwrapped
-    wineWowPackages.waylandFull
-    umu-launcher
-    nero-umu # will need to bump flake version
+    # protonup-qt # proton-ge # TODO get working with steam
+    # ryubing # nintendo switch emulator
+    # lutris-unwrapped
+    # wineWowPackages.waylandFull
+    # umu-launcher
+    # nero-umu # will need to bump flake version
   ];
-
+  /*
   nixpkgs.config.packageOverrides = pkgs: {
     steam = pkgs.steam.override {
       extraPkgs = pkgs:
         with pkgs; [
-          xorg.libXcursor
-          xorg.libXi
-          xorg.libXinerama
-          xorg.libXScrnSaver
-          libpng
-          libpulseaudio
-          libvorbis
-          stdenv.cc.cc.lib
-          libkrb5
-          keyutils
-          lutris-unwrapped
+          # xorg.libXcursor
+          # xorg.libXi
+          # xorg.libXinerama
+          # xorg.libXScrnSaver
+          # libpng
+          # libpulseaudio
+          # libvorbis
+          # stdenv.cc.cc.lib
+          # libkrb5
+          # keyutils
+          # lutris-unwrapped
+          glibc
         ];
     };
   };
+  */
 }
 # By default, Steam looks for custom Proton versions such as GE-Proton in ~/.steam/root/compatibilitytools.d.
 # Additionally the environment variable STEAM_EXTRA_COMPAT_TOOLS_PATHS can be set to change or add to the paths
