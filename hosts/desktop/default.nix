@@ -20,7 +20,7 @@
     ../../hardware
     ../../hardware/audio
     ../../hardware/bluetooth
-    ../../hardware/nvidia
+    # ../../hardware/nvidia
     ../../hardware/rgb
 
     # packages with configs
