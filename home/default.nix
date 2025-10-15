@@ -14,6 +14,7 @@
     ./lapce
     ./nebula
     ./nemo
+    ./niri
     ./neovim
   ];
 
