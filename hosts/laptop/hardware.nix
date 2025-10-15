@@ -1,11 +1,12 @@
 {
   lib,
   config,
-  secrets,
   modulesPath,
   ...
 }: {
   imports = [(modulesPath + "/installer/scan/not-detected.nix")];
+
+  nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
 
   zramSwap = {
     enable = true;
@@ -25,15 +26,29 @@
 
   swapDevices = [{device = "/dev/disk/by-uuid/34dbf4e5-2f1e-4677-b7e5-40b811b64605";}];
 
+  services.xserver.enable = true;
+  # services.xserver.videoDrivers = ["nvidia"];
+
   hardware = {
-    amdgpu.initrd.enable = true;
-    cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+    # testing some options for power saving
+    # have a stack of packages currently,
+    # corectl, asusd / rog control center, lact
+    # amdgpu.initrd.enable = true;
+    cpu.amd = {
+      # ryzen-smu.enable = true;
+      updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+    };
     graphics = {
       enable = true;
       enable32Bit = true;
     };
     nvidia = {
       modesetting.enable = true;
+      open = false;
+      nvidiaSettings = true;
+      powerManagement.enable = true;
+      powerManagement.finegrained = false;
+      package = config.boot.kernelPackages.nvidiaPackages.beta;
       prime = {
         amdgpuBusId = "PCI:4:0:0";
         nvidiaBusId = "PCI:1:0:0";
@@ -41,5 +56,4 @@
       };
     };
   };
-  nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
 }

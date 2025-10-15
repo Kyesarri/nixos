@@ -19,7 +19,7 @@
     ../../hardware/audio
     ../../hardware/battery
     ../../hardware/bluetooth
-    ../../hardware/nvidia
+    # ../../hardware/nvidia # testing
 
     ../../home # set some default values for home-manager
 
@@ -37,14 +37,14 @@
     ../../home/kitty # /home/shell/ under mkOption, have foot / kitty / more? in there
     ../../home/sherlock # launcher
     ../../home/kde # TODO rename kdeconnect - maybe not lol - covers lots
-    ../../home/virt # vm / container
+    # ../../home/virt # vm / container
     ../../home/wl-screenrec # testing for laptop - amd / nvidia config
     ../../home/gtk # uhh, nix-colors gtk theme iirc # TODO rename to theme?
     ../../home/prism # wallpapers
     ../../home/syncthing # sync the things
     ../../home/tailscale # not foss, temp - will replace eventually with netbird / self-hosted
     ../../home/zsh # some basic config for terminal, has modified theme for nix-colors
-    ../../home/zerotierone
+    # ../../home/zerotierone
   ];
 
   colorscheme = inputs.nix-colors.colorSchemes.${spaghetti.scheme};
@@ -73,15 +73,7 @@
     };
   };
 
-  # testing some options for power saving
-  # have a stack of packages currently,
-  # corectl, asusd / rog control center, lact
-  hardware.amdgpu.overdrive.enable = true;
-  hardware.cpu.amd.ryzen-smu.enable = true;
-
   services = {
-    lact.enable = true;
-
     # map laptop keys
     udev.extraHwdb = ''
       evdev:name:*:dmi:bvn*:bvr*:bd*:svnASUS*:pn*:*
@@ -89,7 +81,6 @@
       KEYBOARD_KEY_ff3100b2=home   # Set fn+LeftArrow as Home
       KEYBOARD_KEY_ff3100b3=end    # Set fn+RightArrow as End
     '';
-    xserver.enable = false;
   };
 
   environment.shellAliases = {

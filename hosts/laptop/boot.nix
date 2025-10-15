@@ -30,7 +30,12 @@
       }
     ];
 
-    kernelModules = ["kvm-amd" "coretemp" "asus-wmi" "asus-armoury"];
+    kernelModules = [
+      "kvm-amd"
+      "coretemp"
+      "asus-wmi"
+      "asus-armoury"
+    ];
 
     plymouth = {
       enable = true;
@@ -43,6 +48,10 @@
       "amd_pstate=active"
       "amd_prefcore=enabled"
 
+      # nvidia specific
+      "nvidia-drm.modeset=1"
+      "nvidia-drm.fbdev=1"
+
       # watchdog fixes, system specific
       "nowatchdog" # disables watchdog, was causing shutdown / reboot issues with wifi
       "clocksource=tsc" # now working with tsc nowatchdog & tsc reliable
@@ -50,13 +59,13 @@
       "tsc=reliable" # flags tsc clock as reliable, workaround to get tsc working on laptop
 
       # messing with timers
-      "highres=on" # 4k timers wew
-      "nohz=on" # tickless kernel gosh
-      "nohz_full=1-$(nproc)" # tickless mode for all but core 15? 8c16t
+      # "highres=on" # 4k timers wew
+      # "nohz=on" # tickless kernel gosh
+      # "nohz_full=1-$(nproc)" # tickless mode for all but core 15? 8c16t
 
       # messing with power savings, unsure if this is the right region to place these configs
-      "CONFIG_NO_HZ_IDLE=y"
-      "CONFIG_HZ_PERIODIC=n"
+      # "CONFIG_NO_HZ_IDLE=y"
+      # "CONFIG_HZ_PERIODIC=n"
 
       # for cleaner boot output
       "quiet"
@@ -69,6 +78,8 @@
 
     initrd = {
       verbose = false;
+      systemd.enable = true;
+      kernelModules = [];
       availableKernelModules = [
         "nvme"
         "xhci_pci"
@@ -77,8 +88,7 @@
         "usbhid"
         # "sd_mod" # scsi disk support
       ];
-      kernelModules = [];
-      systemd.enable = true;
+
       luks.devices = {
         "luks-6e5b79bf-8bde-4621-a4b4-ffa86ecac959".device = "/dev/disk/by-uuid/6e5b79bf-8bde-4621-a4b4-ffa86ecac959";
         "luks-44695fc4-ecad-4fc2-8332-bfa3c1ce19f3".device = "/dev/disk/by-uuid/44695fc4-ecad-4fc2-8332-bfa3c1ce19f3";
