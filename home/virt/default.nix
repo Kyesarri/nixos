@@ -4,16 +4,17 @@
   ...
 }: {
   users.users.${spaghetti.user} = {
-    extraGroups = ["vboxusers"];
+    extraGroups = ["vboxusers" "libvirtd"];
     packages = with pkgs; [
-      virt-manager # TODO might need some nix added to configure using qemu as default for OOBE
       libvirt
-      # qemu_full
       gnome-boxes
     ];
   };
 
+  programs.virt-manager.enable = true;
   virtualisation.spiceUSBRedirection.enable = true; # usb passthrough to vm
+  virtualisation.libvirtd.enable = true;
+  users.groups.libvirtd.members = ["${spaghetti.user}"];
 
   boot = {
     # add extra config for intel systems
