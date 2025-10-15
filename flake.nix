@@ -23,10 +23,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # quickshell = {
-    #   url = "git+https://git.outfoxxed.me/outfoxxed/quickshell";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
+    niri.url = "github:sodiboo/niri-flake";
+
     ulauncher.url = "github:ulauncher/ulauncher"; # using v6 flake
     nix-colors.url = "github:kyesarri/nix-colors"; # colour themes, fork
     prism.url = "github:IogaMaster/prism"; # wallpaper gen
