@@ -10,9 +10,11 @@
   time.timeZone = "Australia/Melbourne";
 
   nixpkgs = {
-    overlays = [];
+    overlays = [inputs.niri.overlays.niri];
     config.allowUnfree = true;
   };
+  programs.niri.package = pkgs.niri-unstable;
+  programs.niri.enable = true;
 
   nix = {
     sshServe.enable = true;
@@ -27,6 +29,7 @@
       experimental-features = ["nix-command" "flakes"]; # flakes and nixcommand required for config
       substituters = [
         "https://hyprland.cachix.org" # hyprland cache, prevents building from source tyty
+        "https://niri.cachix.org"
       ];
       trusted-public-keys = [
         "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
@@ -82,6 +85,7 @@
     corectrl.enable = true;
     dconf.enable = true;
     # uwsm.enable = true; # TODO
+    xwayland.enable = true;
     gnupg.agent = {
       enable = true;
       enableSSHSupport = true;
@@ -129,15 +133,17 @@
       # add image types "qView.desktop";
     };
   };
-
   environment = {
     sessionVariables = {
-      CLUTTER_BACKEND = "wayland";
       XDG_CACHE_HOME = "$HOME/.cache";
       XDG_CONFIG_HOME = "$HOME/.config";
       XDG_DATA_HOME = "$HOME/.local/share";
       XDG_STATE_HOME = "$HOME/.local/state";
+
       XDG_SESSION_TYPE = "wayland";
+      CLUTTER_BACKEND = "wayland";
+      # XDG_CURRENT_DESKTOP = "wayland"; # set in /home/hypr/default.nix
+
       NIXOS_OZONE_WL = "1"; # fixes electron apps in wayland... why do i use electron? fucking codium
     };
 
@@ -165,6 +171,8 @@
       netbird-ui
       lm_sensors
       inputs.agenix.packages.x86_64-linux.default
+      # inputs.niri.packages.x86_64-linux
+      nvtopPackages.full
     ];
   };
 
