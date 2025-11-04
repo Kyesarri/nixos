@@ -67,7 +67,7 @@
         inherit system specialArgs;
         modules = [
           home-manager.nixosModules.home-manager
-          ./hosts/laptop # 4800hs / 1650 / 16gb ddr4 TODO download more ram
+          ./hosts/laptop # 4800hs / 1650 / 16gb ddr4
           agenix.nixosModules.default
           {
             environment.systemPackages = [alejandra.defaultPackage.x86_64-linux];
