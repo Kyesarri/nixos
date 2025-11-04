@@ -56,6 +56,9 @@
       enable = true;
       animations = false;
     };
+
+    niri.enable = true;
+
     clipse.enable = true;
     hyprpaper.enable = true;
     caelestia-shell.enable = true;
