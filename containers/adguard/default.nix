@@ -1,3 +1,6 @@
+# TODO
+# add config for upstream dns servers - adding local access points to fix mdns not being resolved
+# [/local/]access.point.ip.here
 {
   config,
   lib,
