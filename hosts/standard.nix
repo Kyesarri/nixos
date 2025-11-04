@@ -10,11 +10,9 @@
   time.timeZone = "Australia/Melbourne";
 
   nixpkgs = {
-    overlays = [inputs.niri.overlays.niri];
+    # overlays = [pkgs.niri-unstable];
     config.allowUnfree = true;
   };
-  programs.niri.package = pkgs.niri-unstable;
-  programs.niri.enable = true;
 
   nix = {
     sshServe.enable = true;
@@ -171,7 +169,6 @@
       netbird-ui
       lm_sensors
       inputs.agenix.packages.x86_64-linux.default
-      # inputs.niri.packages.x86_64-linux
       nvtopPackages.full
     ];
   };
