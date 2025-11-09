@@ -43,6 +43,7 @@
     prism,
     self,
     wallpaper-generator,
+    niri,
     caelestia-shell,
     ...
   } @ inputs: let
