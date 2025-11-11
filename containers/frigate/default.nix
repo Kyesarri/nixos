@@ -303,7 +303,6 @@ in {
           - backpack
           - car
           - truck
-
           post_capture: 10
           pre_capture: 6
           retain:
@@ -332,20 +331,20 @@ in {
         time_format: browser
       #
       detectors:
-        ov_0:
-          type: openvino
-          device: GPU
-        ov_1:
-          type: openvino
-          device: GPU
+        onnx_0:
+          type: onnx
+        onnx_1:
+          type: onnx
       #
       model:
-        width: 300
-        height: 300
+        width: 640
+        height: 640
         input_tensor: nhwc
         input_pixel_format: bgr
-        path: /openvino-model/ssdlite_mobilenet_v2.xml
-        labelmap_path: /openvino-model/coco_91cl_bkgr.txt
+        path: /custom_models/yolox_m.onnx
+        labelmap_path: /labelmap/coco-80.txt
+        # path: /openvino-model/ssdlite_mobilenet_v2.xml
+        # labelmap_path: /openvino-model/coco_91cl_bkgr.txt
       #
       birdseye:
         enabled: false
