@@ -339,8 +339,8 @@ in {
           device: GPU
       #
       model:
-        width: 640
-        height: 640
+        width: 300
+        height: 300
         input_tensor: nhwc
         input_pixel_format: bgr
         # path: /config/model_cache/YOLOX-S/yolox_m.onnx
