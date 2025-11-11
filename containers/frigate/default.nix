@@ -111,6 +111,7 @@ in {
               input_args: preset-rtsp-restream
               roles:
               - detect
+
             output_args:
               record: preset-record-generic-audio-copy
       #
