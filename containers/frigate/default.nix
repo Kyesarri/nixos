@@ -332,7 +332,7 @@ in {
       detectors:
         onnx_0:
           type: onnx
-        onnx_0:
+        onnx_1:
           type: onnx
       #
       model:
