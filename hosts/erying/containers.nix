@@ -14,7 +14,7 @@
     ../../containers/homer
     ../../containers/orcaslicer
     ../../containers/searx
-    ../../containers/pangolin
+    # ../../containers/pangolin
   ];
 
   virtualisation = {
