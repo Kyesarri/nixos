@@ -330,14 +330,11 @@ in {
       ui:
         time_format: browser
       detectors:
-        ov_0:
-          type: openvino
-          device: GPU
-        ov_1:
-          type: openvino
-          device: GPU
         onnx_0:
           type: onnx
+        onnx_0:
+          type: onnx
+      #
       model:
         model_type: yolox
         width: 640
@@ -346,6 +343,14 @@ in {
         input_dtype: float_denorm
         path: /config/model_cache/YOLOX-S/yolox_m.onnx
         labelmap_path: /labelmap/coco-80.txt
+      #
+      #detectors:
+      #  ov_0:
+      #    type: openvino
+      #    device: GPU
+      #  ov_1:
+      #    type: openvino
+      #    device: GPU
       #
       #model:
       #  width: 300
