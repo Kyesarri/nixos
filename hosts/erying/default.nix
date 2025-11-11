@@ -42,8 +42,8 @@
 
   services = {
     openssh.enable = true;
-    xserver.enable = true; # headless # testing w toggled on
-    xserver.videoDrivers = ["nvidia" "i965" "iHD"];
+    xserver.enable = false; # headless # testing w toggled on
+    # xserver.videoDrivers = ["nvidia" "modesetting"];
     fstrim.enable = true; # ssd trim in background, not enabled by default :0
     printing.enable = false; # cpus printers
     gnome.gnome-keyring.enable = true; # keyboi
