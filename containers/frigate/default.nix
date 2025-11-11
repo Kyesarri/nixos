@@ -77,6 +77,8 @@ in {
       ##
       cameras:
         driveway:
+          lpr:
+            enabled: true
           best_image_timeout: 60
           mqtt:
             timestamp: false
@@ -197,6 +199,10 @@ in {
       ##
       ## and the rest of the config lives here
       ##
+      face_recognition:
+        enabled: true
+        model_size: large
+      #
       audio:
         enabled: true
         max_not_heard: 30
