@@ -66,6 +66,8 @@ in {
         streams:
           driveway:
             - "ffmpeg:http://${secrets.ip.drivecam}/flv?port=1935&app=bcs&stream=channel0_main.bcs&user=${secrets.user.drivecam}&password=${secrets.password.drivecam}#video=copy#audio=copy#audio=opus"
+          driveway_sub:
+            - "ffmpeg:http://${secrets.ip.drivecam}/flv?port=1935&app=bcs&stream=channel0_ext.bcs&user=${secrets.user.drivecam}&password=${secrets.password.drivecam}"
           entry:
             - "ffmpeg:http://${secrets.ip.entrycam}/flv?port=1935&app=bcs&stream=channel0_main.bcs&user=${secrets.user.entrycam}&password=${secrets.password.entrycam}#video=copy#audio=copy#audio=opus"
           front:
@@ -99,15 +101,18 @@ in {
               inertia: 3
               loitering_time: 0
           ffmpeg:
-            output_args:
-              record: preset-record-generic-audio-copy
             inputs:
             - path: rtsp://127.0.0.1:8554/driveway
               input_args: preset-rtsp-restream
               roles:
               - record
-              - detect
               - audio
+            - path: rtsp://127.0.0.1:8554/driveway_sub
+              input_args: preset-rtsp-restream
+              roles:
+              - detect
+            output_args:
+              record: preset-record-generic-audio-copy
       #
         entry:
           lpr:
@@ -349,10 +354,7 @@ in {
         ov_0:
           type: openvino
           device: GPU
-       # ov_1:
-       #   type: openvino
-       #   device: GPU
-
+      #
       model:
         width: 300
         height: 300
