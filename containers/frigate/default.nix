@@ -98,6 +98,8 @@ in {
               coordinates: 0.448,0.217,0.412,0.25,1,0.369,1,0.289,0.474,0.191
               inertia: 3
               loitering_time: 0
+          objects:
+            - lpr
           ffmpeg:
             output_args:
               record: preset-record-generic-audio-copy
@@ -110,6 +112,8 @@ in {
               - audio
       #
         entry:
+          lpr:
+          enabled: false
           best_image_timeout: 60
           mqtt:
             timestamp: false
@@ -149,6 +153,8 @@ in {
               - audio
       #
         front:
+          lpr:
+            enabled: false
           best_image_timeout: 60
           mqtt:
             timestamp: false
