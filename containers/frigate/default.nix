@@ -331,20 +331,22 @@ in {
         time_format: browser
       #
       detectors:
-        onnx_0:
-          type: onnx
-        onnx_1:
-          type: onnx
+        ov_0:
+          type: openvino
+          device: GPU
+        ov_1:
+          type: openvino
+          device: GPU
       #
       model:
         width: 640
         height: 640
         input_tensor: nhwc
         input_pixel_format: bgr
-        path: /config/model_cache/YOLOX-S/yolox_m.onnx
-        labelmap_path: /labelmap/coco-80.txt
-        # path: /openvino-model/ssdlite_mobilenet_v2.xml
-        # labelmap_path: /openvino-model/coco_91cl_bkgr.txt
+        # path: /config/model_cache/YOLOX-S/yolox_m.onnx
+        # labelmap_path: /labelmap/coco-80.txt
+        path: /openvino-model/ssdlite_mobilenet_v2.xml
+        labelmap_path: /openvino-model/coco_91cl_bkgr.txt
       #
       birdseye:
         enabled: false
