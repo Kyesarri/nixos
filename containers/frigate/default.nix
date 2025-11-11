@@ -341,7 +341,7 @@ in {
         height: 640
         input_tensor: nhwc
         input_pixel_format: bgr
-        path: /custom_models/yolox_m.onnx
+        path: /config/model_cache/YOLOX-S/yolox_m.onnx
         labelmap_path: /labelmap/coco-80.txt
         # path: /openvino-model/ssdlite_mobilenet_v2.xml
         # labelmap_path: /openvino-model/coco_91cl_bkgr.txt
