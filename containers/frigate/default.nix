@@ -70,8 +70,8 @@ in {
             - "ffmpeg:http://${secrets.ip.entrycam}/flv?port=1935&app=bcs&stream=channel0_main.bcs&user=${secrets.user.entrycam}&password=${secrets.password.entrycam}#video=copy#audio=copy#audio=opus"
           front:
             - "ffmpeg:http://${secrets.ip.frontcam}/flv?port=1935&app=bcs&stream=channel0_main.bcs&user=${secrets.user.frontcam}&password=${secrets.password.frontcam}#video=copy#audio=copy#audio=opus"
-          back:
-            - "ffmpeg:http://${secrets.ip.backcam}/flv?port=1935&app=bcs&stream=channel0_main.bcs&user=${secrets.user.backcam}&password=${secrets.password.backcam}#video=copy#audio=copy#audio=opus"
+          ## back:
+          ##   - "ffmpeg:http://${secrets.ip.backcam}/flv?port=1935&app=bcs&stream=channel0_main.bcs&user=${secrets.user.backcam}&password=${secrets.password.backcam}#video=copy#audio=copy#audio=opus"
       ##
       ## now to configure the cameras, zones and motion masks
       ##
@@ -175,24 +175,24 @@ in {
               - detect
               - audio
       #
-        back:
-          best_image_timeout: 60
-          mqtt:
-            timestamp: false
-            bounding_box: false
-            crop: true
-            quality: 100
-            height: 1920 # was 500 - testing
-          ffmpeg:
-            output_args:
-              record: preset-record-generic-audio-copy
-            inputs:
-            - path: rtsp://127.0.0.1:8554/back
-              input_args: preset-rtsp-restream
-              roles:
-              - record
-              - detect
-              - audio
+      #  back:
+      #    best_image_timeout: 60
+      #    mqtt:
+      #      timestamp: false
+      #      bounding_box: false
+      #      crop: true
+      #      quality: 100
+      #      height: 1920 # was 500 - testing
+      #    ffmpeg:
+      #      output_args:
+      #        record: preset-record-generic-audio-copy
+      #      inputs:
+      #      - path: rtsp://127.0.0.1:8554/back
+      #        input_args: preset-rtsp-restream
+      #        roles:
+      #        - record
+      #        - detect
+      #        - audio
       #
       ##
       ## and the rest of the config lives here
