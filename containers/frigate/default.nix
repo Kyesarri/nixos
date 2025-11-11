@@ -99,7 +99,8 @@ in {
               inertia: 3
               loitering_time: 0
           objects:
-            - lpr
+            - car
+            - truck
           ffmpeg:
             output_args:
               record: preset-record-generic-audio-copy
@@ -208,6 +209,8 @@ in {
       face_recognition:
         enabled: true
         model_size: large
+      lpr:
+        enabled: true
       #
       audio:
         enabled: true
