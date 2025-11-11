@@ -98,9 +98,6 @@ in {
               coordinates: 0.448,0.217,0.412,0.25,1,0.369,1,0.289,0.474,0.191
               inertia: 3
               loitering_time: 0
-          objects:
-            - car
-            - truck
           ffmpeg:
             output_args:
               record: preset-record-generic-audio-copy
@@ -114,7 +111,7 @@ in {
       #
         entry:
           lpr:
-          enabled: false
+            enabled: false
           best_image_timeout: 60
           mqtt:
             timestamp: false
@@ -304,6 +301,9 @@ in {
           - phone
           - package
           - backpack
+          - car
+          - truck
+
           post_capture: 10
           pre_capture: 6
           retain:
