@@ -349,9 +349,9 @@ in {
         ov_0:
           type: openvino
           device: GPU
-        ov_1:
-          type: openvino
-          device: GPU
+       # ov_1:
+       #   type: openvino
+       #   device: GPU
 
       model:
         width: 300
