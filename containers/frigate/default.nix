@@ -337,11 +337,11 @@ in {
       #
       model:
         model_type: yolox
-        width: 640
-        height: 640
+        width: 416
+        height: 416
         input_tensor: nchw
         input_dtype: float_denorm
-        path: /config/model_cache/YOLOX/yolox_s.onnx
+        path: /config/model_cache/YOLOX/yolox_nano.onnx
         labelmap_path: /labelmap/coco-80.txt
       #
       #detectors:
