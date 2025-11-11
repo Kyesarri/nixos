@@ -18,7 +18,7 @@
   hardware = {
     cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
     enableRedistributableFirmware = lib.mkDefault true;
-    nvidia-container-toolkit.enable = true; # enable nvidia gpu passthrough
+    # nvidia-container-toolkit.enable = true; # enable nvidia gpu passthrough
 
     sensor.hddtemp = {
       enable = true;
