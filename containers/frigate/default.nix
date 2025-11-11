@@ -67,11 +67,17 @@ in {
           driveway:
             - "ffmpeg:http://${secrets.ip.drivecam}/flv?port=1935&app=bcs&stream=channel0_main.bcs&user=${secrets.user.drivecam}&password=${secrets.password.drivecam}#video=copy#audio=copy#audio=opus"
           driveway_sub:
-            - "ffmpeg:http://${secrets.ip.drivecam}/flv?port=1935&app=bcs&stream=channel0_ext.bcs&user=${secrets.user.drivecam}&password=${secrets.password.drivecam}"
+            - "ffmpeg:http://${secrets.ip.drivecam}/flv?port=1935&app=bcs&stream=channel0_ext.bcs&user=${secrets.user.drivecam}&password=${secrets.password.drivecam}#video=copy"
+          #
           entry:
             - "ffmpeg:http://${secrets.ip.entrycam}/flv?port=1935&app=bcs&stream=channel0_main.bcs&user=${secrets.user.entrycam}&password=${secrets.password.entrycam}#video=copy#audio=copy#audio=opus"
+          entry_sub:
+            - "ffmpeg:http://${secrets.ip.entrycam}/flv?port=1935&app=bcs&stream=channel0_ext.bcs&user=${secrets.user.entrycam}&password=${secrets.password.entrycam}#video=copy"
+          #
           front:
             - "ffmpeg:http://${secrets.ip.frontcam}/flv?port=1935&app=bcs&stream=channel0_main.bcs&user=${secrets.user.frontcam}&password=${secrets.password.frontcam}#video=copy#audio=copy#audio=opus"
+          front_sub:
+            - "ffmpeg:http://${secrets.ip.frontcam}/flv?port=1935&app=bcs&stream=channel0_ext.bcs&user=${secrets.user.frontcam}&password=${secrets.password.frontcam}#video=copy"
           ## back:
           ##   - "ffmpeg:http://${secrets.ip.backcam}/flv?port=1935&app=bcs&stream=channel0_main.bcs&user=${secrets.user.backcam}&password=${secrets.password.backcam}#video=copy#audio=copy#audio=opus"
       ##
@@ -111,7 +117,6 @@ in {
               input_args: preset-rtsp-restream
               roles:
               - detect
-
             output_args:
               record: preset-record-generic-audio-copy
       #
@@ -146,15 +151,18 @@ in {
               - 0,0,0.586,0,0.583,0.019,0.24,0.07,0,0.38
               - 0.187,0.132,0.209,0.493,0.224,0.768,0.268,1,0,1,0,0.368
           ffmpeg:
-            output_args:
-              record: preset-record-generic-audio-copy
             inputs:
             - path: rtsp://127.0.0.1:8554/entry
               input_args: preset-rtsp-restream
               roles:
               - record
-              - detect
               - audio
+            - path: rtsp://127.0.0.1:8554/entry_sub
+              input_args: preset-rtsp-restream
+              roles:
+              - detect
+            output_args:
+              record: preset-record-generic-audio-copy
       #
         front:
           lpr:
@@ -177,15 +185,18 @@ in {
                 0.001,0.227,0.247,0.193,0.521,0.179,0.904,0.23,0.999,0.238,1,0.174,0.731,0.137,0.44,0.113,0.215,0.126,0,0.171
               loitering_time: 0
           ffmpeg:
-            output_args:
-              record: preset-record-generic-audio-copy
             inputs:
             - path: rtsp://127.0.0.1:8554/front
               input_args: preset-rtsp-restream
               roles:
               - record
-              - detect
               - audio
+            - path: rtsp://127.0.0.1:8554/front_sub
+              input_args: preset-rtsp-restream
+              roles:
+              - detect
+            output_args:
+              record: preset-record-generic-audio-copy
       #
       #  back:
       #    best_image_timeout: 60
