@@ -341,7 +341,7 @@ in {
         height: 640
         input_tensor: nchw
         input_dtype: float_denorm
-        path: /config/model_cache/YOLOX-S/yolox_m.onnx
+        path: /config/model_cache/YOLOX/yolox_s.onnx
         labelmap_path: /labelmap/coco-80.txt
       #
       #detectors:
@@ -360,8 +360,6 @@ in {
       #  path: /openvino-model/ssdlite_mobilenet_v2.xml
       #  labelmap_path: /labelmap.txt
       #  model_type: ssd
-      #  # path: /config/model_cache/YOLOX-S/yolox_m.onnx
-      #  # labelmap_path: /labelmap/coco-80.txt
       #
       birdseye:
         enabled: false
