@@ -329,37 +329,38 @@ in {
       #
       ui:
         time_format: browser
-      detectors:
-        onnx_0:
-          type: onnx
-        onnx_1:
-          type: onnx
-      #
-      model:
-        model_type: yolox
-        width: 416
-        height: 416
-        input_tensor: nchw
-        input_dtype: float_denorm
-        path: /config/model_cache/YOLOX/yolox_nano.onnx
-        labelmap_path: /labelmap/coco-80.txt
       #
       #detectors:
-      #  ov_0:
-      #    type: openvino
-      #    device: GPU
-      #  ov_1:
-      #    type: openvino
-      #    device: GPU
+      #  onnx_0:
+      #    type: onnx
+      #  onnx_1:
+      #    type: onnx
       #
       #model:
-      #  width: 300
-      #  height: 300
-      #  input_tensor: nhwc
-      #  input_pixel_format: bgr
-      #  path: /openvino-model/ssdlite_mobilenet_v2.xml
-      #  labelmap_path: /labelmap.txt
-      #  model_type: ssd
+      #  model_type: yolox
+      #  width: 416
+      #  height: 416
+      #  input_tensor: nchw
+      #  input_dtype: float_denorm
+      #  path: /config/model_cache/YOLOX/yolox_nano.onnx
+      #  labelmap_path: /labelmap/coco-80.txt
+      #
+      detectors:
+        ov_0:
+          type: openvino
+          device: GPU
+        ov_1:
+          type: openvino
+          device: GPU
+
+      model:
+        width: 300
+        height: 300
+        input_tensor: nhwc
+        input_pixel_format: bgr
+        path: /openvino-model/ssdlite_mobilenet_v2.xml
+        labelmap_path: /labelmap.txt
+        model_type: ssd
       #
       birdseye:
         enabled: false
