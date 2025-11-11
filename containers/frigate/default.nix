@@ -347,12 +347,12 @@ in {
       ui:
         time_format: browser
       #
+      # dual onnx detectors that seem to run on the cpu?:
       detectors:
         onnx_0:
           type: onnx
-        openvino_0:
-          type: openvino
-          device: gpu
+        onnx_1:
+          type: onnx
 
       model:
         model_type: yolox
