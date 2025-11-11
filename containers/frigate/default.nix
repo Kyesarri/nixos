@@ -343,10 +343,12 @@ in {
         height: 300
         input_tensor: nhwc
         input_pixel_format: bgr
+        path: /openvino-model/ssdlite_mobilenet_v2.xml
+        labelmap_path: /labelmap.txt
+        # Valid values are ssd, yolox, yolonas (default: shown below)
+        model_type: ssd
         # path: /config/model_cache/YOLOX-S/yolox_m.onnx
         # labelmap_path: /labelmap/coco-80.txt
-        path: /openvino-model/ssdlite_mobilenet_v2.xml
-        labelmap_path: /openvino-model/coco_91cl_bkgr.txt
       #
       birdseye:
         enabled: false
