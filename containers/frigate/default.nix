@@ -109,6 +109,8 @@ in {
               inertia: 3
               loitering_time: 0
           ffmpeg:
+            output_args:
+              record: preset-record-generic-audio-copy
             inputs:
             - path: rtsp://127.0.0.1:8554/driveway
               input_args: preset-rtsp-restream
@@ -120,8 +122,12 @@ in {
             #  input_args: preset-rtsp-restream
             #  roles:
             #  - detect
-            output_args:
-              record: preset-record-generic-audio-copy
+          motion:
+            threshold: 25
+            contour_area: 30
+            improve_contrast: true
+
+
       #
         entry:
           lpr:
