@@ -329,7 +329,7 @@ in {
           - car
           - truck
           post_capture: 10
-          pre_capture: 6
+          pre_capture: 10
           retain:
             default: 45
             mode: motion
