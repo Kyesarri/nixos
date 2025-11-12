@@ -124,10 +124,11 @@ in {
             #  - detect
           motion:
             threshold: 25
-            contour_area: 30
+            contour_area: 5
             improve_contrast: true
-
-
+            mask:
+              - 0.044,0,0.12,0.164,0.247,0.151,0.292,0
+              - 1,0,0.883,0,0.844,0.254,0.999,0.282
       #
         entry:
           lpr:
@@ -206,6 +207,10 @@ in {
               - detect
             output_args:
               record: preset-record-generic-audio-copy
+            motion:
+              threshold: 70
+              contour_area: 15
+              improve_contrast: true
       #
       #  back:
       #    best_image_timeout: 60
