@@ -66,8 +66,8 @@ in {
         streams:
           driveway:
             - "ffmpeg:http://${secrets.ip.drivecam}/flv?port=1935&app=bcs&stream=channel0_main.bcs&user=${secrets.user.drivecam}&password=${secrets.password.drivecam}#video=copy#audio=copy#audio=opus"
-          driveway_sub:
-            - "ffmpeg:http://${secrets.ip.drivecam}/flv?port=1935&app=bcs&stream=channel0_ext.bcs&user=${secrets.user.drivecam}&password=${secrets.password.drivecam}#video=copy"
+          #driveway_sub:
+          #  - "ffmpeg:http://${secrets.ip.drivecam}/flv?port=1935&app=bcs&stream=channel0_ext.bcs&user=${secrets.user.drivecam}&password=${secrets.password.drivecam}#video=copy"
           #
           entry:
             - "ffmpeg:http://${secrets.ip.entrycam}/flv?port=1935&app=bcs&stream=channel0_main.bcs&user=${secrets.user.entrycam}&password=${secrets.password.entrycam}#video=copy#audio=copy#audio=opus"
@@ -78,8 +78,10 @@ in {
             - "ffmpeg:http://${secrets.ip.frontcam}/flv?port=1935&app=bcs&stream=channel0_main.bcs&user=${secrets.user.frontcam}&password=${secrets.password.frontcam}#video=copy#audio=copy#audio=opus"
           front_sub:
             - "ffmpeg:http://${secrets.ip.frontcam}/flv?port=1935&app=bcs&stream=channel0_ext.bcs&user=${secrets.user.frontcam}&password=${secrets.password.frontcam}#video=copy"
-          ## back:
-          ##   - "ffmpeg:http://${secrets.ip.backcam}/flv?port=1935&app=bcs&stream=channel0_main.bcs&user=${secrets.user.backcam}&password=${secrets.password.backcam}#video=copy#audio=copy#audio=opus"
+          #back:
+          #  - "ffmpeg:http://${secrets.ip.backcam}/flv?port=1935&app=bcs&stream=channel0_main.bcs&user=${secrets.user.backcam}&password=${secrets.password.backcam}#video=copy#audio=copy#audio=opus"
+          #back_sub
+          #  - "ffmpeg:http://${secrets.ip.backcam}/flv?port=1935&app=bcs&stream=channel0_ext.bcs&user=${secrets.user.backcam}&password=${secrets.password.backcam}#video=copy"
       ##
       ## now to configure the cameras, zones and motion masks
       ##
@@ -113,10 +115,11 @@ in {
               roles:
               - record
               - audio
-            - path: rtsp://127.0.0.1:8554/driveway_sub
-              input_args: preset-rtsp-restream
-              roles:
               - detect
+            #- path: rtsp://127.0.0.1:8554/driveway_sub
+            #  input_args: preset-rtsp-restream
+            #  roles:
+            #  - detect
             output_args:
               record: preset-record-generic-audio-copy
       #
@@ -214,8 +217,11 @@ in {
       #        input_args: preset-rtsp-restream
       #        roles:
       #        - record
-      #        - detect
       #        - audio
+      #      - path: rtsp://127.0.0.1:8554/back_sub
+      #        input_args: preset-rtsp-restream
+      #        roles:
+      #        - detect
       #
       ##
       ## and the rest of the config lives here
