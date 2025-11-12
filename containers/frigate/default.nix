@@ -312,6 +312,8 @@ in {
             - phone
             - package
             - backpack
+            - car
+            - truck
       #
       record:
         enabled: true
