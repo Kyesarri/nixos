@@ -207,10 +207,10 @@ in {
               - detect
             output_args:
               record: preset-record-generic-audio-copy
-            motion:
-              threshold: 70
-              contour_area: 15
-              improve_contrast: true
+          motion:
+            threshold: 70
+            contour_area: 15
+            improve_contrast: true
       #
       #  back:
       #    best_image_timeout: 60
