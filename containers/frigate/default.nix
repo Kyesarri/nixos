@@ -401,7 +401,11 @@ in {
         enabled: false
       #
       genai:
-        enabled: false
+        enabled: true
+      version: 0.16-0
+      classification:
+        bird:
+          enabled: true
     '';
   };
 }
