@@ -78,7 +78,7 @@ in {
             - "ffmpeg:http://${secrets.ip.frontcam}/flv?port=1935&app=bcs&stream=channel0_ext.bcs&user=${secrets.user.frontcam}&password=${secrets.password.frontcam}#video=copy"
           back:
             - "ffmpeg:http://${secrets.ip.backcam}/flv?port=1935&app=bcs&stream=channel0_main.bcs&user=${secrets.user.backcam}&password=${secrets.password.backcam}#video=copy#audio=copy#audio=opus"
-          back_sub
+          back_sub:
             - "ffmpeg:http://${secrets.ip.backcam}/flv?port=1935&app=bcs&stream=channel0_ext.bcs&user=${secrets.user.backcam}&password=${secrets.password.backcam}#video=copy"
       #
       cameras:
