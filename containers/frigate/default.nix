@@ -46,7 +46,7 @@ in {
 
     extraOptions = [
       "--privileged"
-      "--shm-size=1024m"
+      "--shm-size=1536m"
       "--device=/dev/dri/renderD128" # igpu
       "--mount=type=tmpfs,target=/tmp/cache,tmpfs-size=1000000000" # tempfs
       "--network=macvlan_lan:ip=${secrets.ip.frigate}"
@@ -76,10 +76,10 @@ in {
             - "ffmpeg:http://${secrets.ip.frontcam}/flv?port=1935&app=bcs&stream=channel0_main.bcs&user=${secrets.user.frontcam}&password=${secrets.password.frontcam}#video=copy#audio=copy#audio=opus"
           front_sub:
             - "ffmpeg:http://${secrets.ip.frontcam}/flv?port=1935&app=bcs&stream=channel0_ext.bcs&user=${secrets.user.frontcam}&password=${secrets.password.frontcam}#video=copy"
-          #back:
-          #  - "ffmpeg:http://${secrets.ip.backcam}/flv?port=1935&app=bcs&stream=channel0_main.bcs&user=${secrets.user.backcam}&password=${secrets.password.backcam}#video=copy#audio=copy#audio=opus"
-          #back_sub
-          #  - "ffmpeg:http://${secrets.ip.backcam}/flv?port=1935&app=bcs&stream=channel0_ext.bcs&user=${secrets.user.backcam}&password=${secrets.password.backcam}#video=copy"
+          back:
+            - "ffmpeg:http://${secrets.ip.backcam}/flv?port=1935&app=bcs&stream=channel0_main.bcs&user=${secrets.user.backcam}&password=${secrets.password.backcam}#video=copy#audio=copy#audio=opus"
+          back_sub
+            - "ffmpeg:http://${secrets.ip.backcam}/flv?port=1935&app=bcs&stream=channel0_ext.bcs&user=${secrets.user.backcam}&password=${secrets.password.backcam}#video=copy"
       #
       cameras:
         driveway:
@@ -104,6 +104,9 @@ in {
               coordinates: 0.448,0.217,0.412,0.25,1,0.369,1,0.289,0.474,0.191
               inertia: 3
               loitering_time: 0
+          review:
+            alerts:
+              required_zones: carpark
           ffmpeg:
             output_args:
               record: preset-record-generic-audio-copy
@@ -201,27 +204,27 @@ in {
             contour_area: 15
             improve_contrast: true
       #
-      #  back:
-      #    best_image_timeout: 60
-      #    mqtt:
-      #      timestamp: false
-      #      bounding_box: false
-      #      crop: true
-      #      quality: 100
-      #      height: 1920 # was 500 - testing
-      #    ffmpeg:
-      #      output_args:
-      #        record: preset-record-generic-audio-copy
-      #      inputs:
-      #      - path: rtsp://127.0.0.1:8554/back
-      #        input_args: preset-rtsp-restream
-      #        roles:
-      #        - record
-      #        - audio
-      #      - path: rtsp://127.0.0.1:8554/back_sub
-      #        input_args: preset-rtsp-restream
-      #        roles:
-      #        - detect
+        back:
+          best_image_timeout: 60
+          mqtt:
+            timestamp: false
+            bounding_box: false
+            crop: true
+            quality: 100
+            height: 1920 # was 500 - testing
+          ffmpeg:
+            output_args:
+              record: preset-record-generic-audio-copy
+            inputs:
+            - path: rtsp://127.0.0.1:8554/back
+              input_args: preset-rtsp-restream
+              roles:
+              - record
+              - audio
+            - path: rtsp://127.0.0.1:8554/back_sub
+              input_args: preset-rtsp-restream
+              roles:
+              - detect
       #
       face_recognition:
         enabled: true
