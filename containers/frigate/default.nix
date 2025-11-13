@@ -296,6 +296,7 @@ in {
         - cat
         - person
         - dog
+        - bird
         - bike
         - phone
         - package
@@ -308,6 +309,7 @@ in {
             - cat
             - person
             - dog
+            - bird
             - bike
             - phone
             - package
