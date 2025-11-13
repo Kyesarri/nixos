@@ -332,18 +332,18 @@ in {
       record:
         enabled: true
         expire_interval: 60
-        mode: all
         alerts:
+          mode: all
           post_capture: 10
           pre_capture: 10
           retain:
             days: 45
         detections:
+            mode: all
           pre_capture: 10
           post_capture: 10
           retain:
             days: 45
-            mode: all
         sync_recordings: false
       #
       snapshots:
