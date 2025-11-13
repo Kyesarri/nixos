@@ -337,11 +337,13 @@ in {
           pre_capture: 10
           retain:
             days: 45
+            mode: all
         detections:
           pre_capture: 10
           post_capture: 10
           retain:
             days: 45
+            mode: all
         sync_recordings: false
       #
       snapshots:
