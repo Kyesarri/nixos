@@ -333,13 +333,11 @@ in {
         enabled: true
         expire_interval: 60
         alerts:
-          mode: all
           post_capture: 10
           pre_capture: 10
           retain:
             days: 45
         detections:
-          mode: all
           pre_capture: 10
           post_capture: 10
           retain:
