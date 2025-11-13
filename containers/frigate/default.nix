@@ -313,8 +313,8 @@ in {
         - phone
         - package
         - backpack
-        - car
-        - truck
+        #- car
+
       #
       review:
         alerts:
@@ -326,8 +326,8 @@ in {
             - phone
             - package
             - backpack
-            - car
-            - truck
+            #- car
+
       #
       record:
         enabled: true
