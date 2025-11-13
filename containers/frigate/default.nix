@@ -339,7 +339,7 @@ in {
           retain:
             days: 45
         detections:
-            mode: all
+          mode: all
           pre_capture: 10
           post_capture: 10
           retain:
