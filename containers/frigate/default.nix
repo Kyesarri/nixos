@@ -280,6 +280,7 @@ in {
           ws4py: info
       #
       motion:
+        enabled: true
         threshold: 90
         improve_contrast: true
       #
@@ -312,6 +313,8 @@ in {
         - phone
         - package
         - backpack
+        - car
+        - truck
       #
       review:
         alerts:
@@ -328,26 +331,19 @@ in {
       #
       record:
         enabled: true
-        events:
-          objects:
-          - cat
-          - person
-          - dog
-          - bike
-          - phone
-          - package
-          - backpack
-          - car
-          - truck
+        expire_interval: 60
+        mode: all
+        alerts:
           post_capture: 10
           pre_capture: 10
           retain:
-            default: 45
-            mode: motion
-        expire_interval: 60
-        retain:
-          days: 0
-          mode: all
+            days: 45
+        detections:
+          pre_capture: 10
+          post_capture: 10
+          retain:
+            days: 45
+            mode: all
         sync_recordings: false
       #
       snapshots:
@@ -360,13 +356,13 @@ in {
       #
       semantic_search:
         enabled: true
-        reindex: false
+        reindex: true
         model_size: large
       #
       ui:
         time_format: browser
       #
-      # dual onnx detectors that seem to run on the cpu?:
+      # dual onnx detector
       detectors:
         onnx_0:
           type: onnx
@@ -381,6 +377,16 @@ in {
         input_dtype: float_denorm
         path: /config/model_cache/YOLOX/yolox_nano.onnx
         labelmap_path: /labelmap/coco-80.txt
+      #
+      birdseye:
+        enabled: false
+      #
+      genai:
+        enabled: true
+      version: 0.16-0
+      classification:
+        bird:
+          enabled: true
       #
       # single ov detector running on iGPU:
       #detectors:
@@ -397,15 +403,6 @@ in {
       #  labelmap_path: /labelmap.txt
       #  model_type: ssd
       #
-      birdseye:
-        enabled: false
-      #
-      genai:
-        enabled: true
-      version: 0.16-0
-      classification:
-        bird:
-          enabled: true
     '';
   };
 }
