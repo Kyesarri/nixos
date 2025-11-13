@@ -59,9 +59,7 @@ in {
     uid = 1000;
     gid = 1000;
     text = ''
-      ##
-      ## lets setup our camera feeds
-      ##
+      #
       go2rtc:
         streams:
           driveway:
@@ -82,9 +80,7 @@ in {
           #  - "ffmpeg:http://${secrets.ip.backcam}/flv?port=1935&app=bcs&stream=channel0_main.bcs&user=${secrets.user.backcam}&password=${secrets.password.backcam}#video=copy#audio=copy#audio=opus"
           #back_sub
           #  - "ffmpeg:http://${secrets.ip.backcam}/flv?port=1935&app=bcs&stream=channel0_ext.bcs&user=${secrets.user.backcam}&password=${secrets.password.backcam}#video=copy"
-      ##
-      ## now to configure the cameras, zones and motion masks
-      ##
+      #
       cameras:
         driveway:
           lpr:
@@ -124,7 +120,7 @@ in {
             #  - detect
           motion:
             threshold: 25
-            contour_area: 5
+            contour_area: 10
             improve_contrast: true
             mask:
               - 0,0,0,0.292,0.247,0.151,0.292,0
@@ -157,10 +153,15 @@ in {
               coordinates: 0.203,0.286,0.332,0.284,0.327,0.136,0.195,0.161
               loitering_time: 0
           motion:
+            threshold: 70
+            contour_area: 15
+            improve_contrast: true
             mask:
               - 0,0,0.586,0,0.583,0.019,0.24,0.07,0,0.38
               - 0.187,0.132,0.209,0.493,0.224,0.768,0.268,1,0,1,0,0.368
           ffmpeg:
+            output_args:
+              record: preset-record-generic-audio-copy
             inputs:
             - path: rtsp://127.0.0.1:8554/entry
               input_args: preset-rtsp-restream
@@ -171,8 +172,6 @@ in {
               input_args: preset-rtsp-restream
               roles:
               - detect
-            output_args:
-              record: preset-record-generic-audio-copy
       #
         front:
           lpr:
@@ -184,17 +183,9 @@ in {
             crop: true
             quality: 100
             height: 1920 # was 500 - testing
-          zones:
-            lawn:
-              coordinates:
-                0.088,0.254,0.463,0.242,0.841,0.265,0.98,0.579,0.967,0.78,0.864,1,0,1,0.001,0.332
-              loitering_time: 0
-              inertia: 3
-            nature-strip:
-              coordinates:
-                0.001,0.227,0.247,0.193,0.521,0.179,0.904,0.23,0.999,0.238,1,0.174,0.731,0.137,0.44,0.113,0.215,0.126,0,0.171
-              loitering_time: 0
           ffmpeg:
+            output_args:
+              record: preset-record-generic-audio-copy
             inputs:
             - path: rtsp://127.0.0.1:8554/front
               input_args: preset-rtsp-restream
@@ -205,8 +196,6 @@ in {
               input_args: preset-rtsp-restream
               roles:
               - detect
-            output_args:
-              record: preset-record-generic-audio-copy
           motion:
             threshold: 70
             contour_area: 15
@@ -234,12 +223,10 @@ in {
       #        roles:
       #        - detect
       #
-      ##
-      ## and the rest of the config lives here
-      ##
       face_recognition:
         enabled: true
         model_size: large
+      #
       lpr:
         enabled: true
       #
@@ -266,7 +253,7 @@ in {
       #
       detect:
         enabled: true
-        fps: 5
+        fps: 10 # test, see what usage looks like
         width: 2560
         height: 1920
         stationary:
@@ -314,7 +301,6 @@ in {
         - package
         - backpack
         #- car
-
       #
       review:
         alerts:
@@ -327,7 +313,6 @@ in {
             - package
             - backpack
             #- car
-
       #
       record:
         enabled: true
@@ -362,13 +347,12 @@ in {
       ui:
         time_format: browser
       #
-      # dual onnx detector
       detectors:
         onnx_0:
           type: onnx
         onnx_1:
           type: onnx
-
+      #
       model:
         model_type: yolox
         width: 416
@@ -383,12 +367,13 @@ in {
       #
       genai:
         enabled: true
+      #
       version: 0.16-0
+      #
       classification:
         bird:
           enabled: true
       #
-      # single ov detector running on iGPU:
       #detectors:
       #  ov_0:
       #    type: openvino
