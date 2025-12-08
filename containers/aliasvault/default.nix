@@ -34,15 +34,15 @@ Self hosted / single container install
         wantedBy = ["podman-compose-aliasvault-root.target"];
       };
 
-      "podman-forgejo-cloudflared" = {
+      "podman-aliasvault-cloudflared" = {
         serviceConfig = {Restart = lib.mkOverride 90 "always";};
         after = [
-          "podman-network-forgejo.service"
-          "podman-forgejo.service"
+          "podman-network-aliasvault.service"
+          "podman-aliasvault.service"
         ];
-        requires = ["podman-network-forgejo.service"];
-        partOf = ["podman-forgejo-root.target"];
-        wantedBy = ["podman-forgejo-root.target"];
+        requires = ["podman-network-aliasvault.service"];
+        partOf = ["podman-aliasvault-root.target"];
+        wantedBy = ["podman-aliasvault-root.target"];
       };
 
       "podman-volume-aliasvault-db" = {
