@@ -30,8 +30,8 @@ Self hosted / single container install
           "podman-aliasvault.service"
           "podman-aliasvault-cloudflared.service"
         ];
-        partOf = ["podman-compose-aliasvault-root.target"];
-        wantedBy = ["podman-compose-aliasvault-root.target"];
+        partOf = ["podman-aliasvault-root.target"];
+        wantedBy = ["podman-aliasvault-root.target"];
       };
 
       "podman-aliasvault-cloudflared" = {
@@ -86,8 +86,8 @@ Self hosted / single container install
           ExecStop = "podman network rm -f aliasvault";
         };
         script = ''podman network inspect aliasvault || podman network create aliasvault'';
-        partOf = ["podman-compose-aliasvault-root.target"];
-        wantedBy = ["podman-compose-aliasvault-root.target"];
+        partOf = ["podman-aliasvault-root.target"];
+        wantedBy = ["podman-aliasvault-root.target"];
       };
     };
   };
