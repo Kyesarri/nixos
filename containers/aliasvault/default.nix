@@ -1,0 +1,139 @@
+/*
+AliasVault
+
+A privacy-first password manager with built-in email aliasing.
+Fully encrypted and self-hostable.
+
+Self hosted / single container install
+*/
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}: {
+  systemd = {
+    targets."podman-compose-aliasvault-root" = {
+      unitConfig = {Description = "root target";};
+      wantedBy = ["multi-user.target"];
+    };
+
+    services = {
+      "podman-aliasvault" = {
+        serviceConfig = {Restart = lib.mkOverride 90 "always";};
+        after = [
+          "podman-network-aliasvault.service"
+          "podman-aliasvault-cloudflared.service"
+        ];
+        requires = [
+          "podman-aliasvault.service"
+          "podman-aliasvault-cloudflared.service"
+        ];
+        partOf = ["podman-compose-aliasvault-root.target"];
+        wantedBy = ["podman-compose-aliasvault-root.target"];
+      };
+
+      "podman-forgejo-cloudflared" = {
+        serviceConfig = {Restart = lib.mkOverride 90 "always";};
+        after = [
+          "podman-network-forgejo.service"
+          "podman-forgejo.service"
+        ];
+        requires = ["podman-network-forgejo.service"];
+        partOf = ["podman-forgejo-root.target"];
+        wantedBy = ["podman-forgejo-root.target"];
+      };
+
+      "podman-volume-aliasvault-db" = {
+        path = [pkgs.podman];
+        script = ''podman volume inspect aliasvault-db || podman volume create aliasvault-db'';
+        partOf = ["podman-aliasvault-root.target"];
+        wantedBy = ["podman-aliasvault-root.target"];
+        serviceConfig = {
+          Type = "oneshot";
+          RemainAfterExit = true;
+        };
+      };
+
+      "podman-volume-aliasvault-logs" = {
+        path = [pkgs.podman];
+        script = ''podman volume inspect aliasvault-logs || podman volume create aliasvault-logs'';
+        partOf = ["podman-aliasvault-root.target"];
+        wantedBy = ["podman-aliasvault-root.target"];
+        serviceConfig = {
+          Type = "oneshot";
+          RemainAfterExit = true;
+        };
+      };
+
+      "podman-volume-aliasvault-secrets" = {
+        path = [pkgs.podman];
+        script = ''podman volume inspect aliasvault-secrets || podman volume create aliasvault-secrets'';
+        partOf = ["podman-aliasvault-root.target"];
+        wantedBy = ["podman-aliasvault-root.target"];
+        serviceConfig = {
+          Type = "oneshot";
+          RemainAfterExit = true;
+        };
+      };
+
+      "podman-network-aliasvault" = {
+        path = [pkgs.podman];
+        serviceConfig = {
+          Type = "oneshot";
+          RemainAfterExit = true;
+          ExecStop = "podman network rm -f aliasvault";
+        };
+        script = ''podman network inspect aliasvault || podman network create aliasvault'';
+        partOf = ["podman-compose-aliasvault-root.target"];
+        wantedBy = ["podman-compose-aliasvault-root.target"];
+      };
+    };
+  };
+
+  virtualisation.oci-containers.containers = {
+    "aliasvault" = {
+      image = "ghcr.io/aliasvault/aliasvault:latest";
+      environment = {
+        "TZ" = "Australia/Melbourne";
+        "FORCE_HTTPS_REDIRECT" = "false";
+        "HOSTNAME" = "localhost";
+        "IP_LOGGING_ENABLED" = "true";
+        "PRIVATE_EMAIL_DOMAINS" = "";
+        "PUBLIC_REGISTRATION_ENABLED" = "true";
+        "SUPPORT_EMAIL" = "";
+      };
+      volumes = [
+        # TODO
+        "aliasvault-db:/database:rw"
+        "aliasvault-logs:/logs:rw"
+        "aliasvailt-secrets:/secrets:rw"
+      ];
+      ports = [
+        # "80:80/tcp"
+        # "443:443/tcp"
+        # "25:25/tcp"
+        # "587:587/tcp"
+      ];
+      log-driver = "journald";
+      extraOptions = [
+        "--network-alias=aliasvault"
+        "--network=aliasvault"
+      ];
+    };
+
+    "aliasvault-cloudflared" = {
+      log-driver = "journald";
+      image = "cloudflare/cloudflared:latest";
+      environment = {
+        "TZ" = "Australia/Melbourne";
+        "TUNNEL_TOKEN" = "${secrets.cloudflare.aliasvault}";
+      };
+      cmd = ["tunnel" "--no-autoupdate" "run"];
+      extraOptions = [
+        "--network-alias=aliasvault-cloudflared"
+        "--network=aliasvault"
+      ];
+    };
+  };
+}
