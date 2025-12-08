@@ -7,9 +7,10 @@ Fully encrypted and self-hostable.
 Self hosted / single container install
 */
 {
+  secrets,
+  config,
   pkgs,
   lib,
-  config,
   ...
 }: {
   systemd = {
