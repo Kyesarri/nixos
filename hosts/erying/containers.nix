@@ -8,6 +8,7 @@
     ../../containers
 
     # all containers below have static configs
+    ../../containers/aliasvault
     ../../containers/emqx
     ../../containers/esphome
     ../../containers/frigate
