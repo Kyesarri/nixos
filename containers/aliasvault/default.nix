@@ -14,7 +14,7 @@ Self hosted / single container install
   ...
 }: {
   systemd = {
-    targets."podman-compose-aliasvault-root" = {
+    targets."podman-aliasvault-root" = {
       unitConfig = {Description = "root target";};
       wantedBy = ["multi-user.target"];
     };
