@@ -36,10 +36,7 @@ Self hosted / single container install
 
       "podman-aliasvault-cloudflared" = {
         serviceConfig = {Restart = lib.mkOverride 90 "always";};
-        after = [
-          "podman-network-aliasvault.service"
-          "podman-aliasvault.service"
-        ];
+        after = ["podman-network-aliasvault.service"];
         requires = ["podman-network-aliasvault.service"];
         partOf = ["podman-aliasvault-root.target"];
         wantedBy = ["podman-aliasvault-root.target"];
@@ -105,7 +102,6 @@ Self hosted / single container install
         "SUPPORT_EMAIL" = "";
       };
       volumes = [
-        # TODO
         "aliasvault-db:/database:rw"
         "aliasvault-logs:/logs:rw"
         "aliasvailt-secrets:/secrets:rw"
