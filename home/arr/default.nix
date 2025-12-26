@@ -2,6 +2,7 @@
   spaghetti,
   secrets,
   pkgs,
+  lib,
   ...
 }: {
   imports = [./flood.nix];
@@ -18,11 +19,12 @@
 
   services = {
     resolved.enable = true;
+
     transmission = {
       enable = true;
       user = "transmission";
       group = "media";
-      package = pkgs.transmission_4;
+      package = lib.mkForce pkgs.transmission_4;
       performanceNetParameters = true;
       openFirewall = true;
       openRPCPort = true;
