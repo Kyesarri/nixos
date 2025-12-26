@@ -5,7 +5,7 @@
   lib,
   ...
 }: {
-  # imports = [./flood.nix];
+  imports = [./flood.nix];
 
   # define a new group "media", add services / users to this group
   users.groups.media = {
@@ -19,12 +19,11 @@
 
   services = {
     resolved.enable = true;
-    /*
     transmission = {
       enable = true;
       user = "transmission";
       group = "media";
-      package = lib.mkForce pkgs.transmission_4;
+      package = pkgs.transmission_4;
       performanceNetParameters = true;
       openFirewall = true;
       openRPCPort = true;
@@ -48,7 +47,6 @@
         utp-enabled = true; # test
       };
     };
-    */
     radarr = {
       enable = true;
       openFirewall = true;
