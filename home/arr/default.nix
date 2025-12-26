@@ -13,19 +13,7 @@
     members = ["plex" "transmission" "bazarr" "radarr" "readarr" "sonarr" "prowlarr" "lidarr" "${spaghetti.user}"];
   };
 
-  #TODO #FIXME
-  # issues with sonarr - 11.12.24
-  /*
-  nixpkgs.config.permittedInsecurePackages = [
-    "dotnet-runtime-wrapped-6.0.36"
-    "aspnetcore-runtime-wrapped-6.0.36"
-    "aspnetcore-runtime-6.0.36"
-    "dotnet-sdk-wrapped-6.0.428"
-    "dotnet-sdk-6.0.428"
-  ];
-  */
-
-  # add user to groups created by services, is this required anymore?
+  # add user to groups created by services
   users.users.${spaghetti.user}.extraGroups = ["radarr" "sonarr" "transmission" "readarr"];
 
   services = {
@@ -34,7 +22,7 @@
       enable = true;
       user = "transmission";
       group = "media";
-      package = pkgs.transmission_4;
+      # package = pkgs.transmission_4;
       performanceNetParameters = true;
       openFirewall = true;
       openRPCPort = true;
