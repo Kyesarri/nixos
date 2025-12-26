@@ -45,9 +45,9 @@
     graphics = {
       enable = true;
       extraPackages = with pkgs; [
-        vaapiIntel
+        intel-vaapi-driver
         libvdpau-va-gl
-        vaapiVdpau
+        libva-vdpau-driver
         intel-ocl
         intel-media-driver # LIBVA_DRIVER_NAME=iHD
         intel-vaapi-driver # LIBVA_DRIVER_NAME=i965 (older but works better for Firefox/Chromium)
