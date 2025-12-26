@@ -19,7 +19,7 @@
 
   services = {
     resolved.enable = true;
-
+    /*
     transmission = {
       enable = true;
       user = "transmission";
@@ -48,6 +48,7 @@
         utp-enabled = true; # test
       };
     };
+    */
     radarr = {
       enable = true;
       openFirewall = true;
