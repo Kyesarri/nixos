@@ -106,7 +106,7 @@
       curl
       wget
       libsecret
-      gitAndTools.gitFull
+      git
       polkit_gnome
       pciutils
       age
