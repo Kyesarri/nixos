@@ -149,17 +149,15 @@
 
     # system packages, available for all users, not just spaghetti (su)
     systemPackages = with pkgs; [
-      cifs-utils
-      samba
       pciutils
-      tailscale
+      tailscale # should this be handled by the module? probably :)
       lshw # list hardware
       usbutils # usb thing
       busybox # nice-to-have
       curl
       wget
       libsecret
-      gitAndTools.gitFull
+      git
       polkit_gnome
       waypipe
       keepassxc # password manager
@@ -170,6 +168,11 @@
       lm_sensors
       inputs.agenix.packages.x86_64-linux.default
       nvtopPackages.full
+      # filesystem
+      samba
+      cifs-utils
+      exfat
+      exfatprogs
     ];
   };
 
